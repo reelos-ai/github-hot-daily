@@ -1,297 +1,164 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GitHub Trending Weekly Intelligence - 2026-06-25</title>
+  <title>GitHub Signal Intelligence · ReelOS</title>
+  <meta name="description" content="ReelOS GitHub 热榜情报中心：日报、周报、月报与往期归档。">
   <style>
     :root {
-      color-scheme:dark;
-      --bg:#05070a; --bg2:#070a0f;
-      --panel:rgba(255,250,241,0.030); --panel2:rgba(255,250,241,0.050);
-      --line:rgba(255,250,241,0.085); --line2:rgba(255,250,241,0.14);
-      --text:#fffaf1; --muted:rgba(255,250,241,0.62); --soft:rgba(255,250,241,0.56);
-      --blue:#7d96ff; --blue-dim:rgba(125,150,255,0.18);
-      --orange:#fb8b3c; --orange-dim:rgba(251,139,60,0.16);
-      --green:#54e0a6; --green-dim:rgba(84,224,166,0.14);
-      --red:#ff7a85; --red-dim:rgba(255,122,133,0.13);
-      --amber:#f6c454; --amber-dim:rgba(246,196,84,0.13);
-      --rail:rgba(125,150,255,0.28);
-      --grid:rgba(91,124,255,0.045); --node:#05070a; --glow:rgba(91,124,255,0.10);
+      color-scheme: dark;
+      --bg:#05070a; --panel:rgba(255,250,241,.032); --panel2:rgba(255,250,241,.055);
+      --line:rgba(255,250,241,.085); --line2:rgba(255,250,241,.16);
+      --text:#fffaf1; --muted:rgba(255,250,241,.58); --soft:rgba(255,250,241,.74);
+      --blue:#7d96ff; --blue-dim:rgba(125,150,255,.16); --orange:#fb8b3c; --orange-dim:rgba(251,139,60,.14);
+      --green:#54e0a6; --rail:rgba(125,150,255,.28); --grid:rgba(91,124,255,.045);
     }
     * { box-sizing:border-box; }
-    html { color-scheme:dark; scroll-behavior:smooth; }
+    html { color-scheme:dark; }
     body {
       margin:0; background:var(--bg); color:var(--text);
       font-family:Inter,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",ui-sans-serif,system-ui,sans-serif;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.72;
-      background-image:radial-gradient(circle at 50% -12%, var(--glow), transparent 58%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-image:radial-gradient(circle at 50% -12%, rgba(91,124,255,.10), transparent 58%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
       background-size:auto,72px 72px,72px 72px; background-attachment:fixed;
     }
     a { color:inherit; text-decoration:none; }
     a:hover { color:var(--blue); }
     .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
-    .wrap { max-width:830px; margin:0 auto; padding:48px 24px 96px; }
-
-    /* ---- scroll progress + sticky topbar ---- */
-    #progress { position:fixed; top:0; left:0; height:2px; width:0; z-index:60;
-      background:linear-gradient(90deg,var(--orange),var(--blue)); box-shadow:0 0 12px var(--glow); transition:width .08s linear; }
-    #topbar { position:fixed; top:0; left:0; right:0; z-index:50;
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding:11px clamp(16px,5vw,40px); transform:translateY(-110%); transition:transform .28s cubic-bezier(.4,0,.2,1);
-      background:rgba(5,7,10,0.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line); }
-    #topbar.show { transform:translateY(0); }
-    .tb-brand { display:flex; align-items:center; gap:9px; color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
-    .tb-nav { display:flex; gap:4px; flex-wrap:wrap; }
-    .tb-nav a { display:flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; color:var(--muted); font-size:12px; transition:color .2s,background .2s; }
-    .tb-nav a::before { content:attr(data-t); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; color:var(--blue); opacity:.7; }
-    .tb-nav a:hover { color:var(--text); background:var(--panel2); }
-    .tb-nav a.active { color:var(--text); background:var(--blue-dim); }
-    .tb-nav a.active::before { opacity:1; }
-
-    /* ---- header ---- */
-    header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:8px; }
-    .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .wrap { max-width:860px; margin:0 auto; padding:46px 24px 92px; }
+    .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); padding-bottom:20px; }
     .brand { display:flex; align-items:center; gap:11px; color:var(--muted); font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
-    .dot { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 16px var(--orange); animation:pulse 2.6s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.55;transform:scale(.82);} }
-    h1 { font-size:clamp(36px,6.2vw,58px); font-weight:780; letter-spacing:-0.01em; line-height:1.06; margin:20px 0 6px; }
-    h1 .ac { color:var(--orange); font-weight:830; }
-    h2 { margin:0; color:var(--text); font-size:16px; line-height:1.3; font-weight:700; letter-spacing:-0.005em; }
-    h3 { margin:0 0 6px; color:var(--text); font-size:22px; font-weight:680; line-height:1.45; letter-spacing:-0.01em; }
-    h4 { margin:22px 0 10px; color:var(--blue); font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:680; letter-spacing:.08em; text-transform:uppercase;
-      display:flex; align-items:center; gap:9px; }
-    h4::before { content:""; width:14px; height:1px; background:var(--rail); flex:0 0 auto; }
-    h4::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent); }
-    .sub { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:16px; color:var(--muted); font-size:14px; }
+    .dot { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 16px var(--orange); }
+    .nav { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+    .nav a { padding:5px 11px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; background:var(--panel); }
+    .nav a.active, .nav a:hover { color:var(--text); border-color:var(--blue); background:var(--blue-dim); }
+    h1 { margin:28px 0 8px; font-size:clamp(38px,7vw,64px); line-height:1.04; letter-spacing:-.01em; font-weight:790; }
+    h1 .ac { color:var(--orange); }
+    .lead { max-width:650px; margin:0; color:var(--soft); font-size:16px; line-height:1.8; }
+    .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
     .chip { border:1px solid var(--line2); border-radius:999px; padding:4px 12px; color:var(--text); font-size:11.5px; letter-spacing:.03em; background:var(--panel); }
     .chip b { color:var(--orange); }
-
-    .section-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
-    .section-link { display:flex; align-items:center; gap:8px; padding:7px 13px; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--muted); font-size:12px; transition:border-color .2s,color .2s,background .2s,transform .12s; }
-    .section-link:hover { border-color:var(--blue); color:var(--text); background:var(--blue-dim); transform:translateY(-1px); }
-    .section-link .nr { color:var(--blue); }
-
-    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:20px; }
-    .stat { border:1px solid var(--line); border-radius:8px; background:linear-gradient(160deg,var(--panel2),var(--panel)); padding:12px 14px; transition:border-color .2s; }
-    .stat:hover { border-color:var(--line2); }
-    .stat b { display:block; color:var(--orange); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:24px; font-weight:720; line-height:1.1; }
-    .stat span { color:var(--muted); font-size:12px; letter-spacing:.02em; }
-    .meta { color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
-
-    /* ---- timeline ---- */
-    .timeline { position:relative; margin-top:22px; }
-    .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:30px; width:1px; background:linear-gradient(180deg,var(--rail),rgba(125,150,255,0.04) 70%,transparent); }
-    .signal-section { position:relative; scroll-margin-top:78px; }
-    .signal-section + .signal-section { margin-top:18px; }
-    .section-head { display:flex; gap:18px; align-items:flex-start; padding:20px 0 10px 66px; color:var(--muted); }
-    .section-head .range { min-width:40px; color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; padding-top:14px; }
-    .section-head > div { display:inline-block; max-width:600px; padding:12px 16px; border:1px solid var(--line); background:linear-gradient(100deg,var(--panel2),transparent 85%); border-radius:10px; }
-    .section-head p { margin:5px 0 0; font-size:12.5px; line-height:1.55; color:var(--soft); }
-
-    /* ---- Top10 table ---- */
-    .table-wrap { margin-left:66px; overflow-x:auto; border:1px solid var(--line); background:var(--panel); border-radius:12px; }
-    table { width:100%; border-collapse:collapse; min-width:1040px; }
-    th,td { padding:11px 13px; border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; font-size:12.5px; line-height:1.5; }
-    thead th { position:sticky; top:0; background:#0a0d13; z-index:2; }
-    th { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10.5px; font-weight:680; text-transform:uppercase; letter-spacing:.06em; }
-    tbody tr { transition:background .15s; }
-    tbody tr:hover { background:var(--panel2); }
-    td { color:rgba(255,250,241,.82); }
-    td:first-child { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:700; }
-    td:nth-child(4),td:nth-child(5),td:nth-child(6),td:nth-child(7) { color:rgba(251,139,60,.92); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
-    td:nth-child(2) a { color:var(--text); font-weight:560; }
-    td:nth-child(2) a:hover { color:var(--blue); }
-    /* score — emphasized */
-    td:nth-child(8) { color:var(--orange); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:760; font-size:14px; }
-    /* confidence */
-    td:nth-child(9) { color:var(--green); text-transform:uppercase; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:.06em; }
-
-    /* ---- deep cards ---- */
-    .cards { display:grid; grid-template-columns:1fr; }
-    .card { display:block; position:relative; margin-left:66px; padding:20px 0 24px; border-bottom:1px solid var(--line); background:transparent; }
-    .card[data-rank]::before { content:attr(data-rank); position:absolute; left:-66px; top:20px; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px; font-weight:680; background:radial-gradient(circle at 50% 40%,#0c1019,var(--node)); border:1px solid var(--line2); box-shadow:0 0 0 0 var(--glow); transition:box-shadow .25s,border-color .25s; }
-    .card[data-rank]:hover::before { border-color:var(--blue); box-shadow:0 0 0 5px var(--glow); }
-    .card h3 a { color:var(--text); }
-    .card h3 a:hover { color:var(--blue); }
-    .card .meta { display:inline-flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:2px; padding:6px 0 2px; font-size:11.5px; }
-    .card > p { margin:12px 0 0; color:rgba(255,250,241,.86); font-size:16px; line-height:1.8; }
-
-    /* base-data grid */
-    .mini-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
-    .mini-grid div { border:1px solid var(--line); background:var(--panel); border-radius:8px; padding:9px 11px; min-width:0; transition:border-color .2s; }
-    .mini-grid div:hover { border-color:var(--line2); }
-    .mini-grid b { display:block; color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:.04em; text-transform:uppercase; margin-bottom:2px; }
-    .mini-grid span { color:var(--text); font-size:13px; overflow-wrap:anywhere; }
-
-    ol { margin:8px 0 0; padding-left:0; list-style:none; counter-reset:li; }
-    ol li { position:relative; margin:6px 0; padding:2px 0 2px 26px; color:rgba(255,250,241,.80); font-size:14.4px; line-height:1.74; counter-increment:li; }
-    ol li::before { content:counter(li,decimal-leading-zero); position:absolute; left:0; top:2px; color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10.5px; opacity:.65; }
-    li b { color:var(--text); font-weight:620; }
-
-    /* risk block = last ol/h4 in each card */
-    .card > h4:last-of-type { color:var(--red); }
-    .card > h4:last-of-type::before { background:var(--red); }
-    .card > ol:last-of-type { border-left:2px solid var(--red-dim); padding-left:14px; margin-left:2px; background:linear-gradient(90deg,var(--red-dim),transparent 60%); border-radius:0 8px 8px 0; }
-    .card > ol:last-of-type li::before { color:var(--red); }
-
-    /* lenses */
-    .lenses { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-    .lens { border:1px solid var(--line); background:linear-gradient(155deg,var(--panel2),var(--panel)); border-radius:9px; padding:12px 13px; transition:border-color .2s,transform .12s; }
-    .lens:hover { border-color:var(--blue); transform:translateY(-1px); }
-    .lens b { display:block; color:var(--blue); font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em; text-transform:uppercase; margin-bottom:4px; }
-    .lens p { margin:0; color:var(--soft); font-size:13px; line-height:1.62; }
-
-    /* tags */
-    .tag { display:inline-block; margin:2px 5px 2px 0; padding:2px 9px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10.5px; white-space:nowrap; transition:border-color .2s,color .2s; }
-    .tag:nth-child(1), .tag.primary { border-color:var(--blue-dim); color:var(--blue); background:var(--blue-dim); }
-    .tag:nth-child(2), .tag.value { border-color:var(--orange-dim); color:var(--orange); background:var(--orange-dim); }
-    .tag:nth-child(3) { border-color:var(--green-dim); color:var(--green); background:var(--green-dim); }
-
-    /* insight / trends */
-    .insight-block { margin:16px 0 0 66px; padding:16px 18px; border:1px solid var(--line); border-left:2px solid var(--rail); border-radius:0 10px 10px 0; background:linear-gradient(100deg,var(--panel2),transparent 80%); color:var(--soft); font-size:14.4px; line-height:1.78; }
-    .insight-block .lbl { display:inline-block; color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; padding:3px 9px; border:1px solid var(--rail); border-radius:999px; background:var(--blue-dim); }
-    .insight-block ol { margin-top:6px; }
-
-    /* A/B/C action cards */
-    #sec-actions .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-left:66px; }
-    #sec-actions .card { margin-left:0; padding:16px 16px 18px; border:1px solid var(--line); border-radius:12px; background:linear-gradient(160deg,var(--panel2),var(--panel)); transition:border-color .2s,transform .12s; }
-    #sec-actions .card:hover { transform:translateY(-2px); }
-    #sec-actions .card h3 { font-size:15px; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--line); }
-    #sec-actions .card p { font-size:13.5px; line-height:1.7; color:var(--soft); margin:0; }
-    #sec-actions .card:nth-child(1) { border-top:2px solid var(--green); }
-    #sec-actions .card:nth-child(1) h3 { color:var(--green); }
-    #sec-actions .card:nth-child(2) { border-top:2px solid var(--amber); }
-    #sec-actions .card:nth-child(2) h3 { color:var(--amber); }
-    #sec-actions .card:nth-child(3) { border-top:2px solid var(--muted); }
-
-    blockquote { margin:30px 0 0 66px; padding:18px 22px; border:1px solid var(--line); border-left:3px solid var(--orange); border-radius:0 12px 12px 0; color:var(--text); font-size:20px; line-height:1.58; background:linear-gradient(100deg,var(--orange-dim),transparent 70%); }
-
-    .caveat { margin:14px 0 0; color:var(--muted); font-size:12px; line-height:1.6; }
-
-    @media (max-width:620px) {
-      .wrap { padding:34px 16px 70px; }
-      h1 { font-size:36px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:24px; }
+    .stat { border:1px solid var(--line); border-radius:8px; background:linear-gradient(160deg,var(--panel2),var(--panel)); padding:12px 14px; }
+    .stat b { display:block; color:var(--orange); font-size:24px; line-height:1.1; }
+    .stat span { color:var(--muted); font-size:12px; }
+    .timeline { position:relative; margin-top:30px; }
+    .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:22px; width:1px; background:linear-gradient(180deg,var(--rail),transparent); }
+    .section { position:relative; padding-left:66px; margin-top:24px; }
+    .section::before { content:attr(data-n); position:absolute; left:0; top:2px; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); background:#070a0f; border:1px solid var(--line2); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; }
+    h2 { margin:0 0 6px; font-size:18px; line-height:1.35; }
+    .section > p { margin:0 0 12px; color:var(--muted); font-size:13px; }
+    .hero-report { border:1px solid var(--line2); border-radius:12px; background:linear-gradient(120deg,var(--orange-dim),var(--panel) 48%,transparent); padding:18px; }
+    .hero-report h3 { margin:0; font-size:24px; line-height:1.25; }
+    .hero-report p { margin:9px 0 0; color:var(--soft); font-size:14px; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .btn { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line2); border-radius:999px; padding:7px 13px; color:var(--text); background:var(--panel2); font-size:12px; }
+    .btn.primary { border-color:rgba(251,139,60,.45); background:var(--orange-dim); color:var(--text); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+    .card { border:1px solid var(--line); border-radius:10px; background:var(--panel); padding:14px; min-width:0; }
+    .card b { display:block; color:var(--blue); font-size:12px; margin-bottom:6px; }
+    .card p { margin:0; color:var(--soft); font-size:13px; line-height:1.65; }
+    .list { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel); }
+    .row { display:grid; grid-template-columns:92px 1fr 90px; gap:12px; padding:13px 14px; border-bottom:1px solid var(--line); align-items:center; }
+    .row:last-child { border-bottom:0; }
+    .row .type { color:var(--orange); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+    .row .title { color:var(--text); font-size:14px; }
+    .row .meta { color:var(--muted); font-size:11px; text-align:right; }
+    blockquote { margin:28px 0 0 66px; padding:16px 20px; border:1px solid var(--line); border-left:3px solid var(--orange); border-radius:0 12px 12px 0; background:linear-gradient(100deg,var(--orange-dim),transparent 70%); font-size:18px; line-height:1.58; }
+    @media (max-width:680px) {
+      .wrap { padding:32px 16px 70px; }
+      .toprow { align-items:flex-start; flex-direction:column; }
+      .nav { justify-content:flex-start; }
+      .stats,.grid { grid-template-columns:1fr; }
+      .section { padding-left:50px; }
+      .section::before { width:38px; height:38px; }
       .timeline::before { left:18px; }
-      .section-head { padding-left:50px; gap:10px; }
-      .section-head .range { min-width:34px; }
-      .table-wrap,.card,.insight-block,blockquote { margin-left:50px; }
-      #sec-actions .cards { margin-left:50px; grid-template-columns:1fr; }
-      .card[data-rank]::before { left:-50px; width:38px; height:38px; }
-      .stats,.lenses,.mini-grid { grid-template-columns:1fr; }
-      .card > p { font-size:15px; line-height:1.74; }
-      .tb-brand { display:none; }
-      th,td { padding:9px 10px; }
+      .row { grid-template-columns:1fr; gap:3px; }
+      .row .meta { text-align:left; }
+      blockquote { margin-left:50px; font-size:16px; }
     }
-    @media print {
-      body { background:#fff; color:#111; }
-      #topbar,#progress,.section-nav { display:none; }
-    }
-
   </style>
 </head>
 <body>
-<div id="progress"></div>
-<div id="topbar">
-  <span class="tb-brand"><span class="dot"></span> GitHub 热榜情报 · WEEKLY</span>
-  <nav class="tb-nav" aria-label="顶部导航">
-    <a href="#sec-top10" data-t="01">Top 10</a>
-    <a href="#sec-deep" data-t="02">深度</a>
-    <a href="#sec-trends" data-t="03">趋势</a>
-    <a href="#sec-lens" data-t="04">启示</a>
-    <a href="#sec-actions" data-t="05">跟进</a>
-  </nav>
-</div>
-<div class="wrap">
-  <header>
-    <div class="toprow">
-      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div>
-      <div class="mono" style="color:var(--muted);font-size:12px;">collect · judge · build</div>
-    </div>
-    <h1>GitHub <span class="ac">热榜</span> 情报</h1>
-    <div class="sub">
-      <span class="mono">2026-06-25</span>
-      <span class="chip">MODE / <b>AI-NATIVE</b></span>
-      <span class="chip">PERIOD / <b>WEEKLY</b></span>
-      <span class="chip">TOP <b>10</b></span>
-    </div>
-    <nav class="section-nav" aria-label="报告分组导航">
-      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
-      <a class="section-link" href="#sec-deep"><span class="nr mono">02</span><span>深度分析</span></a>
-      <a class="section-link" href="#sec-trends"><span class="nr mono">03</span><span>趋势</span></a>
-      <a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>启示</span></a>
-      <a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>跟进</span></a>
-    </nav>
-    <section class="stats">
-      <div class="stat"><b>60</b><span>候选项目</span></div>
-      <div class="stat"><b>10</b><span>Top 项目</span></div>
-      <div class="stat"><b>59</b><span>README 覆盖</span></div>
-      <div class="stat"><b>0</b><span>API 失败</span></div>
-    </section>
-    <p class="caveat">抓取健康：all=20, python=17, typescript=20, javascript=10, go=22, rust=20。GitHub Trending 非官方 API，页面结构变化可能影响解析。</p>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="toprow">
+        <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div>
+        <nav class="nav" aria-label="报告导航">
+          <a class="active" href="/">Overview</a>
+          <a href="/daily/">Daily</a>
+          <a href="/weekly/">Weekly</a>
+          <a href="/monthly/">Monthly</a>
+          <a href="/archive/">Archive</a>
+        </nav>
+      </div>
+      <h1>GitHub <span class="ac">热榜</span> 情报中心</h1>
+      <p class="lead">把 GitHub Trending 从热度列表加工成可决策的 AI Builder / Investor / Product / Architecture 情报系统。</p>
+      <div class="chips">
+        <span class="chip">LATEST / <b>WEEKLY</b></span>
+        <span class="chip">DATE / <b>2026-06-25</b></span>
+        <span class="chip">DOMAIN / <b>AI-NATIVE</b></span>
+        <span class="chip">STATUS / <b>LIVE</b></span>
+      </div>
+      <section class="stats">
+        <div class="stat"><b class="mono">60</b><span>候选项目</span></div>
+        <div class="stat"><b class="mono">10</b><span>Top 项目</span></div>
+        <div class="stat"><b class="mono">59</b><span>README 覆盖</span></div>
+        <div class="stat"><b class="mono">0</b><span>API 失败</span></div>
+      </section>
+    </header>
 
-  <main class="timeline">
-  <section class="signal-section" id="sec-top10">
-    <div class="section-head"><span class="range mono">01</span><div><h2>Top 10 项目信号</h2><p>不是按 star 排序，而是数据、技术与战略相关度的加权判断。</p></div></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>Repository</th><th>Language</th><th>Period Stars</th><th>Total Stars</th><th>Forks</th><th>Issues</th><th>Score</th><th>Confidence</th><th>关系标签</th><th>战略关键词</th></tr></thead>
-        <tbody><tr><td>1</td><td><a href='https://github.com/calesthio/OpenMontage'>calesthio/OpenMontage</a></td><td>Python</td><td>12948</td><td>21587</td><td>2414</td><td>123</td><td>98</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>skill</span><span class='tag'>workflow</span></td></tr><tr><td>2</td><td><a href='https://github.com/google-research/timesfm'>google-research/timesfm</a></td><td>Python</td><td>3915</td><td>25531</td><td>2427</td><td>228</td><td>97</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>skill</span><span class='tag'>workspace</span><span class='tag'>inference</span></td></tr><tr><td>3</td><td><a href='https://github.com/topoteretes/cognee'>topoteretes/cognee</a></td><td>Python</td><td>3631</td><td>22191</td><td>2139</td><td>224</td><td>97</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>rag</span><span class='tag'>skill</span></td></tr><tr><td>4</td><td><a href='https://github.com/jamiepine/voicebox'>jamiepine/voicebox</a></td><td>TypeScript</td><td>3583</td><td>34112</td><td>4102</td><td>485</td><td>97</td><td>high</td><td>Workspace 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>workspace</span><span class='tag'>llm</span></td></tr><tr><td>5</td><td><a href='https://github.com/googleworkspace/cli'>googleworkspace/cli</a></td><td>Rust</td><td>1411</td><td>28588</td><td>1587</td><td>121</td><td>97</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>runtime</span><span class='tag'>skill</span><span class='tag'>workspace</span></td></tr><tr><td>6</td><td><a href='https://github.com/Tencent/WeKnora'>Tencent/WeKnora</a></td><td>Go</td><td>748</td><td>17306</td><td>2261</td><td>286</td><td>96</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>rag</span><span class='tag'>skill</span></td></tr><tr><td>7</td><td><a href='https://github.com/modem-dev/hunk'>modem-dev/hunk</a></td><td>TypeScript</td><td>718</td><td>5648</td><td>145</td><td>63</td><td>96</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>skill</span><span class='tag'>workspace</span><span class='tag'>workflow</span></td></tr><tr><td>8</td><td><a href='https://github.com/infiniflow/ragflow'>infiniflow/ragflow</a></td><td>Go</td><td>545</td><td>83628</td><td>9699</td><td>2849</td><td>96</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>rag</span><span class='tag'>llm</span><span class='tag'>eval</span></td></tr><tr><td>9</td><td><a href='https://github.com/DeusData/codebase-memory-mcp'>DeusData/codebase-memory-mcp</a></td><td>C</td><td>9589</td><td>14605</td><td>1074</td><td>150</td><td>95</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>mcp</span><span class='tag'>rag</span></td></tr><tr><td>10</td><td><a href='https://github.com/OpenCut-app/OpenCut'>OpenCut-app/OpenCut</a></td><td>TypeScript</td><td>3550</td><td>59699</td><td>6484</td><td>329</td><td>95</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>automation</span></td></tr></tbody>
-      </table>
-    </div>
-  </section>
+    <main class="timeline">
+      <section class="section" data-n="01">
+        <h2>最新主报告</h2>
+        <p>默认突出周报，因为它过滤单日噪音，更适合战略判断。</p>
+        <div class="hero-report">
+          <h3><a href="/weekly/2026-06-25/">GitHub Trending Weekly Intelligence · 2026-06-25</a></h3>
+          <p>本期 Top signal：calesthio/OpenMontage。核心方向集中在 agentic video production、AI memory、workspace CLI、RAG 与 runtime 参考。</p>
+          <div class="actions">
+            <a class="btn primary" href="/weekly/2026-06-25/">打开周报</a>
+            <a class="btn" href="/github-trending-weekly-20260625.md">Markdown</a>
+            <a class="btn" href="/top10-2026-06-25.json">Top10 JSON</a>
+            <a class="btn" href="/trending-data-2026-06-25.json">Raw Data</a>
+          </div>
+        </div>
+      </section>
 
-  <section class="signal-section" id="sec-deep">
-    <div class="section-head"><span class="range mono">02</span><div><h2>Top 3-5 深度分析</h2><p>把 repo 拆成可复用、可投资、可防守的决策情报。</p></div></div>
-    <div class="cards"><article class='card' data-rank='01'><h3><a href='https://github.com/calesthio/OpenMontage'>calesthio/OpenMontage</a></h3><div class='meta'>Skill 来源 · Python · score 98 · confidence high</div><p>World&#x27;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</p><h4>基础数据</h4><div class='mini-grid'><div><b>周期 stars</b><span>12948</span></div><div><b>总 stars</b><span>21587</span></div><div><b>forks</b><span>2414</span></div><div><b>open issues</b><span>123</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>AGPL-3.0</span></div><div><b>创建时间</b><span>2026-03-29</span></div><div><b>最后 push</b><span>2026-06-24</span></div><div><b>topics</b><span>agent, agentic-ai, ai, claude, copilot, cursor, elevenlabs, ffmpeg</span></div></div><h4>技术原理与实现</h4><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>依赖线索：检测到 `requirements.txt`，可继续核实核心框架和运行依赖。</li></ol><h4>核心特性</h4><ol><li>定位：World&#x27;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</li><li>Topics：agent, agentic-ai, ai, claude, copilot, cursor, elevenlabs, ffmpeg</li><li>许可证：AGPL-3.0</li><li>热度：本周期新增 12948 stars，当前总星标 21587。</li><li>README 数字信号：Starting from a reference video is often faster than starting from a blank prompt</li></ol><h4>潜在应用方向</h4><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol><h4>系统设计拆解</h4><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol><h4>三问判断</h4><ol><li><b>解决什么真问题：</b>从当前描述看，主要痛点是：World&#x27;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</li><li><b>为什么现在 trending：</b>本周期新增 12948 stars；跨多个 Trending 切片重复出现；命中 agent, skill, workflow；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol><h4>六视角解读</h4><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 calesthio/OpenMontage 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Skill 来源` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div><h4>风险评估</h4><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=AGPL-3.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=123，last push=2026-06-24；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></article><article class='card' data-rank='02'><h3><a href='https://github.com/google-research/timesfm'>google-research/timesfm</a></h3><div class='meta'>Memory 组件 · Python · score 97 · confidence high</div><p>TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.</p><h4>基础数据</h4><div class='mini-grid'><div><b>周期 stars</b><span>3915</span></div><div><b>总 stars</b><span>25531</span></div><div><b>forks</b><span>2427</span></div><div><b>open issues</b><span>228</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2024-04-29</span></div><div><b>最后 push</b><span>2026-06-23</span></div><div><b>topics</b><span>-</span></div></div><h4>技术原理与实现</h4><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>依赖线索：检测到 `pyproject.toml`，可继续核实核心框架和运行依赖。</li></ol><h4>核心特性</h4><ol><li>定位：TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.</li><li>许可证：Apache-2.0</li><li>热度：本周期新增 3915 stars，当前总星标 25531。</li><li>README 数字信号：✅ Flax version of the model for faster inference</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol><h4>潜在应用方向</h4><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol><h4>系统设计拆解</h4><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol><h4>三问判断</h4><ol><li><b>解决什么真问题：</b>从当前描述看，主要痛点是：TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.</li><li><b>为什么现在 trending：</b>本周期新增 3915 stars；跨多个 Trending 切片重复出现；命中 agent, agents, skill, workspace；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol><h4>六视角解读</h4><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 google-research/timesfm 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div><h4>风险评估</h4><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=Apache-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=228，last push=2026-06-23；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></article><article class='card' data-rank='03'><h3><a href='https://github.com/topoteretes/cognee'>topoteretes/cognee</a></h3><div class='meta'>Memory 组件 · Python · score 97 · confidence high</div><p>Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.</p><h4>基础数据</h4><div class='mini-grid'><div><b>周期 stars</b><span>3631</span></div><div><b>总 stars</b><span>22191</span></div><div><b>forks</b><span>2139</span></div><div><b>open issues</b><span>224</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2023-08-16</span></div><div><b>最后 push</b><span>2026-06-25</span></div><div><b>topics</b><span>agent-memory, agent-skills, ai, ai-agents, ai-memory, cognitive-architecture, cognitive-memory, context-engineering</span></div></div><h4>技术原理与实现</h4><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>检索增强：出现 RAG/retrieval/embedding 信号，可跟踪知识接入与上下文管理模式。</li><li>依赖线索：检测到 `pyproject.toml`，可继续核实核心框架和运行依赖。</li></ol><h4>核心特性</h4><ol><li>定位：Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.</li><li>Topics：agent-memory, agent-skills, ai, ai-agents, ai-memory, cognitive-architecture, cognitive-memory, context-engineering</li><li>许可证：Apache-2.0</li><li>热度：本周期新增 3631 stars，当前总星标 22191。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol><h4>潜在应用方向</h4><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol><h4>系统设计拆解</h4><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>出现 database/vector/storage/cache 信号，可继续核实数据层设计。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol><h4>三问判断</h4><ol><li><b>解决什么真问题：</b>从当前描述看，主要痛点是：Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.</li><li><b>为什么现在 trending：</b>本周期新增 3631 stars；命中 agent, agents, memory, rag；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol><h4>六视角解读</h4><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 topoteretes/cognee 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div><h4>风险评估</h4><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=Apache-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=224，last push=2026-06-25；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></article><article class='card' data-rank='04'><h3><a href='https://github.com/jamiepine/voicebox'>jamiepine/voicebox</a></h3><div class='meta'>Workspace 组件 · TypeScript · score 97 · confidence high</div><p>The open-source AI voice studio. Clone, dictate, create.</p><h4>基础数据</h4><div class='mini-grid'><div><b>周期 stars</b><span>3583</span></div><div><b>总 stars</b><span>34112</span></div><div><b>forks</b><span>4102</span></div><div><b>open issues</b><span>485</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-01-25</span></div><div><b>最后 push</b><span>2026-04-26</span></div><div><b>topics</b><span>ai, cuda, mlx, qwen3-tts, qwen3-tts-ui, voice-ai, voice-clone, whisper</span></div></div><h4>技术原理与实现</h4><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>依赖线索：检测到 `package.json`，可继续核实核心框架和运行依赖。</li></ol><h4>核心特性</h4><ol><li>定位：The open-source AI voice studio. Clone, dictate, create.</li><li>Topics：ai, cuda, mlx, qwen3-tts, qwen3-tts-ui, voice-ai, voice-clone, whisper</li><li>许可证：MIT</li><li>热度：本周期新增 3583 stars，当前总星标 34112。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol><h4>潜在应用方向</h4><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol><h4>系统设计拆解</h4><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol><h4>三问判断</h4><ol><li><b>解决什么真问题：</b>从当前描述看，主要痛点是：The open-source AI voice studio. Clone, dictate, create.</li><li><b>为什么现在 trending：</b>本周期新增 3583 stars；跨多个 Trending 切片重复出现；命中 agent, agents, mcp, workspace；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol><h4>六视角解读</h4><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 jamiepine/voicebox 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Workspace 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div><h4>风险评估</h4><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=485，last push=2026-04-26；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></article><article class='card' data-rank='05'><h3><a href='https://github.com/googleworkspace/cli'>googleworkspace/cli</a></h3><div class='meta'>Runtime 参考 · Rust · score 97 · confidence high</div><p>Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.</p><h4>基础数据</h4><div class='mini-grid'><div><b>周期 stars</b><span>1411</span></div><div><b>总 stars</b><span>28588</span></div><div><b>forks</b><span>1587</span></div><div><b>open issues</b><span>121</span></div><div><b>主语言</b><span>Rust</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2026-03-02</span></div><div><b>最后 push</b><span>2026-06-24</span></div><div><b>topics</b><span>agent-skills, ai-agent, automation, cli, discovery-api, gemini-cli-extension, google-admin, google-api</span></div></div><h4>技术原理与实现</h4><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `Cargo.toml`，可继续核实核心框架和运行依赖。</li></ol><h4>核心特性</h4><ol><li>定位：Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.</li><li>Topics：agent-skills, ai-agent, automation, cli, discovery-api, gemini-cli-extension, google-admin, google-api</li><li>许可证：Apache-2.0</li><li>热度：本周期新增 1411 stars，当前总星标 28588。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol><h4>潜在应用方向</h4><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol><h4>系统设计拆解</h4><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol><h4>三问判断</h4><ol><li><b>解决什么真问题：</b>从当前描述看，主要痛点是：Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.</li><li><b>为什么现在 trending：</b>本周期新增 1411 stars；命中 agent, agents, runtime, skill；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>出现 wrapper/template/boilerplate 信号，需警惕只是重新包装。</li></ol><h4>六视角解读</h4><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 googleworkspace/cli 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Runtime 参考` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div><h4>风险评估</h4><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=Apache-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=121，last push=2026-06-24；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></article></div>
-  </section>
+      <section class="section" data-n="02">
+        <h2>报告类型</h2>
+        <p>同一套数据流水线，不同周期服务不同决策节奏。</p>
+        <div class="grid">
+          <a class="card" href="/daily/"><b>Daily Radar</b><p>当天热度爆发、早信号、新项目和噪音提示，适合 5AM 自动监控。</p></a>
+          <a class="card" href="/weekly/"><b>Weekly Intelligence</b><p>主力战略报告，保留完整 6 段结构，决定建什么、看什么、防什么。</p></a>
+          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>品类级趋势复盘，观察 Agent、Memory、MCP、Workspace、Runtime 成熟度。</p></a>
+        </div>
+      </section>
 
-  <section class="signal-section" id="sec-trends">
-    <div class="section-head"><span class="range mono">03</span><div><h2>趋势观察</h2><p>每条趋势至少由两个真实项目交叉佐证。</p></div></div>
-    <div class="insight-block"><span class="lbl">解读</span><ol><li>`agent` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 google-research/timesfm，说明该能力正在从单点工具扩散为生态能力。</li><li>`agents` 成为交叉信号，代表项目包括 google-research/timesfm 和 topoteretes/cognee，说明该能力正在从单点工具扩散为生态能力。</li><li>`skill` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 google-research/timesfm，说明该能力正在从单点工具扩散为生态能力。</li><li>`llm` 成为交叉信号，代表项目包括 topoteretes/cognee 和 jamiepine/voicebox，说明该能力正在从单点工具扩散为生态能力。</li><li>`workflow` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 googleworkspace/cli，说明该能力正在从单点工具扩散为生态能力。</li><li>`workspace` 成为交叉信号，代表项目包括 google-research/timesfm 和 jamiepine/voicebox，说明该能力正在从单点工具扩散为生态能力。</li><li>Skill 来源 类项目同时出现 calesthio/OpenMontage 和 Tencent/WeKnora，值得作为同类架构/市场定位样本持续跟踪。</li><li>Memory 组件 类项目同时出现 google-research/timesfm 和 topoteretes/cognee，值得作为同类架构/市场定位样本持续跟踪。</li></ol></div>
-  </section>
+      <section class="section" data-n="03">
+        <h2>最近报告</h2>
+        <p>往期沉淀为可检索资产，而不是被最新单篇覆盖。</p>
+        <div class="list">
+          <a class="row" href="/weekly/2026-06-25/">
+            <span class="type mono">Weekly</span>
+            <span class="title">GitHub Trending Weekly Intelligence · 2026-06-25</span>
+            <span class="meta mono">Top 10</span>
+          </a>
+        </div>
+      </section>
 
-  <section class="signal-section" id="sec-lens">
-    <div class="section-head"><span class="range mono">04</span><div><h2>六视角启示</h2><p>从 Builder、投资、产品、架构、Founder 与 OPC 生态判断行动价值。</p></div></div>
-    <div class="card"><div class="lenses"><div class='lens'><b>AI Builder</b><p>优先拆解 calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee 的 README 与依赖，寻找可复用的 agent、RAG、workflow 或 runtime 模块。</p></div><div class='lens'><b>Investor</b><p>关注短期 star 增速与多语言切片重复出现的项目，这通常代表跨圈层传播而非单社区热度。</p></div><div class='lens'><b>Product</b><p>把热榜项目映射到用户工作流：安装门槛、首次价值、协作方式和可替代的现有工具。</p></div><div class='lens'><b>Architecture</b><p>重点跟踪协议、运行时、记忆、检索、工作区组件，判断是否能沉淀为平台能力。</p></div><div class='lens'><b>Founder</b><p>寻找小团队可切入的楔子：CLI、IDE 插件、轻量托管、模板市场、行业封装。</p></div><div class='lens'><b>Ecosystem</b><p>记录 license、topics、homepage 和集成对象，判断项目更像独立产品、基础设施还是生态插件。</p></div></div></div>
-  </section>
+      <section class="section" data-n="04">
+        <h2>观察池</h2>
+        <p>A 类立即深挖，B 类观察 7-14 天，C 类仅保留基础记录。</p>
+        <div class="grid">
+          <div class="card"><b>A 类</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
+          <div class="card"><b>B 类</b><p>Tencent/WeKnora, modem-dev/hunk, infiniflow/ragflow</p></div>
+          <div class="card"><b>C 类</b><p>数据薄、维护弱或战略关键词弱的项目，保留在 raw data 中。</p></div>
+        </div>
+      </section>
 
-  <section class="signal-section" id="sec-actions">
-    <div class="section-head"><span class="range mono">05</span><div><h2>A/B/C 跟进建议</h2><p>把热度变成下一步动作，而不是收藏夹。</p></div></div>
-    <div class="cards">
-      <article class="card"><h3>A 类：立即深挖</h3><p>对 score 最高且 README 完整的项目做代码结构、issue、release、竞品和集成路径核查。</p></article>
-      <article class="card"><h3>B 类：进入观察池</h3><p>对增长快但 README 或 license 信息不足的项目保留 7-14 天追踪，验证是否持续增长。</p></article>
-      <article class="card"><h3>C 类：暂缓</h3><p>对 scrape 信息薄、维护信号弱或战略关键词弱的项目只保留基础记录。</p></article>
-    </div>
-  </section>
-
-  <blockquote>一句话结论：本期优先关注 calesthio/OpenMontage 代表的高相关方向，同时用 Top 10 作为 agent/runtime/workspace 生态变化的观察样本。</blockquote>
-</main>
-</div>
-<script>
-(function(){
-  var bar=document.getElementById('progress');
-  var top=document.getElementById('topbar');
-  var secs=['sec-top10','sec-deep','sec-trends','sec-lens','sec-actions'].map(function(id){return document.getElementById(id);}).filter(Boolean);
-  var links=Array.prototype.slice.call(document.querySelectorAll('.tb-nav a, .section-link'));
-  function onScroll(){
-    var st=window.pageYOffset||document.documentElement.scrollTop;
-    var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-    bar.style.width=(h>0?(st/h*100):0)+'%';
-    if(st>340){top.classList.add('show');}else{top.classList.remove('show');}
-    var cur=secs[0]?secs[0].id:null, mid=st+window.innerHeight*0.32;
-    secs.forEach(function(s){ if(s.offsetTop<=mid) cur=s.id; });
-    links.forEach(function(a){
-      var href=a.getAttribute('href')||'';
-      a.classList.toggle('active', href==='#'+cur);
-    });
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',onScroll);
-  onScroll();
-})();
-</script>
+      <blockquote>日报抓早信号，周报做战略判断，月报看品类迁移；往期归档让每一次热榜都沉淀为可追踪情报。</blockquote>
+    </main>
+  </div>
 </body>
 </html>

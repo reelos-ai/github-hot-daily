@@ -1,6 +1,26 @@
-# GitHub Hot Daily
+# GitHub Signal Intelligence
 
-Generated GitHub Trending intelligence reports for ReelOS.
+ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报与往期归档。
 
-- Latest report: `index.html`
-- Weekly report: `github-trending-weekly-20260625.html`
+## Site
+
+- Production: https://gh.reelos.ai
+- Cloudflare Pages: https://github-hot-daily.pages.dev
+- GitHub: https://github.com/reelos-ai/github-hot-daily
+
+## Structure
+
+- `/` - 情报中心首页
+- `/daily/` - 日报入口
+- `/weekly/` - 周报入口
+- `/weekly/2026-06-25/` - 当前周报
+- `/monthly/` - 月报入口
+- `/archive/` - 往期归档
+- `/reports.json` - 报告索引元数据
+
+## Current Report
+
+- HTML: `/weekly/2026-06-25/`
+- Markdown: `/github-trending-weekly-20260625.md`
+- Top 10 data: `/top10-2026-06-25.json`
+- Raw trending data: `/trending-data-2026-06-25.json`
