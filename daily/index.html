@@ -11,9 +11,12 @@
     .brand{color:rgba(255,250,241,.58);font-size:13px;letter-spacing:.06em;text-transform:uppercase}.nav{display:flex;gap:8px;flex-wrap:wrap}
     .nav a{border:1px solid rgba(255,250,241,.12);border-radius:999px;padding:5px 11px;color:rgba(255,250,241,.7);font-size:12px}.nav a.active{background:rgba(125,150,255,.16);color:#fffaf1}
     h1{font-size:clamp(36px,6vw,58px);line-height:1.06;margin:28px 0 10px}.ac{color:#fb8b3c}p{color:rgba(255,250,241,.68)}
+    .hero{margin-top:22px;border:1px solid rgba(255,250,241,.085);border-left:3px solid #fb8b3c;border-radius:0 12px 12px 0;padding:16px 18px;background:rgba(251,139,60,.12)}
+    .hero h2{margin:0;font-size:24px;line-height:1.25} .hero p{margin:8px 0 0;font-size:14px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px} .btn{border:1px solid rgba(255,250,241,.12);border-radius:999px;padding:7px 12px;font-size:12px;background:rgba(255,250,241,.03)}
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}.card{border:1px solid rgba(255,250,241,.085);border-radius:10px;background:rgba(255,250,241,.032);padding:14px}.card b{display:block;color:#7d96ff;font-size:12px;margin-bottom:6px}.card p{margin:0;font-size:13px}
-    .empty{margin-top:22px;border:1px solid rgba(251,139,60,.28);border-left:3px solid #fb8b3c;border-radius:0 12px 12px 0;padding:16px 18px;background:rgba(251,139,60,.12)}
-    @media(max-width:620px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}}
+    .list{border:1px solid rgba(255,250,241,.085);border-radius:10px;overflow:hidden;background:rgba(255,250,241,.032);margin-top:22px}.row{display:grid;grid-template-columns:96px 1fr 90px;gap:12px;padding:14px;border-bottom:1px solid rgba(255,250,241,.085);align-items:center}.row:last-child{border-bottom:0}.type{color:#fb8b3c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-transform:uppercase}.meta{color:rgba(255,250,241,.55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-align:right}
+    @media(max-width:620px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.meta{text-align:left}}
   </style>
 </head>
 <body>
@@ -24,12 +27,19 @@
     </div>
     <h1>Daily <span class="ac">Radar</span></h1>
     <p>日报用于捕捉当天爆发项目，信号更早，但噪音更高。它不追求完整战略判断，而是判断哪些项目值得进入观察池。</p>
+    <div class="hero">
+      <h2><a href="/daily/2026-06-26/">GitHub 热榜情报日报 · 2026-06-26</a></h2>
+      <p>本期 Top signal：calesthio/OpenMontage。六个切片共抓取 60 个候选项目，Top 10 已完成中文情报化处理。</p>
+      <div class="actions"><a class="btn" href="/daily/2026-06-26/">打开日报</a><a class="btn" href="/top10-2026-06-26.json">Top10 JSON</a><a class="btn" href="/trending-data-2026-06-26.json">Raw Data</a></div>
+    </div>
     <div class="grid">
       <div class="card"><b>Top 10</b><p>当天 GitHub Trending 候选项目与加权排序。</p></div>
       <div class="card"><b>新上榜 / 回榜</b><p>识别突发项目、老项目翻红和跨语言重复出现。</p></div>
       <div class="card"><b>观察池</b><p>把值得周报深挖的项目标记为 A/B/C。</p></div>
     </div>
-    <div class="empty">当前站点尚未发布日报。最近可用主报告是 <a href="/weekly/2026-06-25/">2026-06-25 周报</a>。</div>
+    <div class="list">
+      <a class="row" href="/daily/2026-06-26/"><span class="type">Daily</span><span>GitHub 热榜情报日报 · 2026-06-26</span><span class="meta">Top 10</span></a>
+    </div>
   </div>
 </body>
 </html>

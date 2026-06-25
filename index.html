@@ -35,7 +35,7 @@
     .nav a.active, .nav a:hover { color:var(--text); border-color:var(--blue); background:var(--blue-dim); }
     h1 { margin:28px 0 8px; font-size:clamp(38px,7vw,64px); line-height:1.04; letter-spacing:-.01em; font-weight:790; }
     h1 .ac { color:var(--orange); }
-    .lead { max-width:650px; margin:0; color:var(--soft); font-size:16px; line-height:1.8; }
+    .lead { max-width:680px; margin:0; color:var(--soft); font-size:16px; line-height:1.8; }
     .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
     .chip { border:1px solid var(--line2); border-radius:999px; padding:4px 12px; color:var(--text); font-size:11.5px; letter-spacing:.03em; background:var(--panel); }
     .chip b { color:var(--orange); }
@@ -94,33 +94,32 @@
         </nav>
       </div>
       <h1>GitHub <span class="ac">热榜</span> 情报中心</h1>
-      <p class="lead">把 GitHub Trending 从热度列表加工成可决策的 AI Builder / Investor / Product / Architecture 情报系统。</p>
+      <p class="lead">把 GitHub Trending 从热度列表加工成可决策的 AI Builder / Investor / Product / Architecture 情报系统；当前首页突出最新日报，周报仍保留为更适合长期判断的主策略资产。</p>
       <div class="chips">
-        <span class="chip">LATEST / <b>WEEKLY</b></span>
-        <span class="chip">DATE / <b>2026-06-25</b></span>
+        <span class="chip">LATEST / <b>DAILY</b></span>
+        <span class="chip">DATE / <b>2026-06-26</b></span>
         <span class="chip">DOMAIN / <b>AI-NATIVE</b></span>
         <span class="chip">STATUS / <b>LIVE</b></span>
       </div>
       <section class="stats">
         <div class="stat"><b class="mono">60</b><span>候选项目</span></div>
         <div class="stat"><b class="mono">10</b><span>Top 项目</span></div>
-        <div class="stat"><b class="mono">59</b><span>README 覆盖</span></div>
+        <div class="stat"><b class="mono">60</b><span>README 覆盖</span></div>
         <div class="stat"><b class="mono">0</b><span>API 失败</span></div>
       </section>
     </header>
 
     <main class="timeline">
       <section class="section" data-n="01">
-        <h2>最新主报告</h2>
-        <p>默认突出周报，因为它过滤单日噪音，更适合战略判断。</p>
+        <h2>最新日报</h2>
+        <p>日报负责捕捉当天爆发项目与早信号，优先回答“今天值得先看什么”。</p>
         <div class="hero-report">
-          <h3><a href="/weekly/2026-06-25/">GitHub 热榜情报周报 · 2026-06-25</a></h3>
-          <p>本期 Top signal：calesthio/OpenMontage。核心方向集中在 agentic video production、AI memory、workspace CLI、RAG 与 runtime 参考。</p>
+          <h3><a href="/daily/2026-06-26/">GitHub 热榜情报日报 · 2026-06-26</a></h3>
+          <p>本期 Top signal：calesthio/OpenMontage。今天的信号集中在 agentic video production、agent memory、workspace CLI、企业自动化与 AI skills 工具链。</p>
           <div class="actions">
-            <a class="btn primary" href="/weekly/2026-06-25/">打开周报</a>
-            <a class="btn" href="/github-trending-weekly-20260625.md">Markdown</a>
-            <a class="btn" href="/top10-2026-06-25.json">Top10 JSON</a>
-            <a class="btn" href="/trending-data-2026-06-25.json">Raw Data</a>
+            <a class="btn primary" href="/daily/2026-06-26/">打开日报</a>
+            <a class="btn" href="/top10-2026-06-26.json">Top10 JSON</a>
+            <a class="btn" href="/trending-data-2026-06-26.json">Raw Data</a>
           </div>
         </div>
       </section>
@@ -129,7 +128,7 @@
         <h2>报告类型</h2>
         <p>同一套数据流水线，不同周期服务不同决策节奏。</p>
         <div class="grid">
-          <a class="card" href="/daily/"><b>Daily Radar</b><p>当天热度爆发、早信号、新项目和噪音提示，适合 5AM 自动监控。</p></a>
+          <a class="card" href="/daily/"><b>Daily Radar</b><p>当天热度爆发、早信号、新项目和噪音提示，适合每日监控与观察池更新。</p></a>
           <a class="card" href="/weekly/"><b>Weekly Intelligence</b><p>主力战略报告，保留完整 6 段结构，决定建什么、看什么、防什么。</p></a>
           <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>品类级趋势复盘，观察 Agent、Memory、MCP、Workspace、Runtime 成熟度。</p></a>
         </div>
@@ -139,9 +138,14 @@
         <h2>最近报告</h2>
         <p>往期沉淀为可检索资产，而不是被最新单篇覆盖。</p>
         <div class="list">
+          <a class="row" href="/daily/2026-06-26/">
+            <span class="type mono">Daily</span>
+            <span class="title">GitHub 热榜情报日报 · 2026-06-26</span>
+            <span class="meta mono">Top 10</span>
+          </a>
           <a class="row" href="/weekly/2026-06-25/">
             <span class="type mono">Weekly</span>
-            <span class="title">GitHub Trending Weekly Intelligence · 2026-06-25</span>
+            <span class="title">GitHub 热榜情报周报 · 2026-06-25</span>
             <span class="meta mono">Top 10</span>
           </a>
         </div>
@@ -152,12 +156,12 @@
         <p>A 类立即深挖，B 类观察 7-14 天，C 类仅保留基础记录。</p>
         <div class="grid">
           <div class="card"><b>A 类</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
-          <div class="card"><b>B 类</b><p>Tencent/WeKnora, modem-dev/hunk, infiniflow/ragflow</p></div>
-          <div class="card"><b>C 类</b><p>数据薄、维护弱或战略关键词弱的项目，保留在 raw data 中。</p></div>
+          <div class="card"><b>新增日报 Top</b><p>calesthio/OpenMontage, affaan-m/ECC, googleworkspace/cli, jamiepine/voicebox, farion1231/cc-switch</p></div>
+          <div class="card"><b>跟踪重点</b><p>优先看跨切片重复出现、README 完整且关系标签落在 Skill / Memory / Runtime / Workspace 的项目。</p></div>
         </div>
       </section>
 
-      <blockquote>日报抓早信号，周报做战略判断，月报看品类迁移；往期归档让每一次热榜都沉淀为可追踪情报。</blockquote>
+      <blockquote>日报抓早信号，周报做战略判断，月报看品类迁移；今天这版内容已经切换到 2026-06-26 的新日报。</blockquote>
     </main>
   </div>
 </body>
