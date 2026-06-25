@@ -312,14 +312,10 @@
 
 ## 趋势观察
 
-1. `agent` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 google-research/timesfm，说明该能力正在从单点工具扩散为生态能力。
-2. `agents` 成为交叉信号，代表项目包括 google-research/timesfm 和 topoteretes/cognee，说明该能力正在从单点工具扩散为生态能力。
-3. `skill` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 google-research/timesfm，说明该能力正在从单点工具扩散为生态能力。
-4. `llm` 成为交叉信号，代表项目包括 topoteretes/cognee 和 jamiepine/voicebox，说明该能力正在从单点工具扩散为生态能力。
-5. `workflow` 成为交叉信号，代表项目包括 calesthio/OpenMontage 和 googleworkspace/cli，说明该能力正在从单点工具扩散为生态能力。
-6. `workspace` 成为交叉信号，代表项目包括 google-research/timesfm 和 jamiepine/voicebox，说明该能力正在从单点工具扩散为生态能力。
-7. Skill 来源 类项目同时出现 calesthio/OpenMontage 和 Tencent/WeKnora，值得作为同类架构/市场定位样本持续跟踪。
-8. Memory 组件 类项目同时出现 google-research/timesfm 和 topoteretes/cognee，值得作为同类架构/市场定位样本持续跟踪。
+1. Agent 正在从聊天走向生产工作流：本周的强信号不是又多了几个聊天机器人，而是 agent 开始进入视频生产、企业工具和流程编排。佐证项目：calesthio/OpenMontage、googleworkspace/cli、Tencent/WeKnora。行动含义：优先看它们如何组织 tool、pipeline、权限和失败恢复。
+2. Memory / RAG 正在变成基础设施：记忆不再只是 prompt 技巧，而是开始以知识图谱、RAG、代码库记忆的形式进入 agent 底座。佐证项目：topoteretes/cognee、infiniflow/ragflow、stippi/codebase-memory-mcp。行动含义：重点评估数据层、更新机制、权限边界和长期维护成本。
+3. Workspace 工具正在被包装成 agent 可调用能力：CLI、编辑器、语音和企业软件项目同时升温，说明下一阶段竞争点是把现有工作工具变成 agent 能稳定调用的接口。佐证项目：googleworkspace/cli、modem-dev/hunk、jamiepine/voicebox。行动含义：适合跟进 CLI、MCP、插件化、权限模型和 SaaS API 封装方式。
+4. 多模态生产工具开始进入开源工作台：视频、语音、文档和企业工具开始汇合，说明 AI workspace 不只服务开发者，也会服务内容生产和运营场景。佐证项目：calesthio/OpenMontage、jamiepine/voicebox、OpenCut-app/OpenCut。行动含义：短期看工具链复用，长期看是否形成稳定创作者工作流。
 
 ## 一句话结论
 
