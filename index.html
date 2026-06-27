@@ -6,78 +6,10 @@
   <title>GitHub Signal Intelligence · ReelOS</title>
   <meta name="description" content="ReelOS GitHub 热榜情报中心：日报、周报、月报与往期归档。">
   <style>
-    :root {
-      color-scheme: dark;
-      --bg:#05070a; --panel:rgba(255,250,241,.032); --panel2:rgba(255,250,241,.055);
-      --line:rgba(255,250,241,.085); --line2:rgba(255,250,241,.16);
-      --text:#fffaf1; --muted:rgba(255,250,241,.58); --soft:rgba(255,250,241,.74);
-      --blue:#7d96ff; --blue-dim:rgba(125,150,255,.16); --orange:#fb8b3c; --orange-dim:rgba(251,139,60,.14);
-      --green:#54e0a6; --rail:rgba(125,150,255,.28); --grid:rgba(91,124,255,.045);
-    }
-    * { box-sizing:border-box; }
-    html { color-scheme:dark; }
-    body {
-      margin:0; background:var(--bg); color:var(--text);
-      font-family:Inter,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",ui-sans-serif,system-ui,sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.72;
-      background-image:radial-gradient(circle at 50% -12%, rgba(91,124,255,.10), transparent 58%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size:auto,72px 72px,72px 72px; background-attachment:fixed;
-    }
-    a { color:inherit; text-decoration:none; }
-    a:hover { color:var(--blue); }
-    .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
-    .wrap { max-width:860px; margin:0 auto; padding:46px 24px 92px; }
-    .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); padding-bottom:20px; }
-    .brand { display:flex; align-items:center; gap:11px; color:var(--muted); font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
-    .dot { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 16px var(--orange); }
-    .nav { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
-    .nav a { padding:5px 11px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; background:var(--panel); }
-    .nav a.active, .nav a:hover { color:var(--text); border-color:var(--blue); background:var(--blue-dim); }
-    h1 { margin:28px 0 8px; font-size:clamp(38px,7vw,64px); line-height:1.04; letter-spacing:-.01em; font-weight:790; }
-    h1 .ac { color:var(--orange); }
-    .lead { max-width:680px; margin:0; color:var(--soft); font-size:16px; line-height:1.8; }
-    .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
-    .chip { border:1px solid var(--line2); border-radius:999px; padding:4px 12px; color:var(--text); font-size:11.5px; letter-spacing:.03em; background:var(--panel); }
-    .chip b { color:var(--orange); }
-    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:24px; }
-    .stat { border:1px solid var(--line); border-radius:8px; background:linear-gradient(160deg,var(--panel2),var(--panel)); padding:12px 14px; }
-    .stat b { display:block; color:var(--orange); font-size:24px; line-height:1.1; }
-    .stat span { color:var(--muted); font-size:12px; }
-    .timeline { position:relative; margin-top:30px; }
-    .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:22px; width:1px; background:linear-gradient(180deg,var(--rail),transparent); }
-    .section { position:relative; padding-left:66px; margin-top:24px; }
-    .section::before { content:attr(data-n); position:absolute; left:0; top:2px; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); background:#070a0f; border:1px solid var(--line2); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; }
-    h2 { margin:0 0 6px; font-size:18px; line-height:1.35; }
-    .section > p { margin:0 0 12px; color:var(--muted); font-size:13px; }
-    .hero-report { border:1px solid var(--line2); border-radius:12px; background:linear-gradient(120deg,var(--orange-dim),var(--panel) 48%,transparent); padding:18px; }
-    .hero-report h3 { margin:0; font-size:24px; line-height:1.25; }
-    .hero-report p { margin:9px 0 0; color:var(--soft); font-size:14px; }
-    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
-    .btn { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line2); border-radius:999px; padding:7px 13px; color:var(--text); background:var(--panel2); font-size:12px; }
-    .btn.primary { border-color:rgba(251,139,60,.45); background:var(--orange-dim); color:var(--text); }
-    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-    .card { border:1px solid var(--line); border-radius:10px; background:var(--panel); padding:14px; min-width:0; }
-    .card b { display:block; color:var(--blue); font-size:12px; margin-bottom:6px; }
-    .card p { margin:0; color:var(--soft); font-size:13px; line-height:1.65; }
-    .list { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel); }
-    .row { display:grid; grid-template-columns:92px 1fr 90px; gap:12px; padding:13px 14px; border-bottom:1px solid var(--line); align-items:center; }
-    .row:last-child { border-bottom:0; }
-    .row .type { color:var(--orange); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
-    .row .title { color:var(--text); font-size:14px; }
-    .row .meta { color:var(--muted); font-size:11px; text-align:right; }
-    blockquote { margin:28px 0 0 66px; padding:16px 20px; border:1px solid var(--line); border-left:3px solid var(--orange); border-radius:0 12px 12px 0; background:linear-gradient(100deg,var(--orange-dim),transparent 70%); font-size:18px; line-height:1.58; }
-    @media (max-width:680px) {
-      .wrap { padding:32px 16px 70px; }
-      .toprow { align-items:flex-start; flex-direction:column; }
-      .nav { justify-content:flex-start; }
-      .stats,.grid { grid-template-columns:1fr; }
-      .section { padding-left:50px; }
-      .section::before { width:38px; height:38px; }
-      .timeline::before { left:18px; }
-      .row { grid-template-columns:1fr; gap:3px; }
-      .row .meta { text-align:left; }
-      blockquote { margin-left:50px; font-size:16px; }
-    }
+    :root { color-scheme: dark; --bg:#05070a; --panel:rgba(255,250,241,.032); --panel2:rgba(255,250,241,.055); --line:rgba(255,250,241,.085); --line2:rgba(255,250,241,.16); --text:#fffaf1; --muted:rgba(255,250,241,.58); --soft:rgba(255,250,241,.74); --blue:#7d96ff; --blue-dim:rgba(125,150,255,.16); --orange:#fb8b3c; --orange-dim:rgba(251,139,60,.14); --rail:rgba(125,150,255,.28); --grid:rgba(91,124,255,.045); }
+    * { box-sizing:border-box; } html { color-scheme:dark; } body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",ui-sans-serif,system-ui,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.72; background-image:radial-gradient(circle at 50% -12%, rgba(91,124,255,.10), transparent 58%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size:auto,72px 72px,72px 72px; background-attachment:fixed; }
+    a { color:inherit; text-decoration:none; } a:hover { color:var(--blue); } .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; } .wrap { max-width:860px; margin:0 auto; padding:46px 24px 92px; } .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); padding-bottom:20px; } .brand { display:flex; align-items:center; gap:11px; color:var(--muted); font-size:13px; letter-spacing:.06em; text-transform:uppercase; } .dot { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 16px var(--orange); } .nav { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; } .nav a { padding:5px 11px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; background:var(--panel); } .nav a.active, .nav a:hover { color:var(--text); border-color:var(--blue); background:var(--blue-dim); } h1 { margin:28px 0 8px; font-size:clamp(38px,7vw,64px); line-height:1.04; letter-spacing:-.01em; font-weight:790; } h1 .ac { color:var(--orange); } .lead { max-width:680px; margin:0; color:var(--soft); font-size:16px; line-height:1.8; } .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; } .chip { border:1px solid var(--line2); border-radius:999px; padding:4px 12px; color:var(--text); font-size:11.5px; letter-spacing:.03em; background:var(--panel); } .chip b { color:var(--orange); } .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:24px; } .stat { border:1px solid var(--line); border-radius:8px; background:linear-gradient(160deg,var(--panel2),var(--panel)); padding:12px 14px; } .stat b { display:block; color:var(--orange); font-size:24px; line-height:1.1; } .stat span { color:var(--muted); font-size:12px; } .timeline { position:relative; margin-top:30px; } .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:22px; width:1px; background:linear-gradient(180deg,var(--rail),transparent); } .section { position:relative; padding-left:66px; margin-top:24px; } .section::before { content:attr(data-n); position:absolute; left:0; top:2px; width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); background:#070a0f; border:1px solid var(--line2); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; } h2 { margin:0 0 6px; font-size:18px; line-height:1.35; } .section > p { margin:0 0 12px; color:var(--muted); font-size:13px; } .hero-report { border:1px solid var(--line2); border-radius:12px; background:linear-gradient(120deg,var(--orange-dim),var(--panel) 48%,transparent); padding:18px; } .hero-report h3 { margin:0; font-size:24px; line-height:1.25; } .hero-report p { margin:9px 0 0; color:var(--soft); font-size:14px; } .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; } .btn { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line2); border-radius:999px; padding:7px 13px; color:var(--text); background:var(--panel2); font-size:12px; } .btn.primary { border-color:rgba(251,139,60,.45); background:var(--orange-dim); color:var(--text); } .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; } .card { border:1px solid var(--line); border-radius:10px; background:var(--panel); padding:14px; min-width:0; } .card b { display:block; color:var(--blue); font-size:12px; margin-bottom:6px; } .card p { margin:0; color:var(--soft); font-size:13px; line-height:1.65; } .list { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel); } .row { display:grid; grid-template-columns:92px 1fr 90px; gap:12px; padding:13px 14px; border-bottom:1px solid var(--line); align-items:center; } .row:last-child { border-bottom:0; } .row .type { color:var(--orange); font-size:11px; letter-spacing:.06em; text-transform:uppercase; } .row .title { color:var(--text); font-size:14px; } .row .meta { color:var(--muted); font-size:11px; text-align:right; } blockquote { margin:28px 0 0 66px; padding:16px 20px; border:1px solid var(--line); border-left:3px solid var(--orange); border-radius:0 12px 12px 0; background:linear-gradient(100deg,var(--orange-dim),transparent 70%); font-size:18px; line-height:1.58; }
+    @media (max-width:680px) { .wrap { padding:32px 16px 70px; } .toprow { align-items:flex-start; flex-direction:column; } .nav { justify-content:flex-start; } .stats,.grid { grid-template-columns:1fr; } .section { padding-left:50px; } .section::before { width:38px; height:38px; } .timeline::before { left:18px; } .row { grid-template-columns:1fr; gap:3px; } .row .meta { text-align:left; } blockquote { margin-left:50px; font-size:16px; } }
   </style>
 </head>
 <body>
@@ -97,7 +29,7 @@
       <p class="lead">把 GitHub Trending 从热度列表加工成可决策的 AI Builder / Investor / Product / Architecture 情报系统；当前首页突出最新日报，周报仍保留为更适合长期判断的主策略资产。</p>
       <div class="chips">
         <span class="chip">LATEST / <b>DAILY</b></span>
-        <span class="chip">DATE / <b>2026-06-27</b></span>
+        <span class="chip">DATE / <b>2026-06-28</b></span>
         <span class="chip">DOMAIN / <b>AI-NATIVE</b></span>
         <span class="chip">STATUS / <b>LIVE</b></span>
       </div>
@@ -114,12 +46,12 @@
         <h2>最新日报</h2>
         <p>日报负责捕捉当天爆发项目与早信号，优先回答“今天值得先看什么”。</p>
         <div class="hero-report">
-          <h3><a href="/daily/2026-06-27/">GitHub 热榜情报日报 · 2026-06-27</a></h3>
-          <p>本期 Top signal：calesthio/OpenMontage。今天的信号集中在 AI 视频工作流、memory infra、网页 agent、workspace CLI 与高密度开发者工具链。</p>
+          <h3><a href="/daily/2026-06-28/">GitHub 热榜情报日报 · 2026-06-28</a></h3>
+          <p>本期 Top signal：topoteretes/cognee。今天的信号集中在 memory infra、agent 记忆层、知识图谱、开源 CLI 与高密度开发者工具链。</p>
           <div class="actions">
-            <a class="btn primary" href="/daily/2026-06-27/">打开日报</a>
-            <a class="btn" href="/top10-2026-06-27.json">Top10 JSON</a>
-            <a class="btn" href="/trending-data-2026-06-27.json">Raw Data</a>
+            <a class="btn primary" href="/daily/2026-06-28/">打开日报</a>
+            <a class="btn" href="/top10-2026-06-28.json">Top10 JSON</a>
+            <a class="btn" href="/trending-data-2026-06-28.json">Raw Data</a>
           </div>
         </div>
       </section>
@@ -138,6 +70,11 @@
         <h2>最近报告</h2>
         <p>往期沉淀为可检索资产，而不是被最新单篇覆盖。</p>
         <div class="list">
+          <a class="row" href="/daily/2026-06-28/">
+            <span class="type mono">Daily</span>
+            <span class="title">GitHub 热榜情报日报 · 2026-06-28</span>
+            <span class="meta mono">Top 10</span>
+          </a>
           <a class="row" href="/daily/2026-06-27/">
             <span class="type mono">Daily</span>
             <span class="title">GitHub 热榜情报日报 · 2026-06-27</span>
@@ -161,12 +98,12 @@
         <p>A 类立即深挖，B 类观察 7-14 天，C 类仅保留基础记录。</p>
         <div class="grid">
           <div class="card"><b>A 类</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
-          <div class="card"><b>新增日报 Top</b><p>calesthio/OpenMontage, topoteretes/cognee, alibaba/page-agent, googleworkspace/cli, warpdotdev/warp</p></div>
+          <div class="card"><b>新增日报 Top</b><p>topoteretes/cognee, colbymchenry/codegraph, thedotmack/claude-mem, ogulcancelik/herdr, opendatalab/MinerU</p></div>
           <div class="card"><b>跟踪重点</b><p>优先看跨切片重复出现、README 完整且关系标签落在 Skill / Memory / Runtime / Workspace 的项目。</p></div>
         </div>
       </section>
 
-      <blockquote>日报抓早信号，周报做战略判断，月报看品类迁移；今天这版内容已经切换到 2026-06-27 的新日报。</blockquote>
+      <blockquote>日报抓早信号，周报做战略判断，月报看品类迁移；今天这版内容已经切换到 2026-06-28 的新日报。</blockquote>
     </main>
   </div>
 </body>
