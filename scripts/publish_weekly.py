@@ -7,6 +7,8 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+from restyle_report_pages import restyle_report_html
+
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://gh.reelos.ai"
@@ -43,6 +45,7 @@ def copy_unique_assets(period: str) -> dict:
 
     html_dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(html_src, html_dst)
+    html_dst.write_text(restyle_report_html(html_dst.read_text(encoding="utf-8")), encoding="utf-8")
     shutil.copyfile(top_src, top_dst)
     shutil.copyfile(raw_src, raw_dst)
 

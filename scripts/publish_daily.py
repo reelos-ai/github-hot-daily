@@ -6,6 +6,8 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+from restyle_report_pages import restyle_report_html
+
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://gh.reelos.ai"
@@ -70,6 +72,7 @@ def sync_daily_report_dir(period: str) -> None:
     dst = ROOT / "daily" / period / "index.html"
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(src, dst)
+    dst.write_text(restyle_report_html(dst.read_text(encoding="utf-8")), encoding="utf-8")
 
 
 def latest_report(reports: list[dict], report_type: str) -> dict | None:
