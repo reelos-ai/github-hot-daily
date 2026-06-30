@@ -6,30 +6,30 @@
   <title>Monthly Trend Review · GitHub Signal · ReelOS</title>
   <style>
     :root{
-      color-scheme:dark;
-      --bg:#05070a;
-      --bg-2:#0a0f16;
-      --line:rgba(255,255,255,.1);
-      --line-strong:rgba(121,162,255,.34);
-      --text:#f5f7fb;
-      --muted:rgba(245,247,251,.62);
-      --soft:rgba(245,247,251,.78);
-      --blue:#79a2ff;
-      --cyan:#69e6ff;
-      --amber:#ff8a3d;
-      --shadow:0 24px 80px rgba(0,0,0,.32);
+      color-scheme:light;
+      --bg:#fcfaf6;
+      --bg-2:#fffdf8;
+      --line:rgba(228,228,225,.92);
+      --line-strong:rgba(182,193,235,.9);
+      --text:#111111;
+      --muted:rgba(48,45,40,.68);
+      --soft:rgba(48,45,40,.82);
+      --blue:#5b7cff;
+      --cyan:#8fa7ff;
+      --amber:#f97316;
+      --shadow:0 20px 70px rgba(17,17,17,.07);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       color:var(--text);
-      font-family:Inter,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
       line-height:1.7;
       background:
-        radial-gradient(circle at 18% 0%, rgba(121,162,255,.18), transparent 28%),
-        radial-gradient(circle at 84% 14%, rgba(255,138,61,.14), transparent 24%),
-        linear-gradient(rgba(121,162,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(121,162,255,.05) 1px, transparent 1px),
+        radial-gradient(circle at 18% 0%, rgba(176,192,255,.18), transparent 30%),
+        radial-gradient(circle at 84% 16%, rgba(249,115,22,.12), transparent 22%),
+        linear-gradient(rgba(196,203,230,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,203,230,.18) 1px, transparent 1px),
         linear-gradient(180deg, var(--bg), var(--bg-2));
       background-size:auto,auto,72px 72px,72px 72px,auto;
       background-attachment:fixed;
@@ -40,7 +40,7 @@
     a:hover{color:var(--blue)}
     .mono{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-      letter-spacing:.04em;
+      letter-spacing:.08em;
     }
     .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 96px}
     .topbar{
@@ -49,17 +49,18 @@
     }
     .brand{display:flex;align-items:center;gap:12px}
     .brand-mark{
-      width:10px;height:10px;border-radius:2px;background:linear-gradient(180deg,var(--cyan),var(--blue));
-      box-shadow:0 0 18px rgba(105,230,255,.55);
+      width:10px;height:10px;border-radius:999px;background:linear-gradient(180deg,#89b1ff,#bfd0ff);
+      box-shadow:0 0 14px rgba(143,167,255,.45);
     }
     .brand-kicker{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
     .brand-title{font-size:14px;color:var(--text)}
     .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
     .nav a{
-      padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02);
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.6);
       color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;
+      backdrop-filter:blur(12px);
     }
-    .nav a.active,.nav a:hover{color:var(--text);border-color:var(--line-strong);background:rgba(121,162,255,.12)}
+    .nav a.active,.nav a:hover{color:var(--text);border-color:var(--line-strong);background:rgba(190,203,255,.38)}
     .hero{
       display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
       gap:18px;margin-top:22px;
@@ -67,19 +68,19 @@
     .hero-main,.hero-side,.panel,.empty{
       border:1px solid var(--line);
       border-radius:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,253,248,.72));
       box-shadow:var(--shadow);
       backdrop-filter:blur(16px);
     }
     .hero-main,.hero-side,.panel,.empty{padding:22px}
     .eyebrow{
       display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);
-      border-radius:999px;color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.03);
+      border-radius:999px;color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.46);
     }
     .eyebrow::before{
-      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);box-shadow:0 0 12px rgba(255,138,61,.45);
+      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);box-shadow:0 0 10px rgba(249,115,22,.3);
     }
-    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.98;letter-spacing:-.045em;font-weight:650}
+    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.98;letter-spacing:-.045em;font-weight:650;font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
     h1 .accent{color:var(--amber)}
     .lead,.hero-side p,.panel p,.empty p{margin:0;color:var(--soft);font-size:15px}
     .mini-list{display:grid;gap:10px;margin-top:12px}
