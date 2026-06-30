@@ -5,25 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weekly Intelligence · GitHub Signal · ReelOS</title>
   <style>
-    body{margin:0;background:#05070a;color:#fffaf1;font-family:Inter,"PingFang SC",ui-sans-serif,system-ui,sans-serif;line-height:1.72}
-    a{color:inherit;text-decoration:none}a:hover{color:#7d96ff}.wrap{max-width:820px;margin:0 auto;padding:44px 22px 80px}
-    .top{display:flex;justify-content:space-between;gap:16px;align-items:center;border-bottom:1px solid rgba(255,250,241,.085);padding-bottom:18px}
-    .brand{color:rgba(255,250,241,.58);font-size:13px;letter-spacing:.06em;text-transform:uppercase}.nav{display:flex;gap:8px;flex-wrap:wrap}
-    .nav a{border:1px solid rgba(255,250,241,.12);border-radius:999px;padding:5px 11px;color:rgba(255,250,241,.7);font-size:12px}.nav a.active{background:rgba(125,150,255,.16);color:#fffaf1}
-    h1{font-size:clamp(36px,6vw,58px);line-height:1.06;margin:28px 0 10px}.ac{color:#fb8b3c}p{color:rgba(255,250,241,.68)}
-    .list{border:1px solid rgba(255,250,241,.085);border-radius:10px;overflow:hidden;background:rgba(255,250,241,.032);margin-top:22px}.row{display:grid;grid-template-columns:96px 1fr 90px;gap:12px;padding:14px;border-bottom:1px solid rgba(255,250,241,.085);align-items:center}.row:last-child{border-bottom:0}.type{color:#fb8b3c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-transform:uppercase}.meta{color:rgba(255,250,241,.55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;text-align:right}
-    @media(max-width:620px){.top{align-items:flex-start;flex-direction:column}.row{grid-template-columns:1fr}.meta{text-align:left}}
-  </style>
+    :root{
+      color-scheme:dark;
+      --bg:#05070a;
+      --bg-2:#0a0f16;
+      --surface:rgba(11,15,22,.72);
+      --surface-2:rgba(255,255,255,.035);
+      --surface-3:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.1);
+      --line-strong:rgba(121,162,255,.34);
+      --text:#f5f7fb;
+      --muted:rgba(245,247,251,.62);
+      --soft:rgba(245,247,251,.78);
+      --blue:#79a2ff;
+      --cyan:#69e6ff;
+      --amber:#ff8a3d;
+      --rail:rgba(105,230,255,.22);
+      --shadow:0 24px 80px rgba(0,0,0,.32);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html{color-scheme:dark}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Inter,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(121,162,255,.18), transparent 28%),
+        radial-gradient(circle at 84% 14%, rgba(255,138,61,.14), transparent 24%),
+        linear-gradient(rgba(121,162,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(121,162,255,.05) 1px, transparent 1px),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      background-size:auto,auto,72px 72px,72px 72px,auto;
+      background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--blue)}
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      letter-spacing:.04em;
+    }
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 96px}
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{
+      width:10px;height:10px;border-radius:2px;
+      background:linear-gradient(180deg,var(--cyan),var(--blue));
+      box-shadow:0 0 18px rgba(105,230,255,.55);
+    }
+    .brand-kicker{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
+    .brand-title{font-size:14px;color:var(--text);white-space:nowrap}
+    .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+    .nav a{
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.02);color:var(--muted);font-size:12px;
+      text-transform:uppercase;letter-spacing:.12em;
+    }
+    .nav a.active,.nav a:hover{
+      color:var(--text);border-color:var(--line-strong);background:rgba(121,162,255,.12);
+    }
+    .hero{
+      display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
+      gap:18px;margin-top:22px;align-items:stretch;
+    }
+    .hero-main,.hero-side,.panel,.list,.quote{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+    }
+    .hero-main{border-radius:22px;padding:24px;position:relative;overflow:hidden}
+    .hero-main::before{
+      content:"";position:absolute;inset:auto -10% -35% 30%;height:260px;
+      background:radial-gradient(circle, rgba(255,138,61,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;
+      border:1px solid var(--line);border-radius:999px;color:var(--soft);
+      font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.03);
+    }
+    .eyebrow::before{
+      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);
+      box-shadow:0 0 12px rgba(255,138,61,.45);
+    }
+    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.98;letter-spacing:-.045em;font-weight:650}
+    h1 .accent{color:var(--amber)}
+    .lead{max-width:62ch;margin:0;color:var(--soft);font-size:16px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .btn{
+      display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);
+      font-size:12px;text-transform:uppercase;letter-spacing:.14em;
+    }
+    .btn.primary{border-color:rgba(255,138,61,.35);background:linear-gradient(180deg, rgba(255,138,61,.22), rgba(255,138,61,.1))}
+    .hero-side{border-radius:22px;padding:18px;display:grid;gap:12px;align-content:start}
+    .side-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.16em}
+    .signal-title{font-size:24px;line-height:1.15;margin:0}
+    .signal-copy{margin:0;color:var(--soft);font-size:14px}
+    .stat-grid,.card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+    .card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .metric,.card{border:1px solid var(--line);border-radius:14px;background:var(--surface-2);padding:14px;min-width:0}
+    .metric b{display:block;font-size:28px;line-height:1;color:var(--text);margin-bottom:6px}
+    .metric span,.card p{color:var(--muted);font-size:13px}
+    .card b{display:block;margin-bottom:8px;color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.14em}
+    .section{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;margin-top:18px;align-items:start}
+    .section-rail{
+      padding-top:8px;color:var(--blue);font-size:12px;text-transform:uppercase;letter-spacing:.18em;position:relative;
+    }
+    .section-rail::after{
+      content:"";position:absolute;left:8px;top:34px;bottom:-24px;width:1px;background:linear-gradient(180deg,var(--rail),transparent);
+    }
+    .panel{border-radius:20px;padding:18px}
+    .panel h2{margin:0;font-size:26px;line-height:1.15;letter-spacing:-.03em}
+    .panel > p{margin:8px 0 0;color:var(--muted);font-size:14px;max-width:68ch}
+    .list{border-radius:20px;margin-top:14px;overflow:hidden}
+    .row{
+      display:grid;grid-template-columns:90px minmax(0,1fr) 104px;gap:12px;align-items:center;
+      padding:15px 18px;border-bottom:1px solid var(--line);transition:background .2s ease, transform .2s ease, border-color .2s ease;
+    }
+    .row:last-child{border-bottom:0}
+    .row:hover{background:rgba(121,162,255,.08);transform:translateX(2px);border-color:rgba(121,162,255,.2)}
+    .row .type{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.16em}
+    .row .title{font-size:15px;color:var(--text)}
+    .row .meta{text-align:right;color:var(--muted);font-size:11px}
+    .quote{border-radius:20px;margin-top:22px;padding:18px 20px}
+    .quote::before{content:"Conclusion";display:block;margin-bottom:8px;color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
+    .quote p{margin:0;color:var(--text);font-size:18px;line-height:1.6}
+    .mini-list{display:grid;gap:10px}
+    .mini-item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+    .mini-item:first-child{border-top:0;padding-top:0}
+    .mini-item b{display:block;margin-bottom:4px;font-size:13px}
+    .mini-item span{color:var(--muted);font-size:12px}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:680px){
+      .wrap{padding:22px 14px 72px}
+      .topbar{align-items:flex-start;flex-direction:column}
+      .nav{justify-content:flex-start}
+      .section{grid-template-columns:1fr}
+      .section-rail{padding-top:0}
+      .section-rail::after{display:none}
+      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr;gap:6px}
+      .row .meta{text-align:left}
+      h1{font-size:clamp(38px,15vw,66px)}
+    }
+    </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="top">
-      <div class="brand">ReelOS · GitHub Signal</div>
-      <nav class="nav"><a href="/">Overview</a><a href="/daily/">Daily</a><a class="active" href="/weekly/">Weekly</a><a href="/monthly/">Monthly</a><a href="/archive/">Archive</a></nav>
-    </div>
-    <h1>Weekly <span class="ac">Intelligence</span></h1>
-    <p>周报是主力战略产物：完整 6 段结构，覆盖 Top10、深度分析、趋势、六视角、跟进建议和结论。</p>
-    <div class="list"><a class="row" href="/weekly/2026-06-29/"><span class="type">Weekly</span><span>GitHub 热榜情报周报 · 2026-06-29</span><span class="meta">Top 10</span></a><a class="row" href="/weekly/2026-06-25/"><span class="type">Weekly</span><span>GitHub 热榜情报周报 · 2026-06-25</span><span class="meta">Top 10</span></a></div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <div class="brand-copy">
+          <div class="brand-kicker mono">ReelOS Strategy Layer</div>
+          <div class="brand-title">GitHub Signal / Weekly Intelligence</div>
+        </div>
+      </div>
+      <nav class="nav"><a class="" href="/">Overview</a><a class="" href="/daily/">Daily</a><a class="active" href="/weekly/">Weekly</a><a class="" href="/monthly/">Monthly</a><a class="" href="/archive/">Archive</a></nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow mono">Strategic Report Layer</div>
+        <h1>Weekly <span class="accent">Intelligence</span></h1>
+        <p class="lead">周报是整站的主判断层。它不只说“什么火了”，而是把一周内累积的 README、metadata、连续上榜和生态关系整理成能指导决策的判断。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/weekly/2026-06-29/">打开最新周报</a>
+          <a class="btn" href="/weekly-top10-2026-06-29.json">Top10 JSON</a>
+          <a class="btn" href="/weekly-trending-data-2026-06-29.json">Raw Data</a>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="side-label mono">Current Weekly</div>
+        <h2 class="signal-title"><a href="/weekly/2026-06-29/">GitHub 热榜情报周报 · 2026-06-29</a></h2>
+        <p class="signal-copy">周报负责筛出真正值得深挖的开源项目、趋势与赛道信号，把日报的高频波动转成更稳的结论。</p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-rail mono">01 / Index</div>
+      <div>
+        <div class="panel">
+          <h2>周报目录</h2>
+          <p>每期周报保持完整 6 段结构，便于从 Top10 直接跳到深度分析、趋势和 A/B/C 跟进建议。</p>
+        </div>
+        <div class="list"><a class="row" href="/weekly/2026-06-29/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-06-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/weekly/2026-06-25/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-06-25</span><span class="meta mono">Top 10</span></a></div>
+      </div>
+    </section>
   </div>
 </body>
 </html>
