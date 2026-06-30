@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub 热榜情报日报 - 2026-07-01</title>
+  <style>
+    :root {
+      color-scheme:dark;
+      --bg:#05070a; --panel:rgba(255,250,241,0.026); --panel2:rgba(255,250,241,0.050); --line:rgba(255,250,241,0.075); --line2:rgba(255,250,241,0.14);
+      --text:#fffaf1; --muted:rgba(255,250,241,0.50); --soft:rgba(255,250,241,0.46);
+      --blue:#6f8aff; --orange:#f97316; --rail:rgba(111,138,255,0.24);
+      --grid:rgba(91,124,255,0.04); --node:#05070a; --glow:rgba(91,124,255,0.08);
+      --font-cn:"Noto Sans SC","Source Han Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      --font-body:Manrope,Inter,"HarmonyOS Sans SC","MiSans",var(--font-cn),ui-sans-serif,system-ui,sans-serif;
+      --font-display:"Space Grotesk",Manrope,Inter,var(--font-cn),ui-sans-serif,system-ui,sans-serif;
+      --font-mono:"Space Mono","JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      --font-pixel:"DotGothic16","Silkscreen","Courier New",var(--font-mono);
+    }
+    * { box-sizing:border-box; }
+    html { color-scheme:dark; }
+    body {
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--font-body);
+      font-weight:400; letter-spacing:0; font-synthesis-weight:none;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.78;
+      background-image:radial-gradient(circle at 50% -10%, var(--glow), transparent 55%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size:auto,64px 64px,64px 64px;
+    }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:var(--blue); }
+    .mono { font-family:var(--font-mono); }
+    .pixel-word { display:inline-block; font-family:var(--font-pixel); font-weight:400; letter-spacing:.055em; text-transform:uppercase; line-height:.96; color:#f7fbff; text-shadow:1px 0 0 rgba(111,138,255,.42),0 1px 0 rgba(249,115,22,.28),0 0 18px rgba(111,138,255,.18); transform:translateY(-.02em); }
+    .wrap { max-width:940px; margin:0 auto; padding:52px 24px 96px; }
+    header { position:relative; border-bottom:1px solid var(--line); padding:0 0 26px; margin-bottom:8px; }
+    header::before { content:""; position:absolute; inset:-18px -22px auto -22px; height:220px; pointer-events:none; background:radial-gradient(circle at 18% 18%,rgba(249,115,22,.12),transparent 32%),radial-gradient(circle at 72% 12%,rgba(111,138,255,.12),transparent 36%); opacity:.9; }
+    header > * { position:relative; }
+    .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:12px; color:var(--muted); font-family:var(--font-mono); font-size:13px; text-transform:uppercase; }
+    .dot { width:8px; height:8px; background:var(--orange); box-shadow:0 0 16px var(--orange); }
+    h1 { font-family:var(--font-display); font-size:clamp(35px,6vw,56px); font-weight:560; letter-spacing:0; line-height:1.08; margin:18px 0 6px; }
+    h1 .pixel-word { margin-right:.04em; }
+    h1 .ac { color:var(--orange); font-family:var(--font-cn); font-weight:620; }
+    h2 { margin:0; color:var(--text); font-size:15px; line-height:1.34; font-weight:590; letter-spacing:0; }
+    h3 { margin:0 0 6px; color:var(--text); font-size:21px; font-weight:560; line-height:1.52; letter-spacing:0; }
+    h4 { margin:20px 0 8px; color:var(--blue); font-size:12px; font-family:var(--font-mono); font-weight:560; letter-spacing:.06em; }
+    .sub { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:14px; color:var(--muted); font-size:14px; }
+    .chip { border:1px solid var(--line); padding:4px 10px; color:var(--text); font-size:11.5px; letter-spacing:0; }
+    .chip b { color:var(--orange); }
+    .hero-lede { max-width:680px; margin:14px 0 0; color:rgba(255,250,241,.74); font-size:15px; line-height:1.86; }
+    .briefing-strip { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:10px; margin-top:18px; }
+    .briefing-item { border:1px solid var(--line); background:linear-gradient(155deg,var(--panel2),rgba(255,250,241,.018)); border-radius:12px; padding:12px 13px; min-width:0; }
+    .briefing-item b { display:block; color:var(--blue); font-family:var(--font-mono); font-size:10.5px; font-weight:560; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; }
+    .briefing-item span { display:block; color:rgba(255,250,241,.82); font-size:13px; line-height:1.62; text-wrap:pretty; }
+    .section-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .section-link { display:flex; align-items:center; gap:8px; padding:5px 9px; border:1px solid var(--line); background:var(--panel); color:var(--muted); font-size:11.5px; transition:border-color .2s,color .2s,background .2s; }
+    .section-link:hover { border-color:var(--blue); color:var(--text); background:transparent; }
+    .section-link .nr { color:var(--blue); }
+    .timeline { position:relative; margin-top:18px; }
+    .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:26px; width:1px; background:linear-gradient(180deg,var(--rail),transparent); }
+    .signal-section { position:relative; }
+    .signal-section + .signal-section { margin-top:10px; }
+    .section-head { display:flex; gap:18px; align-items:flex-start; padding:17px 0 8px 66px; color:var(--muted); }
+    .section-head .range { min-width:48px; color:var(--blue); font-size:12px; padding-top:13px; }
+    .section-head > div { display:inline-block; max-width:560px; padding:9px 12px 8px; border:1px solid var(--line); background:linear-gradient(90deg,var(--panel),transparent); border-radius:2px; }
+    .section-head p { margin:4px 0 0; font-size:12.5px; line-height:1.5; }
+    .section-tools { margin:2px 0 10px 66px; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+    .tool-btn { appearance:none; border:1px solid var(--line2); border-radius:999px; background:var(--panel); color:var(--muted); font-family:var(--font-mono); font-size:11px; padding:6px 10px; cursor:pointer; transition:background .18s,border-color .18s,color .18s; }
+    .tool-btn:hover { color:var(--text); border-color:var(--blue); background:rgba(111,138,255,.16); }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-top:16px; }
+    .stat { border:1px solid var(--line); background:var(--panel); padding:8px 10px; }
+    .stat b { display:block; color:var(--orange); font-family:var(--font-mono); font-size:18px; font-weight:620; }
+    .stat span,.meta { color:var(--muted); font-family:var(--font-mono); font-size:12px; }
+    .table-wrap { margin-left:66px; overflow-x:auto; border:1px solid var(--line); background:var(--panel); border-radius:2px; }
+    table { width:100%; border-collapse:collapse; min-width:1060px; }
+    th,td { padding:10px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:12.5px; line-height:1.55; }
+    th { color:var(--blue); font-family:var(--font-mono); font-size:11px; font-weight:560; text-transform:uppercase; }
+    td { color:rgba(255,250,241,.78); }
+    td:first-child,td:nth-child(4),td:nth-child(5),td:nth-child(8) { color:var(--orange); font-family:var(--font-mono); }
+    .cards { display:grid; grid-template-columns:1fr; }
+    .card { display:block; position:relative; margin-left:66px; padding:16px 0 19px; border-bottom:1px solid var(--line); background:transparent; }
+    .card[data-rank]::before { content:attr(data-rank); position:absolute; left:-66px; top:18px; width:41px; height:41px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); font-family:var(--font-mono); font-size:14px; background:var(--node); border:1px solid var(--line); box-shadow:0 0 0 0 var(--glow); }
+    .card[data-rank]:hover::before { border-color:var(--blue); box-shadow:0 0 0 4px var(--glow); }
+    .card h3 a { color:var(--text); }
+    .card h3 a:hover { color:var(--blue); }
+    .card > p { margin:9px 0 0; color:rgba(255,250,241,.82); font-size:15.8px; line-height:1.92; }
+    .tag { display:inline-block; margin:2px 5px 2px 0; padding:1px 6px; border:1px solid var(--line); border-radius:2px; color:var(--muted); font-family:var(--font-mono); font-size:11px; white-space:nowrap; }
+    .tag:nth-child(1), .tag.primary { border-color:var(--rail); color:var(--blue); }
+    .tag:nth-child(2), .tag.value { border-color:rgba(249,115,22,0.24); color:rgba(249,115,22,0.86); }
+    .read-first { margin:14px 0 0; padding:12px 14px; border:1px solid var(--line); border-left:2px solid var(--orange); border-radius:0 8px 8px 0; background:linear-gradient(100deg,rgba(249,115,22,.10),transparent 70%); }
+    .read-label { color:var(--orange); font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; }
+    .read-first ol { margin-top:8px; }
+    .detail-stack { display:grid; gap:8px; margin:12px 0 0; }
+    .detail-fold { border:1px solid var(--line); border-radius:4px; background:var(--panel); overflow:hidden; transition:border-color .18s,background .18s; }
+    .detail-fold:hover { border-color:var(--line2); background:var(--panel2); }
+    .detail-fold summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 10px; color:var(--blue); font-family:var(--font-mono); font-size:11px; user-select:none; }
+    .detail-fold summary::-webkit-details-marker { display:none; }
+    .detail-fold summary::after { content:"展开"; color:var(--muted); font-size:10px; }
+    .detail-fold[open] summary { border-bottom:1px solid var(--line); }
+    .detail-fold[open] summary::after { content:"收起"; color:var(--orange); }
+    .detail-fold > ol,.detail-fold > .lenses { margin:8px 10px 10px; }
+    .detail-fold.risk-fold summary { color:var(--red); }
+    .mini-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; padding:9px; }
+    .mini-grid div { border:1px solid var(--line); background:rgba(255,250,241,0.018); border-radius:2px; padding:6px 8px; min-width:0; }
+    .mini-grid b { display:block; color:var(--blue); font-family:var(--font-mono); font-size:10px; }
+    .mini-grid span { color:var(--text); font-size:12.5px; overflow-wrap:anywhere; }
+    ol { margin:7px 0 0; padding-left:21px; }
+    li { margin:6px 0; color:rgba(255,250,241,.78); font-size:14.5px; line-height:1.86; }
+    li b { color:var(--text); font-weight:560; }
+    .lenses { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+    .lens { border:1px solid var(--line); background:var(--panel); border-radius:2px; padding:10px 11px; }
+    .lens b { color:var(--blue); font-family:var(--font-mono); font-size:12px; font-weight:560; }
+    .lens p { margin:4px 0 0; color:var(--soft); font-size:13px; line-height:1.72; }
+    .trend-cards { margin:14px 0 0 66px; display:grid; grid-template-columns:1fr; gap:10px; }
+    .trend-card { border:1px solid var(--line); border-left:2px solid var(--rail); border-radius:0 10px 10px 0; background:linear-gradient(100deg,var(--panel2),transparent 80%); padding:16px 18px; }
+    .trend-card h3 { margin:0 0 8px; font-size:17px; line-height:1.45; }
+    .trend-card p { margin:0; color:rgba(255,250,241,.78); font-size:14.7px; line-height:1.86; }
+    .trend-evidence { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 0; }
+    .trend-evidence span { border:1px solid var(--rail); background:rgba(91,124,255,0.08); color:var(--blue); border-radius:999px; padding:2px 8px; font-family:var(--font-mono); font-size:10.5px; }
+    .trend-action { margin-top:10px; color:var(--orange); font-size:13px; line-height:1.65; }
+    blockquote { margin:22px 0 0 66px; padding:4px 0 4px 18px; border:0; border-left:3px solid rgba(249,115,22,.32); color:var(--text); font-size:20px; font-weight:460; line-height:1.72; background:transparent; }
+    blockquote::before { content:""; display:block; width:3px; height:1.3em; margin-left:-21px; margin-bottom:-1.3em; border-radius:999px; background:var(--orange); }
+    .caveat { margin:12px 0 0; color:var(--muted); font-size:12px; }
+    @media (max-width:620px) {
+      .wrap { padding:30px 16px 60px; }
+      h1 { font-size:35px; }
+      .hero-lede { font-size:14px; line-height:1.78; }
+      .briefing-strip { grid-template-columns:1fr; gap:8px; }
+      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .timeline::before { left:18px; }
+      .section-head { padding-left:52px; gap:10px; }
+      .section-head .range { min-width:42px; }
+      .table-wrap,.card,.trend-cards,blockquote,.section-tools { margin-left:52px; }
+      .table-wrap { overflow:visible; border:0; background:transparent; border-radius:0; }
+      table,thead,tbody,tr,td { display:block; width:100%; min-width:0; }
+      table { min-width:0; }
+      thead { display:none; }
+      tbody { display:grid; gap:10px; }
+      tbody tr { border:1px solid var(--line); border-radius:12px; background:linear-gradient(155deg,var(--panel2),var(--panel)); padding:10px 11px; }
+      td { border:0; display:grid; grid-template-columns:86px minmax(0,1fr); gap:8px; align-items:start; padding:4px 0; font-size:12.5px; }
+      td::before { color:var(--muted); font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
+      td:nth-child(1)::before { content:"Rank"; }
+      td:nth-child(2)::before { content:"Repo"; }
+      td:nth-child(3)::before { content:"Lang"; }
+      td:nth-child(4)::before { content:"Period"; }
+      td:nth-child(5)::before { content:"Stars"; }
+      td:nth-child(6)::before { content:"Forks"; }
+      td:nth-child(7)::before { content:"Issues"; }
+      td:nth-child(8)::before { content:"Score"; }
+      td:nth-child(9)::before { content:"Confidence"; }
+      td:nth-child(10)::before { content:"Relation"; }
+      td:nth-child(11)::before { content:"Signals"; }
+      .card[data-rank]::before { left:-52px; width:38px; height:38px; }
+      .stats,.lenses,.mini-grid { grid-template-columns:1fr; }
+      .detail-fold summary { min-height:42px; }
+      .card > p { font-size:14.5px; line-height:1.86; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="toprow">
+      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div>
+      <div class="mono" style="color:var(--muted);font-size:12px;">collect · judge · build</div>
+    </div>
+    <h1><span class="pixel-word">GitHub</span> <span class="ac">热榜</span> 情报</h1>
+    <div class="sub">
+      <span class="mono">2026-07-01</span>
+      <span class="chip">MODE / <b>AI-NATIVE</b></span>
+      <span class="chip">PERIOD / <b>DAILY</b></span>
+      <span class="chip">TOP <b>10</b></span>
+    </div>
+    <p class="hero-lede">面向中文 AI builder / founder / investor 的开源信号读物：先看趋势和判断，再按需展开技术证据。</p>
+    <section class="briefing-strip" aria-label="本期阅读提示">
+      <div class="briefing-item"><b>Reading Order</b><span>先扫 Top10 与趋势卡片，再进入 Top 项目的“先读判断”。</span></div>
+      <div class="briefing-item"><b>Evidence</b><span>技术、数据、风险默认折叠，保留给需要核查的人。</span></div>
+      <div class="briefing-item"><b>Mobile</b><span>手机端 Top10 自动卡片化，减少横向拖拽。</span></div>
+    </section>
+    <nav class="section-nav" aria-label="报告分组导航">
+      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
+      <a class="section-link" href="#sec-deep"><span class="nr mono">02</span><span>深度分析</span></a>
+      <a class="section-link" href="#sec-trends"><span class="nr mono">03</span><span>趋势</span></a>
+      <a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>启示</span></a>
+      <a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>跟进</span></a>
+    </nav>
+    <section class="stats">
+      <div class="stat"><b>60</b><span>候选项目</span></div>
+      <div class="stat"><b>10</b><span>Top 项目</span></div>
+      <div class="stat"><b>60</b><span>README 覆盖</span></div>
+      <div class="stat"><b>0</b><span>API 失败</span></div>
+    </section>
+    <p class="caveat">抓取健康：all=19, python=14, typescript=18, javascript=13, go=20, rust=16。GitHub Trending 非官方 API，页面结构变化可能影响解析。</p>
+  </header>
+
+  <main class="timeline">
+  <section class="signal-section" id="sec-top10">
+    <div class="section-head"><span class="range mono">01</span><div><h2>Top 10 项目信号</h2><p>不是按 star 排序，而是数据、技术与战略相关度的加权判断。</p></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Repository</th><th>语言</th><th>周期 Stars</th><th>总 Stars</th><th>Forks</th><th>Issues</th><th>评分</th><th>置信度</th><th>关系标签</th><th>战略关键词</th></tr></thead>
+        <tbody><tr><td>1</td><td><a href='https://github.com/refactoringhq/tolaria'>refactoringhq/tolaria</a></td><td>TypeScript</td><td>471</td><td>17804</td><td>1216</td><td>72</td><td>97</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>mcp</span><span class='tag'>workspace</span></td></tr><tr><td>2</td><td><a href='https://github.com/diegosouzapw/OmniRoute'>diegosouzapw/OmniRoute</a></td><td>TypeScript</td><td>459</td><td>8419</td><td>1391</td><td>131</td><td>97</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>runtime</span><span class='tag'>llm</span></td></tr><tr><td>3</td><td><a href='https://github.com/usestrix/strix'>usestrix/strix</a></td><td>Python</td><td>395</td><td>28054</td><td>3119</td><td>114</td><td>97</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>llm</span><span class='tag'>automation</span></td></tr><tr><td>4</td><td><a href='https://github.com/HKUDS/Vibe-Trading'>HKUDS/Vibe-Trading</a></td><td>Python</td><td>719</td><td>15744</td><td>2730</td><td>35</td><td>95</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>mcp</span><span class='tag'>runtime</span><span class='tag'>llm</span></td></tr><tr><td>5</td><td><a href='https://github.com/logto-io/logto'>logto-io/logto</a></td><td>TypeScript</td><td>614</td><td>13016</td><td>889</td><td>170</td><td>95</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>rag</span><span class='tag'>protocol</span></td></tr><tr><td>6</td><td><a href='https://github.com/facebook/astryx'>facebook/astryx</a></td><td>TypeScript</td><td>399</td><td>1712</td><td>94</td><td>132</td><td>94</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>rag</span></td></tr><tr><td>7</td><td><a href='https://github.com/browser-use/video-use'>browser-use/video-use</a></td><td>Python</td><td>722</td><td>12530</td><td>1601</td><td>48</td><td>92</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>skill</span><span class='tag'>llm</span></td></tr><tr><td>8</td><td><a href='https://github.com/CoreBunch/Instatic'>CoreBunch/Instatic</a></td><td>TypeScript</td><td>351</td><td>1477</td><td>137</td><td>24</td><td>92</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>rag</span><span class='tag'>runtime</span></td></tr><tr><td>9</td><td><a href='https://github.com/D4Vinci/Scrapling'>D4Vinci/Scrapling</a></td><td>Python</td><td>312</td><td>67390</td><td>6653</td><td>8</td><td>92</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>mcp</span><span class='tag'>skill</span><span class='tag'>workflow</span><span class='tag'>automation</span></td></tr><tr><td>10</td><td><a href='https://github.com/Robbyant/lingbot-map'>Robbyant/lingbot-map</a></td><td>Python</td><td>210</td><td>8834</td><td>856</td><td>57</td><td>92</td><td>high</td><td>Memory 组件</td><td><span class='tag'>memory</span><span class='tag'>runtime</span><span class='tag'>eval</span><span class='tag'>inference</span></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="signal-section" id="sec-deep">
+    <div class="section-head"><span class="range mono">02</span><div><h2>Top 3-5 深度分析</h2><p>把 repo 拆成可复用、可投资、可防守的决策情报。</p></div></div>
+    <div class="section-tools" aria-label="深度分析阅读控制"><button class="tool-btn" data-action="expand-deep" type="button">展开全部证据</button><button class="tool-btn" data-action="collapse-deep" type="button">收起全部证据</button></div>
+    <div class="cards"><article class='card' data-rank='01'><h3><a href='https://github.com/refactoringhq/tolaria'>refactoringhq/tolaria</a></h3><div class='meta'>Memory 组件 · TypeScript · 评分 97 · 置信度 high</div><p>refactoringhq/tolaria 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Desktop app to manage markdown knowledge bases」。本周期新增 471 stars、累计 17804 stars，主要信号集中在 agent、agents、memory、mcp。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>refactoringhq/tolaria 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Desktop app to manage markdown knowledge bases」。本周期新增 471 stars、累计 17804 stars，主要信号集中在 agent、agents、memory、mcp。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 471 stars；命中 agent, agents, memory, mcp；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>471</span></div><div><b>总 stars</b><span>17804</span></div><div><b>forks</b><span>1216</span></div><div><b>open issues</b><span>72</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>AGPL-3.0</span></div><div><b>创建时间</b><span>2026-02-14</span></div><div><b>最后 push</b><span>2026-06-30</span></div><div><b>topics</b><span>-</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>依赖线索：检测到 `package.json`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：Desktop app to manage markdown knowledge bases</li><li>许可证：AGPL-3.0</li><li>热度：本周期新增 471 stars，当前总星标 17804。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 refactoringhq/tolaria 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=AGPL-3.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=72，last push=2026-06-30；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='02'><h3><a href='https://github.com/diegosouzapw/OmniRoute'>diegosouzapw/OmniRoute</a></h3><div class='meta'>Runtime 参考 · TypeScript · 评分 97 · 置信度 high</div><p>diegosouzapw/OmniRoute 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Never stop coding. Free AI gateway: one endpoint, 231+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline &amp; Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.」。本周期新增 459 stars、累计 8419 stars，主要信号集中在 agent、agents、mcp、runtime。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>diegosouzapw/OmniRoute 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Never stop coding. Free AI gateway: one endpoint, 231+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline &amp; Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.」。本周期新增 459 stars、累计 8419 stars，主要信号集中在 agent、agents、mcp、runtime。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 459 stars；跨多个 Trending 切片重复出现；命中 agent, agents, mcp, runtime；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>459</span></div><div><b>总 stars</b><span>8419</span></div><div><b>forks</b><span>1391</span></div><div><b>open issues</b><span>131</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-02-13</span></div><div><b>最后 push</b><span>2026-06-30</span></div><div><b>topics</b><span>a2a, ai-agents, ai-gateway, anthropic, claude, claude-code, cline, codex</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `package.json`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：Never stop coding. Free AI gateway: one endpoint, 231+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline &amp; Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.</li><li>Topics：a2a, ai-agents, ai-gateway, anthropic, claude, claude-code, cline, codex</li><li>许可证：MIT</li><li>热度：本周期新增 459 stars，当前总星标 8419。</li><li>README 数字信号：&lt;td width=&quot;33%&quot; valign=&quot;top&quot;&gt;&lt;b&gt;🛡️ Production-grade&lt;/b&gt;&lt;br/&gt;&lt;sub&gt;Circuit breakers, TLS stealth, MCP (87 tools), A2A, memory, guardrails, evals</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 diegosouzapw/OmniRoute 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Runtime 参考` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=131，last push=2026-06-30；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='03'><h3><a href='https://github.com/usestrix/strix'>usestrix/strix</a></h3><div class='meta'>Runtime 参考 · Python · 评分 97 · 置信度 high</div><p>usestrix/strix 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.」。本周期新增 395 stars、累计 28054 stars，主要信号集中在 agent、agents、llm、automation。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>usestrix/strix 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.」。本周期新增 395 stars、累计 28054 stars，主要信号集中在 agent、agents、llm、automation。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 395 stars；跨多个 Trending 切片重复出现；命中 agent, agents, llm, automation；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>395</span></div><div><b>总 stars</b><span>28054</span></div><div><b>forks</b><span>3119</span></div><div><b>open issues</b><span>114</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2025-08-05</span></div><div><b>最后 push</b><span>2026-06-30</span></div><div><b>topics</b><span>agents, ai-hacking, ai-penetration-testing, ai-pentesting, ai-security, artificial-intelligence, bug-bounty, code-quality</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `pyproject.toml`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.</li><li>Topics：agents, ai-hacking, ai-penetration-testing, ai-pentesting, ai-security, artificial-intelligence, bug-bounty, code-quality</li><li>许可证：Apache-2.0</li><li>热度：本周期新增 395 stars，当前总星标 28054。</li><li>README 数字信号：- **Bug Bounty Automation** - Automate bug bounty research and generate PoCs for faster reporting</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 usestrix/strix 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Runtime 参考` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=Apache-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=114，last push=2026-06-30；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='04'><h3><a href='https://github.com/HKUDS/Vibe-Trading'>HKUDS/Vibe-Trading</a></h3><div class='meta'>Runtime 参考 · Python · 评分 95 · 置信度 high</div><p>HKUDS/Vibe-Trading 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「&quot;Vibe-Trading: Your Personal Trading Agent&quot;」。本周期新增 719 stars、累计 15744 stars，主要信号集中在 agent、mcp、runtime、llm。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>HKUDS/Vibe-Trading 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「&quot;Vibe-Trading: Your Personal Trading Agent&quot;」。本周期新增 719 stars、累计 15744 stars，主要信号集中在 agent、mcp、runtime、llm。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 719 stars；跨多个 Trending 切片重复出现；命中 agent, mcp, runtime, llm；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>719</span></div><div><b>总 stars</b><span>15744</span></div><div><b>forks</b><span>2730</span></div><div><b>open issues</b><span>35</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-04-01</span></div><div><b>最后 push</b><span>2026-06-30</span></div><div><b>topics</b><span>ai-agent, algorithmic-trading, backtesting, fintech, llm, mcp, multi-agent, python</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `pyproject.toml`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：&quot;Vibe-Trading: Your Personal Trading Agent&quot;</li><li>Topics：ai-agent, algorithmic-trading, backtesting, fintech, llm, mcp, multi-agent, python</li><li>许可证：MIT</li><li>热度：本周期新增 719 stars，当前总星标 15744。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 HKUDS/Vibe-Trading 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Runtime 参考` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=35，last push=2026-06-30；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='05'><h3><a href='https://github.com/logto-io/logto'>logto-io/logto</a></h3><div class='meta'>Memory 组件 · TypeScript · 评分 95 · 置信度 high</div><p>logto-io/logto 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.」。本周期新增 614 stars、累计 13016 stars，主要信号集中在 agent、rag、protocol。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>logto-io/logto 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.」。本周期新增 614 stars、累计 13016 stars，主要信号集中在 agent、rag、protocol。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 614 stars；命中 agent, rag, protocol；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>出现 wrapper/template/boilerplate 信号，需警惕只是重新包装。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>614</span></div><div><b>总 stars</b><span>13016</span></div><div><b>forks</b><span>889</span></div><div><b>open issues</b><span>170</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>MPL-2.0</span></div><div><b>创建时间</b><span>2021-06-19</span></div><div><b>最后 push</b><span>2026-06-30</span></div><div><b>topics</b><span>authentication, authorization, email, identity, jwt, login, logto, mfa</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>检索增强：出现 RAG/retrieval/embedding 信号，可跟踪知识接入与上下文管理模式。</li><li>依赖线索：检测到 `package.json`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.</li><li>Topics：authentication, authorization, email, identity, jwt, login, logto, mfa</li><li>许可证：MPL-2.0</li><li>热度：本周期新增 614 stars，当前总星标 13016。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 logto-io/logto 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MPL-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=170，last push=2026-06-30；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article></div>
+  </section>
+
+  <section class="signal-section" id="sec-trends">
+    <div class="section-head"><span class="range mono">03</span><div><h2>趋势观察</h2><p>每条趋势至少由两个真实项目交叉佐证。</p></div></div>
+    <div class="trend-cards"><article class='trend-card'><h3>Agent 正在从聊天走向生产工作流</h3><p>本周的强信号不是又多了几个聊天机器人，而是 agent 开始进入视频生产、企业工具和流程编排。它更像一套可执行工作流，而不是一个对话窗口。</p><div class='trend-evidence'><span>refactoringhq/tolaria</span><span>diegosouzapw/OmniRoute</span><span>usestrix/strix</span></div><div class='trend-action'>行动含义：优先看它们如何组织 tool、pipeline、权限和失败恢复。</div></article><article class='trend-card'><h3>Memory / RAG 正在变成基础设施</h3><p>记忆不再只是 prompt 技巧，而是开始以知识图谱、RAG、代码库记忆的形式进入 agent 底座。</p><div class='trend-evidence'><span>refactoringhq/tolaria</span><span>logto-io/logto</span><span>facebook/astryx</span></div><div class='trend-action'>行动含义：重点评估数据层、更新机制、权限边界和长期维护成本。</div></article><article class='trend-card'><h3>Workspace 工具正在被包装成 agent 可调用能力</h3><p>CLI、编辑器、语音和企业软件项目同时升温，说明下一阶段竞争点是把现有工作工具变成 agent 能稳定调用的接口。</p><div class='trend-evidence'><span>refactoringhq/tolaria</span><span>diegosouzapw/OmniRoute</span><span>usestrix/strix</span></div><div class='trend-action'>行动含义：适合跟进 CLI、MCP、插件化、权限模型和 SaaS API 封装方式。</div></article><article class='trend-card'><h3>多模态生产工具开始进入开源工作台</h3><p>视频、语音、文档和企业工具开始汇合，说明 AI workspace 不只服务开发者，也会服务内容生产和运营场景。</p><div class='trend-evidence'><span>refactoringhq/tolaria</span><span>browser-use/video-use</span></div><div class='trend-action'>行动含义：短期看工具链复用，长期看是否形成稳定创作者工作流。</div></article></div>
+  </section>
+
+  <section class="signal-section" id="sec-lens">
+    <div class="section-head"><span class="range mono">04</span><div><h2>六视角启示</h2><p>从 Builder、投资、产品、架构、Founder 与 OPC 生态判断行动价值。</p></div></div>
+    <div class="card"><div class="lenses"><div class='lens'><b>AI Builder</b><p>优先拆解 refactoringhq/tolaria, diegosouzapw/OmniRoute, usestrix/strix 的 README 与依赖，寻找可复用的 agent、RAG、workflow 或 runtime 模块。</p></div><div class='lens'><b>Investor</b><p>关注短期 star 增速与多语言切片重复出现的项目，这通常代表跨圈层传播而非单社区热度。</p></div><div class='lens'><b>Product</b><p>把热榜项目映射到用户工作流：安装门槛、首次价值、协作方式和可替代的现有工具。</p></div><div class='lens'><b>Architecture</b><p>重点跟踪协议、运行时、记忆、检索、工作区组件，判断是否能沉淀为平台能力。</p></div><div class='lens'><b>Founder</b><p>寻找小团队可切入的楔子：CLI、IDE 插件、轻量托管、模板市场、行业封装。</p></div><div class='lens'><b>Ecosystem</b><p>记录 license、topics、homepage 和集成对象，判断项目更像独立产品、基础设施还是生态插件。</p></div></div></div>
+  </section>
+
+  <section class="signal-section" id="sec-actions">
+    <div class="section-head"><span class="range mono">05</span><div><h2>A/B/C 跟进建议</h2><p>把热度变成下一步动作，而不是收藏夹。</p></div></div>
+    <div class="cards">
+      <article class="card"><h3>A 类：立即深挖</h3><p>对评分最高且 README 完整的项目做代码结构、issue、release、竞品和集成路径核查。</p></article>
+      <article class="card"><h3>B 类：进入观察池</h3><p>对增长快但 README 或 license 信息不足的项目保留 7-14 天追踪，验证是否持续增长。</p></article>
+      <article class="card"><h3>C 类：暂缓</h3><p>对 scrape 信息薄、维护信号弱或战略关键词弱的项目只保留基础记录。</p></article>
+    </div>
+  </section>
+
+  <blockquote>一句话结论：本期优先关注 refactoringhq/tolaria 代表的高相关方向，同时用 Top 10 作为 agent/runtime/workspace 生态变化的观察样本。</blockquote>
+</main>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('[data-action="expand-deep"],[data-action="collapse-deep"]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('data-action')==='expand-deep';
+      document.querySelectorAll('#sec-deep details.detail-fold').forEach(function(detail){
+        detail.open=open;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
