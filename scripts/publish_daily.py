@@ -104,15 +104,15 @@ def shell_css() -> str:
       --surface-2:rgba(255,255,255,.58);
       --surface-3:rgba(255,250,241,.8);
       --line:rgba(228,228,225,.92);
-      --line-strong:rgba(182,193,235,.9);
+      --line-strong:rgba(232,178,126,.72);
       --text:#111111;
       --muted:rgba(48,45,40,.68);
       --soft:rgba(48,45,40,.82);
-      --blue:#5b7cff;
-      --cyan:#8fa7ff;
+      --blue:#8ea3e8;
+      --cyan:#a9b7ea;
       --amber:#f97316;
       --amber-soft:rgba(249,115,22,.14);
-      --rail:rgba(166,179,230,.55);
+      --rail:rgba(177,164,148,.34);
       --ok:#4c8b66;
       --shadow:0 20px 70px rgba(17,17,17,.07);
       --radius:14px;
@@ -137,7 +137,7 @@ def shell_css() -> str:
       background-attachment:fixed;
     }
     a{color:inherit;text-decoration:none}
-    a:hover{color:var(--blue)}
+    a:hover{color:var(--amber)}
     .mono{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
       letter-spacing:.08em;
@@ -161,8 +161,8 @@ def shell_css() -> str:
       width:10px;
       height:10px;
       border-radius:999px;
-      background:linear-gradient(180deg,#89b1ff,#bfd0ff);
-      box-shadow:0 0 14px rgba(143,167,255,.45);
+      background:linear-gradient(180deg,#ff9f54,#f97316);
+      box-shadow:0 0 14px rgba(249,115,22,.22);
     }
     .brand-copy{min-width:0}
     .brand-kicker{
@@ -196,7 +196,7 @@ def shell_css() -> str:
     .nav a.active,.nav a:hover{
       color:var(--text);
       border-color:var(--line-strong);
-      background:rgba(190,203,255,.38);
+      background:rgba(255,244,232,.92);
     }
     .hero{
       display:grid;
@@ -338,6 +338,10 @@ def shell_css() -> str:
       gap:12px;
       align-content:start;
     }
+    .hero-side.compact{
+      background:rgba(255,252,246,.72);
+      gap:14px;
+    }
     .side-label{
       color:var(--muted);
       font-size:11px;
@@ -353,6 +357,34 @@ def shell_css() -> str:
       margin:0;
       color:var(--soft);
       font-size:14px;
+    }
+    .hero-side .signal-copy{max-width:34ch}
+    .status-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      padding-top:4px;
+    }
+    .status-item{
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      min-width:0;
+    }
+    .status-item.wide{grid-column:1 / -1}
+    .status-label{
+      display:block;
+      margin-bottom:6px;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .status-value{
+      display:block;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.35;
+      word-break:break-word;
     }
     .stat-grid,.card-grid{
       display:grid;
@@ -382,7 +414,7 @@ def shell_css() -> str:
     .card b{
       display:block;
       margin-bottom:8px;
-      color:var(--cyan);
+      color:var(--blue);
       font-size:11px;
       text-transform:uppercase;
       letter-spacing:.14em;
@@ -396,7 +428,7 @@ def shell_css() -> str:
     }
     .section-rail{
       padding-top:8px;
-      color:var(--blue);
+      color:var(--muted);
       font-size:12px;
       text-transform:uppercase;
       letter-spacing:.18em;
@@ -443,9 +475,9 @@ def shell_css() -> str:
     }
     .row:last-child{border-bottom:0}
     .row:hover{
-      background:rgba(190,203,255,.18);
+      background:rgba(255,247,239,.88);
       transform:translateX(2px);
-      border-color:rgba(182,193,235,.9);
+      border-color:rgba(232,178,126,.72);
     }
     .row .type{
       color:var(--amber);
@@ -505,20 +537,76 @@ def shell_css() -> str:
       color:var(--muted);
       font-size:12px;
     }
+    .flow-intro{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:flex-end;
+      margin-bottom:12px;
+    }
+    .flow-intro h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.12;
+      letter-spacing:-.03em;
+    }
+    .flow-intro p{
+      margin:6px 0 0;
+      max-width:54ch;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .flow-meta{
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      white-space:nowrap;
+    }
+    .list.open{
+      margin-top:0;
+      border:none;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+    .list.open .row{
+      padding:17px 0;
+      border-bottom:1px solid rgba(223,219,210,.92);
+    }
+    .list.open .row:hover{
+      background:transparent;
+      transform:translateX(4px);
+      border-color:rgba(232,178,126,.72);
+    }
     @media (max-width:980px){
       .hero{grid-template-columns:1fr}
       .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .flow-intro{display:block}
+      .flow-meta{display:block;margin-top:10px}
     }
     @media (max-width:680px){
       .wrap{padding:22px 14px 72px}
       .topbar{align-items:flex-start;flex-direction:column}
-      .nav{justify-content:flex-start}
+      .nav{
+        width:100%;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:4px;
+        scrollbar-width:none;
+      }
+      .nav::-webkit-scrollbar{display:none}
+      .nav a{flex:0 0 auto}
       .section{grid-template-columns:1fr}
       .section-rail{padding-top:0}
       .section-rail::after{display:none}
       .stat-grid,.card-grid,.card-grid.three{grid-template-columns:1fr}
+      .status-grid{grid-template-columns:1fr}
       .row{grid-template-columns:1fr;gap:6px}
       .row .meta{text-align:left}
+      .list.open .row{padding:14px 0}
       h1{font-size:clamp(38px,15vw,66px)}
     }
     """
@@ -689,6 +777,9 @@ def render_home(period: str, stats: dict, reports: list[dict], watchlist: list[d
     weekly_title = latest_weekly["title"] if latest_weekly else "尚未发布周报"
     weekly_link = latest_weekly["html"] if latest_weekly else "/weekly/"
     weekly_period = latest_weekly["period"] if latest_weekly else "N/A"
+    daily_link = latest_daily["html"] if latest_daily else f"/daily/{period}/"
+    daily_title = latest_daily["title"] if latest_daily else f"GitHub 热榜情报日报 · {period}"
+    daily_period = latest_daily["period"] if latest_daily else period
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -713,23 +804,32 @@ def render_home(period: str, stats: dict, reports: list[dict], watchlist: list[d
 
     <section class="hero">
       <div class="hero-main">
-        <div class="eyebrow mono">Chinese Open-Source Intel</div>
+        <div class="eyebrow mono">Primary Intelligence Layer</div>
         <h1 class="headline"><span class="headline-line"><span class="ghost-word">GitHub</span> <span class="texture-word">Signal</span></span><span class="headline-line"><span class="ghost-word">Intelligence</span></span></h1>
-        <p class="lead">这不是热榜镜像站，而是一套把 GitHub Trending 转成中文判断的前台。首页优先服务“今天先看什么”，并把日报、周报、月报拆成不同节奏的情报产品，而不是堆在同一个列表里。</p>
+        <p class="lead">首页主入口固定给周报，先交付更稳的判断；日报负责快信号，月报负责赛道迁移。这样首屏先回答“这一周最值得看什么”，而不是把所有更新并列摊开。</p>
         <div class="hero-actions">
-          <a class="btn primary" href="{latest_daily["html"] if latest_daily else f"/daily/{period}/"}">打开最新日报</a>
-          <a class="btn" href="{weekly_link}">进入主周报</a>
+          <a class="btn primary" href="{weekly_link}">打开当前主报告</a>
+          <a class="btn" href="{daily_link}">查看最新日报</a>
           <a class="btn" href="/archive/">浏览归档</a>
         </div>
       </div>
-      <aside class="hero-side">
-        <div class="side-label mono">Live Feed</div>
-        <h2 class="signal-title"><a href="{latest_daily["html"] if latest_daily else f"/daily/{period}/"}">{latest_daily["title"] if latest_daily else f"GitHub 热榜情报日报 · {period}"}</a></h2>
-        <p class="signal-copy">当前首页锚定 {period} 日报，主信号为 <span class="mono">{stats["top_signal"]}</span>。同时保留周报作为更慢但更重的判断层，避免首页变成单一列表页面。</p>
-        <div class="mini-list">
-          <div class="mini-item"><div><b>Daily</b><span>快信号 / 观察池 / Top10</span></div><span class="mono">{latest_daily["period"] if latest_daily else period}</span></div>
-          <div class="mini-item"><div><b>Weekly</b><span>主报告 / 深度判断</span></div><span class="mono">{weekly_period}</span></div>
-          <div class="mini-item"><div><b>Watch</b><span>优先跟踪的项目方向</span></div><span class="mono">{stats["top_count"]}</span></div>
+      <aside class="hero-side compact">
+        <div class="side-label mono">Current Brief</div>
+        <h2 class="signal-title"><a href="{weekly_link}">{weekly_title}</a></h2>
+        <p class="signal-copy">本周主判断层已经生成。快节奏更新继续落在日报，当前优先跟踪信号是 <span class="mono">{stats["top_signal"]}</span>。</p>
+        <div class="status-grid">
+          <div class="status-item">
+            <span class="status-label mono">Primary</span>
+            <span class="status-value mono">WEEKLY</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label mono">Daily Pulse</span>
+            <span class="status-value mono">{daily_period}</span>
+          </div>
+          <div class="status-item wide">
+            <span class="status-label mono">Latest Daily</span>
+            <span class="status-value"><a href="{daily_link}">{daily_title}</a></span>
+          </div>
         </div>
       </aside>
     </section>
@@ -762,11 +862,14 @@ def render_home(period: str, stats: dict, reports: list[dict], watchlist: list[d
     <section class="section">
       <div class="section-rail mono">03 / Flow</div>
       <div>
-        <div class="panel">
-          <h2>最新流</h2>
-          <p>最近更新的报告保留在同一时间轴中，便于对比日报和周报之间的叙事切换。</p>
+        <div class="flow-intro">
+          <div>
+            <h2>最新流</h2>
+            <p>这里改成更开放的时间轴，只保留节奏和优先级，不再给每一批更新都包上一层同样重量的白卡。</p>
+          </div>
+          <div class="flow-meta mono">Recent reports / 6 entries</div>
         </div>
-        <div class="list">{recent_rows}</div>
+        <div class="list open">{recent_rows}</div>
       </div>
     </section>
 
@@ -821,8 +924,20 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
     write_text(ROOT / "README.md", content)
 
 
+def resolve_daily_period(default_period: str) -> str:
+    if (ROOT / f"top10-{default_period}.json").exists() and (ROOT / f"trending-data-{default_period}.json").exists():
+        return default_period
+    reports_path = ROOT / "reports.json"
+    if reports_path.exists():
+        reports = read_json(reports_path).get("reports", [])
+        latest_daily = latest_report(reports, "daily")
+        if latest_daily:
+            return latest_daily["period"]
+    raise FileNotFoundError(f"Missing daily assets for {default_period} and no fallback daily report found.")
+
+
 def main() -> None:
-    period = datetime.now().strftime("%Y-%m-%d")
+    period = resolve_daily_period(datetime.now().strftime("%Y-%m-%d"))
     stats = load_report_stats(period)
     sync_daily_report_dir(period)
     reports = upsert_report_entry(period, stats)
