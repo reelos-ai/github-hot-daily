@@ -21,12 +21,9 @@
       --blue:#8ea3e8;
       --cyan:#a9b7ea;
       --amber:#f97316;
-      --amber-soft:rgba(249,115,22,.14);
       --rail:rgba(177,164,148,.34);
-      --ok:#4c8b66;
       --shadow:0 20px 70px rgba(17,17,17,.07);
       --radius:14px;
-      --radius-sm:8px;
     }
     *{box-sizing:border-box}
     html{color-scheme:light}
@@ -61,59 +58,27 @@
       padding:10px 0 18px;
       border-bottom:1px solid var(--line);
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
     .brand-mark{
-      width:10px;
-      height:10px;
-      border-radius:999px;
+      width:10px;height:10px;border-radius:999px;
       background:linear-gradient(180deg,#ff9f54,#f97316);
       box-shadow:0 0 14px rgba(249,115,22,.22);
     }
-    .brand-copy{min-width:0}
-    .brand-kicker{
-      color:var(--muted);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-    }
-    .brand-title{
-      font-size:14px;
-      color:var(--text);
-      white-space:nowrap;
-    }
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      justify-content:flex-end;
-    }
+    .brand-kicker{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
+    .brand-title{font-size:14px;color:var(--text);white-space:nowrap}
+    .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
     .nav a{
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.6);
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.6);color:var(--muted);font-size:12px;
+      text-transform:uppercase;letter-spacing:.12em;
       backdrop-filter:blur(12px);
     }
     .nav a.active,.nav a:hover{
-      color:var(--text);
-      border-color:var(--line-strong);
-      background:rgba(255,244,232,.92);
+      color:var(--text);border-color:var(--line-strong);background:rgba(255,244,232,.92);
     }
     .hero{
-      display:grid;
-      grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
-      gap:18px;
-      margin-top:22px;
-      align-items:stretch;
+      display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
+      gap:18px;margin-top:22px;align-items:stretch;
     }
     .hero-main,.hero-side,.panel,.list,.quote{
       border:1px solid var(--line);
@@ -121,72 +86,25 @@
       box-shadow:var(--shadow);
       backdrop-filter:blur(20px);
     }
-    .hero-main{
-      border-radius:22px;
-      padding:24px;
-      position:relative;
-      overflow:hidden;
-    }
+    .hero-main{border-radius:22px;padding:24px;position:relative;overflow:hidden}
     .hero-main::before{
-      content:"";
-      position:absolute;
-      inset:auto -10% -35% 30%;
-      height:260px;
+      content:"";position:absolute;inset:auto -10% -35% 30%;height:260px;
       background:radial-gradient(circle, rgba(249,115,22,.14), transparent 60%);
       pointer-events:none;
     }
-    .hero-main::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        repeating-linear-gradient(90deg, rgba(120,130,170,0) 0 47px, rgba(120,130,170,.08) 47px 48px),
-        repeating-linear-gradient(180deg, rgba(249,115,22,0) 0 13px, rgba(249,115,22,.02) 13px 14px);
-      opacity:.42;
-      pointer-events:none;
-      mask-image:linear-gradient(180deg, rgba(0,0,0,.38), transparent 76%);
-    }
     .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--soft);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      background:rgba(255,255,255,.46);
+      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;
+      border:1px solid var(--line);border-radius:999px;color:var(--soft);
+      font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.46);
     }
     .eyebrow::before{
-      content:"";
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      background:var(--amber);
+      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);
       box-shadow:0 0 10px rgba(249,115,22,.3);
     }
-    h1{
-      margin:16px 0 10px;
-      font-size:clamp(42px,8vw,86px);
-      line-height:.94;
-      letter-spacing:-.045em;
-      font-weight:650;
-      font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
-    }
-    .headline{
-      display:block;
-      max-width:9ch;
-    }
+    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.94;letter-spacing:-.045em;font-weight:650;font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
+    .headline{display:block;max-width:10ch}
     .headline-line{display:block}
-    .ghost-word,
-    .texture-word{
-      display:inline-block;
-      position:relative;
-      font-weight:700;
-      letter-spacing:-.06em;
-    }
+    .ghost-word,.texture-word{display:inline-block;position:relative;font-weight:700;letter-spacing:-.06em}
     .ghost-word{color:rgba(17,17,17,.96)}
     .texture-word{
       color:transparent;
@@ -197,326 +115,63 @@
       background-blend-mode:normal,screen,multiply;
       -webkit-background-clip:text;
       background-clip:text;
-      text-shadow:0 8px 26px rgba(249,115,22,.16);
     }
-    .texture-word::after{
-      content:"";
-      position:absolute;
-      inset:10% 3% 8% 3%;
-      background:
-        repeating-linear-gradient(180deg, rgba(255,250,241,0) 0 8px, rgba(255,250,241,.18) 8px 9px),
-        repeating-linear-gradient(90deg, rgba(120,90,40,0) 0 12px, rgba(120,90,40,.12) 12px 13px);
-      opacity:.38;
-      mix-blend-mode:soft-light;
-      pointer-events:none;
-      border-radius:12px;
-    }
-    .lead{
-      max-width:62ch;
-      margin:0;
-      color:var(--soft);
-      font-size:16px;
-    }
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:22px;
-    }
+    .lead,.hero-side p,.panel p,.quote p{margin:0;color:var(--soft);font-size:15px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:11px 15px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.7);
-      color:var(--text);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.14em;
+      display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.65);font-size:13px;color:var(--soft)
     }
-    .btn.primary{
-      border-color:rgba(249,115,22,.3);
-      background:linear-gradient(180deg, rgba(255,166,84,.95), rgba(249,115,22,.9));
-      color:#fffaf1;
-    }
-    .hero-side{
-      border-radius:22px;
-      padding:18px;
-      display:grid;
-      gap:12px;
-      align-content:start;
-    }
-    .hero-side.compact{
-      background:rgba(255,252,246,.72);
-      gap:14px;
-    }
-    .side-label{
-      color:var(--muted);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-    }
-    .signal-title{
-      font-size:24px;
-      line-height:1.15;
-      margin:0;
-    }
-    .signal-copy{
-      margin:0;
-      color:var(--soft);
-      font-size:14px;
-    }
-    .hero-side .signal-copy{max-width:34ch}
-    .status-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-      padding-top:4px;
-    }
-    .status-item{
-      border-top:1px solid var(--line);
-      padding-top:10px;
-      min-width:0;
-    }
+    .btn.primary{background:#111111;color:#fffaf1;border-color:#111111}
+    .hero-side{border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+    .side-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em}
+    .signal-title{font-size:28px;line-height:1.14;letter-spacing:-.03em;margin:0}
+    .signal-copy{color:var(--soft);font-size:14px}
+    .status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .status-item{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
     .status-item.wide{grid-column:1 / -1}
-    .status-label{
-      display:block;
-      margin-bottom:6px;
-      color:var(--muted);
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-    }
-    .status-value{
-      display:block;
-      color:var(--text);
-      font-size:15px;
-      line-height:1.35;
-      word-break:break-word;
-    }
-    .stat-grid,.card-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-      margin-top:18px;
-    }
-    .card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .metric,.card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--surface-2);
-      padding:14px;
-      min-width:0;
-    }
-    .metric b{
-      display:block;
-      font-size:28px;
-      line-height:1;
-      color:var(--text);
-      margin-bottom:6px;
-    }
-    .metric span,.card p{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .card b{
-      display:block;
-      margin-bottom:8px;
-      color:var(--blue);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-    }
-    .section{
-      display:grid;
-      grid-template-columns:96px minmax(0,1fr);
-      gap:16px;
-      margin-top:18px;
-      align-items:start;
-    }
-    .section-rail{
-      padding-top:8px;
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      position:relative;
-    }
-    .section-rail::after{
-      content:"";
-      position:absolute;
-      left:8px;
-      top:34px;
-      bottom:-24px;
-      width:1px;
-      background:linear-gradient(180deg,var(--rail),transparent);
-    }
-    .panel{
-      border-radius:20px;
-      padding:18px;
-    }
-    .panel h2{
-      margin:0;
-      font-size:26px;
-      line-height:1.15;
-      letter-spacing:-.03em;
-    }
-    .panel > p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      max-width:68ch;
-    }
-    .list{
-      border-radius:20px;
-      margin-top:14px;
-      overflow:hidden;
-    }
+    .status-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
+    .status-value{font-size:13px;color:var(--soft)}
+    .section{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;margin-top:22px}
+    .section-rail{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;padding-top:8px}
+    .panel{border-radius:20px;padding:22px}
+    .panel h2{margin:0 0 8px;font-size:28px;line-height:1.16;letter-spacing:-.04em}
+    .list{border-radius:20px;overflow:hidden}
     .row{
-      display:grid;
-      grid-template-columns:90px minmax(0,1fr) 104px;
-      gap:12px;
-      align-items:center;
-      padding:15px 18px;
-      border-bottom:1px solid var(--line);
-      transition:background .2s ease, transform .2s ease, border-color .2s ease;
+      display:grid;grid-template-columns:120px minmax(0,1fr) 90px;
+      gap:12px;padding:16px 18px;border-top:1px solid var(--line);background:rgba(255,255,255,.56)
     }
-    .row:last-child{border-bottom:0}
-    .row:hover{
-      background:rgba(255,247,239,.88);
-      transform:translateX(2px);
-      border-color:rgba(232,178,126,.72);
+    .row:first-child{border-top:0}
+    .row:hover{background:rgba(255,244,232,.8)}
+    .type{font-size:11px;color:var(--muted);text-transform:uppercase}
+    .title{font-size:15px;color:var(--text)}
+    .meta{font-size:12px;color:var(--muted);text-align:right}
+    .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{
+      border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.48);
+      padding:16px;display:block
     }
-    .row .type{
-      color:var(--amber);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-    }
-    .row .title{
-      font-size:15px;
-      color:var(--text);
-    }
-    .row .meta{
-      text-align:right;
-      color:var(--muted);
-      font-size:11px;
-    }
+    .card b{display:block;margin-bottom:8px;font-size:14px}
+    .card p{margin:0;font-size:13px;color:var(--muted)}
     .quote{
-      border-radius:20px;
-      margin-top:22px;
-      padding:18px 20px;
-      position:relative;
+      margin-top:22px;border-radius:20px;padding:18px 22px;border-left:3px solid var(--amber)
     }
-    .quote::before{
-      content:"Conclusion";
-      display:block;
-      margin-bottom:8px;
-      color:var(--amber);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-    }
-    .quote p{
-      margin:0;
-      color:var(--text);
-      font-size:18px;
-      line-height:1.6;
-    }
-    .mini-list{
-      display:grid;
-      gap:10px;
-    }
-    .mini-item{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      padding:12px 0;
-      border-top:1px solid var(--line);
-    }
-    .mini-item:first-child{border-top:0;padding-top:0}
-    .mini-item b{
-      display:block;
-      margin-bottom:4px;
-      font-size:13px;
-    }
-    .mini-item span{
-      color:var(--muted);
-      font-size:12px;
-    }
-    .flow-intro{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      align-items:flex-end;
-      margin-bottom:12px;
-    }
-    .flow-intro h2{
-      margin:0;
-      font-size:26px;
-      line-height:1.12;
-      letter-spacing:-.03em;
-    }
-    .flow-intro p{
-      margin:6px 0 0;
-      max-width:54ch;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .flow-meta{
-      color:var(--amber);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      white-space:nowrap;
-    }
-    .list.open{
-      margin-top:0;
-      border:none;
-      border-radius:0;
-      background:transparent;
-      box-shadow:none;
-      backdrop-filter:none;
-    }
-    .list.open .row{
-      padding:17px 0;
-      border-bottom:1px solid rgba(223,219,210,.92);
-    }
-    .list.open .row:hover{
-      background:transparent;
-      transform:translateX(4px);
-      border-color:rgba(232,178,126,.72);
-    }
+    .mini-list{display:grid;gap:10px}
+    .mini-item{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+    .mini-item:first-child{padding-top:0;border-top:0}
+    .mini-item b{display:block;margin-bottom:4px;font-size:13px}
+    .mini-item span{color:var(--muted);font-size:12px}
     @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .flow-intro{display:block}
-      .flow-meta{display:block;margin-top:10px}
+      .hero,.section,.card-grid,.status-grid{grid-template-columns:1fr}
+      .section-rail{padding-top:0}
+      .status-item.wide{grid-column:auto}
     }
     @media (max-width:680px){
       .wrap{padding:22px 14px 72px}
       .topbar{align-items:flex-start;flex-direction:column}
-      .nav{
-        width:100%;
-        flex-wrap:nowrap;
-        justify-content:flex-start;
-        overflow-x:auto;
-        padding-bottom:4px;
-        scrollbar-width:none;
-      }
-      .nav::-webkit-scrollbar{display:none}
-      .nav a{flex:0 0 auto}
-      .section{grid-template-columns:1fr}
-      .section-rail{padding-top:0}
-      .section-rail::after{display:none}
-      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:1fr}
-      .status-grid{grid-template-columns:1fr}
-      .row{grid-template-columns:1fr;gap:6px}
-      .row .meta{text-align:left}
-      .list.open .row{padding:14px 0}
+      .nav{justify-content:flex-start}
+      .row{grid-template-columns:1fr}
+      .meta{text-align:left}
       h1{font-size:clamp(38px,15vw,66px)}
     }
     </style>
@@ -537,89 +192,74 @@
     <section class="hero">
       <div class="hero-main">
         <div class="eyebrow mono">Primary Intelligence Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">GitHub</span> <span class="texture-word">Signal</span></span><span class="headline-line"><span class="ghost-word">Intelligence</span></span></h1>
-        <p class="lead">首页主入口固定给周报，先交付更稳的判断；日报负责快信号，月报负责赛道迁移。这样首屏先回答“这一周最值得看什么”，而不是把所有更新并列摊开。</p>
+        <h1 class="headline"><span class="headline-line"><span class="ghost-word">Monthly</span> <span class="texture-word">Signal Review</span></span></h1>
+        <p class="lead">首页主入口在月初切到月报：优先回答一个月里真正发生了什么赛道迁移。日报继续负责快信号，周报继续负责中周期判断，但首页先展示更慢、更稳的结构性结论。</p>
         <div class="hero-actions">
-          <a class="btn primary" href="/weekly/2026-06-29/">打开当前主报告</a>
-          <a class="btn" href="/daily/2026-07-01/">查看最新日报</a>
+          <a class="btn primary" href="/monthly/2026-07/">打开当前主报告</a>
+          <a class="btn" href="/weekly/2026-06-29/">查看最新周报</a>
           <a class="btn" href="/archive/">浏览归档</a>
         </div>
       </div>
-      <aside class="hero-side compact">
+      <aside class="hero-side">
         <div class="side-label mono">Current Brief</div>
-        <h2 class="signal-title"><a href="/weekly/2026-06-29/">GitHub 热榜情报周报 · 2026-06-29</a></h2>
-        <p class="signal-copy">本周主判断层已经生成。快节奏更新继续落在日报，当前优先跟踪信号是 <span class="mono">refactoringhq/tolaria</span>。</p>
+        <h2 class="signal-title"><a href="/monthly/2026-07/">GitHub 热榜情报月报 · 2026-07</a></h2>
+        <p class="signal-copy">当前首页主判断层已经切到月报，优先跟踪的长期信号是 <span class="mono">calesthio/OpenMontage</span>。</p>
         <div class="status-grid">
           <div class="status-item">
             <span class="status-label mono">Primary</span>
-            <span class="status-value mono">WEEKLY</span>
+            <span class="status-value mono">MONTHLY</span>
           </div>
           <div class="status-item">
-            <span class="status-label mono">Daily Pulse</span>
-            <span class="status-value mono">2026-07-01</span>
+            <span class="status-label mono">Monthly</span>
+            <span class="status-value mono">2026-07</span>
           </div>
           <div class="status-item wide">
-            <span class="status-label mono">Latest Daily</span>
-            <span class="status-value"><a href="/daily/2026-07-01/">GitHub 热榜情报日报 · 2026-07-01</a></span>
+            <span class="status-label mono">Latest Monthly</span>
+            <span class="status-value"><a href="/monthly/2026-07/">GitHub 热榜情报月报 · 2026-07</a></span>
           </div>
         </div>
       </aside>
     </section>
 
     <section class="section">
-      <div class="section-rail mono">01 / Metrics</div>
-      <div>
-        <div class="stat-grid">
-          <div class="metric"><b class="mono">60</b><span>候选项目</span></div>
-          <div class="metric"><b class="mono">10</b><span>当日 Top</span></div>
-          <div class="metric"><b class="mono">60</b><span>README 覆盖</span></div>
-          <div class="metric"><b class="mono">0</b><span>API 失败</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">02 / System</div>
+      <div class="section-rail mono">01 / Structure</div>
       <div class="panel">
-        <h2>三层报告，不同判断密度</h2>
-        <p>首页用一套更像情报台的布局，把产品节奏讲清楚：日报先抓爆点，周报负责判断是否成立，月报再看赛道迁移。这样视觉和结构都更像一套系统，而不是几个平行入口。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <a class="card" href="/daily/"><b>Daily Radar</b><p>移动端优先，适合快速扫当天信号和观察池变化。</p></a>
-          <a class="card" href="/weekly/2026-06-29/"><b>Weekly Intelligence</b><p>GitHub 热榜情报周报 · 2026-06-29 作为主判断入口，承担深度分析和行动建议。</p></a>
-          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>把高频仓库和持续出现的方向上升到品类级复盘。</p></a>
+        <h2>首页改成月度主判断台</h2>
+        <p>月初这一次主入口不再继续指向周报，而是让月报承担“全站第一屏”的职责，把项目噪音折叠成品类迁移和赛道成熟度判断。</p>
+        <div class="card-grid" style="margin-top:16px">
+          <a class="card" href="/daily/"><b>Daily Radar</b><p>当天爆点、Top10 与观察池入口，服务速度和刷新率。</p></a>
+          <a class="card" href="/weekly/"><b>Weekly Intelligence</b><p>中周期判断层，适合追踪一周内持续升温的主题。</p></a>
+          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>把 Agent、Memory、MCP、Workspace、Runtime 升到赛道层复盘。</p></a>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-rail mono">03 / Flow</div>
+      <div class="section-rail mono">02 / Feed</div>
       <div>
-        <div class="flow-intro">
-          <div>
-            <h2>最新流</h2>
-            <p>这里改成更开放的时间轴，只保留节奏和优先级，不再给每一批更新都包上一层同样重量的白卡。</p>
-          </div>
-          <div class="flow-meta mono">Recent reports / 6 entries</div>
+        <div class="panel">
+          <h2>最新流</h2>
+          <p>最近 6 份报告保留在开放时间轴中，方便快速回看不同周期的判断重心。</p>
         </div>
-        <div class="list open"><a class="row" href="/daily/2026-07-01/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-01</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-30/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-30</span><span class="meta mono">Top 10</span></a><a class="row" href="/weekly/2026-06-29/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-06-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-29/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-28/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-28</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-27/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-27</span><span class="meta mono">Top 10</span></a></div>
+        <div class="list"><a class="row" href="/daily/2026-07-01/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-01</span><span class="meta mono">Top 10</span></a><a class="row" href="/monthly/2026-07/"><span class="type mono">Monthly</span><span class="title">GitHub 热榜情报月报 · 2026-07</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-30/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-30</span><span class="meta mono">Top 10</span></a><a class="row" href="/weekly/2026-06-29/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-06-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-29/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-06-28/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-06-28</span><span class="meta mono">Top 10</span></a></div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-rail mono">04 / Watchlist</div>
+      <div class="section-rail mono">03 / Watch</div>
       <div class="panel">
-        <h2>当前观察池</h2>
-        <p>A 类项目先看持续性与可复用性，B 类项目观察 7-14 天，C 类只保留事实记录。首页直接暴露观察池，是为了让站点更像一块工作台。</p>
-        <div class="card-grid three" style="margin-top:16px">
+        <h2>观察池优先级</h2>
+        <p>观察池继续作为下次日报、周报和月报的输入层，保证首页不是只读展示，而是带有工作流指向的前台。</p>
+        <div class="card-grid" style="margin-top:16px">
           <div class="card"><b>A 类信号</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
-          <div class="card"><b>今日高优</b><p>refactoringhq/tolaria, diegosouzapw/OmniRoute, usestrix/strix, HKUDS/Vibe-Trading</p></div>
-          <div class="card"><b>策略焦点</b><p>优先看跨切片重复出现、README 完整且落在 Memory / Runtime / Skill / Workspace 的项目。</p></div>
+          <div class="card"><b>月报角色</b><p>把连续出现的仓库还原成项目簇、成熟度和泡沫风险判断。</p></div>
+          <div class="card"><b>首页原则</b><p>月初优先展示长期判断，避免首屏继续被单日或单周波动占据。</p></div>
         </div>
       </div>
     </section>
 
     <div class="quote">
-      <p>首页现在更明确地表达为一套“GitHub 信号前台”：日报提供速度，周报提供判断，观察池提供持续跟踪，而不是把所有入口都压成同一种卡片。</p>
+      <p>这次首页更新的重点不是换皮，而是把站点的“主判断层”切到月报，让读者先看到赛道迁移，而不是项目噪音。</p>
     </div>
   </div>
 </body>

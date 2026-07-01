@@ -9,22 +9,30 @@
       color-scheme:light;
       --bg:#fcfaf6;
       --bg-2:#fffdf8;
+      --surface:rgba(255,255,255,.74);
+      --surface-2:rgba(255,255,255,.58);
+      --surface-3:rgba(255,250,241,.8);
       --line:rgba(228,228,225,.92);
-      --line-strong:rgba(182,193,235,.9);
+      --line-strong:rgba(232,178,126,.72);
       --text:#111111;
       --muted:rgba(48,45,40,.68);
       --soft:rgba(48,45,40,.82);
-      --blue:#5b7cff;
-      --cyan:#8fa7ff;
+      --blue:#8ea3e8;
+      --cyan:#a9b7ea;
       --amber:#f97316;
+      --rail:rgba(177,164,148,.34);
       --shadow:0 20px 70px rgba(17,17,17,.07);
+      --radius:14px;
     }
     *{box-sizing:border-box}
+    html{color-scheme:light}
     body{
       margin:0;
       color:var(--text);
       font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
       line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
       background:
         radial-gradient(circle at 18% 0%, rgba(176,192,255,.18), transparent 30%),
         radial-gradient(circle at 84% 16%, rgba(249,115,22,.12), transparent 22%),
@@ -33,121 +41,180 @@
         linear-gradient(180deg, var(--bg), var(--bg-2));
       background-size:auto,auto,72px 72px,72px 72px,auto;
       background-attachment:fixed;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
     }
     a{color:inherit;text-decoration:none}
-    a:hover{color:var(--blue)}
+    a:hover{color:var(--amber)}
     .mono{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
       letter-spacing:.08em;
     }
     .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 96px}
     .topbar{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-      padding:10px 0 18px;border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0 18px;
+      border-bottom:1px solid var(--line);
     }
-    .brand{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
     .brand-mark{
-      width:10px;height:10px;border-radius:999px;background:linear-gradient(180deg,#89b1ff,#bfd0ff);
-      box-shadow:0 0 14px rgba(143,167,255,.45);
+      width:10px;height:10px;border-radius:999px;
+      background:linear-gradient(180deg,#ff9f54,#f97316);
+      box-shadow:0 0 14px rgba(249,115,22,.22);
     }
     .brand-kicker{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
-    .brand-title{font-size:14px;color:var(--text)}
+    .brand-title{font-size:14px;color:var(--text);white-space:nowrap}
     .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
     .nav a{
-      padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.6);
-      color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.6);color:var(--muted);font-size:12px;
+      text-transform:uppercase;letter-spacing:.12em;
       backdrop-filter:blur(12px);
     }
-    .nav a.active,.nav a:hover{color:var(--text);border-color:var(--line-strong);background:rgba(190,203,255,.38)}
+    .nav a.active,.nav a:hover{
+      color:var(--text);border-color:var(--line-strong);background:rgba(255,244,232,.92);
+    }
     .hero{
       display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
-      gap:18px;margin-top:22px;
+      gap:18px;margin-top:22px;align-items:stretch;
     }
-    .hero-main,.hero-side,.panel,.empty{
+    .hero-main,.hero-side,.panel,.list,.quote{
       border:1px solid var(--line);
-      border-radius:22px;
       background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,253,248,.72));
       box-shadow:var(--shadow);
-      backdrop-filter:blur(16px);
+      backdrop-filter:blur(20px);
     }
-    .hero-main,.hero-side,.panel,.empty{padding:22px}
+    .hero-main{border-radius:22px;padding:24px;position:relative;overflow:hidden}
+    .hero-main::before{
+      content:"";position:absolute;inset:auto -10% -35% 30%;height:260px;
+      background:radial-gradient(circle, rgba(249,115,22,.14), transparent 60%);
+      pointer-events:none;
+    }
     .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);
-      border-radius:999px;color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.46);
+      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;
+      border:1px solid var(--line);border-radius:999px;color:var(--soft);
+      font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.46);
     }
     .eyebrow::before{
-      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);box-shadow:0 0 10px rgba(249,115,22,.3);
+      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);
+      box-shadow:0 0 10px rgba(249,115,22,.3);
     }
-    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.98;letter-spacing:-.045em;font-weight:650;font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
-    h1 .accent{color:var(--amber)}
-    .lead,.hero-side p,.panel p,.empty p{margin:0;color:var(--soft);font-size:15px}
-    .mini-list{display:grid;gap:10px;margin-top:12px}
-    .mini-item{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.94;letter-spacing:-.045em;font-weight:650;font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
+    .headline{display:block;max-width:10ch}
+    .headline-line{display:block}
+    .ghost-word,.texture-word{display:inline-block;position:relative;font-weight:700;letter-spacing:-.06em}
+    .ghost-word{color:rgba(17,17,17,.96)}
+    .texture-word{
+      color:transparent;
+      background-image:
+        linear-gradient(180deg, rgba(255,171,97,.98), rgba(249,115,22,.96)),
+        repeating-linear-gradient(90deg, rgba(255,250,241,0) 0 14px, rgba(255,250,241,.18) 14px 15px),
+        repeating-linear-gradient(180deg, rgba(17,17,17,0) 0 9px, rgba(17,17,17,.16) 9px 10px);
+      background-blend-mode:normal,screen,multiply;
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    .lead,.hero-side p,.panel p,.quote p{margin:0;color:var(--soft);font-size:15px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.65);font-size:13px;color:var(--soft)
+    }
+    .btn.primary{background:#111111;color:#fffaf1;border-color:#111111}
+    .hero-side{border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+    .side-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em}
+    .signal-title{font-size:28px;line-height:1.14;letter-spacing:-.03em;margin:0}
+    .signal-copy{color:var(--soft);font-size:14px}
+    .status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .status-item{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+    .status-item.wide{grid-column:1 / -1}
+    .status-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
+    .status-value{font-size:13px;color:var(--soft)}
+    .section{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;margin-top:22px}
+    .section-rail{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;padding-top:8px}
+    .panel{border-radius:20px;padding:22px}
+    .panel h2{margin:0 0 8px;font-size:28px;line-height:1.16;letter-spacing:-.04em}
+    .list{border-radius:20px;overflow:hidden}
+    .row{
+      display:grid;grid-template-columns:120px minmax(0,1fr) 90px;
+      gap:12px;padding:16px 18px;border-top:1px solid var(--line);background:rgba(255,255,255,.56)
+    }
+    .row:first-child{border-top:0}
+    .row:hover{background:rgba(255,244,232,.8)}
+    .type{font-size:11px;color:var(--muted);text-transform:uppercase}
+    .title{font-size:15px;color:var(--text)}
+    .meta{font-size:12px;color:var(--muted);text-align:right}
+    .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{
+      border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.48);
+      padding:16px;display:block
+    }
+    .card b{display:block;margin-bottom:8px;font-size:14px}
+    .card p{margin:0;font-size:13px;color:var(--muted)}
+    .quote{
+      margin-top:22px;border-radius:20px;padding:18px 22px;border-left:3px solid var(--amber)
+    }
+    .mini-list{display:grid;gap:10px}
+    .mini-item{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
     .mini-item:first-child{padding-top:0;border-top:0}
     .mini-item b{display:block;margin-bottom:4px;font-size:13px}
     .mini-item span{color:var(--muted);font-size:12px}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
-    .card{border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);padding:14px}
-    .card b{display:block;margin-bottom:8px;color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.14em}
-    .card p{margin:0;color:var(--muted);font-size:13px}
-    .empty{margin-top:18px}
-    @media (max-width:980px){.hero,.grid{grid-template-columns:1fr}}
+    @media (max-width:980px){
+      .hero,.section,.card-grid,.status-grid{grid-template-columns:1fr}
+      .section-rail{padding-top:0}
+      .status-item.wide{grid-column:auto}
+    }
     @media (max-width:680px){
       .wrap{padding:22px 14px 72px}
       .topbar{align-items:flex-start;flex-direction:column}
       .nav{justify-content:flex-start}
+      .row{grid-template-columns:1fr}
+      .meta{text-align:left}
       h1{font-size:clamp(38px,15vw,66px)}
     }
-  </style>
+    </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
       <div class="brand">
         <span class="brand-mark"></span>
-        <div>
-          <div class="brand-kicker mono">ReelOS Long-Cycle Desk</div>
+        <div class="brand-copy">
+          <div class="brand-kicker mono">ReelOS Long Cycle Desk</div>
           <div class="brand-title">GitHub Signal / Monthly Trend Review</div>
         </div>
       </div>
-      <nav class="nav">
-        <a href="/">Overview</a>
-        <a href="/daily/">Daily</a>
-        <a href="/weekly/">Weekly</a>
-        <a class="active" href="/monthly/">Monthly</a>
-        <a href="/archive/">Archive</a>
-      </nav>
+      <nav class="nav"><a class="" href="/">Overview</a><a class="" href="/daily/">Daily</a><a class="" href="/weekly/">Weekly</a><a class="active" href="/monthly/">Monthly</a><a class="" href="/archive/">Archive</a></nav>
     </header>
 
     <section class="hero">
       <div class="hero-main">
         <div class="eyebrow mono">Category Migration Layer</div>
-        <h1>Monthly <span class="accent">Trend Review</span></h1>
-        <p class="lead">月报负责把高频仓库提升到赛道层判断。它不追单点爆发，而是判断哪些方向正在基础设施化，哪些只是热度包装，哪些开始形成真正的项目簇。</p>
+        <h1 class="headline"><span class="headline-line"><span class="ghost-word">Monthly</span> <span class="texture-word">Trend Review</span></span></h1>
+        <p class="lead">月报是更慢的判断层。它把一个月里反复出现的仓库和主题抬升到赛道视角，回答哪些方向开始成熟、哪些能力正在基础设施化、哪些只是情绪性泡沫。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/monthly/2026-07/">打开最新月报</a>
+          <a class="btn" href="/monthly-top10-2026-07.json">Evidence JSON</a>
+          <a class="btn" href="/monthly-trending-data-2026-07.json">Raw Data</a>
+        </div>
       </div>
       <aside class="hero-side">
-        <p>当前站点尚未发布月报，但月报入口已经切换到与首页一致的情报壳层，后续发布时不会再像“占位页”。</p>
-        <div class="mini-list">
-          <div class="mini-item"><div><b>观察对象</b><span>Agent / Memory / MCP / Workspace / Runtime</span></div><span class="mono">5</span></div>
-          <div class="mini-item"><div><b>周期职责</b><span>赛道迁移与成熟度判断</span></div><span class="mono">30D</span></div>
-        </div>
+        <div class="side-label mono">Current Monthly</div>
+        <h2 class="signal-title"><a href="/monthly/2026-07/">GitHub 热榜情报月报 · 2026-07</a></h2>
+        <p class="signal-copy">月报不是把周报拉长，而是把 Top 项目还原成品类、项目簇和赛道迁移，用更低噪音的视角做判断。</p>
       </aside>
     </section>
 
-    <section class="panel">
-      <h2>月报会关注什么</h2>
-      <p>月报不复制周报，而是把连续出现的项目和主题抬升到更慢的视角：哪些能力开始成为标准组件，哪些方向已出现同质化，哪些开放协议正在形成稳定生态位。</p>
-      <div class="grid">
-        <div class="card"><b>品类迁移</b><p>哪些方向从玩具走向基础设施，哪些只是热点包装。</p></div>
-        <div class="card"><b>持续出现</b><p>跨日报与周报重复出现的项目，会优先进入长期观察。</p></div>
-        <div class="card"><b>风险复盘</b><p>license、维护、社区健康和安全边界的月度变化。</p></div>
+    <section class="section">
+      <div class="section-rail mono">01 / Review</div>
+      <div>
+        <div class="panel">
+          <h2>月报目录</h2>
+          <p>每期月报都以品类热度地图、项目簇、成熟度评分和下月动作四层结构输出，避免再次退回单项目列表化叙述。</p>
+        </div>
+        <div class="list"><a class="row" href="/monthly/2026-07/"><span class="type mono">Monthly</span><span class="title">GitHub 热榜情报月报 · 2026-07</span><span class="meta mono">Top 10</span></a></div>
       </div>
-    </section>
-
-    <section class="empty">
-      <p>当前站点尚未发布月报。最近可用主报告是 <a href="/weekly/2026-06-29/">2026-06-29 周报</a>，下一期月报将沿用这一套更完整的情报视觉系统。</p>
     </section>
   </div>
 </body>
