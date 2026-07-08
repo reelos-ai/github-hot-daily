@@ -1,0 +1,703 @@
+[
+  {
+    "owner": "ogulcancelik",
+    "name": "herdr",
+    "full_name": "ogulcancelik/herdr",
+    "url": "https://github.com/ogulcancelik/herdr",
+    "description": "agent multiplexer that lives in your terminal.",
+    "language": "Rust",
+    "total_stars": 14342,
+    "forks": 822,
+    "stars_this_period": 868,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agent-orchestration",
+        "ai",
+        "ai-agents",
+        "claude-code",
+        "cli",
+        "codex",
+        "coding-agents",
+        "developer-tools",
+        "devtools",
+        "multiplexer",
+        "rust",
+        "terminal",
+        "terminal-multiplexer",
+        "terminal-ui",
+        "tmux",
+        "tui",
+        "workspace-manager"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 49,
+      "created_at": "2026-03-27T17:54:33Z",
+      "pushed_at": "2026-07-08T20:12:45Z",
+      "homepage": "https://herdr.dev",
+      "default_branch": "master",
+      "forks": 822,
+      "watchers": 44,
+      "archived": false,
+      "size_kb": 30319
+    },
+    "readme_content": "# herdr\n\n\n<p align=\"center\">\n  <img src=\"assets/logo.png\" alt=\"herdr\" width=\"100\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://herdr.dev\">herdr.dev</a> · <a href=\"#install\">install</a> · <a href=\"https://herdr.dev/docs/quick-start/\">quick start</a> · <a href=\"https://herdr.dev/docs/\">docs</a> · <a href=\"#sponsors\">sponsors</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPL--3.0-666666?labelColor=333333\" alt=\"AGPL 3.0 license\" /></a>\n  <a href=\"https://github.com/ogulcancelik/herdr/releases\"><img src=\"https://img.shields.io/github/downloads/ogulcancelik/herdr/total?labelColor=333333&color=666666\" alt=\"total GitHub release downloads\" /></a>\n  <a href=\"https://github.com/ogulcancelik/herdr/stargazers\"><img src=\"https://img.shields.io/github/stars/ogulcancelik/herdr?labelColor=333333&color=666666&logo=github\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/ogulcancelik/herdr/releases/latest\"><img src=\"https://img.shields.io/github/v/release/ogulcancelik/herdr?label=release&labelColor=333333&color=666666\" alt=\"latest stable release\" /></a>\n  <a href=\"https://formulae.brew.sh/formula/herdr\"><img src=\"https://img.shields.io/homebrew/v/herdr?label=homebrew&labelColor=333333&color=666666\" alt=\"Homebrew version\" /></a>\n  <a href=\"https://x.com/herdrdev\"><img src=\"https://img.shields.io/badge/follow-%40herdrdev-000000?logo=x&logoColor=white\" alt=\"follow @herdrdev on X\" /></a>\n</p>\n\n---\n\nhttps://github.com/user-attachments/assets/043ec09f-4bdd-41d5-aee0-8fda6b83e267\n\n**agent multiplexer that lives in your terminal.**\n\n- **every agent at a glance** — blocked, working, done. real terminal views, not a wrapped interpretation.\n- **detach, agents keep running** — reattach from any terminal, or over ssh. sessions survive restarts.\n- **agents can use herdr too** — a pure socket api: agents spawn panes, read output, wait on each other. [agent skill →](https://herdr.dev/docs/agent-skill/)\n- **keyboard and mouse, both first-class** — tmux-style prefix keys *and* click, drag, split. pick per moment, not per tool.\n- **plugins** — extend panes and workflows. [browse the marketplace →](https://herdr.dev/plugins/)\n- **one rust binary, no electron** — runs in whatever terminal you already use.\n\n---\n\n## install\n\n```bash\ncurl -fsSL https://herdr.dev/install.sh | sh\n```\n\nor `brew install herdr` · `mise use -g herdr` · windows beta: `powershell -ExecutionPolicy Bypass -c \"irm https://herdr.dev/install.ps1 | iex\"` · [binaries](https://github.com/ogulcancelik/herdr/releases)\n\nthen start it where the work lives:\n\n```bash\nherdr\n```\n\nrun your agents, split panes, walk away. `ctrl+b q` detaches, `herdr` reattaches. [quick start →](https://herdr.dev/docs/quick-start/)\n\n## docs\n\neverything lives at [herdr.dev/docs](https://herdr.dev/docs/): [quick start](https://herdr.dev/docs/quick-start/) · [concepts](https://herdr.dev/docs/concepts/) · [supported agents](https://herdr.dev/docs/agents/) · [keyboard](https://herdr.dev/docs/keyboard/) · [configuration](https://herdr.dev/docs/configuration/) · [session state](https://herdr.dev/docs/session-state/) · [remote](https://herdr.dev/docs/persistence-remote/) · [integrations](https://herdr.dev/docs/integrations/) · [plugins](https://herdr.dev/docs/plugins/) · [socket api](https://herdr.dev/docs/socket-api/)\n\n## sponsors\n\nherdr is built full-time, in the open. sponsoring directly funds development, stability, and the path to a real agent runtime.\n\n### gold\n\n<a href=\"https://terminaltrove.com/\"><img src=\"assets/sponsors/terminal-trove.png\" alt=\"Terminal Trove\" width=\"200\" /></a>\n\n[**→ become a sponsor**](https://github.com/sponsors/ogulcancelik) · enterprise / partnership: hey@herdr.dev · see [SPONSORS.md](./SPONSORS.md) for tiers. thank you 🐑\n\n## agent instructions\n\nif you are an ai agent helping with this repository, read [`AGENTS.md`](./AGENTS.md) before making changes and read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before opening issues or PRs.\n\n## development\n\n```bash\ngit clone https://github.com/ogulcancelik/herdr\ncd herdr\ncargo build --release\n\njust test        # unit tests\njust check       # formatting, tests, and maintenance checks\n```\n\n## license\n\nHerdr is dual-licensed:\n\n1. Open source: GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later).\n2. Commercial: commercial licenses are available for organizations that cannot comply with AGPL.\n\nContact: hey@herdr.dev\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"herdr\"\nversion = \"0.7.3\"\nedition = \"2021\"\nbuild = \"build.rs\"\ndescription = \"terminal workspace manager for AI coding agents\"\nlicense = \"AGPL-3.0-or-later\"\nrepository = \"https://github.com/ogulcancelik/herdr\"\nhomepage = \"https://herdr.dev\"\nkeywords = [\"terminal\", \"tui\", \"ai\", \"agents\", \"multiplexer\"]\ncategories = [\"command-line-utilities\"]\ninclude = [\n    \"src/**/*\",\n    \"assets/sounds/*\",\n    \"docs/next/api/herdr-api.schema.json\",\n    \"README.md\",\n    \"LICENSE\",\n    \"Cargo.toml\",\n]\n\n[dependencies]\nbase64 = \"0.22.1\"\nbincode = { version = \"2\", features = [\"serde\"] }\nbytes = \"1\"\nclap = { version = \"4.5\", default-features = false, features = [\"std\"] }\nclap_complete = \"4.5\"\ncrossterm = \"0.29\"\nctrlc = \"3\"\ninterprocess = \"2.4.2\"\nlibc = \"0.2\"\nportable-pty = \"=0.9.0\"\npng = \"0.17\"\nratatui = { version = \"0.30\", features = [\"unstable-rendered-line-info\"] }\nregex = \"1\"\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\nsha2 = \"0.10\"\ntokio = { version = \"1\", features = [\"rt-multi-thread\", \"macros\", \"sync\", \"time\"] }\ntoml = \"0.8\"\ntracing = \"0.1.44\"\ntracing-subscriber = { version = \"0.3.23\", features = [\"env-filter\"] }\nunicode-width = \"0.2\"\nschemars = { version = \"1.2.1\", features = [\"derive\"] }\n\n[patch.crates-io]\nportable-pty = { path = \"vendor/portable-pty\" }\n\n[target.'cfg(windows)'.dependencies]\nwindows-sys = { version = \"0.61.2\", features = [\n    \"Wdk_System_Threading\",\n    \"Win32_Foundation\",\n    \"Win32_System_DataExchange\",\n    \"Win32_System_Diagnostics_Debug\",\n    \"Win32_System_Diagnostics_ToolHelp\",\n    \"Win32_System_Console\",\n    \"Win32_System_Kernel\",\n    \"Win32_System_Memory\",\n    \"Win32_System_Ole\",\n    \"Win32_System_Pipes\",\n    \"Win32_System_Threading\",\n    \"Win32_UI_Shell\",\n    \"Win32_UI_WindowsAndMessaging\",\n] }\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "skill",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95
+  },
+  {
+    "owner": "ruvnet",
+    "name": "RuView",
+    "full_name": "ruvnet/RuView",
+    "url": "https://github.com/ruvnet/RuView",
+    "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+    "language": "Rust",
+    "total_stars": 79088,
+    "forks": 10641,
+    "stars_this_period": 793,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "awesome",
+        "claude",
+        "densepose",
+        "esp32",
+        "firmware",
+        "home-assistant",
+        "home-automation",
+        "iot",
+        "monitoring",
+        "networking",
+        "npm",
+        "pose-estimation",
+        "react",
+        "rf",
+        "self-learning",
+        "skills",
+        "spatial-intelligence",
+        "typescript",
+        "wifi",
+        "wifi-security"
+      ],
+      "license": "MIT",
+      "open_issues": 344,
+      "created_at": "2025-06-07T04:32:30Z",
+      "pushed_at": "2026-07-08T18:34:47Z",
+      "homepage": "https://Cognitum.One/RuView",
+      "default_branch": "main",
+      "forks": 10641,
+      "watchers": 635,
+      "archived": false,
+      "size_kb": 179264
+    },
+    "readme_content": "# π RuView\n\n<p align=\"center\">\n  <a href=\"https://cognitum.one/seed\">\n    <img src=\"assets/ruview-seed.png\" alt=\"RuView - WiFi DensePose\" width=\"100%\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://cognitum.one/seed\">\n    <img src=\"assets/seed.png\" alt=\"Cognitum Seed\" width=\"100%\">\n  </a>\n</p>\n\n## **See through walls with WiFi** ##\n\n**Turn ordinary WiFi into a spatial intelligence / sensing system.** Detect people, measure breathing and heart rate, track movement, and monitor rooms — through walls, in the dark, with no cameras or wearables. Just physics.\n\nWorks natively with the four major smart-home ecosystems: **[Home Assistant](docs/integrations/home-assistant.md)** via the HA-DISCO MQTT publisher, **[Apple Home & HomePod](docs/user-guide-apple-homepod.md)** as a discoverable HAP-1.1 bridge, **[Google Home](docs/integrations/home-assistant.md)** + **[Amazon Alexa](docs/integrations/home-assistant.md)** via the same HA bridge or a [Matter](docs/adr/ADR-122-bfld-ruview-ha-matter-exposure.md) endpoint. Siri, Google Assistant, and Alexa can voice presence and vitals by room with zero custom skills.\n\n[![Works with Home Assistant](https://img.shields.io/badge/Works%20with-Home%20Assistant-blue?logo=home-assistant&logoColor=white&labelColor=41BDF5)](docs/integrations/home-assistant.md) [![Works with Matter](https://img.shields.io/badge/Works%20with-Matter-blue?labelColor=4285F4)](docs/adr/ADR-122-bfld-ruview-ha-matter-exposure.md) [![Works with Apple Home](https://img.shields.io/badge/Works%20with-Apple%20Home-black?logo=apple)](docs/user-guide-apple-homepod.md) [![Works with Google Home](https://img.shields.io/badge/Works%20with-Google%20Home-blue?logo=googlehome)](docs/integrations/home-assistant.md) [![Works with Alexa](https://img.shields.io/badge/Works%20with-Alexa-blue?logo=amazon&logoColor=white&labelColor=00CAFF)](docs/integrations/home-assistant.md)\n\n> Drop into any **Home Assistant** install with one `--mqtt` flag. Or pair into **Apple Home / Google Home / Alexa / SmartThings** as a Matter Bridge. Ships 21 entities per node (11 raw signals + 10 inferred semantic states: someone-sleeping, possible-distress, room-active, elderly-inactivity-anomaly, meeting-in-progress, bathroom-occupied, fall-risk-elevated, bed-exit, no-movement, multi-room-transition) plus 3 starter HA Blueprints. See [`docs/integrations/home-assistant.md`](docs/integrations/home-assistant.md) · [ADR-115](docs/adr/ADR-115-home-assistant-integration.md).\n\n### π RuView is a WiFi sensing platform that turns radio signals into spatial intelligence.\n\nEvery WiFi router already fills your space with radio waves. When people move, breathe, or even sit still, they disturb those waves in measurable ways. RuView captures these disturbances using Channel State Information (CSI) from low-cost ESP32 sensors and turns them into actionable data: who's there, what they're doing, and whether they're okay.\n\n**What it senses:**\n- **Presence and occupancy** — detect people through walls, count them, track entries and exits\n- **Vital signs** — breathing rate and heart rate, contactless, while sleeping or sitting\n- **Activity recognition** — walking, sitting, gestures, falls — from temporal CSI patterns\n- **Environment mapping** — RF fingerprinting identifies rooms, detects moved furniture, spots new objects\n- **Sleep quality** — overnight monitoring with sleep stage classification and apnea screening\n\nBuilt on [RuVector](https://github.com/ruvnet/ruvector/) and [Cognitum Seed](https://cognitum.one), RuView runs entirely on edge hardware — an ESP32 mesh (as low as $9 per node) paired with a Cognitum Seed for persistent memory, cryptographic attestation, and AI integration. No cloud, no cameras, no internet required.\n\nThe system learns each environment locally using spiking neural networks that adapt in under 30 seconds, with multi-frequency mesh scanning across 6 WiFi channels that uses your neighbors' routers as free radar illuminators. Every measurement is cryptographically attested via an Ed25519 witness chain.\n\nRuView turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the radio reflections off the people in a room, and a small pretrained model — published on Hugging Face at [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — tells you who's there, how they're breathing, and how their heart rate is trending. The model fits in 8 KB (4-bit quantized) and runs in microseconds on a Raspberry Pi. (The [v2 encoder](https://huggingface.co/ruvnet/wifi-densepose-pretrained) reports an honest, label-free held-out **temporal-triplet accuracy of 82.3%** — up from 66.4% raw; the older \"100% presence\" figure was measured on a single-class recording and has been retracted in favor of this.) No cameras, no wearables, no app on the user's phone.\n\n### Built for low-power edge applications\n\n[Edge modules](#edge-intelligence-adr-041) are small programs that run directly on the ESP32 sensor — no internet needed, no cloud fees, instant response.\n\n[![Rust 1.85+](https://img.shields.io/badge/rust-1.85+-orange.svg)](https://www.rust-lang.org/)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Tests: 1463](https://img.shields.io/badge/tests-1463%20passed-brightgreen.svg)](https://github.com/ruvnet/RuView)\n[![Docker: multi-arch](https://img.shields.io/badge/docker-amd64%20%2B%20arm64-blue.svg)](https://hub.docker.com/r/ruvnet/wifi-densepose)\n[![Vital Signs](https://img.shields.io/badge/vital%20signs-breathing%20%2B%20heartbeat-red.svg)](#vital-sign-detection)\n[![ESP32 Ready](https://img.shields.io/badge/ESP32--S3-CSI%20streaming-purple.svg)](#esp32-s3-hardware-pipeline)\n[![crates.io](https://img.shields.io/crates/v/wifi-densepose-ruvector.svg)](https://crates.io/crates/wifi-densepose-ruvector)\n[![Downloads](https://img.shields.io/badge/downloads-10M%2B-brightgreen.svg)](#-edge-module-catalog)\n\n \n> | What | How | Speed / scale |\n> |------|-----|---------------|\n> | 🫁 **Breathing rate** | Bandpass 0.1–0.5 Hz on wrapped phase, circular variance, zero-crossing BPM ([#593](https://github.com/ruvnet/RuView/issues/593)) | 6–30 BPM, real-time |\n> | 💓 **Heart rate** | Bandpass 0.8–2.0 Hz, zero-crossing BPM | 40–120 BPM, real-time |\n> | 👤 **Presence detection** | Trained head on Hugging Face ([`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained); v2 encoder = 82.3% held-out temporal-triplet acc, honestly re-benchmarked) + a phase-variance fallback that needs no model | < 1 ms, ~30 s ambient calibration |\n> | 🧬 **CSI embeddings** | 128-dim contrastive encoder shipped on Hugging Face, 4-bit quantised variant fits in 8 KB | **164,183 emb/s** on M4 Pro |\n> | 🦴 **17-keypoint pose estimation** | `cog-pose-estimation` Cog v0.0.1 — signed aarch64 + x86_64 binaries on GCS, loads `pose_v1.safetensors` via Candle. Train your own from paired data in 2.1 s on an RTX 5080 ([ADR-101](docs/adr/ADR-101-pose-estimation-cog.md), [benchmarks](docs/benchmarks/pose-estimation-cog.md)). **SOTA on MM-Fi:** [`ruvnet/wifi-densepose-mmfi-pose`](https://huggingface.co/ruvnet/wifi-densepose-mmfi-pose) hits **82.69% torso-PCK@20** (ensemble 83.59%), beating MultiFormer (72.25%) and CSI2Pose (68.41%) on the matched MM-Fi `random_split` protocol — self-corrected and auditable on [AetherArena](https://huggingface.co/spaces/ruvnet/aether-arena) | 8.4 ms cold-start on a Pi 5 |\n> | 🚶 **Motion / activity** | Motion-band power + phase acceleration | Real-time |\n> | 🤸 **Fall detection** | Phase-acceleration threshold + 3-frame debounce + 5 s cooldown ([#263](https://github.com/ruvnet/RuView/issues/263)) | < 200 ms |\n> | 🧮 **Multi-person count** | Adaptive P95 normalisation + runtime-tunable dedup factor (`/api/v1/config/dedup-factor`, [#491](https://github.com/ruvnet/RuView/pull/491)). Six specialised learned counters available as Cogs: `occupancy-zones`, `elevator-count`, `queue-length`, `customer-flow`, `clean-room`, `person-matching` | Real-time, self-calibrating |\n> | 🌍 **World model prediction** | OccWorld TransVQVAE — 15-frame future occupancy prediction, 209 ms inference, 3.4 GB VRAM on RTX 5080; fine-tune on your space with `occworld_retrain.py` ([ADR-147](docs/adr/ADR-147-nvidia-cosmos-world-foundation-model-integration.md)) | 15 frames × 200×200×16 vox |\n> | 🧱 **Through-wall sensing** | Fresnel-zone geometry + multipath modeling | Up to ~5 m, signal-dependent |\n> | 🧠 **Edge intelligence** | **105-cog catalog** ([ADR-102](docs/adr/ADR-102-edge-module-registry.md)) live from `app-registry.json` — health, security, building, retail, industrial, research, AI, swarm, signal, network, and developer modules. Optional Cognitum Seed adds persistent vector store + kNN + witness chain | $140 total BOM |\n> | 🎯 **Camera-free pre-training** | Self-supervised contrastive encoder, 12.2M training steps on 60K frames, shipped on Hugging Face | 84 s/epoch retrain on M4 Pro |\n> | 📷 **Camera-supervised fine-tune** | MediaPipe + ESP32 CSI paired training, end-to-end Candle pipeline on RTX 5080 ([ADR-079](docs/adr/ADR-079-camera-supervised-pose-finetune.md)) | 2.1 s for 400 epochs (~5 ms/epoch) |\n> | 📡 **Multi-frequency mesh** | Channel hopping across 6 bands, TDM slot scheduling ([ADR-029](docs/adr/ADR-029-multifrequency-mesh.md)) | 3× sensing bandwidth |\n> | 🌐 **3D point cloud fusion** | Camera depth (MiDaS) + WiFi CSI + mmWave radar → unified spatial model | 22 ms pipeline · 19K+ points/frame |\n>\n> Browse the full 105-module catalog (with practical descriptions, sizes, and difficulty) below in [🧩 Edge Module Catalog](#-edge-module-catalog), or visit [seed.cognitum.one/store](https://seed.cognitum.one/store).\n>\n> 🤗 **Pretrained weights**: download from [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — see [Loading the pretrained model](#loading-the-pretrained-model) below for one-command setup.\n\n```bash\n# Option 1: Docker (simulated data, no hardware needed)\ndocker pull ruvnet/wifi-densepose:latest\ndocker run -p 3000:3000 ruvnet/wifi-densepose:latest\n# Open http://localhost:3000\n\n# Option 2a: Live sensing with ESP32-S3 hardware ($9)\n# Flash firmware, provision WiFi, and start sensing:\npython -m esptool --chip esp32s3 --port COM9 --baud 460800 \\\n  write_flash 0x0 bootloader.bin 0x8000 partition-table.bin \\\n  0xf000 ota_data_initial.bin 0x20000 esp32-csi-node.bin\npython firmware/esp32-csi-node/provision.py --port COM9 \\\n  --ssid \"YourWiFi\" --password \"secret\" --target-ip 192.168.1.20\n\n# Option 2b: WiFi 6 + 802.15.4 research sensing with ESP32-C6 ($6-10, ADR-110)\n# Same csi-node firmware compiled for the C6 target — picks up the C6\n# overlay (sdkconfig.defaults.esp32c6) automatically.\ncd firmware/esp32-csi-node\nidf.py set-target esp32c6 && idf.py build\nidf.py -p COM6 flash\n# C6 boot extras (vs S3): HE-LTF subcarrier tagging in ADR-018 bytes 18-19,\n#   802.15.4 mesh time-sync on channel 15, TWT setup when the AP supports it,\n#   opt-in LP-core wake-on-motion for ~5 µA battery seed nodes.\n# v0.6.7 adds: real LP-core RISC-V motion-gate program (debounce + motion\n#   counter) and a Wi-Fi 6 soft-AP with TWT Responder so two C6 boards can\n#   benchmark real iTWT without buying an 11ax router. Both default off,\n#   flip CONFIG_C6_{LP_CORE,SOFTAP_HE}_ENABLE to turn them on.\n\n# Option 3: Full system with Cognitum Seed ($140)\n# ESP32 streams CSI → bridge forwards to Seed for persistent storage + kNN + witness chain\nnode scripts/rf-scan.js --port 5006           # Live RF room scan\nnode scripts/snn-csi-processor.js --port 5006  # SNN real-time learning\nnode scripts/mincut-person-counter.js --port 5006  # Correct person counting\n\n# Option 4: Python — live on PyPI (ADR-117)\npip install ruview                        # or: pip install wifi-densepose\n# Both ship the same compiled PyO3 wheel (~250 KB, abi3-py310, Linux/macOS/Windows).\n# Add [client] for the asyncio WebSocket + paho-mqtt clients:\npip install \"ruvie",
+    "strategic_keywords": [
+      "memory",
+      "skill",
+      "automation",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95
+  },
+  {
+    "owner": "TencentCloud",
+    "name": "CubeSandbox",
+    "full_name": "TencentCloud/CubeSandbox",
+    "url": "https://github.com/TencentCloud/CubeSandbox",
+    "description": "Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents.",
+    "language": "Rust",
+    "total_stars": 8890,
+    "forks": 736,
+    "stars_this_period": 555,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "container",
+        "sandbox"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 107,
+      "created_at": "2026-04-10T03:00:31Z",
+      "pushed_at": "2026-07-08T12:51:18Z",
+      "homepage": "https://cubesandbox.com",
+      "default_branch": "master",
+      "forks": 736,
+      "watchers": 43,
+      "archived": false,
+      "size_kb": 30484
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"docs/assets/cube-sandbox-logo.png\" alt=\"Cube Sandbox Logo\" width=\"140\" />\n</p>\n\n<h1 align=\"center\">CubeSandbox</h1>\n\n<p align=\"center\">\n  <strong>Instant, Concurrent, Secure & Lightweight Sandbox Service for AI Agents</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/26338?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-26338\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/26338\" alt=\"TencentCloud/CubeSandbox | Trendshift\" width=\"250\" height=\"55\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/tencentcloud/CubeSandbox/stargazers\"><img src=\"https://img.shields.io/github/stars/tencentcloud/cubesandbox?style=social\" alt=\"GitHub Stars\" /></a>\n  <a href=\"https://github.com/tencentcloud/CubeSandbox/issues\"><img src=\"https://img.shields.io/github/issues/tencentcloud/cubesandbox\" alt=\"GitHub Issues\" /></a>\n  <a href=\"./LICENSE\"><img src=\"https://img.shields.io/badge/License-Apache_2.0-green\" alt=\"Apache 2.0 License\" /></a>\n  <a href=\"./CONTRIBUTING.md\"><img src=\"https://img.shields.io/badge/PRs-welcome-brightgreen\" alt=\"PRs Welcome\" /></a>\n  <a href=\"https://pypi.org/project/cubesandbox/\"><img src=\"https://img.shields.io/badge/PyPI-0.3.0-blue\" alt=\"PyPI Version\" /></a>\n  <a href=\"https://landscape.cncf.io/?landscape=observability-and-analysis&group=ai-native&item=ai-native-infra--workload-runtime--cubesandbox\"><img src=\"https://img.shields.io/badge/CNCF-Landscape-0C66E4\" alt=\"CNCF Landscape\" /></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/⚡_Startup-Tens_of_ms-blue\" alt=\"Fast startup\" />\n  <img src=\"https://img.shields.io/badge/🔒_Isolation-Hardware_Level-critical\" alt=\"Hardware-level isolation\" />\n  <img src=\"https://img.shields.io/badge/🔌_API-E2B_Compatible-blueviolet\" alt=\"E2B compatible\" />\n  <img src=\"https://img.shields.io/badge/📦_Deploy-High_Concurrency·High_Density-orange\" alt=\"High concurrency & high density\" />\n</p>\n\n\n\n<p align=\"center\">\n  <a href=\"./README_zh.md\"><strong>中文文档</strong></a> ·\n  <a href=\"./docs/guide/quickstart.md\"><strong>Quick Start</strong></a> ·\n  <a href=\"./docs/index.md\"><strong>Documentation</strong></a> ·\n  <a href=\"./docs/changelog/index.md\"><strong>Changelog</strong></a> ·\n  <a href=\"https://x.com/CubeSandbox_AI\"><strong>X(Twitter)</strong></a>\n</p>\n\n---\n\nCube Sandbox is a high-performance, out-of-the-box secure sandbox service built on RustVMM and KVM. It supports both single-node deployment and easy scaling to multi-node clusters. It is compatible with the E2B SDK and can create a hardware-isolated, fully serviceable sandbox in under 60ms with less than 5MB of memory overhead.\n\n\n<p align=\"center\">\n  <img src=\"./docs/assets/readme_speed_en_1.png\" width=\"400\" />\n  <img src=\"./docs/assets/readme_overhead_en_1.png\" width=\"400\" />\n</p>\n\n## 📰 News\n\n<table>\n  <tr>\n    <td align=\"right\" valign=\"top\" width=\"100\">\n      <a href=\"./docs/changelog/v0.5.0.md\">\n        <img src=\"https://img.shields.io/badge/v0.5.0-2026.07.03-dc3545?style=flat-square\" alt=\"v0.5.0\" />\n      </a>\n    </td>\n    <td valign=\"top\">\n      <strong>v0.5: AutoPause, Terraform deployer, ARM64 &amp; network policy hardening</strong><br/>\n      <b>AutoPause/AutoResume</b> — idle sandboxes auto-suspend and wake on the next request. <b>Terraform one-click cluster deploy</b> <b>ARM64</b> native full-stack support <b>network policy hardening</b> — per-sandbox traffic tokens, policy-routing egress.<br/>\n      <a href=\"./docs/changelog/v0.5.0.md\">Changelog →</a> ·\n      <a href=\"./docs/guide/tencentcloud-terraform-deploy.md\">Terraform deploy →</a>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"right\" valign=\"top\" width=\"100\">\n      <a href=\"./docs/changelog/v0.4.0.md\">\n        <img src=\"https://img.shields.io/badge/v0.4.0-2026.06.14-6f42c1?style=flat-square\" alt=\"v0.4.0\" />\n      </a>\n    </td>\n    <td valign=\"top\">\n      <strong>v0.4: Safer egress, easier ops</strong><br/>\n      <b>Credential vault</b> — Agents call external APIs as usual; keys never enter the sandbox. <b>Dashboard</b> — version matrix and template health checks; see at a glance whether templates need rebuilding after upgrades.<br/>\n      <a href=\"./docs/changelog/v0.4.0.md\">Changelog →</a> ·\n      <a href=\"./docs/guide/security-proxy.md\">Security proxy guide →</a> ·\n      <a href=\"./docs/guide/webui.md\">WebUI guide →</a>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"right\" valign=\"top\" width=\"100\">\n      <a href=\"./docs/changelog/v0.3.0.md\">\n        <img src=\"https://img.shields.io/badge/v0.3.0-2026.06.02-007bff?style=flat-square\" alt=\"v0.3.0\" />\n      </a>\n    </td>\n    <td valign=\"top\">\n      <strong>Snapshot, Clone &amp; Rollback at hundred-millisecond granularity</strong><br/>\n      CubeSandbox 0.3.0 introduces the <b>CubeCoW</b> Copy-on-Write snapshot engine, enabling event-level snapshots, instant cloning, and rollback to any saved state.\n      <a href=\"./docs/changelog/v0.3.0.md\">Changelog →</a>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"right\" valign=\"top\" width=\"100\">\n      <a href=\"./docs/changelog/v0.1.0.md\">\n        <img src=\"https://img.shields.io/badge/v0.1.0-2026.04.20-28a745?style=flat-square\" alt=\"v0.1.0\" />\n      </a>\n    </td>\n    <td valign=\"top\">\n      <strong>🎉 Initial open-source release</strong><br/>\n      Cube Sandbox is now open source! Millisecond boot, hardware-level isolation, E2B-compatible sandbox for AI Agents.\n      <a href=\"./docs/changelog/v0.1.0.md\">Changelog →</a>\n    </td>\n  </tr>\n</table>\n\n## Product Highlights\n\n<table align=\"center\">\n  <tr align=\"center\" valign=\"top\">\n    <td width=\"33%\">\n      <strong>⚡ Sub-60ms boot · High density · Auto pause/resume</strong><br/><br/>\n      Average &lt;60ms cold start, &lt;5MB overhead per instance — run thousands of Agents on one node. Supports automatic sandbox pause and resume for cost optimization<br/><br/>\n      <a href=\"./docs/guide/quickstart.md\">Quick start →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>🔒 Hardware-level isolation</strong><br/><br/>\n      Each sandbox gets its own Guest OS kernel — no Docker shared-kernel escapes; run untrusted LLM-generated code safely<br/><br/>\n      <a href=\"./docs/architecture/overview.md\">Architecture →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>🔌 Seamless E2B migration</strong><br/><br/>\n      Native E2B SDK compatibility — swap one URL env var, zero business code changes<br/><br/>\n      <a href=\"./docs/guide/tutorials/examples.md\">Examples →</a>\n    </td>\n  </tr>\n  <tr align=\"center\" valign=\"top\">\n    <td width=\"33%\">\n      <strong>🖥️ Web console</strong><br/><br/>\n      Manage sandboxes, templates, nodes, and version matrix in the browser — open <code>:12088</code> right after install<br/><br/>\n      <a href=\"./docs/guide/webui.md\">WebUI guide →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>🔐 Credential vault</strong><br/><br/>\n      Agents call LLMs and external APIs as usual — keys never enter the sandbox, model context, or logs<br/><br/>\n      <a href=\"./docs/guide/security-proxy.md\">Security proxy guide →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>🛡️ Egress control</strong><br/><br/>\n      Domain allowlists, instant block on unauthorized egress, full audit logs for compliance<br/><br/>\n      <a href=\"./docs/guide/security-proxy.md\">Security proxy guide →</a>\n    </td>\n  </tr>\n  <tr align=\"center\" valign=\"top\">\n    <td width=\"33%\">\n      <strong>📸 Snapshot · Clone · Rollback</strong><br/><br/>\n      Hundred-millisecond checkpoints on running sandboxes — roll back or fork from any saved state<br/><br/>\n      <a href=\"./docs/changelog/v0.3.0.md\">v0.3 changelog →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>📦 Template system</strong><br/><br/>\n      Turn OCI images into templates in one step, install official presets from the Template Store, auto-distribute across nodes<br/><br/>\n      <a href=\"./docs/guide/templates.md\">Templates guide →</a>\n    </td>\n    <td width=\"33%\">\n      <strong>🤖 AgentHub digital assistants</strong><br/><br/>\n      Spin up OpenClaw assistants in one click — snapshots, rollback, and assistant template publishing<br/><br/>\n      <a href=\"./docs/guide/digital-assistant.md\">Digital assistant →</a>\n    </td>\n  </tr>\n</table>\n\n## Demos\n\n<table align=\"center\">\n  <tr align=\"center\" valign=\"middle\">\n    <td width=\"25%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/f87c409e-29fc-4e86-9eac-dbeaff2aca18\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n    <td width=\"25%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/50e7126e-bb73-4abc-aa85-677fdf2e8c67\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n    <td width=\"25%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/052e0e77-e2d9-409e-90b8-d13c28b80495\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n    <td width=\"25%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/c8845a84-5792-4062-ae9d-4787c24f5a58\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n  </tr>\n  <tr align=\"center\" valign=\"top\">\n    <td>\n      <em>Installation & Demo</em>\n    </td>\n    <td>\n      <em>Performance Test</em>\n    </td>\n    <td>\n      <em>RL (SWE-Bench)</em>\n    </td>\n    <td>\n      <em>Snapshot · Clone · Rollback</em>\n    </td>\n  </tr>\n</table>\n\n\n## Benchmarks\n\nIn the context of AI Agent code execution, CubeSandbox achieves the perfect balance of security and performance:\n\n| Metric | Docker Container | Traditional VM | CubeSandbox |\n|---|---|---|---|\n| **Isolation Level** | Low (Shared Kernel Namespaces) | High (Dedicated Kernel) | **Extreme (Dedicated Kernel + eBPF)** |\n| **Boot Speed** <br>*Full-OS boot duration | 200ms | Seconds | **Sub-millisecond (<60ms)** |\n| **Memory Overhead** | Low (Shared Kernel) | High (Full OS) | **Ultra-low (Aggressively stripped, <5MB)** |\n| **Deployment Density** | High | Low | **Extreme (Thousands per node)** |\n| **E2B SDK Compatible** | / | / | **✅ Drop-in** |\n\n*   *Cold start benchmarked on bare-metal. 60ms at single concurrency; under 50 concurrent creations, avg 67ms, P95 90ms, P99 137ms — consistently sub-150ms.*\n*   *Memory overhead measured with sandbox specs ≤ 32GB. Larger configurations may see a marginal increase.*\n\nFor detailed metrics on startup latency and resource overhead, see the [Core Operations Performance Benchmark Report](./docs/blog/posts/2026-06-01-cubesandbox-perf-benchmark.md) (bare metal) and the [PVM Cloud Server Benchmark Report](./docs/blog/posts/2026-06-03-cubesandbox-perf-benchmark-pvm.md).\n\n<table align=\"center\">\n  <tr align=\"center\" valign=\"middle\">\n    <td width=\"33%\" valign=\"middle\">\n      <img src=\"./docs/assets/1-concurrency-create.png\" />\n    </td>\n    <td width=\"33%\" valign=\"middle\">\n      <img src=\"./docs/assets/50-concurrency-create.png\" />\n    </td>\n    <td width=\"33%\" valign=\"middle\">\n      <img src=\"./docs/assets/cube-sandbox-mem-overhead.png\" />\n    </td>\n  </tr>\n  <tr align=\"center\" valign=\"top\">\n    <td colspan=\"2\">\n      <em>Sub-150ms sandbox delivery under both single and high-concurrency workloads</em>\n    </td>\n    <td>\n      <em>CubeSandbox base memory footprint across various instance sizes</em><br>\n      <sup>(*Blue: Sandbox specifications; Orange: Base memory overhead). Note that memory consumption increases only marginally as instance sizes scale up.\n</sup>\n    </td>\n  </tr>\n</table>\n\n## Quick Start\n\n</br>\n\n<p align=\"center\">\n  <img src=\"docs/assets/fast-start.gif\" alt=\"Cube Sandbox fast start walkthrough\" width=\"720\" />\n</p>\n\n<p align=\"center\">\n  <em>⚡ Millisecond-level startup — watch the fast-start flow above.</em>\n</p>\n\nCube Sandbox requires an **x86_64 Linux** environment with **KVM** support.\n\nThe guide walks you through everything in **four steps** — provisioning a server, installing Cube Sandbox, creating a sandbox template, and running ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "runtime"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95
+  },
+  {
+    "owner": "Egonex-AI",
+    "name": "Understand-Anything",
+    "full_name": "Egonex-AI/Understand-Anything",
+    "url": "https://github.com/Egonex-AI/Understand-Anything",
+    "description": "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more.",
+    "language": "TypeScript",
+    "total_stars": 72017,
+    "forks": 6012,
+    "stars_this_period": 346,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "antigravity-skills",
+        "business-knowledge",
+        "claude-code",
+        "claude-skills",
+        "codebase-analysis",
+        "codex",
+        "codex-skills",
+        "developer-tools-ai-agent",
+        "gemini-cli-skills",
+        "karpathy-llm-wiki",
+        "knowledge-base",
+        "knowledge-graph",
+        "memory",
+        "opencode-skills",
+        "pi-agent",
+        "understandcode",
+        "vibe-coding"
+      ],
+      "license": "MIT",
+      "open_issues": 267,
+      "created_at": "2026-03-15T02:30:51Z",
+      "pushed_at": "2026-07-08T07:50:42Z",
+      "homepage": "https://understand-anything.com",
+      "default_branch": "main",
+      "forks": 6012,
+      "watchers": 224,
+      "archived": false,
+      "size_kb": 34308
+    },
+    "readme_content": "<h1 align=\"center\">Understand Anything</h1>\n\n<p align=\"center\">\n  <strong>Turn any codebase, knowledge base, or docs into an interactive knowledge graph you can explore, search, and ask questions about.</strong>\n  <br />\n  <em>Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more.</em>\n</p>\n\n<p align=\"center\">\n  <strong>Understand Anything. <a href=\"https://egonex.ai\">Understand Anyone.</a></strong>\n  <br />\n  <em>AI should help people, not replace them.</em>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/23482\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/23482\" alt=\"Understand Anything | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\">English</a> | <a href=\"READMEs/README.zh-CN.md\">简体中文</a> | <a href=\"READMEs/README.zh-TW.md\">繁體中文</a> | <a href=\"READMEs/README.ja-JP.md\">日本語</a> | <a href=\"READMEs/README.ko-KR.md\">한국어</a> | <a href=\"READMEs/README.es-ES.md\">Español</a> | <a href=\"READMEs/README.tr-TR.md\">Türkçe</a> | <a href=\"READMEs/README.ru-RU.md\">Русский</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#-quick-start\"><img src=\"https://img.shields.io/badge/Quick_Start-blue\" alt=\"Quick Start\" /></a>\n  <a href=\"https://github.com/Egonex-AI/Understand-Anything/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-yellow\" alt=\"License: MIT\" /></a>\n  <a href=\"https://docs.anthropic.com/en/docs/claude-code\"><img src=\"https://img.shields.io/badge/Claude_Code-8A2BE2\" alt=\"Claude Code\" /></a>\n  <a href=\"#codex\"><img src=\"https://img.shields.io/badge/Codex-000000\" alt=\"Codex\" /></a>\n  <a href=\"#vs-code--github-copilot\"><img src=\"https://img.shields.io/badge/Copilot-24292e\" alt=\"Copilot\" /></a>\n  <a href=\"#copilot-cli\"><img src=\"https://img.shields.io/badge/Copilot_CLI-24292e\" alt=\"Copilot CLI\" /></a>\n  <a href=\"#gemini-cli\"><img src=\"https://img.shields.io/badge/Gemini_CLI-4285F4\" alt=\"Gemini CLI\" /></a>\n  <a href=\"#opencode\"><img src=\"https://img.shields.io/badge/OpenCode-38bdf8\" alt=\"OpenCode\" /></a>\n  <a href=\"#mistral-vibe-cli\"><img src=\"https://img.shields.io/badge/Vibe_CLI-7c3aed\" alt=\"Vibe CLI\" /></a>\n  <a href=\"#trae\"><img src=\"https://img.shields.io/badge/Trae-7e22ce\" alt=\"Trae\" /></a>\n  <a href=\"https://understand-anything.com\"><img src=\"https://img.shields.io/badge/Homepage-d4a574\" alt=\"Homepage\" /></a>\n  <a href=\"https://understand-anything.com/demo/\"><img src=\"https://img.shields.io/badge/Live_Demo-00c853\" alt=\"Live Demo\" /></a>\n  <a href=\"https://egonex.ai\"><img src=\"https://img.shields.io/badge/Understand_Anyone-egonex.ai-d4a574\" alt=\"Understand Anyone\" /></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"assets/hero.png\" alt=\"Understand Anything — Turn any codebase into an interactive knowledge graph\" width=\"800\" />\n</p>\n\n<p align=\"center\">\n  <strong>An open-source project from <a href=\"https://github.com/Egonex-AI\">Egonex</a></strong>\n  <br />\n  <em>Originally created by <a href=\"https://github.com/Lum1104\">Lum1104</a>.</em>\n</p>\n\n---\n\n**You just joined a new team. The codebase is 200,000 lines of code. Where do you even start?**\n\nUnderstand Anything is a [Claude Code Plugin](https://code.claude.com/docs/en/plugins-reference#plugins-reference) that analyzes your project with a multi-agent pipeline, builds a knowledge graph of every file, function, class, and dependency, then gives you an interactive dashboard to explore it all visually. Stop reading code blind. Start seeing the big picture.\n\n> **The goal isn't a graph that wows you with how complex your codebase is — it's a graph that quietly teaches you how every piece fits together.**\n\n---\n\n## ✨ Features\n\n> [!NOTE]\n> **Want to skip the reading?** Try the [live demo](https://understand-anything.com/demo/) in our [homepage](https://understand-anything.com/) — a fully interactive dashboard you can pan, zoom, search, and explore right in your browser.\n\n### Explore the structural graph\n\nNavigate your codebase as an interactive knowledge graph — every file, function, and class is a node you can click, search, and explore. Select any node to see plain-English summaries, relationships, and guided tours.\n\n### Understand business logic\n\nSwitch to the domain view and see how your code maps to real business processes — domains, flows, and steps laid out as a horizontal graph.\n\n### Analyze knowledge bases\n\nPoint `/understand-knowledge` at a [Karpathy-pattern LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) and get a force-directed knowledge graph with community clustering. The deterministic parser extracts wikilinks and categories from `index.md`, then LLM agents discover implicit relationships, extract entities, and surface claims — turning your wiki into a navigable graph of interconnected ideas.\n\n<table>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <h3>🧭 Guided Tours</h3>\n      <p>Auto-generated walkthroughs of the architecture, ordered by dependency. Learn the codebase in the right order.</p>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <h3>🔍 Fuzzy & Semantic Search</h3>\n      <p>Find anything by name or by meaning. Search \"which parts handle auth?\" and get relevant results across the graph.</p>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <h3>📊 Diff Impact Analysis</h3>\n      <p>See which parts of the system your changes affect before you commit. Understand ripple effects across the codebase.</p>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <h3>🎭 Persona-Adaptive UI</h3>\n      <p>The dashboard adjusts its detail level based on who you are — junior dev, PM, or power user.</p>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <h3>🏗️ Layer Visualization</h3>\n      <p>Automatic grouping by architectural layer — API, Service, Data, UI, Utility — with color-coded legend.</p>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <h3>📚 Language Concepts</h3>\n      <p>12 programming patterns (generics, closures, decorators, etc.) explained in context wherever they appear.</p>\n    </td>\n  </tr>\n</table>\n\n---\n\n## 🚀 Quick Start\n\n### 1. Install the plugin\n\n```bash\n/plugin marketplace add Egonex-AI/Understand-Anything\n/plugin install understand-anything\n```\n\n> **Using a local model?** For privacy or enterprise setups, point your platform at a local model provider such as [Ollama](https://docs.ollama.com/integrations) — follow their integration guide to change the model provider.\n\n### 2. Analyze your codebase\n\n```bash\n/understand\n```\n\nA multi-agent pipeline scans your project, extracts every file, function, class, and dependency, then builds a knowledge graph saved to `.understand-anything/knowledge-graph.json`.\n\n> **Heads up on token usage:** The initial `/understand` analyzes your whole codebase and can consume a significant number of tokens on large projects. We recommend running it on a token plan / subscription, or using a local model (see above) for initialization. Subsequent runs are incremental by default — only changed files are re-analyzed — so they use far fewer tokens.\n\n**Localized output:** Use `--language` to generate content in your preferred language:\n\n```bash\n# Generate Chinese content (知识图节点描述和 Dashboard UI)\n/understand --language zh\n\n# Supported languages: en (default), zh, zh-TW, ja, ko, ru\n```\n\nOn the **first run** in a project — when you don't pass `--language` and no language is stored yet — `/understand` detects the language you're conversing in. If it isn't English, it asks you to confirm (or override) before generating; English conversations are unaffected. Your choice is saved to `.understand-anything/config.json` and reused on every later run.\n\nThe `--language` parameter affects:\n- Node summaries and descriptions in the knowledge graph\n- Dashboard UI labels, buttons, and tooltips\n- Guided tour explanations\n\n### 3. Explore the dashboard\n\n```bash\n/understand-dashboard\n```\n\nAn interactive web dashboard opens with your codebase visualized as a graph — color-coded by architectural layer, searchable, and clickable. Select any node to see its code, relationships, and a plain-English explanation.\n\n### 4. Keep learning\n\n```bash\n# Ask anything about the codebase\n/understand-chat How does the payment flow work?\n\n# Analyze impact of your current changes\n/understand-diff\n\n# Deep-dive into a specific file or function\n/understand-explain src/auth/login.ts\n\n# Generate an onboarding guide for new team members\n/understand-onboard\n\n# Extract business domain knowledge (domains, flows, steps)\n/understand-domain\n\n# Analyze a Karpathy-pattern LLM wiki knowledge base\n/understand-knowledge ~/path/to/wiki\n\n# Re-run anytime — incremental by default (only re-analyzes changed files)\n/understand\n\n# Auto-update on every commit via a post-commit hook\n/understand --auto-update\n\n# Scope to a subdirectory (for huge monorepos)\n/understand src/frontend\n```\n\n---\n\n## 🌐 Multi-Platform Installation\n\nUnderstand-Anything works across multiple AI coding platforms.\n\n### Claude Code (Native)\n\n```bash\n/plugin marketplace add Egonex-AI/Understand-Anything\n/plugin install understand-anything\n```\n\n\n### One-line install (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / Nanobot / Kiro)\n\n\n**macOS / Linux:**\n```bash\ncurl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash\n# or skip the prompt by passing the platform:\ncurl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s codex\n```\n\n**Windows (PowerShell):**\n```powershell\niwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.ps1 | iex\n```\n\nThe installer clones the repo to `~/.understand-anything/repo` and creates the right symlinks for the chosen platform. Restart your CLI/IDE afterwards.\n\n- Supported `<platform>` values: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `trae`, `nanobot`, `kiro`\n- Update later: `./install.sh --update`\n- Uninstall: `./install.sh --uninstall <platform>`\n\n### Cursor\n\nCursor auto-discovers the plugin via `.cursor-plugin/plugin.json` when this repo is cloned. No manual installation needed — just clone and open in Cursor.\n\nIf auto-discovery doesn't pick it up, install it manually: open **Cursor Settings → Plugins**, paste `https://github.com/Egonex-AI/Understand-Anything` into the search field, and add it from there.\n\n### VS Code + GitHub Copilot\n\nVS Code with GitHub Copilot (v1.108+) auto-discovers the plugin via `.copilot-plugin/plugin.json` when this repo is cloned. No manual installation needed — just clone and open in VS Code.\n\nFor personal skills (available across all projects), run the `install.sh` above with the `vscode` platform.\n\n### Copilot CLI\n\n```bash\ncopilot plugin install Egonex-AI/Understand-Anything:understand-anything-plugin\n```\n\n### Kiro CLI / IDE\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s kiro\n```\n\nAfter installation:\n- **Kiro CLI**: `kiro-cli chat --agent understand \"Analyze this project\"`\n- **Kiro IDE**: The skills are symlinked into `~/.kiro/skills/` and the `understand` agent is written to `~/.kiro/agents/understand.json`, so both are available after restarting the IDE.\n\nFor personal skills (available across all projects), run the `install.sh` above with the `kiro` platform.\n\n### Platform Compatibility\n\n| Platform | Status | Install Method |\n|----------|--------|----------------|\n| Claude Code | ✅ Native | Plugin marketplace |\n| Cursor | ✅ Supported | Auto-discovery |\n| VS Code + GitHub Copilot | ✅ Supported | Auto-discovery |\n| Copilot CLI | ✅ Supported | Plugin install |\n| Codex | ✅ Supported | `install.sh codex` |\n| OpenCode | ✅ Supported | `install.sh opencode` |\n| OpenClaw | ✅ Supported | `install.sh openclaw` |\n| Antigravity | ✅ Supported | `install.sh antigravity` |\n| Gemini CLI | ✅ Supported | `install.sh gemini` |\n|",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"understand-anything\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"description\": \"An open-source tool combining LLM intelligence + static analysis to produce interactive dashboards for understanding codebases.\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com/Egonex-AI/Understand-Anything#readme\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/Egonex-AI/Understand-Anything.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/Egonex-AI/Understand-Anything/issues\"\n  },\n  \"keywords\": [\n    \"claude-code\",\n    \"codebase-analysis\",\n    \"knowledge-graph\",\n    \"tree-sitter\",\n    \"llm\",\n    \"static-analysis\",\n    \"developer-tools\",\n    \"code-understanding\",\n    \"code-onboarding\",\n    \"claude-plugin\"\n  ],\n  \"main\": \".opencode/plugins/understand-anything.js\",\n  \"packageManager\": \"pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b\",\n  \"scripts\": {\n    \"prepare\": \"pnpm --filter @understand-anything/core build\",\n    \"build\": \"pnpm -r build\",\n    \"test\": \"vitest run\",\n    \"dev:dashboard\": \"pnpm --filter @understand-anything/dashboard dev\",\n    \"lint\": \"eslint .\"\n  },\n  \"devDependencies\": {\n    \"@eslint/js\": \"^9.0.0\",\n    \"eslint\": \"^9.0.0\",\n    \"globals\": \"^17.6.0\",\n    \"typescript\": \"^5.7.0\",\n    \"typescript-eslint\": \"^8.0.0\",\n    \"vitest\": \"^3.1.0\"\n  },\n  \"pnpm\": {\n    \"onlyBuiltDependencies\": [\n      \"esbuild\",\n      \"sharp\",\n      \"tree-sitter-c\",\n      \"tree-sitter-c-sharp\",\n      \"tree-sitter-cpp\",\n      \"tree-sitter-go\",\n      \"tree-sitter-java\",\n      \"tree-sitter-javascript\",\n      \"tree-sitter-php\",\n      \"tree-sitter-python\",\n      \"tree-sitter-ruby\",\n      \"tree-sitter-rust\",\n      \"tree-sitter-typescript\"\n    ]\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95
+  },
+  {
+    "owner": "mvanhorn",
+    "name": "last30days-skill",
+    "full_name": "mvanhorn/last30days-skill",
+    "url": "https://github.com/mvanhorn/last30days-skill",
+    "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+    "language": "Python",
+    "total_stars": 50693,
+    "forks": 4230,
+    "stars_this_period": 373,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-prompts",
+        "ai-skill",
+        "bluesky",
+        "claude",
+        "claude-code",
+        "clawhub",
+        "deep-research",
+        "hackernews",
+        "instagram",
+        "openclaw",
+        "polymarket",
+        "recency",
+        "reddit",
+        "research",
+        "social-media",
+        "tiktok",
+        "trends",
+        "twitter",
+        "web-search",
+        "youtube"
+      ],
+      "license": "MIT",
+      "open_issues": 91,
+      "created_at": "2026-01-23T20:37:37Z",
+      "pushed_at": "2026-07-08T19:47:40Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 4230,
+      "watchers": 166,
+      "archived": false,
+      "size_kb": 48698
+    },
+    "readme_content": "# /last30days\n\n<p align=\"center\">\n  <img src=\"media/pr-assets/last30days-ad.gif\" width=\"720\" alt=\"last30days - an AI agent-led search engine that searches people, not editors\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/mvanhorn/last30days-skill\">\n    <img src=\"https://img.shields.io/badge/%231-Repository%20Of%20The%20Day-6f42c1?style=for-the-badge&logo=github&label=GITHUB%20TRENDING\" alt=\"GitHub Trending #1 Repository Of The Day\" />\n  </a>\n  <br/>\n  <a href=\"https://trendshift.io/repositories/21997\" target=\"_blank\">\n    <img src=\"https://trendshift.io/api/badge/repositories/21997\" alt=\"mvanhorn/last30days-skill | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n  </a>\n</p>\n\n**An AI agent-led search engine scored by upvotes, likes, and real money - not editors.**\n\nThis README tracks the current v3 pipeline. The runtime skill spec lives in [skills/last30days/SKILL.md](skills/last30days/SKILL.md), which is the source of truth for the latest command and setup behavior.\n\n**Claude Code (recommended — auto-updates via marketplace):**\n```\n/plugin marketplace add mvanhorn/last30days-skill\n/plugin install last30days\n```\n\n**Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts:**\n```\nnpx skills add mvanhorn/last30days-skill -g\n```\n(`-g` installs globally for your user, available across all projects. Drop it to scope per-project.)\n\nMore install options (claude.ai web, OpenClaw, manual) in the [Install](#install) section below.\n\nZero config. Reddit, HN, Polymarket, and GitHub work immediately. Run it once and the setup wizard unlocks X, YouTube, TikTok, arXiv, Techmeme, and more in 30 seconds.\n\n---\n\nReddit upvotes. X likes. YouTube transcripts. TikTok engagement. Polymarket odds backed by real money and insider information. That's millions of people voting with their attention and their wallets every day. /last30days searches all of it in parallel, scores it by what real people actually engage with, and an AI agent judge synthesizes it into one brief.\n\nGoogle aggregates editors. /last30days searches people.\n\nYou can't get this search anywhere else because no single AI has access to all of it. Google search doesn't touch Reddit comments or X posts. ChatGPT has a deal with Reddit but can't search X or TikTok. Gemini has YouTube but not Reddit. Claude has none of them natively. Each platform is a walled garden with its own API, its own tokens, its own auth. But you can bring your own keys and browser sessions, and suddenly an AI agent can search all of them at once, score them against each other, and tell you what actually matters.\n\nThat's the unlock. Not one better search engine. A dozen disconnected platforms, bridged by an agent.\n\n```\n/last30days Peter Steinberger\n```\n\nYou have a meeting tomorrow. You Google them. You get their LinkedIn from 2023. /last30days gives you what they're actually doing this month: joined OpenAI to work on Codex, fighting Anthropic's ban on third-party agents, shipping 23 PRs at 85% merge rate, building \"LobsterOS\" for cross-device agent control, and r/ClaudeCode hit 569 upvotes debating whether he's a hero or \"insufferable.\" Scattered across X posts, Reddit threads, YouTube transcripts, and GitHub commits. None of it was on Google.\n\n## Why this exists\n\nI built it to keep up in AI. Everything changes every day and the Reddit and X nerds are always on top of it first. I needed better prompts, and the training data was always months behind what the community had already figured out.\n\nBut it turned into something bigger. Now I run it before a sales call to know the last 30 days truth about a business. Before a meeting to read someone's recent tweets and podcast transcripts. Before a Disney World trip to know which rides are closed and what the community says about Genie+. Before I build anything to know what problems people are actually hitting.\n\nIf you're meeting with a CEO, have you read all their tweets and YouTube transcripts from the last 30 days? I have.\n\n## Sources, scored by the people\n\n| Source | What the people tell you |\n|--------|--------------------------|\n| **Reddit** | The unfiltered take. Top comments with real upvote counts, free, no API key. The real opinions that Google buries. |\n| **X / Twitter** | The hot take, the expert thread, the breaking reaction. First to know, first to argue. |\n| **YouTube** | The 45-minute deep dive. Full transcripts searched for the 5 quotable sentences that matter. |\n| **TikTok** | The creator reaching 3.6M people with a take you'll never find on Google. |\n| **Instagram Reels** | The influencer perspective with spoken-word transcripts. The visual culture signal. |\n| **Hacker News** | The developer consensus. 825 points, 899 comments. Where technical people actually argue. |\n| **Polymarket** | Not opinions. Odds. Backed by real money. 96% confidence on album sales. 4% on an acquisition. |\n| **GitHub** | For people: PR velocity, top repos by stars, release notes. For topics: issues and discussions. |\n| **Digg** | Curated story clusters from Digg's AI 1000 leaderboard (~1000 high-signal AI accounts on X), with attributable inline quotes (no X auth required). Auto-enabled when `digg-pp-cli` is on PATH. |\n| **arXiv** | The papers behind the hype. New research in the window, free, no API key. Auto-enabled when `arxiv-pp-cli` is on PATH (first-run setup installs it). |\n| **Techmeme** | The tech-news editorial layer, date-windowed to your 30 days. Free, no API key. Auto-enabled when `techmeme-pp-cli` is on PATH (first-run setup installs it). |\n| **LinkedIn** | The professional signal. Posts and articles, with articles weighted as high signal. |\n| **StockTwits** | Trader sentiment. Auto-activates when your topic is a ticker or crypto. |\n| **Threads** | The post-Twitter text layer. Conversations from creators and brands. |\n| **Pinterest** | Visual discovery. Pins, saves, and comments on products and ideas. |\n| **Bluesky** | The decentralized social layer. AT Protocol posts from the post-Twitter migration. |\n| **Perplexity** | Grounded Sonar synthesis, raw Search API rows, and Deep Research. |\n| **Web** | The editorial coverage, the blog comparisons. One signal of many, not the only one. |\n\nCommunity contributors keep adding more. Truth Social, Xiaohongshu (RED), and others are in the engine with more on the way.\n\nA Reddit thread with 1,500 upvotes is a stronger signal than a blog post nobody read. A TikTok with 3.6M views tells you more about what's culturally relevant than a press release. Polymarket odds backed by $66K in volume are harder to argue with than a pundit's guess.\n\nThe synthesis ranks by what real people actually engaged with. Social relevancy, not SEO relevancy.\n\n## What people actually use it for\n\n**Before a meeting.** `/last30days Peter Steinberger` - joined OpenAI's Codex team, fighting Anthropic's ban on third-party agents, 23 PRs merged at 85% merge rate on GitHub, building LobsterOS for cross-device agent control. r/ClaudeCode: \"Ever since OpenClaw released, it was widely known that if you run it through anything other than the API, you were gonna get banned eventually\" (227 upvotes). That's not on LinkedIn.\n\n**To read hiring signals.** `/last30days Listen Labs --hiring-signals` - current jobs and careers pages become cited evidence for focus shifts: hiring into enterprise security, customer success, infrastructure, or product expansion. The report says what the hiring appears to signal, not what the roadmap will ship.\n\n**When something drops.** `/last30days Kanye West` - UK blocked his visa, Wireless Festival canceled, sponsors fled. But BULLY debuted #2 on Billboard. Fantano came back from his \"Yay sabbatical\" to review it (653K views). SoFi Homecoming brought out Lauryn Hill and Travis Scott for 44 songs. Polymarket: \"Will Kanye tweet again?\" 86% Yes. 23 Reddit threads, 17 YouTube videos, 86K upvotes.\n\n**To compare tools.** `/last30days OpenClaw vs Hermes vs Paperclip` - \"These aren't competitors, they're layers.\" OpenClaw is the executor (351K GitHub stars, live), Hermes is the self-improving brain (31K stars), Paperclip is the org chart (49K stars). Star counts pulled live from the GitHub API, not stale blog posts. Side-by-side table with architecture, memory, security, best-for. Per @IMJustinBrooke: \"OpenClaw = Charmander, Hermes = Charizard.\"\n\n**To understand the world.** `/last30days Iran vs USA` - Day 38 of the war. Trump's Tuesday deadline for Iran to reopen the Strait of Hormuz. Two US warplanes downed. Oil at $126/barrel. The IEA called it \"the largest supply disruption in the history of the global oil market.\" Polymarket: ceasefire by Dec 31 at 74%. 27 X posts, 10 YouTube videos, 20 prediction markets.\n\n**Before a trip.** `/last30days Universal Epic Universe` - Expansion already under construction. \"Project 680\" permit filed. Fireworks show confirmed by infrastructure but unannounced. Wait times: Mine-Cart Madness averaging 148 minutes. No annual pass yet, and locals are frustrated. Stardust Racers down for refurbishment through April 5.\n\n**To learn something fast.** `/last30days Nano Banana Pro prompting` - JSON-structured prompts are replacing tag soup. @pictsbyai's nested format prevents \"concept bleeding.\" Edit-first workflow beats regeneration. Then it writes you a production prompt using exactly what the community said works.\n\n## What's new\n\nSince the v3.3 announcement in May, as of v3.11.1 (July 2026): 175 merged PRs - 122 of them from 52 community contributors - across 15 releases. This is what landed.\n\n### First-class on OpenAI Codex\n\n/last30days is now a native Codex plugin with guided setup - not a port, a first-class citizen. Renderer-aware citations mean Codex output reads like a brief instead of URL soup (#694), and the same engine runs on Claude Code, Cursor, Copilot, Gemini CLI, Claude Desktop, OpenClaw, and 50+ Agent Skills hosts. Codex plugin manifest by [@rfoust](https://github.com/rfoust) (#686), Codex auth fix by [@tmchow](https://github.com/tmchow) (#698).\n\n### arXiv, Techmeme, and Digg - free, no API keys\n\narXiv brings the papers behind the hype and Techmeme brings the editorial tech-news layer - free, zero keys, and first-run setup installs their CLIs so they activate automatically (#709). Digg's AI 1000 story clusters arrive without X auth the same way - setup installs the free Digg CLI for you (#590). Trustpilot ships opt-in for consumer-brand research.\n\n### Free Reddit grew real scores and top comments\n\nReddit's public .json API died; the free path came back stronger. Keyless RSS + shreddit scraping (#457), dedicated-subreddit discovery with real upvote counts via arctic-shift (#696), and a relevance floor so a viral off-topic post can't hijack your brief (#488, thanks [@rzachsmith](https://github.com/rzachsmith)). No API key. Real scores. Top comments included.\n\n### The best comments in every brief\n\nComments are now a default-on layer across sources: Instagram comments with rank-based diversity so five hot takes don't all come from one post (#751), YouTube comments plus a ScrapeCreators transcript backup for when yt-dlp strikes out (#637), and crowd-voted comments weighted into Best Takes so the community's funniest lines survive scoring (#592, #608).\n\n### One doctor command\n\nAsk for a health check and the doctor runs every source, then prescribes exact fixes - which key is missing, which CLI is off PATH, which cookie expired (#753). No more guessing why X came back thin.\n\n### X search, rebuilt\n\nThe X pipeline got a ground-up overhaul: FROM and ABOUT lanes so a person's own posts and the conversation about them both rank (#610), person-aware subquery disambiguation (#611), first-party authorship grounding with interaction-signal ranking (#613), and a single X source with automatic backend failover (#622). Plus an honest `--diagnose` that actually probes auth (#609).\n\n### More sources joined\n\nLinkedIn via ScrapeCreators, with articles as high signal ([@ravstr](https://github.com/rav",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"last30days-skill\"\nversion = \"3.11.1\"\ndescription = \"Multi-source last-30-days research skill\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\ndependencies = []\n\n[dependency-groups]\ndev = [\n  \"pytest>=9.1.0,<10\",\n  \"pytest-cov>=7,<8\",\n]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\npython_files = [\"test_*.py\"]\naddopts = [\n  \"-q\",\n  \"--tb=short\",\n]\n\n[tool.coverage.run]\nbranch = true\nsource = [\"skills/last30days/scripts\", \"tests\"]\nomit = [\n  \"skills/last30days/scripts/lib/vendor/*\",\n  \"dist/*\",\n]\n\n[tool.coverage.report]\nskip_empty = true\nshow_missing = true\n# Coverage gate (issue #254). Floor intended to rise over time, not a ceiling.\n# Baseline measured 2026-07-03 on main before feat/hosted-api-mode\n# (source = scripts + tests): TOTAL 84.06%. Gate pinned at that baseline.\n# Do not lower without documenting why in the PR (see AGENTS.md Rules).\nfail_under = 84\nomit = [\n  \"skills/last30days/scripts/lib/vendor/*\",\n  \"dist/*\",\n]\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "skill"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94
+  },
+  {
+    "owner": "TencentCloud",
+    "name": "TencentDB-Agent-Memory",
+    "full_name": "TencentCloud/TencentDB-Agent-Memory",
+    "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+    "description": "TencentDB Agent Memory delivers fully local long-term memory for AI Agents via a 4-tier progressive pipeline, with zero external API dependencies.",
+    "language": "TypeScript",
+    "total_stars": 7586,
+    "forks": 704,
+    "stars_this_period": 351,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai-agent",
+        "embedding",
+        "llm",
+        "local-first",
+        "long-term-memory",
+        "memory",
+        "openclaw-plugin",
+        "vector-search"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 264,
+      "created_at": "2026-04-07T06:34:26Z",
+      "pushed_at": "2026-06-26T03:31:09Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 704,
+      "watchers": 30,
+      "archived": false,
+      "size_kb": 3533
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" />\n\n### Agents remember,Humans innovate.\n\n[![npm](https://img.shields.io/npm/v/@tencentdb-agent-memory/memory-tencentdb?color=blue)](https://www.npmjs.com/package/@tencentdb-agent-memory/memory-tencentdb)\n[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)\n[![Node](https://img.shields.io/badge/node-%3E=22.16-brightgreen)](https://nodejs.org/)\n[![OpenClaw](https://img.shields.io/badge/OpenClaw-%3E=2026.3.13-orange)](https://github.com/openclaw/openclaw)\n[![Hermes](https://img.shields.io/badge/Hermes-Gateway-7B61FF)](https://hermes-agent.nousresearch.com/docs/)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/kDtHb5RW2)\n\n[Highlights](#-highlights) · [Overview](#overview) · [Core Technology](#core-technology-reject-flat-storage-embrace-layering-and-symbolization) · [Features](#-features) · [Quick Start](#quick-start)\n\n<div align=\"center\">\n\n[**English**](./README.md) · [简体中文](./README_CN.md)\n\n</div>\n\n\n</div>\n\n---\n\n## ✨ Highlights\n\n> **TencentDB Agent Memory = symbolic short-term memory + layered long-term memory.**\n>\n> - **Symbolic short-term memory** offloads heavy tool logs and condenses them into compact Mermaid symbols, cutting token usage and improving task success.\n> - **Layered long-term memory** distills fragmented conversations into structured personas and scenes, instead of flat vector piles.\n\nWhen integrated with OpenClaw, it cuts token usage by up to **61.38%**, improves pass rate by **51.52%** (relative), and raises PersonaMem accuracy from **48%** to **76%**.\n\n| Memory Capability | Benchmark | OpenClaw Success | With Plugin | Relative Δ | OpenClaw Tokens | With Plugin Tokens | Relative Δ |\n| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |\n| **Short-term** | WideSearch | 33% | **50%** | **+51.52%** | 221.31M | **85.64M** | **−61.38%** |\n| **Short-term** | SWE-bench | 58.4% | **64.2%** | **+9.93%** | 3474.1M | **2375.4M** | **−33.09%** |\n| **Short-term** | AA-LCR | 44.0% | **47.5%** | **+7.95%** | 112.0M | **77.3M** | **−30.98%** |\n| **Long-term** | PersonaMem | 48% | **76%** | **+59%** | — | — | — |\n\n> These results are measured over continuous long-horizon sessions, not isolated turns. For example, SWE-bench runs 50 consecutive tasks per session to simulate the context-accumulation pressure of real-world long-horizon agents.\n\n---\n\n## Overview\n\n**Memory is not about hoarding everything in the AI — it is about sparing humans from having to repeat themselves.**\n\nIn practice, we constantly re-explain the same SOPs, project background, tool conventions, and output formats to the Agent. Such information should not require repetition, nor should it be indiscriminately dumped into the context.\n\nTencentDB Agent Memory helps the Agent learn your workflows, retain task context, and reuse past experience. We reject both brute-force history accumulation and irreversible lossy summarization. Instead, we design memory as a layered system: **symbolic memory** for in-task information overload, and **memory layering** for cross-session experience.\n\n> **Let the Agent remember what should be remembered, so people can focus on judgment, creation, and work that truly matters.**\n\n---\n\n## Core Technology: Reject Flat Storage, Embrace Layering and Symbolization\n\nOur architecture rests on two pillars: **memory layering** and **symbolic memory**. Together they ensure Agents do not merely \"remember more\", but \"reason better\".\n\n### 1. Memory Layering: Progressive Disclosure with Heterogeneous Storage\n\nTraditional memory systems shred data into fragments and dump them into a flat vector store. Recall degenerates into a blind search across disconnected fragments, with no macro-level guidance.\n\nWhether it is long-term knowledge, short-term tasks, or future skill capabilities, memory should never be flat — both its formation and its recall must be hierarchical. TencentDB Agent Memory adopts **layering** as its unified architectural paradigm:\n\n*   **Short-term context layering.** The bottom layer archives raw tool outputs (`refs/*.md`); the middle layer extracts step-level summaries (`jsonl`); the top layer condenses state into a lightweight Mermaid canvas. The Agent only needs to attend to the top-layer structure in context, and drills down to the lower layers via `node_id` when an error occurs.\n*   **Long-term personalization layering.** In place of flat logs, we build a semantic pyramid: **L0 Conversation** (raw dialogue) → **L1 Atom** (atomic facts) → **L2 Scenario** (scene blocks) → **L3 Persona** (user profile). The Persona layer carries day-to-day preferences; the system drills down to Atoms only when details matter.\n*   **Skill generation layering.** Layering also applies to actions. The middle layer derives common solution patterns (**Scenario**) from bottom-layer execution traces (**Conversation**), and the top layer distills reusable Skills or standard SOPs (**Persona**).\n\n<p align=\"center\">\n  <img src=\"./assets/images/memory-pyramid-en.jpg\" alt=\"TencentDB Agent Memory L0 to L3 semantic pyramid\" width=\"860\" />\n</p>\n\n**Heterogeneous storage and progressive disclosure.** A dual-layer storage strategy underpins this architecture. The bottom layer (facts, logs, traces) is persisted in databases for robust full-text retrieval; the top layer (personas, scenes, canvases) is stored as human-readable Markdown files for high information density and white-box inspection. **Lower layers preserve evidence; upper layers preserve structure.**\n\n**Full traceability and lossless recovery.** Compression often sacrifices traceability. TencentDB Agent Memory avoids irreversible compression by maintaining a deterministic path from high-level abstractions back to ground-truth evidence. Whether it is an offloaded error log or a distilled user preference, the system guarantees a complete drill-down path: \"top-layer symbol (Persona / canvas) → mid-layer index (Scenario / jsonl) → bottom-layer raw text (L0 Conversation / refs)\".\n\n<div align=\"center\">\n  <img src=\"assets/images/flowchart1.png\" alt=\"Retrievable and Recoverable Drill-Down Chain\" />\n</div>\n\n### 2. Symbolic Memory: Maximum Semantics in Minimum Symbols (Mermaid Canvas)\n\nIn long tasks, the largest token consumers are verbose intermediate logs (search results, code, error traces). To address this, we combine **context offloading** with **symbolic memory**:\n\n*   **Mermaid symbol graph.** Instead of verbose prose or flat JSON, we encode task state transitions in high-density Mermaid syntax — precise enough for LLMs to parse, concise enough for humans to read.\n*   **History offloading.** Full tool logs are offloaded to external files; only a lightweight Mermaid task map remains in context.\n*   **`node_id` tracing.** The Agent reasons over the symbol graph; to verify a detail, it greps for the `node_id` and instantly retrieves the full raw text — cutting token cost while preserving full traceability.\n\n```mermaid\ngraph LR\n    Log[\"Verbose Logs<br/>(hundreds of thousands of tokens)\"] -->|\"1. Offload full text\"| FS[(\"External FS<br/>(refs/*.md)\")]\n    Log -->|\"2. Extract relations\"| MMD[\"Mermaid Canvas<br/>(with node_id)\"]\n    \n    MMD -->|\"3. Light injection\"| Agent((\"Agent Context<br/>(a few hundred tokens)\"))\n    Agent -. \"4. Recall via node_id\" .-> FS\n    \n    style Log fill:#f1f5f9,stroke:#94a3b8,stroke-dasharray: 5 5,color:#475569\n    style FS fill:#f8fafc,stroke:#cbd5e1,stroke-width:2px,color:#334155\n    style MMD fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e3a8a\n    style Agent fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e\n```\n\n---\n\n## Quick Start\n## 🎬 Demos\n\n<table align=\"center\">\n  <tr align=\"center\" valign=\"middle\">\n    <td width=\"50%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/09c64a2c-9997-42c0-90a3-a15e250cfa43\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n    <td width=\"50%\" valign=\"middle\">\n      <video src=\"https://github.com/user-attachments/assets/69045512-e75f-4c84-99dd-52ffa6e9e317\" controls=\"controls\" muted=\"muted\" style=\"max-width: 100%;\"></video>\n    </td>\n  </tr>\n  <tr align=\"center\" valign=\"top\">\n    <td>\n      <em>OpenClaw × Agent Memory</em>\n    </td>\n    <td>\n      <em>Hermes × Agent Memory</em>\n    </td>\n  </tr>\n</table>\n\n---\n\n\n### 1. OpenClaw\n### 1.1 Install the plugin\n\n```bash\nopenclaw plugins install @tencentdb-agent-memory/memory-tencentdb\nopenclaw gateway restart\n```\n\n> Please use the native OpenClaw command to upgrade the plugin. This approach prevents the plugin from being disabled caused by semantic version ranges.\n> ```bash\n> openclaw plugins update @tencentdb-agent-memory/memory-tencentdb\n> ```\n\n### 1.2 Zero-config to enable\n\nDefaults to a local `SQLite + sqlite-vec` backend.\n\n```jsonc\n// ~/.openclaw/openclaw.json\n{\n  \"memory-tencentdb\": {\n    \"enabled\": true\n  }\n}\n```\n\nOnce enabled, TencentDB Agent Memory automatically handles conversation capture, memory extraction, scene aggregation, persona generation, and recall before the next turn.\n\n### 1.3 Enable short-term compression (optional, requires version ≥ 0.3.4)\n\n```jsonc\n{\n  \"memory-tencentdb\": {\n    \"config\": {\n      \"offload\": {\n        \"enabled\": true\n      }\n    }\n  }\n}\n```\n\n#### Step 1 — Register the slot in your plugin config\n\nAdd the `slots` field so OpenClaw routes context-offload requests to this plugin:\n\n```jsonc\n{\n  \"plugins\": {\n    \"slots\": {\n      \"contextEngine\": \"memory-tencentdb\"\n    }\n  }\n}\n```\n\n#### Step 2 — Apply the runtime patch\n\nFor the best results, run the patch script below. It hooks `after-tool-call` messages so they can be offloaded and recovered correctly:\n\n```bash\nbash scripts/openclaw-after-tool-call-messages.patch.sh\n```\n\n> 💡 The patch only needs to be applied once per OpenClaw installation. After upgrading OpenClaw, re-run the script to re-apply.\n\n\n### 2. Hermes\n\nIn addition to OpenClaw, this plugin also supports [Hermes](https://github.com/NousResearch/hermes-agent) Agent. Choose the installation path based on your deployment scenario:\n\n| You want to … | Use |\n|---|---|\n| Spin up a memory-enabled Hermes from scratch in one command | 2.A Docker (below) |\n| Add memory to an existing Hermes install | 2.B Plug into an existing Hermes (next section) |\n\n#### 2.A Docker (greenfield, requires version ≥ 0.3.4)\n\nThe Docker image bundles `hermes-agent` and the `memory_tencentdb` provider together. The Gateway listens on `:8420`:\n\n```bash\n# ============ Configuration Parameters ============\n# MODEL_API_KEY    LLM API key (required) — replace with your own credential\n# MODEL_BASE_URL   LLM endpoint, defaults to Tencent Cloud LKE (Large Model Knowledge Engine)\n# MODEL_NAME       Model name, defaults to DeepSeek-V3.2\n# MODEL_PROVIDER   Provider type: \"custom\" works for any OpenAI-compatible endpoint\n\nMODEL_API_KEY=\"your-api-key\"\nMODEL_BASE_URL=\"https://api.lkeap.cloud.tencent.com/v1\"\nMODEL_NAME=\"deepseek-v3.2\"\nMODEL_PROVIDER=\"custom\"\n\n# ============ docker run Flags ============\n# -d                          Run container in detached (background) mode\n# --name hermes-memory        Container name, for later docker exec / logs / stop\n# --restart unless-stopped    Auto-restart on crash or host reboot\n# -p 8420:8420                Host port ↔ container port (Hermes Gateway)\n# -e MODEL_*                  Inject the config parameters above as env vars\n# -v hermes_data:/opt/data    Persist memory data to a named volume (survives restart)\n\n# Enter the Docker build directory (already cloned the repo and at the repo root)\ncd docker/opensource\n\n# Build\ndocker build -f Dockerfile.hermes -t hermes-memory .\n\n# Run\ndocker run -d \\\n  --name hermes-memory \\\n  --restart unless-stopped \\\n  -p 8420:8420 \\\n  -e MODEL_API_KEY=\"your-api-key\" \\\n  -e MODEL_BASE_URL=\"https://api.lkeap.cloud.tencent.com/v1\" \\\n  -e MODEL_NAME=\"deepseek-v3.2\" \\\n  -e MODEL_PROVIDER=\"custom\" \\\n  -v hermes_da",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@tencentdb-agent-memory/memory-tencentdb\",\n  \"version\": \"0.3.6\",\n  \"description\": \"Four-layer local memory system plugin for OpenClaw — auto-captures, structures, and profiles conversational knowledge using local LLM + SQLite vector search (L0→L1→L2→L3 pipeline)\",\n  \"type\": \"module\",\n  \"main\": \"./dist/index.mjs\",\n  \"bin\": {\n    \"migrate-sqlite-to-tcvdb\": \"./bin/migrate-sqlite-to-tcvdb.mjs\",\n    \"export-tencent-vdb\": \"./bin/export-tencent-vdb.mjs\",\n    \"read-local-memory\": \"./bin/read-local-memory.mjs\"\n  },\n  \"exports\": {\n    \".\": {\n      \"import\": \"./dist/index.mjs\",\n      \"default\": \"./dist/index.mjs\"\n    }\n  },\n  \"scripts\": {\n    \"build\": \"npm run build:plugin && npm run build:scripts\",\n    \"build:plugin\": \"tsdown\",\n    \"build:scripts\": \"npm run build:migrate-sqlite-to-vdb && npm run build:export-tencent-vdb && npm run build:read-local-memory\",\n    \"prepack\": \"npm run build\",\n    \"build:migrate-sqlite-to-vdb\": \"tsc -p scripts/migrate-sqlite-to-tcvdb/tsconfig.json --noEmitOnError false\",\n    \"migrate-sqlite-to-tcvdb\": \"node ./bin/migrate-sqlite-to-tcvdb.mjs\",\n    \"build:export-tencent-vdb\": \"tsc --project scripts/export-tencent-vdb/tsconfig.json\",\n    \"export-tencent-vdb\": \"node ./bin/export-tencent-vdb.mjs\",\n    \"build:read-local-memory\": \"tsc --project scripts/read-local-memory/tsconfig.json\",\n    \"read-local-memory\": \"node ./bin/read-local-memory.mjs\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:coverage\": \"vitest run --coverage\",\n    \"postinstall\": \"bash scripts/openclaw-after-tool-call-messages.patch.sh 2>/dev/null || true\"\n  },\n  \"files\": [\n    \"dist/\",\n    \"bin/\",\n    \"index.ts\",\n    \"scripts/migrate-sqlite-to-tcvdb/dist/\",\n    \"scripts/export-tencent-vdb/dist/\",\n    \"scripts/read-local-memory/dist/\",\n    \"scripts/memory-tencentdb-ctl.sh\",\n    \"scripts/install_hermes_memory_tencentdb.sh\",\n    \"scripts/README.memory-tencentdb-ctl.md\",\n    \"src\",\n    \"scripts/openclaw-after-tool-call-messages.patch.sh\",\n    \"scripts/setup-offload.sh\",\n    \"hermes-plugin/\",\n    \"openclaw.plugin.json\",\n    \"README.md\",\n    \"CHANGELOG.md\",\n    \"LICENSE\",\n    \"!src/**/*.test.ts\",\n    \"!src/**/*.spec.ts\",\n    \"!src/**/__tests__/\"\n  ],\n  \"keywords\": [\n    \"openclaw\",\n    \"openclaw-plugin\",\n    \"memory\",\n    \"ai-memory\",\n    \"long-term-memory\",\n    \"vector-search\",\n    \"sqlite-vec\",\n    \"llm\",\n    \"conversation\",\n    \"persona\",\n    \"scene-extraction\",\n    \"embedding\"\n  ],\n  \"author\": \"TencentDB Agent Memory Team\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \">=22.16.0\"\n  },\n  \"dependencies\": {\n    \"@ai-sdk/openai\": \"^3.0.53\",\n    \"@node-rs/jieba\": \"^2.0.1\",\n    \"@tencentdb-agent-memory/tcvdb-text\": \"^0.1.1\",\n    \"ai\": \"^6.0.164\",\n    \"js-tiktoken\": \"^1.0.18\",\n    \"json5\": \"^2.2.3\",\n    \"sqlite-vec\": \"0.1.7-alpha.2\",\n    \"tsx\": \"^4.21.0\",\n    \"undici\": \"^8.1.0\",\n    \"yaml\": \"^2.8.3\",\n    \"zod\": \"^4.4.3\"\n  },\n  \"optionalDependencies\": {\n    \"opik\": \"^1.0.0\"\n  },\n  \"peerDependencies\": {\n    \"node-llama-cpp\": \"^3.16.2\",\n    \"openclaw\": \">=2026.3.7\"\n  },\n  \"peerDependenciesMeta\": {\n    \"openclaw\": {\n      \"optional\": true\n    },\n    \"node-llama-cpp\": {\n      \"optional\": true\n    }\n  },\n  \"openclaw\": {\n    \"extensions\": [\n      \"./index.ts\"\n    ],\n    \"compat\": {\n      \"pluginApi\": \">=2026.3.13\",\n      \"minGatewayVersion\": \">=2026.3.13\"\n    },\n    \"build\": {\n      \"openclawVersion\": \"2026.3.13\",\n      \"pluginSdkVersion\": \"2026.3.13\"\n    },\n    \"bundle\": {\n      \"stageRuntimeDependencies\": true\n    }\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^25.5.2\",\n    \"@vitest/coverage-v8\": \"^4.1.2\",\n    \"tsdown\": \"^0.21.10\",\n    \"typescript\": \"^6.0.2\",\n    \"vitest\": \"^4.1.2\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "skill",
+      "llm",
+      "workflow",
+      "vector",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94
+  },
+  {
+    "owner": "tinyhumansai",
+    "name": "openhuman",
+    "full_name": "tinyhumansai/openhuman",
+    "url": "https://github.com/tinyhumansai/openhuman",
+    "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+    "language": "Rust",
+    "total_stars": 34469,
+    "forks": 3365,
+    "stars_this_period": 112,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "GPL-3.0",
+      "open_issues": 180,
+      "created_at": "2026-02-18T20:01:27Z",
+      "pushed_at": "2026-07-08T17:05:35Z",
+      "homepage": "https://tinyhumans.ai/openhuman",
+      "default_branch": "main",
+      "forks": 3365,
+      "watchers": 178,
+      "archived": false,
+      "size_kb": 141768
+    },
+    "readme_content": "<h1 align=\"center\">OpenHuman</h1>\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/demo.png\" alt=\"The Tet\" />\n</p>\n\n<p align=\"center\" style=\"display: inline-block\">\n\t<a href=\"https://trendshift.io/repositories/23680\" target=\"_blank\" style=\"display: inline-block\">\n\t\t<img src=\"https://trendshift.io/api/badge/repositories/23680\" alt=\"tinyhumansai%2Fopenhuman | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n\t</a>\n\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823\">\n\t\t</a>\n\t\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565\">\n\t\t</a>\n</p>\n<p align=\"center\" style=\"display: inline-block\">\n <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756\">\n  </a>\n  <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n   <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756\">\n   </a>\n </p>\n\n<p align=\"center\">\n <strong>OpenHuman is your personal AI super intelligence: a brain that remembers everything, a fantastic orchestrator, a deep researcher. Local-first, simple, powerful.</strong>\n</p>\n\n<p align=\"center\">\n <a href=\"https://discord.tinyhumans.ai/\">Discord</a> •\n <a href=\"https://www.reddit.com/r/tinyhumansai/\">Reddit</a> •\n <a href=\"https://x.com/intent/follow?screen_name=tinyhumansai\">X/Twitter</a> •\n <a href=\"https://tinyhumans.gitbook.io/openhuman/\">Docs</a> •\n <a href=\"https://x.com/intent/follow?screen_name=senamakel\">Follow @senamakel (Creator)</a>\n</p>\n\n<p align=\"center\">\n  🇺🇸 <a href=\"./README.md\">English</a> | 🇨🇳 <a href=\"./docs/README.zh-CN.md\">简体中文</a> | 🇯🇵 <a href=\"./docs/README.ja-JP.md\">日本語</a> | 🇰🇷 <a href=\"./docs/README.ko.md\">한국어</a> | 🇩🇪 <a href=\"./docs/README.de.md\">Deutsch</a> | 🇵🇰 <a href=\"./docs/README.ur-pk.md\">اردو</a>\n</p>\n\n<p align=\"center\">\n <img src=\"https://img.shields.io/badge/status-early%20beta-orange\" alt=\"Early Beta\" />\n <a href=\"https://github.com/tinyhumansai/openhuman/releases/latest\"><img src=\"https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest\" alt=\"Latest Release\" /></a>\n <a href=\"https://github.com/tinyhumansai/openhuman/stargazers\"><img src=\"https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat\" alt=\"GitHub Stars\" /></a>\n <a href=\"./LICENSE\"><img src=\"https://img.shields.io/github/license/tinyhumansai/openhuman\" alt=\"License\" /></a>\n</p>\n\n> **Early Beta**: Under active development. Expect rough edges.\n\n> OpenHuman is not AGI. But it is a meaningful architectural step closer, with better memory, better orchestration, and better tooling.\n\n> 🎉 Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.\n\n# Install\n\nDownload installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.\n\nFor terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.\n\n# What is OpenHuman?\n\nOpenHuman is three things most assistants aren't: **a brain** that builds a persistent, local memory of your world; **a fantastic orchestrator** that runs fleets of agents on durable graphs; and **a deep researcher** that sweeps your data and the web before you finish asking. Every bullet links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).\n\n### 🧠 The brain\n\n- **[Memory Tree](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) + [Obsidian Wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki)**: your data compressed into scored Markdown trees in SQLite on your machine, mirrored as an [Obsidian vault](https://x.com/karpathy/status/2039805659525644595) you can open and edit. No vector-soup black box.\n- **[100+ OAuth integrations, 5,000+ MCP servers, 90,000+ Skills](https://tinyhumans.gitbook.io/openhuman/features/integrations)**: one click into Gmail, Notion, GitHub, Slack and the rest of your stack. [Auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/auto-fetch) feeds the brain every 20 minutes, so it has tomorrow's context this morning.\n- **[A subconscious](https://tinyhumans.gitbook.io/openhuman/features/subconscious)**: a background loop that diffs your world, advances your goals, and writes your morning briefing. Thinking continues after you stop typing.\n- **[Goals & Todos](https://tinyhumans.gitbook.io/openhuman/features/goals-and-todos)**: long-term goals, durable per-thread goals, and a shared kanban board per conversation.\n- **[TokenJuice](https://tinyhumans.gitbook.io/openhuman/features/token-compression)**: tool output compressed before it hits the model: same information, up to 80% fewer tokens. A brain this big would be unaffordable without it.\n\n### 🕸️ The orchestrator\n\n- **[Workflows](https://tinyhumans.gitbook.io/openhuman/features/workflows)**: the agent proposes the automation; you review it on a canvas and save. Durable, trigger-driven, approval-gated runs on open-source [tinyflows](https://github.com/tinyhumansai/tinyflows).\n- **[A harness that finishes the job](https://tinyhumans.gitbook.io/openhuman/developing/architecture/agent-harness)**: checkpointed graph runs on open-source [tinyagents](https://github.com/tinyhumansai/tinyagents). Stuck agents get steered, halted ones return a root cause, and every run replays with real per-call costs.\n- **[A split brain, always on](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**: a fast reflex agent triages inbound traffic while a deep reasoning core delegates to worker fleets, steered by the subconscious.\n- **[An agent economy](https://tinyhumans.gitbook.io/openhuman/features/tinyplace)**: a `@handle` on [tiny.place](https://tiny.place), Signal-encrypted agent-to-agent orchestration, x402 USDC bounties and trading. Keys never touch disk.\n\n### 🔬 The deep researcher & doer\n\n- **[SuperContext](https://tinyhumans.gitbook.io/openhuman/features/super-context)**: a research scout sweeps your memory and files before the model reads your first message. No cold starts.\n- **Batteries included**: web search, scraper, coder toolset, a real [browser](https://tinyhumans.gitbook.io/openhuman/features/native-tools/browser-and-computer), and [native voice](gitbooks/features/native-tools/voice.md) with in-process Whisper. [Model routing](https://tinyhumans.gitbook.io/openhuman/features/model-routing) picks the right LLM per workload on one subscription, with [local AI optional](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-ai).\n- **[Meeting agents](https://tinyhumans.gitbook.io/openhuman/features/mascot/meeting-agents)**: joins **Meet, Zoom, Teams, and Webex** with a face and a voice. It auto-joins from your calendar, streams a live transcript, answers by name, and files a summary with action items.\n- **[Image & video generation](https://tinyhumans.gitbook.io/openhuman/features/native-tools)**: Seedream/SeedEdit images and Seedance/Veo video, straight into your workspace on the same subscription.\n- **[17 messaging channels](https://tinyhumans.gitbook.io/openhuman/features/channels)**: Telegram, Discord, Slack, WhatsApp, Signal, iMessage… plus **native email** (IMAP IDLE + SMTP). Your agent reaches you where you already are.\n\n### 🧍 Human, private, yours\n\n- **Simple, UI-first & Human**: install to working agent in a few clicks, with no config files and no terminal. And it has [a face](https://tinyhumans.gitbook.io/openhuman/features/mascot): a mascot that speaks, reacts, and remembers you.\n- **[Privacy & security](https://tinyhumans.gitbook.io/openhuman/features/privacy-and-security)**: on-device encrypted data, approval gate, OS-keyring secrets, and opt-in sandboxing. There is also **[Privacy Mode](https://tinyhumans.gitbook.io/openhuman/features/privacy-mode)**: flip one switch and no inference leaves your machine, enforced in the Rust core.\n- **[Themes & Theme Studio](https://tinyhumans.gitbook.io/openhuman/features/theming)**: five theme families plus a full visual editor, exportable as JSON.\n\n## Context in minutes, not weeks\n\nOpenHuman is the first agent harness that gets to know you in minutes. Inspired by [Karpathy's LLM Knowledgebase](https://x.com/karpathy/status/2039805659525644595). Most agents start cold. Hermes learns by watching you work; OpenClaw waits for plugins to ferry context in. Either way, you spend days or weeks before the agent knows enough about your stack to be genuinely useful.\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/memory.png\" alt=\"OpenHuman context-building diagram\">\n</p>\n\n> OpenHuman summarizes and compresses all your documents, emails & chats; and creates a memory graph that lets your agent remember everything about you.\n\nOpenHuman skips the wait. Connect your accounts, let [auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/integrations/auto-fetch) pull data locally on a 20-minute loop, and then have [Memory Trees](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) compress everything into Markdown files stored intelligently in a [Karpathy-style Obsidian wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki).\n\nIn just one sync pass, the agent has full (compressed) context of your inbox, your calendar, your repos, your docs, your messages. No training period. No \"give it a few weeks.\". It becomes you, controlled by you.\n\nAlready self-host [agentmemory](https://github.com/rohitg00/agentmemory) across other coding agents? OpenHuman ships an optional `Memory` backend that proxies to it. Set `memory.backend = \"agentmemory\"` in `config.toml` and the same durable store powers OpenHuman alongside Claude Code, Cursor, Codex, and OpenCode. See the [agentmemory backend](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/agentmemory-backend) page for setup.\n\n## An orchestrator, not a chatbot\n\nMost agent harnesses run one agent in one loop. OpenHuman is an **[orchestrator](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**:\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/orchestration.png\" alt=\"OpenHuman orchestration diagram\">\n</p>\n\n> Agent-to-agent messaging runs over Signal-protocol end-to-end encryption, so you can connect anything (Claude Code, Codex, OpenClaw, Hermes) and use OpenHuman to orchestrate all of your agents and tools.\n\n- **Graphs, not loops*",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"openhuman\"\nversion = \"0.58.12\"\nedition = \"2021\"\ndescription = \"OpenHuman core business logic and RPC server\"\nautobins = false\n\n[[bin]]\nname = \"openhuman-core\"\npath = \"src/main.rs\"\n\n[[bin]]\nname = \"slack-backfill\"\npath = \"src/bin/slack_backfill.rs\"\n\n[[bin]]\nname = \"gmail-backfill-3d\"\npath = \"src/bin/gmail_backfill_3d.rs\"\n\n[[bin]]\nname = \"memory-tree-init-smoke\"\npath = \"src/bin/memory_tree_init_smoke.rs\"\n\n[[bin]]\nname = \"inference-probe\"\npath = \"src/bin/inference_probe.rs\"\n\n[[bin]]\nname = \"harness-subagent-audit\"\npath = \"src/bin/harness_subagent_audit.rs\"\n\n[[bin]]\nname = \"test-mcp-stub\"\npath = \"src/bin/test_mcp_stub.rs\"\n\n[lib]\nname = \"openhuman_core\"\ncrate-type = [\"rlib\"]\n\n[dependencies]\n# tiny.place A2A social network SDK — published on crates.io and patched below\n# to the vendored tiny.place submodule so OpenHuman can test SDK changes before\n# publishing.\ntinyplace = \"2.0\"\n# tinyflows — host-agnostic workflow engine (typed node graph → validate → compile →\n# run on tinyagents). Powers the \"Workflows\" feature via the seam in\n# `src/openhuman/tinyflows/` + the `flows::` domain. Pulls tinyagents 1.7 transitively\n# (same version openhuman already uses — no conflict). Published on crates.io\n# and patched below to the vendored submodule.\n#\n# `mock` feature: enables `tinyflows::caps::mock::mock_capabilities()` — the\n# deterministic in-memory capability bundle the flows `dry_run_workflow` agent\n# tool (Phase 5b) runs a *draft* graph against so the workflow-builder agent can\n# self-verify a proposal without any real side effects (no real LLM/tool/HTTP/code).\ntinyflows = { version = \"0.5\", features = [\"mock\"] }\n# TinyJuice — host-agnostic TokenJuice compression engine. OpenHuman keeps\n# config/RPC/tool/runtime adapters in `src/openhuman/tokenjuice/` and patches\n# this dependency to the vendored submodule below.\ntinyjuice = { version = \"0.2.1\", default-features = false }\n# TinyAgents — Rust LLM orchestration framework (LangGraph/LangChain-style):\n# durable state graphs, agent-loop harness, model/tool registries, REPL +\n# `.rag` workflow language. openhuman's agent engine + orchestration run on this\n# crate's primitives via the adapter seam in `src/openhuman/tinyagents/` (issue\n# #4249): every turn drives through the harness; the workflow phase DAG, team\n# member runtime, parallel fan-out, and multi-stage delegation run on graphs.\n# We wire openhuman's own Provider/Tool, not the removed bundled openai client.\n# The `sqlite` feature is enabled now that openhuman's direct rusqlite pin is\n# aligned to 0.40, avoiding duplicate `links = \"sqlite3\"` native bindings.\n# Durable graph checkpoints still use `SqlRunLedgerCheckpointer` until the\n# migration re-points those rows to the crate checkpointer.\n# The `repl` feature adds the embedded Rhai `.ragsh` session runtime powering\n# the `rhai_workflows` language-workflow tool (`src/openhuman/rhai_workflows/`).\ntinyagents = { version = \"1.7\", features = [\"sqlite\", \"repl\"] }\n# TinyCortex — Rust core for the memory engine (store/chunks/tree/retrieval/\n# queue/ingest/score + long tail), vendored as a git submodule and patched\n# below to `vendor/tinycortex`. OpenHuman's memory subsystem migrates onto this\n# crate through the adapter seam in `src/openhuman/tinycortex/` (mirroring the\n# tinyagents seam): engine logic in the crate; RPC, agent tools, live sync,\n# security gating, and the global singleton stay host-side. rusqlite/git2 are\n# aligned to the host pins (=0.40 / 0.21) so one bundled SQLite + one libgit2\n# link. Keep the version pin in lockstep with the submodule tag.\ntinycortex = \"0.1\"\ntinychannels = { version = \"0.1\", features = [\"relay-websocket\"] }\n# TokenJuice code compressor — AST-aware signature extraction. Optional (C build)\n# behind the default `tokenjuice-treesitter` feature; disabling it falls back to\n# the language-agnostic brace-depth heuristic. See src/openhuman/tokenjuice/compressors/code.rs.\ntree-sitter = { version = \"0.26\", optional = true }\ntree-sitter-rust = { version = \"0.24\", optional = true }\ntree-sitter-typescript = { version = \"0.23\", optional = true }\ntree-sitter-python = { version = \"0.25\", optional = true }\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\nserde_repr = \"0.1\"\nserde_yaml = \"0.9\"\n# (Removed `html2md` dep. dhat-rs profiling on real Gmail inboxes\n# showed `html2md::walk` and `html2md::tables::handle` allocating\n# ~894 MB peak heap on a 10 KB HTML input from Otter.ai-style emails\n# (deeply-nested table-as-layout HTML). Cause: recursive walker holding\n# per-frame Vec state across nesting layers + 5 sequential\n# `regex::replace_all` passes in `clean_markdown` each producing a\n# fresh full-size String. We now use a linear-time tag-and-entity\n# stripper (`fast_html_to_text` in\n# providers/gmail/post_process.rs) and prefer the email's\n# `text/plain` MIME part when available.)\nreqwest = { version = \"0.12\", default-features = false, features = [\"json\", \"blocking\", \"rustls-tls\", \"native-tls\", \"stream\", \"http2\", \"multi",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "mcp",
+      "workflow",
+      "inference"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94
+  },
+  {
+    "owner": "vxcontrol",
+    "name": "pentagi",
+    "full_name": "vxcontrol/pentagi",
+    "url": "https://github.com/vxcontrol/pentagi",
+    "description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
+    "language": "Go",
+    "total_stars": 18750,
+    "forks": 2568,
+    "stars_this_period": 421,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agents",
+        "ai-security-tool",
+        "anthropic",
+        "autonomous-agents",
+        "golang",
+        "gpt",
+        "graphql",
+        "multi-agent-system",
+        "offensive-security",
+        "open-source",
+        "openai",
+        "penetration-testing",
+        "penetration-testing-tools",
+        "react",
+        "security-automation",
+        "security-testing",
+        "security-tools",
+        "self-hosted"
+      ],
+      "license": "MIT",
+      "open_issues": 64,
+      "created_at": "2025-01-06T22:22:48Z",
+      "pushed_at": "2026-07-03T17:17:18Z",
+      "homepage": "https://pentagi.com",
+      "default_branch": "main",
+      "forks": 2568,
+      "watchers": 124,
+      "archived": false,
+      "size_kb": 50951
+    },
+    "readme_content": "# PentAGI\n\n<div align=\"center\" style=\"font-size: 1.5em; margin: 20px 0;\">\n    <strong>P</strong>enetration testing <strong>A</strong>rtificial <strong>G</strong>eneral <strong>I</strong>ntelligence\n</div>\n<br>\n<div align=\"center\">\n\n> **Join the Community!** Connect with security researchers, AI enthusiasts, and fellow ethical hackers. Get support, share insights, and stay updated with the latest PentAGI developments.\n\n[![Discord](https://img.shields.io/badge/Discord-7289DA?logo=discord&logoColor=white)](https://discord.gg/2xrMh7qX6m)⠀[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+Ka9i6CNwe71hMWQy)\n\n<a href=\"https://trendshift.io/repositories/15161\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/15161\" alt=\"vxcontrol%2Fpentagi | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n</div>\n\n## Table of Contents\n\n- [Overview](#overview)\n- [Features](#features)\n- [Architecture](#architecture)\n  - [Agent Supervision](#advanced-agent-supervision)\n- [Quick Start](#quick-start)\n- [How to Use PentAGI After Login](#how-to-use-pentagi-after-login)\n- [API Access](#api-access)\n  - [LLM Provider Configuration](#custom-llm-provider-configuration)\n    - [Ollama](#ollama-provider-configuration)\n    - [OpenAI](#openai-provider-configuration)\n    - [Anthropic](#anthropic-provider-configuration)\n    - [Google AI (Gemini)](#google-ai-gemini-provider-configuration)\n    - [AWS Bedrock](#aws-bedrock-provider-configuration)\n    - [DeepSeek](#deepseek-provider-configuration)\n    - [GLM](#glm-provider-configuration)\n    - [Kimi](#kimi-provider-configuration)\n    - [Qwen](#qwen-provider-configuration)\n- [Advanced Setup](#advanced-setup)\n  - [Langfuse Integration](#langfuse-integration)\n  - [Monitoring and Observability](#monitoring-and-observability)\n  - [Knowledge Graph (Graphiti)](#knowledge-graph-integration-graphiti)\n  - [OAuth Integration](#github-and-google-oauth-integration)\n  - [Docker Image Configuration](#docker-image-configuration)\n- [Development](#development)\n- [Testing LLM Agents](#testing-llm-agents)\n- [Embedding Configuration and Testing](#embedding-configuration-and-testing)\n- [Function Testing with ftester](#function-testing-with-ftester)\n- [Building](#building)\n- [Credits](#credits)\n- [License](#license)\n\n## Overview\n\nPentAGI is an innovative tool for automated security testing that leverages cutting-edge artificial intelligence technologies. The project is designed for information security professionals, researchers, and enthusiasts who need a powerful and flexible solution for conducting penetration tests.\n\nYou can watch the video **PentAGI overview**:\n[![PentAGI Overview Video](https://github.com/user-attachments/assets/0828dc3e-15f1-4a1d-858e-9696a146e478)](https://youtu.be/R70x5Ddzs1o)\n\n## Features\n\n- Secure & Isolated. All operations are performed in a sandboxed Docker environment with complete isolation.\n- Fully Autonomous. AI-powered agent that automatically determines and executes penetration testing steps with optional execution monitoring and intelligent task planning for enhanced reliability.\n- Professional Pentesting Tools. Built-in suite of 20+ professional security tools including nmap, metasploit, sqlmap, and more.\n- Smart Memory System. Long-term storage of research results and successful approaches for future use.\n- Knowledge Graph Integration. Graphiti-powered knowledge graph using Neo4j for semantic relationship tracking and advanced context understanding.\n- Web Intelligence. Built-in browser via [scraper](https://hub.docker.com/r/vxcontrol/scraper) for gathering latest information from web sources.\n- External Search Systems. Integration with advanced search APIs including [Tavily](https://tavily.com), [Traversaal](https://traversaal.ai), [Perplexity](https://www.perplexity.ai), [DuckDuckGo](https://duckduckgo.com/), [Google Custom Search](https://programmablesearchengine.google.com/), [Sploitus Search](https://sploitus.com) and [Searxng](https://searxng.org) for comprehensive information gathering.\n- Team of Specialists. Delegation system with specialized AI agents for research, development, and infrastructure tasks, enhanced with optional execution monitoring and intelligent task planning for optimal performance with smaller models.\n- Comprehensive Monitoring. Detailed logging and integration with Grafana/Prometheus for real-time system observation.\n- Detailed Reporting. Generation of thorough vulnerability reports with exploitation guides.\n- Smart Container Management. Automatic Docker image selection based on specific task requirements.\n- Modern Interface. Clean and intuitive web UI for system management and monitoring.\n- Comprehensive APIs. Full-featured REST and GraphQL APIs with Bearer token authentication for automation and integration.\n- Persistent Storage. All commands and outputs are stored in PostgreSQL with [pgvector](https://hub.docker.com/r/vxcontrol/pgvector) extension.\n- Scalable Architecture. Microservices-based design supporting horizontal scaling.\n- Self-Hosted Solution. Complete control over your deployment and data.\n- Flexible Authentication. Support for 10+ LLM providers ([OpenAI](https://platform.openai.com/), [Anthropic](https://www.anthropic.com/), [Google AI/Gemini](https://ai.google.dev/), [AWS Bedrock](https://aws.amazon.com/bedrock/), [Ollama](https://ollama.com/), [DeepSeek](https://www.deepseek.com/en/), [GLM](https://z.ai/), [Kimi](https://platform.moonshot.ai/), [Qwen](https://www.alibabacloud.com/en/), Custom) plus aggregators ([OpenRouter](https://openrouter.ai/), [DeepInfra](https://deepinfra.com/)). For production local deployments, see our [vLLM + Qwen3.5-27B-FP8 guide](examples/guides/vllm-qwen35-27b-fp8.md).\n- API Token Authentication. Secure Bearer token system for programmatic access to REST and GraphQL APIs.\n- Quick Deployment. Easy setup through [Docker Compose](https://docs.docker.com/compose/) with comprehensive environment configuration.\n\n### Current Capability Boundaries\n\n- PentAGI today is an autonomous and assistant-guided penetration testing platform, not a CALDERA-style Breach and Attack Simulation (BAS) or adversary emulation product with predefined campaigns or attack plans.\n- BAS-like agent-authored attack scripts should be treated as conceptual or future work, not as a feature that is implemented today.\n- The current flow report UI supports web view, copy to clipboard, Markdown download, and PDF download. JSON flow-report export is not documented as a supported output format today.\n- Provider flexibility is available today through built-in providers and custom/OpenAI-compatible endpoints. See [Custom LLM Provider Configuration](#custom-llm-provider-configuration) and the [vLLM + Qwen3.5-27B-FP8 guide](examples/guides/vllm-qwen35-27b-fp8.md).\n\n## Architecture\n\n### System Context\n\n```mermaid\nflowchart TB\n    classDef person fill:#08427B,stroke:#073B6F,color:#fff\n    classDef system fill:#1168BD,stroke:#0B4884,color:#fff\n    classDef external fill:#666666,stroke:#0B4884,color:#fff\n\n    pentester[\"👤 Security Engineer\n    (User of the system)\"]\n\n    pentagi[\"✨ PentAGI\n    (Autonomous penetration testing system)\"]\n\n    target[\"🎯 target-system\n    (System under test)\"]\n    llm[\"🧠 llm-provider\n    (OpenAI/Anthropic/Ollama/Bedrock/Gemini/Custom)\"]\n    search[\"🔍 search-systems\n    (Google/DuckDuckGo/Tavily/Traversaal/Perplexity/Sploitus/Searxng)\"]\n    langfuse[\"📊 langfuse-ui\n    (LLM Observability Dashboard)\"]\n    grafana[\"📈 grafana\n    (System Monitoring Dashboard)\"]\n\n    pentester --> |Uses HTTPS| pentagi\n    pentester --> |Monitors AI HTTPS| langfuse\n    pentester --> |Monitors System HTTPS| grafana\n    pentagi --> |Tests Various protocols| target\n    pentagi --> |Queries HTTPS| llm\n    pentagi --> |Searches HTTPS| search\n    pentagi --> |Reports HTTPS| langfuse\n    pentagi --> |Reports HTTPS| grafana\n\n    class pentester person\n    class pentagi system\n    class target,llm,search,langfuse,grafana external\n\n    linkStyle default stroke:#ffffff,color:#ffffff\n```\n\n<details>\n<summary><b>Container Architecture</b> (click to expand)</summary>\n\n```mermaid\ngraph TB\n    subgraph Core Services\n        UI[Frontend UI<br/>React + TypeScript]\n        API[Backend API<br/>Go + GraphQL]\n        DB[(Vector Store<br/>PostgreSQL + pgvector)]\n        MQ[Task Queue<br/>Async Processing]\n        Agent[AI Agents<br/>Multi-Agent System]\n    end\n\n    subgraph Knowledge Graph\n        Graphiti[Graphiti<br/>Knowledge Graph API]\n        Neo4j[(Neo4j<br/>Graph Database)]\n    end\n\n    subgraph Monitoring\n        Grafana[Grafana<br/>Dashboards]\n        VictoriaMetrics[VictoriaMetrics<br/>Time-series DB]\n        Jaeger[Jaeger<br/>Distributed Tracing]\n        Loki[Loki<br/>Log Aggregation]\n        OTEL[OpenTelemetry<br/>Data Collection]\n    end\n\n    subgraph Analytics\n        Langfuse[Langfuse<br/>LLM Analytics]\n        ClickHouse[ClickHouse<br/>Analytics DB]\n        Redis[Redis<br/>Cache + Rate Limiter]\n        MinIO[MinIO<br/>S3 Storage]\n    end\n\n    subgraph Security Tools\n        Scraper[Web Scraper<br/>Isolated Browser]\n        PenTest[Security Tools<br/>20+ Pro Tools<br/>Sandboxed Execution]\n    end\n\n    UI --> |HTTP/WS| API\n    API --> |SQL| DB\n    API --> |Events| MQ\n    MQ --> |Tasks| Agent\n    Agent --> |Commands| PenTest\n    Agent --> |Queries| DB\n    Agent --> |Knowledge| Graphiti\n    Graphiti --> |Graph| Neo4j\n\n    API --> |Telemetry| OTEL\n    OTEL --> |Metrics| VictoriaMetrics\n    OTEL --> |Traces| Jaeger\n    OTEL --> |Logs| Loki\n\n    Grafana --> |Query| VictoriaMetrics\n    Grafana --> |Query| Jaeger\n    Grafana --> |Query| Loki\n\n    API --> |Analytics| Langfuse\n    Langfuse --> |Store| ClickHouse\n    Langfuse --> |Cache| Redis\n    Langfuse --> |Files| MinIO\n\n    classDef core fill:#f9f,stroke:#333,stroke-width:2px,color:#000\n    classDef knowledge fill:#ffa,stroke:#333,stroke-width:2px,color:#000\n    classDef monitoring fill:#bbf,stroke:#333,stroke-width:2px,color:#000\n    classDef analytics fill:#bfb,stroke:#333,stroke-width:2px,color:#000\n    classDef tools fill:#fbb,stroke:#333,stroke-width:2px,color:#000\n\n    class UI,API,DB,MQ,Agent core\n    class Graphiti,Neo4j knowledge\n    class Grafana,VictoriaMetrics,Jaeger,Loki,OTEL monitoring\n    class Langfuse,ClickHouse,Redis,MinIO analytics\n    class Scraper,PenTest tools\n```\n\n</details>\n\n<details>\n<summary><b>Entity Relationship</b> (click to expand)</summary>\n\n```mermaid\nerDiagram\n    Flow ||--o{ Task : contains\n    Task ||--o{ SubTask : contains\n    SubTask ||--o{ Action : contains\n    Action ||--o{ Artifact : produces\n    Action ||--o{ Memory : stores\n\n    Flow {\n        string id PK\n        string name \"Flow name\"\n        string description \"Flow description\"\n        string status \"active/completed/failed\"\n        json parameters \"Flow parameters\"\n        timestamp created_at\n        timestamp updated_at\n    }\n\n    Task {\n        string id PK\n        string flow_id FK\n        string name \"Task name\"\n        string description \"Task description\"\n        string status \"pending/running/done/failed\"\n        json result \"Task results\"\n        timestamp created_at\n        timestamp updated_at\n    }\n\n    SubTask {\n        string id PK\n        string task_id FK\n        string name \"Subtask name\"\n        string description \"Subtask description\"\n        string status \"queued/running/completed/failed\"\n        string agent_type \"researcher/developer/executor\"\n        json context \"Agent context\"\n        timestamp created_at\n        timestamp updated_at\n    }\n\n    Action {\n        string id PK\n        string subtask_id FK\n        string type \"command/search/analyze/etc\"\n        string status \"success/failure\"\n        json parameters \"Action parameters\"\n        json result \"Action results\"\n        timestamp created_at\n    }\n\n    Artifact {\n        string id PK\n        string action_id FK\n        string type \"file/report/log\"\n        string path \"Storage path\"\n        json metadata \"Ad",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "llm",
+      "automation",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93
+  },
+  {
+    "owner": "alibaba",
+    "name": "zvec",
+    "full_name": "alibaba/zvec",
+    "url": "https://github.com/alibaba/zvec",
+    "description": "A lightweight, lightning-fast, in-process vector database",
+    "language": "C++",
+    "total_stars": 14363,
+    "forks": 884,
+    "stars_this_period": 370,
+    "source_slice": "all",
+    "source_slices": [
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "db",
+        "embedded",
+        "faiss",
+        "hnsw",
+        "llm-memory",
+        "local",
+        "rag",
+        "search-engine",
+        "semantic-search",
+        "similarity-search",
+        "vector-database",
+        "vector-db"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 69,
+      "created_at": "2025-12-05T07:45:38Z",
+      "pushed_at": "2026-07-08T03:09:04Z",
+      "homepage": "https://zvec.org",
+      "default_branch": "main",
+      "forks": 884,
+      "watchers": 69,
+      "archived": false,
+      "size_kb": 4841
+    },
+    "readme_content": "<p align=\"right\">\n  English | <a href=\"./README_CN.md\">中文</a>\n</p>\n\n<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://zvec.oss-cn-hongkong.aliyuncs.com/logo/github_log_2.svg\" />\n    <img src=\"https://zvec.oss-cn-hongkong.aliyuncs.com/logo/github_logo_1.svg\" width=\"400\" alt=\"zvec logo\" />\n  </picture>\n</div>\n\n<p align=\"center\">\n  <a href=\"https://codecov.io/github/alibaba/zvec\"><img src=\"https://codecov.io/github/alibaba/zvec/graph/badge.svg?token=O81CT45B66\" alt=\"Code Coverage\"/></a>\n  <a href=\"https://github.com/alibaba/zvec/actions/workflows/01-ci-pipeline.yml\"><img src=\"https://github.com/alibaba/zvec/actions/workflows/01-ci-pipeline.yml/badge.svg?branch=main\" alt=\"Main\"/></a>\n  <a href=\"https://github.com/alibaba/zvec/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-blue.svg\" alt=\"License\"/></a>\n  <a href=\"https://pypi.org/project/zvec/\"><img src=\"https://img.shields.io/pypi/v/zvec.svg\" alt=\"PyPI Release\"/></a>\n  <a href=\"https://pypi.org/project/zvec/\"><img src=\"https://img.shields.io/badge/python-3.10%20~%203.14-blue.svg\" alt=\"Python Versions\"/></a>\n  <a href=\"https://www.npmjs.com/package/@zvec/zvec\"><img src=\"https://img.shields.io/npm/v/@zvec/zvec.svg\" alt=\"npm Release\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/20830\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/20830\" alt=\"alibaba%2Fzvec | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://zvec.org/en/docs/db/quickstart/\">🚀 <strong>Quickstart</strong> </a> |\n  <a href=\"https://zvec.org/en/\">🏠 <strong>Home</strong> </a> |\n  <a href=\"https://zvec.org/en/docs/db/\">📚 <strong>Docs</strong> </a> |\n  <a href=\"https://zvec.org/en/docs/db/benchmarks/\">📊 <strong>Benchmarks</strong> </a> |\n  <a href=\"https://deepwiki.com/alibaba/zvec\">🔎 <strong>DeepWiki</strong> </a> |\n  <a href=\"https://discord.gg/rKddFBBu9z\">🎮 <strong>Discord</strong> </a> |\n  <a href=\"https://x.com/ZvecAI\">🐦 <strong>X (Twitter)</strong> </a>\n</p>\n\n**Zvec** is an open-source, in-process vector database — lightweight, lightning-fast, and designed to embed directly into applications. Battle-tested within Alibaba Group, it delivers production-grade, low-latency and scalable similarity search with minimal setup.\n\n> [!Important]\n> 🚀 **v0.5.0 (June 12, 2026)**\n>\n> - **Full-Text Search (FTS)**: Native full-text search — attach an FTS index to any string field and query it with natural-language or structured expressions, no external search engine required.\n> - **Hybrid Retrieval**: Combine full-text and vector search in a single `MultiQuery` across dense vectors, sparse vectors, scalar filters, and text.\n> - **DiskANN Index**: New on-disk index that keeps the bulk of the index on disk, drastically cutting memory usage for large-scale datasets.\n> - **Ecosystem & Platforms**: New official [Go](https://github.com/zvec-ai/zvec-go) / [Rust](https://github.com/zvec-ai/zvec-rust) SDKs, the [Zvec Studio](https://github.com/zvec-ai/zvec-studio) visual tool, and RISC-V support.\n>\n> 👉 [Read the Release Notes](https://github.com/alibaba/zvec/releases/tag/v0.5.0) | [View Roadmap 📍](https://github.com/alibaba/zvec/issues/309)\n\n## 💫 Features\n\n- **Blazing Fast**: Searches billions of vectors in milliseconds.\n- **Simple, Just Works**: [Install](#-installation) and start searching in seconds. Pure local, no servers, no config, no fuss.\n- **Dense + Sparse Vectors**: Support dense and sparse embeddings, multi-vector queries, and a rich selection of [vector index types](https://zvec.org/en/docs/db/concepts/vector-index/#vector-index-types) that scale from memory to disk.\n- **Full-Text Search (FTS)**: Native keyword-based full-text search — query string fields with natural-language or structured expressions.\n- **Hybrid Search**: Fuse vector similarity, full-text search, and structured filters in a single query for precise results.\n- **Durable Storage**: Write-ahead logging (WAL) guarantees persistence — data is never lost, even on process crash or power failure.\n- **Concurrent Access**: Multiple processes can read the same collection simultaneously; writes are single-process exclusive.\n- **Runs Anywhere**: As an in-process library, Zvec runs wherever your code runs — notebooks, servers, CLI tools, or even edge devices.\n\n## 📦 Installation\n\nZvec offers official SDKs across multiple languages:\n\n- **[Python](https://pypi.org/project/zvec/)**: `pip install zvec` (requires Python 3.10–3.14)\n- **[Node.js](https://www.npmjs.com/package/@zvec/zvec)**: `npm install @zvec/zvec`\n- **[Go](https://github.com/zvec-ai/zvec-go)**: High-performance Go bindings.\n- **[Rust](https://github.com/zvec-ai/zvec-rust)**: High-performance Rust bindings.\n- **[Dart/Flutter](https://pub.dev/packages/zvec)**: `flutter pub add zvec`\n\nPrefer a visual tool? Try **[Zvec Studio](https://github.com/zvec-ai/zvec-studio)** to browse data and debug queries — no code required.\n\n### ✅ Supported Platforms\n\n- Linux (x86_64, ARM64)\n- macOS (ARM64)\n- Windows (x86_64)\n\n### 🛠️ Building from Source\n\nIf you prefer to build Zvec from source, please check the [Building from Source](https://zvec.org/en/docs/db/build/) guide.\n\n## ⚡ One-Minute Example\n\n```python\nimport zvec\n\n# Define collection schema\nschema = zvec.CollectionSchema(\n    name=\"example\",\n    vectors=zvec.VectorSchema(\"embedding\", zvec.DataType.VECTOR_FP32, 4),\n)\n\n# Create collection\ncollection = zvec.create_and_open(path=\"./zvec_example\", schema=schema)\n\n# Insert documents\ncollection.insert([\n    zvec.Doc(id=\"doc_1\", vectors={\"embedding\": [0.1, 0.2, 0.3, 0.4]}),\n    zvec.Doc(id=\"doc_2\", vectors={\"embedding\": [0.2, 0.3, 0.4, 0.1]}),\n])\n\n# Search by vector similarity\nresults = collection.query(\n    zvec.Query(field_name=\"embedding\", vector=[0.4, 0.3, 0.3, 0.1]),\n    topk=10\n)\n\n# Results: list of {'id': str, 'score': float, ...}, sorted by relevance\nprint(results)\n```\n\n## 📈 Performance at Scale\n\nZvec delivers exceptional speed and efficiency, making it ideal for demanding production workloads.\n\n<img src=\"https://zvec.oss-cn-hongkong.aliyuncs.com/qps_10M.svg\" width=\"800\" alt=\"Zvec Performance Benchmarks\" />\n\nFor detailed benchmark methodology, configurations, and complete results, please see our [Benchmarks documentation](https://zvec.org/en/docs/db/benchmarks/).\n\n## 🤝 Join Our Community\n\n<div align=\"center\">\n\n<div align=\"center\">\n\n| 💬 DingTalk | 📱 WeChat | 🎮 Discord | X (Twitter) |\n| :---: | :---: | :---: | :---: |\n| <img src=\"https://zvec.oss-cn-hongkong.aliyuncs.com/qrcode/dingding.png\" width=\"150\" alt=\"DingTalk QR Code\"/> | <img src=\"https://zvec.oss-cn-hongkong.aliyuncs.com/qrcode/wechat.png?v=6\" width=\"150\" alt=\"WeChat QR Code\"/> | [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/rKddFBBu9z) | [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/ZvecAI)](<https://x.com/ZvecAI>) |\n| Scan to join | Scan to join | Click to join | Click to follow |\n\n</div>\n\n</div>\n\n## ❤️ Contributing\n\nWe welcome and appreciate contributions from the community! Whether you're fixing a bug, adding a feature, or improving documentation, your help makes Zvec better for everyone.\n\nCheck out our [Contributing Guide](./CONTRIBUTING.md) to get started!\n",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "rag",
+      "skill",
+      "llm",
+      "eval",
+      "workflow",
+      "vector",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93
+  },
+  {
+    "owner": "microsoft",
+    "name": "SkillOpt",
+    "full_name": "microsoft/SkillOpt",
+    "url": "https://github.com/microsoft/SkillOpt",
+    "description": "SkillOpt is a text-space optimizer that trains reusable natural-language skills for frozen LLM agents through trajectory-driven edits, validation-gated updates, and deployable best_skill.md artifacts.",
+    "language": "Python",
+    "total_stars": 11683,
+    "forks": 1080,
+    "stars_this_period": 261,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "self-evolving-agents"
+      ],
+      "license": "MIT",
+      "open_issues": 26,
+      "created_at": "2026-05-08T06:41:01Z",
+      "pushed_at": "2026-07-02T14:11:34Z",
+      "homepage": "https://aka.ms/skillopt",
+      "default_branch": "main",
+      "forks": 1080,
+      "watchers": 52,
+      "archived": false,
+      "size_kb": 22564
+    },
+    "readme_content": "# SkillOpt: Executive Strategy for Self-Evolving Agent Skills\n\n*Train agent skills like you train neural networks — with epochs, (mini-)batchsize, learning rates, and validation gates — but without touching model weights.*\n\n[![Project Page](https://img.shields.io/badge/Project%20Page-SkillOpt-8dbb3c)](https://microsoft.github.io/SkillOpt/) [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b)](https://arxiv.org/abs/2605.23904) [![Project Video](https://img.shields.io/badge/Project%20Video-Watch%20Demo-ff0000)](https://youtu.be/JUBMDTCiM0M) [![PyPI](https://img.shields.io/badge/PyPI-skillopt-green.svg)](https://pypi.org/project/skillopt/) [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/38498?utm_source=trendshift-badge&utm_medium=badge&utm_campaign=badge-trendshift-38498\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/38498/daily?language=Python\" alt=\"microsoft%2FSkillOpt | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/38498?utm_source=trendshift-badge&utm_medium=badge&utm_campaign=badge-trendshift-38498\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/38498/weekly?language=Python\" alt=\"microsoft%2FSkillOpt | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n> 📖 **For installation, data preparation, training/eval commands, the full configuration reference, and framework internals, see the [Documentation & Reproduction Guide](https://microsoft.github.io/SkillOpt/docs/guideline.html)** (rendered on GitHub Pages).\n\n---\n\n## News 🔥🔥🔥\n- **[2026-07-02]** 🚀 **SkillOpt [v0.2.0](https://github.com/microsoft/SkillOpt/releases/tag/v0.2.0) is out on [PyPI](https://pypi.org/project/skillopt/)!** Headline feature: **SkillOpt-Sleep**, a nightly offline self-evolution engine (harvest → mine → replay → consolidate, all behind a held-out validation gate) with multi-objective reward, experience replay + dream rollouts, and long-term memory — now shipped as the `skillopt-sleep` CLI. This release also adds cross-tool backends and plugin shells for **Claude, Codex, Copilot, Devin, and OpenClaw**, SearchQA split materialization, Windows robustness, and hardened JSON parsing. See the [release notes](https://github.com/microsoft/SkillOpt/releases/tag/v0.2.0) for the full changelog and contributor acknowledgements.\n- **[2026-06-15]** 😴 **SkillOpt-Sleep (preview)** — a nightly offline self-evolution companion for local coding agents (Claude Code / Codex / Copilot): review past sessions, replay recurring tasks, and consolidate validated skills behind a held-out gate. See **[`docs/sleep/README.md`](docs/sleep/README.md)** for what it is, how to use it, and results.\n- **[2026-06-03]** 🎉 **[gbrain](https://github.com/garrytan/gbrain), [gbrain-evals](https://github.com/garrytan/gbrain-evals/blob/main/docs/benchmarks/2026-06-03-skillopt.md), and [darwin-skill](https://github.com/alchaincyf/darwin-skill) have all integrated SkillOpt.**\n- **[2026-06-02]** 🎉 **SkillOpt [v0.1.0](https://github.com/microsoft/SkillOpt/releases/tag/v0.1.0) is now available on [PyPI](https://pypi.org/project/skillopt/)!** Install with `pip install skillopt`. This initial release includes the full training loop (rollout → reflect → aggregate → select → update → evaluate), multi-backend support (OpenAI / Azure / Claude / Qwen / MiniMax), six built-in benchmarks, and WebUI dashboard.\n\n---\n\n## Overview\n\nModern agent skills are usually hand-crafted, generated one-shot by a strong\nLLM, or evolved through loosely controlled self-revision — none of which\nbehaves like a deep-learning optimizer for the skill itself, and none of\nwhich reliably improves over its starting point under feedback.\n\n**SkillOpt treats the skill document as the trainable state of a frozen\nagent**, and trains it with the discipline that makes weight-space\noptimization reproducible. A separate optimizer model turns scored rollouts\ninto bounded add / delete / replace edits on a single skill document; a\ncandidate edit is accepted only when it strictly improves a held-out\nvalidation score. A textual learning-rate budget, a rejected-edit buffer,\nand an epoch-wise slow / meta update make skill training stable while\nadding **zero inference-time model calls** at deployment.\n\nThe deployed artifact is a compact `best_skill.md` (typically 300–2,000\ntokens) that runs against the unchanged target model. Across **six\nbenchmarks, seven target models, and three execution harnesses** (direct\nchat, Codex CLI, Claude Code CLI), SkillOpt is best or tied-best on **all\n52 evaluated (model, benchmark, harness) cells** and on GPT-5.5 lifts the\naverage no-skill accuracy by **+23.5 points in direct chat, +24.8 inside\nthe Codex agentic loop, and +19.1 inside Claude Code**. Optimized skill\nartifacts transfer across model scales, between Codex and Claude Code\nharnesses, and to nearby benchmarks without further optimization.\n\nFor the full method, ablations, and per-cell results see the [paper](https://arxiv.org/abs/2605.23904); for a visual walkthrough of the loop see the [project page](https://microsoft.github.io/SkillOpt/); for deeper API / backend / benchmark docs see [`docs/`](docs/).\n\n## 🎬 Demo Video\n\nhttps://github.com/user-attachments/assets/eb12d3bc-371c-467f-904d-91b61f339ed7\n\n<p align=\"center\">\n  <a href=\"https://youtu.be/JUBMDTCiM0M\"><b>▶ Watch the full demo on YouTube</b></a>\n</p>\n\n---\n\n## Extensibility & WebUI\n\n### Adding a new backend\n\nA backend = a chat / exec target (e.g. `openai_chat`, `claude_chat`,\n`qwen_chat`, `minimax_chat`, `codex_exec`, `claude_code_exec`). See\n[`docs/guide/new-backend.md`](docs/guide/new-backend.md) for the full\ncontract; in short you add a `skillopt/model/<name>_backend.py` module,\nregister it in `skillopt/model/common.py` + `backend_config.py`, and wire\nit through the router in `skillopt/model/__init__.py`. `qwen_backend.py`\nand `minimax_backend.py` are good templates.\n\n### Adding a new benchmark\n\nA benchmark = a `skillopt/envs/<name>/` package with a `dataloader.py`, a\n`rollout.py`, and an `initial.md` seed skill. See\n[`docs/guide/new-benchmark.md`](docs/guide/new-benchmark.md) for the full\ncontract; the simplest reference is `skillopt/envs/searchqa/`.\n\n### WebUI\n\nLaunch the monitoring dashboard (optional):\n\n```bash\npip install -e \".[webui]\"\npython -m skillopt_webui.app\n```\n\n| Flag | Default | Description |\n|---|---|---|\n| `--port` | 7860 | Server port |\n| `--host` | `0.0.0.0` | Bind address |\n| `--share` | off | Create a public Gradio share link |\n\n---\n\n## Citation\n\n```bibtex\n@article{yang2026skillopt,\n  title={Skillopt: Executive strategy for self-evolving agent skills},\n  author={Yang, Yifan and Gong, Ziyang and Huang, Weiquan and Yang, Qihao and Zhou, Ziwei and Huang, Zisu and Li, Yan and Gao, Xuemei and Dai, Qi and Liu, Bei and others},\n  journal={arXiv preprint arXiv:2605.23904},\n  year={2026}\n}\n```\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=68.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"skillopt\"\nversion = \"0.2.0\"\ndescription = \"SkillOpt: Agentic Skill Optimization via Reflective Training Loops\"\nreadme = \"README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.10\"\nauthors = [\n    {name = \"SkillOpt Team\"},\n]\nkeywords = [\"agent\", \"prompt-optimization\", \"skill-learning\", \"LLM\", \"agentic\"]\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Science/Research\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n]\ndependencies = [\n    \"openai>=1.30.0\",\n    \"pyyaml>=6.0\",\n    \"numpy>=1.24.0\",\n    \"openpyxl>=3.1.0\",\n    \"azure-identity>=1.15.0\",\n    \"azure-core>=1.30.0\",\n    \"httpx>=0.27.0\",\n]\n\n[project.optional-dependencies]\n# Benchmark-specific dependencies\nalfworld = [\"alfworld>=0.4.0\", \"gymnasium>=0.29.0\"]\n# Claude model backend\nclaude = [\"claude-agent-sdk>=0.1.0\", \"json_repair>=0.61.0\"]\n# Qwen local model backend (via vLLM)\nqwen = [\"vllm>=0.4.0\", \"json_repair>=0.61.0\"]\n# SearchQA data materialization\nsearchqa = [\"datasets>=2.18.0\"]\n# Documentation site\ndocs = [\"mkdocs-material>=9.5.0\", \"mkdocstrings[python]>=0.24.0\"]\n# WebUI dashboard\nwebui = [\"gradio>=4.0.0\"]\n# Development tools\ndev = [\"ruff>=0.4.0\", \"pytest>=8.0.0\"]\n# All optional dependencies (except docs/dev/webui)\nall = [\n    \"alfworld>=0.4.0\",\n    \"gymnasium>=0.29.0\",\n    \"claude-agent-sdk>=0.1.0\",\n    \"json_repair>=0.61.0\",\n]\n\n[project.scripts]\nskillopt-train = \"scripts.train:main\"\nskillopt-eval = \"scripts.eval_only:main\"\nskillopt-sleep = \"skillopt_sleep.__main__:main\"\n\n[project.urls]\nHomepage = \"https://github.com/microsoft/SkillOpt\"\nDocumentation = \"https://microsoft.github.io/SkillOpt\"\nRepository = \"https://github.com/microsoft/SkillOpt\"\nIssues = \"https://github.com/microsoft/SkillOpt/issues\"\n\n[tool.setuptools.packages.find]\n# skillopt*      = the research package\n# skillopt_sleep = the open-source Sleep tool (decoupled, zero research dep)\n# skillopt_webui = the Gradio dashboard (installed via the `webui` extra)\ninclude = [\"skillopt\", \"skillopt.*\", \"skillopt_sleep\", \"skillopt_sleep.*\", \"skillopt_webui\", \"skillopt_webui.*\", \"scripts*\"]\n\n[tool.ruff]\nline-length = 120\ntarget-version = \"py310\"\n\n[tool.ruff.lint]\nselect = [\"E\", \"F\", \"I\", \"W\"]\nignore = [\"E501\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "llm",
+      "eval"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92
+  }
+]
