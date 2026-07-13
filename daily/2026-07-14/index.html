@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="warm-signal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub 热榜情报日报 - 2026-07-14</title>
+  
+  <style>
+    :root {
+      color-scheme: light;
+      --bg:#f6f0e8;
+      --bg-2:#fbf7f1;
+      --paper:rgba(255,252,247,0.92);
+      --panel:rgba(255,255,255,0.70);
+      --panel-strong:rgba(255,255,255,0.86);
+      --line:rgba(119,99,76,0.18);
+      --line-strong:rgba(249,115,22,0.34);
+      --text:#181512;
+      --muted:rgba(24,21,18,0.62);
+      --soft:rgba(24,21,18,0.78);
+      --blue:#8e9fc9;
+      --blue-strong:#6177ad;
+      --orange:#f97316;
+      --orange-soft:rgba(249,115,22,0.12);
+      --rail:rgba(142,159,201,0.24);
+      --grid:rgba(142,159,201,0.10);
+      --node:#fffaf4;
+      --shadow:0 18px 48px rgba(40,26,14,0.08);
+      --shadow-soft:0 10px 28px rgba(40,26,14,0.05);
+      --red:#b5543d;
+      --font-cn:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+      --font-body:var(--font-cn);
+      --font-display:"Iowan Old Style","Palatino Linotype","Book Antiqua","Noto Serif SC","Source Han Serif SC",serif;
+      --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+    }
+    * { box-sizing:border-box; }
+    html { color-scheme:light; scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--text);
+      font-family:var(--font-body);
+      font-weight:400;
+      font-synthesis-weight:none;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      line-height:1.84;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(142,159,201,.18), transparent 24%),
+        radial-gradient(circle at 86% 10%, rgba(249,115,22,.13), transparent 20%),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      background-size:auto,auto,72px 72px,72px 72px,auto;
+      background-attachment:fixed;
+    }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:var(--orange); }
+    .mono {
+      font-family:var(--font-mono);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .pixel-word {
+      display:inline-block;
+      font-family:var(--font-mono);
+      font-size:.78em;
+      font-weight:640;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--blue-strong);
+      padding:.18em .42em;
+      border:1px solid rgba(97,119,173,.22);
+      border-radius:999px;
+      background:rgba(142,159,201,.08);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+      vertical-align:middle;
+      transform:translateY(-.08em);
+    }
+    .wrap { max-width:1120px; margin:0 auto; padding:34px 22px 96px; }
+    header {
+      position:relative;
+      margin-bottom:12px;
+      padding:0 0 32px;
+      border-bottom:1px solid var(--line);
+    }
+    header::before {
+      content:"";
+      position:absolute;
+      inset:-14px -18px auto -18px;
+      height:228px;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(249,115,22,.13), transparent 28%),
+        radial-gradient(circle at 72% 14%, rgba(142,159,201,.18), transparent 34%);
+      opacity:.92;
+    }
+    header > * { position:relative; }
+    .toprow {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding-top:4px;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .dot {
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#ffb36d,var(--orange));
+      box-shadow:0 0 16px rgba(249,115,22,.18);
+    }
+    h1 {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      gap:12px;
+      margin:20px 0 8px;
+      font-family:var(--font-display);
+      font-size:clamp(44px,8vw,82px);
+      font-weight:650;
+      letter-spacing:-.045em;
+      line-height:.92;
+    }
+    h1 .ac {
+      color:var(--text);
+      position:relative;
+      display:inline-block;
+      padding-right:.08em;
+    }
+    h1 .ac::after {
+      content:"";
+      position:absolute;
+      left:.08em;
+      right:.02em;
+      bottom:.12em;
+      height:.18em;
+      background:linear-gradient(90deg, rgba(249,115,22,.26), rgba(249,115,22,.04));
+      z-index:-1;
+      border-radius:999px;
+    }
+    h2 {
+      margin:0;
+      color:var(--text);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:620;
+      letter-spacing:-.03em;
+    }
+    h3 {
+      margin:0 0 8px;
+      color:var(--text);
+      font-size:26px;
+      font-weight:620;
+      line-height:1.28;
+      letter-spacing:-.03em;
+    }
+    h4 {
+      margin:22px 0 10px;
+      color:var(--blue-strong);
+      font-size:11px;
+      font-family:var(--font-mono);
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .sub {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .chip {
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 11px;
+      color:var(--soft);
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,.58);
+      backdrop-filter:blur(14px);
+    }
+    .chip b { color:var(--orange); font-weight:700; }
+    .hero-lede {
+      max-width:58ch;
+      margin:16px 0 0;
+      color:var(--soft);
+      font-size:16px;
+      line-height:1.9;
+    }
+    .briefing-strip {
+      display:grid;
+      grid-template-columns:1.24fr 1fr 1fr;
+      gap:12px;
+      margin-top:20px;
+    }
+    .briefing-item {
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:linear-gradient(180deg, var(--panel-strong), var(--panel));
+      box-shadow:var(--shadow-soft);
+      padding:15px 16px;
+      min-width:0;
+      backdrop-filter:blur(18px);
+    }
+    .briefing-item b {
+      display:block;
+      color:var(--blue-strong);
+      font-family:var(--font-mono);
+      font-size:10px;
+      font-weight:620;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:7px;
+    }
+    .briefing-item span {
+      display:block;
+      color:var(--soft);
+      font-size:13px;
+      line-height:1.68;
+      text-wrap:pretty;
+    }
+    .section-nav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:18px;
+    }
+    .section-link {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.56);
+      color:var(--muted);
+      font-size:11px;
+      transition:border-color .2s,color .2s,background .2s,transform .2s;
+      backdrop-filter:blur(12px);
+    }
+    .section-link:hover {
+      border-color:var(--line-strong);
+      color:var(--text);
+      background:rgba(255,247,238,.92);
+      transform:translateY(-1px);
+    }
+    .section-link .nr { color:var(--orange); }
+    .timeline {
+      position:relative;
+      margin-top:22px;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      left:28px;
+      top:4px;
+      bottom:28px;
+      width:1px;
+      background:linear-gradient(180deg, var(--rail), transparent);
+    }
+    .signal-section { position:relative; }
+    .signal-section + .signal-section { margin-top:18px; }
+    .section-head {
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      padding:8px 0 10px 84px;
+      color:var(--muted);
+    }
+    .section-head .range {
+      min-width:54px;
+      color:var(--orange);
+      font-size:11px;
+      padding-top:10px;
+    }
+    .section-head > div {
+      display:inline-block;
+      max-width:620px;
+      padding:12px 14px 10px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,251,244,.68));
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(16px);
+    }
+    .section-head p {
+      margin:7px 0 0;
+      font-size:13px;
+      line-height:1.62;
+      color:var(--muted);
+    }
+    .section-tools {
+      margin:0 0 12px 84px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px;
+    }
+    .tool-btn {
+      appearance:none;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.62);
+      color:var(--muted);
+      font-family:var(--font-mono);
+      font-size:10px;
+      padding:8px 11px;
+      cursor:pointer;
+      transition:background .18s,border-color .18s,color .18s,transform .18s;
+    }
+    .tool-btn:hover {
+      color:var(--text);
+      border-color:var(--line-strong);
+      background:rgba(255,247,238,.9);
+      transform:translateY(-1px);
+    }
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+      margin-top:18px;
+    }
+    .stat {
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:linear-gradient(180deg, var(--panel-strong), var(--panel));
+      box-shadow:var(--shadow-soft);
+      padding:14px 15px 13px;
+      backdrop-filter:blur(18px);
+    }
+    .stat b {
+      display:block;
+      color:var(--text);
+      font-family:var(--font-display);
+      font-size:29px;
+      font-weight:650;
+      line-height:1;
+      margin-bottom:6px;
+      letter-spacing:-.04em;
+    }
+    .stat span,
+    .meta {
+      color:var(--muted);
+      font-family:var(--font-mono);
+      font-size:11px;
+    }
+    .table-wrap {
+      margin-left:84px;
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,252,247,.72));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:1040px;
+    }
+    th, td {
+      padding:12px 14px;
+      border-bottom:1px solid rgba(119,99,76,.12);
+      text-align:left;
+      vertical-align:top;
+      font-size:13px;
+      line-height:1.6;
+    }
+    th {
+      color:var(--blue-strong);
+      font-family:var(--font-mono);
+      font-size:10px;
+      font-weight:620;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      background:rgba(142,159,201,.05);
+    }
+    td { color:var(--soft); }
+    td:first-child,
+    td:nth-child(4),
+    td:nth-child(5),
+    td:nth-child(8) {
+      color:var(--text);
+      font-family:var(--font-mono);
+    }
+    .cards {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .card {
+      display:block;
+      position:relative;
+      margin-left:84px;
+      padding:22px 22px 24px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,252,247,.72));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+    .card[data-rank]::before {
+      content:attr(data-rank);
+      position:absolute;
+      left:-64px;
+      top:18px;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--orange);
+      font-family:var(--font-mono);
+      font-size:12px;
+      background:var(--node);
+      border:1px solid rgba(249,115,22,.18);
+      box-shadow:0 12px 22px rgba(249,115,22,.08);
+    }
+    .card[data-rank]:hover::before {
+      border-color:rgba(249,115,22,.34);
+      transform:translateY(-1px);
+    }
+    .card h3 a { color:var(--text); }
+    .card h3 a:hover { color:var(--orange); }
+    .card > p {
+      margin:11px 0 0;
+      color:var(--soft);
+      font-size:15px;
+      line-height:1.94;
+      max-width:72ch;
+    }
+    .tag {
+      display:inline-block;
+      margin:2px 6px 2px 0;
+      padding:3px 8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-family:var(--font-mono);
+      font-size:10px;
+      white-space:nowrap;
+      background:rgba(255,255,255,.58);
+    }
+    .tag:nth-child(1), .tag.primary {
+      border-color:rgba(97,119,173,.18);
+      color:var(--blue-strong);
+      background:rgba(142,159,201,.08);
+    }
+    .tag:nth-child(2), .tag.value {
+      border-color:rgba(249,115,22,.22);
+      color:rgba(184,90,26,.96);
+      background:rgba(249,115,22,.06);
+    }
+    .read-first {
+      margin:18px 0 0;
+      padding:16px 17px;
+      border:1px solid rgba(249,115,22,.18);
+      border-left:3px solid var(--orange);
+      border-radius:0 16px 16px 0;
+      background:linear-gradient(90deg, rgba(249,115,22,.09), rgba(249,115,22,.015) 76%);
+    }
+    .read-label {
+      color:var(--orange);
+      font-family:var(--font-mono);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .read-first ol { margin-top:9px; }
+    .detail-stack {
+      display:grid;
+      gap:10px;
+      margin:15px 0 0;
+    }
+    .detail-fold {
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.58);
+      overflow:hidden;
+      transition:border-color .18s,background .18s,transform .18s;
+      backdrop-filter:blur(14px);
+    }
+    .detail-fold:hover {
+      border-color:rgba(142,159,201,.28);
+      background:rgba(255,255,255,.76);
+      transform:translateY(-1px);
+    }
+    .detail-fold summary {
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      color:var(--blue-strong);
+      font-family:var(--font-mono);
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      user-select:none;
+    }
+    .detail-fold summary::-webkit-details-marker { display:none; }
+    .detail-fold summary::after {
+      content:"+";
+      color:var(--muted);
+      font-size:14px;
+      line-height:1;
+    }
+    .detail-fold[open] summary {
+      border-bottom:1px solid var(--line);
+      background:rgba(142,159,201,.05);
+    }
+    .detail-fold[open] summary::after {
+      content:"−";
+      color:var(--orange);
+    }
+    .detail-fold > ol,
+    .detail-fold > .lenses {
+      margin:10px 14px 14px;
+    }
+    .detail-fold.risk-fold summary { color:var(--red); }
+    .mini-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      padding:12px;
+    }
+    .mini-grid div {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.6);
+      border-radius:14px;
+      padding:8px 10px;
+      min-width:0;
+    }
+    .mini-grid b {
+      display:block;
+      color:var(--blue-strong);
+      font-family:var(--font-mono);
+      font-size:10px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .mini-grid span {
+      color:var(--text);
+      font-size:12.5px;
+      overflow-wrap:anywhere;
+    }
+    ol {
+      margin:7px 0 0;
+      padding-left:22px;
+    }
+    li {
+      margin:8px 0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.82;
+    }
+    li b {
+      color:var(--text);
+      font-weight:620;
+    }
+    .lenses {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+    .lens {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.64);
+      border-radius:16px;
+      padding:13px 14px;
+    }
+    .lens b {
+      color:var(--blue-strong);
+      font-family:var(--font-mono);
+      font-size:10px;
+      font-weight:620;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .lens p {
+      margin:7px 0 0;
+      color:var(--soft);
+      font-size:13px;
+      line-height:1.72;
+    }
+    .trend-cards {
+      margin:14px 0 0 84px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .trend-card {
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,251,244,.72));
+      box-shadow:var(--shadow);
+      padding:18px 18px 17px;
+    }
+    .trend-card h3 {
+      margin:0 0 8px;
+      font-size:20px;
+      line-height:1.34;
+    }
+    .trend-card p {
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.82;
+    }
+    .trend-evidence {
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:12px 0 0;
+    }
+    .trend-evidence span {
+      border:1px solid rgba(97,119,173,.16);
+      background:rgba(142,159,201,.08);
+      color:var(--blue-strong);
+      border-radius:999px;
+      padding:4px 9px;
+      font-family:var(--font-mono);
+      font-size:10px;
+    }
+    .trend-action {
+      margin-top:10px;
+      color:rgba(184,90,26,.98);
+      font-size:13px;
+      line-height:1.7;
+    }
+    blockquote {
+      margin:24px 0 0 84px;
+      padding:22px 22px 24px;
+      border:1px solid rgba(249,115,22,.18);
+      border-left:4px solid var(--orange);
+      border-radius:0 22px 22px 0;
+      background:linear-gradient(180deg, rgba(255,248,240,.96), rgba(255,252,247,.82));
+      color:var(--text);
+      font-size:22px;
+      font-weight:540;
+      line-height:1.66;
+      box-shadow:var(--shadow);
+    }
+    blockquote::before {
+      content:"Conclusion";
+      display:block;
+      margin-bottom:10px;
+      color:var(--orange);
+      font-family:var(--font-mono);
+      font-size:10px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    .caveat {
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+    @media (max-width:860px) {
+      .trend-cards { grid-template-columns:1fr; }
+      .briefing-strip { grid-template-columns:1fr; }
+      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .lenses,.mini-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:680px) {
+      .wrap { padding:28px 14px 64px; }
+      .toprow { flex-direction:column; }
+      h1 { font-size:clamp(36px,14vw,60px); gap:10px; }
+      .hero-lede { font-size:15px; line-height:1.82; }
+      .timeline::before { left:18px; }
+      .section-head {
+        padding-left:54px;
+        gap:10px;
+      }
+      .section-head .range { min-width:42px; }
+      .table-wrap,
+      .card,
+      .trend-cards,
+      blockquote,
+      .section-tools { margin-left:54px; }
+      .table-wrap {
+        overflow:visible;
+        border:0;
+        background:transparent;
+        border-radius:0;
+        box-shadow:none;
+        backdrop-filter:none;
+      }
+      table, thead, tbody, tr, td {
+        display:block;
+        width:100%;
+        min-width:0;
+      }
+      table { min-width:0; }
+      thead { display:none; }
+      tbody { display:grid; gap:10px; }
+      tbody tr {
+        border:1px solid var(--line);
+        border-radius:16px;
+        background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,252,247,.72));
+        padding:12px 12px 10px;
+        box-shadow:var(--shadow-soft);
+      }
+      td {
+        border:0;
+        display:grid;
+        grid-template-columns:84px minmax(0,1fr);
+        gap:8px;
+        align-items:start;
+        padding:4px 0;
+        font-size:12.5px;
+      }
+      td::before {
+        color:var(--muted);
+        font-family:var(--font-mono);
+        font-size:10px;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+      }
+      td:nth-child(1)::before { content:"Rank"; }
+      td:nth-child(2)::before { content:"Repo"; }
+      td:nth-child(3)::before { content:"Lang"; }
+      td:nth-child(4)::before { content:"Period"; }
+      td:nth-child(5)::before { content:"Stars"; }
+      td:nth-child(6)::before { content:"Forks"; }
+      td:nth-child(7)::before { content:"Issues"; }
+      td:nth-child(8)::before { content:"Score"; }
+      td:nth-child(9)::before { content:"Confidence"; }
+      td:nth-child(10)::before { content:"Relation"; }
+      td:nth-child(11)::before { content:"Signals"; }
+      .card[data-rank]::before {
+        left:-54px;
+        width:36px;
+        height:36px;
+      }
+      .detail-fold summary { min-height:46px; }
+      .card > p { font-size:14.5px; line-height:1.88; }
+      blockquote { font-size:19px; }
+    }
+  </style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="toprow">
+      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div>
+      <div class="mono" style="color:var(--muted);font-size:12px;">scan · judge · decide</div>
+    </div>
+    <h1><span class="pixel-word">GitHub</span> <span class="ac">热榜</span> 情报</h1>
+    <div class="sub">
+      <span class="mono">2026-07-14</span>
+      <span class="chip">MODE / <b>AI-NATIVE</b></span>
+      <span class="chip">PERIOD / <b>DAILY</b></span>
+      <span class="chip">TOP <b>10</b></span>
+    </div>
+    <p class="hero-lede">给中文 AI builder / operator / investor 的开源判断简报：先扫信号，再读结论，最后按需下钻证据。</p>
+    <section class="briefing-strip" aria-label="本期阅读提示">
+      <div class="briefing-item"><b>Signal First</b><span>先扫 Top 10 与趋势卡片，快速建立今天最值得看的判断顺序。</span></div>
+      <div class="briefing-item"><b>Evidence on Demand</b><span>技术、数据与风险维持折叠，默认把注意力留给真正重要的结论。</span></div>
+      <div class="briefing-item"><b>Mobile Read</b><span>手机端自动转卡片布局，适合快速扫读、收藏和分享重点项目。</span></div>
+    </section>
+    <nav class="section-nav" aria-label="报告分组导航">
+      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
+      <a class="section-link" href="#sec-deep"><span class="nr mono">02</span><span>深度分析</span></a>
+      <a class="section-link" href="#sec-trends"><span class="nr mono">03</span><span>趋势</span></a>
+      <a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>启示</span></a>
+      <a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>行动</span></a>
+    </nav>
+    <section class="stats">
+      <div class="stat"><b>60</b><span>候选项目</span></div>
+      <div class="stat"><b>10</b><span>Top 项目</span></div>
+      <div class="stat"><b>60</b><span>README 覆盖</span></div>
+      <div class="stat"><b>0</b><span>API 失败</span></div>
+    </section>
+    <p class="caveat">抓取健康：all=10, python=16, typescript=17, javascript=14, go=22, rust=18。GitHub Trending 非官方 API，页面结构变化可能影响解析。</p>
+  </header>
+
+  <main class="timeline">
+  <section class="signal-section" id="sec-top10">
+    <div class="section-head"><span class="range mono">01</span><div><h2>Top 10 项目信号</h2><p>不是按 star 排序，而是数据、技术与战略相关度的加权判断。</p></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Repository</th><th>语言</th><th>周期 Stars</th><th>总 Stars</th><th>Forks</th><th>Issues</th><th>评分</th><th>置信度</th><th>关系标签</th><th>战略关键词</th></tr></thead>
+        <tbody><tr><td>1</td><td><a href='https://github.com/HKUDS/Vibe-Trading'>HKUDS/Vibe-Trading</a></td><td>Python</td><td>1148</td><td>21657</td><td>3746</td><td>19</td><td>95</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>mcp</span><span class='tag'>llm</span><span class='tag'>eval</span></td></tr><tr><td>2</td><td><a href='https://github.com/OpenCut-app/OpenCut'>OpenCut-app/OpenCut</a></td><td>TypeScript</td><td>1077</td><td>66021</td><td>6967</td><td>333</td><td>95</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>automation</span></td></tr><tr><td>3</td><td><a href='https://github.com/affaan-m/ECC'>affaan-m/ECC</a></td><td>JavaScript</td><td>343</td><td>229234</td><td>35115</td><td>98</td><td>95</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>mcp</span><span class='tag'>skill</span></td></tr><tr><td>4</td><td><a href='https://github.com/Shubhamsaboo/awesome-llm-apps'>Shubhamsaboo/awesome-llm-apps</a></td><td>Python</td><td>1006</td><td>119518</td><td>17732</td><td>17</td><td>93</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>rag</span><span class='tag'>skill</span></td></tr><tr><td>5</td><td><a href='https://github.com/malisper/pgrust'>malisper/pgrust</a></td><td>Rust</td><td>464</td><td>2800</td><td>79</td><td>20</td><td>93</td><td>high</td><td>Memory 组件</td><td><span class='tag'>rag</span><span class='tag'>runtime</span><span class='tag'>workspace</span><span class='tag'>workflow</span></td></tr><tr><td>6</td><td><a href='https://github.com/farion1231/cc-switch'>farion1231/cc-switch</a></td><td>Rust</td><td>462</td><td>116787</td><td>7811</td><td>1927</td><td>93</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>mcp</span><span class='tag'>skill</span><span class='tag'>workflow</span></td></tr><tr><td>7</td><td><a href='https://github.com/ruvnet/ruflo'>ruvnet/ruflo</a></td><td>TypeScript</td><td>155</td><td>64313</td><td>7619</td><td>778</td><td>93</td><td>high</td><td>Memory 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>memory</span><span class='tag'>mcp</span><span class='tag'>rag</span></td></tr><tr><td>8</td><td><a href='https://github.com/gitroomhq/postiz-app'>gitroomhq/postiz-app</a></td><td>TypeScript</td><td>112</td><td>33227</td><td>6195</td><td>202</td><td>93</td><td>high</td><td>Skill 来源</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>workspace</span></td></tr><tr><td>9</td><td><a href='https://github.com/ColeMurray/background-agents'>ColeMurray/background-agents</a></td><td>TypeScript</td><td>233</td><td>2408</td><td>349</td><td>56</td><td>92</td><td>high</td><td>Runtime 参考</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>rag</span><span class='tag'>workspace</span><span class='tag'>automation</span></td></tr><tr><td>10</td><td><a href='https://github.com/FoundationAgents/OpenManus'>FoundationAgents/OpenManus</a></td><td>Python</td><td>126</td><td>57360</td><td>9971</td><td>508</td><td>92</td><td>high</td><td>Workspace 组件</td><td><span class='tag'>agent</span><span class='tag'>agents</span><span class='tag'>mcp</span><span class='tag'>llm</span></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="signal-section" id="sec-deep">
+    <div class="section-head"><span class="range mono">02</span><div><h2>Top 3-5 深度分析</h2><p>把 repo 拆成可复用、可投资、可防守的决策情报。</p></div></div>
+    <div class="section-tools" aria-label="深度分析阅读控制"><button class="tool-btn" data-action="expand-deep" type="button">展开全部证据</button><button class="tool-btn" data-action="collapse-deep" type="button">收起全部证据</button></div>
+    <div class="cards"><article class='card' data-rank='01'><h3><a href='https://github.com/HKUDS/Vibe-Trading'>HKUDS/Vibe-Trading</a></h3><div class='meta'>Runtime 参考 · Python · 评分 95 · 置信度 high</div><p>HKUDS/Vibe-Trading 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「&quot;Vibe-Trading: Your Personal Trading Agent&quot;」。本周期新增 1148 stars、累计 21657 stars，主要信号集中在 agent、mcp、llm、eval。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>HKUDS/Vibe-Trading 更适合被看作「Runtime 参考」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「&quot;Vibe-Trading: Your Personal Trading Agent&quot;」。本周期新增 1148 stars、累计 21657 stars，主要信号集中在 agent、mcp、llm、eval。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 1148 stars；跨多个 Trending 切片重复出现；命中 agent, mcp, llm, eval；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>1148</span></div><div><b>总 stars</b><span>21657</span></div><div><b>forks</b><span>3746</span></div><div><b>open issues</b><span>19</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-04-01</span></div><div><b>最后 push</b><span>2026-07-13</span></div><div><b>topics</b><span>ai-agent, algorithmic-trading, backtesting, fintech, llm, mcp, multi-agent, python</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `pyproject.toml`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：&quot;Vibe-Trading: Your Personal Trading Agent&quot;</li><li>Topics：ai-agent, algorithmic-trading, backtesting, fintech, llm, mcp, multi-agent, python</li><li>许可证：MIT</li><li>热度：本周期新增 1148 stars，当前总星标 21657。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>未从 README 摘要中确认。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 HKUDS/Vibe-Trading 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Runtime 参考` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=19，last push=2026-07-13；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='02'><h3><a href='https://github.com/OpenCut-app/OpenCut'>OpenCut-app/OpenCut</a></h3><div class='meta'>Skill 来源 · TypeScript · 评分 95 · 置信度 high</div><p>OpenCut-app/OpenCut 更适合被看作「Skill 来源」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「The open-source CapCut alternative」。本周期新增 1077 stars、累计 66021 stars，主要信号集中在 agent、agents、mcp、automation。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>OpenCut-app/OpenCut 更适合被看作「Skill 来源」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「The open-source CapCut alternative」。本周期新增 1077 stars、累计 66021 stars，主要信号集中在 agent、agents、mcp、automation。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 1077 stars；跨多个 Trending 切片重复出现；命中 agent, agents, mcp, automation；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>1077</span></div><div><b>总 stars</b><span>66021</span></div><div><b>forks</b><span>6967</span></div><div><b>open issues</b><span>333</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2025-06-22</span></div><div><b>最后 push</b><span>2026-07-10</span></div><div><b>topics</b><span>editor, oss, videoeditor</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：The open-source CapCut alternative</li><li>Topics：editor, oss, videoeditor</li><li>许可证：MIT</li><li>热度：本周期新增 1077 stars，当前总星标 66021。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 OpenCut-app/OpenCut 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Skill 来源` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=333，last push=2026-07-10；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='03'><h3><a href='https://github.com/affaan-m/ECC'>affaan-m/ECC</a></h3><div class='meta'>Memory 组件 · JavaScript · 评分 95 · 置信度 high</div><p>affaan-m/ECC 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.」。本周期新增 343 stars、累计 229234 stars，主要信号集中在 agent、agents、memory、mcp。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>affaan-m/ECC 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.」。本周期新增 343 stars、累计 229234 stars，主要信号集中在 agent、agents、memory、mcp。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 343 stars；命中 agent, agents, memory, mcp；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>343</span></div><div><b>总 stars</b><span>229234</span></div><div><b>forks</b><span>35115</span></div><div><b>open issues</b><span>98</span></div><div><b>主语言</b><span>JavaScript</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-01-18</span></div><div><b>最后 push</b><span>2026-07-13</span></div><div><b>topics</b><span>ai-agents, anthropic, claude, claude-code, developer-tools, llm, mcp, productivity</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>依赖线索：检测到 `package.json`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</li><li>Topics：ai-agents, anthropic, claude, claude-code, developer-tools, llm, mcp, productivity</li><li>许可证：MIT</li><li>热度：本周期新增 343 stars，当前总星标 229234。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 affaan-m/ECC 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=MIT；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=98，last push=2026-07-13；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='04'><h3><a href='https://github.com/Shubhamsaboo/awesome-llm-apps'>Shubhamsaboo/awesome-llm-apps</a></h3><div class='meta'>Skill 来源 · Python · 评分 93 · 置信度 high</div><p>Shubhamsaboo/awesome-llm-apps 更适合被看作「Skill 来源」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「100+ AI Agent &amp; RAG apps you can actually run — clone, customize, ship.」。本周期新增 1006 stars、累计 119518 stars，主要信号集中在 agent、agents、mcp、rag。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>Shubhamsaboo/awesome-llm-apps 更适合被看作「Skill 来源」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「100+ AI Agent &amp; RAG apps you can actually run — clone, customize, ship.」。本周期新增 1006 stars、累计 119518 stars，主要信号集中在 agent、agents、mcp、rag。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 1006 stars；跨多个 Trending 切片重复出现；命中 agent, agents, mcp, rag；已有较高 star 基数，可能是老项目翻红。</li><li><b>是真创新还是重新包装：</b>出现 wrapper/template/boilerplate 信号，需警惕只是重新包装。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>1006</span></div><div><b>总 stars</b><span>119518</span></div><div><b>forks</b><span>17732</span></div><div><b>open issues</b><span>17</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2024-04-29</span></div><div><b>最后 push</b><span>2026-07-11</span></div><div><b>topics</b><span>agents, llms, python, rag</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>协议/接口层：README 或 topics 出现 MCP/protocol 信号，适合作为跨工具互操作参考。</li><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>检索增强：出现 RAG/retrieval/embedding 信号，可跟踪知识接入与上下文管理模式。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：100+ AI Agent &amp; RAG apps you can actually run — clone, customize, ship.</li><li>Topics：agents, llms, python, rag</li><li>许可证：Apache-2.0</li><li>热度：本周期新增 1006 stars，当前总星标 119518。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>未从 README 摘要中确认。</li><li><b>Tool Use：</b>出现 tool/plugin/connector/API 信号，可继续核实工具调用边界。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>未从 README 摘要中确认。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 Shubhamsaboo/awesome-llm-apps 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Skill 来源` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=Apache-2.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=17，last push=2026-07-11；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article><article class='card' data-rank='05'><h3><a href='https://github.com/malisper/pgrust'>malisper/pgrust</a></h3><div class='meta'>Memory 组件 · Rust · 评分 93 · 置信度 high</div><p>malisper/pgrust 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Postgres rewritten in Rust, now passing 100% of the Postgres regression tests」。本周期新增 464 stars、累计 2800 stars，主要信号集中在 rag、runtime、workspace、workflow。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</p><div class='read-first'><div class='read-label'>先读判断</div><ol><li><b>解决什么真问题：</b>malisper/pgrust 更适合被看作「Memory 组件」方向的候选样本，而不是单纯的热门仓库。公开描述显示它聚焦于「Postgres rewritten in Rust, now passing 100% of the Postgres regression tests」。本周期新增 464 stars、累计 2800 stars，主要信号集中在 rag、runtime、workspace、workflow。对中文读者而言，关键不是它有多少 star，而是它是否能被复用为产品能力、架构参考或观察池对象。</li><li><b>为什么现在 trending：</b>本周期新增 464 stars；命中 rag, runtime, workspace, workflow。</li><li><b>是真创新还是重新包装：</b>存在协议、运行时、记忆或 agentic workflow 信号，可能具备架构层创新。</li></ol></div><div class='detail-stack'><details class='detail-fold data-fold'><summary>基础数据</summary><div class='mini-grid'><div><b>周期 stars</b><span>464</span></div><div><b>总 stars</b><span>2800</span></div><div><b>forks</b><span>79</span></div><div><b>open issues</b><span>20</span></div><div><b>主语言</b><span>Rust</span></div><div><b>license</b><span>AGPL-3.0</span></div><div><b>创建时间</b><span>2026-04-20</span></div><div><b>最后 push</b><span>2026-07-10</span></div><div><b>topics</b><span>ai-assisted-development, database, postgres, postgresql, rust</span></div></div></details><details class='detail-fold tech-fold'><summary>技术原理与实现</summary><ol><li>Agent 工作流：项目围绕 agent/workflow 自动化组织能力，适合评估任务编排方式。</li><li>检索增强：出现 RAG/retrieval/embedding 信号，可跟踪知识接入与上下文管理模式。</li><li>运行时隔离：出现 runtime/sandbox/wasm 信号，可作为执行环境或安全边界参考。</li><li>依赖线索：检测到 `Cargo.toml`，可继续核实核心框架和运行依赖。</li></ol></details><details class='detail-fold tech-fold'><summary>核心特性</summary><ol><li>定位：Postgres rewritten in Rust, now passing 100% of the Postgres regression tests</li><li>Topics：ai-assisted-development, database, postgres, postgresql, rust</li><li>许可证：AGPL-3.0</li><li>热度：本周期新增 464 stars，当前总星标 2800。</li><li>README 覆盖不足时，后续应人工补抓并核实具体功能边界。</li></ol></details><details class='detail-fold tech-fold'><summary>潜在应用方向</summary><ol><li>产品集成：评估能否作为内部工具链、IDE、CLI 或自动化流程的组件。</li><li>架构借鉴：拆解其协议、运行时、状态管理、检索或依赖组织方式。</li><li>生态跟进：跟踪 issues、release、contributors 与 license，判断社区稳定性。</li><li>商业观察：观察 homepage、托管服务、付费入口或企业使用案例。</li><li>风险核查：确认维护频率、open issues、依赖复杂度和安全边界。</li></ol></details><details class='detail-fold tech-fold'><summary>系统设计拆解</summary><ol><li><b>Agent 编排：</b>出现 agent/workflow/orchestration 信号，可继续拆解任务规划与执行循环。</li><li><b>Memory：</b>出现 memory/context/state 信号，适合跟踪上下文持久化或状态管理方式。</li><li><b>Tool Use：</b>未从 README 摘要中确认。</li><li><b>Workflow：</b>出现 workflow/automation/pipeline 信号，可能具备可复用流程编排模式。</li><li><b>Storage：</b>出现 database/vector/storage/cache 信号，可继续核实数据层设计。</li><li><b>UI：</b>出现 UI/web/dashboard/editor 信号，可继续核实交互形态。</li></ol></details><details class='detail-fold lens-fold'><summary>六视角解读</summary><div class='lenses'><div class='lens'><b>AI Builder</b><p>评估 malisper/pgrust 是否能复用为 agent、tool use、workflow、memory 或 workspace 组件。</p></div><div class='lens'><b>Investor</b><p>结合 star 增速、总 star、license 与维护活跃度，判断它是品类机会、短期噪音还是开源分发信号。</p></div><div class='lens'><b>Product</b><p>把 README 功能映射到用户痛点，确认它改变的是交互范式、开发效率还是部署/运维成本。</p></div><div class='lens'><b>Architecture</b><p>重点拆解运行时边界、依赖栈、状态管理、扩展接口和安全边界。</p></div><div class='lens'><b>Founder</b><p>根据关系标签 `Memory 组件` 判断是应跟进、集成、防守、学习架构，还是纳入观察池。</p></div><div class='lens'><b>生态（OPC）</b><p>判断它对开放协议、agentic computing、工具互操作和社区标准化的信号强度。</p></div></div></details><details class='detail-fold risk-fold'><summary>风险评估</summary><ol><li><b>技术风险：</b>需继续核查核心依赖、执行边界、扩展点和性能瓶颈。</li><li><b>市场风险：</b>Trending 只能证明短期注意力，需验证真实付费需求、替代方案和目标用户频次。</li><li><b>安全合规风险：</b>license=AGPL-3.0；如涉及代码执行、浏览器、数据抓取或 agent tool use，需额外核查安全边界。</li><li><b>社区维护风险：</b>open issues=20，last push=2026-07-10；需进一步查看 contributors、release cadence 和 bus factor。</li></ol></details></div></article></div>
+  </section>
+
+  <section class="signal-section" id="sec-trends">
+    <div class="section-head"><span class="range mono">03</span><div><h2>趋势观察</h2><p>每条趋势至少由两个真实项目交叉佐证。</p></div></div>
+    <div class="trend-cards"><article class='trend-card'><h3>Agent 正在从聊天走向生产工作流</h3><p>本周的强信号不是又多了几个聊天机器人，而是 agent 开始进入视频生产、企业工具和流程编排。它更像一套可执行工作流，而不是一个对话窗口。</p><div class='trend-evidence'><span>HKUDS/Vibe-Trading</span><span>OpenCut-app/OpenCut</span><span>affaan-m/ECC</span></div><div class='trend-action'>行动含义：优先看它们如何组织 tool、pipeline、权限和失败恢复。</div></article><article class='trend-card'><h3>Memory / RAG 正在变成基础设施</h3><p>记忆不再只是 prompt 技巧，而是开始以知识图谱、RAG、代码库记忆的形式进入 agent 底座。</p><div class='trend-evidence'><span>affaan-m/ECC</span><span>Shubhamsaboo/awesome-llm-apps</span><span>malisper/pgrust</span></div><div class='trend-action'>行动含义：重点评估数据层、更新机制、权限边界和长期维护成本。</div></article><article class='trend-card'><h3>Workspace 工具正在被包装成 agent 可调用能力</h3><p>CLI、编辑器、语音和企业软件项目同时升温，说明下一阶段竞争点是把现有工作工具变成 agent 能稳定调用的接口。</p><div class='trend-evidence'><span>OpenCut-app/OpenCut</span><span>affaan-m/ECC</span><span>malisper/pgrust</span></div><div class='trend-action'>行动含义：适合跟进 CLI、MCP、插件化、权限模型和 SaaS API 封装方式。</div></article><article class='trend-card'><h3>多模态生产工具开始进入开源工作台</h3><p>视频、语音、文档和企业工具开始汇合，说明 AI workspace 不只服务开发者，也会服务内容生产和运营场景。</p><div class='trend-evidence'><span>OpenCut-app/OpenCut</span><span>malisper/pgrust</span><span>gitroomhq/postiz-app</span></div><div class='trend-action'>行动含义：短期看工具链复用，长期看是否形成稳定创作者工作流。</div></article></div>
+  </section>
+
+  <section class="signal-section" id="sec-lens">
+    <div class="section-head"><span class="range mono">04</span><div><h2>六视角启示</h2><p>从 Builder、投资、产品、架构、Founder 与 OPC 生态判断行动价值。</p></div></div>
+    <div class="card"><div class="lenses"><div class='lens'><b>AI Builder</b><p>优先拆解 HKUDS/Vibe-Trading, OpenCut-app/OpenCut, affaan-m/ECC 的 README 与依赖，寻找可复用的 agent、RAG、workflow 或 runtime 模块。</p></div><div class='lens'><b>Investor</b><p>关注短期 star 增速与多语言切片重复出现的项目，这通常代表跨圈层传播而非单社区热度。</p></div><div class='lens'><b>Product</b><p>把热榜项目映射到用户工作流：安装门槛、首次价值、协作方式和可替代的现有工具。</p></div><div class='lens'><b>Architecture</b><p>重点跟踪协议、运行时、记忆、检索、工作区组件，判断是否能沉淀为平台能力。</p></div><div class='lens'><b>Founder</b><p>寻找小团队可切入的楔子：CLI、IDE 插件、轻量托管、模板市场、行业封装。</p></div><div class='lens'><b>Ecosystem</b><p>记录 license、topics、homepage 和集成对象，判断项目更像独立产品、基础设施还是生态插件。</p></div></div></div>
+  </section>
+
+  <section class="signal-section" id="sec-actions">
+    <div class="section-head"><span class="range mono">05</span><div><h2>A/B/C 行动建议</h2><p>把热度转成行动队列，而不是把好项目丢进收藏夹后失联。</p></div></div>
+    <div class="cards">
+      <article class="card"><h3>A 类：立即深挖</h3><p>对评分最高且 README 完整的项目做代码结构、issue、release、竞品和集成路径核查。</p></article>
+      <article class="card"><h3>B 类：进入观察池</h3><p>对增长快但 README 或 license 信息不足的项目保留 7-14 天追踪，验证是否持续增长。</p></article>
+      <article class="card"><h3>C 类：暂缓</h3><p>对 scrape 信息薄、维护信号弱或战略关键词弱的项目只保留基础记录。</p></article>
+    </div>
+  </section>
+
+  <blockquote>一句话结论：本期优先关注 HKUDS/Vibe-Trading 代表的高相关方向，同时用 Top 10 作为 agent/runtime/workspace 生态变化的观察样本。</blockquote>
+</main>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('[data-action="expand-deep"],[data-action="collapse-deep"]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('data-action')==='expand-deep';
+      document.querySelectorAll('#sec-deep details.detail-fold').forEach(function(detail){
+        detail.open=open;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
