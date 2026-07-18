@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import json
 import shutil
 from datetime import datetime
@@ -940,7 +941,10 @@ def resolve_daily_period(default_period: str) -> str:
 
 
 def main() -> None:
-    period = resolve_daily_period(datetime.now().strftime("%Y-%m-%d"))
+    parser = argparse.ArgumentParser(description="Publish daily GitHub trending report pages.")
+    parser.add_argument("--period", default=None, help="Daily report period in YYYY-MM-DD.")
+    args = parser.parse_args()
+    period = resolve_daily_period(args.period or datetime.now().strftime("%Y-%m-%d"))
     stats = load_report_stats(period)
     sync_daily_report_dir(period)
     reports = upsert_report_entry(period, stats)
