@@ -1070,6 +1070,44 @@ def load_report_projects(html: str) -> tuple[str, str, list[dict]] | None:
     return report_type, period, projects
 
 
+TAG_TRANSLATIONS = {
+    "agent": "Agent 工具",
+    "agents": "多 Agent",
+    "agentic-ai": "Agent 系统",
+    "ai": "AI 应用",
+    "automation": "自动化",
+    "chatbot": "聊天机器人",
+    "claude": "Claude 生态",
+    "cli": "命令行",
+    "code-review": "代码审查",
+    "dashboard": "可视化看板",
+    "developer-tools": "开发工具",
+    "llm": "大模型应用",
+    "mcp": "MCP 集成",
+    "memory": "长期记忆",
+    "rag": "RAG",
+    "runtime": "运行时",
+    "security": "安全能力",
+    "skill": "技能扩展",
+    "skills": "技能扩展",
+    "workflow": "工作流",
+    "workspace": "工作区",
+}
+
+
+def project_capability_tags(project: dict, brief: dict) -> list[str]:
+    capabilities = brief.get("capabilities") or ""
+    tags = [item.strip() for item in capabilities.split("、") if item.strip()]
+    if not tags:
+        metadata_topics = (project.get("metadata") or {}).get("topics") or []
+        candidates = [*(project.get("strategic_keywords") or []), *metadata_topics]
+        tags = [TAG_TRANSLATIONS.get(str(item).lower(), str(item)) for item in candidates]
+    tags = list(dict.fromkeys(tags))
+    if len(tags) < 3 and project.get("language"):
+        tags.append(f'{project["language"]} 项目')
+    return tags[:4]
+
+
 def render_project_overview(projects: list[dict], report_type: str) -> str:
     heat_labels = {
         "daily": "今日",
@@ -1081,10 +1119,7 @@ def render_project_overview(projects: list[dict], report_type: str) -> str:
     for rank, project in enumerate(projects, start=1):
         brief = project.get("brief_zh", {})
         summary = brief.get("summary") or project.get("description") or "项目说明暂缺。"
-        capabilities = brief.get("capabilities") or ""
-        tags = [item.strip() for item in capabilities.split("、") if item.strip()]
-        tags.extend(project.get("strategic_keywords") or [])
-        tags = list(dict.fromkeys(tags))[:4]
+        tags = project_capability_tags(project, brief)
         if not tags:
             tags = [project.get("language") or "开源项目"]
         tags_html = "".join(

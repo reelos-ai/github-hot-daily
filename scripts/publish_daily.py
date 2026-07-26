@@ -3,8 +3,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 from datetime import datetime
+from html import escape, unescape
 from pathlib import Path
 
 from restyle_report_pages import restyle_report_html
@@ -83,13 +85,94 @@ def latest_report(reports: list[dict], report_type: str) -> dict | None:
     return None
 
 
+def load_report_repositories(report: dict | None, fallback: list[dict] | None = None) -> list[dict]:
+    if not report:
+        return fallback or []
+    top10_path = report.get("top10", "").lstrip("/")
+    if top10_path and (ROOT / top10_path).exists():
+        return read_json(ROOT / top10_path)
+    return fallback or []
+
+
+def load_report_summaries(report: dict | None) -> dict[str, str]:
+    if not report:
+        return {}
+    report_path = ROOT / report.get("html", "").strip("/") / "index.html"
+    if not report_path.exists():
+        return {}
+    source = report_path.read_text(encoding="utf-8")
+    summaries = {}
+    for name, summary in re.findall(
+        r'<article class="project-row">.*?<h3>(.*?)</h3>.*?<p>(.*?)</p>',
+        source,
+        flags=re.DOTALL,
+    ):
+        clean_name = unescape(re.sub(r"<[^>]+>", "", name)).strip()
+        clean_summary = unescape(re.sub(r"<[^>]+>", "", summary)).strip()
+        summaries[clean_name] = clean_summary
+    return summaries
+
+
+def render_home_report_panel(
+    report_type: str,
+    period: str,
+    report: dict | None,
+    repositories: list[dict],
+    briefs: dict,
+    active: bool = False,
+) -> str:
+    labels = {
+        "daily": ("今日日报", "今日", "/daily/"),
+        "weekly": ("最新周报", "本周", "/weekly/"),
+        "monthly": ("最新月报", "本月", "/monthly/"),
+    }
+    title, growth_label, archive_link = labels[report_type]
+    summaries = load_report_summaries(report)
+    rows = []
+    for rank, repo in enumerate(repositories[:10], start=1):
+        name = repo.get("full_name", "未命名项目")
+        summary = (
+            briefs.get(name, {}).get("summary")
+            or summaries.get(name)
+            or repo.get("description")
+            or "项目说明暂缺。"
+        )
+        growth = repo.get("stars_this_period") or 0
+        rows.append(
+            f"""<article class="home-project-row">
+          <span class="home-project-rank mono">{rank:02d}</span>
+          <div class="home-project-main">
+            <h2>{escape(name)}</h2>
+            <p>{escape(summary)}</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>{growth_label} +{growth}</strong>
+            <a href="{escape(repo.get("url", "#"))}" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article>"""
+        )
+    hidden = "" if active else " hidden"
+    return f"""<section class="home-report-panel" id="home-{report_type}" data-report-panel="{report_type}"{hidden}>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">{escape(period)}</span>
+          <h1>{title}</h1>
+          <p>{len(rows)} 个项目，一句话看懂</p>
+        </div>
+        <div class="home-report-links">
+          <a href="{archive_link}">查看往期{title[-2:]}</a>
+        </div>
+      </header>
+      <div class="home-project-list">{"".join(rows)}</div>
+    </section>"""
+
+
 def nav_links(active: str) -> str:
     items = [
-        ("overview", "/", "Overview"),
-        ("daily", "/daily/", "Daily"),
-        ("weekly", "/weekly/", "Weekly"),
-        ("monthly", "/monthly/", "Monthly"),
-        ("archive", "/archive/", "Archive"),
+        ("overview", "/", "首页"),
+        ("daily", "/daily/", "日报"),
+        ("weekly", "/weekly/", "周报"),
+        ("monthly", "/monthly/", "月报"),
     ]
     links = []
     for key, href, label in items:
@@ -616,6 +699,348 @@ def shell_css() -> str:
       transform:translateX(4px);
       border-color:rgba(232,178,126,.72);
     }
+    .home-main{
+      margin-top:18px;
+    }
+    .home-page{
+      --bg:#edf1f6;
+      --bg-2:#edf1f6;
+      --surface:#fff;
+      --surface-2:#fff;
+      --surface-3:#f7f9fc;
+      --line:#d7dce5;
+      --line-strong:#bcc5d2;
+      --text:#0d1424;
+      --muted:#6c788d;
+      --soft:#344159;
+      --blue:#315fc8;
+      --amber:#315fc8;
+      --amber-soft:#eef3ff;
+      background:#edf1f6;
+      background-attachment:scroll;
+    }
+    .home-page .wrap{
+      padding-bottom:56px;
+    }
+    .home-page .topbar{
+      padding-top:4px;
+    }
+    .home-page .brand-mark{
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-page .nav a{
+      border-radius:0;
+      background:transparent;
+      backdrop-filter:none;
+    }
+    .home-page .nav a.active,
+    .home-page .nav a:hover{
+      color:#315fc8;
+      border-color:#bcc5d2;
+      background:#fff;
+    }
+    .home-page .btn.primary{
+      color:#fff;
+      border-color:#315fc8;
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-masthead{
+      padding:10px 0 34px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-masthead-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .home-masthead-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .home-masthead-brand .brand-mark{
+      width:9px;
+      height:9px;
+    }
+    .home-masthead-brand strong{
+      display:block;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.2;
+    }
+    .home-masthead-brand span:last-child,
+    .home-masthead-edition{
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);
+      align-items:end;
+      gap:64px;
+      padding-top:48px;
+    }
+    .home-masthead-kicker{
+      display:block;
+      margin-bottom:12px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead h1{
+      max-width:820px;
+      margin:0;
+      font-size:clamp(40px,4.8vw,66px);
+      line-height:1.08;
+      letter-spacing:-.065em;
+      text-wrap:balance;
+    }
+    .home-masthead-copy{
+      margin:0 0 6px;
+      color:var(--soft);
+      font-size:15px;
+      line-height:1.85;
+      text-wrap:pretty;
+    }
+    .today-hero{
+      display:grid;
+      grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .today-intro{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:300px;
+      padding:30px;
+      border-right:1px solid var(--line);
+      background:#f7f9fc;
+    }
+    .today-intro h1{
+      margin:12px 0 18px;
+      font-size:clamp(32px,3.2vw,42px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    .today-intro .text-link{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .today-preview{
+      padding:10px 26px;
+    }
+    .today-project{
+      display:grid;
+      grid-template-columns:34px minmax(0,1fr);
+      gap:12px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .today-project:last-child{
+      border-bottom:0;
+    }
+    .today-rank{
+      padding-top:3px;
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .today-project h2{
+      margin:0 0 7px;
+      font-size:18px;
+      line-height:1.35;
+      overflow-wrap:anywhere;
+    }
+    .today-project p{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.72;
+    }
+    .report-library{
+      margin:38px 0 18px;
+    }
+    .library-head{
+      max-width:680px;
+      margin-bottom:16px;
+    }
+    .library-head h2{
+      margin:6px 0 0;
+      font-size:28px;
+      line-height:1.2;
+      letter-spacing:-.04em;
+    }
+    .report-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .report-entry{
+      min-height:190px;
+      padding:22px;
+      border-right:1px solid var(--line);
+    }
+    .report-entry:last-child{
+      border-right:0;
+    }
+    .report-number{
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .report-entry h3{
+      margin:12px 0 8px;
+      font-size:25px;
+      line-height:1.1;
+      letter-spacing:-.04em;
+    }
+    .report-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:11px;
+    }
+    .report-links{
+      display:flex;
+      gap:16px;
+      margin-top:14px;
+    }
+    .report-links a{
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+    }
+    .report-links a:last-child{
+      color:var(--blue);
+    }
+    .home-report-tabs{
+      display:flex;
+      gap:0;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-tab{
+      appearance:none;
+      padding:12px 22px;
+      color:var(--muted);
+      border:0;
+      border-bottom:2px solid transparent;
+      background:transparent;
+      font:inherit;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .home-report-tab:hover,
+    .home-report-tab[aria-selected="true"]{
+      color:var(--blue);
+      border-bottom-color:var(--blue);
+    }
+    .home-report-panel[hidden]{
+      display:none;
+    }
+    .home-report-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:24px;
+      padding:20px 0 18px;
+    }
+    .home-report-head .mono{
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    .home-report-head h1{
+      margin:6px 0 4px;
+      font-size:30px;
+      line-height:1.2;
+      letter-spacing:-.045em;
+    }
+    .home-report-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .home-report-links{
+      display:flex;
+      gap:8px;
+    }
+    .home-report-links a{
+      padding:8px 12px;
+      color:var(--blue);
+      border:1px solid var(--line-strong);
+      background:#fff;
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-project-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .home-project-row{
+      display:grid;
+      grid-template-columns:52px minmax(0,1fr) 110px;
+      gap:18px;
+      padding:20px 6px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-project-row:last-child{
+      border-bottom:0;
+    }
+    .home-project-rank{
+      padding-top:3px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+    .home-project-main h2{
+      margin:0 0 6px;
+      font-size:19px;
+      line-height:1.3;
+      overflow-wrap:anywhere;
+    }
+    .home-project-main p{
+      max-width:850px;
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .home-project-signal{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .home-project-signal strong{
+      color:var(--blue);
+      font-size:12px;
+    }
+    .home-project-signal a{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
     .site-footer{
       color:#a7adbc;
       background:#080b13;
@@ -670,6 +1095,12 @@ def shell_css() -> str:
       .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
       .flow-intro{display:block}
       .flow-meta{display:block;margin-top:10px}
+      .today-hero{grid-template-columns:1fr}
+      .today-intro{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
       .footer-inner{
         grid-template-columns:repeat(2,minmax(0,1fr));
         gap:44px 32px;
@@ -697,6 +1128,64 @@ def shell_css() -> str:
       .row .meta{text-align:left}
       .list.open .row{padding:14px 0}
       h1{font-size:clamp(38px,15vw,66px)}
+      .today-intro{padding:30px 24px}
+      .today-intro h1{font-size:34px}
+      .today-preview{padding:10px 20px}
+      .report-library{margin-top:48px}
+      .report-grid{grid-template-columns:1fr}
+      .home-report-tabs{
+        overflow-x:auto;
+      }
+      .home-masthead{
+        padding-top:2px;
+        padding-bottom:26px;
+      }
+      .home-masthead-top{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:10px;
+      }
+      .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding-top:34px;
+      }
+      .home-masthead h1{
+        font-size:clamp(36px,11vw,50px);
+      }
+      .home-masthead-copy{
+        max-width:32em;
+      }
+      .home-report-tab{
+        flex:1 0 auto;
+        padding:11px 16px;
+      }
+      .home-report-head{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+      }
+      .home-report-head h1{
+        font-size:27px;
+      }
+      .home-project-row{
+        grid-template-columns:32px minmax(0,1fr);
+        gap:10px;
+        padding:18px 0;
+      }
+      .home-project-signal{
+        grid-column:2;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .report-entry{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .report-entry:last-child{border-bottom:0}
+      .report-entry > p{min-height:0}
       .footer-inner{
         padding:44px 20px 52px;
       }
@@ -856,22 +1345,43 @@ def render_archive(reports: list[dict]) -> str:
 """
 
 
-def render_home(period: str, stats: dict, reports: list[dict], watchlist: list[dict]) -> str:
+def render_home(period: str, stats: dict, reports: list[dict]) -> str:
     latest_daily = latest_report(reports, "daily")
     latest_weekly = latest_report(reports, "weekly")
-    recent = reports[:6]
-    recent_rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["type"].title()}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
-        for item in recent
-    )
-    watch_names = ", ".join(item["name"] for item in watchlist[:5]) or "暂无"
-    top_names = ", ".join(repo["full_name"] for repo in stats["top10"][:4])
-    weekly_title = latest_weekly["title"] if latest_weekly else "尚未发布周报"
-    weekly_link = latest_weekly["html"] if latest_weekly else "/weekly/"
-    weekly_period = latest_weekly["period"] if latest_weekly else "N/A"
-    daily_link = latest_daily["html"] if latest_daily else f"/daily/{period}/"
-    daily_title = latest_daily["title"] if latest_daily else f"GitHub 热榜情报日报 · {period}"
+    latest_monthly = latest_report(reports, "monthly")
     daily_period = latest_daily["period"] if latest_daily else period
+    weekly_period = latest_weekly["period"] if latest_weekly else "尚未发布"
+    monthly_period = latest_monthly["period"] if latest_monthly else "尚未发布"
+    briefs = read_json(ROOT / "project-briefs-zh.json") if (ROOT / "project-briefs-zh.json").exists() else {}
+    daily_repositories = load_report_repositories(latest_daily, stats["top10"])
+    weekly_repositories = load_report_repositories(latest_weekly)
+    monthly_repositories = load_report_repositories(latest_monthly)
+    panels = "".join(
+        [
+            render_home_report_panel(
+                "daily",
+                daily_period,
+                latest_daily,
+                daily_repositories,
+                briefs,
+                active=True,
+            ),
+            render_home_report_panel(
+                "weekly",
+                weekly_period,
+                latest_weekly,
+                weekly_repositories,
+                briefs,
+            ),
+            render_home_report_panel(
+                "monthly",
+                monthly_period,
+                latest_monthly,
+                monthly_repositories,
+                briefs,
+            ),
+        ]
+    )
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -881,108 +1391,51 @@ def render_home(period: str, stats: dict, reports: list[dict], watchlist: list[d
   <meta name="description" content="ReelOS GitHub 热榜情报中心：日报、周报、月报与往期归档。">
   <style>{shell_css()}</style>
 </head>
-<body>
+  <body class="home-page">
   <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Frontier Desk</div>
-          <div class="brand-title">GitHub Signal Intelligence</div>
-        </div>
+    <header class="home-masthead">
+      <div class="home-masthead-top">
+        <a class="home-masthead-brand" href="/">
+          <span class="brand-mark"></span>
+          <span><strong>ReelOS.ai</strong><span>GitHub 热榜情报</span></span>
+        </a>
+        <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
       </div>
-      <nav class="nav">{nav_links("overview")}</nav>
+      <div class="home-masthead-body">
+        <div>
+          <span class="home-masthead-kicker mono">Open Source Signals</span>
+          <h1>不追热榜，识别开源世界的结构变化。</h1>
+        </div>
+        <p class="home-masthead-copy">把每天涌现的开源项目，压缩成一句话能看懂、值得继续追踪的信号。</p>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Primary Intelligence Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">GitHub</span> <span class="texture-word">Signal</span></span><span class="headline-line"><span class="ghost-word">Intelligence</span></span></h1>
-        <p class="lead">首页主入口固定给周报，先交付更稳的判断；日报负责快信号，月报负责赛道迁移。这样首屏先回答“这一周最值得看什么”，而不是把所有更新并列摊开。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="{weekly_link}">打开当前主报告</a>
-          <a class="btn" href="{daily_link}">查看最新日报</a>
-          <a class="btn" href="/archive/">浏览归档</a>
-        </div>
-      </div>
-      <aside class="hero-side compact">
-        <div class="side-label mono">Current Brief</div>
-        <h2 class="signal-title"><a href="{weekly_link}">{weekly_title}</a></h2>
-        <p class="signal-copy">本周主判断层已经生成。快节奏更新继续落在日报，当前优先跟踪信号是 <span class="mono">{stats["top_signal"]}</span>。</p>
-        <div class="status-grid">
-          <div class="status-item">
-            <span class="status-label mono">Primary</span>
-            <span class="status-value mono">WEEKLY</span>
-          </div>
-          <div class="status-item">
-            <span class="status-label mono">Daily Pulse</span>
-            <span class="status-value mono">{daily_period}</span>
-          </div>
-          <div class="status-item wide">
-            <span class="status-label mono">Latest Daily</span>
-            <span class="status-value"><a href="{daily_link}">{daily_title}</a></span>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Metrics</div>
-      <div>
-        <div class="stat-grid">
-          <div class="metric"><b class="mono">{stats["candidate_count"]}</b><span>候选项目</span></div>
-          <div class="metric"><b class="mono">{stats["top_count"]}</b><span>当日 Top</span></div>
-          <div class="metric"><b class="mono">{stats["readme_coverage"]}</b><span>README 覆盖</span></div>
-          <div class="metric"><b class="mono">{stats["api_failures"]}</b><span>API 失败</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">02 / System</div>
-      <div class="panel">
-        <h2>三层报告，不同判断密度</h2>
-        <p>首页用一套更像情报台的布局，把产品节奏讲清楚：日报先抓爆点，周报负责判断是否成立，月报再看赛道迁移。这样视觉和结构都更像一套系统，而不是几个平行入口。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <a class="card" href="/daily/"><b>Daily Radar</b><p>移动端优先，适合快速扫当天信号和观察池变化。</p></a>
-          <a class="card" href="{weekly_link}"><b>Weekly Intelligence</b><p>{weekly_title} 作为主判断入口，承担深度分析和行动建议。</p></a>
-          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>把高频仓库和持续出现的方向上升到品类级复盘。</p></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">03 / Flow</div>
-      <div>
-        <div class="flow-intro">
-          <div>
-            <h2>最新流</h2>
-            <p>这里改成更开放的时间轴，只保留节奏和优先级，不再给每一批更新都包上一层同样重量的白卡。</p>
-          </div>
-          <div class="flow-meta mono">Recent reports / 6 entries</div>
-        </div>
-        <div class="list open">{recent_rows}</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">04 / Watchlist</div>
-      <div class="panel">
-        <h2>当前观察池</h2>
-        <p>A 类项目先看持续性与可复用性，B 类项目观察 7-14 天，C 类只保留事实记录。首页直接暴露观察池，是为了让站点更像一块工作台。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <div class="card"><b>A 类信号</b><p>{watch_names}</p></div>
-          <div class="card"><b>今日高优</b><p>{top_names}</p></div>
-          <div class="card"><b>策略焦点</b><p>优先看跨切片重复出现、README 完整且落在 Memory / Runtime / Skill / Workspace 的项目。</p></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="quote">
-      <p>首页现在更明确地表达为一套“GitHub 信号前台”：日报提供速度，周报提供判断，观察池提供持续跟踪，而不是把所有入口都压成同一种卡片。</p>
-    </div>
+    <main class="home-main">
+      <nav class="home-report-tabs" aria-label="报告类型">
+        <button class="home-report-tab" type="button" data-report-tab="daily" aria-controls="home-daily" aria-selected="true">日报</button>
+        <button class="home-report-tab" type="button" data-report-tab="weekly" aria-controls="home-weekly" aria-selected="false">周报</button>
+        <button class="home-report-tab" type="button" data-report-tab="monthly" aria-controls="home-monthly" aria-selected="false">月报</button>
+      </nav>
+      {panels}
+    </main>
   </div>
   {render_site_footer()}
+  <script>
+    (() => {{
+      const tabs = [...document.querySelectorAll("[data-report-tab]")];
+      const panels = [...document.querySelectorAll("[data-report-panel]")];
+      const show = (type, updateHash = true) => {{
+        if (!panels.some((panel) => panel.dataset.reportPanel === type)) return;
+        tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.reportTab === type)));
+        panels.forEach((panel) => {{ panel.hidden = panel.dataset.reportPanel !== type; }});
+        if (updateHash) history.replaceState(null, "", `#${{type}}`);
+      }};
+      tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.reportTab)));
+      window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+      const initial = location.hash.slice(1);
+      if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -1037,10 +1490,9 @@ def main() -> None:
     stats = load_report_stats(period)
     sync_daily_report_dir(period)
     reports = upsert_report_entry(period, stats)
-    watchlist = read_json(ROOT / "watchlist.json")
     write_text(ROOT / "daily" / "index.html", render_daily_index(period, stats, reports))
     write_text(ROOT / "archive" / "index.html", render_archive(reports))
-    write_text(ROOT / "index.html", render_home(period, stats, reports, watchlist))
+    write_text(ROOT / "index.html", render_home(period, stats, reports))
     update_readme(period, reports)
 
 

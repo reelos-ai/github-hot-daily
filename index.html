@@ -490,6 +490,348 @@
       transform:translateX(4px);
       border-color:rgba(232,178,126,.72);
     }
+    .home-main{
+      margin-top:18px;
+    }
+    .home-page{
+      --bg:#edf1f6;
+      --bg-2:#edf1f6;
+      --surface:#fff;
+      --surface-2:#fff;
+      --surface-3:#f7f9fc;
+      --line:#d7dce5;
+      --line-strong:#bcc5d2;
+      --text:#0d1424;
+      --muted:#6c788d;
+      --soft:#344159;
+      --blue:#315fc8;
+      --amber:#315fc8;
+      --amber-soft:#eef3ff;
+      background:#edf1f6;
+      background-attachment:scroll;
+    }
+    .home-page .wrap{
+      padding-bottom:56px;
+    }
+    .home-page .topbar{
+      padding-top:4px;
+    }
+    .home-page .brand-mark{
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-page .nav a{
+      border-radius:0;
+      background:transparent;
+      backdrop-filter:none;
+    }
+    .home-page .nav a.active,
+    .home-page .nav a:hover{
+      color:#315fc8;
+      border-color:#bcc5d2;
+      background:#fff;
+    }
+    .home-page .btn.primary{
+      color:#fff;
+      border-color:#315fc8;
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-masthead{
+      padding:10px 0 34px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-masthead-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .home-masthead-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .home-masthead-brand .brand-mark{
+      width:9px;
+      height:9px;
+    }
+    .home-masthead-brand strong{
+      display:block;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.2;
+    }
+    .home-masthead-brand span:last-child,
+    .home-masthead-edition{
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);
+      align-items:end;
+      gap:64px;
+      padding-top:48px;
+    }
+    .home-masthead-kicker{
+      display:block;
+      margin-bottom:12px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead h1{
+      max-width:820px;
+      margin:0;
+      font-size:clamp(40px,4.8vw,66px);
+      line-height:1.08;
+      letter-spacing:-.065em;
+      text-wrap:balance;
+    }
+    .home-masthead-copy{
+      margin:0 0 6px;
+      color:var(--soft);
+      font-size:15px;
+      line-height:1.85;
+      text-wrap:pretty;
+    }
+    .today-hero{
+      display:grid;
+      grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .today-intro{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:300px;
+      padding:30px;
+      border-right:1px solid var(--line);
+      background:#f7f9fc;
+    }
+    .today-intro h1{
+      margin:12px 0 18px;
+      font-size:clamp(32px,3.2vw,42px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    .today-intro .text-link{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .today-preview{
+      padding:10px 26px;
+    }
+    .today-project{
+      display:grid;
+      grid-template-columns:34px minmax(0,1fr);
+      gap:12px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .today-project:last-child{
+      border-bottom:0;
+    }
+    .today-rank{
+      padding-top:3px;
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .today-project h2{
+      margin:0 0 7px;
+      font-size:18px;
+      line-height:1.35;
+      overflow-wrap:anywhere;
+    }
+    .today-project p{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.72;
+    }
+    .report-library{
+      margin:38px 0 18px;
+    }
+    .library-head{
+      max-width:680px;
+      margin-bottom:16px;
+    }
+    .library-head h2{
+      margin:6px 0 0;
+      font-size:28px;
+      line-height:1.2;
+      letter-spacing:-.04em;
+    }
+    .report-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .report-entry{
+      min-height:190px;
+      padding:22px;
+      border-right:1px solid var(--line);
+    }
+    .report-entry:last-child{
+      border-right:0;
+    }
+    .report-number{
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .report-entry h3{
+      margin:12px 0 8px;
+      font-size:25px;
+      line-height:1.1;
+      letter-spacing:-.04em;
+    }
+    .report-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:11px;
+    }
+    .report-links{
+      display:flex;
+      gap:16px;
+      margin-top:14px;
+    }
+    .report-links a{
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+    }
+    .report-links a:last-child{
+      color:var(--blue);
+    }
+    .home-report-tabs{
+      display:flex;
+      gap:0;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-tab{
+      appearance:none;
+      padding:12px 22px;
+      color:var(--muted);
+      border:0;
+      border-bottom:2px solid transparent;
+      background:transparent;
+      font:inherit;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .home-report-tab:hover,
+    .home-report-tab[aria-selected="true"]{
+      color:var(--blue);
+      border-bottom-color:var(--blue);
+    }
+    .home-report-panel[hidden]{
+      display:none;
+    }
+    .home-report-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:24px;
+      padding:20px 0 18px;
+    }
+    .home-report-head .mono{
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    .home-report-head h1{
+      margin:6px 0 4px;
+      font-size:30px;
+      line-height:1.2;
+      letter-spacing:-.045em;
+    }
+    .home-report-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .home-report-links{
+      display:flex;
+      gap:8px;
+    }
+    .home-report-links a{
+      padding:8px 12px;
+      color:var(--blue);
+      border:1px solid var(--line-strong);
+      background:#fff;
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-project-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .home-project-row{
+      display:grid;
+      grid-template-columns:52px minmax(0,1fr) 110px;
+      gap:18px;
+      padding:20px 6px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-project-row:last-child{
+      border-bottom:0;
+    }
+    .home-project-rank{
+      padding-top:3px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+    .home-project-main h2{
+      margin:0 0 6px;
+      font-size:19px;
+      line-height:1.3;
+      overflow-wrap:anywhere;
+    }
+    .home-project-main p{
+      max-width:850px;
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .home-project-signal{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .home-project-signal strong{
+      color:var(--blue);
+      font-size:12px;
+    }
+    .home-project-signal a{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
     .site-footer{
       color:#a7adbc;
       background:#080b13;
@@ -544,6 +886,12 @@
       .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
       .flow-intro{display:block}
       .flow-meta{display:block;margin-top:10px}
+      .today-hero{grid-template-columns:1fr}
+      .today-intro{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
       .footer-inner{
         grid-template-columns:repeat(2,minmax(0,1fr));
         gap:44px 32px;
@@ -571,112 +919,433 @@
       .row .meta{text-align:left}
       .list.open .row{padding:14px 0}
       h1{font-size:clamp(38px,15vw,66px)}
+      .today-intro{padding:30px 24px}
+      .today-intro h1{font-size:34px}
+      .today-preview{padding:10px 20px}
+      .report-library{margin-top:48px}
+      .report-grid{grid-template-columns:1fr}
+      .home-report-tabs{
+        overflow-x:auto;
+      }
+      .home-masthead{
+        padding-top:2px;
+        padding-bottom:26px;
+      }
+      .home-masthead-top{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:10px;
+      }
+      .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding-top:34px;
+      }
+      .home-masthead h1{
+        font-size:clamp(36px,11vw,50px);
+      }
+      .home-masthead-copy{
+        max-width:32em;
+      }
+      .home-report-tab{
+        flex:1 0 auto;
+        padding:11px 16px;
+      }
+      .home-report-head{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+      }
+      .home-report-head h1{
+        font-size:27px;
+      }
+      .home-project-row{
+        grid-template-columns:32px minmax(0,1fr);
+        gap:10px;
+        padding:18px 0;
+      }
+      .home-project-signal{
+        grid-column:2;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .report-entry{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .report-entry:last-child{border-bottom:0}
+      .report-entry > p{min-height:0}
       .footer-inner{
         padding:44px 20px 52px;
       }
     }
     </style>
 </head>
-<body>
+  <body class="home-page">
   <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Frontier Desk</div>
-          <div class="brand-title">GitHub Signal Intelligence</div>
-        </div>
+    <header class="home-masthead">
+      <div class="home-masthead-top">
+        <a class="home-masthead-brand" href="/">
+          <span class="brand-mark"></span>
+          <span><strong>ReelOS.ai</strong><span>GitHub 热榜情报</span></span>
+        </a>
+        <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
       </div>
-      <nav class="nav"><a class="active" href="/">Overview</a><a class="" href="/daily/">Daily</a><a class="" href="/weekly/">Weekly</a><a class="" href="/monthly/">Monthly</a><a class="" href="/archive/">Archive</a></nav>
+      <div class="home-masthead-body">
+        <div>
+          <span class="home-masthead-kicker mono">Open Source Signals</span>
+          <h1>不追热榜，识别开源世界的结构变化。</h1>
+        </div>
+        <p class="home-masthead-copy">把每天涌现的开源项目，压缩成一句话能看懂、值得继续追踪的信号。</p>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Primary Intelligence Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">GitHub</span> <span class="texture-word">Signal</span></span><span class="headline-line"><span class="ghost-word">Intelligence</span></span></h1>
-        <p class="lead">首页主入口固定给周报，先交付更稳的判断；日报负责快信号，月报负责赛道迁移。这样首屏先回答“这一周最值得看什么”，而不是把所有更新并列摊开。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="/weekly/2026-07-19/">打开当前主报告</a>
-          <a class="btn" href="/daily/2026-07-26/">查看最新日报</a>
-          <a class="btn" href="/archive/">浏览归档</a>
+    <main class="home-main">
+      <nav class="home-report-tabs" aria-label="报告类型">
+        <button class="home-report-tab" type="button" data-report-tab="daily" aria-controls="home-daily" aria-selected="true">日报</button>
+        <button class="home-report-tab" type="button" data-report-tab="weekly" aria-controls="home-weekly" aria-selected="false">周报</button>
+        <button class="home-report-tab" type="button" data-report-tab="monthly" aria-controls="home-monthly" aria-selected="false">月报</button>
+      </nav>
+      <section class="home-report-panel" id="home-daily" data-report-panel="daily">
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07-26</span>
+          <h1>今日日报</h1>
+          <p>10 个项目，一句话看懂</p>
         </div>
-      </div>
-      <aside class="hero-side compact">
-        <div class="side-label mono">Current Brief</div>
-        <h2 class="signal-title"><a href="/weekly/2026-07-19/">GitHub 热榜情报周报 · 2026-07-19</a></h2>
-        <p class="signal-copy">本周主判断层已经生成。快节奏更新继续落在日报，当前优先跟踪信号是 <span class="mono">diegosouzapw/OmniRoute</span>。</p>
-        <div class="status-grid">
-          <div class="status-item">
-            <span class="status-label mono">Primary</span>
-            <span class="status-value mono">WEEKLY</span>
+        <div class="home-report-links">
+          <a href="/daily/">查看往期日报</a>
+        </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>diegosouzapw/OmniRoute</h2>
+            <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
           </div>
-          <div class="status-item">
-            <span class="status-label mono">Daily Pulse</span>
-            <span class="status-value mono">2026-07-26</span>
+          <div class="home-project-signal">
+            <strong>今日 +1381</strong>
+            <a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
           </div>
-          <div class="status-item wide">
-            <span class="status-label mono">Latest Daily</span>
-            <span class="status-value"><a href="/daily/2026-07-26/">GitHub 热榜情报日报 · 2026-07-26</a></span>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>alibaba/open-code-review</h2>
+            <p>阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。</p>
           </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Metrics</div>
-      <div>
-        <div class="stat-grid">
-          <div class="metric"><b class="mono">60</b><span>候选项目</span></div>
-          <div class="metric"><b class="mono">10</b><span>当日 Top</span></div>
-          <div class="metric"><b class="mono">60</b><span>README 覆盖</span></div>
-          <div class="metric"><b class="mono">0</b><span>API 失败</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">02 / System</div>
-      <div class="panel">
-        <h2>三层报告，不同判断密度</h2>
-        <p>首页用一套更像情报台的布局，把产品节奏讲清楚：日报先抓爆点，周报负责判断是否成立，月报再看赛道迁移。这样视觉和结构都更像一套系统，而不是几个平行入口。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <a class="card" href="/daily/"><b>Daily Radar</b><p>移动端优先，适合快速扫当天信号和观察池变化。</p></a>
-          <a class="card" href="/weekly/2026-07-19/"><b>Weekly Intelligence</b><p>GitHub 热榜情报周报 · 2026-07-19 作为主判断入口，承担深度分析和行动建议。</p></a>
-          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>把高频仓库和持续出现的方向上升到品类级复盘。</p></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">03 / Flow</div>
-      <div>
-        <div class="flow-intro">
-          <div>
-            <h2>最新流</h2>
-            <p>这里改成更开放的时间轴，只保留节奏和优先级，不再给每一批更新都包上一层同样重量的白卡。</p>
+          <div class="home-project-signal">
+            <strong>今日 +431</strong>
+            <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener noreferrer">原文 ↗</a>
           </div>
-          <div class="flow-meta mono">Recent reports / 6 entries</div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>affaan-m/ECC</h2>
+            <p>一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +377</strong>
+            <a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>koala73/worldmonitor</h2>
+            <p>一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +1041</strong>
+            <a href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>block/buzz</h2>
+            <p>一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +2491</strong>
+            <a href="https://github.com/block/buzz" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>ruvnet/RuView</h2>
+            <p>利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +559</strong>
+            <a href="https://github.com/ruvnet/RuView" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>Automattic/harper</h2>
+            <p>一个离线运行、重视隐私的英文语法检查器，核心使用 Rust 编写，可嵌入编辑器和写作工具。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +503</strong>
+            <a href="https://github.com/Automattic/harper" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>CoreBunch/Instatic</h2>
+            <p>一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +426</strong>
+            <a href="https://github.com/CoreBunch/Instatic" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>earendil-works/pi</h2>
+            <p>一个构建 AI Agent 的开发工具包，提供统一模型接口、Agent 循环、终端 UI 和编码 Agent CLI。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +523</strong>
+            <a href="https://github.com/earendil-works/pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>Pumpkin-MC/Pumpkin</h2>
+            <p>一个用 Rust 重写的高性能 Minecraft 服务端，目标是让个人和社区更高效地托管游戏服务器。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +358</strong>
+            <a href="https://github.com/Pumpkin-MC/Pumpkin" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
+    </section><section class="home-report-panel" id="home-weekly" data-report-panel="weekly" hidden>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07-19</span>
+          <h1>最新周报</h1>
+          <p>10 个项目，一句话看懂</p>
         </div>
-        <div class="list open"><a class="row" href="/daily/2026-07-26/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-26</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-22/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-22</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-21/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-21</span><span class="meta mono">Top 10</span></a><a class="row" href="/weekly/2026-07-19/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-07-19</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-19/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-19</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-18/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-18</span><span class="meta mono">Top 10</span></a></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">04 / Watchlist</div>
-      <div class="panel">
-        <h2>当前观察池</h2>
-        <p>A 类项目先看持续性与可复用性，B 类项目观察 7-14 天，C 类只保留事实记录。首页直接暴露观察池，是为了让站点更像一块工作台。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <div class="card"><b>A 类信号</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
-          <div class="card"><b>今日高优</b><p>diegosouzapw/OmniRoute, alibaba/open-code-review, affaan-m/ECC, koala73/worldmonitor</p></div>
-          <div class="card"><b>策略焦点</b><p>优先看跨切片重复出现、README 完整且落在 Memory / Runtime / Skill / Workspace 的项目。</p></div>
+        <div class="home-report-links">
+          <a href="/weekly/">查看往期周报</a>
         </div>
-      </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>diegosouzapw/OmniRoute</h2>
+            <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +3165</strong>
+            <a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>ogulcancelik/herdr</h2>
+            <p>一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +2594</strong>
+            <a href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>PostHog/posthog</h2>
+            <p>一套面向产品团队的开源数据平台，把分析、回放、实验、错误追踪和 AI 可观测性集中到一起。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +1047</strong>
+            <a href="https://github.com/PostHog/posthog" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>thedotmack/claude-mem</h2>
+            <p>为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +973</strong>
+            <a href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>wonderwhy-er/DesktopCommanderMCP</h2>
+            <p>一个让 Claude 通过 MCP 操作终端、搜索文件并执行差异化编辑的本地工具。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +908</strong>
+            <a href="https://github.com/wonderwhy-er/DesktopCommanderMCP" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>lobehub/lobehub</h2>
+            <p>一个 AI Agent 运营平台，用于集中创建、调度和监控持续运行的 Agent 团队。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +836</strong>
+            <a href="https://github.com/lobehub/lobehub" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>HKUDS/Vibe-Trading</h2>
+            <p>一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +5635</strong>
+            <a href="https://github.com/HKUDS/Vibe-Trading" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>malisper/pgrust</h2>
+            <p>一个用 Rust 重写 PostgreSQL 的数据库项目，目前已通过 PostgreSQL 的完整回归测试。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +1590</strong>
+            <a href="https://github.com/malisper/pgrust" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>HKUDS/nanobot</h2>
+            <p>一个轻量开源 AI Agent，可连接常用工具、聊天渠道和自动化工作流。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +641</strong>
+            <a href="https://github.com/HKUDS/nanobot" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>screenpipe/screenpipe</h2>
+            <p>一个本地持续记录屏幕和操作上下文的工具，让 Agent 能检索个人工作历史，同时保持数据私有。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +529</strong>
+            <a href="https://github.com/screenpipe/screenpipe" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
+    </section><section class="home-report-panel" id="home-monthly" data-report-panel="monthly" hidden>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07</span>
+          <h1>最新月报</h1>
+          <p>10 个项目，一句话看懂</p>
+        </div>
+        <div class="home-report-links">
+          <a href="/monthly/">查看往期月报</a>
+        </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>calesthio/OpenMontage</h2>
+            <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +25466</strong>
+            <a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>Egonex-AI/Understand-Anything</h2>
+            <p>把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +23129</strong>
+            <a href="https://github.com/Egonex-AI/Understand-Anything" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>colbymchenry/codegraph</h2>
+            <p>一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +21519</strong>
+            <a href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>can1357/oh-my-pi</h2>
+            <p>一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +6466</strong>
+            <a href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>CopilotKit/CopilotKit</h2>
+            <p>一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +3927</strong>
+            <a href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>googleworkspace/cli</h2>
+            <p>Google Workspace 官方命令行工具，用统一 CLI 操作 Drive、Gmail、日历、表格和文档，并支持 Agent Skills。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +2599</strong>
+            <a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>kenn-io/agentsview</h2>
+            <p>一个本地优先的编码 Agent 使用分析工具，可搜索会话并统计调用、Token 和工作模式。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +2301</strong>
+            <a href="https://github.com/kenn-io/agentsview" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>Tencent/WeKnora</h2>
+            <p>腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +1803</strong>
+            <a href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>farion1231/cc-switch</h2>
+            <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +25262</strong>
+            <a href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>DeusData/codebase-memory-mcp</h2>
+            <p>一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +19612</strong>
+            <a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
     </section>
-
-    <div class="quote">
-      <p>首页现在更明确地表达为一套“GitHub 信号前台”：日报提供速度，周报提供判断，观察池提供持续跟踪，而不是把所有入口都压成同一种卡片。</p>
-    </div>
+    </main>
   </div>
   <footer class="site-footer">
     <div class="footer-inner">
@@ -707,5 +1376,21 @@
       </nav>
     </div>
   </footer>
+  <script>
+    (() => {
+      const tabs = [...document.querySelectorAll("[data-report-tab]")];
+      const panels = [...document.querySelectorAll("[data-report-panel]")];
+      const show = (type, updateHash = true) => {
+        if (!panels.some((panel) => panel.dataset.reportPanel === type)) return;
+        tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.reportTab === type)));
+        panels.forEach((panel) => { panel.hidden = panel.dataset.reportPanel !== type; });
+        if (updateHash) history.replaceState(null, "", `#${type}`);
+      };
+      tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.reportTab)));
+      window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+      const initial = location.hash.slice(1);
+      if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);
+    })();
+  </script>
 </body>
 </html>
