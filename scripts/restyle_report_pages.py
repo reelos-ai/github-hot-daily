@@ -2,8 +2,12 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
+from html import escape
 from pathlib import Path
+
+from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -761,6 +765,7 @@ _LEGACY_REPORT_STYLE = """
 """
 
 REPORT_STYLE_PATH = ROOT / "scripts" / "report_editorial.css"
+PROJECT_BRIEFS_PATH = ROOT / "project-briefs-zh.json"
 REPORT_STYLE = f"""<style>
 {REPORT_STYLE_PATH.read_text(encoding="utf-8")}
 </style>"""
@@ -769,7 +774,7 @@ STYLE_RE = re.compile(r"<style>.*?</style>", re.S)
 PERIOD_LABEL_RE = re.compile(r"(PERIOD / <b>)(DAILY|WEEKLY)(</b>)")
 BRIEFING_RE = re.compile(r"\s*<section class=\"briefing-strip\".*?</section>", re.S)
 NAV_RE = re.compile(r"<nav class=\"section-nav\".*?</nav>", re.S)
-STATS_RE = re.compile(r"<section class=\"stats\">.*?</section>", re.S)
+STATS_RE = re.compile(r"<section class=\"stats\"[^>]*>.*?</section>", re.S)
 STAT_RE = re.compile(r"<div class=\"stat\"><b>(.*?)</b><span>(.*?)</span></div>", re.S)
 FIRST_ROW_RE = re.compile(r"<tbody><tr>(.*?)</tr>", re.S)
 TD_RE = re.compile(r"<td>(.*?)</td>", re.S)
@@ -787,11 +792,9 @@ SECTION_NUMBERS = {
 }
 
 EDITORIAL_NAV = """<nav class="section-nav" aria-label="报告分组导航">
-      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
-      <a class="section-link" href="#sec-trends"><span class="nr mono">02</span><span>趋势观察</span></a>
-      <a class="section-link" href="#sec-deep"><span class="nr mono">03</span><span>重点项目</span></a>
-      <a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>六视角</span></a>
-      <a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>行动建议</span></a>
+      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>项目速览</span></a>
+      <a class="section-link" href="#sec-deep"><span class="nr mono">02</span><span>重点项目</span></a>
+      <a class="section-link" href="#sec-trends"><span class="nr mono">03</span><span>今日趋势</span></a>
     </nav>"""
 
 TEXT_REPLACEMENTS = (
@@ -962,6 +965,238 @@ def add_editorial_content(html: str) -> str:
     return html
 
 
+def detect_report_context(html: str) -> tuple[str, str] | None:
+    period_match = re.search(r"\d{4}-\d{2}(?:-\d{2})?", html)
+    if not period_match:
+        return None
+    period = period_match.group(0)
+    if "GitHub 热榜情报日报" in html:
+        return "daily", period
+    if "GitHub 热榜情报周报" in html:
+        return "weekly", period
+    if "GitHub 热榜情报月报" in html:
+        return "monthly", period[:7]
+    return None
+
+
+def extract_page_projects(html: str) -> dict[str, dict]:
+    soup = BeautifulSoup(html, "html.parser")
+    projects: dict[str, dict] = {}
+
+    for row in soup.select("#sec-top10 tbody tr"):
+        cells = row.find_all("td")
+        if len(cells) < 4:
+            continue
+        source = cells[1].find("a")
+        name = cells[1].get_text(" ", strip=True)
+        projects[name] = {
+            "full_name": name,
+            "url": source.get("href", "#") if source else "#",
+            "language": cells[2].get_text(" ", strip=True),
+            "stars_this_period": int(re.sub(r"\D", "", cells[3].get_text()) or 0),
+            "strategic_keywords": [
+                tag.get_text(" ", strip=True)
+                for tag in cells[-1].select(".tag")
+            ],
+        }
+
+    for card in soup.select("#sec-deep .card, .project-row"):
+        heading = card.find("h3")
+        paragraph = card.find("p")
+        if not heading or not paragraph:
+            continue
+        name = heading.get_text(" ", strip=True)
+        if name not in projects:
+            source = card.select_one(".source-link") or heading.find("a")
+            signal = card.select_one(".project-signal")
+            language = signal.find("span").get_text(" ", strip=True) if signal and signal.find("span") else ""
+            heat = signal.find("strong").get_text(" ", strip=True) if signal and signal.find("strong") else ""
+            projects[name] = {
+                "full_name": name,
+                "url": source.get("href", "#") if source else "#",
+                "language": language,
+                "stars_this_period": int(re.sub(r"\D", "", heat) or 0),
+                "strategic_keywords": [
+                    tag.get_text(" ", strip=True)
+                    for tag in card.select(".project-tag")
+                ],
+            }
+        text = paragraph.get_text(" ", strip=True)
+        if text:
+            projects[name]["page_summary"] = text
+    return projects
+
+
+def load_report_projects(html: str) -> tuple[str, str, list[dict]] | None:
+    context = detect_report_context(html)
+    if not context:
+        return None
+    report_type, period = context
+    page_projects = extract_page_projects(html)
+    data_candidates = {
+        "daily": [ROOT / f"top10-{period}.json"],
+        "weekly": [
+            ROOT / f"weekly-top10-{period}.json",
+            ROOT / f"top10-{period}.json",
+        ],
+        "monthly": [
+            ROOT / f"monthly-top10-{period}.json",
+            ROOT / f"top10-{period}-01.json",
+        ],
+    }
+    data_path = next((path for path in data_candidates[report_type] if path.exists()), None)
+    if data_path:
+        projects = json.loads(data_path.read_text(encoding="utf-8"))
+    else:
+        projects = list(page_projects.values())
+    if not projects:
+        return None
+
+    briefs = {}
+    if PROJECT_BRIEFS_PATH.exists():
+        briefs = json.loads(PROJECT_BRIEFS_PATH.read_text(encoding="utf-8"))
+
+    for project in projects:
+        name = project.get("full_name", "")
+        brief = dict(briefs.get(name, {}))
+        page_project = page_projects.get(name, {})
+        if not brief.get("summary") and page_project.get("page_summary"):
+            page_summary = page_project["page_summary"]
+            if "更适合被看作" not in page_summary or len(page_summary) <= 220:
+                brief["summary"] = page_summary
+        project["brief_zh"] = brief
+        if not project.get("strategic_keywords"):
+            project["strategic_keywords"] = page_project.get("strategic_keywords", [])
+    return report_type, period, projects
+
+
+def render_project_overview(projects: list[dict], report_type: str) -> str:
+    heat_labels = {
+        "daily": "今日",
+        "weekly": "本周",
+        "monthly": "本月",
+    }
+    heat_label = heat_labels[report_type]
+    rows = []
+    for rank, project in enumerate(projects, start=1):
+        brief = project.get("brief_zh", {})
+        summary = brief.get("summary") or project.get("description") or "项目说明暂缺。"
+        capabilities = brief.get("capabilities") or ""
+        tags = [item.strip() for item in capabilities.split("、") if item.strip()]
+        tags.extend(project.get("strategic_keywords") or [])
+        tags = list(dict.fromkeys(tags))[:4]
+        if not tags:
+            tags = [project.get("language") or "开源项目"]
+        tags_html = "".join(
+            f'<span class="project-tag">{escape(tag)}</span>'
+            for tag in tags
+        )
+        rows.append(
+            f"""<article class="project-row">
+          <span class="project-rank mono">{rank:02d}</span>
+          <div class="project-main">
+            <h3>{escape(project.get('full_name', ''))}</h3>
+            <p>{escape(summary)}</p>
+            <div class="project-actions">
+              <div class="project-tags" aria-label="项目标签">{tags_html}</div>
+              <a class="source-link" href="{escape(project.get('url', '#'))}" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+            </div>
+          </div>
+          <div class="project-signal">
+            <span>{escape(project.get('language') or 'Unknown')}</span>
+            <strong>{heat_label} +{project.get('stars_this_period', 0)}</strong>
+          </div>
+        </article>"""
+        )
+
+    return f"""<section class="signal-section project-overview" id="sec-top10">
+    <div class="section-head"><div><h2>10 个项目，一句话看懂</h2><p>标签用于快速识别能力，点击“原文”打开 GitHub 仓库。</p></div></div>
+    <div class="project-list">{''.join(rows)}</div>
+  </section>"""
+
+
+def render_report_navigation(report_type: str, period: str) -> str:
+    labels = {
+        "daily": "日报",
+        "weekly": "周报",
+        "monthly": "月报",
+    }
+    periods = sorted(
+        path.parent.name
+        for path in (ROOT / report_type).glob("*/index.html")
+        if re.fullmatch(r"\d{4}-\d{2}(?:-\d{2})?", path.parent.name)
+    )
+    previous = max((item for item in periods if item < period), default=None)
+    following = min((item for item in periods if item > period), default=None)
+    links = []
+    if previous:
+        links.append(f'<a href="/{report_type}/{previous}/">← {previous[5:]}</a>')
+    links.append(f'<a href="/{report_type}/">全部{labels[report_type]}</a>')
+    if following:
+        links.append(f'<a href="/{report_type}/{following}/">{following[5:]} →</a>')
+    return f'<nav class="issue-nav" aria-label="{labels[report_type]}日期导航">{"".join(links)}</nav>'
+
+
+def simplify_report(html: str, context: tuple[str, str, list[dict]] | None) -> str:
+    if not context:
+        return html
+    report_type, period, projects = context
+    title_labels = {
+        "daily": "今日项目",
+        "weekly": "本周项目",
+        "monthly": "本月项目",
+    }
+
+    html = STATS_RE.sub("", html, count=1)
+    main_start = html.find('<main class="timeline"')
+    main_content_start = html.find(">", main_start) + 1
+    main_end = html.find("</main>", main_content_start)
+    if min(main_start, main_content_start, main_end) < 0:
+        return html
+
+    main_content = render_project_overview(projects, report_type)
+    html = html[:main_content_start] + "\n  " + main_content + "\n" + html[main_end:]
+    html = html.replace("<header>", '<header class="project-header">', 1)
+    html = re.sub(
+        r'<div class="mono" style="color:var\(--muted\);font-size:12px;">.*?</div>',
+        "",
+        html,
+        count=1,
+    )
+    html = re.sub(
+        r"<h1>.*?</h1>",
+        f'<h1><span class="pixel-word">GitHub</span> {title_labels[report_type]}</h1>',
+        html,
+        count=1,
+        flags=re.S,
+    )
+    if 'class="issue-nav"' not in html:
+        html = re.sub(
+            r'(<div class="toprow">\s*<div class="brand">.*?</div>)',
+            rf"\1{render_report_navigation(report_type, period)}",
+            html,
+            count=1,
+            flags=re.S,
+        )
+    html = re.sub(
+        r'<div class="sub">.*?</div>',
+        f'<div class="sub"><span class="mono">{period}</span></div>',
+        html,
+        count=1,
+        flags=re.S,
+    )
+    html = re.sub(
+        r'<p class="hero-lede">.*?</p>',
+        '<p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>',
+        html,
+        count=1,
+        flags=re.S,
+    )
+    html = re.sub(r'\s*<div class="hero-verdict">.*?</div>', "", html, count=1, flags=re.S)
+    html = NAV_RE.sub("", html, count=1)
+    return html
+
+
 def restyle_report_html(html: str) -> str:
     if "<title>GitHub 热榜情报" not in html:
       return html
@@ -979,6 +1214,7 @@ def restyle_report_html(html: str) -> str:
     html = reorder_report_sections(html)
     html = add_deep_project_toggle(html)
     html = add_editorial_content(html)
+    html = simplify_report(html, load_report_projects(html))
     html = add_editorial_interaction(html)
 
     return html
@@ -997,8 +1233,10 @@ def default_targets() -> list[Path]:
     globs = [
         "github-trending-daily-*.html",
         "github-trending-weekly-*.html",
+        "github-trending-monthly-*.html",
         "daily/*/index.html",
         "weekly/*/index.html",
+        "monthly/*/index.html",
     ]
     paths: list[Path] = []
     for pattern in globs:

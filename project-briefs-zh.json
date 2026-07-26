@@ -1,0 +1,62 @@
+{
+  "diegosouzapw/OmniRoute": {
+    "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+    "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+    "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+    "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+  },
+  "alibaba/open-code-review": {
+    "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+    "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+    "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+    "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+  },
+  "affaan-m/ECC": {
+    "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+    "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+    "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+    "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+  },
+  "koala73/worldmonitor": {
+    "summary": "一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。",
+    "audience": "研究国际事件、风险情报或全球运营状态的分析人员",
+    "capabilities": "新闻聚合、地缘事件监控、基础设施追踪、统一态势界面",
+    "risk": "判断质量高度依赖数据源覆盖、更新速度和事件去重能力"
+  },
+  "block/buzz": {
+    "summary": "一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。",
+    "audience": "研究多 Agent 通信、群体协作或去中心化消息系统的开发者",
+    "capabilities": "群体通信、共享上下文、协作消息、Rust 服务端",
+    "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证"
+  },
+  "ruvnet/RuView": {
+    "summary": "利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。",
+    "audience": "智能家居、健康监测、安防和无摄像头空间感知项目",
+    "capabilities": "Wi-Fi 感知、存在检测、动作识别、生命体征监测、隐私友好",
+    "risk": "精度容易受房间结构、设备型号和无线环境影响，需要实地校准"
+  },
+  "Automattic/harper": {
+    "summary": "一个离线运行、重视隐私的英文语法检查器，核心使用 Rust 编写，可嵌入编辑器和写作工具。",
+    "audience": "需要本地语法检查、不能上传文本或追求低延迟的产品和开发者",
+    "capabilities": "离线检查、隐私保护、快速执行、编辑器集成、开源规则",
+    "risk": "主要面向英文写作，规则覆盖和效果需要与成熟商业工具比较"
+  },
+  "CoreBunch/Instatic": {
+    "summary": "一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。",
+    "audience": "需要自托管建站、可视化编辑和静态输出的小团队",
+    "capabilities": "可视化建站、静态页面输出、用户与角色、插件、内容管理、Agent 辅助",
+    "risk": "功能范围接近完整 CMS，部署、升级和插件生态的维护成本需要评估"
+  },
+  "earendil-works/pi": {
+    "summary": "一个构建 AI Agent 的开发工具包，提供统一模型接口、Agent 循环、终端 UI 和编码 Agent CLI。",
+    "audience": "想快速搭建命令行 Agent 或统一接入多家 LLM 的开发者",
+    "capabilities": "统一 LLM API、Agent Loop、终端界面、编码 Agent、CLI",
+    "risk": "与现有 Agent 框架重叠较多，需重点验证扩展性和长期维护情况"
+  },
+  "Pumpkin-MC/Pumpkin": {
+    "summary": "一个用 Rust 重写的高性能 Minecraft 服务端，目标是让个人和社区更高效地托管游戏服务器。",
+    "audience": "Minecraft 服务器运营者、插件开发者和 Rust 游戏服务端研究者",
+    "capabilities": "高性能服务端、低资源占用、Rust 实现、多人游戏托管",
+    "risk": "与原版协议和插件生态的兼容程度决定了实际迁移成本"
+  }
+}
