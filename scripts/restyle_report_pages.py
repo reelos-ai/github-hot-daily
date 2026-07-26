@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-REPORT_STYLE = """
+_LEGACY_REPORT_STYLE = """
   <style>
     :root {
       color-scheme: light;
@@ -760,11 +760,43 @@ REPORT_STYLE = """
   </style>
 """
 
+REPORT_STYLE_PATH = ROOT / "scripts" / "report_editorial.css"
+REPORT_STYLE = f"""<style>
+{REPORT_STYLE_PATH.read_text(encoding="utf-8")}
+</style>"""
+
 STYLE_RE = re.compile(r"<style>.*?</style>", re.S)
 PERIOD_LABEL_RE = re.compile(r"(PERIOD / <b>)(DAILY|WEEKLY)(</b>)")
+BRIEFING_RE = re.compile(r"\s*<section class=\"briefing-strip\".*?</section>", re.S)
+NAV_RE = re.compile(r"<nav class=\"section-nav\".*?</nav>", re.S)
+STATS_RE = re.compile(r"<section class=\"stats\">.*?</section>", re.S)
+STAT_RE = re.compile(r"<div class=\"stat\"><b>(.*?)</b><span>(.*?)</span></div>", re.S)
+FIRST_ROW_RE = re.compile(r"<tbody><tr>(.*?)</tr>", re.S)
+TD_RE = re.compile(r"<td>(.*?)</td>", re.S)
+HERO_LEDE_RE = re.compile(r"(<p class=\"hero-lede\">.*?</p>)", re.S)
+BLOCKQUOTE_RE = re.compile(r"\s*<blockquote>(.*?)</blockquote>", re.S)
+CAVEAT_RE = re.compile(r"\s*<p class=\"caveat\">(.*?)</p>", re.S)
+SECTION_MARKER = '<section class="signal-section" id="{section_id}">'
+SECTION_ORDER = ("sec-top10", "sec-trends", "sec-deep", "sec-lens", "sec-actions")
+SECTION_NUMBERS = {
+    "sec-top10": "01",
+    "sec-trends": "02",
+    "sec-deep": "03",
+    "sec-lens": "04",
+    "sec-actions": "05",
+}
+
+EDITORIAL_NAV = """<nav class="section-nav" aria-label="报告分组导航">
+      <a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
+      <a class="section-link" href="#sec-trends"><span class="nr mono">02</span><span>趋势观察</span></a>
+      <a class="section-link" href="#sec-deep"><span class="nr mono">03</span><span>重点项目</span></a>
+      <a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>六视角</span></a>
+      <a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>行动建议</span></a>
+    </nav>"""
 
 TEXT_REPLACEMENTS = (
     ('<html lang="zh-CN" data-theme="dark">', '<html lang="zh-CN" data-theme="warm-signal">'),
+    ('<html lang="zh-CN" data-theme="warm-signal">', '<html lang="zh-CN" data-theme="editorial">'),
     ("collect · judge · build", "scan · judge · decide"),
     (
         "面向中文 AI builder / founder / investor 的开源信号读物：先看趋势和判断，再按需展开技术证据。",
@@ -779,7 +811,155 @@ TEXT_REPLACEMENTS = (
     ("<span>跟进</span></a>", "<span>行动</span></a>"),
     ("<h2>A/B/C 跟进建议</h2><p>把热度变成下一步动作，而不是收藏夹。</p>",
      "<h2>A/B/C 行动建议</h2><p>把热度转成行动队列，而不是把好项目丢进收藏夹后失联。</p>"),
+    ("<h2>Top 3-5 深度分析</h2>", "<h2>重点项目深度分析</h2>"),
 )
+
+
+def strip_tags(value: str) -> str:
+    return re.sub(r"<.*?>", "", value).strip()
+
+
+def build_editorial_stats(html: str) -> str:
+    stats_match = STATS_RE.search(html)
+    if not stats_match:
+        return html
+
+    stats = STAT_RE.findall(stats_match.group(0))
+    candidate_count = strip_tags(stats[0][0]) if stats else "—"
+    top_count = strip_tags(stats[1][0]) if len(stats) > 1 else "10"
+    highest_score = "—"
+    row_match = FIRST_ROW_RE.search(html)
+    if row_match:
+        cells = TD_RE.findall(row_match.group(1))
+        if len(cells) > 7:
+            highest_score = strip_tags(cells[7])
+
+    replacement = f"""<section class="stats" aria-label="本期核心数据">
+      <div class="stat"><b>{candidate_count}</b><span>候选项目</span></div>
+      <div class="stat"><b>{top_count}</b><span>核心信号</span></div>
+      <div class="stat"><b>{highest_score}</b><span>最高评分</span></div>
+    </section>"""
+    return STATS_RE.sub(replacement, html, count=1)
+
+
+def reorder_report_sections(html: str) -> str:
+    main_start = html.find('<main class="timeline"')
+    if main_start < 0:
+        return html
+    main_content_start = html.find(">", main_start) + 1
+    main_end = html.find("</main>", main_content_start)
+    if main_end < 0:
+        return html
+
+    body = html[main_content_start:main_end]
+    positions = {
+        section_id: body.find(SECTION_MARKER.format(section_id=section_id))
+        for section_id in SECTION_ORDER
+    }
+    if any(position < 0 for position in positions.values()):
+        return html
+
+    ordered_by_position = sorted(positions, key=positions.get)
+    chunks: dict[str, str] = {}
+    for index, section_id in enumerate(ordered_by_position):
+        start = positions[section_id]
+        end = positions[ordered_by_position[index + 1]] if index + 1 < len(ordered_by_position) else len(body)
+        chunk = body[start:end].strip()
+        chunk = re.sub(
+            r'(<span class="range mono">)\d{2}(</span>)',
+            rf"\g<1>{SECTION_NUMBERS[section_id]}\2",
+            chunk,
+            count=1,
+        )
+        chunks[section_id] = chunk
+
+    replacement = "\n  ".join(chunks[section_id] for section_id in SECTION_ORDER)
+    return html[:main_content_start] + "\n  " + replacement + "\n" + html[main_end:]
+
+
+def add_deep_project_toggle(html: str) -> str:
+    if "data-deep-toggle" in html:
+        return html
+
+    deep_start = html.find(SECTION_MARKER.format(section_id="sec-deep"))
+    deep_end = html.find(SECTION_MARKER.format(section_id="sec-lens"))
+    if deep_start < 0 or deep_end < 0:
+        return html
+
+    chunk = html[deep_start:deep_end]
+    tools_match = re.search(r'(<div class="section-tools".*?)(</div>)', chunk, re.S)
+    button = '<button class="tool-btn" type="button" data-deep-toggle aria-expanded="false">查看全部 5 个项目</button>'
+    if tools_match:
+        chunk = chunk[:tools_match.end(1)] + button + chunk[tools_match.end(1):]
+    else:
+        cards_marker = "<div class='cards'>"
+        chunk = chunk.replace(
+            cards_marker,
+            f'<div class="section-tools">{button}</div>{cards_marker}',
+            1,
+        )
+
+    return html[:deep_start] + chunk + html[deep_end:]
+
+
+def add_editorial_interaction(html: str) -> str:
+    if "editorial-deep-toggle" in html:
+        return html
+
+    interaction = """
+  // editorial-deep-toggle
+  const deepSection = document.querySelector('#sec-deep');
+  const deepToggle = document.querySelector('[data-deep-toggle]');
+  if (deepSection && deepToggle) {
+    deepToggle.addEventListener('click', () => {
+      const expanded = deepSection.classList.toggle('show-all');
+      deepToggle.setAttribute('aria-expanded', String(expanded));
+      deepToggle.textContent = expanded ? '仅显示 Top 3' : '查看全部 5 个项目';
+    });
+  }
+"""
+    return html.replace("</script>", interaction + "</script>", 1)
+
+
+def add_editorial_content(html: str) -> str:
+    if '<a class="skip-link"' not in html:
+        html = html.replace(
+            "<body>",
+            '<body>\n<a class="skip-link" href="#main-content">跳到主要内容</a>',
+            1,
+        )
+
+    html = html.replace('<main class="timeline">', '<main class="timeline" id="main-content">', 1)
+    html = BRIEFING_RE.sub("", html, count=1)
+    html = NAV_RE.sub(EDITORIAL_NAV, html, count=1)
+
+    if 'class="hero-verdict"' not in html:
+        quote_match = BLOCKQUOTE_RE.search(html)
+        if quote_match:
+            verdict = strip_tags(quote_match.group(1))
+            verdict = re.sub(r"^一句话结论[：:]\s*", "", verdict)
+            verdict_html = (
+                '<div class="hero-verdict">'
+                '<span class="label">今日结论</span>'
+                f"<p>{verdict}</p>"
+                "</div>"
+            )
+            html = HERO_LEDE_RE.sub(rf"\1\n    {verdict_html}", html, count=1)
+            html = BLOCKQUOTE_RE.sub("", html, count=1)
+
+    caveat_match = CAVEAT_RE.search(html)
+    if caveat_match and 'class="data-note"' not in html:
+        caveat = caveat_match.group(1).strip()
+        html = CAVEAT_RE.sub("", html, count=1)
+        data_note = (
+            '<section class="data-note" aria-labelledby="data-note-title">'
+            '<h2 id="data-note-title">数据说明</h2>'
+            f"<p>{caveat}</p>"
+            "</section>"
+        )
+        html = html.replace("</main>", f"  {data_note}\n</main>", 1)
+
+    return html
 
 
 def restyle_report_html(html: str) -> str:
@@ -794,6 +974,12 @@ def restyle_report_html(html: str) -> str:
 
     for old, new in TEXT_REPLACEMENTS:
         html = html.replace(old, new)
+
+    html = build_editorial_stats(html)
+    html = reorder_report_sections(html)
+    html = add_deep_project_toggle(html)
+    html = add_editorial_content(html)
+    html = add_editorial_interaction(html)
 
     return html
 
