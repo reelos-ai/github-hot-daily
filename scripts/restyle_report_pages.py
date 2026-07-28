@@ -1172,6 +1172,16 @@ def render_report_navigation(report_type: str, period: str) -> str:
     return f'<nav class="issue-nav" aria-label="{labels[report_type]}日期导航">{"".join(links)}</nav>'
 
 
+def render_reelos_brand() -> str:
+    return """<a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a>"""
+
+
 def simplify_report(html: str, context: tuple[str, str, list[dict]] | None) -> str:
     if not context:
         return html
@@ -1213,6 +1223,13 @@ def simplify_report(html: str, context: tuple[str, str, list[dict]] | None) -> s
             count=1,
             flags=re.S,
         )
+    html = re.sub(
+        r'<div class="brand">.*?</div>',
+        f'<div class="brand">{render_reelos_brand()}</div>',
+        html,
+        count=1,
+        flags=re.S,
+    )
     html = re.sub(
         r'<div class="sub">.*?</div>',
         f'<div class="sub"><span class="mono">{period}</span></div>',

@@ -1,5 +1,16 @@
 # Design QA
 
+## ReelOS Brand Alignment
+
+- Brand source of truth: `https://www.reelos.ai/`.
+- Use the official ReelOS lockup: orbital mark, `ReelOS.ai` wordmark, orange `OS`, and a quiet channel subtitle.
+- The orbital mark is 30px on desktop and 26px on mobile. It is a brand identifier, not a decorative status dot.
+- Brand typography uses a restrained geometric sans; Chinese report copy keeps the existing readable sans hierarchy.
+- Neutral paper/slate surfaces carry the page. Blue marks navigation and report state; orange is reserved for the ReelOS identity and high-value judgment.
+- Keep one primary focal point, open report lists, thin dividers, square or micro-radius controls, and restrained motion.
+- Do not reintroduce poster-style heroes, floating-card grids, decorative gradients, pill overload, or unrelated telemetry.
+- The shared publisher and report restyler must render the same brand component so daily, weekly, monthly, archive, and detail pages cannot drift apart.
+
 ## Comparison Target
 
 - Source visual truth:

@@ -184,6 +184,95 @@ header > * {
   display: none;
 }
 
+.brand .reelos-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  color: var(--ink);
+  font-family: "Space Grotesk", "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.brand .reelos-mark {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #111722;
+}
+
+.brand .reelos-mark::before,
+.brand .reelos-mark::after,
+.brand .reelos-mark > span {
+  content: "";
+  position: absolute;
+  border: 1.5px solid #fff7ed;
+  border-radius: 50%;
+}
+
+.brand .reelos-mark::before {
+  width: 18px;
+  height: 18px;
+}
+
+.brand .reelos-mark::after {
+  width: 8px;
+  height: 8px;
+  border-color: #f97316;
+}
+
+.brand .reelos-mark > span {
+  width: 24px;
+  height: 24px;
+  border-top-color: transparent;
+  transform: rotate(-25deg);
+  transition: transform 0.62s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand .reelos-lockup:hover .reelos-mark > span {
+  transform: rotate(295deg);
+}
+
+.brand .reelos-lockup-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand .reelos-wordmark {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brand .reelos-logo-os {
+  color: #f97316;
+}
+
+.brand .reelos-lockup-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand .reelos-lockup:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #f97316;
+  outline-offset: 4px;
+}
+
 h1 {
   grid-area: title;
   display: block;
@@ -1091,6 +1180,25 @@ blockquote {
     display: none;
   }
 
+  .brand .reelos-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brand .reelos-mark::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brand .reelos-mark > span {
+    width: 21px;
+    height: 21px;
+  }
+
+  .brand .reelos-wordmark {
+    font-size: 14px;
+  }
+
   .project-header {
     padding-bottom: 20px;
   }
@@ -1350,6 +1458,10 @@ blockquote {
   html {
     scroll-behavior: auto;
   }
+
+  .brand .reelos-mark > span {
+    transition: none;
+  }
 }
 
 </style>
@@ -1360,7 +1472,13 @@ blockquote {
 <div class="wrap">
   <header class="project-header">
     <div class="toprow">
-      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-06-27/">← 06-27</a><a href="/daily/">全部日报</a><a href="/daily/2026-06-29/">06-29 →</a></nav>
+      <div class="brand"><a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-06-27/">← 06-27</a><a href="/daily/">全部日报</a><a href="/daily/2026-06-29/">06-29 →</a></nav>
       
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
@@ -1379,7 +1497,7 @@ blockquote {
             <h3>topoteretes/cognee</h3>
             <p>Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">rag</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">RAG</span></div>
               <a class="source-link" href="https://github.com/topoteretes/cognee" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1391,9 +1509,9 @@ blockquote {
           <span class="project-rank mono">02</span>
           <div class="project-main">
             <h3>colbymchenry/codegraph</h3>
-            <p>Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, and Hermes Agent — fewer tokens, fewer tool calls, 100% local</p>
+            <p>一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1405,9 +1523,9 @@ blockquote {
           <span class="project-rank mono">03</span>
           <div class="project-main">
             <h3>thedotmack/claude-mem</h3>
-            <p>Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More</p>
+            <p>为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">mcp</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
               <a class="source-link" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1419,9 +1537,9 @@ blockquote {
           <span class="project-rank mono">04</span>
           <div class="project-main">
             <h3>ogulcancelik/herdr</h3>
-            <p>agent multiplexer that lives in your terminal.</p>
+            <p>一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">rag</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1435,7 +1553,7 @@ blockquote {
             <h3>opendatalab/MinerU</h3>
             <p>Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">rag</span><span class="project-tag">llm</span><span class="project-tag">workflow</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">RAG</span><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/opendatalab/MinerU" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1449,7 +1567,7 @@ blockquote {
             <h3>safishamsi/graphify</h3>
             <p>AI coding assistant skill (Claude Code, Codex, OpenCode, Cursor, Gemini CLI, and more). Turn any folder of code, SQL schemas, R scripts, shell scripts, docs, papers, images, or videos into a queryable knowledge graph. App code + database schema + infrastructure in one graph.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">memory</span><span class="project-tag">rag</span><span class="project-tag">skill</span><span class="project-tag">llm</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">RAG</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/safishamsi/graphify" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1463,7 +1581,7 @@ blockquote {
             <h3>MemPalace/mempalace</h3>
             <p>The best-benchmarked open-source AI memory system. And it&#x27;s free.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">memory</span><span class="project-tag">mcp</span><span class="project-tag">rag</span><span class="project-tag">llm</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/MemPalace/mempalace" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1475,9 +1593,9 @@ blockquote {
           <span class="project-rank mono">08</span>
           <div class="project-main">
             <h3>HKUDS/Vibe-Trading</h3>
-            <p>&quot;Vibe-Trading: Your Personal Trading Agent&quot;</p>
+            <p>一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">mcp</span><span class="project-tag">llm</span><span class="project-tag">codegen</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">codegen</span></div>
               <a class="source-link" href="https://github.com/HKUDS/Vibe-Trading" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1491,7 +1609,7 @@ blockquote {
             <h3>jackwener/OpenCLI</h3>
             <p>Make Any Website into CLI &amp; Use your logged-in browser by AI agent.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">runtime</span><span class="project-tag">skill</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">运行时</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/jackwener/OpenCLI" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1505,7 +1623,7 @@ blockquote {
             <h3>Panniantong/Agent-Reach</h3>
             <p>Give your AI agent eyes to see the entire internet. Read &amp; search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">mcp</span><span class="project-tag">llm</span><span class="project-tag">automation</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">自动化</span></div>
               <a class="source-link" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

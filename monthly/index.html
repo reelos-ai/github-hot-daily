@@ -173,18 +173,117 @@
       .meta{text-align:left}
       h1{font-size:clamp(38px,15vw,66px)}
     }
-    </style>
+    .reelos-lockup{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      color:var(--text,#111722);
+      font-family:"Space Grotesk","IBM Plex Sans","PingFang SC","Microsoft YaHei",ui-sans-serif,system-ui,sans-serif;
+      text-decoration:none;
+      text-transform:none;
+      letter-spacing:0;
+    }
+    .reelos-mark{
+      position:relative;
+      display:grid;
+      flex:0 0 auto;
+      width:30px;
+      height:30px;
+      place-items:center;
+      border-radius:50%;
+      background:#111722;
+    }
+    .reelos-mark::before,
+    .reelos-mark::after,
+    .reelos-mark > span{
+      content:"";
+      position:absolute;
+      border:1.5px solid #fff7ed;
+      border-radius:50%;
+    }
+    .reelos-mark::before{
+      width:18px;
+      height:18px;
+    }
+    .reelos-mark::after{
+      width:8px;
+      height:8px;
+      border-color:#f97316;
+    }
+    .reelos-mark > span{
+      width:24px;
+      height:24px;
+      border-top-color:transparent;
+      transform:rotate(-25deg);
+      transition:transform .62s cubic-bezier(.2,.8,.2,1);
+    }
+    .reelos-lockup:hover .reelos-mark > span{
+      transform:rotate(295deg);
+    }
+    .reelos-lockup-copy{
+      display:grid;
+      gap:2px;
+      min-width:0;
+    }
+    .reelos-wordmark{
+      color:var(--text,#111722);
+      font-size:16px;
+      font-weight:650;
+      line-height:1.2;
+      letter-spacing:0;
+      white-space:nowrap;
+    }
+    .reelos-logo-os{
+      color:#f97316;
+    }
+    .reelos-lockup-subtitle{
+      color:var(--muted,#6c788d);
+      font-size:10px;
+      font-weight:500;
+      line-height:1.3;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .reelos-lockup:focus-visible{
+      border-radius:3px;
+      outline:2px solid #f97316;
+      outline-offset:4px;
+    }
+    @media (max-width:680px){
+      .reelos-mark{
+        width:26px;
+        height:26px;
+      }
+      .reelos-mark::before{
+        width:16px;
+        height:16px;
+      }
+      .reelos-mark > span{
+        width:21px;
+        height:21px;
+      }
+      .reelos-wordmark{
+        font-size:14px;
+      }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .reelos-mark > span{
+        transition:none;
+      }
+    }</style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Long Cycle Desk</div>
-          <div class="brand-title">GitHub Signal / Monthly Trend Review</div>
-        </div>
-      </div>
+      <a class="reelos-lockup brand" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a>
       <nav class="nav"><a class="" href="/">Overview</a><a class="" href="/daily/">Daily</a><a class="" href="/weekly/">Weekly</a><a class="active" href="/monthly/">Monthly</a><a class="" href="/archive/">Archive</a></nav>
     </header>
 
@@ -210,10 +309,10 @@
       <div class="section-rail mono">01 / Review</div>
       <div>
         <div class="panel">
-          <h2>月报目录</h2>
-          <p>每期月报都以品类热度地图、项目簇、成熟度评分和下月动作四层结构输出，避免再次退回单项目列表化叙述。</p>
+          <h2>最近 50 天月报</h2>
+          <p>仅展示距今天不超过 50 天的月报，保留仍能解释赛道迁移的长期判断。</p>
         </div>
-        <div class="list"><a class="row" href="/monthly/2026-07/"><span class="type mono">Monthly</span><span class="title">GitHub 热榜情报月报 · 2026-07</span><span class="meta mono">Top 10</span></a></div>
+        <div class="list"><a class="row" href="/monthly/2026-07/"><span class="type mono">月报</span><span class="title">GitHub 热榜情报月报 · 2026-07</span><span class="meta mono">Top 10</span></a></div>
       </div>
     </section>
   </div>

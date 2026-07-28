@@ -184,6 +184,95 @@ header > * {
   display: none;
 }
 
+.brand .reelos-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  color: var(--ink);
+  font-family: "Space Grotesk", "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.brand .reelos-mark {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #111722;
+}
+
+.brand .reelos-mark::before,
+.brand .reelos-mark::after,
+.brand .reelos-mark > span {
+  content: "";
+  position: absolute;
+  border: 1.5px solid #fff7ed;
+  border-radius: 50%;
+}
+
+.brand .reelos-mark::before {
+  width: 18px;
+  height: 18px;
+}
+
+.brand .reelos-mark::after {
+  width: 8px;
+  height: 8px;
+  border-color: #f97316;
+}
+
+.brand .reelos-mark > span {
+  width: 24px;
+  height: 24px;
+  border-top-color: transparent;
+  transform: rotate(-25deg);
+  transition: transform 0.62s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand .reelos-lockup:hover .reelos-mark > span {
+  transform: rotate(295deg);
+}
+
+.brand .reelos-lockup-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand .reelos-wordmark {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brand .reelos-logo-os {
+  color: #f97316;
+}
+
+.brand .reelos-lockup-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand .reelos-lockup:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #f97316;
+  outline-offset: 4px;
+}
+
 h1 {
   grid-area: title;
   display: block;
@@ -1091,6 +1180,25 @@ blockquote {
     display: none;
   }
 
+  .brand .reelos-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brand .reelos-mark::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brand .reelos-mark > span {
+    width: 21px;
+    height: 21px;
+  }
+
+  .brand .reelos-wordmark {
+    font-size: 14px;
+  }
+
   .project-header {
     padding-bottom: 20px;
   }
@@ -1350,6 +1458,10 @@ blockquote {
   html {
     scroll-behavior: auto;
   }
+
+  .brand .reelos-mark > span {
+    transition: none;
+  }
 }
 
 </style>
@@ -1360,7 +1472,13 @@ blockquote {
 <div class="wrap">
   <header class="project-header">
     <div class="toprow">
-      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/">全部日报</a><a href="/daily/2026-06-27/">06-27 →</a></nav>
+      <div class="brand"><a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/">全部日报</a><a href="/daily/2026-06-27/">06-27 →</a></nav>
       
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
@@ -1377,9 +1495,9 @@ blockquote {
           <span class="project-rank mono">01</span>
           <div class="project-main">
             <h3>calesthio/OpenMontage</h3>
-            <p>World&#x27;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</p>
+            <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">skill</span><span class="project-tag">workflow</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span><span class="project-tag">Agent 系统</span></div>
               <a class="source-link" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1405,9 +1523,9 @@ blockquote {
           <span class="project-rank mono">03</span>
           <div class="project-main">
             <h3>googleworkspace/cli</h3>
-            <p>Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.</p>
+            <p>Google Workspace 官方命令行工具，用统一 CLI 操作 Drive、Gmail、日历、表格和文档，并支持 Agent Skills。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">runtime</span><span class="project-tag">skill</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">运行时</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1421,7 +1539,7 @@ blockquote {
             <h3>jamiepine/voicebox</h3>
             <p>The open-source AI voice studio. Clone, dictate, create.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">workspace</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1433,9 +1551,9 @@ blockquote {
           <span class="project-rank mono">05</span>
           <div class="project-main">
             <h3>farion1231/cc-switch</h3>
-            <p>A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI &amp; Hermes Agent. Only official website: ccswitch.io</p>
+            <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">skill</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1449,7 +1567,7 @@ blockquote {
             <h3>mukul975/Anthropic-Cybersecurity-Skills</h3>
             <p>817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&amp;CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF &amp; MITRE F3 (Fight Fraud) · agentskills.io standard · Works with Claude Code, GitHub Copilot, Codex CLI, Cursor, Gemini CLI &amp; 20+ platforms · 29 security domains · Apache 2.0</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">mcp</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
               <a class="source-link" href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1463,7 +1581,7 @@ blockquote {
             <h3>alibaba/page-agent</h3>
             <p>JavaScript in-page GUI agent. Control web interfaces with natural language.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">workspace</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1475,9 +1593,9 @@ blockquote {
           <span class="project-rank mono">08</span>
           <div class="project-main">
             <h3>thedotmack/claude-mem</h3>
-            <p>Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More</p>
+            <p>为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">mcp</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
               <a class="source-link" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1491,7 +1609,7 @@ blockquote {
             <h3>stablyai/orca</h3>
             <p>Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">rag</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/stablyai/orca" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1505,7 +1623,7 @@ blockquote {
             <h3>NVIDIA/SkillSpector</h3>
             <p>Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, and security risks.</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">mcp</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
               <a class="source-link" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

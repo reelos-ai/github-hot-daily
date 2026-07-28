@@ -77,6 +77,7 @@ def upsert_report_entry(period: str, stats: dict, assets: dict) -> list[dict]:
 
     entry = {
         "type": "weekly",
+        "category": shared_publisher.REPORT_CATEGORIES["weekly"],
         "period": period,
         "title": f"GitHub 热榜情报周报 · {period}",
         "html": assets["html"],
@@ -90,6 +91,7 @@ def upsert_report_entry(period: str, stats: dict, assets: dict) -> list[dict]:
     }
     reports = [item for item in reports if not (item.get("type") == "weekly" and item.get("period") == period)]
     reports.insert(0, entry)
+    reports = shared_publisher.normalize_report_entries(reports)
     reports.sort(key=lambda item: (item.get("period", ""), item.get("type", "")), reverse=True)
 
     payload = {
@@ -336,10 +338,10 @@ def shell_css() -> str:
 
 
 def render_weekly_index(reports: list[dict]) -> str:
-    weekly_reports = [item for item in reports if item.get("type") == "weekly"][:6]
+    weekly_reports = shared_publisher.visible_reports(reports, "weekly")
     latest = weekly_reports[0] if weekly_reports else None
     rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">Weekly</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
+        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["category"]}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
         for item in weekly_reports
     )
     return f"""<!doctype html>
@@ -348,18 +350,12 @@ def render_weekly_index(reports: list[dict]) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weekly Intelligence · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}</style>
+  <style>{shell_css()}{shared_publisher.reelos_brand_css()}</style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Strategy Layer</div>
-          <div class="brand-title">GitHub Signal / Weekly Intelligence</div>
-        </div>
-      </div>
+      {shared_publisher.render_reelos_brand("/", "GitHub 热榜情报", "brand")}
       <nav class="nav">{nav_links("weekly")}</nav>
     </header>
 
@@ -385,8 +381,8 @@ def render_weekly_index(reports: list[dict]) -> str:
       <div class="section-rail mono">01 / Index</div>
       <div>
         <div class="panel">
-          <h2>周报目录</h2>
-          <p>每期周报保持完整 6 段结构，便于从 Top10 直接跳到深度分析、趋势和 A/B/C 跟进建议。</p>
+          <h2>最近 30 天周报</h2>
+          <p>仅展示距今天不超过 30 天的周报，聚焦仍有决策价值的中周期判断。</p>
         </div>
         <div class="list">{rows}</div>
       </div>
@@ -397,7 +393,7 @@ def render_weekly_index(reports: list[dict]) -> str:
 """
 
 
-def render_archive(reports: list[dict]) -> str:
+def _render_legacy_archive(reports: list[dict]) -> str:
     rows = "".join(
         f'<a class="row" href="{item["html"]}"><span class="type mono">{item["type"].title()}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
         for item in reports[:12]
@@ -411,18 +407,12 @@ def render_archive(reports: list[dict]) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Archive · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}</style>
+  <style>{shell_css()}{shared_publisher.reelos_brand_css()}</style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Archive System</div>
-          <div class="brand-title">GitHub Signal / History</div>
-        </div>
-      </div>
+      {shared_publisher.render_reelos_brand("/", "GitHub 热榜情报", "brand")}
       <nav class="nav">{nav_links("archive")}</nav>
     </header>
 
@@ -487,18 +477,12 @@ def _render_legacy_home(reports: list[dict], watchlist: list[dict]) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub Signal Intelligence · ReelOS</title>
   <meta name="description" content="ReelOS GitHub 热榜情报中心：日报、周报、月报与往期归档。">
-  <style>{shell_css()}</style>
+  <style>{shell_css()}{shared_publisher.reelos_brand_css()}</style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Frontier Desk</div>
-          <div class="brand-title">GitHub Signal Intelligence</div>
-        </div>
-      </div>
+      {shared_publisher.render_reelos_brand("/", "GitHub 热榜情报", "brand")}
       <nav class="nav">{nav_links("overview")}</nav>
     </header>
 
@@ -645,7 +629,7 @@ def main() -> None:
 
     latest_daily = latest_report(reports, "daily")
     write_text(ROOT / "weekly" / "index.html", render_weekly_index(reports))
-    write_text(ROOT / "archive" / "index.html", render_archive(reports))
+    write_text(ROOT / "archive" / "index.html", shared_publisher.render_archive(reports))
     write_text(ROOT / "index.html", render_home(reports))
     update_readme(latest_daily, latest_report(reports, "weekly"))
 

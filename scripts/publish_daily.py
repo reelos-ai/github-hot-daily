@@ -5,7 +5,7 @@ import argparse
 import json
 import re
 import shutil
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from html import escape, unescape
 from pathlib import Path
 
@@ -14,6 +14,16 @@ from restyle_report_pages import restyle_report_html
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://gh.reelos.ai"
+REPORT_WINDOWS_DAYS = {
+    "daily": 15,
+    "weekly": 30,
+    "monthly": 50,
+}
+REPORT_CATEGORIES = {
+    "daily": "日报",
+    "weekly": "周报",
+    "monthly": "月报",
+}
 
 
 def read_json(path: Path):
@@ -23,6 +33,39 @@ def read_json(path: Path):
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def normalize_report_entries(reports: list[dict]) -> list[dict]:
+    for report in reports:
+        report["category"] = REPORT_CATEGORIES.get(report.get("type"), "其他")
+    return reports
+
+
+def report_period_date(report: dict) -> date | None:
+    period = report.get("period", "")
+    for pattern in ("%Y-%m-%d", "%Y-%m"):
+        try:
+            return datetime.strptime(period, pattern).date()
+        except ValueError:
+            continue
+    return None
+
+
+def visible_reports(
+    reports: list[dict],
+    report_type: str,
+    reference_date: date | None = None,
+) -> list[dict]:
+    window_days = REPORT_WINDOWS_DAYS[report_type]
+    today = reference_date or date.today()
+    cutoff = today - timedelta(days=window_days)
+    return [
+        report
+        for report in normalize_report_entries(reports)
+        if report.get("type") == report_type
+        and (period_date := report_period_date(report)) is not None
+        and cutoff <= period_date <= today
+    ]
 
 
 def load_report_stats(period: str) -> dict:
@@ -48,6 +91,7 @@ def upsert_report_entry(period: str, stats: dict) -> list[dict]:
         reports = []
     entry = {
         "type": "daily",
+        "category": REPORT_CATEGORIES["daily"],
         "period": period,
         "title": f"GitHub 热榜情报日报 · {period}",
         "html": f"/daily/{period}/",
@@ -60,6 +104,7 @@ def upsert_report_entry(period: str, stats: dict) -> list[dict]:
     }
     reports = [item for item in reports if not (item.get("type") == "daily" and item.get("period") == period)]
     reports.insert(0, entry)
+    reports = normalize_report_entries(reports)
     reports.sort(key=lambda item: (item.get("period", ""), item.get("type", "")), reverse=True)
     payload = {
         "updated_at": datetime.now().astimezone().isoformat(timespec="minutes"),
@@ -173,12 +218,133 @@ def nav_links(active: str) -> str:
         ("daily", "/daily/", "日报"),
         ("weekly", "/weekly/", "周报"),
         ("monthly", "/monthly/", "月报"),
+        ("archive", "/archive/", "归档"),
     ]
     links = []
     for key, href, label in items:
         cls = "active" if key == active else ""
         links.append(f'<a class="{cls}" href="{href}">{label}</a>')
     return "".join(links)
+
+
+def reelos_brand_css() -> str:
+    return """
+    .reelos-lockup{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      color:var(--text,#111722);
+      font-family:"Space Grotesk","IBM Plex Sans","PingFang SC","Microsoft YaHei",ui-sans-serif,system-ui,sans-serif;
+      text-decoration:none;
+      text-transform:none;
+      letter-spacing:0;
+    }
+    .reelos-mark{
+      position:relative;
+      display:grid;
+      flex:0 0 auto;
+      width:30px;
+      height:30px;
+      place-items:center;
+      border-radius:50%;
+      background:#111722;
+    }
+    .reelos-mark::before,
+    .reelos-mark::after,
+    .reelos-mark > span{
+      content:"";
+      position:absolute;
+      border:1.5px solid #fff7ed;
+      border-radius:50%;
+    }
+    .reelos-mark::before{
+      width:18px;
+      height:18px;
+    }
+    .reelos-mark::after{
+      width:8px;
+      height:8px;
+      border-color:#f97316;
+    }
+    .reelos-mark > span{
+      width:24px;
+      height:24px;
+      border-top-color:transparent;
+      transform:rotate(-25deg);
+      transition:transform .62s cubic-bezier(.2,.8,.2,1);
+    }
+    .reelos-lockup:hover .reelos-mark > span{
+      transform:rotate(295deg);
+    }
+    .reelos-lockup-copy{
+      display:grid;
+      gap:2px;
+      min-width:0;
+    }
+    .reelos-wordmark{
+      color:var(--text,#111722);
+      font-size:16px;
+      font-weight:650;
+      line-height:1.2;
+      letter-spacing:0;
+      white-space:nowrap;
+    }
+    .reelos-logo-os{
+      color:#f97316;
+    }
+    .reelos-lockup-subtitle{
+      color:var(--muted,#6c788d);
+      font-size:10px;
+      font-weight:500;
+      line-height:1.3;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .reelos-lockup:focus-visible{
+      border-radius:3px;
+      outline:2px solid #f97316;
+      outline-offset:4px;
+    }
+    @media (max-width:680px){
+      .reelos-mark{
+        width:26px;
+        height:26px;
+      }
+      .reelos-mark::before{
+        width:16px;
+        height:16px;
+      }
+      .reelos-mark > span{
+        width:21px;
+        height:21px;
+      }
+      .reelos-wordmark{
+        font-size:14px;
+      }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .reelos-mark > span{
+        transition:none;
+      }
+    }
+    """.strip()
+
+
+def render_reelos_brand(
+    href: str = "/",
+    subtitle: str = "GitHub 热榜情报",
+    extra_class: str = "",
+) -> str:
+    classes = " ".join(filter(None, ("reelos-lockup", extra_class)))
+    return f"""<a class="{classes}" href="{escape(href)}" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">{escape(subtitle)}</span>
+      </span>
+    </a>"""
 
 
 def render_site_footer() -> str:
@@ -725,10 +891,6 @@ def shell_css() -> str:
     .home-page .topbar{
       padding-top:4px;
     }
-    .home-page .brand-mark{
-      background:#315fc8;
-      box-shadow:none;
-    }
     .home-page .nav a{
       border-radius:0;
       background:transparent;
@@ -759,19 +921,7 @@ def shell_css() -> str:
     .home-masthead-brand{
       display:flex;
       align-items:center;
-      gap:12px;
     }
-    .home-masthead-brand .brand-mark{
-      width:9px;
-      height:9px;
-    }
-    .home-masthead-brand strong{
-      display:block;
-      color:var(--text);
-      font-size:14px;
-      line-height:1.2;
-    }
-    .home-masthead-brand span:last-child,
     .home-masthead-edition{
       color:var(--muted);
       font-size:10px;
@@ -1041,6 +1191,75 @@ def shell_css() -> str:
       font-size:12px;
       font-weight:700;
     }
+    .archive-main{
+      margin-top:26px;
+    }
+    .archive-policy{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      margin-bottom:24px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .archive-policy-item{
+      padding:18px 20px;
+      border-right:1px solid var(--line);
+    }
+    .archive-policy-item:last-child{
+      border-right:0;
+    }
+    .archive-policy-item span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .archive-policy-item strong{
+      display:block;
+      margin:4px 0 2px;
+      color:var(--text);
+      font-size:24px;
+      line-height:1.2;
+    }
+    .archive-report-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .archive-report-row{
+      display:grid;
+      grid-template-columns:76px minmax(0,1fr) 96px;
+      gap:16px;
+      align-items:center;
+      padding:18px 8px;
+      border-bottom:1px solid var(--line);
+    }
+    .archive-report-row:last-child{
+      border-bottom:0;
+    }
+    .archive-report-category{
+      width:max-content;
+      padding:4px 8px;
+      color:var(--blue);
+      border:1px solid #c8d2e3;
+      background:#f7f9fc;
+      font-size:11px;
+      font-weight:700;
+    }
+    .archive-report-title{
+      font-size:16px;
+      font-weight:700;
+      line-height:1.45;
+    }
+    .archive-report-meta{
+      color:var(--muted);
+      font-size:11px;
+      text-align:right;
+    }
+    .archive-empty{
+      padding:28px 8px;
+      color:var(--muted);
+      font-size:14px;
+    }
     .site-footer{
       color:#a7adbc;
       background:#080b13;
@@ -1179,6 +1398,25 @@ def shell_css() -> str:
         align-items:center;
         justify-content:space-between;
       }
+      .archive-policy{
+        grid-template-columns:1fr;
+      }
+      .archive-policy-item{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .archive-policy-item:last-child{
+        border-bottom:0;
+      }
+      .archive-report-row{
+        grid-template-columns:64px minmax(0,1fr);
+        gap:10px;
+        padding:16px 0;
+      }
+      .archive-report-meta{
+        grid-column:2;
+        text-align:left;
+      }
       .report-entry{
         min-height:0;
         border-right:0;
@@ -1194,9 +1432,9 @@ def shell_css() -> str:
 
 
 def render_daily_index(period: str, stats: dict, reports: list[dict]) -> str:
-    daily_reports = [item for item in reports if item.get("type") == "daily"]
+    daily_reports = visible_reports(reports, "daily")
     rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">Daily</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
+        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["category"]}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
         for item in daily_reports
     )
     return f"""<!doctype html>
@@ -1205,18 +1443,12 @@ def render_daily_index(period: str, stats: dict, reports: list[dict]) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daily Radar · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}</style>
+  <style>{shell_css()}{reelos_brand_css()}</style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Frontier Desk</div>
-          <div class="brand-title">GitHub Signal / Daily Radar</div>
-        </div>
-      </div>
+      {render_reelos_brand("/", "GitHub 热榜情报", "brand")}
       <nav class="nav">{nav_links("daily")}</nav>
     </header>
 
@@ -1272,8 +1504,8 @@ def render_daily_index(period: str, stats: dict, reports: list[dict]) -> str:
       <div class="section-rail mono">03 / Archive</div>
       <div>
         <div class="panel">
-          <h2>最近日报</h2>
-          <p>按时间连续保留，方便回看哪些信号只是一天热度，哪些方向正在积累成趋势。</p>
+          <h2>最近 15 天日报</h2>
+          <p>仅展示距今天不超过 15 天的日报，减少过期信息干扰；更早报告仍保留原链接。</p>
         </div>
         <div class="list">{rows}</div>
       </div>
@@ -1284,62 +1516,109 @@ def render_daily_index(period: str, stats: dict, reports: list[dict]) -> str:
 """
 
 
-def render_archive(reports: list[dict]) -> str:
+def render_archive_panel(report_type: str, reports: list[dict], active: bool = False) -> str:
+    category = REPORT_CATEGORIES[report_type]
+    window_days = REPORT_WINDOWS_DAYS[report_type]
+    visible = visible_reports(reports, report_type)
     rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["type"].title()}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
-        for item in reports[:12]
+        f"""<a class="archive-report-row" href="{escape(item["html"])}">
+          <span class="archive-report-category">{escape(item["category"])}</span>
+          <span class="archive-report-title">{escape(item["title"])}</span>
+          <span class="archive-report-meta mono">Top {item["top_count"]}</span>
+        </a>"""
+        for item in visible
     )
-    daily_count = sum(1 for item in reports if item.get("type") == "daily")
-    weekly_count = sum(1 for item in reports if item.get("type") == "weekly")
-    monthly_count = sum(1 for item in reports if item.get("type") == "monthly")
+    hidden = "" if active else " hidden"
+    return f"""<section class="home-report-panel" id="archive-{report_type}" data-archive-panel="{report_type}"{hidden}>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">最近 {window_days} 天</span>
+          <h1>{category}</h1>
+          <p>{len(visible)} 份可见报告，超出时间窗口的历史报告不再占用列表。</p>
+        </div>
+      </header>
+      <div class="archive-report-list">{rows or '<div class="archive-empty">当前时间窗口内暂无报告。</div>'}</div>
+    </section>"""
+
+
+def render_archive(reports: list[dict]) -> str:
+    report_groups = {
+        report_type: visible_reports(reports, report_type)
+        for report_type in REPORT_WINDOWS_DAYS
+    }
+    panels = "".join(
+        render_archive_panel(report_type, reports, active=report_type == "daily")
+        for report_type in REPORT_WINDOWS_DAYS
+    )
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Archive · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}</style>
+  <title>报告归档 · GitHub 热榜情报 · ReelOS</title>
+  <meta name="description" content="按日报、周报、月报分类查看 ReelOS GitHub 热榜情报报告。">
+  <style>{shell_css()}{reelos_brand_css()}</style>
 </head>
-<body>
+<body class="home-page">
   <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Archive System</div>
-          <div class="brand-title">GitHub Signal / History</div>
-        </div>
+    <header class="home-masthead">
+      <div class="home-masthead-top">
+        {render_reelos_brand("/", "GitHub 热榜情报", "home-masthead-brand")}
+        <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
       </div>
-      <nav class="nav">{nav_links("archive")}</nav>
+      <div class="home-masthead-body">
+        <div>
+          <span class="home-masthead-kicker mono">Report Archive</span>
+          <h1>按周期查看，不让旧信息淹没新信号。</h1>
+        </div>
+        <p class="home-masthead-copy">日报保留 15 天，周报保留 30 天，月报保留 50 天。历史文件继续保存，列表只呈现当前有效窗口。</p>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Stored Reports</div>
-        <h1>Signal <span class="accent">Archive</span></h1>
-        <p class="lead">归档页不是简单的往期列表，而是这套 GitHub 情报站的时间轴。日报看噪音、周报看判断、月报看迁移，三种节奏都在这里沉淀成可回查资产。</p>
-      </div>
-      <aside class="hero-side">
-        <div class="side-label mono">Coverage</div>
-        <div class="mini-list">
-          <div class="mini-item"><div><b>日报</b><span>快信号与观察池入口</span></div><span class="mono">{daily_count}</span></div>
-          <div class="mini-item"><div><b>周报</b><span>主判断和深度分析</span></div><span class="mono">{weekly_count}</span></div>
-          <div class="mini-item"><div><b>月报</b><span>品类级迁移复盘</span></div><span class="mono">{monthly_count}</span></div>
+    <main class="archive-main">
+      <section class="archive-policy" aria-label="报告展示期限">
+        <div class="archive-policy-item">
+          <span>日报</span>
+          <strong>≤ 15 天</strong>
+          <span>{len(report_groups["daily"])} 份可见</span>
         </div>
-      </aside>
-    </section>
+        <div class="archive-policy-item">
+          <span>周报</span>
+          <strong>≤ 30 天</strong>
+          <span>{len(report_groups["weekly"])} 份可见</span>
+        </div>
+        <div class="archive-policy-item">
+          <span>月报</span>
+          <strong>≤ 50 天</strong>
+          <span>{len(report_groups["monthly"])} 份可见</span>
+        </div>
+      </section>
 
-    <section class="section">
-      <div class="section-rail mono">01 / Timeline</div>
-      <div>
-        <div class="panel">
-          <h2>最近归档</h2>
-          <p>站点持续保留最新 12 份报告入口，便于快速切换到具体周期和上下文。</p>
-        </div>
-        <div class="list">{rows}</div>
-      </div>
-    </section>
+      <nav class="home-report-tabs" aria-label="报告类别">
+        <button class="home-report-tab" type="button" data-archive-tab="daily" aria-controls="archive-daily" aria-selected="true">日报</button>
+        <button class="home-report-tab" type="button" data-archive-tab="weekly" aria-controls="archive-weekly" aria-selected="false">周报</button>
+        <button class="home-report-tab" type="button" data-archive-tab="monthly" aria-controls="archive-monthly" aria-selected="false">月报</button>
+      </nav>
+      {panels}
+    </main>
   </div>
+  {render_site_footer()}
+  <script>
+    (() => {{
+      const tabs = [...document.querySelectorAll("[data-archive-tab]")];
+      const panels = [...document.querySelectorAll("[data-archive-panel]")];
+      const show = (type, updateHash = true) => {{
+        if (!panels.some((panel) => panel.dataset.archivePanel === type)) return;
+        tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.archiveTab === type)));
+        panels.forEach((panel) => {{ panel.hidden = panel.dataset.archivePanel !== type; }});
+        if (updateHash) history.replaceState(null, "", `#${{type}}`);
+      }};
+      tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.archiveTab)));
+      window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+      const initial = location.hash.slice(1);
+      if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -1389,16 +1668,13 @@ def render_home(period: str, stats: dict, reports: list[dict]) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub Signal Intelligence · ReelOS</title>
   <meta name="description" content="ReelOS GitHub 热榜情报中心：日报、周报、月报与往期归档。">
-  <style>{shell_css()}</style>
+  <style>{shell_css()}{reelos_brand_css()}</style>
 </head>
   <body class="home-page">
   <div class="wrap">
     <header class="home-masthead">
       <div class="home-masthead-top">
-        <a class="home-masthead-brand" href="/">
-          <span class="brand-mark"></span>
-          <span><strong>ReelOS.ai</strong><span>GitHub 热榜情报</span></span>
-        </a>
+        {render_reelos_brand("/", "GitHub 热榜情报", "home-masthead-brand")}
         <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
       </div>
       <div class="home-masthead-body">

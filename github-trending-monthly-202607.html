@@ -183,6 +183,95 @@ header > * {
   display: none;
 }
 
+.brand .reelos-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  color: var(--ink);
+  font-family: "Space Grotesk", "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.brand .reelos-mark {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #111722;
+}
+
+.brand .reelos-mark::before,
+.brand .reelos-mark::after,
+.brand .reelos-mark > span {
+  content: "";
+  position: absolute;
+  border: 1.5px solid #fff7ed;
+  border-radius: 50%;
+}
+
+.brand .reelos-mark::before {
+  width: 18px;
+  height: 18px;
+}
+
+.brand .reelos-mark::after {
+  width: 8px;
+  height: 8px;
+  border-color: #f97316;
+}
+
+.brand .reelos-mark > span {
+  width: 24px;
+  height: 24px;
+  border-top-color: transparent;
+  transform: rotate(-25deg);
+  transition: transform 0.62s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand .reelos-lockup:hover .reelos-mark > span {
+  transform: rotate(295deg);
+}
+
+.brand .reelos-lockup-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand .reelos-wordmark {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.brand .reelos-logo-os {
+  color: #f97316;
+}
+
+.brand .reelos-lockup-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand .reelos-lockup:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #f97316;
+  outline-offset: 4px;
+}
+
 h1 {
   grid-area: title;
   display: block;
@@ -1090,6 +1179,25 @@ blockquote {
     display: none;
   }
 
+  .brand .reelos-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brand .reelos-mark::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brand .reelos-mark > span {
+    width: 21px;
+    height: 21px;
+  }
+
+  .brand .reelos-wordmark {
+    font-size: 14px;
+  }
+
   .project-header {
     padding-bottom: 20px;
   }
@@ -1349,6 +1457,10 @@ blockquote {
   html {
     scroll-behavior: auto;
   }
+
+  .brand .reelos-mark > span {
+    transition: none;
+  }
 }
 
 </style>
@@ -1358,7 +1470,13 @@ blockquote {
 <div class="wrap">
   <header class="project-header">
     <div class="toprow">
-      <div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div><nav class="issue-nav" aria-label="月报日期导航"><a href="/monthly/">全部月报</a></nav>
+      <div class="brand"><a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a></div><nav class="issue-nav" aria-label="月报日期导航"><a href="/monthly/">全部月报</a></nav>
       
     </div>
     <h1><span class="pixel-word">GitHub</span> 本月项目</h1>
@@ -1375,9 +1493,9 @@ blockquote {
           <span class="project-rank mono">01</span>
           <div class="project-main">
             <h3>calesthio/OpenMontage</h3>
-            <p>World&#x27;s first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.</p>
+            <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">rag</span><span class="project-tag">skill</span><span class="project-tag">workflow</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">RAG</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1389,9 +1507,9 @@ blockquote {
           <span class="project-rank mono">02</span>
           <div class="project-main">
             <h3>Egonex-AI/Understand-Anything</h3>
-            <p>Graphs that teach &gt; graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more.</p>
+            <p>把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">memory</span><span class="project-tag">skill</span><span class="project-tag">llm</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/Egonex-AI/Understand-Anything" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1403,9 +1521,9 @@ blockquote {
           <span class="project-rank mono">03</span>
           <div class="project-main">
             <h3>colbymchenry/codegraph</h3>
-            <p>Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, and Hermes Agent — fewer tokens, fewer tool calls, 100% local</p>
+            <p>一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1417,9 +1535,9 @@ blockquote {
           <span class="project-rank mono">04</span>
           <div class="project-main">
             <h3>can1357/oh-my-pi</h3>
-            <p>⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more</p>
+            <p>一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1431,9 +1549,9 @@ blockquote {
           <span class="project-rank mono">05</span>
           <div class="project-main">
             <h3>CopilotKit/CopilotKit</h3>
-            <p>The Frontend Stack for Agents &amp; Generative UI. React, Angular, Mobile, Slack, and more. Makers of the AG-UI Protocol</p>
+            <p>一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">rag</span><span class="project-tag">runtime</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
               <a class="source-link" href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1445,9 +1563,9 @@ blockquote {
           <span class="project-rank mono">06</span>
           <div class="project-main">
             <h3>googleworkspace/cli</h3>
-            <p>Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.</p>
+            <p>Google Workspace 官方命令行工具，用统一 CLI 操作 Drive、Gmail、日历、表格和文档，并支持 Agent Skills。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">runtime</span><span class="project-tag">skill</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">运行时</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1459,9 +1577,9 @@ blockquote {
           <span class="project-rank mono">07</span>
           <div class="project-main">
             <h3>kenn-io/agentsview</h3>
-            <p>Local-first session search, analytics, insights, and token use statistics for coding agents, supporting Claude Code, Codex, and more than 20 other agents.</p>
+            <p>一个本地优先的编码 Agent 使用分析工具，可搜索会话并统计调用、Token 和工作模式。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">rag</span><span class="project-tag">workspace</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/kenn-io/agentsview" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1473,9 +1591,9 @@ blockquote {
           <span class="project-rank mono">08</span>
           <div class="project-main">
             <h3>Tencent/WeKnora</h3>
-            <p>Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.</p>
+            <p>腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">mcp</span><span class="project-tag">rag</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG</span></div>
               <a class="source-link" href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1487,9 +1605,9 @@ blockquote {
           <span class="project-rank mono">09</span>
           <div class="project-main">
             <h3>farion1231/cc-switch</h3>
-            <p>A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI &amp; Hermes Agent. Only official website: ccswitch.io</p>
+            <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">mcp</span><span class="project-tag">skill</span><span class="project-tag">workflow</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1501,9 +1619,9 @@ blockquote {
           <span class="project-rank mono">10</span>
           <div class="project-main">
             <h3>DeusData/codebase-memory-mcp</h3>
-            <p>High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.</p>
+            <p>一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">agent</span><span class="project-tag">agents</span><span class="project-tag">memory</span><span class="project-tag">mcp</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
               <a class="source-link" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
