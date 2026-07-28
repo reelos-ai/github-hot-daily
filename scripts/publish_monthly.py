@@ -7,6 +7,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+import publish_daily as shared_publisher
 from restyle_report_pages import restyle_report_html
 
 
@@ -418,7 +419,15 @@ def render_archive(reports: list[dict]) -> str:
 """
 
 
-def render_home(reports: list[dict], watchlist: list[dict]) -> str:
+def render_home(reports: list[dict]) -> str:
+    latest_daily = latest_report(reports, "daily")
+    if latest_daily is None:
+        raise ValueError("The canonical homepage requires a daily report.")
+    daily_stats = shared_publisher.load_report_stats(latest_daily["period"])
+    return shared_publisher.render_home(latest_daily["period"], daily_stats, reports)
+
+
+def _render_legacy_home(reports: list[dict], watchlist: list[dict]) -> str:
     latest_monthly = latest_report(reports, "monthly")
     latest_weekly = latest_report(reports, "weekly")
     latest_daily = latest_report(reports, "daily")
@@ -602,10 +611,9 @@ def main() -> None:
     latest_daily = latest_report(reports, "daily")
     latest_weekly = latest_report(reports, "weekly")
     latest_monthly = latest_report(reports, "monthly")
-    watchlist = read_json(ROOT / "watchlist.json")
     write_text(ROOT / "monthly" / "index.html", render_monthly_index(reports))
     write_text(ROOT / "archive" / "index.html", render_archive(reports))
-    write_text(ROOT / "index.html", render_home(reports, watchlist))
+    write_text(ROOT / "index.html", render_home(reports))
     update_readme(latest_daily, latest_weekly, latest_monthly)
 
 

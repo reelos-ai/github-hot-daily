@@ -21,9 +21,12 @@
       --blue:#8ea3e8;
       --cyan:#a9b7ea;
       --amber:#f97316;
+      --amber-soft:rgba(249,115,22,.14);
       --rail:rgba(177,164,148,.34);
+      --ok:#4c8b66;
       --shadow:0 20px 70px rgba(17,17,17,.07);
       --radius:14px;
+      --radius-sm:8px;
     }
     *{box-sizing:border-box}
     html{color-scheme:light}
@@ -58,27 +61,59 @@
       padding:10px 0 18px;
       border-bottom:1px solid var(--line);
     }
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
     .brand-mark{
-      width:10px;height:10px;border-radius:999px;
+      width:10px;
+      height:10px;
+      border-radius:999px;
       background:linear-gradient(180deg,#ff9f54,#f97316);
       box-shadow:0 0 14px rgba(249,115,22,.22);
     }
-    .brand-kicker{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
-    .brand-title{font-size:14px;color:var(--text);white-space:nowrap}
-    .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+    .brand-copy{min-width:0}
+    .brand-kicker{
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+    .brand-title{
+      font-size:14px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+    }
     .nav a{
-      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
-      background:rgba(255,255,255,.6);color:var(--muted);font-size:12px;
-      text-transform:uppercase;letter-spacing:.12em;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.6);
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
       backdrop-filter:blur(12px);
     }
     .nav a.active,.nav a:hover{
-      color:var(--text);border-color:var(--line-strong);background:rgba(255,244,232,.92);
+      color:var(--text);
+      border-color:var(--line-strong);
+      background:rgba(255,244,232,.92);
     }
     .hero{
-      display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
-      gap:18px;margin-top:22px;align-items:stretch;
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
+      gap:18px;
+      margin-top:22px;
+      align-items:stretch;
     }
     .hero-main,.hero-side,.panel,.list,.quote{
       border:1px solid var(--line);
@@ -86,32 +121,72 @@
       box-shadow:var(--shadow);
       backdrop-filter:blur(20px);
     }
-    .hero-main{border-radius:22px;padding:24px;position:relative;overflow:hidden}
+    .hero-main{
+      border-radius:22px;
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
     .hero-main::before{
-      content:"";position:absolute;inset:auto -10% -35% 30%;height:260px;
+      content:"";
+      position:absolute;
+      inset:auto -10% -35% 30%;
+      height:260px;
       background:radial-gradient(circle, rgba(249,115,22,.14), transparent 60%);
       pointer-events:none;
     }
     .hero-main::after{
-      content:"";position:absolute;inset:0;
+      content:"";
+      position:absolute;
+      inset:0;
       background:
         repeating-linear-gradient(90deg, rgba(120,130,170,0) 0 47px, rgba(120,130,170,.08) 47px 48px),
         repeating-linear-gradient(180deg, rgba(249,115,22,0) 0 13px, rgba(249,115,22,.02) 13px 14px);
-      opacity:.42;pointer-events:none;mask-image:linear-gradient(180deg, rgba(0,0,0,.38), transparent 76%);
+      opacity:.42;
+      pointer-events:none;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.38), transparent 76%);
     }
     .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;padding:6px 10px;
-      border:1px solid var(--line);border-radius:999px;color:var(--soft);
-      font-size:11px;text-transform:uppercase;letter-spacing:.16em;background:rgba(255,255,255,.46);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--soft);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      background:rgba(255,255,255,.46);
     }
     .eyebrow::before{
-      content:"";width:6px;height:6px;border-radius:999px;background:var(--amber);
+      content:"";
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--amber);
       box-shadow:0 0 10px rgba(249,115,22,.3);
     }
-    h1{margin:16px 0 10px;font-size:clamp(42px,8vw,86px);line-height:.94;letter-spacing:-.045em;font-weight:650;font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
-    .headline{display:block;max-width:10ch}
+    h1{
+      margin:16px 0 10px;
+      font-size:clamp(42px,8vw,86px);
+      line-height:.94;
+      letter-spacing:-.045em;
+      font-weight:650;
+      font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    }
+    .headline{
+      display:block;
+      max-width:9ch;
+    }
     .headline-line{display:block}
-    .ghost-word,.texture-word{display:inline-block;position:relative;font-weight:700;letter-spacing:-.06em}
+    .ghost-word,
+    .texture-word{
+      display:inline-block;
+      position:relative;
+      font-weight:700;
+      letter-spacing:-.06em;
+    }
     .ghost-word{color:rgba(17,17,17,.96)}
     .texture-word{
       color:transparent;
@@ -125,82 +200,714 @@
       text-shadow:0 8px 26px rgba(249,115,22,.16);
     }
     .texture-word::after{
-      content:"";position:absolute;inset:10% 3% 8% 3%;
+      content:"";
+      position:absolute;
+      inset:10% 3% 8% 3%;
       background:
         repeating-linear-gradient(180deg, rgba(255,250,241,0) 0 8px, rgba(255,250,241,.18) 8px 9px),
         repeating-linear-gradient(90deg, rgba(120,90,40,0) 0 12px, rgba(120,90,40,.12) 12px 13px);
-      opacity:.38;mix-blend-mode:soft-light;pointer-events:none;border-radius:12px;
+      opacity:.38;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+      border-radius:12px;
     }
-    .lead{max-width:62ch;margin:0;color:var(--soft);font-size:16px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .lead{
+      max-width:62ch;
+      margin:0;
+      color:var(--soft);
+      font-size:16px;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
     .btn{
-      display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border-radius:999px;
-      border:1px solid var(--line);background:rgba(255,255,255,.7);color:var(--text);
-      font-size:12px;text-transform:uppercase;letter-spacing:.14em;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:11px 15px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      color:var(--text);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
     }
-    .btn.primary{border-color:rgba(249,115,22,.3);background:linear-gradient(180deg, rgba(255,166,84,.95), rgba(249,115,22,.9));color:#fffaf1}
-    .hero-side{border-radius:22px;padding:18px;display:grid;gap:12px;align-content:start}
-    .hero-side.compact{background:rgba(255,252,246,.72);gap:14px}
-    .side-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.16em}
-    .signal-title{font-size:24px;line-height:1.15;margin:0}
-    .signal-copy{margin:0;color:var(--soft);font-size:14px}
+    .btn.primary{
+      border-color:rgba(249,115,22,.3);
+      background:linear-gradient(180deg, rgba(255,166,84,.95), rgba(249,115,22,.9));
+      color:#fffaf1;
+    }
+    .hero-side{
+      border-radius:22px;
+      padding:18px;
+      display:grid;
+      gap:12px;
+      align-content:start;
+    }
+    .hero-side.compact{
+      background:rgba(255,252,246,.72);
+      gap:14px;
+    }
+    .side-label{
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .signal-title{
+      font-size:24px;
+      line-height:1.15;
+      margin:0;
+    }
+    .signal-copy{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+    }
     .hero-side .signal-copy{max-width:34ch}
-    .status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-top:4px}
-    .status-item{border-top:1px solid var(--line);padding-top:10px;min-width:0}
+    .status-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      padding-top:4px;
+    }
+    .status-item{
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      min-width:0;
+    }
     .status-item.wide{grid-column:1 / -1}
-    .status-label{display:block;margin-bottom:6px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.16em}
-    .status-value{display:block;color:var(--text);font-size:15px;line-height:1.35;word-break:break-word}
-    .stat-grid,.card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+    .status-label{
+      display:block;
+      margin-bottom:6px;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .status-value{
+      display:block;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.35;
+      word-break:break-word;
+    }
+    .stat-grid,.card-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
     .card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .metric,.card{border:1px solid var(--line);border-radius:14px;background:var(--surface-2);padding:14px;min-width:0}
-    .metric b{display:block;font-size:28px;line-height:1;color:var(--text);margin-bottom:6px}
-    .metric span,.card p{color:var(--muted);font-size:13px}
-    .card b{display:block;margin-bottom:8px;color:var(--blue);font-size:11px;text-transform:uppercase;letter-spacing:.14em}
-    .section{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;margin-top:18px;align-items:start}
+    .metric,.card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface-2);
+      padding:14px;
+      min-width:0;
+    }
+    .metric b{
+      display:block;
+      font-size:28px;
+      line-height:1;
+      color:var(--text);
+      margin-bottom:6px;
+    }
+    .metric span,.card p{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .card b{
+      display:block;
+      margin-bottom:8px;
+      color:var(--blue);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+    .section{
+      display:grid;
+      grid-template-columns:96px minmax(0,1fr);
+      gap:16px;
+      margin-top:18px;
+      align-items:start;
+    }
     .section-rail{
-      padding-top:8px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.18em;position:relative;
+      padding-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      position:relative;
     }
     .section-rail::after{
-      content:"";position:absolute;left:8px;top:34px;bottom:-24px;width:1px;background:linear-gradient(180deg,var(--rail),transparent);
+      content:"";
+      position:absolute;
+      left:8px;
+      top:34px;
+      bottom:-24px;
+      width:1px;
+      background:linear-gradient(180deg,var(--rail),transparent);
     }
-    .panel{border-radius:20px;padding:18px}
-    .panel h2{margin:0;font-size:26px;line-height:1.15;letter-spacing:-.03em}
-    .panel > p{margin:8px 0 0;color:var(--muted);font-size:14px;max-width:68ch}
-    .list{border-radius:20px;margin-top:14px;overflow:hidden}
+    .panel{
+      border-radius:20px;
+      padding:18px;
+    }
+    .panel h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+    .panel > p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:68ch;
+    }
+    .list{
+      border-radius:20px;
+      margin-top:14px;
+      overflow:hidden;
+    }
     .row{
-      display:grid;grid-template-columns:90px minmax(0,1fr) 104px;gap:12px;align-items:center;
-      padding:15px 18px;border-bottom:1px solid var(--line);transition:background .2s ease, transform .2s ease, border-color .2s ease;
+      display:grid;
+      grid-template-columns:90px minmax(0,1fr) 104px;
+      gap:12px;
+      align-items:center;
+      padding:15px 18px;
+      border-bottom:1px solid var(--line);
+      transition:background .2s ease, transform .2s ease, border-color .2s ease;
     }
     .row:last-child{border-bottom:0}
-    .row:hover{background:rgba(255,247,239,.88);transform:translateX(2px);border-color:rgba(232,178,126,.72)}
-    .row .type{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.16em}
-    .row .title{font-size:15px;color:var(--text)}
-    .row .meta{text-align:right;color:var(--muted);font-size:11px}
-    .quote{border-radius:20px;margin-top:22px;padding:18px 20px}
-    .quote::before{content:"Conclusion";display:block;margin-bottom:8px;color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
-    .quote p{margin:0;color:var(--text);font-size:18px;line-height:1.6}
-    .mini-list{display:grid;gap:10px}
-    .mini-item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+    .row:hover{
+      background:rgba(255,247,239,.88);
+      transform:translateX(2px);
+      border-color:rgba(232,178,126,.72);
+    }
+    .row .type{
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .row .title{
+      font-size:15px;
+      color:var(--text);
+    }
+    .row .meta{
+      text-align:right;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .quote{
+      border-radius:20px;
+      margin-top:22px;
+      padding:18px 20px;
+      position:relative;
+    }
+    .quote::before{
+      content:"Conclusion";
+      display:block;
+      margin-bottom:8px;
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+    .quote p{
+      margin:0;
+      color:var(--text);
+      font-size:18px;
+      line-height:1.6;
+    }
+    .mini-list{
+      display:grid;
+      gap:10px;
+    }
+    .mini-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px 0;
+      border-top:1px solid var(--line);
+    }
     .mini-item:first-child{border-top:0;padding-top:0}
-    .mini-item b{display:block;margin-bottom:4px;font-size:13px}
-    .mini-item span{color:var(--muted);font-size:12px}
-    .flow-intro{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;margin-bottom:12px}
-    .flow-intro h2{margin:0;font-size:26px;line-height:1.12;letter-spacing:-.03em}
-    .flow-intro p{margin:6px 0 0;max-width:54ch;color:var(--muted);font-size:14px}
-    .flow-meta{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.18em;white-space:nowrap}
-    .list.open{margin-top:0;border:none;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
-    .list.open .row{padding:17px 0;border-bottom:1px solid rgba(223,219,210,.92)}
-    .list.open .row:hover{background:transparent;transform:translateX(4px);border-color:rgba(232,178,126,.72)}
+    .mini-item b{
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+    .mini-item span{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .flow-intro{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:flex-end;
+      margin-bottom:12px;
+    }
+    .flow-intro h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.12;
+      letter-spacing:-.03em;
+    }
+    .flow-intro p{
+      margin:6px 0 0;
+      max-width:54ch;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .flow-meta{
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      white-space:nowrap;
+    }
+    .list.open{
+      margin-top:0;
+      border:none;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+    .list.open .row{
+      padding:17px 0;
+      border-bottom:1px solid rgba(223,219,210,.92);
+    }
+    .list.open .row:hover{
+      background:transparent;
+      transform:translateX(4px);
+      border-color:rgba(232,178,126,.72);
+    }
+    .home-main{
+      margin-top:18px;
+    }
+    .home-page{
+      --bg:#edf1f6;
+      --bg-2:#edf1f6;
+      --surface:#fff;
+      --surface-2:#fff;
+      --surface-3:#f7f9fc;
+      --line:#d7dce5;
+      --line-strong:#bcc5d2;
+      --text:#0d1424;
+      --muted:#6c788d;
+      --soft:#344159;
+      --blue:#315fc8;
+      --amber:#315fc8;
+      --amber-soft:#eef3ff;
+      background:#edf1f6;
+      background-attachment:scroll;
+    }
+    .home-page .wrap{
+      padding-bottom:56px;
+    }
+    .home-page .topbar{
+      padding-top:4px;
+    }
+    .home-page .brand-mark{
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-page .nav a{
+      border-radius:0;
+      background:transparent;
+      backdrop-filter:none;
+    }
+    .home-page .nav a.active,
+    .home-page .nav a:hover{
+      color:#315fc8;
+      border-color:#bcc5d2;
+      background:#fff;
+    }
+    .home-page .btn.primary{
+      color:#fff;
+      border-color:#315fc8;
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-masthead{
+      padding:10px 0 34px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-masthead-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .home-masthead-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .home-masthead-brand .brand-mark{
+      width:9px;
+      height:9px;
+    }
+    .home-masthead-brand strong{
+      display:block;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.2;
+    }
+    .home-masthead-brand span:last-child,
+    .home-masthead-edition{
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);
+      align-items:end;
+      gap:64px;
+      padding-top:48px;
+    }
+    .home-masthead-kicker{
+      display:block;
+      margin-bottom:12px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead h1{
+      max-width:820px;
+      margin:0;
+      font-size:clamp(40px,4.8vw,66px);
+      line-height:1.08;
+      letter-spacing:-.065em;
+      text-wrap:balance;
+    }
+    .home-masthead-copy{
+      margin:0 0 6px;
+      color:var(--soft);
+      font-size:15px;
+      line-height:1.85;
+      text-wrap:pretty;
+    }
+    .today-hero{
+      display:grid;
+      grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .today-intro{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:300px;
+      padding:30px;
+      border-right:1px solid var(--line);
+      background:#f7f9fc;
+    }
+    .today-intro h1{
+      margin:12px 0 18px;
+      font-size:clamp(32px,3.2vw,42px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    .today-intro .text-link{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .today-preview{
+      padding:10px 26px;
+    }
+    .today-project{
+      display:grid;
+      grid-template-columns:34px minmax(0,1fr);
+      gap:12px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .today-project:last-child{
+      border-bottom:0;
+    }
+    .today-rank{
+      padding-top:3px;
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .today-project h2{
+      margin:0 0 7px;
+      font-size:18px;
+      line-height:1.35;
+      overflow-wrap:anywhere;
+    }
+    .today-project p{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.72;
+    }
+    .report-library{
+      margin:38px 0 18px;
+    }
+    .library-head{
+      max-width:680px;
+      margin-bottom:16px;
+    }
+    .library-head h2{
+      margin:6px 0 0;
+      font-size:28px;
+      line-height:1.2;
+      letter-spacing:-.04em;
+    }
+    .report-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .report-entry{
+      min-height:190px;
+      padding:22px;
+      border-right:1px solid var(--line);
+    }
+    .report-entry:last-child{
+      border-right:0;
+    }
+    .report-number{
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .report-entry h3{
+      margin:12px 0 8px;
+      font-size:25px;
+      line-height:1.1;
+      letter-spacing:-.04em;
+    }
+    .report-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:11px;
+    }
+    .report-links{
+      display:flex;
+      gap:16px;
+      margin-top:14px;
+    }
+    .report-links a{
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+    }
+    .report-links a:last-child{
+      color:var(--blue);
+    }
+    .home-report-tabs{
+      display:flex;
+      gap:0;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-tab{
+      appearance:none;
+      padding:12px 22px;
+      color:var(--muted);
+      border:0;
+      border-bottom:2px solid transparent;
+      background:transparent;
+      font:inherit;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .home-report-tab:hover,
+    .home-report-tab[aria-selected="true"]{
+      color:var(--blue);
+      border-bottom-color:var(--blue);
+    }
+    .home-report-panel[hidden]{
+      display:none;
+    }
+    .home-report-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:24px;
+      padding:20px 0 18px;
+    }
+    .home-report-head .mono{
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    .home-report-head h1{
+      margin:6px 0 4px;
+      font-size:30px;
+      line-height:1.2;
+      letter-spacing:-.045em;
+    }
+    .home-report-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .home-report-links{
+      display:flex;
+      gap:8px;
+    }
+    .home-report-links a{
+      padding:8px 12px;
+      color:var(--blue);
+      border:1px solid var(--line-strong);
+      background:#fff;
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-project-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .home-project-row{
+      display:grid;
+      grid-template-columns:52px minmax(0,1fr) 110px;
+      gap:18px;
+      padding:20px 6px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-project-row:last-child{
+      border-bottom:0;
+    }
+    .home-project-rank{
+      padding-top:3px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+    .home-project-main h2{
+      margin:0 0 6px;
+      font-size:19px;
+      line-height:1.3;
+      overflow-wrap:anywhere;
+    }
+    .home-project-main p{
+      max-width:850px;
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .home-project-signal{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .home-project-signal strong{
+      color:var(--blue);
+      font-size:12px;
+    }
+    .home-project-signal a{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+    .site-footer{
+      color:#a7adbc;
+      background:#080b13;
+      border-top:1px solid #222735;
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns:minmax(280px,2.2fr) repeat(3,minmax(130px,1fr));
+      gap:56px;
+      max-width:1180px;
+      margin:0 auto;
+      padding:64px 20px 72px;
+    }
+    .footer-brand a{
+      color:#f5f6fa;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:-.02em;
+    }
+    .footer-brand p{
+      margin:4px 0 0;
+      color:#a7adbc;
+      font-size:15px;
+      font-weight:600;
+    }
+    .footer-column{
+      display:grid;
+      align-content:start;
+      gap:14px;
+    }
+    .footer-column h2{
+      margin:0 0 4px;
+      color:#777f91;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    .footer-column a{
+      width:max-content;
+      max-width:100%;
+      color:#a7adbc;
+      font-size:14px;
+      font-weight:600;
+    }
+    .footer-column a:hover{
+      color:#fff;
+    }
     @media (max-width:980px){
       .hero{grid-template-columns:1fr}
       .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
       .flow-intro{display:block}
       .flow-meta{display:block;margin-top:10px}
+      .today-hero{grid-template-columns:1fr}
+      .today-intro{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .footer-inner{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:44px 32px;
+      }
     }
     @media (max-width:680px){
       .wrap{padding:22px 14px 72px}
       .topbar{align-items:flex-start;flex-direction:column}
-      .nav{width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+      .nav{
+        width:100%;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:4px;
+        scrollbar-width:none;
+      }
       .nav::-webkit-scrollbar{display:none}
       .nav a{flex:0 0 auto}
       .section{grid-template-columns:1fr}
@@ -212,97 +919,478 @@
       .row .meta{text-align:left}
       .list.open .row{padding:14px 0}
       h1{font-size:clamp(38px,15vw,66px)}
+      .today-intro{padding:30px 24px}
+      .today-intro h1{font-size:34px}
+      .today-preview{padding:10px 20px}
+      .report-library{margin-top:48px}
+      .report-grid{grid-template-columns:1fr}
+      .home-report-tabs{
+        overflow-x:auto;
+      }
+      .home-masthead{
+        padding-top:2px;
+        padding-bottom:26px;
+      }
+      .home-masthead-top{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:10px;
+      }
+      .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding-top:34px;
+      }
+      .home-masthead h1{
+        font-size:clamp(36px,11vw,50px);
+      }
+      .home-masthead-copy{
+        max-width:32em;
+      }
+      .home-report-tab{
+        flex:1 0 auto;
+        padding:11px 16px;
+      }
+      .home-report-head{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+      }
+      .home-report-head h1{
+        font-size:27px;
+      }
+      .home-project-row{
+        grid-template-columns:32px minmax(0,1fr);
+        gap:10px;
+        padding:18px 0;
+      }
+      .home-project-signal{
+        grid-column:2;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .report-entry{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .report-entry:last-child{border-bottom:0}
+      .report-entry > p{min-height:0}
+      .footer-inner{
+        padding:44px 20px 52px;
+      }
     }
     </style>
 </head>
-<body>
+  <body class="home-page">
   <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <div class="brand-copy">
-          <div class="brand-kicker mono">ReelOS Frontier Desk</div>
-          <div class="brand-title">GitHub Signal Intelligence</div>
-        </div>
+    <header class="home-masthead">
+      <div class="home-masthead-top">
+        <a class="home-masthead-brand" href="/">
+          <span class="brand-mark"></span>
+          <span><strong>ReelOS.ai</strong><span>GitHub 热榜情报</span></span>
+        </a>
+        <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
       </div>
-      <nav class="nav"><a class="active" href="/">Overview</a><a class="" href="/daily/">Daily</a><a class="" href="/weekly/">Weekly</a><a class="" href="/monthly/">Monthly</a><a class="" href="/archive/">Archive</a></nav>
+      <div class="home-masthead-body">
+        <div>
+          <span class="home-masthead-kicker mono">Open Source Signals</span>
+          <h1>不追热榜，识别开源世界的结构变化。</h1>
+        </div>
+        <p class="home-masthead-copy">把每天涌现的开源项目，压缩成一句话能看懂、值得继续追踪的信号。</p>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Primary Intelligence Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">GitHub</span> <span class="texture-word">Signal</span></span><span class="headline-line"><span class="ghost-word">Intelligence</span></span></h1>
-        <p class="lead">首页主入口固定给周报，先交付更稳的判断；日报负责快信号，月报负责赛道迁移。这样首屏先回答“这一周最值得看什么”，而不是把所有更新并列摊开。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="/weekly/2026-07-26/">打开当前主报告</a>
-          <a class="btn" href="/daily/2026-07-26/">查看最新日报</a>
-          <a class="btn" href="/archive/">浏览归档</a>
+    <main class="home-main">
+      <nav class="home-report-tabs" aria-label="报告类型">
+        <button class="home-report-tab" type="button" data-report-tab="daily" aria-controls="home-daily" aria-selected="true">日报</button>
+        <button class="home-report-tab" type="button" data-report-tab="weekly" aria-controls="home-weekly" aria-selected="false">周报</button>
+        <button class="home-report-tab" type="button" data-report-tab="monthly" aria-controls="home-monthly" aria-selected="false">月报</button>
+      </nav>
+      <section class="home-report-panel" id="home-daily" data-report-panel="daily">
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07-26</span>
+          <h1>今日日报</h1>
+          <p>10 个项目，一句话看懂</p>
         </div>
-      </div>
-      <aside class="hero-side compact">
-        <div class="side-label mono">Current Brief</div>
-        <h2 class="signal-title"><a href="/weekly/2026-07-26/">GitHub 热榜情报周报 · 2026-07-26</a></h2>
-        <p class="signal-copy">本周主判断层已经生成。快节奏更新继续落在日报，当前优先跟踪信号是 <span class="mono">calesthio/OpenMontage</span>。</p>
-        <div class="status-grid">
-          <div class="status-item">
-            <span class="status-label mono">Primary</span>
-            <span class="status-value mono">WEEKLY</span>
+        <div class="home-report-links">
+          <a href="/daily/">查看往期日报</a>
+        </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>AstrBotDevs/AstrBot</h2>
+            <p>AI Agent Assistant &amp; development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨</p>
           </div>
-          <div class="status-item">
-            <span class="status-label mono">Daily Pulse</span>
-            <span class="status-value mono">2026-07-26</span>
+          <div class="home-project-signal">
+            <strong>今日 +1563</strong>
+            <a href="https://github.com/AstrBotDevs/AstrBot" target="_blank" rel="noopener noreferrer">原文 ↗</a>
           </div>
-          <div class="status-item wide">
-            <span class="status-label mono">Latest Daily</span>
-            <span class="status-value"><a href="/daily/2026-07-26/">GitHub 热榜情报日报 · 2026-07-26</a></span>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>diegosouzapw/OmniRoute</h2>
+            <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
           </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Structure</div>
-      <div class="panel">
-        <h2>整站结构更像一套情报前台</h2>
-        <p>视觉与信息架构同步收紧：首页承接主判断，日报/周报/月报变成清晰的功能区，而不是只有导航切换的兄弟页面。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <a class="card" href="/daily/"><b>Daily Radar</b><p>当天爆点、Top10 与观察池入口，服务速度和刷新率。</p></a>
-          <a class="card" href="/weekly/"><b>Weekly Intelligence</b><p>主力战略判断，完整 6 段结构，适合沉淀研究和决策。</p></a>
-          <a class="card" href="/monthly/"><b>Monthly Trend Review</b><p>观察 Agent、Memory、MCP、Workspace、Runtime 的赛道迁移。</p></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">02 / Feed</div>
-      <div>
-        <div class="flow-intro">
-          <div>
-            <h2>最新流</h2>
-            <p>这里改成更开放的时间轴，只保留节奏和优先级，不再给每一批更新都包上一层同样重量的白卡。</p>
+          <div class="home-project-signal">
+            <strong>今日 +11147</strong>
+            <a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
           </div>
-          <div class="flow-meta mono">Recent reports / 6 entries</div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>rohitg00/ai-engineering-from-scratch</h2>
+            <p>Learn it. Build it. Ship it for others.</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +4518</strong>
+            <a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>jamiepine/voicebox</h2>
+            <p>The open-source AI voice studio. Clone, dictate, create.</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +4237</strong>
+            <a href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>ogulcancelik/herdr</h2>
+            <p>一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +2829</strong>
+            <a href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>alibaba/open-code-review</h2>
+            <p>阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +2021</strong>
+            <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>MoonshotAI/kimi-code</h2>
+            <p>Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +1534</strong>
+            <a href="https://github.com/MoonshotAI/kimi-code" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>koala73/worldmonitor</h2>
+            <p>一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +12085</strong>
+            <a href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>oblien/openship</h2>
+            <p>Self-hosted deployment platform</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +6470</strong>
+            <a href="https://github.com/oblien/openship" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>CoreBunch/Instatic</h2>
+            <p>一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>今日 +1825</strong>
+            <a href="https://github.com/CoreBunch/Instatic" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
+    </section><section class="home-report-panel" id="home-weekly" data-report-panel="weekly" hidden>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07-26</span>
+          <h1>最新周报</h1>
+          <p>10 个项目，一句话看懂</p>
         </div>
-        <div class="list open"><a class="row" href="/weekly/2026-07-26/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-07-26</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-26/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-26</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-22/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-22</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-21/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-21</span><span class="meta mono">Top 10</span></a><a class="row" href="/weekly/2026-07-19/"><span class="type mono">Weekly</span><span class="title">GitHub 热榜情报周报 · 2026-07-19</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-19/"><span class="type mono">Daily</span><span class="title">GitHub 热榜情报日报 · 2026-07-19</span><span class="meta mono">Top 10</span></a></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">03 / Watch</div>
-      <div class="panel">
-        <h2>观察池优先级</h2>
-        <p>首页直接暴露观察池，保证这不是只读展示层，而是对下一次日报和周报有输入的工作台。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <div class="card"><b>A 类信号</b><p>calesthio/OpenMontage, google-research/timesfm, topoteretes/cognee, jamiepine/voicebox, googleworkspace/cli</p></div>
-          <div class="card"><b>周报角色</b><p>把日报的高频波动折叠成更稳的趋势判断和跟进行动。</p></div>
-          <div class="card"><b>设计原则</b><p>统一为高密度情报视觉，减少圆角卡片泛滥与弱层级导航。</p></div>
+        <div class="home-report-links">
+          <a href="/weekly/">查看往期周报</a>
         </div>
-      </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>AstrBotDevs/AstrBot</h2>
+            <p>AI Agent Assistant &amp; development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +1563</strong>
+            <a href="https://github.com/AstrBotDevs/AstrBot" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>diegosouzapw/OmniRoute</h2>
+            <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +11147</strong>
+            <a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>rohitg00/ai-engineering-from-scratch</h2>
+            <p>Learn it. Build it. Ship it for others.</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +4518</strong>
+            <a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>jamiepine/voicebox</h2>
+            <p>The open-source AI voice studio. Clone, dictate, create.</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +4237</strong>
+            <a href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>ogulcancelik/herdr</h2>
+            <p>一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +2829</strong>
+            <a href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>alibaba/open-code-review</h2>
+            <p>阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +2021</strong>
+            <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>MoonshotAI/kimi-code</h2>
+            <p>Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +1534</strong>
+            <a href="https://github.com/MoonshotAI/kimi-code" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>koala73/worldmonitor</h2>
+            <p>一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +12085</strong>
+            <a href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>oblien/openship</h2>
+            <p>Self-hosted deployment platform</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +6470</strong>
+            <a href="https://github.com/oblien/openship" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>CoreBunch/Instatic</h2>
+            <p>一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本周 +1825</strong>
+            <a href="https://github.com/CoreBunch/Instatic" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
+    </section><section class="home-report-panel" id="home-monthly" data-report-panel="monthly" hidden>
+      <header class="home-report-head">
+        <div>
+          <span class="mono">2026-07</span>
+          <h1>最新月报</h1>
+          <p>10 个项目，一句话看懂</p>
+        </div>
+        <div class="home-report-links">
+          <a href="/monthly/">查看往期月报</a>
+        </div>
+      </header>
+      <div class="home-project-list"><article class="home-project-row">
+          <span class="home-project-rank mono">01</span>
+          <div class="home-project-main">
+            <h2>calesthio/OpenMontage</h2>
+            <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +25466</strong>
+            <a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">02</span>
+          <div class="home-project-main">
+            <h2>Egonex-AI/Understand-Anything</h2>
+            <p>把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +23129</strong>
+            <a href="https://github.com/Egonex-AI/Understand-Anything" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">03</span>
+          <div class="home-project-main">
+            <h2>colbymchenry/codegraph</h2>
+            <p>一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +21519</strong>
+            <a href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">04</span>
+          <div class="home-project-main">
+            <h2>can1357/oh-my-pi</h2>
+            <p>一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +6466</strong>
+            <a href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">05</span>
+          <div class="home-project-main">
+            <h2>CopilotKit/CopilotKit</h2>
+            <p>一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +3927</strong>
+            <a href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">06</span>
+          <div class="home-project-main">
+            <h2>googleworkspace/cli</h2>
+            <p>Google Workspace 官方命令行工具，用统一 CLI 操作 Drive、Gmail、日历、表格和文档，并支持 Agent Skills。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +2599</strong>
+            <a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">07</span>
+          <div class="home-project-main">
+            <h2>kenn-io/agentsview</h2>
+            <p>一个本地优先的编码 Agent 使用分析工具，可搜索会话并统计调用、Token 和工作模式。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +2301</strong>
+            <a href="https://github.com/kenn-io/agentsview" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">08</span>
+          <div class="home-project-main">
+            <h2>Tencent/WeKnora</h2>
+            <p>腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +1803</strong>
+            <a href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">09</span>
+          <div class="home-project-main">
+            <h2>farion1231/cc-switch</h2>
+            <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +25262</strong>
+            <a href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article><article class="home-project-row">
+          <span class="home-project-rank mono">10</span>
+          <div class="home-project-main">
+            <h2>DeusData/codebase-memory-mcp</h2>
+            <p>一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。</p>
+          </div>
+          <div class="home-project-signal">
+            <strong>本月 +19612</strong>
+            <a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+          </div>
+        </article></div>
     </section>
-
-    <div class="quote">
-      <p>新版首页的核心变化不是“更好看”，而是更像一套真正有主次、有节奏、有工作流的 GitHub 情报前台。</p>
-    </div>
+    </main>
   </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="https://www.reelos.ai/">ReelOS.ai</a>
+        <p>AI Native Builder Lab</p>
+      </div>
+      <nav class="footer-column" aria-label="ReelOS">
+        <h2>ReelOS</h2>
+        <a href="https://www.reelos.ai/about/">关于</a>
+        <a href="https://www.reelos.ai/principles/">原则</a>
+        <a href="https://www.reelos.ai/faq/">FAQ</a>
+        <a href="https://github.com/reelos-ai">GitHub</a>
+      </nav>
+      <nav class="footer-column" aria-label="Projects">
+        <h2>Projects</h2>
+        <a href="https://daoyin.reelos.ai/">DaoYin</a>
+        <a href="https://yi.reelos.ai/">Yi</a>
+        <a href="https://macro.reelos.ai/">MacroFlow</a>
+      </nav>
+      <nav class="footer-column" aria-label="Channels">
+        <h2>Channels</h2>
+        <a href="https://www.reelos.ai/feed.xml">RSS Feed</a>
+        <a href="https://infra.reelos.ai/">AI Infra</a>
+        <a href="https://ainews.reelos.ai/">AI News</a>
+        <a href="https://gh.reelos.ai/">GitHub Radar</a>
+        <a href="https://www.reelos.ai/daily/">Daily Research</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const tabs = [...document.querySelectorAll("[data-report-tab]")];
+      const panels = [...document.querySelectorAll("[data-report-panel]")];
+      const show = (type, updateHash = true) => {
+        if (!panels.some((panel) => panel.dataset.reportPanel === type)) return;
+        tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.reportTab === type)));
+        panels.forEach((panel) => { panel.hidden = panel.dataset.reportPanel !== type; });
+        if (updateHash) history.replaceState(null, "", `#${type}`);
+      };
+      tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.reportTab)));
+      window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+      const initial = location.hash.slice(1);
+      if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);
+    })();
+  </script>
 </body>
 </html>
