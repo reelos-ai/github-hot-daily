@@ -9,6 +9,7 @@ from datetime import date, datetime, timedelta
 from html import escape, unescape
 from pathlib import Path
 
+from generate_leaderboard import build_leaderboard
 from restyle_report_pages import restyle_report_html
 
 
@@ -218,6 +219,7 @@ def nav_links(active: str) -> str:
         ("daily", "/daily/", "日报"),
         ("weekly", "/weekly/", "周报"),
         ("monthly", "/monthly/", "月报"),
+        ("leaderboard", "/leaderboard/", "总榜"),
         ("archive", "/archive/", "归档"),
     ]
     links = []
@@ -373,6 +375,7 @@ def render_site_footer() -> str:
         <a href="https://infra.reelos.ai/">AI Infra</a>
         <a href="https://ainews.reelos.ai/">AI News</a>
         <a href="https://gh.reelos.ai/">GitHub Radar</a>
+        <a href="/leaderboard/">开源信号总榜</a>
         <a href="https://www.reelos.ai/daily/">Daily Research</a>
       </nav>
     </div>
@@ -1691,6 +1694,7 @@ def render_home(period: str, stats: dict, reports: list[dict]) -> str:
         <button class="home-report-tab" type="button" data-report-tab="daily" aria-controls="home-daily" aria-selected="true">日报</button>
         <button class="home-report-tab" type="button" data-report-tab="weekly" aria-controls="home-weekly" aria-selected="false">周报</button>
         <button class="home-report-tab" type="button" data-report-tab="monthly" aria-controls="home-monthly" aria-selected="false">月报</button>
+        <a class="home-report-tab" href="/leaderboard/">总榜</a>
       </nav>
       {panels}
     </main>
@@ -1734,8 +1738,10 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
 - `/daily/` - 日报入口
 - `/weekly/` - 周报入口
 - `/monthly/` - 月报入口
+- `/leaderboard/` - 历史项目总榜（搜索、排序、分页）
 - `/archive/` - 往期归档
 - `/reports.json` - 报告索引元数据
+- `/leaderboard/data.json` - 总榜动态数据
 
 ## Current Report
 
@@ -1769,6 +1775,7 @@ def main() -> None:
     write_text(ROOT / "daily" / "index.html", render_daily_index(period, stats, reports))
     write_text(ROOT / "archive" / "index.html", render_archive(reports))
     write_text(ROOT / "index.html", render_home(period, stats, reports))
+    build_leaderboard(ROOT)
     update_readme(period, reports)
 
 

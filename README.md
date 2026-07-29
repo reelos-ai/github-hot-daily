@@ -14,8 +14,10 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
 - `/daily/` - 日报入口
 - `/weekly/` - 周报入口
 - `/monthly/` - 月报入口
+- `/leaderboard/` - 历史项目总榜（搜索、排序、分页）
 - `/archive/` - 往期归档
 - `/reports.json` - 报告索引元数据
+- `/leaderboard/data.json` - 总榜动态数据
 
 ## Current Report
 

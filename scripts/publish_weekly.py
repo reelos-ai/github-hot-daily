@@ -7,6 +7,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+from generate_leaderboard import build_leaderboard
 import publish_daily as shared_publisher
 from restyle_report_pages import restyle_report_html
 
@@ -116,6 +117,7 @@ def nav_links(active: str) -> str:
         ("daily", "/daily/", "Daily"),
         ("weekly", "/weekly/", "Weekly"),
         ("monthly", "/monthly/", "Monthly"),
+        ("leaderboard", "/leaderboard/", "总榜"),
         ("archive", "/archive/", "Archive"),
     ]
     links = []
@@ -589,8 +591,10 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
 - `/weekly/` - 周报入口
 - `{latest_weekly_html}` - 当前周报
 - `/monthly/` - 月报入口
+- `/leaderboard/` - 历史项目总榜（搜索、排序、分页）
 - `/archive/` - 往期归档
 - `/reports.json` - 报告索引元数据
+- `/leaderboard/data.json` - 总榜动态数据
 
 ## Current Report
 
@@ -629,8 +633,10 @@ def main() -> None:
 
     latest_daily = latest_report(reports, "daily")
     write_text(ROOT / "weekly" / "index.html", render_weekly_index(reports))
+    build_leaderboard(ROOT)
     write_text(ROOT / "archive" / "index.html", shared_publisher.render_archive(reports))
-    write_text(ROOT / "index.html", render_home(reports))
+    daily_stats = shared_publisher.load_report_stats(latest_daily["period"])
+    write_text(ROOT / "index.html", shared_publisher.render_home(latest_daily["period"], daily_stats, reports))
     update_readme(latest_daily, latest_report(reports, "weekly"))
 
 
