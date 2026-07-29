@@ -174,6 +174,48 @@
     "summary": "一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。",
     "capabilities": "声音克隆、语音听写、音频创作、AI 语音工作流"
   },
+  "1jehuang/jcode": {
+    "summary": "一个面向编码 Agent 的跨平台终端工作台，主打低内存占用、多模型接入、Swarm 协作和可扩展工具集。",
+    "audience": "希望在终端内使用高性能编码 Agent，并统一多模型和多工具能力的开发者",
+    "capabilities": "终端编码 Agent、多模型接入、多 Agent 协作、低内存运行、Rust 工具链",
+    "risk": "README 宣传口径很强，真实性能与多 Agent 体验还需要结合基准和实测验证"
+  },
+  "different-ai/openwork": {
+    "summary": "一个开源桌面工作区与 MCP 入口，支持把 Skills、插件、外部服务和共享工作流复用到不同 AI Agent 中。",
+    "audience": "想在 Codex、Claude Code、Cursor 等工具之间共享能力和工作流的个人与团队",
+    "capabilities": "共享工作区、MCP 接入、跨 Agent 复用、桌面应用、团队能力分发",
+    "risk": "真正价值依赖共享能力和权限管理体验，组织级场景还要验证稳定性与治理成本"
+  },
+  "huggingface/speech-to-speech": {
+    "summary": "一个低延迟语音 Agent 管线，把 VAD、语音识别、LLM 和语音合成串成可替换的实时语音后端。",
+    "audience": "要构建本地或可自托管语音助手、语音机器人和实时对话应用的开发者",
+    "capabilities": "语音识别、语音合成、实时对话、OpenAI Realtime 兼容、自托管语音 Agent",
+    "risk": "落地效果取决于各环节模型与硬件配置，端到端延迟和语音质量仍需按场景实测"
+  },
+  "obra/superpowers": {
+    "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+    "audience": "希望让编码 Agent 更稳定地遵循规格、计划和 TDD 流程的开发者与团队",
+    "capabilities": "Agent Skills、规格澄清、计划驱动开发、子 Agent 协作、TDD 方法论",
+    "risk": "方法论成分高于底层技术壁垒，实际收益取决于团队是否愿意按它的流程工作"
+  },
+  "microsoft/agent-governance-toolkit": {
+    "summary": "微软开源的 Agent 治理工具包，聚焦策略约束、零信任身份、执行沙箱和生产级可靠性治理。",
+    "audience": "准备把 AI Agent 投入生产环境，并需要审计、策略控制和安全边界的团队",
+    "capabilities": "Agent 治理、策略控制、零信任身份、执行沙箱、可靠性工程",
+    "risk": "治理框架引入后会增加集成复杂度，需要验证与现有 Agent 平台和企业流程的兼容性"
+  },
+  "remotion-dev/remotion": {
+    "summary": "一个用 React 代码生成和批量渲染视频的开源框架，覆盖 Agent 驱动创作、交互编辑和自动化出片。",
+    "audience": "需要把数据、模板和代码组合成视频工作流的前端团队与内容自动化开发者",
+    "capabilities": "代码生成视频、批量渲染、React 视频模板、交互编辑、自动化内容生产",
+    "risk": "工程能力强但门槛不低，真正交付效率取决于模板管理、渲染基础设施和团队前端能力"
+  },
+  "nolabs-ai/nono": {
+    "summary": "一个为 AI Agent 提供安全沙箱和执行隔离的开源运行时，强调零配置、低延迟和供应链安全背景。",
+    "audience": "需要快速给编码 Agent 或自动化 Agent 加上隔离执行环境的开发者与平台团队",
+    "capabilities": "Agent 沙箱、隔离执行、低延迟运行时、安全强化、Rust 基础设施",
+    "risk": "安全承诺需要通过更完整的威胁模型和真实部署案例验证，不能只看 README 口径"
+  },
   "rohitg00/ai-engineering-from-scratch": {
     "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
     "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
