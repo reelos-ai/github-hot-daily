@@ -75,7 +75,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ogulcancelik",
@@ -153,7 +166,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "PostHog",
@@ -228,7 +251,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "RAG"
+    ],
+    "brief_zh": {
+      "summary": "一套面向产品团队的开源数据平台，把分析、回放、实验、错误追踪和 AI 可观测性集中到一起。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "thedotmack",
@@ -308,7 +341,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "wonderwhy-er",
@@ -376,7 +419,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "一个让 Claude 通过 MCP 操作终端、搜索文件并执行差异化编辑的本地工具。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "lobehub",
@@ -453,7 +506,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "一个 AI Agent 运营平台，用于集中创建、调度和监控持续运行的 Agent 团队。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "HKUDS",
@@ -520,7 +583,17 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "大模型应用",
+      "ai-agent"
+    ],
+    "brief_zh": {
+      "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "malisper",
@@ -582,7 +655,17 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "RAG",
+      "运行时",
+      "工作区",
+      "工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个用 Rust 重写 PostgreSQL 的数据库项目，目前已通过 PostgreSQL 的完整回归测试。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "HKUDS",
@@ -655,7 +738,17 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ],
+    "brief_zh": {
+      "summary": "一个轻量开源 AI Agent，可连接常用工具、聊天渠道和自动化工作流。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "screenpipe",
@@ -736,6 +829,16 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ],
+    "brief_zh": {
+      "summary": "一个本地持续记录屏幕和操作上下文的工具，让 Agent 能检索个人工作历史，同时保持数据私有。"
+    },
+    "summary_source": "project_brief"
   }
 ]

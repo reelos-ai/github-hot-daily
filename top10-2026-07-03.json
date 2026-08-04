@@ -75,7 +75,18 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 安全测试",
+      "漏洞发现",
+      "渗透测试",
+      "修复建议"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。",
+      "capabilities": "AI 安全测试、漏洞发现、渗透测试、修复建议"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "diegosouzapw",
@@ -154,7 +165,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "NousResearch",
@@ -229,7 +253,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "自学习 Agent",
+      "跨会话记忆",
+      "Skills 生成",
+      "多渠道接入"
+    ],
+    "brief_zh": {
+      "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
+      "audience": "希望自托管长期运行、可积累个人上下文与技能的 AI 助手用户和开发者",
+      "capabilities": "自学习 Agent、跨会话记忆、Skills 生成、多渠道接入、子 Agent 协作",
+      "risk": "自主学习和长期记忆会扩大权限与隐私边界，需要严格控制工具访问、数据留存和自动执行范围"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -299,7 +336,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "HKUDS",
@@ -368,7 +418,17 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "facebook",
@@ -423,7 +483,18 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "设计系统",
+      "组件定制",
+      "Agent 友好界面",
+      "前端基础设施"
+    ],
+    "brief_zh": {
+      "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
+      "capabilities": "设计系统、组件定制、Agent 友好界面、前端基础设施"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "browser-use",
@@ -482,7 +553,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "技能扩展"
+    ]
   },
   {
     "owner": "logto-io",
@@ -558,7 +635,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "RAG",
+      "开放协议",
+      "authentication"
+    ]
   },
   {
     "owner": "openclaw",
@@ -624,7 +707,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "运行时",
+      "技能扩展"
+    ]
   },
   {
     "owner": "ruvnet",
@@ -705,6 +794,12 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ]
   }
 ]

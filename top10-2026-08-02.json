@@ -44,7 +44,20 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "群体通信",
+      "共享上下文",
+      "协作消息",
+      "Rust 服务端"
+    ],
+    "brief_zh": {
+      "summary": "一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。",
+      "audience": "研究多 Agent 通信、群体协作或去中心化消息系统的开发者",
+      "capabilities": "群体通信、共享上下文、协作消息、Rust 服务端",
+      "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "alibaba",
@@ -90,7 +103,20 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论",
+      "安全规则"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "earendil-works",
@@ -139,7 +165,20 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "统一 LLM API",
+      "Agent Loop",
+      "终端界面",
+      "编码 Agent"
+    ],
+    "brief_zh": {
+      "summary": "一个构建 AI Agent 的开发工具包，提供统一模型接口、Agent 循环、终端 UI 和编码 Agent CLI。",
+      "audience": "想快速搭建命令行 Agent 或统一接入多家 LLM 的开发者",
+      "capabilities": "统一 LLM API、Agent Loop、终端界面、编码 Agent、CLI",
+      "risk": "与现有 Agent 框架重叠较多，需重点验证扩展性和长期维护情况"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -186,7 +225,20 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "MoonshotAI",
@@ -233,7 +285,13 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ]
   },
   {
     "owner": "andrewyng",
@@ -279,7 +337,20 @@
       "risk_signal": 6,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "统一模型接口",
+      "多供应商接入",
+      "快速切换",
+      "评测与实验支撑"
+    ],
+    "brief_zh": {
+      "summary": "一个统一多家生成式 AI 服务商接口的轻量封装，降低在不同模型供应商之间切换和测试的成本。",
+      "audience": "需要跨模型提供商快速切换、对比或做容灾的 AI 应用开发者",
+      "capabilities": "统一模型接口、多供应商接入、快速切换、评测与实验支撑、自动化调用",
+      "risk": "统一接口通常会抹平厂商差异，复杂能力、计费细节和新模型特性仍需单独适配"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "diegosouzapw",
@@ -323,7 +394,20 @@
       "risk_signal": 6,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "CoreBunch",
@@ -366,7 +450,20 @@
       "risk_signal": 6,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "可视化建站",
+      "静态页面输出",
+      "用户与角色",
+      "插件"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。",
+      "audience": "需要自托管建站、可视化编辑和静态输出的小团队",
+      "capabilities": "可视化建站、静态页面输出、用户与角色、插件、内容管理、Agent 辅助",
+      "risk": "功能范围接近完整 CMS，部署、升级和插件生态的维护成本需要评估"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "infiniflow",
@@ -411,7 +508,13 @@
       "risk_signal": 6,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "Agent 工具",
+      "RAG",
+      "大模型应用",
+      "评测"
+    ]
   },
   {
     "owner": "Tracer-Cloud",
@@ -457,6 +560,12 @@
       "risk_signal": 6,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "大模型应用"
+    ]
   }
 ]

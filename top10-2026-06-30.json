@@ -56,7 +56,13 @@
       "risk_signal": 10,
       "total": 98
     },
-    "strategic_score": 98
+    "strategic_score": 98,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ]
   },
   {
     "owner": "topoteretes",
@@ -136,7 +142,18 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 长期记忆",
+      "知识图谱",
+      "自托管",
+      "跨会话上下文"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 AI Agent 的开源记忆平台，用可自托管的知识图谱为跨会话任务提供持久长期记忆。",
+      "capabilities": "Agent 长期记忆、知识图谱、自托管、跨会话上下文"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "diegosouzapw",
@@ -215,7 +232,20 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "HKUDS",
@@ -282,7 +312,17 @@
       "risk_signal": 6,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "大模型应用",
+      "ai-agent"
+    ],
+    "brief_zh": {
+      "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "firecrawl",
@@ -355,7 +395,20 @@
       "risk_signal": 10,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "网页搜索",
+      "批量抓取",
+      "交互式采集",
+      "HTML 转 Markdown"
+    ],
+    "brief_zh": {
+      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
+      "audience": "需要为 RAG、研究 Agent 或自动化流程稳定抓取网页数据的团队",
+      "capabilities": "网页搜索、批量抓取、交互式采集、HTML 转 Markdown、Agent 数据入口",
+      "risk": "AGPL 许可和网页抓取的合规边界需要提前评估，真实成本也取决于目标站点复杂度"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Robbyant",
@@ -411,7 +464,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "长期记忆",
+      "运行时",
+      "评测",
+      "inference"
+    ]
   },
   {
     "owner": "google-research",
@@ -468,7 +527,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "技能扩展",
+      "工作区"
+    ]
   },
   {
     "owner": "browser-use",
@@ -527,7 +592,13 @@
       "risk_signal": 6,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "技能扩展"
+    ]
   },
   {
     "owner": "facebook",
@@ -582,7 +653,18 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "设计系统",
+      "组件定制",
+      "Agent 友好界面",
+      "前端基础设施"
+    ],
+    "brief_zh": {
+      "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
+      "capabilities": "设计系统、组件定制、Agent 友好界面、前端基础设施"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tinyhumansai",
@@ -638,6 +720,12 @@
       "risk_signal": 10,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "MCP 集成",
+      "inference"
+    ]
   }
 ]

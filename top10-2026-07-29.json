@@ -74,7 +74,17 @@
       "risk_signal": 10,
       "total": 98
     },
-    "strategic_score": 98
+    "strategic_score": 98,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "技能扩展",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -144,7 +154,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "alibaba",
@@ -210,7 +233,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论",
+      "安全规则"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "1jehuang",
@@ -284,7 +320,20 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "终端编码 Agent",
+      "多模型接入",
+      "多 Agent 协作",
+      "低内存运行"
+    ],
+    "brief_zh": {
+      "summary": "一个面向编码 Agent 的跨平台终端工作台，主打低内存占用、多模型接入、Swarm 协作和可扩展工具集。",
+      "audience": "希望在终端内使用高性能编码 Agent，并统一多模型和多工具能力的开发者",
+      "capabilities": "终端编码 Agent、多模型接入、多 Agent 协作、低内存运行、Rust 工具链",
+      "risk": "README 宣传口径很强，真实性能与多 Agent 体验还需要结合基准和实测验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "different-ai",
@@ -343,7 +392,20 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "共享工作区",
+      "MCP 接入",
+      "跨 Agent 复用",
+      "桌面应用"
+    ],
+    "brief_zh": {
+      "summary": "一个开源桌面工作区与 MCP 入口，支持把 Skills、插件、外部服务和共享工作流复用到不同 AI Agent 中。",
+      "audience": "想在 Codex、Claude Code、Cursor 等工具之间共享能力和工作流的个人与团队",
+      "capabilities": "共享工作区、MCP 接入、跨 Agent 复用、桌面应用、团队能力分发",
+      "risk": "真正价值依赖共享能力和权限管理体验，组织级场景还要验证稳定性与治理成本"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "huggingface",
@@ -411,7 +473,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "语音识别",
+      "语音合成",
+      "实时对话",
+      "OpenAI Realtime 兼容"
+    ],
+    "brief_zh": {
+      "summary": "一个低延迟语音 Agent 管线，把 VAD、语音识别、LLM 和语音合成串成可替换的实时语音后端。",
+      "audience": "要构建本地或可自托管语音助手、语音机器人和实时对话应用的开发者",
+      "capabilities": "语音识别、语音合成、实时对话、OpenAI Realtime 兼容、自托管语音 Agent",
+      "risk": "落地效果取决于各环节模型与硬件配置，端到端延迟和语音质量仍需按场景实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "obra",
@@ -472,7 +547,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "Agent Skills",
+      "规格澄清",
+      "计划驱动开发",
+      "子 Agent 协作"
+    ],
+    "brief_zh": {
+      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+      "audience": "希望让编码 Agent 更稳定地遵循规格、计划和 TDD 流程的开发者与团队",
+      "capabilities": "Agent Skills、规格澄清、计划驱动开发、子 Agent 协作、TDD 方法论",
+      "risk": "方法论成分高于底层技术壁垒，实际收益取决于团队是否愿意按它的流程工作"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "microsoft",
@@ -539,7 +627,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "Agent 治理",
+      "策略控制",
+      "零信任身份",
+      "执行沙箱"
+    ],
+    "brief_zh": {
+      "summary": "微软开源的 Agent 治理工具包，聚焦策略约束、零信任身份、执行沙箱和生产级可靠性治理。",
+      "audience": "准备把 AI Agent 投入生产环境，并需要审计、策略控制和安全边界的团队",
+      "capabilities": "Agent 治理、策略控制、零信任身份、执行沙箱、可靠性工程",
+      "risk": "治理框架引入后会增加集成复杂度，需要验证与现有 Agent 平台和企业流程的兼容性"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "remotion-dev",
@@ -600,7 +701,20 @@
       "risk_signal": 8,
       "total": 89
     },
-    "strategic_score": 89
+    "strategic_score": 89,
+    "capability_tags": [
+      "代码生成视频",
+      "批量渲染",
+      "React 视频模板",
+      "交互编辑"
+    ],
+    "brief_zh": {
+      "summary": "一个用 React 代码生成和批量渲染视频的开源框架，覆盖 Agent 驱动创作、交互编辑和自动化出片。",
+      "audience": "需要把数据、模板和代码组合成视频工作流的前端团队与内容自动化开发者",
+      "capabilities": "代码生成视频、批量渲染、React 视频模板、交互编辑、自动化内容生产",
+      "risk": "工程能力强但门槛不低，真正交付效率取决于模板管理、渲染基础设施和团队前端能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "nolabs-ai",
@@ -676,6 +790,19 @@
       "risk_signal": 8,
       "total": 89
     },
-    "strategic_score": 89
+    "strategic_score": 89,
+    "capability_tags": [
+      "Agent 沙箱",
+      "隔离执行",
+      "低延迟运行时",
+      "安全强化"
+    ],
+    "brief_zh": {
+      "summary": "一个为 AI Agent 提供安全沙箱和执行隔离的开源运行时，强调零配置、低延迟和供应链安全背景。",
+      "audience": "需要快速给编码 Agent 或自动化 Agent 加上隔离执行环境的开发者与平台团队",
+      "capabilities": "Agent 沙箱、隔离执行、低延迟运行时、安全强化、Rust 基础设施",
+      "risk": "安全承诺需要通过更完整的威胁模型和真实部署案例验证，不能只看 README 口径"
+    },
+    "summary_source": "project_brief"
   }
 ]

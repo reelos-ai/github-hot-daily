@@ -66,7 +66,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "一个让 Claude 通过 MCP 操作终端、搜索文件并执行差异化编辑的本地工具。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "jamiepine",
@@ -132,7 +142,18 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "声音克隆",
+      "语音听写",
+      "音频创作",
+      "AI 语音工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。",
+      "capabilities": "声音克隆、语音听写、音频创作、AI 语音工作流"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -201,7 +222,20 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "oven-sh",
@@ -270,7 +304,13 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "运行时",
+      "工作区",
+      "bun"
+    ]
   },
   {
     "owner": "vxcontrol",
@@ -345,7 +385,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "RAG"
+    ]
   },
   {
     "owner": "ChromeDevTools",
@@ -411,7 +457,20 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Chrome 控制",
+      "MCP 服务",
+      "网络调试",
+      "性能分析"
+    ],
+    "brief_zh": {
+      "summary": "Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。",
+      "audience": "需要让编码 Agent 自动复现、调试和验证 Web 应用的前端与测试团队",
+      "capabilities": "Chrome 控制、MCP 服务、网络调试、性能分析、浏览器自动化",
+      "risk": "MCP 客户端可以读取和修改浏览器内容，调试环境不应包含不希望暴露的账号或敏感数据"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "TencentCloud",
@@ -468,7 +527,13 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "运行时"
+    ]
   },
   {
     "owner": "NVIDIA",
@@ -525,7 +590,13 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "运行时",
+      "技能扩展"
+    ]
   },
   {
     "owner": "agentscope-ai",
@@ -594,7 +665,13 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ]
   },
   {
     "owner": "davila7",
@@ -653,6 +730,12 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "工作流"
+    ]
   }
 ]

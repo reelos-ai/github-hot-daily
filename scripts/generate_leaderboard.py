@@ -107,6 +107,7 @@ def split_capabilities(value: str) -> list[str]:
 
 def project_capabilities(repo: dict, brief: dict) -> list[str]:
     labels = split_capabilities(brief.get("capabilities", ""))
+    labels.extend(split_capabilities("、".join(repo.get("capability_tags", []))))
     relationship = repo.get("relationship_label")
     if relationship:
         labels.append(relationship)
@@ -886,6 +887,7 @@ def build_leaderboard(root: Path = ROOT) -> dict:
         "methodology": {
             "name": "ReelOS Open Source Signal Index",
             "version": 2,
+            "model_version": "leaderboard-v2",
             "normalization": "relative_to_current_dataset",
             "weights": {
                 "continuity": 30,

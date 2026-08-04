@@ -70,7 +70,13 @@
       "risk_signal": 10,
       "total": 98
     },
-    "strategic_score": 98
+    "strategic_score": 98,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "大模型应用",
+      "ai"
+    ]
   },
   {
     "owner": "diegosouzapw",
@@ -149,7 +155,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rohitg00",
@@ -229,7 +248,18 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程",
+      "交付参考"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "jamiepine",
@@ -295,7 +325,18 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "声音克隆",
+      "语音听写",
+      "音频创作",
+      "AI 语音工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。",
+      "capabilities": "声音克隆、语音听写、音频创作、AI 语音工作流"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ogulcancelik",
@@ -373,7 +414,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "alibaba",
@@ -438,7 +489,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论",
+      "安全规则"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "MoonshotAI",
@@ -498,7 +562,13 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ]
   },
   {
     "owner": "koala73",
@@ -567,7 +637,20 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "新闻聚合",
+      "地缘事件监控",
+      "基础设施追踪",
+      "统一态势界面"
+    ],
+    "brief_zh": {
+      "summary": "一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。",
+      "audience": "研究国际事件、风险情报或全球运营状态的分析人员",
+      "capabilities": "新闻聚合、地缘事件监控、基础设施追踪、统一态势界面",
+      "risk": "判断质量高度依赖数据源覆盖、更新速度和事件去重能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "oblien",
@@ -627,7 +710,13 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "工作区",
+      "ai"
+    ]
   },
   {
     "owner": "CoreBunch",
@@ -690,6 +779,19 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "可视化建站",
+      "静态页面输出",
+      "用户与角色",
+      "插件"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的可视化 CMS，用类似 Webflow 的方式编辑页面，并输出干净的静态网站。",
+      "audience": "需要自托管建站、可视化编辑和静态输出的小团队",
+      "capabilities": "可视化建站、静态页面输出、用户与角色、插件、内容管理、Agent 辅助",
+      "risk": "功能范围接近完整 CMS，部署、升级和插件生态的维护成本需要评估"
+    },
+    "summary_source": "project_brief"
   }
 ]

@@ -75,7 +75,18 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 安全测试",
+      "漏洞发现",
+      "渗透测试",
+      "修复建议"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。",
+      "capabilities": "AI 安全测试、漏洞发现、渗透测试、修复建议"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ChromeDevTools",
@@ -142,7 +153,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Chrome 控制",
+      "MCP 服务",
+      "网络调试",
+      "性能分析"
+    ],
+    "brief_zh": {
+      "summary": "Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。",
+      "audience": "需要让编码 Agent 自动复现、调试和验证 Web 应用的前端与测试团队",
+      "capabilities": "Chrome 控制、MCP 服务、网络调试、性能分析、浏览器自动化",
+      "risk": "MCP 客户端可以读取和修改浏览器内容，调试环境不应包含不希望暴露的账号或敏感数据"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "facebook",
@@ -198,7 +222,18 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "设计系统",
+      "组件定制",
+      "Agent 友好界面",
+      "前端基础设施"
+    ],
+    "brief_zh": {
+      "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
+      "capabilities": "设计系统、组件定制、Agent 友好界面、前端基础设施"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "langflow-ai",
@@ -264,7 +299,13 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "大模型应用"
+    ]
   },
   {
     "owner": "alibaba",
@@ -333,7 +374,18 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "网页 GUI Agent",
+      "自然语言交互",
+      "浏览器自动化",
+      "JavaScript"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在网页内部的 JavaScript GUI Agent，可用自然语言控制 Web 界面。",
+      "capabilities": "网页 GUI Agent、自然语言交互、浏览器自动化、JavaScript"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "diegosouzapw",
@@ -412,7 +464,20 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级",
+      "Token 压缩"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "HKUDS",
@@ -481,7 +546,17 @@
       "risk_signal": 6,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "safishamsi",
@@ -551,7 +626,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "长期记忆",
+      "RAG",
+      "技能扩展",
+      "大模型应用"
+    ]
   },
   {
     "owner": "agentskills",
@@ -607,7 +688,13 @@
       "risk_signal": 6,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "技能扩展",
+      "工作流"
+    ]
   },
   {
     "owner": "stablyai",
@@ -682,6 +769,12 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "运行时"
+    ]
   }
 ]

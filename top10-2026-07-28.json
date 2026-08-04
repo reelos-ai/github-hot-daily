@@ -62,7 +62,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论",
+      "安全规则"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -132,7 +145,20 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ogulcancelik",
@@ -210,7 +236,17 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "volcengine",
@@ -276,7 +312,20 @@
       "risk_signal": 10,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "上下文数据库",
+      "知识 RAG",
+      "插件化技能"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
+      "audience": "需要给 Agent 搭建统一记忆与知识层的开发者和平台团队",
+      "capabilities": "长期记忆、上下文数据库、知识 RAG、插件化技能、自演化知识更新",
+      "risk": "把记忆、检索和技能同时耦合到一层，后续扩展性、数据治理和调试复杂度需要重点验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "vudovn",
@@ -336,7 +385,20 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具链",
+      "运行时封装",
+      "工作流编排",
+      "记忆接入"
+    ],
+    "brief_zh": {
+      "summary": "一个为编码 Agent 准备的 TypeScript 工具套件，聚焦运行时、工作流、记忆和 MCP 级扩展能力。",
+      "audience": "希望把终端内 Agent 组装成稳定开发工作流的工程师",
+      "capabilities": "Agent 工具链、运行时封装、工作流编排、记忆接入、MCP 兼容",
+      "risk": "公开描述较少，真实能力边界和与现有 Agent 框架的差异还需要通过代码与示例核实"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "firecrawl",
@@ -409,7 +471,20 @@
       "risk_signal": 10,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "网页搜索",
+      "批量抓取",
+      "交互式采集",
+      "HTML 转 Markdown"
+    ],
+    "brief_zh": {
+      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
+      "audience": "需要为 RAG、研究 Agent 或自动化流程稳定抓取网页数据的团队",
+      "capabilities": "网页搜索、批量抓取、交互式采集、HTML 转 Markdown、Agent 数据入口",
+      "risk": "AGPL 许可和网页抓取的合规边界需要提前评估，真实成本也取决于目标站点复杂度"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "agentscope-ai",
@@ -475,7 +550,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "个人 AI 助手",
+      "多聊天应用接入",
+      "可扩展技能",
+      "自托管部署"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的个人 AI 助手框架，支持多聊天渠道接入，并把能力扩展、部署和日常使用打包成一体。",
+      "audience": "希望把个人助手部署到本地或云端、并接入多个聊天入口的开发者和极客用户",
+      "capabilities": "个人 AI 助手、多聊天应用接入、可扩展技能、自托管部署、云端运行",
+      "risk": "入口很多会提升配置和维护成本，真正的长期价值取决于扩展生态和稳定运营能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "andrewyng",
@@ -533,7 +621,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "统一模型接口",
+      "多供应商接入",
+      "快速切换",
+      "评测与实验支撑"
+    ],
+    "brief_zh": {
+      "summary": "一个统一多家生成式 AI 服务商接口的轻量封装，降低在不同模型供应商之间切换和测试的成本。",
+      "audience": "需要跨模型提供商快速切换、对比或做容灾的 AI 应用开发者",
+      "capabilities": "统一模型接口、多供应商接入、快速切换、评测与实验支撑、自动化调用",
+      "risk": "统一接口通常会抹平厂商差异，复杂能力、计费细节和新模型特性仍需单独适配"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "xbtlin",
@@ -607,7 +708,20 @@
       "risk_signal": 6,
       "total": 89
     },
-    "strategic_score": 89
+    "strategic_score": 89,
+    "capability_tags": [
+      "价值投资框架",
+      "多 Agent 研究",
+      "投资知识模板",
+      "MCP 接入"
+    ],
+    "brief_zh": {
+      "summary": "一个把巴菲特、芒格等价值投资方法论改造成多 Agent 研究流程的投资分析框架，面向 Claude Code 和 Codex 使用。",
+      "audience": "想用 Agent 辅助做基本面研究、投资备忘录和对抗式分析的个人研究者",
+      "capabilities": "价值投资框架、多 Agent 研究、投资知识模板、MCP 接入、股票分析流程",
+      "risk": "方法论包装很强，但研究质量仍取决于数据源、假设质量和人工复核，不能直接替代投资判断"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "pbakaus",
@@ -663,6 +777,19 @@
       "risk_signal": 6,
       "total": 88
     },
-    "strategic_score": 88
+    "strategic_score": 88,
+    "capability_tags": [
+      "设计语言",
+      "界面规范",
+      "AI 生成 UI 约束",
+      "视觉一致性"
+    ],
+    "brief_zh": {
+      "summary": "一套专门为 AI harness 准备的设计语言，目标是让 Agent 生成的界面更统一、更耐看，也更容易落地到产品。",
+      "audience": "正在用 AI 生成前端界面，并希望提升设计一致性和可交付性的团队",
+      "capabilities": "设计语言、界面规范、AI 生成 UI 约束、视觉一致性、前端落地参考",
+      "risk": "更像设计方法和规范层资产，真正效果取决于是否能被不同模型和团队稳定执行"
+    },
+    "summary_source": "project_brief"
   }
 ]

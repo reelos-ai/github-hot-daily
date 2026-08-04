@@ -66,7 +66,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "一个让 Claude 通过 MCP 操作终端、搜索文件并执行差异化编辑的本地工具。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "malisper",
@@ -129,7 +139,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "RAG",
+      "运行时",
+      "工作区",
+      "工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个用 Rust 重写 PostgreSQL 的数据库项目，目前已通过 PostgreSQL 的完整回归测试。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "oven-sh",
@@ -198,7 +218,13 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "长期记忆",
+      "运行时",
+      "工作区",
+      "bun"
+    ]
   },
   {
     "owner": "affaan-m",
@@ -267,7 +293,20 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent Skills",
+      "长期记忆",
+      "安全约束",
+      "研究优先流程"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "davila7",
@@ -326,7 +365,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "工作流"
+    ]
   },
   {
     "owner": "FoundationAgents",
@@ -382,7 +427,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "大模型应用"
+    ]
   },
   {
     "owner": "Shubhamsaboo",
@@ -442,7 +493,13 @@
       "risk_signal": 6,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "RAG"
+    ]
   },
   {
     "owner": "google-labs-code",
@@ -498,7 +555,13 @@
       "risk_signal": 6,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ]
   },
   {
     "owner": "stablyai",
@@ -572,7 +635,13 @@
       "risk_signal": 8,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "ade"
+    ]
   },
   {
     "owner": "obra",
@@ -633,6 +702,19 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "Agent Skills",
+      "规格澄清",
+      "计划驱动开发",
+      "子 Agent 协作"
+    ],
+    "brief_zh": {
+      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+      "audience": "希望让编码 Agent 更稳定地遵循规格、计划和 TDD 流程的开发者与团队",
+      "capabilities": "Agent Skills、规格澄清、计划驱动开发、子 Agent 协作、TDD 方法论",
+      "risk": "方法论成分高于底层技术壁垒，实际收益取决于团队是否愿意按它的流程工作"
+    },
+    "summary_source": "project_brief"
   }
 ]

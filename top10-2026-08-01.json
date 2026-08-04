@@ -55,7 +55,20 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "共享工作区",
+      "MCP 接入",
+      "跨 Agent 复用",
+      "桌面应用"
+    ],
+    "brief_zh": {
+      "summary": "一个开源桌面工作区与 MCP 入口，支持把 Skills、插件、外部服务和共享工作流复用到不同 AI Agent 中。",
+      "audience": "想在 Codex、Claude Code、Cursor 等工具之间共享能力和工作流的个人与团队",
+      "capabilities": "共享工作区、MCP 接入、跨 Agent 复用、桌面应用、团队能力分发",
+      "risk": "真正价值依赖共享能力和权限管理体验，组织级场景还要验证稳定性与治理成本"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "NousResearch",
@@ -130,7 +143,20 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "自学习 Agent",
+      "跨会话记忆",
+      "Skills 生成",
+      "多渠道接入"
+    ],
+    "brief_zh": {
+      "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
+      "audience": "希望自托管长期运行、可积累个人上下文与技能的 AI 助手用户和开发者",
+      "capabilities": "自学习 Agent、跨会话记忆、Skills 生成、多渠道接入、子 Agent 协作",
+      "risk": "自主学习和长期记忆会扩大权限与隐私边界，需要严格控制工具访问、数据留存和自动执行范围"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "esengine",
@@ -203,7 +229,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "MCP 集成",
+      "大模型应用",
+      "工作流"
+    ]
   },
   {
     "owner": "mvanhorn",
@@ -280,7 +312,20 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "近期研究",
+      "跨平台检索",
+      "信号排序",
+      "证据综合"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。",
+      "audience": "需要快速了解人物、产品或议题近期动态的研究者和内容团队",
+      "capabilities": "近期研究、跨平台检索、信号排序、证据综合、Agent Skill",
+      "risk": "结果质量依赖第三方平台访问、互动指标和自带凭据，不能把热度排序直接当成事实可信度"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "farion1231",
@@ -356,7 +401,17 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "TencentCloud",
@@ -424,7 +479,13 @@
       "risk_signal": 8,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "技能扩展"
+    ]
   },
   {
     "owner": "multica-ai",
@@ -478,7 +539,20 @@
       "risk_signal": 8,
       "total": 91
     },
-    "strategic_score": 91
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent 任务分派",
+      "进度跟踪",
+      "团队协作",
+      "Skills 沉淀"
+    ],
+    "brief_zh": {
+      "summary": "一个开源的编码 Agent 管理平台，可像分配同事一样分派 Issue、跟踪进度与阻塞，并沉淀团队可复用 Skills。",
+      "audience": "需要同时管理多个编码 Agent、并把它们纳入团队协作流程的研发团队",
+      "capabilities": "Agent 任务分派、进度跟踪、团队协作、Skills 沉淀、自托管",
+      "risk": "让 Agent 直接参与 Issue 和代码流程会放大权限、审计与错误传播风险，需要配套人工审批"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "huggingface",
@@ -546,7 +620,20 @@
       "risk_signal": 8,
       "total": 90
     },
-    "strategic_score": 90
+    "strategic_score": 90,
+    "capability_tags": [
+      "语音识别",
+      "语音合成",
+      "实时对话",
+      "OpenAI Realtime 兼容"
+    ],
+    "brief_zh": {
+      "summary": "一个低延迟语音 Agent 管线，把 VAD、语音识别、LLM 和语音合成串成可替换的实时语音后端。",
+      "audience": "要构建本地或可自托管语音助手、语音机器人和实时对话应用的开发者",
+      "capabilities": "语音识别、语音合成、实时对话、OpenAI Realtime 兼容、自托管语音 Agent",
+      "risk": "落地效果取决于各环节模型与硬件配置，端到端延迟和语音质量仍需按场景实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "bytedance",
@@ -591,7 +678,13 @@
       "risk_signal": 6,
       "total": 87
     },
-    "strategic_score": 87
+    "strategic_score": 87,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "MCP 集成"
+    ]
   },
   {
     "owner": "zhaoxuya520",
@@ -645,6 +738,12 @@
       "risk_signal": 6,
       "total": 86
     },
-    "strategic_score": 86
+    "strategic_score": 86,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "MCP 集成",
+      "技能扩展"
+    ]
   }
 ]

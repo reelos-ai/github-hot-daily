@@ -75,7 +75,17 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "RAG",
+      "运行时"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ruvnet",
@@ -150,7 +160,20 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "Wi-Fi 感知",
+      "存在检测",
+      "动作识别",
+      "生命体征监测"
+    ],
+    "brief_zh": {
+      "summary": "利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。",
+      "audience": "智能家居、健康监测、安防和无摄像头空间感知项目",
+      "capabilities": "Wi-Fi 感知、存在检测、动作识别、生命体征监测、隐私友好",
+      "risk": "精度容易受房间结构、设备型号和无线环境影响，需要实地校准"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "TencentCloud",
@@ -208,7 +231,13 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "运行时"
+    ]
   },
   {
     "owner": "Egonex-AI",
@@ -282,7 +311,17 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "技能扩展",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "mvanhorn",
@@ -361,7 +400,20 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "近期研究",
+      "跨平台检索",
+      "信号排序",
+      "证据综合"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。",
+      "audience": "需要快速了解人物、产品或议题近期动态的研究者和内容团队",
+      "capabilities": "近期研究、跨平台检索、信号排序、证据综合、Agent Skill",
+      "risk": "结果质量依赖第三方平台访问、互动指标和自带凭据，不能把热度排序直接当成事实可信度"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "TencentCloud",
@@ -433,7 +485,13 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "RAG"
+    ]
   },
   {
     "owner": "tinyhumansai",
@@ -490,7 +548,13 @@
       "risk_signal": 10,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "MCP 集成",
+      "工作流"
+    ]
   },
   {
     "owner": "vxcontrol",
@@ -565,7 +629,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "RAG"
+    ]
   },
   {
     "owner": "alibaba",
@@ -637,7 +707,13 @@
       "risk_signal": 8,
       "total": 93
     },
-    "strategic_score": 93
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 工具",
+      "长期记忆",
+      "RAG",
+      "技能扩展"
+    ]
   },
   {
     "owner": "microsoft",
@@ -698,6 +774,12 @@
       "risk_signal": 6,
       "total": 92
     },
-    "strategic_score": 92
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 工具",
+      "多 Agent",
+      "长期记忆",
+      "技能扩展"
+    ]
   }
 ]

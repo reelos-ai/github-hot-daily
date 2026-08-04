@@ -25,6 +25,39 @@ REPORT_CATEGORIES = {
     "weekly": "周报",
     "monthly": "月报",
 }
+CAPABILITY_TRANSLATIONS = {
+    "agent": "Agent 工具",
+    "agents": "多 Agent",
+    "agent-framework": "Agent 框架",
+    "agent-frameworks": "Agent 框架",
+    "agent-skill": "Agent 技能",
+    "agent-skills": "Agent 技能",
+    "automation": "自动化",
+    "browser": "浏览器 Agent",
+    "cli": "CLI",
+    "coding": "编码 Agent",
+    "context": "上下文工程",
+    "database": "数据基础设施",
+    "devtool": "开发者工具",
+    "devtools": "开发者工具",
+    "eval": "评测",
+    "infra": "AI Infra",
+    "llm": "大模型应用",
+    "mcp": "MCP 集成",
+    "memory": "长期记忆",
+    "multimodal": "多模态",
+    "protocol": "开放协议",
+    "rag": "RAG",
+    "runtime": "运行时",
+    "sandbox": "安全约束",
+    "search": "搜索",
+    "security": "安全能力",
+    "skill": "技能扩展",
+    "skills": "技能扩展",
+    "voice": "语音能力",
+    "workflow": "工作流",
+    "workspace": "工作区",
+}
 
 
 def read_json(path: Path):
@@ -34,6 +67,77 @@ def read_json(path: Path):
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def split_capabilities(raw: str) -> list[str]:
+    return [
+        item.strip()
+        for item in re.split(r"[、,，/|]+", raw or "")
+        if item.strip()
+    ]
+
+
+def translate_capability(value: str) -> str:
+    key = value.strip().lower().replace("_", "-")
+    return CAPABILITY_TRANSLATIONS.get(key, value.strip())
+
+
+def derive_capability_tags(repo: dict, brief: dict) -> list[str]:
+    tags = [translate_capability(item) for item in split_capabilities(brief.get("capabilities", ""))]
+    if not tags:
+        candidates = []
+        candidates.extend(repo.get("strategic_keywords") or [])
+        candidates.extend(((repo.get("metadata") or {}).get("topics") or []))
+        tags = [translate_capability(str(item)) for item in candidates if str(item).strip()]
+    relationship = repo.get("relationship_label")
+    if relationship:
+        tags.append(relationship)
+    if len(tags) < 3 and repo.get("language"):
+        tags.append(f'{repo["language"]} 项目')
+
+    unique = []
+    for tag in tags:
+        if tag and tag not in unique:
+            unique.append(tag)
+    return unique[:4]
+
+
+def enrich_top10_payload(path: Path, briefs: dict[str, dict]) -> bool:
+    if not path.exists():
+        return False
+    payload = read_json(path)
+    changed = False
+    for repo in payload:
+        brief = briefs.get(repo.get("full_name", ""), {})
+        capability_tags = derive_capability_tags(repo, brief)
+        if repo.get("capability_tags") != capability_tags:
+            repo["capability_tags"] = capability_tags
+            changed = True
+        if brief and repo.get("brief_zh") != brief:
+            repo["brief_zh"] = brief
+            changed = True
+        if brief.get("summary") and repo.get("summary_source") != "project_brief":
+            repo["summary_source"] = "project_brief"
+            changed = True
+    if changed:
+        write_text(path, json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    return changed
+
+
+def backfill_top10_payloads() -> int:
+    briefs_path = ROOT / "project-briefs-zh.json"
+    briefs = read_json(briefs_path) if briefs_path.exists() else {}
+    changed = 0
+    for path in sorted(ROOT.glob("top10-20*.json")):
+        if enrich_top10_payload(path, briefs):
+            changed += 1
+    for path in sorted(ROOT.glob("weekly-top10-20*.json")):
+        if enrich_top10_payload(path, briefs):
+            changed += 1
+    for path in sorted(ROOT.glob("monthly-top10-*.json")):
+        if enrich_top10_payload(path, briefs):
+            changed += 1
+    return changed
 
 
 def normalize_report_entries(reports: list[dict]) -> list[dict]:
@@ -1769,6 +1873,7 @@ def main() -> None:
     parser.add_argument("--period", default=None, help="Daily report period in YYYY-MM-DD.")
     args = parser.parse_args()
     period = resolve_daily_period(args.period or datetime.now().strftime("%Y-%m-%d"))
+    backfill_top10_payloads()
     stats = load_report_stats(period)
     sync_daily_report_dir(period)
     reports = upsert_report_entry(period, stats)
