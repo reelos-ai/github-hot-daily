@@ -66,8 +66,7 @@
     "capability_tags": [
       "增量代码审查",
       "全仓扫描",
-      "行级评论",
-      "安全规则"
+      "行级评论"
     ],
     "brief_zh": {
       "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
@@ -147,10 +146,9 @@
     },
     "strategic_score": 97,
     "capability_tags": [
-      "Agent Skills",
+      "Agent 技能包",
       "长期记忆",
-      "安全约束",
-      "研究优先流程"
+      "安全约束"
     ],
     "brief_zh": {
       "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
@@ -238,10 +236,9 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "RAG",
-      "运行时"
+      "RAG 检索",
+      "技能扩展",
+      "工作区"
     ],
     "brief_zh": {
       "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
@@ -316,8 +313,7 @@
     "capability_tags": [
       "长期记忆",
       "上下文数据库",
-      "知识 RAG",
-      "插件化技能"
+      "知识 RAG"
     ],
     "brief_zh": {
       "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
@@ -389,8 +385,7 @@
     "capability_tags": [
       "Agent 工具链",
       "运行时封装",
-      "工作流编排",
-      "记忆接入"
+      "工作流编排"
     ],
     "brief_zh": {
       "summary": "一个为编码 Agent 准备的 TypeScript 工具套件，聚焦运行时、工作流、记忆和 MCP 级扩展能力。",
@@ -475,8 +470,7 @@
     "capability_tags": [
       "网页搜索",
       "批量抓取",
-      "交互式采集",
-      "HTML 转 Markdown"
+      "交互式采集"
     ],
     "brief_zh": {
       "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
@@ -554,8 +548,7 @@
     "capability_tags": [
       "个人 AI 助手",
       "多聊天应用接入",
-      "可扩展技能",
-      "自托管部署"
+      "可扩展技能"
     ],
     "brief_zh": {
       "summary": "一个可自托管的个人 AI 助手框架，支持多聊天渠道接入，并把能力扩展、部署和日常使用打包成一体。",
@@ -625,8 +618,7 @@
     "capability_tags": [
       "统一模型接口",
       "多供应商接入",
-      "快速切换",
-      "评测与实验支撑"
+      "快速切换"
     ],
     "brief_zh": {
       "summary": "一个统一多家生成式 AI 服务商接口的轻量封装，降低在不同模型供应商之间切换和测试的成本。",
@@ -712,8 +704,7 @@
     "capability_tags": [
       "价值投资框架",
       "多 Agent 研究",
-      "投资知识模板",
-      "MCP 接入"
+      "投资知识模板"
     ],
     "brief_zh": {
       "summary": "一个把巴菲特、芒格等价值投资方法论改造成多 Agent 研究流程的投资分析框架，面向 Claude Code 和 Codex 使用。",
@@ -781,8 +772,7 @@
     "capability_tags": [
       "设计语言",
       "界面规范",
-      "AI 生成 UI 约束",
-      "视觉一致性"
+      "AI 生成 UI 约束"
     ],
     "brief_zh": {
       "summary": "一套专门为 AI harness 准备的设计语言，目标是让 Agent 生成的界面更统一、更耐看，也更容易落地到产品。",

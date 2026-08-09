@@ -73,7 +73,6 @@
     },
     "strategic_score": 97,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
       "大模型应用",
       "工作流"
@@ -148,8 +147,7 @@
     "capability_tags": [
       "声音克隆",
       "语音听写",
-      "音频创作",
-      "AI 语音工作流"
+      "音频创作"
     ],
     "brief_zh": {
       "summary": "一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。",
@@ -224,11 +222,17 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "运行时",
-      "大模型应用",
-      "评测",
-      "markdown"
-    ]
+      "PDF 检测",
+      "扫描件识别",
+      "文档分类"
+    ],
+    "brief_zh": {
+      "summary": "一个快速的 Rust PDF 检测库，可识别扫描件与文本型 PDF，并完成分类和文本提取，便于后续自动分流。",
+      "audience": "需要批量处理 PDF、区分 OCR 路径并搭建文档解析流水线的开发者",
+      "capabilities": "PDF 检测、扫描件识别、文档分类、文本提取、Rust 库",
+      "risk": "复杂版式、混合扫描页和损坏文件仍需要单独验证，检测结果不能替代完整解析质量评估"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "NousResearch",
@@ -307,8 +311,7 @@
     "capability_tags": [
       "自学习 Agent",
       "跨会话记忆",
-      "Skills 生成",
-      "多渠道接入"
+      "Skills 生成"
     ],
     "brief_zh": {
       "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
@@ -395,10 +398,9 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "MCP 集成",
-      "运行时"
+      "工作区",
+      "大模型应用"
     ],
     "brief_zh": {
       "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。"
@@ -473,11 +475,17 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "MCP 集成",
-      "运行时"
-    ]
+      "实时语音 Agent",
+      "低延迟对话",
+      "多模态输入"
+    ],
+    "brief_zh": {
+      "summary": "一个构建实时语音 AI Agent 的开发框架，负责把语音、视频、模型和电话系统接入低延迟对话流程。",
+      "audience": "需要开发语音助手、电话 Agent 或实时多模态交互产品的团队",
+      "capabilities": "实时语音 Agent、低延迟对话、多模态输入、模型接入、电话系统集成",
+      "risk": "实时体验高度依赖音频链路、模型延迟和部署环境，需要按目标地区与并发规模实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Graphify-Labs",
@@ -558,10 +566,9 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "MCP 集成",
-      "RAG"
+      "RAG 检索",
+      "技能扩展"
     ]
   },
   {
@@ -632,11 +639,17 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "技能扩展"
-    ]
+      "团队记忆中枢",
+      "对话记忆",
+      "Skills 管理"
+    ],
+    "brief_zh": {
+      "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
+      "audience": "需要在多个 Agent 和团队成员之间共享知识、技能与代码上下文的研发组织",
+      "capabilities": "团队记忆中枢、对话记忆、Skills 管理、知识库、代码图谱",
+      "risk": "集中记忆会扩大隐私、权限和数据治理边界，落地前需要明确隔离、删除和审计机制"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "gitroomhq",
@@ -702,10 +715,9 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "工作区",
-      "nextjs"
+      "Next.js 应用",
+      "开源社媒排程"
     ]
   },
   {
@@ -774,10 +786,9 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "技能扩展",
-      "工作区"
+      "工作区",
+      "大模型应用"
     ]
   }
 ]

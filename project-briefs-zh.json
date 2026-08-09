@@ -5,6 +5,42 @@
     "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
     "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
   },
+  "PrimeIntellect-ai/prime-agent": {
+    "summary": "一个面向编码工作流和长时自主任务的自改进 Agent，强调在持续运行过程中迭代自己的执行效果。",
+    "audience": "希望让编码 Agent 长时间自主执行、并持续优化工作流的开发者与研究者",
+    "capabilities": "长时自主任务、编码工作流、自我改进 Agent、持续执行",
+    "risk": "公开说明较短，真正的自我改进机制、边界条件和稳定性还需要结合代码与示例验证"
+  },
+  "denoland/celld": {
+    "summary": "一个可自托管的分布式 Durable Objects 运行时，把对象状态保存在 SQLite 中，并复制到 S3 兼容存储。",
+    "audience": "需要自建状态化边缘运行时、分布式对象层或 Agent 基础设施的工程团队",
+    "capabilities": "Durable Objects、自托管运行时、分布式复制、SQLite 状态存储、S3 兼容后端",
+    "risk": "运行时和协议仍在演进中，生产可用性、兼容范围和运维复杂度需要进一步验证"
+  },
+  "google/skills": {
+    "summary": "Google 官方维护的 Agent Skills 仓库，把 Google Cloud、数据、基础设施和开发工具能力打包成可安装的技能集合。",
+    "audience": "希望让 Agent 快速调用 Google 产品与云服务能力的开发者和平台团队",
+    "capabilities": "Agent Skills、Google Cloud 集成、RAG 工作流、基础设施操作、开发者工具",
+    "risk": "技能覆盖很广，但质量和维护节奏会因具体子技能不同而存在差异"
+  },
+  "cloudflare/computer": {
+    "summary": "Cloudflare 开源的虚拟计算机底座，把文件系统和状态放进 Durable Object，并通过统一 runtime 暴露给 Agent 使用。",
+    "audience": "需要给 Agent 提供可持久化执行环境、浏览器或桌面式工作区的开发者",
+    "capabilities": "虚拟文件系统、Durable Object 状态、统一运行时、Agent 计算机接口",
+    "risk": "底层抽象新，真实隔离能力、性能和与现有 Agent 工具链的适配成本仍需实测"
+  },
+  "TauricResearch/TradingAgents": {
+    "summary": "一个多 Agent 金融交易框架，利用 LLM Agent 组织市场分析、研究和交易决策流程。",
+    "audience": "希望用多 Agent 方法辅助投资研究和量化交易实验的个人研究者与团队",
+    "capabilities": "多 Agent 交易、市场分析、LLM 研究流程、金融决策支持",
+    "risk": "交易类框架容易放大数据质量和假设偏差，研究结果不能直接等同于可执行收益"
+  },
+  "addyosmani/agent-skills": {
+    "summary": "一套面向 AI 编码 Agent 的工程技能包，把资深工程师常用的工作流、质量门槛和最佳实践固化成可复用 Skills。",
+    "audience": "想让 Claude Code、Codex、Cursor 等编码 Agent 更稳定遵循工程流程的开发者与团队",
+    "capabilities": "工程 Skills、质量门槛、编码工作流、最佳实践复用、AI Agent 约束",
+    "risk": "更偏流程资产而不是底层技术突破，实际效果取决于 Agent 是否真正遵循这些规范"
+  },
   "alibaba/open-code-review": {
     "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
     "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
@@ -16,6 +52,12 @@
     "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
     "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
     "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+  },
+  "stanfordnlp/dspy": {
+    "summary": "DSPy 是一个“用程序而不是提示词”来组织语言模型的开发框架，强调把推理、优化和评测流程写成可组合程序。",
+    "audience": "需要系统化构建、调优和评测 LLM 工作流的研究者与应用开发者",
+    "capabilities": "LLM 编程框架、推理流程编排、自动优化、评测支持、可组合模块",
+    "risk": "抽象层较强，团队仍需投入时间理解其编程模型，并验证对具体任务的收益"
   },
   "koala73/worldmonitor": {
     "summary": "一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。",
@@ -263,5 +305,41 @@
     "audience": "需要快速搭建长任务、多步骤并可进入生产环境的 Agent 应用开发者",
     "capabilities": "Agent Harness、子 Agent、持久记忆、上下文管理、人工审批",
     "risk": "默认能力覆盖面广，实际生产使用仍需评估 LangGraph 与 LangSmith 依赖、执行权限和可观测成本"
+  },
+  "livekit/agents": {
+    "summary": "一个构建实时语音 AI Agent 的开发框架，负责把语音、视频、模型和电话系统接入低延迟对话流程。",
+    "audience": "需要开发语音助手、电话 Agent 或实时多模态交互产品的团队",
+    "capabilities": "实时语音 Agent、低延迟对话、多模态输入、模型接入、电话系统集成",
+    "risk": "实时体验高度依赖音频链路、模型延迟和部署环境，需要按目标地区与并发规模实测"
+  },
+  "firecrawl/pdf-inspector": {
+    "summary": "一个快速的 Rust PDF 检测库，可识别扫描件与文本型 PDF，并完成分类和文本提取，便于后续自动分流。",
+    "audience": "需要批量处理 PDF、区分 OCR 路径并搭建文档解析流水线的开发者",
+    "capabilities": "PDF 检测、扫描件识别、文档分类、文本提取、Rust 库",
+    "risk": "复杂版式、混合扫描页和损坏文件仍需要单独验证，检测结果不能替代完整解析质量评估"
+  },
+  "FalkorDB/FalkorDB": {
+    "summary": "一个以 GraphBLAS 稀疏矩阵为底层的高性能图数据库，重点服务知识图谱和 GraphRAG 场景。",
+    "audience": "构建知识图谱、关系检索或 GraphRAG 应用的数据与 AI 工程团队",
+    "capabilities": "图数据库、知识图谱、GraphRAG、稀疏矩阵计算、高性能查询",
+    "risk": "实际价值取决于数据建模、查询复杂度和运维能力，需要用真实图规模验证性能优势"
+  },
+  "browser-use/video-use": {
+    "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+    "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
+    "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
+    "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+  },
+  "TencentCloud/TencentDB-Agent-Memory": {
+    "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
+    "audience": "需要在多个 Agent 和团队成员之间共享知识、技能与代码上下文的研发组织",
+    "capabilities": "团队记忆中枢、对话记忆、Skills 管理、知识库、代码图谱",
+    "risk": "集中记忆会扩大隐私、权限和数据治理边界，落地前需要明确隔离、删除和审计机制"
+  },
+  "huangruiteng/loopx": {
+    "summary": "一个面向长期运行编码 Agent 团队的轻量状态内核，用持久目标、自动唤醒、待办和证据日志维持任务连续性。",
+    "audience": "需要让 Codex、Claude Code 等 Agent 跨轮次持续执行并可靠交接的开发者",
+    "capabilities": "持久目标、自动唤醒、可执行待办、证据日志、Agent 交接",
+    "risk": "长期自动执行需要严格控制额度、唤醒条件和完成判定，避免任务循环与资源失控"
   }
 }

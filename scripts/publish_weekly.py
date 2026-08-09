@@ -340,59 +340,7 @@ def shell_css() -> str:
 
 
 def render_weekly_index(reports: list[dict]) -> str:
-    weekly_reports = shared_publisher.visible_reports(reports, "weekly")
-    latest = weekly_reports[0] if weekly_reports else None
-    rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["category"]}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
-        for item in weekly_reports
-    )
-    return f"""<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weekly Intelligence · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}{shared_publisher.reelos_brand_css()}</style>
-</head>
-<body>
-  <div class="wrap">
-    <header class="topbar">
-      {shared_publisher.render_reelos_brand("/", "GitHub 热榜情报", "brand")}
-      <nav class="nav">{nav_links("weekly")}</nav>
-    </header>
-
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Strategic Report Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">Weekly</span> <span class="texture-word">Intelligence</span></span></h1>
-        <p class="lead">周报是整站的主判断层。它不只说“什么火了”，而是把一周内累积的 README、metadata、连续上榜和生态关系整理成能指导决策的判断。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="{latest["html"] if latest else "/weekly/"}">打开最新周报</a>
-          <a class="btn" href="{latest["top10"] if latest else "/weekly/"}">Top10 JSON</a>
-          <a class="btn" href="{latest["raw_data"] if latest else "/weekly/"}">Raw Data</a>
-        </div>
-      </div>
-      <aside class="hero-side">
-        <div class="side-label mono">Current Weekly</div>
-        <h2 class="signal-title"><a href="{latest["html"] if latest else "/weekly/"}">{latest["title"] if latest else "尚未发布周报"}</a></h2>
-        <p class="signal-copy">周报负责筛出真正值得深挖的开源项目、趋势与赛道信号，把日报的高频波动转成更稳的结论。</p>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Index</div>
-      <div>
-        <div class="panel">
-          <h2>最近 30 天周报</h2>
-          <p>仅展示距今天不超过 30 天的周报，聚焦仍有决策价值的中周期判断。</p>
-        </div>
-        <div class="list">{rows}</div>
-      </div>
-    </section>
-  </div>
-</body>
-</html>
-"""
+    return shared_publisher.render_period_index("weekly", reports)
 
 
 def _render_legacy_archive(reports: list[dict]) -> str:

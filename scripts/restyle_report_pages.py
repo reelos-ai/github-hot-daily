@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parent.parent
+CHINESE_TEXT_RE = re.compile(r"[\u3400-\u9fff]")
 
 _LEGACY_REPORT_STYLE = """
   <style>
@@ -1117,7 +1118,18 @@ def project_capability_tags(project: dict, brief: dict) -> list[str]:
     tags = list(dict.fromkeys(tags))
     if len(tags) < 3 and project.get("language"):
         tags.append(f'{project["language"]} 项目')
-    return tags[:4]
+    generic_tags = {"Agent 工具", "多 Agent", "AI 应用", "运行时", "开源项目"}
+    specific = [tag for tag in tags if tag not in generic_tags]
+    generic = [tag for tag in tags if tag in generic_tags]
+    return (specific + generic)[:3]
+
+
+def project_chinese_summary(project: dict, brief: dict) -> str:
+    for candidate in (brief.get("summary"), project.get("description")):
+        text = (candidate or "").strip()
+        if text and CHINESE_TEXT_RE.search(text):
+            return text
+    return "中文摘要待补，点击“原文”查看仓库介绍。"
 
 
 def render_project_overview(projects: list[dict], report_type: str) -> str:
@@ -1130,7 +1142,7 @@ def render_project_overview(projects: list[dict], report_type: str) -> str:
     rows = []
     for rank, project in enumerate(projects, start=1):
         brief = project.get("brief_zh", {})
-        summary = brief.get("summary") or project.get("description") or "项目说明暂缺。"
+        summary = project_chinese_summary(project, brief)
         tags = project_capability_tags(project, brief)
         if not tags:
             tags = [project.get("language") or "开源项目"]

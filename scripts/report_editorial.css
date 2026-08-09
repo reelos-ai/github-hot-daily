@@ -273,7 +273,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -306,7 +306,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -315,7 +315,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1055,8 +1055,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1066,11 +1066,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1096,8 +1096,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {

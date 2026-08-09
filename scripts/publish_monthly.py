@@ -301,59 +301,7 @@ def shell_css() -> str:
 
 
 def render_monthly_index(reports: list[dict]) -> str:
-    monthly_reports = shared_publisher.visible_reports(reports, "monthly")
-    latest = monthly_reports[0] if monthly_reports else None
-    rows = "".join(
-        f'<a class="row" href="{item["html"]}"><span class="type mono">{item["category"]}</span><span class="title">{item["title"]}</span><span class="meta mono">Top {item["top_count"]}</span></a>'
-        for item in monthly_reports
-    )
-    return f"""<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Monthly Trend Review · GitHub Signal · ReelOS</title>
-  <style>{shell_css()}{shared_publisher.reelos_brand_css()}</style>
-</head>
-<body>
-  <div class="wrap">
-    <header class="topbar">
-      {shared_publisher.render_reelos_brand("/", "GitHub 热榜情报", "brand")}
-      <nav class="nav">{nav_links("monthly")}</nav>
-    </header>
-
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Category Migration Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">Monthly</span> <span class="texture-word">Trend Review</span></span></h1>
-        <p class="lead">月报是更慢的判断层。它把一个月里反复出现的仓库和主题抬升到赛道视角，回答哪些方向开始成熟、哪些能力正在基础设施化、哪些只是情绪性泡沫。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="{latest["html"] if latest else "/monthly/"}">打开最新月报</a>
-          <a class="btn" href="{latest["top10"] if latest else "/monthly/"}">Evidence JSON</a>
-          <a class="btn" href="{latest["raw_data"] if latest else "/monthly/"}">Raw Data</a>
-        </div>
-      </div>
-      <aside class="hero-side">
-        <div class="side-label mono">Current Monthly</div>
-        <h2 class="signal-title"><a href="{latest["html"] if latest else "/monthly/"}">{latest["title"] if latest else "尚未发布月报"}</a></h2>
-        <p class="signal-copy">月报不是把周报拉长，而是把 Top 项目还原成品类、项目簇和赛道迁移，用更低噪音的视角做判断。</p>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Review</div>
-      <div>
-        <div class="panel">
-          <h2>最近 50 天月报</h2>
-          <p>仅展示距今天不超过 50 天的月报，保留仍能解释赛道迁移的长期判断。</p>
-        </div>
-        <div class="list">{rows or '<div class="row"><span class="type mono">Empty</span><span class="title">尚未发布月报</span><span class="meta mono">--</span></div>'}</div>
-      </div>
-    </section>
-  </div>
-</body>
-</html>
-"""
+    return shared_publisher.render_period_index("monthly", reports)
 
 
 def _render_legacy_archive(reports: list[dict]) -> str:

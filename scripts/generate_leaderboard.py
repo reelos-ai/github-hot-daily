@@ -26,31 +26,65 @@ PROJECT_SUMMARY_RE = re.compile(
 )
 
 KEYWORD_LABELS = {
-    "agent": "Agent",
-    "agents": "Agent",
+    "agent": "Agent 工具",
+    "agent loop": "Agent 循环",
+    "agentic-coding": "Agent 编码",
+    "agentic-ai": "Agent AI 工作流",
+    "agent-ide": "Agent 开发环境",
+    "agent-memory": "Agent 记忆",
+    "agent-orchestration": "Agent 编排",
+    "agent-skill": "Agent 技能包",
+    "agent-skills": "Agent 技能包",
+    "acp": "Agent 协议",
+    "ade": "Agent 开发环境",
+    "ai-tools": "AI 工具链",
+    "agents": "多 Agent",
+    "ai": "AI 应用",
+    "ai-agent": "AI Agent 工具",
+    "ai-agents": "多 Agent",
+    "ai-tutor": "AI 导师",
+    "advanced-driver-assistance-systems": "高级辅助驾驶",
+    "anthropic": "Anthropic 生态",
     "automation": "自动化",
+    "astrbot": "AstrBot 生态",
+    "authentication": "身份认证",
+    "bash": "终端脚本",
+    "bun": "Bun 运行时",
     "browser": "浏览器 Agent",
+    "claude-code": "Claude Code 生态",
     "cli": "CLI",
     "coding": "编码 Agent",
+    "code-editor": "代码编辑器",
+    "codegen": "代码生成",
+    "container": "容器运行时",
     "context": "上下文工程",
     "database": "数据基础设施",
+    "deployments": "部署流程",
     "devtool": "开发者工具",
+    "devtools": "开发者工具",
+    "durable objects": "持久化对象运行时",
     "eval": "评测",
     "infra": "AI Infra",
-    "llm": "LLM 应用",
-    "mcp": "MCP",
+    "inference": "模型推理",
+    "llm": "大模型应用",
+    "mcp": "MCP 集成",
     "memory": "长期记忆",
     "multimodal": "多模态",
+    "nextjs": "Next.js 应用",
+    "open-source": "开源项目",
+    "open-source-social-media-scheduling-tool": "开源社媒排程",
     "protocol": "开放协议",
-    "rag": "知识检索",
-    "runtime": "Agent Runtime",
+    "rag": "RAG 检索",
+    "runtime": "运行时",
     "sandbox": "沙箱",
     "search": "搜索",
-    "skill": "Skills",
-    "skills": "Skills",
+    "self-hosted": "自托管",
+    "skill": "技能扩展",
+    "skills": "技能扩展",
+    "unified llm api": "统一模型接口",
     "vector": "向量检索",
     "workflow": "工作流",
-    "workspace": "Workspace",
+    "workspace": "工作区",
 }
 
 
@@ -105,9 +139,14 @@ def split_capabilities(value: str) -> list[str]:
     ]
 
 
+def translate_capability(value: str) -> str:
+    key = value.strip().lower().replace("_", "-").replace(" ", "-")
+    return KEYWORD_LABELS.get(key) or KEYWORD_LABELS.get(key.replace("-", " ")) or value.strip()
+
+
 def project_capabilities(repo: dict, brief: dict) -> list[str]:
-    labels = split_capabilities(brief.get("capabilities", ""))
-    labels.extend(split_capabilities("、".join(repo.get("capability_tags", []))))
+    labels = [translate_capability(item) for item in split_capabilities(brief.get("capabilities", ""))]
+    labels.extend(translate_capability(item) for item in split_capabilities("、".join(repo.get("capability_tags", []))))
     relationship = repo.get("relationship_label")
     if relationship:
         labels.append(relationship)
@@ -303,17 +342,18 @@ def render_page() -> str:
   <style>
     :root{
       color-scheme:light;
-      --bg:#fcfaf6;
-      --paper:#fffdf8;
+      --bg:#edf1f6;
+      --paper:#f7f9fc;
       --surface:rgba(255,255,255,.82);
-      --line:rgba(220,217,211,.9);
-      --line-strong:rgba(232,178,126,.76);
-      --text:#111722;
-      --muted:#6c706f;
-      --blue:#536fcb;
-      --blue-soft:#eef2ff;
-      --orange:#f97316;
-      --orange-soft:#fff1e6;
+      --line:#d7dce5;
+      --line-strong:#bcc5d2;
+      --text:#0d1424;
+      --muted:#6c788d;
+      --blue:#315fc8;
+      --blue-soft:#eef3ff;
+      --orange:#315fc8;
+      --orange-soft:#eef3ff;
+      --brand-orange:#f97316;
       --green:#27734b;
       --green-soft:#eaf6ef;
       --shadow:0 18px 60px rgba(17,23,34,.07);
@@ -329,16 +369,15 @@ def render_page() -> str:
       touch-action:manipulation;
       -webkit-tap-highlight-color:rgba(83,111,203,.16);
       background:
-        radial-gradient(circle at 12% 0%,rgba(142,163,232,.2),transparent 28%),
-        radial-gradient(circle at 88% 10%,rgba(249,115,22,.11),transparent 22%),
+        radial-gradient(circle at 12% 0%,rgba(49,95,200,.12),transparent 28%),
         linear-gradient(rgba(196,203,230,.16) 1px,transparent 1px),
         linear-gradient(90deg,rgba(196,203,230,.16) 1px,transparent 1px),
         linear-gradient(180deg,var(--bg),var(--paper));
-      background-size:auto,auto,72px 72px,72px 72px,auto;
+      background-size:auto,72px 72px,72px 72px,auto;
       min-height:100vh;
     }
     a{color:inherit;text-decoration:none}
-    a:hover{color:var(--orange)}
+    a:hover{color:var(--blue)}
     button,input,select{font:inherit}
     button{color:inherit}
     :where(a,button,input,select):focus-visible{
@@ -389,11 +428,11 @@ def render_page() -> str:
       border-radius:50%;
     }
     .brand-mark::before{width:18px;height:18px}
-    .brand-mark::after{width:8px;height:8px;border-color:var(--orange)}
+    .brand-mark::after{width:8px;height:8px;border-color:var(--brand-orange)}
     .brand-mark span{width:24px;height:24px;border-top-color:transparent;transform:rotate(-25deg)}
     .brand-copy{display:grid;gap:1px}
     .wordmark{font-size:16px;font-weight:700;line-height:1.2}
-    .wordmark b{color:var(--orange)}
+    .wordmark b{color:var(--brand-orange)}
     .brand-copy small{color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
     .nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
     .nav a{
@@ -412,7 +451,7 @@ def render_page() -> str:
       border-bottom:1px solid var(--line);
     }
     .kicker{display:block;color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-    h1{margin:12px 0 14px;font-size:clamp(42px,7vw,78px);line-height:.96;letter-spacing:-.06em;text-wrap:balance}
+    h1{margin:12px 0 14px;font-size:clamp(42px,7vw,78px);line-height:1.04;letter-spacing:0;text-wrap:balance}
     h1 span{color:var(--orange)}
     .hero p{max-width:650px;margin:0;color:var(--muted);font-size:16px}
     .hero-meta{
@@ -426,15 +465,12 @@ def render_page() -> str:
     .hero-meta b{display:block;font-size:24px;line-height:1.1;white-space:nowrap}
     .hero-meta #first-snapshot,.hero-meta #last-snapshot{font-size:18px;letter-spacing:-.025em}
     .hero-meta span{color:var(--muted);font-size:11px}
-    .method{
-      display:grid;
-      grid-template-columns:110px 1fr;
-      gap:20px;
-      padding:22px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .method h2{margin:0;color:var(--orange);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-    .method p{max-width:850px;margin:0;color:var(--muted);font-size:13px}
+    .method{margin-top:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .method summary{padding:14px 0;color:var(--blue);font-size:12px;font-weight:800;cursor:pointer;list-style:none}
+    .method summary::-webkit-details-marker{display:none}
+    .method summary::after{content:"展开";float:right;color:var(--muted);font-size:10px;font-weight:600}
+    .method[open] summary::after{content:"收起"}
+    .method p{max-width:850px;margin:0;padding:0 0 18px;color:var(--muted);font-size:13px}
     .controls{
       position:sticky;
       top:0;
@@ -483,7 +519,7 @@ def render_page() -> str:
     .language{padding:2px 6px;border:1px solid var(--line);color:var(--muted);font-size:10px;font-weight:700}
     .confidence{padding:2px 6px;font-size:10px;font-weight:700}
     .confidence-high{color:var(--green);background:var(--green-soft)}
-    .confidence-medium{color:#8a5a15;background:#fff4d7}
+    .confidence-medium{color:#59667d;background:#edf1f6}
     .confidence-low{color:#9a3f33;background:#fff0ed}
     .summary{max-width:760px;margin:0;color:#444b55;font-size:14px}
     .original-description{
@@ -536,10 +572,15 @@ def render_page() -> str:
       .topbar{align-items:flex-start}
       .nav{max-width:190px}
       .nav a{padding:5px 7px;font-size:11px}
-      .hero{padding:42px 0 28px}
+      .hero{gap:20px;padding:28px 0 20px}
+      .hero h1{font-size:44px}
+      .hero p{font-size:14px;line-height:1.65}
       .hero-meta{grid-template-columns:repeat(2,1fr)}
-      .method{grid-template-columns:1fr;gap:8px}
-      .controls{position:static;grid-template-columns:1fr}
+      .hero-meta div{padding:10px 12px}
+      .hero-meta b{font-size:20px}
+      .controls{position:static;grid-template-columns:1fr 1fr;padding:12px 0}
+      .controls .field:first-child{grid-column:1 / -1}
+      .field input,.field select{height:48px}
       .rank-row{grid-template-columns:38px minmax(0,1fr);gap:12px;padding:20px 0}
       .rank-number{grid-column:1;grid-row:1;padding-top:4px}
       .repo-main{grid-column:2;grid-row:1}
@@ -591,11 +632,6 @@ def render_page() -> str:
         </div>
       </section>
 
-      <section class="method">
-        <h2 class="mono">Ranking Method</h2>
-        <p>总分 100：持续入榜 30%、增长信号 20%、战略评分 20%、近期热度 15%、最佳名次 10%、最近出现 5%。增长信号取“快照期间 Star 变化”和“单期最高增长”的较高值。它是当前样本内的相对分，每次更新会重新标定；Star 只代表关注度，不等于采用度、生产可用性或商业价值。中文摘要优先来自人工 brief 与日报，缺失时保留仓库原始 description，不做猜测式翻译。</p>
-      </section>
-
       <form class="controls" id="controls" role="search">
         <div class="field">
           <label for="query">搜索项目或能力</label>
@@ -633,6 +669,10 @@ def render_page() -> str:
         <div class="ranking" id="ranking"></div>
         <nav class="pagination" id="pagination" aria-label="榜单分页"></nav>
       </section>
+      <details class="method">
+        <summary>查看计分方法</summary>
+        <p>总分 100：持续入榜 30%、增长信号 20%、战略评分 20%、近期热度 15%、最佳名次 10%、最近出现 5%。增长信号取“快照期间 Star 变化”和“单期最高增长”的较高值。它是当前样本内的相对分，每次更新会重新标定；Star 只代表关注度，不等于采用度、生产可用性或商业价值。中文摘要优先来自人工 brief 与日报，缺失时保留仓库原始 description，不做猜测式翻译。</p>
+      </details>
     </main>
 
     <footer class="footer">

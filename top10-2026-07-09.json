@@ -77,10 +77,9 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "RAG",
-      "运行时"
+      "RAG 检索",
+      "技能扩展",
+      "工作区"
     ],
     "brief_zh": {
       "summary": "一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。"
@@ -164,8 +163,7 @@
     "capability_tags": [
       "Wi-Fi 感知",
       "存在检测",
-      "动作识别",
-      "生命体征监测"
+      "动作识别"
     ],
     "brief_zh": {
       "summary": "利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。",
@@ -233,10 +231,9 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "运行时"
+      "容器运行时",
+      "安全约束"
     ]
   },
   {
@@ -313,7 +310,6 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
       "长期记忆",
       "技能扩展",
       "大模型应用"
@@ -404,8 +400,7 @@
     "capability_tags": [
       "近期研究",
       "跨平台检索",
-      "信号排序",
-      "证据综合"
+      "信号排序"
     ],
     "brief_zh": {
       "summary": "一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。",
@@ -487,11 +482,17 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "RAG"
-    ]
+      "团队记忆中枢",
+      "对话记忆",
+      "Skills 管理"
+    ],
+    "brief_zh": {
+      "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
+      "audience": "需要在多个 Agent 和团队成员之间共享知识、技能与代码上下文的研发组织",
+      "capabilities": "团队记忆中枢、对话记忆、Skills 管理、知识库、代码图谱",
+      "risk": "集中记忆会扩大隐私、权限和数据治理边界，落地前需要明确隔离、删除和审计机制"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tinyhumansai",
@@ -550,7 +551,6 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
       "长期记忆",
       "MCP 集成",
       "工作流"
@@ -631,10 +631,9 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "RAG"
+      "RAG 检索",
+      "大模型应用"
     ]
   },
   {
@@ -709,9 +708,8 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
       "长期记忆",
-      "RAG",
+      "RAG 检索",
       "技能扩展"
     ]
   },
@@ -776,10 +774,9 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "技能扩展"
+      "技能扩展",
+      "大模型应用"
     ]
   }
 ]

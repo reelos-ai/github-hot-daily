@@ -78,10 +78,9 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "MCP 集成"
+      "MCP 集成",
+      "RAG 检索"
     ],
     "brief_zh": {
       "summary": "一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。"
@@ -156,10 +155,9 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
-      "运行时",
-      "大模型应用"
+      "大模型应用",
+      "AI Agent 工具"
     ],
     "brief_zh": {
       "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
@@ -224,9 +222,8 @@
     "strategic_score": 94,
     "capability_tags": [
       "长期记忆",
-      "运行时",
       "评测",
-      "inference"
+      "模型推理"
     ]
   },
   {
@@ -309,10 +306,9 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "MCP 集成"
+      "MCP 集成",
+      "RAG 检索"
     ],
     "brief_zh": {
       "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
@@ -399,8 +395,7 @@
     "capability_tags": [
       "AI 安全测试",
       "漏洞发现",
-      "渗透测试",
-      "修复建议"
+      "渗透测试"
     ],
     "brief_zh": {
       "summary": "一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。",
@@ -464,10 +459,9 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
       "长期记忆",
       "MCP 集成",
-      "inference"
+      "模型推理"
     ]
   },
   {
@@ -544,8 +538,7 @@
     },
     "strategic_score": 91,
     "capability_tags": [
-      "Agent 工具",
-      "RAG",
+      "RAG 检索",
       "大模型应用",
       "工作流"
     ]
@@ -609,11 +602,17 @@
     },
     "strategic_score": 91,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "技能扩展"
-    ]
+      "Agent 视频编辑",
+      "代码化剪辑",
+      "自动化工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+      "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
+      "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
+      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "commaai",
@@ -676,8 +675,7 @@
     "capability_tags": [
       "长期记忆",
       "工作流",
-      "advanced-driver-assistance-systems",
-      "driver-assistance-systems"
+      "高级辅助驾驶"
     ]
   },
   {
@@ -740,9 +738,8 @@
     "strategic_score": 90,
     "capability_tags": [
       "长期记忆",
-      "RAG",
-      "工作区",
-      "compiler"
+      "RAG 检索",
+      "工作区"
     ]
   }
 ]

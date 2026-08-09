@@ -1,0 +1,775 @@
+[
+  {
+    "owner": "firecrawl",
+    "name": "pdf-inspector",
+    "full_name": "firecrawl/pdf-inspector",
+    "url": "https://github.com/firecrawl/pdf-inspector",
+    "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
+    "language": "Rust",
+    "total_stars": 11341,
+    "forks": 754,
+    "stars_this_period": 1583,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "markdown",
+        "nodejs",
+        "ocr-routing",
+        "pdf",
+        "pdf-classification",
+        "pdf-extraction",
+        "pdf-parser",
+        "python",
+        "rust",
+        "text-extraction"
+      ],
+      "license": "MIT",
+      "open_issues": 78,
+      "created_at": "2026-02-06T19:44:47Z",
+      "pushed_at": "2026-08-05T17:22:14Z",
+      "homepage": "https://firecrawl.github.io/pdf-inspector/",
+      "default_branch": "main",
+      "forks": 754,
+      "watchers": 26,
+      "archived": false,
+      "size_kb": 11540
+    },
+    "readme_content": "# pdf-inspector\n\n[![Crates.io](https://img.shields.io/crates/v/pdf-inspector.svg)](https://crates.io/crates/pdf-inspector)\n[![npm](https://img.shields.io/npm/v/@firecrawl/pdf-inspector.svg)](https://www.npmjs.com/package/@firecrawl/pdf-inspector)\n[![PyPI](https://img.shields.io/pypi/v/pdf-inspector.svg)](https://pypi.org/project/pdf-inspector/)\n[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)\n\nFast Rust library for PDF classification and text extraction. Detects whether a PDF is text-based or scanned, extracts text with position awareness, and converts to clean Markdown — all without OCR. Includes bindings for [Python](docs/python.md), [Node.js](napi/README.md), and [browser WebAssembly](wasm/README.md).\n\nBuilt by [Firecrawl](https://firecrawl.dev) to handle text-based PDFs locally in under 200ms, skipping expensive OCR services for the ~54% of PDFs that don't need them.\n\n## Features\n\n- **Smart classification** — Detect TextBased, Scanned, ImageBased, or Mixed PDFs in ~10-50ms by sampling content streams. Returns a confidence score (0.0-1.0) and per-page OCR routing.\n- **Text extraction** — Position-aware extraction with font info, X/Y coordinates, and automatic multi-column reading order.\n- **Markdown conversion** — Headings (H1-H4 via font size ratios), bullet/numbered/letter lists, code blocks (monospace font detection), tables (rectangle-based and heuristic), bold/italic formatting, URL linking, and page breaks.\n- **Table detection** — Dual-mode: rectangle-based detection from PDF drawing ops, plus heuristic detection from text alignment. Handles financial tables, footnotes, and continuation tables across pages.\n- **CID font support** — ToUnicode CMap decoding for Type0/Identity-H fonts, UTF-16BE, UTF-8, and Latin-1 encodings.\n- **Multi-column layout** — Automatic detection of newspaper-style columns, sequential reading order, and RTL text support.\n- **Encoding issue detection** — Automatically flags broken font encodings so callers can fall back to OCR.\n- **Single document load** — The document is parsed once and shared between detection and extraction, avoiding redundant I/O.\n- **Browser WebAssembly** — Run the same Rust parser locally in browsers and Web Workers, with embedded CMaps and no server round trip.\n- **Lightweight** — Pure Rust, no ML models, no external services. Single dependency on `lopdf` for PDF parsing.\n\n## Benchmark\n\nEvaluated on the [opendataloader-bench](https://github.com/opendataloader-project/opendataloader-bench) corpus (200 PDFs). Only local engines without model-based PDF parsing are shown; OCR was disabled. Scores are 0-1, higher is better.\n\n| Engine | Overall | Reading Order (NID) | Tables (TEDS) | Headings (MHS) | Speed (200 docs) |\n|---|---|---|---|---|---|\n| pdf-inspector | **0.875** | **0.915** | **0.814** | 0.788 | **0.470s** |\n| liteparse | 0.873 | 0.913 | 0.693 | **0.811** | 0.750s |\n| opendataloader | 0.831 | 0.902 | 0.489 | 0.739 | 2.569s |\n| pymupdf4llm | 0.735 | 0.886 | 0.401 | 0.424 | 17.117s |\n| markitdown | 0.589 | 0.844 | 0.273 | 0.000 | 16.165s |\n\nResults were refreshed on July 31, 2026, on an Apple M4 Pro. Engine versions were pdf-inspector 0.2.6, LiteParse 2.10.1, OpenDataLoader 2.2.1, PyMuPDF4LLM 0.2.0, and MarkItDown 0.1.5. Speed is the median of five alternating or rotating complete corpus runs after an excluded warm-up run, with each parser processing documents sequentially in a single process.\n\nThe complete parser configuration, per-document predictions, evaluator output, and generated charts are available in the [reproducible results branch](https://github.com/firecrawl/opendataloader-bench/tree/abi/pdf-parser-benchmark-results).\n\n**Best fit:** Native-text PDFs where speed, reading order, and table structure matter. In this comparison, pdf-inspector delivered the higher overall, reading-order, and table scores, along with the fastest complete run. That makes it a strong local default for reports, research papers, financial documents, invoices, and legal PDFs that need clean, structured Markdown without adding OCR latency or infrastructure.\n\nUse the [paired benchmark harness](docs/benchmarking.md) to compare two local builds against the exact same corpus and evaluator revision.\n\n## Quick start\n\n### Python\n\n```bash\npip install maturin\nmaturin develop --release\n```\n\n```python\nimport pdf_inspector\n\nresult = pdf_inspector.process_pdf(\"document.pdf\")\nprint(result.pdf_type)   # \"text_based\", \"scanned\", \"image_based\", \"mixed\"\nprint(result.markdown)   # Markdown string or None\n```\n\n> Full API reference: [docs/python.md](docs/python.md)\n\n### Node.js\n\n```bash\nnpm install @firecrawl/pdf-inspector\n```\n\n```javascript\nimport { readFileSync } from 'fs';\nimport { processPdf, classifyPdf } from '@firecrawl/pdf-inspector';\n\nconst result = processPdf(readFileSync('document.pdf'));\nconsole.log(result.pdfType);   // \"TextBased\", \"Scanned\", \"ImageBased\", \"Mixed\"\nconsole.log(result.markdown);  // Markdown string or null\n```\n\n> Full API reference: [napi/README.md](napi/README.md)\n\n### Browser WebAssembly\n\n```bash\nnpm install @firecrawl/pdf-inspector-wasm\n```\n\n```javascript\nimport init, { processPdf } from '@firecrawl/pdf-inspector-wasm';\n\nawait init();\nconst response = await fetch('/document.pdf');\nconst pdf = new Uint8Array(await response.arrayBuffer());\nconst result = processPdf(pdf);\n\nconsole.log(result.pdfType);\nconsole.log(result.markdown);\n```\n\n> Full API reference: [wasm/README.md](wasm/README.md)\n\n### Rust\n\nInstall from [crates.io](https://crates.io/crates/pdf-inspector):\n\n```bash\ncargo add pdf-inspector\n```\n\nOr add it manually:\n\n```toml\n[dependencies]\npdf-inspector = \"0.1\"\n```\n\n```rust\nuse pdf_inspector::process_pdf;\n\nlet result = process_pdf(\"document.pdf\")?;\nprintln!(\"Type: {:?}\", result.pdf_type);\nif let Some(markdown) = &result.markdown {\n    println!(\"{}\", markdown);\n}\n```\n\n> Full API reference: [docs/rust-api.md](docs/rust-api.md)\n\n### CLI\n\n```bash\n# Install the CLI tools\ncargo install pdf-inspector\n\n# Convert PDF to Markdown\npdf2md document.pdf\n\n# JSON output (for piping)\npdf2md document.pdf --json\n\n# Positioned TextItem JSON, including is_underline metadata\npdf2md document.pdf --items-json\n\n# Raw markdown only (no headers)\npdf2md document.pdf --raw\n\n# Token-efficient output (collapses long dot leaders and similar source padding)\npdf2md document.pdf --compact\n\n# Insert page break markers (<!-- Page N -->)\npdf2md document.pdf --pages\n\n# Process only specific pages\npdf2md document.pdf --select-pages 1,3,5-10\n\n# Detection only (no extraction)\ndetect-pdf document.pdf\ndetect-pdf document.pdf --json\n\n# Detection + layout analysis (tables, columns)\ndetect-pdf document.pdf --analyze --json\n```\n\nFrom a source checkout, use `cargo run --bin pdf2md -- document.pdf` or `cargo run --bin detect-pdf -- document.pdf` instead.\n\n## Architecture\n\n```\nPDF bytes\n  │\n  ├─► detector         → PdfType (TextBased / Scanned / ImageBased / Mixed)\n  │\n  └─► extractor\n        ├─ fonts        → font widths, encodings\n        ├─ content_stream → walk PDF operators → TextItems + PdfRects\n        ├─ xobjects     → Form XObject text, image placeholders\n        ├─ links        → hyperlinks, AcroForm fields\n        └─ layout       → column detection → line grouping → reading order\n              │\n              ├─► tables\n              │     ├─ detect_rects      → rectangle-based tables (union-find)\n              │     ├─ detect_heuristic  → alignment-based tables\n              │     ├─ grid              → column/row assignment → cells\n              │     └─ format            → cells → Markdown table\n              │\n              └─► markdown\n                    ├─ analysis     → font stats, heading tiers\n                    ├─ preprocess   → merge headings, drop caps\n                    ├─ convert      → line loop + table/image insertion\n                    ├─ classify     → captions, lists, code\n                    └─ postprocess  → cleanup → final Markdown\n```\n\nThe document is loaded **once** via `load_document_from_path` / `load_document_from_mem` and shared between the detection and extraction stages, so there's no redundant parsing.\n\n### Project structure\n\n```\nsrc/\n  lib.rs                — Public API, PdfOptions builder, convenience functions\n  python.rs             — PyO3 Python bindings\n  types.rs              — Shared types: TextItem, TextLine, PdfRect, ItemType\n  text_utils.rs         — Character/text helpers (CJK, RTL, ligatures, bold/italic)\n  process_mode.rs       — ProcessMode enum (DetectOnly, Analyze, Full)\n  detector.rs           — Fast PDF type detection without full document load\n  glyph_names.rs        — Adobe Glyph List → Unicode mapping\n  tounicode.rs          — ToUnicode CMap parsing for CID-encoded text\n  extractor/            — Text extraction pipeline\n  tables/               — Table detection and formatting\n  markdown/             — Markdown conversion and structure detection\n  bin/                  — CLI tools (pdf2md, detect_pdf)\nnapi/                   — Node.js/Bun bindings (napi-rs)\nwasm/                   — Browser bindings (wasm-bindgen)\n```\n\n## How classification works\n\n1. Parse the xref table and page tree (no full object load)\n2. Select pages based on `ScanStrategy` (default: all pages with early exit)\n3. Look for `Tj`/`TJ` (text operators) and `Do` (image operators) in content streams\n4. Classify based on text operator presence across sampled pages\n\nThis detects 300+ page PDFs in milliseconds. The result includes `pages_needing_ocr` — a list of specific page numbers that lack text, enabling per-page OCR routing instead of all-or-nothing.\n\n### Scan strategies\n\n| Strategy | Behavior | Best for |\n|---|---|---|\n| `EarlyExit` (default) | Scan all pages, stop on first non-text page | Pipelines routing TextBased PDFs to fast extraction |\n| `Full` | Scan all pages, no early exit | Accurate Mixed vs Scanned classification |\n| `Sample(n)` | Sample `n` evenly distributed pages (first, last, middle) | Very large PDFs where speed matters more than precision |\n| `Pages(vec)` | Only scan specific 1-indexed page numbers | When the caller knows which pages to check |\n\n## Markdown output\n\nThe converter handles:\n\n| Element | How it's detected |\n|---|---|\n| Headings (H1-H4) | Font size tiers relative to body text, with 0.5pt clustering |\n| Bold/italic | Font name patterns (Bold, Italic, Oblique) |\n| Bullet lists | `•`, `-`, `*`, `○`, `●`, `◦` prefixes |\n| Numbered lists | `1.`, `1)`, `(1)` patterns |\n| Letter lists | `a.`, `a)`, `(a)` patterns |\n| Code blocks | Monospace fonts (Courier, Consolas, Monaco, Menlo, Fira Code, JetBrains Mono) and keyword detection |\n| Tables | Rectangle-based detection from PDF drawing ops + heuristic detection from text alignment |\n| Financial tables | Token splitting for consolidated numeric values |\n| Captions | \"Figure\", \"Table\", \"Source:\" prefix detection |\n| Sub/superscript | Font size and Y-offset relative to baseline |\n| URLs | Converted to Markdown links |\n| Hyphenation | Rejoins words broken across lines |\n| Page numbers | Filtered from output |\n| Drop caps | Large initial letters merged with following text |\n| Dot leaders | TOC-style dots collapsed to \" ... \" |\n\n## Use case: smart PDF routing\n\npdf-inspector was built for pipelines that process PDFs at scale. Instead of sending every PDF through OCR:\n\n```\nPDF arrives\n  → pdf-inspector classifies it (~20ms)\n  → TextBased + high confidence?\n      YES → extract locally (~150ms), done\n      NO  → send to OCR service (2-10s)\n```\n\nThis saves cost and latency for the majority of PDFs that are already text-based (reports, papers, invoices, legal docs).\n\n## Debugging\n\nSee [docs/debugging.md](docs/debugging.md) for `RUST_LOG` environment variable usage.\n\n## License\n\n[MIT](LICENSE)\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"pdf-inspector\"\nversion = \"0.1.7\"\nedition = \"2021\"\nautobins = false\nauthors = [\"Firecrawl Team\"]\ndescription = \"Fast PDF inspection, classification, and text extraction with smart scanned vs text-based detection\"\nlicense = \"MIT\"\nrepository = \"https://github.com/firecrawl/pdf-inspector\"\nreadme = \"docs/rust-api.md\"\n# Explicit allowlist: crates.io caps uploads at 10 MiB and tests/fixtures\n# alone exceeds that. external/bcmaps ships in the crate — tounicode.rs\n# loads it at runtime relative to CARGO_MANIFEST_DIR.\ninclude = [\n    \"/src/**\",\n    \"/external/bcmaps/**\",\n    \"/docs/rust-api.md\",\n    \"/LICENSE\",\n    # maturin derives the sdist file list from this allowlist; the stub must\n    # ship so wheels built from the sdist keep their type hints.\n    \"/pdf_inspector.pyi\",\n]\n\n[lib]\nname = \"pdf_inspector\"\ncrate-type = [\"lib\", \"cdylib\"]\n\n[dependencies]\n# Python bindings\npyo3 = { version = \"0.25\", features = [\"extension-module\", \"abi3-py38\"], optional = true }\n\n# Error handling\nthiserror = \"2.0\"\n\n# Logging\nlog = \"0.4\"\n\n# Text processing\nregex = \"1.10\"\nonce_cell = \"1.19\"\nunicode-normalization = \"0.1\"\n\n# TrueType font parsing (for Identity-H CID font cmap extraction)\nttf-parser = \"0.25\"\n\n# Native builds keep lopdf's parallel parser and CLI logging. Browser WASM is\n# deliberately single-threaded so it works without cross-origin isolation.\n[target.'cfg(not(target_arch = \"wasm32\"))'.dependencies]\nlopdf = { version = \"0.42.0\", features = [\"rayon\"] }\nrayon = \"1.10\"\nenv_logger = \"0.11\"\n\n# Browser builds use JavaScript randomness for encrypted PDFs and embed the\n# bundled CMaps because there is no filesystem at runtime.\n[target.'cfg(target_arch = \"wasm32\")'.dependencies]\nlopdf = { version = \"0.42.0\", default-features = false, features = [\"wasm_js\"] }\ninclude_dir = \"0.7\"\n\n[dev-dependencies]\ntempfile = \"3.3\"\n\n[features]\ndefault = []\npython = [\"pyo3\"]\n\n[[bin]]\nname = \"pdf2md\"\npath = \"src/bin/pdf2md.rs\"\n\n[[bin]]\nname = \"detect-pdf\"\npath = \"src/bin/detect_pdf.rs\"\n\n[[bin]]\nname = \"dump_ops\"\npath = \"src/bin/dump_ops.rs\"\n",
+    "strategic_keywords": [
+      "runtime",
+      "llm",
+      "eval"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "PDF 检测",
+      "扫描件识别",
+      "文档分类"
+    ],
+    "brief_zh": {
+      "summary": "一个快速的 Rust PDF 检测库，可识别扫描件与文本型 PDF，并完成分类和文本提取，便于后续自动分流。",
+      "audience": "需要批量处理 PDF、区分 OCR 路径并搭建文档解析流水线的开发者",
+      "capabilities": "PDF 检测、扫描件识别、文档分类、文本提取、Rust 库",
+      "risk": "复杂版式、混合扫描页和损坏文件仍需要单独验证，检测结果不能替代完整解析质量评估"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "NousResearch",
+    "name": "hermes-agent",
+    "full_name": "NousResearch/hermes-agent",
+    "url": "https://github.com/NousResearch/hermes-agent",
+    "description": "The agent that grows with you",
+    "language": "Python",
+    "total_stars": 226029,
+    "forks": 43983,
+    "stars_this_period": 628,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "anthropic",
+        "chatgpt",
+        "claude",
+        "claude-code",
+        "clawdbot",
+        "codex",
+        "hermes",
+        "hermes-agent",
+        "llm",
+        "moltbot",
+        "nous-research",
+        "openai",
+        "openclaw"
+      ],
+      "license": "MIT",
+      "open_issues": 28345,
+      "created_at": "2025-07-22T22:22:28Z",
+      "pushed_at": "2026-08-05T21:54:36Z",
+      "homepage": "https://hermes-agent.nousresearch.com",
+      "default_branch": "main",
+      "forks": 43983,
+      "watchers": 863,
+      "archived": false,
+      "size_kb": 616980
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/banner.png\" alt=\"Hermes Agent\" width=\"100%\">\n</p>\n\n# Hermes Agent ☤\n<p align=\"center\">\n  <a href=\"https://hermes-agent.nousresearch.com/\">Hermes Agent</a> | <a href=\"https://hermes-agent.nousresearch.com/\">Hermes Desktop</a>\n</p>\n<p align=\"center\">\n  <a href=\"https://hermes-agent.nousresearch.com/docs/\"><img src=\"https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge\" alt=\"Documentation\"></a>\n  <a href=\"https://discord.gg/NousResearch\"><img src=\"https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n  <a href=\"https://github.com/NousResearch/hermes-agent/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-green?style=for-the-badge\" alt=\"License: MIT\"></a>\n  <a href=\"https://nousresearch.com\"><img src=\"https://img.shields.io/badge/Built%20by-Nous%20Research-blueviolet?style=for-the-badge\" alt=\"Built by Nous Research\"></a>\n  <a href=\"README.zh-CN.md\"><img src=\"https://img.shields.io/badge/Lang-中文-red?style=for-the-badge\" alt=\"中文\"></a>\n  <a href=\"README.ur-pk.md\"><img src=\"https://img.shields.io/badge/Lang-اردو-green?style=for-the-badge\" alt=\"اردو\"></a>\n  <a href=\"README.es.md\"><img src=\"https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge\" alt=\"Español\"></a>\n</p>\n\n**The self-improving AI agent built by [Nous Research](https://nousresearch.com).** It's the only agent with a built-in learning loop — it creates skills from experience, improves them during use, nudges itself to persist knowledge, searches its own past conversations, and builds a deepening model of who you are across sessions. Run it on a $5 VPS, a GPU cluster, or serverless infrastructure that costs nearly nothing when idle. It's not tied to your laptop — talk to it from Telegram while it works on a cloud VM.\n\nUse any model you want — [Nous Portal](https://portal.nousresearch.com), OpenRouter, OpenAI, your own endpoint, and [many others](https://hermes-agent.nousresearch.com/docs/integrations/providers). Switch with `hermes model` — no code changes, no lock-in.\n\n<table>\n<tr><td><b>A real terminal interface</b></td><td>Full TUI with multiline editing, slash-command autocomplete, conversation history, interrupt-and-redirect, and streaming tool output.</td></tr>\n<tr><td><b>Lives where you do</b></td><td>Telegram, Discord, Slack, WhatsApp, Signal, and CLI — all from a single gateway process. Voice memo transcription, cross-platform conversation continuity.</td></tr>\n<tr><td><b>A closed learning loop</b></td><td>Agent-curated memory with periodic nudges. Autonomous skill creation after complex tasks. Skills self-improve during use. FTS5 session search with LLM summarization for cross-session recall. <a href=\"https://github.com/plastic-labs/honcho\">Honcho</a> dialectic user modeling. Compatible with the <a href=\"https://agentskills.io\">agentskills.io</a> open standard.</td></tr>\n<tr><td><b>Scheduled automations</b></td><td>Built-in cron scheduler with delivery to any platform. Daily reports, nightly backups, weekly audits — all in natural language, running unattended.</td></tr>\n<tr><td><b>Delegates and parallelizes</b></td><td>Spawn isolated subagents for parallel workstreams. Write Python scripts that call tools via RPC, collapsing multi-step pipelines into zero-context-cost turns.</td></tr>\n<tr><td><b>Runs anywhere, not just your laptop</b></td><td>Seven terminal backends — local, Docker, SSH, Singularity, Modal, Daytona, and Vercel Sandbox. Daytona and Modal offer serverless persistence — your agent's environment hibernates when idle and wakes on demand, costing nearly nothing between sessions. Run it on a $5 VPS or a GPU cluster.</td></tr>\n<tr><td><b>Research-ready</b></td><td>Batch trajectory generation, trajectory compression for training the next generation of tool-calling models.</td></tr>\n</table>\n\n---\n\n## Quick Install\n\n### Linux, macOS, WSL2, Termux\n\n```bash\ncurl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash\n```\n\n### Windows (native, PowerShell)\n\n> **Heads up:** Native Windows runs Hermes without WSL — CLI, gateway, TUI, and tools all work natively. If you'd rather use WSL2, the Linux/macOS one-liner above works there too. Found a bug? Please [file issues](https://github.com/NousResearch/hermes-agent/issues).\n\nRun this in PowerShell:\n\n```powershell\niex (irm https://hermes-agent.nousresearch.com/install.ps1)\n```\n\nThe installer handles everything: uv, Python 3.11, Node.js, ripgrep, ffmpeg, **and a portable Git Bash** (MinGit, unpacked to `%LOCALAPPDATA%\\hermes\\git` — no admin required, completely isolated from any system Git install). Hermes uses this bundled Git Bash to run shell commands.\n\nIf you already have Git installed, the installer detects it and uses that instead. Otherwise a ~45MB MinGit download is all you need — it won't touch or interfere with any system Git.\n\n> **Android / Termux:** The tested manual path is documented in the [Termux guide](https://hermes-agent.nousresearch.com/docs/getting-started/termux). On Termux, Hermes installs a curated `.[termux]` extra because the full `.[all]` extra currently pulls Android-incompatible voice dependencies.\n>\n> **Windows:** Native Windows is fully supported — the PowerShell one-liner above installs everything. If you'd rather use WSL2, the Linux command works there too. Native Windows install lives under `%LOCALAPPDATA%\\hermes`; WSL2 installs under `~/.hermes` as on Linux.\n\nAfter installation:\n\n```bash\nsource ~/.bashrc    # reload shell (or: source ~/.zshrc)\nhermes              # start chatting!\n```\n\n### Troubleshooting\n\n#### Windows Defender or antivirus flags `uv.exe` as malware\n\nIf your antivirus (Bitdefender, Windows Defender, etc.) quarantines `uv.exe` from the Hermes `bin` folder (`%LOCALAPPDATA%\\hermes\\bin\\uv.exe`), this is a **false positive**. The file is Astral's `uv` — the Rust Python package manager Hermes bundles to manage its Python environment. ML-based antivirus engines commonly flag unsigned Rust binaries that download and install packages.\n\n**To verify your copy is authentic:**\n\n```powershell\n# Install GitHub CLI if needed\nwinget install --id GitHub.cli\n\n# Login to GitHub\ngh auth login\n\n# Run verification\n$uv = \"$env:LOCALAPPDATA\\hermes\\bin\\uv.exe\"\n$ver = (& $uv --version).Split(' ')[1]\n[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12\n$zip = \"$env:TEMP\\uv.zip\"\nInvoke-WebRequest \"https://github.com/astral-sh/uv/releases/download/$ver/uv-x86_64-pc-windows-msvc.zip\" -OutFile $zip -UseBasicParsing\ngh attestation verify $zip --repo astral-sh/uv\nExpand-Archive $zip \"$env:TEMP\\uv_x\" -Force\n(Get-FileHash \"$env:TEMP\\uv_x\\uv.exe\").Hash -eq (Get-FileHash $uv).Hash\n```\n\nIf attestation says \"Verification succeeded\" and the last line prints `True`, you're good.\n\n**To whitelist Hermes:**\n- **Windows Defender:** Run PowerShell as Admin → `Add-MpPreference -ExclusionPath \"$env:LOCALAPPDATA\\hermes\\bin\"`\n- **Bitdefender:** Add an exception in the Bitdefender console (Protection > Antivirus > Settings > Manage Exceptions)\n- Whitelist the **folder**, not the file hash — Hermes updates `uv` and the hash changes every version\n\nFor more context, see the upstream Astral reports: [astral-sh/uv#13553](https://github.com/astral-sh/uv/issues/13553), [astral-sh/uv#15011](https://github.com/astral-sh/uv/issues/15011), [astral-sh/uv#10079](https://github.com/astral-sh/uv/issues/10079).\n\n---\n\n## Getting Started\n\n```bash\nhermes              # Interactive CLI — start a conversation\nhermes model        # Choose your LLM provider and model\nhermes tools        # Configure which tools are enabled\nhermes config set   # Set individual config values\nhermes config get   # Print individual config values\nhermes gateway      # Start the messaging gateway (Telegram, Discord, etc.)\nhermes setup        # Run the full setup wizard (configures everything at once)\nhermes claw migrate # Migrate from OpenClaw (if coming from OpenClaw)\nhermes update       # Update to the latest version\nhermes doctor       # Diagnose any issues\n```\n\n📖 **[Full documentation →](https://hermes-agent.nousresearch.com/docs/)**\n\n---\n\n## Skip the API-key collection — Nous Portal\n\nHermes works with whatever provider you want — that's not changing. But if you'd rather not collect five separate API keys for the model, web search, image generation, TTS, and a cloud browser, **[Nous Portal](https://portal.nousresearch.com)** covers all of them under one subscription:\n\n- **300+ models** — pick any of them with `/model <name>`\n- **Tool Gateway** — web search (Firecrawl), image generation (FAL), text-to-speech (OpenAI), cloud browser (Browser Use), all routed through your sub. No extra accounts.\n\nOne command from a fresh install:\n\n```bash\nhermes setup --portal\n```\n\nThat logs you in via OAuth, sets Nous as your provider, and turns on the Tool Gateway. Check what's wired up any time with `hermes portal info`. Full details on the [Tool Gateway docs page](https://hermes-agent.nousresearch.com/docs/user-guide/features/tool-gateway).\n\nYou can still bring your own keys per-tool whenever you want — the gateway is per-backend, not all-or-nothing.\n\n---\n\n## CLI vs Messaging Quick Reference\n\nHermes has two entry points: start the terminal UI with `hermes`, or run the gateway and talk to it from Telegram, Discord, Slack, WhatsApp, Signal, or Email. Once you're in a conversation, many slash commands are shared across both interfaces.\n\n| Action                         | CLI                                           | Messaging platforms                                                              |\n| ------------------------------ | --------------------------------------------- | -------------------------------------------------------------------------------- |\n| Start chatting                 | `hermes`                                      | Run `hermes gateway setup` + `hermes gateway start`, then send the bot a message |\n| Start fresh conversation       | `/new` or `/reset`                            | `/new` or `/reset`                                                               |\n| Change model                   | `/model [provider:model]`                     | `/model [provider:model]`                                                        |\n| Set a personality              | `/personality [name]`                         | `/personality [name]`                                                            |\n| Retry or undo the last turn    | `/retry`, `/undo`                             | `/retry`, `/undo`                                                                |\n| Compress context / check usage | `/compress`, `/usage`, `/insights [--days N]` | `/compress`, `/usage`, `/insights [days]`                                        |\n| Browse skills                  | `/skills` or `/<skill-name>`                  | `/<skill-name>`                                                                  |\n| Interrupt current work         | `Ctrl+C` or send a new message                | `/stop` or send a new message                                                    |\n| Platform-specific status       | `/platforms`                                  | `/status`, `/sethome`                                                            |\n\nFor the full command lists, see the [CLI guide](https://hermes-agent.nousresearch.com/docs/user-guide/cli) and the [Messaging Gateway guide](https://hermes-agent.nousresearch.com/docs/user-guide/messaging).\n\n---\n\n## Documentation\n\nAll documentation lives at **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**:\n\n| Section                                                                                             | What's Covered                                             |\n| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |\n| [Quickstart](https://hermes-agent",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "\n\n[project]\nname = \"hermes-agent\"\nversion = \"0.20.0\"\ndescription = \"The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere\"\nreadme = \"README.md\"\n# Upper bound is load-bearing, not cosmetic. uv resolves the project's\n# Python from `requires-python`, and an inherited `UV_PYTHON` env var (or a\n# fresh distro whose newest interpreter uv auto-picks) will otherwise select\n# 3.14, where Rust-backed transitives (e.g. pydantic-core) have no cp314\n# wheel yet and fall back to a maturin source build that fails. Capping at\n# <3.14 makes uv refuse 3.14 with a clear error instead of attempting that\n# build. Raise the ceiling once our Rust transitives ship cp314 wheels.\nrequires-python = \">=3.11,<3.14\"\nauthors = [{ name = \"Nous Research\" }]\nlicense = \"MIT\"\nlicense-files = [\"LICENSE\"]\ndependencies = [\n  # Core — every direct dep is exact-pinned to ==X.Y.Z (no ranges).\n  # Rationale: ranges allow PyPI to ship a fresh version of a transitive\n  # at any time without a code review on our side. Exact pins mean the\n  # only way a new package version reaches a user is via an intentional\n  # update on our end (bump the pin in this file, regenerate uv.lock).\n  # This was tightened on 2026-05-12 in response to the Mini Shai-Hulud\n  # worm hitting mistralai 2.4.6 on PyPI; if that release had been\n  # captured by `mistralai>=2.3.0,<3` rather than an exact pin, every\n  # install in the hours before the quarantine would have pulled it.\n  #\n  # When updating: bump the version below AND regenerate uv.lock with\n  # `uv lock` so the transitive resolution stays consistent. Don't\n  # introduce ranges back without a written justification.\n  #\n  # Scope rule: only packages used by EVERY hermes session belong here.\n  # Anything that's provider-specific (`anthropic`, `firecrawl-py`,\n  # `exa-py`, `fal-client`, `edge-tts`, `parallel-web`) belongs in an\n  # extra and gets lazy-installed via `tools/lazy_deps.py` when the\n  # user picks that backend. Smaller `dependencies` = smaller blast\n  # radius for the next supply-chain attack.\n  \"openai==2.24.0\",\n  \"certifi==2026.5.20\",\n  \"python-dotenv==1.2.2\",\n  \"fire==0.7.1\",\n  \"httpx[socks]==0.28.1\",\n  \"rich==14.3.3\",\n  \"tenacity==9.1.4\",\n  \"pyyaml==6.0.3\",\n  \"ruamel.yaml==0.18.17\",\n  \"requests==2.33.0\",  # CVE-2026-25645\n  \"jinja2==3.1.6\",\n  # Bumped from 2.12.5 to 2.13.4 to pull in pydantic-core 2.46.4.\n  # pydantic-core 2.41.5 (pulled by 2.12.5) segfaults when the OpenAI SDK's\n  # Responses API resource is exercised from a non-main thread, which is the\n  # codex_responses dispatch in agent/chat_completion_helpers.py:_call.\n  \"pydantic==2.13.4\",\n  # Interactive CLI (prompt_toolkit is used directly by cli.py)\n  \"prompt_toolkit==3.0.52\",\n  # Cron scheduler (built-in feature — scheduled cron/interval jobs use croniter).\n  \"croniter==6.0.0\",\n  # ``packaging`` is imported directly on three production paths but was never\n  # declared, so it only reached users transitively (pip/uv pull it for other\n  # tools). The slim official Docker image ships without it, where the\n  # try/except-ImportError fallbacks silently degrade: Hindsight's\n  # ``_meets_minimum_version`` disables update_mode='append' (#40503),\n  # tools/lazy_deps.py treats every version constraint as satisfied, and\n  # hermes_cli/main.py drops to naive requirement parsing. Pure-Python\n  # py3-none-any wheel, no compiled extensions — safe to ship everywhere.\n  # Pinned to the version already resolved in uv.lock (no resolution churn).\n  \"packaging==26.0\",\n  # Markdown -> HTML conversion for rich message delivery (Matrix\n  # `formatted_body`, and the `send_message` tool's HTML path). Now on the\n  # DEFAULT delivery path, not matrix-specific: without it both\n  # gateway/platforms/matrix.py and tools/send_message_tool.py silently fall\n  # back to plain text, so cron/agent deliveries render raw `##`/`**`/tables\n  # in clients like Element (see #32486). Pure-Python py3-none-any wheel\n  # (~108KB, no compiled extensions, no platform constraints), so unlike the\n  # matrix extra's `mautrix`/`python-olm` it's safe to ship everywhere — keeps\n  # it out of the lazy-install path that exists only for the heavy matrix deps.\n  \"Markdown==3.10.2\",\n  # Skills Hub (GitHub App JWT auth — optional, only needed for bot identity)\n  \"PyJWT[crypto]==2.13.0\",  # PYSEC-2026-175/177/178/179\n  # urllib3 2.7.0 fixes GHSA-mf9v-mfxr-j63j (decompression-bomb bypass)\n  # and GHSA-qccp-gfcp-xxvc (header leak across origins).\n  \"urllib3>=2.7.0,<3\",\n  # cryptography is pulled in transitively by PyJWT[crypto]; pin it explicitly\n  # so the WeCom/Weixin crypto paths can't drift below the CVE-fixed floor.\n  \"cryptography==48.0.1\",  # CVE-2026-39892, CVE-2026-34073, GHSA-537c-gmf6-5ccf; ==48.0.1 (not 49.x): msal and alibabacloud-tea-openapi cap <49, hindsight-api-slim needs >=48.0.1\n  # Windows has no IANA tzdata shipped with the OS, so Python's ``zoneinfo``\n  # (PEP 615) raises ``ZoneInfoNotFoundError`` for every non-UTC timezone\n  # out of th",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "llm",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "自学习 Agent",
+      "跨会话记忆",
+      "Skills 生成"
+    ],
+    "brief_zh": {
+      "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
+      "audience": "希望自托管长期运行、可积累个人上下文与技能的 AI 助手用户和开发者",
+      "capabilities": "自学习 Agent、跨会话记忆、Skills 生成、多渠道接入、子 Agent 协作",
+      "risk": "自主学习和长期记忆会扩大权限与隐私边界，需要严格控制工具访问、数据留存和自动执行范围"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "can1357",
+    "name": "oh-my-pi",
+    "full_name": "can1357/oh-my-pi",
+    "url": "https://github.com/can1357/oh-my-pi",
+    "description": "⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more",
+    "language": "TypeScript",
+    "total_stars": 22174,
+    "forks": 2104,
+    "stars_this_period": 355,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agent",
+        "ai-coding-agent",
+        "anthropic",
+        "bun",
+        "claude",
+        "cli",
+        "coding-assistant",
+        "llm",
+        "mcp",
+        "multi-provider",
+        "openai",
+        "rust",
+        "terminal",
+        "tui",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 1079,
+      "created_at": "2025-12-31T14:01:28Z",
+      "pushed_at": "2026-08-05T21:29:11Z",
+      "homepage": "https://omp.sh",
+      "default_branch": "main",
+      "forks": 2104,
+      "watchers": 68,
+      "archived": false,
+      "size_kb": 477908
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://github.com/can1357/oh-my-pi/blob/main/assets/hero.png?raw=true\" alt=\"omp\">\n</p>\n\n<p align=\"center\">\n  <strong>A coding agent with the IDE wired in.</strong>\n  <strong><a href=\"https://omp.sh\">omp.sh</a></strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/@oh-my-pi/pi-coding-agent\"><img src=\"https://img.shields.io/npm/v/@oh-my-pi/pi-coding-agent?style=flat&colorA=222222&colorB=CB3837\" alt=\"npm version\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/CHANGELOG.md\"><img src=\"https://img.shields.io/badge/changelog-keep-E05735?style=flat&colorA=222222\" alt=\"Changelog\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/can1357/oh-my-pi/ci.yml?style=flat&colorA=222222&colorB=3FB950\" alt=\"CI\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/LICENSE\"><img src=\"https://img.shields.io/github/license/can1357/oh-my-pi?style=flat&colorA=222222&colorB=58A6FF\" alt=\"License\"></a>\n  <a href=\"https://www.typescriptlang.org\"><img src=\"https://img.shields.io/badge/TypeScript-3178C6?style=flat&colorA=222222&logo=typescript&logoColor=white\" alt=\"TypeScript\"></a>\n  <a href=\"https://www.rust-lang.org\"><img src=\"https://img.shields.io/badge/Rust-DEA584?style=flat&colorA=222222&logo=rust&logoColor=white\" alt=\"Rust\"></a>\n  <a href=\"https://bun.sh\"><img src=\"https://img.shields.io/badge/runtime-Bun-f472b6?style=flat&colorA=222222\" alt=\"Bun\"></a>\n  <a href=\"https://discord.gg/4NMW9cdXZa\"><img src=\"https://img.shields.io/badge/Discord-5865F2?style=flat&colorA=222222&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\">\n  Fork of <a href=\"https://github.com/badlogic/pi-mono\">Pi</a> by <a href=\"https://github.com/mariozechner\">@mariozechner</a> \n</p>\n\nThe most capable agent surface that ships. Continuously tuned by real-world use — complete out of the box, open all the way down.\n\n**60+** providers · **31** built-in tools · **14** lsp ops · **28** dap ops · **~80k** lines of Rust core.\n\n> [!NOTE]\n> Pull requests are **temporarily open to everyone** as a trial. We previously\n> required a vouch before accepting PRs; that requirement is lifted for now\n> while we evaluate how open contributions go. Depending on the results, the\n> vouch system may return.\n\n## Install\n\n**macOS · Linux**\n\n```sh\ncurl -fsSL https://omp.sh/install | sh\n```\n\n> **Alpine / musl:** the prebuilt musl binary links `libstdc++`/`libgcc` dynamically, which stock Alpine does not ship. Install them first: `apk add libstdc++ libgcc`.\n\n**Homebrew**\n\n```sh\nbrew install can1357/tap/omp\n```\n\n**Bun (recommended)**\n\n```sh\nbun install -g @oh-my-pi/pi-coding-agent\n```\n\n**Windows (PowerShell)**\n\n```powershell\nirm https://omp.sh/install.ps1 | iex\n```\n\n**Pinned versions (mise)**\n\n```sh\nmise use -g github:can1357/oh-my-pi\n```\n\nmacOS · Linux · Windows · bun ≥ 1.3.14\n\n### Shell completions\n\n`omp` generates its own completion scripts for **bash**, **zsh**, and **fish** from the live command/flag metadata, so they never drift from the actual CLI. Subcommands, flags, and enum values complete statically; model names (`--model`, `--smol`, `--slow`, `--plan`) resolve against the bundled model catalog and `--resume` against your on-disk sessions.\n\n```sh\n# zsh — add to ~/.zshrc (or write the output into a file on your $fpath)\neval \"$(omp completions zsh)\"\n\n# bash — add to ~/.bashrc\neval \"$(omp completions bash)\"\n\n# fish\nomp completions fish > ~/.config/fish/completions/omp.fish\n```\n\n## Every tool, _benchmaxxed_.\n\nEdits that land on the first attempt. Reads that summarize files instead of dumping their content. Searches that return instantly. Pick any model — omp will get it right.\n\n| model            | metric       | what                                                                  |\n| ---------------- | ------------ | --------------------------------------------------------------------- |\n| Grok Code Fast 1 | 6.7% → 68.3% | Tenfold lift the moment the edit format stops eating the model alive. |\n| Gemini 3 Flash   | +5 pp        | Over str_replace — beats Google's own best attempt at the format.     |\n| Grok 4 Fast      | −61% tokens  | Output collapses once the retry loop on bad diffs disappears.         |\n| MiniMax          | 2.1×         | Pass rate more than doubles. Same weights, same prompt.               |\n\n- `read` : summarized snippets · ideal defaults · selector hit rate\n- `grep` : fastest in the west\n- `lsp` : everything your IDE knows, the agent knows\n- `prompts` : adjusted relentlessly for each model\n\n[Read the full post ↗](https://blog.can.ac/2026/02/12/the-harness-problem/)\n\n## The Pi _you love_, with **batteries included**.\n\nOriginally built on [Mario Zechner](https://github.com/mariozechner)'s wonderful [Pi](https://github.com/badlogic/pi-mono), omp adds everything you're missing.\n\n### 01 · Code execution w/ tool-calling\n\nMost harnesses give the agent a Python sandbox and call it done. Ours runs persistent Python and a Bun worker, and either kernel can call back into the agent's own tools — read, search, task — over a loopback bridge. The agent loads a CSV with tool.read from inside Python, charts it from JavaScript, and never leaves the cell.\n\n![omp TUI: a single eval session with `[1/2] pandas describe` (Python) printing a real DataFrame.describe() table, followed by `[2/2] top scorer` (JavaScript) running a reduce. Footer: 'Both kernels ran in one session.'](https://omp.sh/captures/eval.webp)\n\n### 02 · LSP wired into every write\n\nAsk for a rename and you get a rename. The call goes through workspace/willRenameFiles, so re-exports, barrel files, and aliased imports update before the file moves. Everything your IDE knows, the agent knows.\n\n![omp TUI: `LSP references` returns five hits across three files for the symbol `formatBytes`, then `LSP rename` applies the change with edits to format.ts/report.ts/cli.ts, then a `Search formatBytes 0 matches` confirmation. Final line: 'Rename complete. Five edits across three files…'.](https://omp.sh/captures/lsp.webp)\n\n_[Read the LSP config docs](docs/lsp-config.md)_\n\n### 03 · Drives a real debugger\n\nA C binary segfaults: the agent attaches lldb, steps to the bad pointer, reads the frame. A Go service hangs: it attaches dlv and walks the goroutines. A Python process is wedged: debugpy, pause, inspect, evaluate. Most agents are still sprinkling print statements.\n\n![omp TUI: a live lldb-dap session against a native binary at /tmp/omp-native/demo. Adapter=lldb-dap, Status=stopped, Frame=xorshift32, Instruction pointer 0x10000055C, Location demo.c:6:10. Debug scopes and Debug variables cards show locals (x = 57351) and the agent confirms the math: x went from 7 → 57351 (= 7 ^ (7<<13)).](https://omp.sh/clips/dap-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/dap.mp4)_\n\n### 04 · Time-traveling stream rules\n\nYour rules sit dormant until the model goes off-script. A regex match aborts the stream mid-token, injects the rule as a system reminder, and retries from the same point. You get course-correction without paying context tax on every turn. Injections survive compaction, so the fix sticks.\n\n![omp TUI: agent reading src.rs and about to write Box::leak when the request aborts (red `Error: Request was aborted`), an amber `⚠ Injecting rule: box-leak` card injects the rule body `Don't reach for Box::leak in production code paths`, and the agent then course-corrects by proposing `Arc<str>` and asking the user to confirm.](https://omp.sh/clips/ttsr-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/ttsr.mp4)_\n\n### 05 · First-class subagents\n\nSplit a job across workers and get typed results back. task fans out into isolated worktrees, each worker runs its own tool surface, and the final yield is a schema-validated object the parent reads directly. No prose to parse, no merge conflicts between siblings, no orphaned edits.\n\n![omp TUI showing `task` spawning two subagents `ComponentsExports` and `RoutesExports`, the constraints block requiring an IRC DM between peers, the per-subagent status cards with cost and duration, and a final Findings section listing both exports plus an honest 'IRC coordination note' about a one-sided handshake.](https://omp.sh/clips/irc-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/irc.mp4)_\n\n### 06 · A second model, watching every turn.\n\nPair a reviewer model to the 'advisor' role and it reads every turn the main agent takes, injecting notes inline — a quiet aside, a concern, or a hard blocker. It runs on its own context and its own model, so it catches what the doer rushed past. The main agent sees the note and course-corrects, or tells you why it won't.\n\n![omp TUI: /advisor status shows the advisor running on openai-codex/gpt-5.5; after the main agent scopes a catch to ENOENT instead of swallowing every error, an amber 'Advisor 1 note (concern)' card warns the fix no longer matches the user's literal acceptance criterion.](https://omp.sh/clips/advisor-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/advisor.mp4)_\n\n### 07 · Hand someone the link, they're in.\n\n/collab puts your live session on a relay and hands back a link — and a QR. A teammate joins from another terminal with omp join, or just opens it in a browser. Share read-write to pair on the same agent, or /collab view for a read-only link anyone can watch but no one can steer. Frames are sealed client-side; the relay never sees your keys.\n\n![omp TUI: /collab view prints 'Collab session started!' with an omp join command, a my.omp.sh browser link, the note 'Anyone with this link can watch the session but cannot prompt the agent', and a large scannable QR code.](https://omp.sh/clips/collab-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/collab.mp4)_\n\n### 08 · Read a pdf on arxiv, why not?\n\nweb_search chains twenty-three ranked providers and hands whatever URLs it finds straight to read. Arxiv PDFs, GitHub pages, Stack Overflow threads come back as structured markdown with anchors intact — the same tool surface you use on local files. Cite, follow, quote, never lose where you came from.\n\n![omp TUI: web_search returns 10 ranked Perplexity sources for inference-time compute scaling, the agent picks an arxiv paper, calls read https://arxiv.org/pdf/2604.10739v1, and summarizes the paper's headline result with real numbers.](https://omp.sh/clips/web-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/web.mp4)_\n\n### 09 · Unapologetically native. Even on Windows.\n\nOther agents shell out to rg, grep, find, and bash. On many machines those binaries don't exist, and on the ones where they do, every call costs a fork-exec round-trip. omp links the real implementations into the process. ripgrep, glob, find: in-process. brush is the bash — with sessions that survive across calls, and 46 vendored coreutils (ls, sed, sort, xargs, even jq via jaq) that run as in-process builtins, zero fork/exec. The same omp binary runs on macOS, Linux, and Windows — no WSL bridge.\n\n### 10 · Code review with priorities and a verdict\n\nGet a clear verdict on whether the change ships, with every issue ranked P0 through P3 and scored for confidence. /review spawns dedicated reviewer subagents that sweep branches, single commits, or uncommitted work in parallel. You tackle what blocks release first; nothing important hides in a wall of prose.\n\n### 11 · Hashline: edit by content hash\n\nPerfect edits, fewer tokens. The model points at anchors instead of retyping the lines it wants to change, so whitespace battles and string-not-found loops just stop happening. Edit a stale file and the anchors diverge — we reject the patch before it corrupts anything. Grok 4 Fast spends 61% fewer output tokens on the same work.\n\n### 12 · GitHub is just another filesystem\n\nOther harnesses bolt on gh_issue_view, gh_pr_view, gh_search — each with its own parameters the agent has to learn and you have to debug. We skipped that. read already ",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"omp\",\n  \"homepage\": \"https://omp.sh\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"packageManager\": \"bun@1.3.14\",\n  \"patchedDependencies\": {\n    \"@ark/schema@0.56.2\": \"patches/@ark%2Fschema@0.56.2.patch\",\n    \"puppeteer-core@25.3.0\": \"patches/puppeteer-core@25.3.0.patch\",\n    \"@agentclientprotocol/sdk@1.2.1\": \"patches/@agentclientprotocol%2Fsdk@1.2.1.patch\"\n  },\n  \"workspaces\": {\n    \"packages\": [\n      \"packages/*\",\n      \"python/robomp/web\"\n    ],\n    \"catalog\": {\n      \"@agentclientprotocol/sdk\": \"1.2.1\",\n      \"@babel/generator\": \"^7.29.7\",\n      \"@babel/parser\": \"^7.29.7\",\n      \"@babel/traverse\": \"^7.29.7\",\n      \"@babel/types\": \"^7.29.7\",\n      \"@biomejs/biome\": \"^2.5.3\",\n      \"@bufbuild/protobuf\": \"^2.12.1\",\n      \"@bufbuild/protoc-gen-es\": \"^2.12.1\",\n      \"@huggingface/transformers\": \"^4.2.0\",\n      \"@mozilla/readability\": \"^0.6.0\",\n      \"@napi-rs/cli\": \"3.7.2\",\n      \"@oh-my-pi/hashline\": \"17.2.9\",\n      \"@oh-my-pi/omp-stats\": \"17.2.9\",\n      \"@oh-my-pi/omptype\": \"17.2.9\",\n      \"@oh-my-pi/pi-agent-core\": \"17.2.9\",\n      \"@oh-my-pi/pi-ai\": \"17.2.9\",\n      \"@oh-my-pi/pi-catalog\": \"17.2.9\",\n      \"@oh-my-pi/pi-coding-agent\": \"17.2.9\",\n      \"@oh-my-pi/pi-mnemopi\": \"17.2.9\",\n      \"@oh-my-pi/pi-natives\": \"17.2.9\",\n      \"@oh-my-pi/pi-tui\": \"17.2.9\",\n      \"@oh-my-pi/pi-utils\": \"17.2.9\",\n      \"@oh-my-pi/pi-wire\": \"17.2.9\",\n      \"@oh-my-pi/snapcompact\": \"17.2.9\",\n      \"@opentelemetry/api\": \"^1.9.1\",\n      \"@opentelemetry/api-logs\": \"^0.220.0\",\n      \"@opentelemetry/context-async-hooks\": \"^2.9.0\",\n      \"@opentelemetry/exporter-logs-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/exporter-metrics-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/exporter-trace-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/resources\": \"^2.9.0\",\n      \"@opentelemetry/sdk-logs\": \"^0.220.0\",\n      \"@opentelemetry/sdk-metrics\": \"^2.9.0\",\n      \"@opentelemetry/sdk-trace-base\": \"^2.9.0\",\n      \"@opentelemetry/sdk-trace-node\": \"^2.9.0\",\n      \"@puppeteer/browsers\": \"^3.0.6\",\n      \"@tailwindcss/node\": \"^4.3.2\",\n      \"@tailwindcss/vite\": \"^4.3.2\",\n      \"@types/babel__generator\": \"^7.27.0\",\n      \"@types/babel__traverse\": \"^7.28.0\",\n      \"@types/bun\": \"^1.3.14\",\n      \"@types/react\": \"^19.2.17\",\n      \"@types/react-dom\": \"^19.2.3\",\n      \"@types/turndown\": \"5.0.6\",\n      \"@typescript/native-preview\": \"7.0.0-dev.20260707.2\",\n      \"@xterm/headless\": \"^6.0.0\",\n      \"chalk\": \"^5.6.2\",\n      \"chart.js\": \"^4.5.1\",\n      \"date-fns\": \"^4.4.0\",\n      \"diff\": \"^9.0.0\",\n      \"fflate\": \"0.8.3\",\n      \"fastembed\": \"2.1.0\",\n      \"fast-xml-parser\": \"^5.9.3\",\n      \"ghostty-web\": \"^0.4.0\",\n      \"handlebars\": \"^4.7.9\",\n      \"header-generator\": \"^2.1.82\",\n      \"linkedom\": \"^0.18.13\",\n      \"lint-staged\": \"^17.0.8\",\n      \"lru-cache\": \"11.5.2\",\n      \"lucide-react\": \"^1.24.0\",\n      \"mammoth\": \"^1.12.0\",\n      \"marked\": \"^18.0.6\",\n      \"mupdf\": \"^1.28.0\",\n      \"onnxruntime-node\": \"1.26.0\",\n      \"postcss\": \"^8.5.16\",\n      \"prettier\": \"^3.9.5\",\n      \"puppeteer-core\": \"25.3.0\",\n      \"react\": \"19.2.7\",\n      \"react-chartjs-2\": \"^5.3.1\",\n      \"react-dom\": \"19.2.7\",\n      \"regexp-tree\": \"^0.1.27\",\n      \"solid-js\": \"^1.9.14\",\n      \"tailwindcss\": \"^4.3.2\",\n      \"ts-morph\": \"^28.0.0\",\n      \"turndown\": \"7.2.4\",\n      \"turndown-plugin-gfm\": \"1.0.2\",\n      \"typescript\": \"^7.0.2\",\n      \"vite\": \"^8.1.4\",\n      \"vite-plugin-solid\": \"^2.11.12\",\n      \"winston\": \"^3.19.0\",\n      \"winston-daily-rotate-file\": \"5.0.0\",\n      \"zod\": \"^4\"\n    }\n  },\n  \"overrides\": {\n    \"@ark/schema\": \"0.56.2\"\n  },\n  \"scripts\": {\n    \"setup\": \"bun install && bun run build:native && bun --cwd=packages/coding-agent link && sh scripts/link-omp.sh\",\n    \"dev\": \"bun --cwd=packages/coding-agent src/cli.ts\",\n    \"dev:timing\": \"PI_TIMING=x bun --cwd=packages/coding-agent --preload ../utils/src/module-timer.ts src/cli.ts\",\n    \"stats\": \"bun --cwd=packages/coding-agent src/cli.ts stats\",\n    \"collab:web:dev\": \"bun --cwd=packages/collab-web run dev\",\n    \"collab:relay\": \"bun --cwd=packages/collab-web run relay\",\n    \"collab:mock-host\": \"bun --cwd=packages/collab-web run mock-host\",\n    \"collab:web:build\": \"bun --cwd=packages/collab-web run build\",\n    \"meta\": \"bun --cwd=packages/metaharness run dev\",\n    \"claude:trace\": \"bun scripts/claude-trace.ts\",\n    \"build\": \"bun run --workspaces --if-present build\",\n    \"build:native\": \"bun --cwd=packages/natives run build\",\n    \"test\": \"bun scripts/ci-test-ts.ts local\",\n    \"test:ts\": \"bun scripts/ci-test-ts.ts local-ts\",\n    \"test:scripts\": \"bun test scripts/ci-release-build-binaries.test.ts scripts/musl-release.test.ts scripts/ci-release-publish.test.ts scripts/release.test.ts\",\n    \"test:rs\": \"bun scripts/run-rs-task.ts test:rs\",\n    \"check\": \"bun run --parallel check:ts check:rs\",\n    \"check:ts\": \"bun run check:tools && bun run --workspaces --if-present check\",\n    \"check:tools\": \"biome check . --no-errors-on-unmatched\",\n    \"check:rs\": \"bun scripts/run-rs-task.ts check:rs\",\n    \"lint\": \"bun run --parallel lint:ts lint",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "MCP 集成",
+      "工作区",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "browser-use",
+    "name": "video-use",
+    "full_name": "browser-use/video-use",
+    "url": "https://github.com/browser-use/video-use",
+    "description": "Edit videos with coding agents",
+    "language": "Python",
+    "total_stars": 19716,
+    "forks": 2446,
+    "stars_this_period": 675,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 63,
+      "created_at": "2026-04-12T01:34:42Z",
+      "pushed_at": "2026-07-01T00:33:52Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 2446,
+      "watchers": 132,
+      "archived": false,
+      "size_kb": 561
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"static/video-use-banner.png\" alt=\"video-use\" width=\"100%\">\n</p>\n\n# video-use\n\nIntroducing **video-use** — edit videos with Claude Code. 100% open source.\n\nDrop raw footage in a folder, chat with Claude Code, get `final.mp4` back. Works for any content — talking heads, montages, tutorials, travel, interviews — without presets or menus.\n\nTry video-use in [Browser Use Cloud](https://cloud.browser-use.com/v4?utm_campaign=video-use-use-in-cloud&utm_source=github).\n\n## What it does\n\n- **Cuts out filler words** (`umm`, `uh`, false starts) and dead space between takes\n- **Auto color grades** every segment (warm cinematic, neutral punch, or any custom ffmpeg chain)\n- **30ms audio fades** at every cut so you never hear a pop\n- **Burns subtitles** in your style — 2-word UPPERCASE chunks by default, fully customizable\n- **Generates animation overlays** via [HyperFrames](https://github.com/heygen-com/hyperframes), [Remotion](https://www.remotion.dev/), [Manim](https://www.manim.community/), or PIL — spawned in parallel sub-agents, one per animation\n- **Self-evaluates the rendered output** at every cut boundary before showing you anything\n- **Persists session memory** in `project.md` so next week's session picks up where you left off\n\n## Setup prompt\n\nPaste into Claude Code, Codex, Hermes, Openclaw, or any agent with shell access:\n\n```text\nSet up https://github.com/browser-use/video-use for me.\n\nRead install.md first to install this repo, wire up ffmpeg, register the skill with whichever agent you're running under, and set up the ElevenLabs API key — ask me to paste it when you need it. Then read SKILL.md for daily usage, and always read helpers/ because that's where the editing scripts live. After install, don't transcribe anything on your own — just tell me it's ready and wait for me to drop footage into a folder.\n```\n\nThe agent handles the clone, dependencies, skill registration, and prompts you once for your ElevenLabs API key (grab one at [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)).\n\nThen point your agent at a folder of raw takes:\n\n```bash\ncd /path/to/your/videos\nclaude    # or codex, hermes, etc.\n```\n\nFor always-on editing from your own VPS or Telegram, run the agent through [Browser Use Box](https://browser-use.com/bux). [Watch the 15-second demo](https://www.tiktok.com/@browser_use/video/7639824093721758989).\n\nAnd in the session:\n\n> edit these into a launch video\n\nIt inventories the sources, proposes a strategy, waits for your OK, then produces `edit/final.mp4` next to your sources. All outputs live in `<videos_dir>/edit/` — the skill directory stays clean.\n\n## Manual install\n\nIf you'd rather do it by hand:\n\n```bash\n# 1. Clone and symlink into your agent's skills directory\ngit clone https://github.com/browser-use/video-use ~/Developer/video-use\nln -sfn ~/Developer/video-use ~/.claude/skills/video-use        # Claude Code\n# ln -sfn ~/Developer/video-use ~/.codex/skills/video-use       # Codex\n\n# 2. Install deps\ncd ~/Developer/video-use\nuv sync                         # or: pip install -e .\nbrew install ffmpeg             # required\nbrew install yt-dlp             # optional, for downloading online sources\n\n# 3. Add your ElevenLabs API key\ncp .env.example .env\n$EDITOR .env                    # ELEVENLABS_API_KEY=...\n```\n\n## How it works\n\nThe LLM never watches the video. It **reads** it — through two layers that together give it everything it needs to cut with word-boundary precision.\n\n<p align=\"center\">\n  <img src=\"static/timeline-view.svg\" alt=\"timeline_view composite — filmstrip + speaker track + waveform + word labels + silence-gap cut candidates\" width=\"100%\">\n</p>\n\n**Layer 1 — Audio transcript (always loaded).** One ElevenLabs Scribe call per source gives word-level timestamps, speaker diarization, and audio events (`(laughter)`, `(applause)`, `(sigh)`). All takes pack into a single ~12KB `takes_packed.md` — the LLM's primary reading view.\n\n```\n## C0103  (duration: 43.0s, 8 phrases)\n  [002.52-005.36] S0 Ninety percent of what a web agent does is completely wasted.\n  [006.08-006.74] S0 We fixed this.\n```\n\n**Layer 2 — Visual composite (on demand).** `timeline_view` produces a filmstrip + waveform + word labels PNG for any time range. Called only at decision points — ambiguous pauses, retake comparisons, cut-point sanity checks.\n\n> Naive approach: 30,000 frames × 1,500 tokens = **45M tokens of noise**.\n> Video Use: **12KB text + a handful of PNGs**.\n\nSame idea as browser-use giving an LLM a structured DOM instead of a screenshot — but for video.\n\n## Pipeline\n\n```\nTranscribe ──> Pack ──> LLM Reasons ──> EDL ──> Render ──> Self-Eval\n                                                              │\n                                                              └─ issue? fix + re-render (max 3)\n```\n\nThe self-eval loop runs `timeline_view` on the _rendered output_ at every cut boundary — catches visual jumps, audio pops, hidden subtitles. You see the preview only after it passes.\n\n## Design principles\n\n1. **Text + on-demand visuals.** No frame-dumping. The transcript is the surface.\n2. **Audio is primary, visuals follow.** Cuts come from speech boundaries and silence gaps.\n3. **Ask → confirm → execute → self-eval → persist.** Never touch the cut without strategy approval.\n4. **Zero assumptions about content type.** Look, ask, then edit.\n5. **12 hard rules, artistic freedom elsewhere.** Production-correctness is non-negotiable. Taste isn't.\n\nSee [`SKILL.md`](./SKILL.md) for the full production rules and editing craft.\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"video-use\"\nversion = \"0.1.0\"\ndescription = \"Conversation-driven video editor skill for Claude Code\"\nlicense = { file = \"LICENSE\" }\nrequires-python = \">=3.10\"\ndependencies = [\n    \"requests\",\n    \"librosa\",\n    \"matplotlib\",\n    \"pillow\",\n    \"numpy\",\n]\n\n[project.optional-dependencies]\nanimations = [\"manim\"]\n\n[build-system]\nrequires = [\"setuptools>=61.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[tool.setuptools]\npy-modules = []\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "llm",
+      "eval"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 视频编辑",
+      "代码化剪辑",
+      "自动化工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+      "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
+      "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
+      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "TencentCloud",
+    "name": "TencentDB-Agent-Memory",
+    "full_name": "TencentCloud/TencentDB-Agent-Memory",
+    "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+    "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+    "language": "TypeScript",
+    "total_stars": 14985,
+    "forks": 1364,
+    "stars_this_period": 1891,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai-agent",
+        "embedding",
+        "llm",
+        "local-first",
+        "long-term-memory",
+        "memory",
+        "openclaw-plugin",
+        "vector-search"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 518,
+      "created_at": "2026-04-07T06:34:26Z",
+      "pushed_at": "2026-08-05T08:04:09Z",
+      "homepage": "",
+      "default_branch": "feat/server_team",
+      "forks": 1364,
+      "watchers": 56,
+      "archived": false,
+      "size_kb": 34185
+    },
+    "readme_content": "\n<div align=\"center\">\n\n<img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" />\n\n### Agents remember. Humans innovate.\n\n<a href=\"https://trendshift.io/repositories/29310?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-29310\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB-Agent-Memory | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n[![npm](https://img.shields.io/npm/v/@tencentdb-agent-memory/memory-tencentdb?color=blue)](https://www.npmjs.com/package/@tencentdb-agent-memory/memory-tencentdb)\n[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)\n[![Node](https://img.shields.io/badge/node-%3E=22.16-brightgreen)](https://nodejs.org/)\n[![OpenClaw](https://img.shields.io/badge/OpenClaw-%3E=2026.3.13-orange)](https://github.com/openclaw/openclaw)\n[![Hermes](https://img.shields.io/badge/Hermes-Gateway-7B61FF)](https://hermes-agent.nousresearch.com/docs/)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/dJQM6mKMF)\n\n[Installation](#installation) · [What is it?](#what-is-tencentdb-agent-memory) · [Team Play](#one-play-style-build-a-growing-agent-team-for-a-one-person-company) · [Technical Implementation](#technical-implementation) · [Benchmark](#benchmark)\n\n[**English**](./README.md) · [简体中文](./README_CN.md)\n\n</div>\n\n---\n\n> **Latest:** Team Memory Beta is evolving quickly — install it and start exploring in minutes.\n\n<td>\n   <video src=\"https://github.com/user-attachments/assets/efb1a808-1f86-4cfe-802c-f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline></video>\n</td>\n\n# Installation\n\nStart all three services in one go (`memory-core` + `memory-hub` + `proxy`):\n\n```bash\ngit clone https://github.com/Tencent/TencentDB-Agent-Memory.git\ncd TencentDB-Agent-Memory/deploy/global-images\ncp .env.example .env\n$EDITOR .env       # Fill in two sets of LLM parameters (memory group + proxy group)\n./start-all.sh     # Launch everything with one command; when finished, it prints a one-liner you can paste directly into Claude\n```\n\nOpen the panel: [http://localhost:8125](http://localhost:8125).\n\nComplete installation documentation (standalone Memory Hub deployment, Proxy + Claude Code / CodeBuddy usage, stop and cleanup, port reference, etc.) is available in [**INSTALL.md**](./INSTALL.md) (中文: [INSTALL_CN.md](./INSTALL_CN.md)).\n\n### Migrating data from an older version\n\nIf you're already on an older release (v1.x / v0.x) and want to bring your existing data over to v2.0.0+, we provide a migration tool:\n\nSee [**Data Migration Tool (v2 → v3)**](./MemoryCore/scripts/migrate-v2-to-v3/README.md) for full usage and flags. New installations can skip this.\n\n# What is TencentDB Agent Memory?\n\nWe started from a practical question: **How do you reduce repetitive work when using Agents?**\n\nIf project context has already been explained, it shouldn't need to be repeated in a new session. If documents have already been read, every Agent shouldn't have to start again from page one. A workflow that already works shouldn't have to be rediscovered next time.\n\nMemory here means more than just \"remembering conversations.\" **Any information that helps the next Agent avoid reinventing the wheel should be saved, organized, and reused.**\n\n```text\nExisting information → Reusable memory assets → Fewer turns → Less rework → More stable results and higher efficiency\n```\n\n### Let experience accumulate, flow, and pass on to the next Agent\n\n**Memory Hub** for Agent teams closes the loop across the entire experience lifecycle: work produces assets, assets circulate through the team, and new members can load the team's save file on day one.\n\n1. **Automatic asset extraction**: Extract Chat Memory and Skills from conversations and tasks; convert documents and code into Wiki and CodeGraph; then manage, review, and route them consistently.\n2. **Portable & multi-Agent compatible**: Memory assets are decoupled from Agent frameworks — they can move across frameworks and be shared and maintained by multiple Agents and team members.\n3. **Cold-start friendly**: Import existing documents, codebases, and Agent conversation sessions. New Agent teams can start from existing experience instead of learning from scratch.\n\n### 🧠 A brain that remembers people and context\n\n- **Chat Memory** retains preferences, facts, decisions, and interaction history.\n- Each Agent automatically gets its own memory when created — no need to re-introduce yourself next time.\n- L0 Conversation → L1 Atom → L2 Scenario → L3 Persona — raw conversations are distilled layer by layer.\n\n<img width=\"\" src=\"assets/images/chat_memory.cn.png\" alt=\"image.png\" />\n\n> \"Don't refactor the old auth module — mobile is still using it.\" — Context this costly shouldn't depend on humans repeating it every time.\n\n### ⚡ A Skill library that accumulates expertise\n\n- After completing complex work, Agents can extract and manage reusable Skills from conversations and tool calls, and import them into the context of a designated Agent when needed.\n- A Skill isn't just a prompt snippet; it has versions, resource files, trigger boundaries, execution steps, and validation rules.\n- Personal Skills are private by default; after review, they can be shared with the team and assigned to other Agents.\n\n<img width=\"\" src=\"assets/images/skill.cn.png\" alt=\"image.png\" />\n\n> Troubleshooting, code review, release checklists — learn it once, and the whole team can use it.\n\n### 📖 A knowledge map that reads both docs and code\n\n- **Wiki** turns product docs, design specs, and ops runbooks into structured pages with a link graph. (Inspired by Karpathy's LLM knowledge base.)\n\n<img src=\"./assets/images/wiki.cn.png\" alt=\"image.png\" />\n\n- **CodeGraph** indexes code symbols, files, call relationships, and impact paths.\n<img width=\"\" src=\"assets/images/codegraph.cn.png\" alt=\"image.png\" />\n\n- Agents can search, read, inspect callers/callees, and perform impact analysis before modifying code.\n\n> Wiki keeps Agents from reading every file list before getting to work. CodeGraph doesn't just tell them \"the code is here\" — it tells them \"changing this might affect those.\"\n\n### 🛡️ A team memory panel controlled by humans\n\n- Create teams and Agents in Memory Hub; review, share, and equip memory assets.\n- Manage ownership, versions, status, visibility, usage counts, and Agent bindings in one place.\n- `private` belongs strictly to the Owner; `team` is visible to all team members; `restricted` grants precise access via User / Role / Agent ACLs.\n- Two role layers: **global System Admin** manages users and teams (creating teams, adding members) and can also use Wiki, CodeGraph, Skill, and other asset management features; **Team-level roles** include Admin (team manager) and Member (regular member), responsible for asset collaboration and access control within a team. Asset ownership is tracked via Owner — the Owner automatically has management permissions for their assets.\n\n<img width=\"\" src=\"assets/images/asset.cn.png\" alt=\"image.png\" />\n\n\n## Cold Start: Load the Save File, Then Get to Work\n\nMost Agents' first task is re-learning your project. TencentDB Agent Memory turns the learning cost you've already paid into a save file:\n\n<img alt=\"Cold Start: import codebase, docs, and history into Memory Hub\" src=\"assets/images/flowchart3.png\" />\n\nSpecifically, these existing assets can be imported directly and processed automatically in the panel:\n\n- **Codebases**: Import existing repositories — **CodeGraph** automatically indexes symbols, files, call relationships, and impact paths.\n- **Documents & files**: Import relevant docs and files — **Wiki** automatically generates structured pages with a link graph.\n- **Conversation sessions**: Import past Agent conversation sessions — **Skills and Chat Memory** are automatically extracted as reusable assets.\n\n> Stop retraining every Agent. Give it the save file.\n\n## One Play Style: Build a Growing Agent Team for a One-Person Company\n\nOpen Memory Hub and create a team:\n\n```text\nTiny but Serious Inc.\n├── 👤 You · Set goals / Make decisions\n├── 🔭 Scout · Research / Find opportunities\n├── 🛠 Builder · Write code / Build products\n├── 🧪 Reviewer · Test / Find issues\n└── 🧠 Agent Memory · Preserve the team's experience\n```\n\nYou're not opening four disconnected chat windows — you're assembling a squad with different roles that can inherit the team's accumulated experience.\n\n### Recruit first, then equip\n\n```text\n🔭 Scout\n   ├── User interview Chat Memory\n   ├── Market research Wiki\n   └── Competitive analysis Skill\n\n🛠 Builder\n   ├── Product Wiki\n   ├── Project CodeGraph\n   └── Feature Delivery Skill\n\n🧪 Reviewer\n   ├── Historical incident Chat Memory\n   ├── Project CodeGraph\n   └── Release Checklist Skill\n```\n\nDifferent roles, different loadouts. Less noise — give each Agent the memory assets it actually needs to get work done.\n\n**The company can be tiny. Experience can compound forever.**\n\n## Memory Assets, Not a Chat Log Warehouse\n\nRAG answers \"what can be found?\" Team Memory also answers \"who can use it, which version is valid, and which Agent should receive it.\"\n\n| | Chat History | Standard RAG | TencentDB Agent Memory |\n| :--- | :---: | :---: | :---: |\n| Cross-session user understanding | △ | △ | ✅ Chat Memory |\n| Distilled executable experience | — | — | ✅ Skill |\n| Document structure & relationships | — | △ Chunk retrieval | ✅ Wiki + Link Graph |\n| Code call graphs & impact scope | — | △ Text match | ✅ CodeGraph |\n| Ownership / Version / Status | — | — | ✅ |\n| Team sharing & Agent loadout | — | — | ✅ |\n| Private / Team / ACL | — | △ | ✅ |\n\n## Memory Hub Is Not a Display Board — It's a Control Panel\n\n| Play Style | What you do in the Hub |\n| :--- | :--- |\n| **Team Up** | Create teams, add people and Agents, define sharing boundaries |\n| **Asset Library** | Browse, search, review, and manage Chat Memory, Skills, Wiki, and CodeGraph |\n| **Agent Loadout** | Bind different memory assets to different Agents; adjust priority and usage mode |\n| **Knowledge Workshop** | Build Wiki and CodeGraph; monitor processing status and asset metadata |\n| **Access Control** | Switch between private, team, and ACL-based access; revoke sharing when needed |\n\nWhen you open an asset, what matters is not just \"what it says,\" but also \"where it came from, which version it is, who it's assigned to, and whether it's been used recently.\"\n\n## Every Loop Gains Experience\n\n<img alt=\"Every Loop Gains Experience: continuous accumulation, making every use smarter\" src=\"assets/images/flowchart4.png\" />\n\nMemory doesn't run the Agent loop; it ensures the next iteration inherits the previous one's results: valuable interactions stay in Chat Memory, proven workflows are distilled into Skills, and document/code changes are updated through Wiki ingest and CodeGraph sync.\n\n**Without Memory, loops may just repeat faster. With inherited memory, each iteration has the chance to be better than the last.**\n\n## One Agent Team: Shared Experience, Not Shared Privacy\n\nNew Chat Memory and Skills are private by default. Sharing is an explicit action, not a default leak.\n\n| Visibility | Semantics |\n| :--- | :--- |\n| `private` | Only the Owner can read — not even team admins |\n| `team` | Team members can read; the Owner / Admin can manage |\n| `restricted` | Precise access via User / Role / Agent ACL |\n| `agent` | For targeted equipping of Agents within the same team |\n\nYou can assign the \"Release Skill\" to the Release Agent, the \"Architecture Wiki\" to all development Agents, and CodeGraph to Coder and Reviewer.\n\n## Technical Implementation\n\nTencentDB Agent Memory doesn't aim to \"store everything.\" It solves three problems: **what's worth keeping, who can use it, and how to retrieve less while retrieving the right things next time.**\n\n<img alt=\"Technical overview: layering (L0–L3), Memory Assets, Memory Hub, identity-based ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "llm",
+      "workflow",
+      "vector",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "团队记忆中枢",
+      "对话记忆",
+      "Skills 管理"
+    ],
+    "brief_zh": {
+      "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
+      "audience": "需要在多个 Agent 和团队成员之间共享知识、技能与代码上下文的研发组织",
+      "capabilities": "团队记忆中枢、对话记忆、Skills 管理、知识库、代码图谱",
+      "risk": "集中记忆会扩大隐私、权限和数据治理边界，落地前需要明确隔离、删除和审计机制"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cloudflare",
+    "name": "computer",
+    "full_name": "cloudflare/computer",
+    "url": "https://github.com/cloudflare/computer",
+    "description": "Give your agent a computer 👾",
+    "language": "TypeScript",
+    "total_stars": 2708,
+    "forks": 124,
+    "stars_this_period": 796,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 14,
+      "created_at": "2026-06-05T10:38:15Z",
+      "pushed_at": "2026-08-05T15:40:06Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 124,
+      "watchers": 14,
+      "archived": false,
+      "size_kb": 3105
+    },
+    "readme_content": "# Cloudflare Computer\n\nCloudflare Computer is a virtual filesystem that lives inside a\nDurable Object. The Durable Object holds the authoritative state in\nSQLite and exposes one pluggable execution surface through\n`workspace.runtime`. Three backends ship today:\n\n- **Container** projects the SQLite state into a sandbox container as\n  a real FUSE mount. A sandbox-side daemon (`computerd`) mounts the state\n  as a filesystem and syncs changes back over a capnweb RPC channel.\n  Full Linux userland, real binaries, real network.\n- **Isolate shell** runs [just-bash](https://github.com/vercel-labs/just-bash)\n  in a Dynamic Worker. It reaches the authoritative Workspace over\n  Workers RPC, so there is no second store or sync round trip.\n- **Isolate JavaScript** runs an ECMAScript module in a fresh Dynamic\n  Worker with structured input/results, durable relative imports,\n  configured libraries, Workspace-backed `node:fs/promises`, and trusted `ws:git` and\n  `ws:artifacts` modules.\n\nA Workspace may register multiple backends under stable IDs.\n`workspace.runtime.exec(source, { backend })` is the single execution\nentry point; the selected backend defines whether `source` is a shell\ncommand or an ECMAScript module. Backends connect lazily on first use.\n\nWorkspace can also be constructed without a backend at all, giving\ncallers the filesystem on its own.\n\n> [!IMPORTANT]\n> **PREVIEW ONLY** This package is provided as a preview for feedback only.\n> APIs are unstable and the design is subject to change.\n>\n> Suitable for experiments, exploration and prototypes. It is NOT suitable\n> for production use at this time.\n>\n> The specification under [`docs/`](docs/) is forward-looking — read it for\n> intent, not as description of the code today.\n\n## Using it\n\nIf you want to build on Cloudflare Computer, install\n[`@cloudflare/computer`](packages/computer/README.md) and follow that\npackage's README — it has the installation steps, the entrypoint map,\nand worked examples of the `fs` and `runtime` surfaces.\n\nTo contribute feedback, see [`CONTRIBUTING.md`](CONTRIBUTING.md).\nApproved collaborators should follow [`COLLABORATORS.md`](COLLABORATORS.md)\nfor setup, build, and test instructions.\n\n## Examples\n\nThe [`examples/`](examples) directory holds runnable consumers of the\npublic surface. Each is a Worker workspace with its own README.\n\n- [`examples/container`](examples/container) — runs `computerd` inside a\n  container, mounts a workspace, and talks to a Durable Object over\n  capnweb. A `write` / `read` / `exec` HTTP surface.\n- [`examples/worker-shell`](examples/worker-shell) — same HTTP surface as the\n  container example, but the shell runs [just-bash](https://github.com/vercel-labs/just-bash)\n  in a Dynamic Worker loaded through `env.LOADER`. No container.\n- [`examples/worker-javascript`](examples/worker-javascript) — mirrors\n  `worker-shell`, but `exec` evaluates an ECMAScript module in a Dynamic\n  Worker instead of running a shell command.\n- [`examples/think`](examples/think) — a [`@cloudflare/think`](https://www.npmjs.com/package/@cloudflare/think)\n  chat agent that uses the workspace as its working directory, reachable\n  from a terminal.\n- [`examples/think-compare-runtimes`](examples/think-compare-runtimes) —\n  a web UI that runs the same agent task against the container and\n  worker runtimes side by side.\n- [`examples/tutorial`](examples/tutorial) — a step-by-step build: one\n  endpoint, one agent that writes a markdown recipe card on the host and\n  runs `pandoc` on it in the container to produce a PDF.\n- [`examples/artifacts`](examples/artifacts) — generates a Worker project\n  in a workspace and publishes it to Cloudflare Artifacts as a\n  clone-ready repo.\n- [`examples/assets`](examples/assets) — turns a prompt into an image with\n  Workers AI, writes it to the workspace, and returns a shareable link\n  through `@cloudflare/computer/assets`.\n\n## Repository layout\n\nThe repo is a small monorepo. Each package has its own README with\npackage-specific status and usage notes.\n\n- [`packages/dofs`](packages/dofs/README.md) (`@cloudflare/dofs`) —\n  Durable Object SQLite-backed virtual filesystem, sync protocol\n  building blocks, and a `@platformatic/vfs` provider for Node.\n- [`packages/rpc`](packages/rpc/README.md)\n  (`@cloudflare/computer-rpc`) — capnweb wire types and\n  server/client helpers shared between the Durable Object and `computerd`.\n- [`packages/computerd`](packages/computerd/README.md)\n  (`@cloudflare/computerd`) — the `computerd` daemon: a FUSE mount plus\n  HTTP/WebSocket RPC server that runs inside the sandbox container.\n- [`packages/computer`](packages/computer/README.md)\n  (`@cloudflare/computer`) — the top-level Computer package\n  consumed by Durable Objects. Work in progress.\n- [`packages/computer-computerd-linux-x64`](packages/computer-computerd-linux-x64/README.md)\n  — private Docker image context for the prebuilt `computerd` linux-x64\n  binary. The image, not an npm package, is the release artifact.\n\n## Performance\n\ncomputerd's FUSE mount beats real disk on metadata-heavy work and\ntrails it on large sequential I/O. See\n[`docs/19_performance.md`](docs/19_performance.md) for the full `fs-bench`\nnumbers, a `cloudflare/sandbox-sdk` `npm install` comparison, and how\nto reproduce them.\n\n## Documentation\n\n- [`docs/`](docs/README.md) — design specification. Forward-looking;\n  treat as intent.\n- [`docs/19_performance.md`](docs/19_performance.md) — filesystem benchmarks.\n\n## Contributing\n\nWe accept bug reports, fix proposals, feature requests, and design\nproposals through issues and discussions. We do not accept unsolicited\npull requests. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the public\ncontribution paths.\n\nApproved collaborators should follow\n[`COLLABORATORS.md`](COLLABORATORS.md) for setup, formatting, testing,\ncommit message, and pull request conventions.\n\nIf you're working in this repo as an agent, start with\n[`AGENTS.md`](AGENTS.md) and the skills under\n[`.agents/skills/`](.agents/skills/).\n\n## License\n\nMIT. See [`LICENSE`](LICENSE).\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@cloudflare/computer\",\n  \"private\": true,\n  \"packageManager\": \"npm\",\n  \"workspaces\": [\n    \"packages/dofs\",\n    \"packages/rpc\",\n    \"packages/computer\",\n    \"packages/computerd\",\n    \"examples/*\"\n  ],\n  \"scripts\": {\n    \"build\": \"npm run build --workspaces --if-present\",\n    \"test\": \"npm test --workspaces --if-present\",\n    \"typecheck\": \"npm run typecheck --workspaces --if-present\",\n    \"build:bin\": \"npm run build:bin --workspaces --if-present\",\n    \"build:docker\": \"npm run build:docker --workspaces --if-present\",\n    \"build:all\": \"npm run build && npm run build:bin && npm run build:docker\",\n    \"format\": \"biome format --write .\",\n    \"check\": \"biome check . && biome format . && sherif --fail-on-warnings\",\n    \"check:fix\": \"biome check . --fix && sherif --fix --select highest\",\n    \"changeset\": \"changeset\"\n  },\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"^2.4.16\",\n    \"@changesets/changelog-github\": \"^0.5.2\",\n    \"@changesets/cli\": \"^2.29.8\",\n    \"@types/node\": \"^25.9.1\",\n    \"esbuild\": \"^0.28.1\",\n    \"pkg-pr-new\": \"^0.0.75\",\n    \"postject\": \"^1.0.0-alpha.6\",\n    \"sherif\": \"^1.11.1\",\n    \"typescript\": \"^6.0.3\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "runtime",
+      "workspace",
+      "eval"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "虚拟文件系统",
+      "Durable Object 状态",
+      "统一运行时"
+    ],
+    "brief_zh": {
+      "summary": "Cloudflare 开源的虚拟计算机底座，把文件系统和状态放进 Durable Object，并通过统一 runtime 暴露给 Agent 使用。",
+      "audience": "需要给 Agent 提供可持久化执行环境、浏览器或桌面式工作区的开发者",
+      "capabilities": "虚拟文件系统、Durable Object 状态、统一运行时、Agent 计算机接口",
+      "risk": "底层抽象新，真实隔离能力、性能和与现有 Agent 工具链的适配成本仍需实测"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "farion1231",
+    "name": "cc-switch",
+    "full_name": "farion1231/cc-switch",
+    "url": "https://github.com/farion1231/cc-switch",
+    "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+    "language": "Rust",
+    "total_stars": 124777,
+    "forks": 8470,
+    "stars_this_period": 458,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "codex",
+        "desktop-app",
+        "grok",
+        "grokbuild",
+        "hermes",
+        "hermes-agent",
+        "mcp",
+        "open-source",
+        "openclaw",
+        "openclaw-ui",
+        "opencode",
+        "provider-management",
+        "rust",
+        "skills",
+        "skills-management",
+        "tauri",
+        "typescript",
+        "wsl-support"
+      ],
+      "license": "MIT",
+      "open_issues": 2040,
+      "created_at": "2025-08-04T14:16:16Z",
+      "pushed_at": "2026-08-05T16:30:39Z",
+      "homepage": "https://ccswitch.io",
+      "default_branch": "main",
+      "forks": 8470,
+      "watchers": 225,
+      "archived": false,
+      "size_kb": 70102
+    },
+    "readme_content": "<div align=\"center\">\n\n# CC Switch\n\n### The All-in-One Manager for Claude Code, Claude Desktop, Codex, Gemini CLI, Grok Build, OpenCode, OpenClaw & Hermes Agent\n\n[![Version](https://img.shields.io/github/v/release/farion1231/cc-switch?color=blue&label=version)](https://github.com/farion1231/cc-switch/releases)\n[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/farion1231/cc-switch/releases)\n[![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%202-orange.svg)](https://tauri.app/)\n[![Downloads](https://img.shields.io/github/downloads/farion1231/cc-switch/total)](https://github.com/farion1231/cc-switch/releases/latest)\n\n<a href=\"https://trendshift.io/repositories/15372\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/15372\" alt=\"farion1231%2Fcc-switch | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n<a href=\"https://www.star-history.com/#farion1231/cc-switch&Date\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=farion1231/cc-switch&theme=dark\" /><img alt=\"Star History Rank\" src=\"https://api.star-history.com/badge?repo=farion1231/cc-switch\" width=\"196\" height=\"55\" /></picture></a>\n\n### 🌐 The Only Official Website: **[ccswitch.io](https://ccswitch.io)**\n\nEnglish | [中文](README_ZH.md) | [日本語](README_JA.md) | [Deutsch](README_DE.md) | [Changelog](CHANGELOG.md)\n\n</div>\n\n## ❤️Sponsor\n\n> [Want to appear here?](mailto:farion1231@gmail.com)\n\n<details open>\n<summary>Click to collapse</summary>\n\n[![Kimi K2.7 Code](https://gcdn.moonshot.cn/growth-cdn/sponsor/kimi-en.png)](https://platform.kimi.ai?track_id=track-20d65732f0aa45dcb1df9691a15610af&aff=cc-switch)\n\nKimi K3 is Moonshot AI's most capable model and the world's first open 3T-class model. With 2.8 trillion parameters, native vision, and a 1-million-token context window, K3 delivers frontier performance across long-horizon coding, knowledge work, and reasoning. CC Switch makes it easy to configure and switch to Kimi across agentic tools. **[Click here to start using Kimi](https://platform.kimi.ai?track_id=track-20d65732f0aa45dcb1df9691a15610af&aff=cc-switch)**\n\n**New user top-up bonus**: register via [this link](https://platform.kimi.ai?track_id=track-20d65732f0aa45dcb1df9691a15610af&aff=cc-switch) and complete your first top-up to receive 10% of the amount as bonus API credit, up to CNY ¥1,000.\n\nDoing mostly coding work? Try the **[Kimi Code subscription](https://www.kimi.com/code/?aff=cc-switch)**.\n\n---\n\n<table>\n<tr>\n<td width=\"180\"><a href=\"https://www.packyapi.ai/register?aff=cc-switch\"><img src=\"assets/partners/logos/packycode.png\" alt=\"PackyCode\" width=\"150\"></a></td>\n<td>Thanks to PackyCode for sponsoring this project! PackyCode is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more. PackyCode provides special discounts for our software users: register using <a href=\"https://www.packyapi.ai/register?aff=cc-switch\">this link</a> and enter the \"cc-switch\" promo code during first recharge to get 10% off.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://zetaapi.ai/go/u117\"><img src=\"assets/partners/logos/zetaapi-banner.png\" alt=\"ZetaAPI\" width=\"150\"></a></td>\n<td>Thanks to ZetaAPI for sponsoring this project! ZetaAPI focuses on real model fidelity, no watered-down responses, no quality degradation, and pricing as low as 35% of official rates. The platform does not mix traffic, secretly replace models with lower-quality alternatives, or use fake model routing. It supports Claude Code, Codex, Gemini, ChatGPT, and other mainstream AI models, helping users significantly reduce API costs while maintaining reliable model quality. At the same time, ZetaAPI provides enterprise-grade SLA-backed stability, standard API compatibility, one API key for multiple models, fast integration, and pay-as-you-go billing, making it suitable for AI products, coding agents, internal business tools, customer service systems, content generation, and automation workflows. If any model is verified to be inconsistent with its stated quality, ZetaAPI backs it with a 10x compensation guarantee, giving users a more stable, transparent, and trustworthy experience. Register via <a href=\"https://zetaapi.ai/go/u117\">this link</a> and use the promo code CC-SWITCH during your first recharge to enjoy an exclusive 10% discount on your first top-up, just for CC Switch users!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://apinebula.ai/VjM74M\"><img src=\"assets/partners/logos/apinebula_banner.png\" alt=\"APINebula\" width=\"150\"></a></td>\n<td>Thanks to APINEBULA for sponsoring this project! APINEBULA, an enterprise-grade AI aggregation platform under Galaxy Video Bureau, leverages extensive platform resources to provide developers, teams, and enterprises with stable, cost-effective access to large language model APIs. The platform integrates leading, full-powered models like Claude, GPT, and Gemini, allowing you to connect to the world's top AI models through a single API, with prices starting as low as 10% of the original cost. Designed for AI programming, Agent development, and business system integration, APINEBULA supports enterprise-grade high concurrency, formal contracts, corporate bank transfers, and invoicing services. APINEBULA provides special discounts for our software users: register using <a href=\"https://apinebula.ai/VjM74M\">this link</a> and enter the <strong>\"ccswitch\"</strong> promo code during your first recharge to get <strong>10% off</strong>.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://www.aicodemirror.ai/register?invitecode=9915W3\"><img src=\"assets/partners/logos/aicodemirror.jpg\" alt=\"AICodeMirror\" width=\"150\"></a></td>\n<td>Thanks to AICodeMirror for sponsoring this project! AICodeMirror provides official high-stability relay services for Claude Code / Codex / Gemini CLI, with enterprise-grade concurrency, fast invoicing, and 24/7 dedicated technical support.\nClaude Code / Codex / Gemini official channels at 38% / 2% / 9% of original price, with extra discounts on top-ups! AICodeMirror offers special benefits for CC Switch users: register via <a href=\"https://www.aicodemirror.ai/register?invitecode=9915W3\">this link</a> to enjoy 20% off your first top-up, and enterprise customers can get up to 25% off!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://pateway.ai/?ch=etzpm8&aff=WB6M6F67#/\"><img src=\"assets/partners/logos/pateway.png\" alt=\"PatewayAI\" width=\"150\"></a></td>\n<td>Thanks to PatewayAI for sponsoring this project! PatewayAI is an API relay service provider built for heavy AI developers, focused on directly relaying official high-quality model APIs. It offers the full Claude lineup and the Codex series, 100% sourced from official channels — no dilution, no fakes, verification welcome. Billing is transparent and every token-level invoice can be audited line by line.\nIt also supports enterprise-grade concurrency and provides a dedicated management platform for enterprise customers — formal contracts and invoicing are available; visit the official website for contact details.\nRegister now via <a href=\"https://pateway.ai/?ch=etzpm8&aff=WB6M6F67#/\">this link</a> to receive $3 in trial credit. Top-ups go as low as 60% of the original price, with a two-way referral bonus of up to $150!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://api.fenno.ai/register?redirect=/purchase?tab=subscription%26group=16&aff=P9MR3D3PLCNL\"><img src=\"assets/partners/logos/fenno-banner.png\" alt=\"Fenno.ai\" width=\"150\"></a></td>\n<td>Thanks to Fenno.ai for sponsoring this project! Fenno.ai is a stable and efficient API relay service provider, currently focused on Codex relay. It is compatible with the OpenAI and Anthropic protocols and can be flexibly used from Codex, Claude Code, OpenCode, and other mainstream coding tools. It reliably supports enterprise-grade workloads of hundreds of billions of tokens per day, with corporate (B2B) settlement and invoicing for both domestic and overseas entities. Fenno.ai offers an exclusive benefit for CC Switch users: subscribe via <a href=\"https://api.fenno.ai/register?redirect=/purchase?tab=subscription%26group=16&aff=P9MR3D3PLCNL\">this link</a> to the incredible ¥9.9 Coding Plan worth $150 in credits, and earn up to 20% in referral rewards — invite more, earn more!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://runapi.co/register?aff=iOKB\"><img src=\"assets/partners/logos/runapi.jpg\" alt=\"RunAPI\" width=\"150\"></a></td>\n<td>Thanks to RunAPI for sponsoring this project! RunAPI is a high-performance and reliable AI model API gateway — one API key gives you access to 150+ mainstream models including OpenAI, Claude, Gemini, DeepSeek, and Grok, with prices as low as 10% of the official rate and excellent stability. It works seamlessly with Claude Code, OpenClaw, and other tools. Exclusive benefit for CC Switch users: register via <a href=\"https://runapi.co/register?aff=iOKB\">this link</a> and enjoy a 10% discount on your first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://www.shengsuanyun.com/?from=CH_4HHXMRYF\"><img src=\"assets/partners/logos/shengsuanyun.png\" alt=\"Shengsuanyun\" width=\"150\"></a></td>\n<td>Thanks to Shengsuanyun for sponsoring this project! Shengsuanyun is a super factory serving AI Native Teams — an industrial-grade AI task parallel execution platform. Its model marketplace aggregates Claude, ChatGPT, Gemini, and other domestic and international LLM and multimedia model capabilities with direct supply. Absolutely no reverse engineering or dilution — platform-wide model SLA availability reaches 99.7%, with <a href=\"https://watch.shengsuanyun.com/status/shengsuanyun\">monitoring dashboards</a> showing green across the board. It also offers enterprise-grade custom gateways for fine-grained team cost and permission management, smart routing, security protection, and BYOK (Bring Your Own Key) hosting. The platform charges on a pay-per-use and tokens plan (coming soon) basis, with invoicing available. Register via <a href=\"https://www.shengsuanyun.com/?from=CH_4HHXMRYF\">this link</a> as a new user to receive ¥10 in credits plus a 10% bonus on your first top-up.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://aigocode.app/invite/CC-SWITCH\"><img src=\"assets/partners/logos/aigocode.png\" alt=\"AIGoCode\" width=\"150\"></a></td>\n<td>Thanks to AIGoCode for sponsoring this project! AIGoCode is an all-in-one platform that integrates Claude Code, Codex, and the latest Gemini models, providing you with stable, efficient, and highly cost-effective AI coding services. The platform offers flexible subscription plans, zero risk of account suspension, direct access with no VPN required, and lightning-fast responses. AIGoCode has prepared a special benefit for CC Switch users: if you register via <a href=\"https://aigocode.app/invite/CC-SWITCH\">this link</a>, you'll receive an extra 10% bonus credit on your first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://aicoding.inc/i/CCSWITCH\"><img src=\"assets/partners/logos/aicoding.jpg\" alt=\"AICoding\" width=\"150\"></a></td>\n<td>Thanks to AICoding for sponsoring this project! AICoding — Global AI Model API Relay Service at Unbeatable Prices! Claude Code at 19% of original price, GPT at just 1%! Trusted by hundreds of enterprises for cost-effective AI services. Supports Claude Code, GPT, Gemini and major domestic models, with enterprise-grade high concurrency, fast invoicing, and 24/7 dedicated technical support. CC Switch users who register via <a href=\"https://aicoding.inc/i/CCSWITCH\">this link</a> get 10% off their first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://subrouter.ai/register?aff=l3ri\"><img src=\"assets/partners/logos/subrouter-banner.png\" alt=\"SubRouter\" width=\"150\"></a></td>\n<td>Thanks to SubRouter for sponsoring this project! SubRouter is a marketplace and smart routing platform for AI service ",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "MCP 集成",
+      "技能扩展",
+      "AI 工具链"
+    ],
+    "brief_zh": {
+      "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "multica-ai",
+    "name": "multica",
+    "full_name": "multica-ai/multica",
+    "url": "https://github.com/multica-ai/multica",
+    "description": "The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.",
+    "language": "Go",
+    "total_stars": 44242,
+    "forks": 5611,
+    "stars_this_period": 335,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "NOASSERTION",
+      "open_issues": 1228,
+      "created_at": "2026-01-13T17:59:46Z",
+      "pushed_at": "2026-08-05T20:57:47Z",
+      "homepage": "https://multica.ai",
+      "default_branch": "main",
+      "forks": 5611,
+      "watchers": 157,
+      "archived": false,
+      "size_kb": 103447
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"docs/assets/banner.jpg\" alt=\"Multica — humans and agents, side by side\" width=\"100%\">\n</p>\n\n<div align=\"center\">\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/logo-dark.svg\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/assets/logo-light.svg\">\n  <img alt=\"Multica\" src=\"docs/assets/logo-light.svg\" width=\"50\">\n</picture>\n\n# Multica\n\n**Your next 10 hires won't be human.**\n\nThe open-source managed agents platform.<br/>\nTurn coding agents into real teammates — assign tasks, track progress, compound skills.\n\n[![CI](https://github.com/multica-ai/multica/actions/workflows/ci.yml/badge.svg)](https://github.com/multica-ai/multica/actions/workflows/ci.yml)\n[![GitHub stars](https://img.shields.io/github/stars/multica-ai/multica?style=flat)](https://github.com/multica-ai/multica/stargazers)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/W8gYBn226t)\n\n[Website](https://multica.ai) · [Docs](https://multica.ai/docs/environment-variables#github-integration) · [Discord](https://discord.gg/W8gYBn226t) · [X](https://x.com/MulticaAI) · [Self-Hosting](SELF_HOSTING.md) · [Contributing](CONTRIBUTING.md)\n\n**English | [简体中文](README.zh-CN.md)**\n\n</div>\n\n## What is Multica?\n\nMultica turns coding agents into real teammates. Assign issues to an agent like you'd assign to a colleague — they'll pick up the work, write code, report blockers, and update statuses autonomously.\n\nNo more copy-pasting prompts. No more babysitting runs. Your agents show up on the board, participate in conversations, and compound reusable skills over time. Think of it as open-source infrastructure for managed agents — vendor-neutral, self-hosted, and designed for human + AI teams. Works with **Claude Code**, **Codex**, **CodeBuddy**, **GitHub Copilot CLI**, **OpenCode**, **OpenClaw**, **Hermes**, **Pi**, **Cursor Agent**, **Kimi**, **Reasonix**, **Kiro CLI**, **Antigravity**, **Qoder CLI**, and **Trae CLI**.\n\nFor larger teams, Squads add a stable routing layer: assign work to a group led by an agent, and the leader delegates to the right member.\n\n<p align=\"center\">\n  <img src=\"docs/assets/hero-screenshot.png\" alt=\"Multica board view\" width=\"800\">\n</p>\n\n## Why \"Multica\"?\n\nMultica — **Mul**tiplexed **I**nformation and **C**omputing **A**gent.\n\nThe name is a nod to Multics, the pioneering operating system of the 1960s that introduced time-sharing — letting multiple users share a single machine as if each had it to themselves. Unix was born as a deliberate simplification of Multics: one user, one task, one elegant philosophy.\n\nWe think the same inflection is happening again. For decades, software teams have been single-threaded — one engineer, one task, one context switch at a time. AI agents change that equation. Multica brings time-sharing back, but for an era where the \"users\" multiplexing the system are both humans and autonomous agents.\n\nIn Multica, agents are first-class teammates. They get assigned issues, report progress, raise blockers, and ship code — just like their human colleagues. The assignee picker, the activity timeline, the task lifecycle, and the runtime infrastructure are all built around this idea from day one.\n\nLike Multics before it, the bet is on multiplexing: a small team shouldn't feel small. With the right system, two engineers and a fleet of agents can move like twenty.\n\n## Features\n\nMultica manages the full agent lifecycle: from task assignment to execution monitoring to skill reuse.\n\n- **Agents as Teammates** — assign to an agent like you'd assign to a colleague. They have profiles, show up on the board, post comments, create issues, and report blockers proactively.\n- **Squads** — group agents (and humans) under a leader agent and assign work to the *squad*. The leader decides who should pick it up, so routing stays stable as the team grows. `@FrontendTeam` instead of `@alice-or-bob-or-carol`.\n- **Autonomous Execution** — set it and forget it. Full task lifecycle management (enqueue, claim, start, complete/fail) with real-time progress streaming via WebSocket.\n- **Autopilots** — schedule recurring work for agents. Cron triggers, webhooks, or manual runs — each autopilot creates the issue and routes it to an agent automatically, so daily standups, weekly reports, and periodic audits run themselves.\n- **Reusable Skills** — every solution becomes a reusable skill for the whole team. Deployments, migrations, code reviews — skills compound your team's capabilities over time.\n- **Unified Runtimes** — one dashboard for all your compute. Local daemons and cloud runtimes, auto-detection of available CLIs, real-time monitoring.\n- **Multi-Workspace** — organize work across teams with workspace-level isolation. Each workspace has its own agents, issues, and settings.\n\n---\n\n## Quick Install\n\n<details open>\n<summary><b>macOS / Linux</b></summary>\n\n<br/>\n\n### Homebrew (recommended)\n\n```bash\nbrew install multica-ai/tap/multica\n```\n\nUse `brew upgrade multica-ai/tap/multica` to keep the CLI current.\n\n### Install script\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash\n```\n\nUse this if Homebrew is not available. The script installs the Multica CLI on macOS and Linux by using Homebrew when it is on `PATH`, otherwise it downloads the binary directly.\n\nThen configure, authenticate, and start the daemon in one command:\n\n```bash\nmultica setup          # Connect to Multica Cloud, log in, start daemon\n```\n\n> **Self-hosting?** Add `--with-server` to deploy a full Multica server on your machine:\n>\n> ```bash\n> curl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash -s -- --with-server\n> multica setup self-host\n> ```\n>\n> This pulls the official Multica images from GHCR (latest stable by default). Requires Docker. See the [Self-Hosting Guide](SELF_HOSTING.md) for details.\n> If the selected GHCR tag has not been published yet, fall back to `make selfhost-build` from a checkout.\n\n</details>\n\n<details>\n<summary><b>Windows (PowerShell)</b></summary>\n\n<br/>\n\n### PowerShell\n\n```powershell\nirm https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.ps1 | iex\n```\n\nThen configure, authenticate, and start the daemon in one command:\n\n```powershell\nmultica setup          # Connect to Multica Cloud, log in, start daemon\n```\n\n> **Self-hosting?** Set the `MULTICA_MODE` environment variable to `with-server` before running the installer to deploy a full Multica server on your machine:\n>\n> ```powershell\n> $env:MULTICA_MODE=\"with-server\"; irm https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.ps1 | iex\n> multica setup self-host\n> ```\n>\n> This pulls the official Multica images from GHCR (latest stable by default). Requires Docker. See the [Self-Hosting Guide](SELF_HOSTING.md) for details.\n\n</details>\n\n---\n\n## Getting Started\n\n### 1. Set up and start the daemon\n\n```bash\nmultica setup           # Configure, authenticate, and start the daemon\n```\n\nThe daemon runs in the background and auto-detects agent CLIs (`claude`, `codex`, `codebuddy`, `copilot`, `opencode`, `openclaw`, `hermes`, `pi`, `cursor-agent`, `kimi`, `reasonix`, `kiro-cli`, `agy`, `qodercli`, `qoderclicn`, `traecli`) on your PATH.\n\n### 2. Verify your runtime\n\nOpen your workspace in the Multica web app. Navigate to **Settings → Runtimes** — you should see your machine listed as an active **Runtime**.\n\n> **What is a Runtime?** A Runtime is a compute environment that can execute agent tasks. It can be your local machine (via the daemon) or a cloud instance. Each runtime reports which agent CLIs are available, so Multica knows where to route work.\n\n### 3. Create an agent\n\nGo to **Settings → Agents** and click **New Agent**. Pick the runtime you just connected and choose a provider (Claude Code, Codex, CodeBuddy, GitHub Copilot CLI, OpenCode, OpenClaw, Hermes, Pi, Cursor Agent, Kimi, Reasonix, Kiro CLI, Antigravity, Qoder CLI, or Trae CLI). Give your agent a name — this is how it will appear on the board, in comments, and in assignments.\n\n### 4. Assign your first task\n\nCreate an issue from the board (or via `multica issue create`), then assign it to your new agent. The agent will automatically pick up the task, execute it on your runtime, and report progress — just like a human teammate.\n\n---\n\n## CLI\n\nThe `multica` CLI connects your local machine to Multica — authenticate, manage workspaces, and run the agent daemon.\n\n| Command | Description |\n|---------|-------------|\n| `multica login` | Authenticate (opens browser) |\n| `multica daemon start` | Start the local agent runtime |\n| `multica daemon status` | Check daemon status |\n| `multica setup` | One-command setup for Multica Cloud (configure + login + start daemon) |\n| `multica setup self-host` | Same, but for self-hosted deployments |\n| `multica workspace list` | List your workspaces (current is marked with `*`) |\n| `multica workspace switch <id\\|slug>` | Switch the default workspace for this profile |\n| `multica issue list` | List issues in your workspace |\n| `multica issue create` | Create a new issue |\n| `multica update` | Update to the latest version |\n\nSee the [CLI and Daemon Guide](CLI_AND_DAEMON.md) for the full command reference.\n\n---\n\n## Architecture\n\n```\n┌──────────────┐     ┌──────────────┐     ┌──────────────────┐\n│   Next.js    │────>│  Go Backend  │────>│   PostgreSQL     │\n│   Frontend   │<────│  (Chi + WS)  │<────│   (pgvector)     │\n└──────────────┘     └──────┬───────┘     └──────────────────┘\n                            │\n                     ┌──────┴───────┐\n                     │ Agent Daemon │  runs on your machine\n                     └──────────────┘  (Claude Code, Codex, CodeBuddy, GitHub Copilot CLI,\n                                        OpenCode, OpenClaw, Hermes, Pi, Cursor Agent,\n                                        Kimi, Reasonix, Kiro CLI, Antigravity, Qoder CLI, Trae CLI)\n```\n\n| Layer | Stack |\n|-------|-------|\n| Frontend | Next.js 16 (App Router) |\n| Backend | Go (Chi router, sqlc, gorilla/websocket) |\n| Database | PostgreSQL 17 with pgvector |\n| Agent Runtime | Local daemon executing Claude Code, Codex, CodeBuddy, GitHub Copilot CLI, OpenCode, OpenClaw, Hermes, Pi, Cursor Agent, Kimi, Reasonix, Kiro CLI, Antigravity, Qoder CLI, or Trae CLI |\n\n## Development\n\nFor contributors working on the Multica codebase, see the [Contributing Guide](CONTRIBUTING.md).\n\n**Prerequisites:** [Node.js](https://nodejs.org/) v20+, [pnpm](https://pnpm.io/) v10.28+, [Go](https://go.dev/) v1.26+, [Docker](https://www.docker.com/)\n\n```bash\nmake dev\n```\n\n`make dev` auto-detects your environment (main checkout or worktree), creates the env file, installs dependencies, sets up the database, runs migrations, and starts all services.\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow, worktree support, testing, and troubleshooting.\n\nAn iOS mobile client lives in [`apps/mobile/`](apps/mobile/) — see its [README](apps/mobile/README.md) for how to build it onto your own iPhone.\n\n\n## License\n\n[Multica License](LICENSE) — the complete Apache License 2.0 text incorporated together with additional conditions — see [NOTICE](NOTICE) for attribution notices.\n\n- Providing Multica as a hosted service to third parties, or embedding it in a commercially distributed product, requires a commercial license obtained from the producer (condition 1a).\n- Unless the producer has granted a written branding waiver, the Multica LOGO, product name, and copyright information may not be removed or modified in a Multica user interface. The user interface is defined by derivation — including `apps/web/`, `apps/desktop/`, `apps/mobile/`, `packages/views/`, and `packages/ui/` — and covers raw source, the frontend container image, and compiled desktop and mobile binaries (condition 1b).\n- Non-interface use (running only the `server/` backend, the daemon, or the CLI) is exem",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "medium",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 任务分派",
+      "进度跟踪",
+      "团队协作"
+    ],
+    "brief_zh": {
+      "summary": "一个开源的编码 Agent 管理平台，可像分配同事一样分派 Issue、跟踪进度与阻塞，并沉淀团队可复用 Skills。",
+      "audience": "需要同时管理多个编码 Agent、并把它们纳入团队协作流程的研发团队",
+      "capabilities": "Agent 任务分派、进度跟踪、团队协作、Skills 沉淀、自托管",
+      "risk": "让 Agent 直接参与 Issue 和代码流程会放大权限、审计与错误传播风险，需要配套人工审批"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "huangruiteng",
+    "name": "loopx",
+    "full_name": "huangruiteng/loopx",
+    "url": "https://github.com/huangruiteng/loopx",
+    "description": "Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.",
+    "language": "Python",
+    "total_stars": 2050,
+    "forks": 160,
+    "stars_this_period": 327,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-control-plane",
+        "agent-ops",
+        "ai-agents",
+        "codex",
+        "long-running-agents",
+        "loop-engineering",
+        "loopx",
+        "workflow-automation"
+      ],
+      "license": "MIT",
+      "open_issues": 25,
+      "created_at": "2026-05-31T14:58:56Z",
+      "pushed_at": "2026-08-05T20:51:31Z",
+      "homepage": "https://my.feishu.cn/wiki/CaL5wMk9ui17ngkWzeUcMlAYnZg",
+      "default_branch": "main",
+      "forks": 160,
+      "watchers": 5,
+      "archived": false,
+      "size_kb": 32592
+    },
+    "readme_content": "<div align=\"center\">\n\n<h1 align=\"center\">LoopX</h1>\n\n<img src=\"docs/assets/loopx-social-preview.png\" alt=\"LoopX loop engineering social preview banner\" width=\"560\">\n\n**The local control plane for long-running AI agent work.**\n\n<sub>Keep objectives, gates, todos, evidence, quota, and handoffs stable while Codex, Claude Code, Cursor, or your own runtime executes bounded turns.</sub>\n\n[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/huangruiteng/loopx?display_name=tag)](https://github.com/huangruiteng/loopx/releases/latest) [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml) [![Local first](https://img.shields.io/badge/control--plane-local--first-brightgreen.svg)](docs/public-private-boundary.md) [![Loop Agents](https://img.shields.io/badge/status-loop%20agents%20early-orange.svg)](docs/product/release-readiness.md)\n\n[Public website](https://huangruiteng.github.io/loopx/) · [Docs](https://huangruiteng.github.io/loopx/docs/) · [Try LoopX](#try-loopx) · [See real loops](#evidence) · [How it works](#why-loopx) · [User manual](https://my.feishu.cn/wiki/CaL5wMk9ui17ngkWzeUcMlAYnZg) · [简体中文](README.zh-CN.md)\n\n**把会干活的 Agent，接成可管理、可复盘、可持续改进的数字员工。**\n\n</div>\n\n---\n\nA lightweight state kernel and agent-agnostic local control plane for loop\nengineering, LoopX keeps long-running work reviewable, restartable, and easier\nto hand off across turns, tools, and agents. It does not replace your agent\nruntime.\n\n**Loop engineering for long-running AI agents and peer agent teams.**\n\n> Keep the loop moving. Keep the judgment human.\n\n<a id=\"how-it-works\"></a>\n\n## Why LoopX\n\nAn agent can finish a task in one session. Long-running work is harder:\nobjectives change, owner decisions appear, evidence goes stale, agents hand work\nto peers, and a scheduler can keep spending after no useful transition remains.\nChat memory and a timer are not enough to govern that.\n\nLoopX keeps the durable control state in one compact layer:\n\n```text\nobjective / issue / project\n   │\n   ▼\nLoopX state: objective + gates + todos + scope + evidence + quota\n   │\n   ├─ human judgment needed? ── yes ─▶ ask a concrete question and wait\n   │\n   ├─ safe fallback available? ──────▶ run one bounded agent slice\n   │\n   ▼\nCodex / Claude Code / Cursor / shell agent executes one turn\n   │\n   ▼\nwrite evidence + handoff + next todo ─▶ quota decides the next tick\n```\n\n![LoopX control-plane board](docs/assets/control-plane-board.svg)\n\nA useful mental model is an\n**[agent-native Kanban for long-running work](docs/development/control-plane-course/00-concept-primer.md)**.\nCards carry identity, authority, evidence, and continuation. Moves are validated\noperators such as claim, gate, monitor, and writeback. The board is a\nprojection; LoopX state remains the source of truth.\n\nRegistered agents are peers. Claims, leases, task boundaries, capabilities, and\ntyped continuation decide who acts next; no durable leader identity is\nrequired.\n\nLoopX is useful when you run:\n\n- multi-day engineering, research, benchmark, or experiment objectives;\n- issue and PR loops that must preserve scope, evidence, and review state;\n- recurring heartbeat or monitor work;\n- projects with owner, safety, publication, or private-data gates;\n- peer-agent teams where ownership, leases, and handoff matter;\n- creator, research, or operations workflows whose progress must remain\n  legible to a non-engineering operator.\n\nLoopX is not an autonomous production controller. Dangerous permissions,\npublishing, production writes, and final ownership stay with the human.\n\n<a id=\"see-it-in-action\"></a>\n\n## Evidence\n\nThese are not one-turn demos. The OpenViking Issue-Fix and Auto ML trajectories\neach span **200+ hours of elapsed loop lifetime** across many bounded turns,\ndecisions, and evidence updates. Elapsed lifetime is wall-clock project time,\nnot 200 hours of continuous model execution or a claim of unattended\nproduction autonomy. Open each visual to inspect the public-safe graph,\nevidence branches, and decisions preserved across turns.\n\n### Open-Source Issue Fix\n\n**200+ hour public contribution arc: PR delivery and reusable fix knowledge\nevolve together.**\n\n<a href=\"docs/assets/long-running-loop-openviking-trajectory.png\">\n  <img src=\"docs/assets/long-running-loop-openviking-trajectory.png\" alt=\"Open-source issue-fix trajectory linking focused PR delivery with reusable LoopX capabilities\" width=\"420\">\n</a>\n\nLoopX's creator uses this path as an\n[OpenViking contributor](https://github.com/volcengine/OpenViking/pulls?q=is%3Apr+author%3Ahuangruiteng).\nThe represented public contribution sequence spans more than 200 elapsed hours\nfrom its first PR creation to the latest represented review or update. The\n[Issue-Fix capability](docs/capabilities/issue-fix/README.md) keeps rolling\nrepository context, revision-stamped fix knowledge, and reviewer-facing\npreferences separate; linked PRs plus current checkout source and tests remain\nauthoritative.\n\n### Auto ML Experiment\n\n**200+ hour owner-run experiment arc: hypotheses, matched evidence, invalid\nlineages, running replicates, and promote/stop gates remain visible in one\ngraph.**\n\n<a href=\"docs/assets/long-running-loop-ml-experiment-trajectory.png\">\n  <img src=\"docs/assets/long-running-loop-ml-experiment-trajectory.png\" alt=\"Auto ML Experiment trajectory with experiment lineages, evidence gates, and promotion decisions\" width=\"760\">\n</a>\n\nThe redacted public-safe graph preserves decision lineage across that 200+ hour\nelapsed window. It is trajectory evidence, not a claim of continuous compute,\nindependent reproduction, or a production result.\n\n### Auto Research\n\n**Proposer, executor, and evaluator/promoter agents iterate in parallel while\ntodo, quota, evidence, and targeted wake remain visible.**\n\n<a href=\"docs/assets/auto-research-multi-agent-showcase.png\">\n  <img src=\"docs/assets/auto-research-multi-agent-showcase.png\" alt=\"Auto Research multi-agent workspace with proposer, executor, evaluator/promoter, todo, quota, evidence, and targeted wake activity\">\n</a>\n\nMore inspectable surfaces:\n\n- the [public homepage](https://huangruiteng.github.io/loopx/) for the product\n  narrative, quick start, and long-running evidence;\n- the [showcase catalog](docs/showcases/README.md), including\n  [blocked-P0 safe rotation](docs/showcases/cases/0617-blocked-p0-safe-rotation.md),\n  [LoopX self-iteration](docs/showcases/cases/0619-loopx-self-iteration.md), and\n  [dynamic workflow orchestration](docs/showcases/cases/0619-dynamic-workflow-hardware-agent.html);\n- the [cross-runtime implementation review demo](docs/product/use-cases/cross-runtime/cross-runtime-impl-review-demo.md);\n- the public [user manual](https://my.feishu.cn/wiki/CaL5wMk9ui17ngkWzeUcMlAYnZg).\n\n<a id=\"quick-start\"></a>\n\n## Try LoopX\n\nRequirements: Python 3.11+, `curl`, `tar`, and a macOS or Linux shell. Git is\nonly needed for contributor clone/canary workflows. The Python package has no\nruntime dependencies outside the standard library.\n\nInstall without cloning:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/huangruiteng/loopx/main/scripts/install-from-github.sh | bash\nexport PATH=\"$HOME/.local/bin:$PATH\"\nloopx doctor\n```\n\nThen connect from your project root:\n\n```bash\ncd /path/to/your-project\nloopx connect\nloopx status\n```\n\nIf the project has not been initialized and `connect` tells you state is\nmissing, use the guided path:\n\n```bash\nloopx start-goal --guided --project . --goal-text \"Your long-running objective\"\n```\n\nLoopX should reuse existing state rather than overwrite it. Keep `.loopx/`,\n`.codex/goals/`, and `.local/` ignored.\n\n### Start From Your Agent\n\n| Host | Recommended start | Loop driver |\n| --- | --- | --- |\n| Codex App | Ask the agent to connect this project to LoopX, run `loopx doctor`, preserve existing state, and report the current gate and next todo. Then use `$loopx <complex task>` or choose `loopx` from `/skills`. | Codex App heartbeat automation, refreshed from `quota should-run.scheduler_hint` |\n| Codex App over SSH | `loopx agent-onboard --agent-type codex-app-ssh --project .` | The returned visible `/goal <task_body>` |\n| Codex CLI | Start `codex` in the project, ask it to connect and diagnose LoopX, then use `$loopx <complex task>` or `/skills`. | Visible `/goal <task_body>`; no hidden headless execution by default |\n| Claude Code | Install the opt-in adapter, then run `/loopx <task>` followed by `/loop`. | Native Claude Code `/loop` gated by LoopX |\n| OpenCode | Install the static command facade; opt in to `--with-goal-bridge` for recurring goals. | OpenCode command facade and explicit goal bridge |\n| Cursor, shell, or custom runner | Use the installer and `loopx doctor`; connect manually or call LoopX from your runner. | Your shell, scheduler, or runner |\n\nThe exact, copy-ready setup messages and host recovery paths live in\n[Getting Started](docs/guides/getting-started.md). Host integrations can inspect\nthe [Codex App host command registry contract](docs/reference/protocols/codex-app-host-command-registry-v0.md),\nthe [Codex CLI packaged install path](docs/product/runtimes/codex-cli/codex-cli-packaged-install.md),\nor the [Claude Code adapter](loopx/claude_goal_mode/README.md).\n\nFor custom runners, read\n[Embed LoopX in Your Agent Runner](docs/guides/custom-agent-runner-integration.md)\nand the [worker bridge install contract](docs/integrations/worker-bridge-install-contract.md).\nThe core tick is deliberately small:\n\n```text\nloopx quota should-run      # should this registered agent act now?\nloopx todo claim            # who owns this slice?\nloopx todo update           # what changed?\nloopx refresh-state         # what should the next turn see?\nloopx quota spend-slot      # account for a completed, validated slice\n```\n\nA successful connection has:\n\n- `loopx doctor` passing;\n- `.loopx/registry.json` and a projected active goal state;\n- `loopx status` showing the current objective, concrete user gate, and next\n  agent todo;\n- a visible loop driver or an exact activation instruction;\n- local runtime state ignored rather than committed.\n\nClone-based install is only for contributors who want the live canary wrapper:\n\n```bash\ngit clone https://github.com/huangruiteng/loopx ~/loopx\n~/loopx/scripts/install-local.sh\nloopx doctor\n```\n\n<a id=\"capability-surface\"></a>\n\n## Capabilities\n\nLoopX folds its control-plane mechanics into five questions:\n\n| Question | What LoopX keeps visible |\n| --- | --- |\n| What is the objective? | The active goal, explicit scope, and current authority. |\n| What happens next? | Ordered user and agent todos, ownership, claims, and leases. |\n| What needs human judgment? | Concrete user gates instead of a vague \"waiting for owner.\" |\n| What evidence changed? | Compact run history, validation, blockers, and accepted writeback. |\n| May the loop continue? | Quota, capabilities, safe fallback, scheduler hints, and stop conditions. |\n\n### Control-Plane Surface\n\n| Surface | What it does | Start with |\n| --- | --- | --- |\n| Goal state and status | Tracks active state, todos, claims, gates, evidence, run history, and first-screen attention. | `loopx status`, `loopx diagnose`, `loopx review-packet` |\n| Quota and interaction contract | Decides whether a turn should deliver, ask, wait, self-repair, or stay quiet. | `loopx quota should-run`, [quota allocation](docs/quota-allocation.md) |\n| Agent runtime bridges | Keeps Codex App, Codex CLI, Claude Code, and generic workers aligned with the same guard. | `loopx heartbeat-prompt`, `loopx codex-cli-bootstrap-message`, `loopx worker-bridge` |\n| Operator surfaces | Renders compact status without making the browser the state authority. | `loopx serve-status`, [dashboard](apps/presentation/dashboard/README.md) |\n| External projections | Projects todos and gates into collaboration surfaces while LoopX remains authoritative. | `loopx lark-kanban`, [Lark Kanban adapter](docs/integrations/lark-kanban-control-plane-adapter.md) |\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=69\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"loopx\"\nversion = \"0.4.1\"\ndescription = \"A lightweight Loop Engineering control plane for long-running agent goals.\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\nlicense = { file = \"LICENSE\" }\nauthors = [{ name = \"LoopX contributors\" }]\ndependencies = []\n\n[project.optional-dependencies]\ntest = [\n  \"jsonschema>=4.23,<5\",\n  \"pytest>=8,<9\",\n  \"pytest-cov>=5,<7\",\n  \"pytest-xdist>=3,<4\",\n  \"ruff>=0.12,<0.16\",\n  \"mypy>=1.18,<2\",\n]\n\n[project.scripts]\nloopx = \"loopx.entrypoint:main\"\nloopx-lark-provider = \"loopx.extensions.lark.provider:main\"\nloopx-openviking-semantic-preference = \"loopx.extensions.openviking_semantic_preference.provider:main\"\n\n[tool.setuptools.packages.find]\ninclude = [\"loopx*\"]\n\n[tool.setuptools.package-data]\n\"loopx.capabilities.auto_research\" = [\"worker_skill/SKILL.md\"]\n\"loopx.extensions.lark\" = [\"extension.toml\"]\n\"loopx.extensions.openviking_periodic_report\" = [\"extension.toml\"]\n\"loopx.extensions.openviking_semantic_preference\" = [\"extension.toml\"]\n\"loopx.opencode_goal_mode\" = [\"*.js\", \"*.mjs\", \"README.md\"]\n\n[tool.mypy]\npython_version = \"3.11\"\nstrict = true\nfiles = [\n  \"loopx/claude_goal_baseline.py\",\n  \"loopx/benchmarks/read_models/benchmark_run_execution_contract.py\",\n  \"loopx/benchmarks/read_models/benchmark_run_failure.py\",\n  \"loopx/control_plane/__init__.py\",\n  \"loopx/control_plane/quota/states.py\",\n  \"loopx/control_plane/runtime/active_user_assisted_pilot.py\",\n  \"loopx/control_plane/runtime/event_store_migration_bridge.py\",\n  \"loopx/control_plane/runtime/time.py\",\n  \"loopx/control_plane/runtime/trajectory_hygiene.py\",\n  \"loopx/control_plane/scheduler/time.py\",\n  \"loopx/control_plane/work_items/delivery_batch_scale.py\",\n  \"loopx/control_plane/work_items/delivery_outcome.py\",\n  \"loopx/control_plane/work_items/lifecycle.py\",\n  \"loopx/presentation/renderers/trajectory_hygiene_markdown.py\",\n  \"loopx/presentation/renderers/turn_envelope_markdown.py\",\n]\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "runtime",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "持久目标",
+      "自动唤醒",
+      "可执行待办"
+    ],
+    "brief_zh": {
+      "summary": "一个面向长期运行编码 Agent 团队的轻量状态内核，用持久目标、自动唤醒、待办和证据日志维持任务连续性。",
+      "audience": "需要让 Codex、Claude Code 等 Agent 跨轮次持续执行并可靠交接的开发者",
+      "capabilities": "持久目标、自动唤醒、可执行待办、证据日志、Agent 交接",
+      "risk": "长期自动执行需要严格控制额度、唤醒条件和完成判定，避免任务循环与资源失控"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "obra",
+    "name": "superpowers",
+    "full_name": "obra/superpowers",
+    "url": "https://github.com/obra/superpowers",
+    "description": "An agentic skills framework & software development methodology that works.",
+    "language": "Shell",
+    "total_stars": 267245,
+    "forks": 23877,
+    "stars_this_period": 931,
+    "source_slice": "all",
+    "source_slices": [
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc",
+        "skills",
+        "subagent-driven-development",
+        "superpowers"
+      ],
+      "license": "MIT",
+      "open_issues": 324,
+      "created_at": "2025-10-09T19:45:18Z",
+      "pushed_at": "2026-08-05T03:16:46Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 23877,
+      "watchers": 1014,
+      "archived": false,
+      "size_kb": 4345
+    },
+    "readme_content": "# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n\n## Quickstart\n\nGive your agent Superpowers: [Claude Code](#claude-code), [Antigravity](#antigravity), [Codex App](#codex-app), [Codex CLI](#codex-cli), [Cursor](#cursor), [Factory Droid](#factory-droid), [Gemini CLI](#gemini-cli), [GitHub Copilot CLI](#github-copilot-cli), [Kimi Code](#kimi-code), [OpenCode](#opencode), [Pi](#pi).\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. \n\nNext up, once you say \"go\", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for your agent to work autonomously for a couple hours at a time without deviating from the plan you put together.\n\nThere's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n#### Superpowers Marketplace\n\nThe Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.\n\n- Register the marketplace:\n\n  ```bash\n  /plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin from this marketplace:\n\n  ```bash\n  /plugin install superpowers@superpowers-marketplace\n  ```\n\n### Antigravity\n\nInstall Superpowers as a plugin from this repository:\n\n```bash\nagy plugin install https://github.com/obra/superpowers\n```\n\nAntigravity runs the plugin's session-start hook, so Superpowers is active from\nthe first message. Reinstall with the same command to update.\n\n### Codex App\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- In the Codex app, click on Plugins in the sidebar.\n- You should see `Superpowers` in the Coding section.\n- Click the `+` next to Superpowers and follow the prompts.\n\n### Codex CLI\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- Open the plugin search interface:\n\n  ```bash\n  /plugins\n  ```\n\n- Search for Superpowers:\n\n  ```bash\n  superpowers\n  ```\n\n- Select `Install Plugin`.\n\n### Cursor\n\n- In Cursor Agent chat, install from marketplace:\n\n  ```text\n  /add-plugin superpowers\n  ```\n\n- Or search for \"superpowers\" in the plugin marketplace.\n\n### Factory Droid\n\n- Register the marketplace:\n\n  ```bash\n  droid plugin marketplace add https://github.com/obra/superpowers\n  ```\n\n- Install the plugin:\n\n  ```bash\n  droid plugin install superpowers@superpowers\n  ```\n\n### Gemini CLI\n\n- Install the extension:\n\n  ```bash\n  gemini extensions install https://github.com/obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  gemini extensions update superpowers\n  ```\n\n### GitHub Copilot CLI\n\n- Register the marketplace:\n\n  ```bash\n  copilot plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin:\n\n  ```bash\n  copilot plugin install superpowers@superpowers-marketplace\n  ```\n\n### Kimi Code\n\nSuperpowers is available in Kimi Code's plugin marketplace.\n\n- Open Kimi Code's plugin manager:\n\n  ```text\n  /plugins\n  ```\n\n- Go to `Marketplace` > `Superpowers` and install it.\n\n- Or install directly from this repository:\n\n  ```text\n  /plugins install https://github.com/obra/superpowers\n  ```\n\n- Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)\n\n### OpenCode\n\nOpenCode uses its own plugin install; install Superpowers separately even if you\nalready use it in another harness.\n\n- Tell OpenCode:\n\n  ```\n  Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md\n  ```\n\n- Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)\n\n### Pi\n\nInstall Superpowers as a Pi package from this repository:\n\n```bash\npi install git:github.com/obra/superpowers\n```\n\nFor local development, run Pi with this checkout loaded as a temporary package:\n\n```bash\npi -e /path/to/superpowers\n```\n\nThe Pi package loads the Superpowers skills and a small extension that injects the `using-superpowers` bootstrap at session startup and again after compaction. Pi has native skills, so no compatibility `Skill` tool is required. Subagent and task-list tools remain optional Pi companion packages.\n\n## The Basic Workflow\n\n1. **brainstorming** - Activates before writing code. Refines rough ideas through questions, explores alternatives, presents design in sections for validation. Saves design document.\n\n2. **using-git-worktrees** - Activates after design approval. Creates isolated workspace on new branch, runs project setup, verifies clean test baseline.\n\n3. **writing-plans** - Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.\n\n4. **subagent-driven-development** or **executing-plans** - Activates with plan. Dispatches fresh subagent per task with two-stage review (spec compliance, then code quality), or executes in batches with human checkpoints.\n\n5. **test-driven-development** - Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit. Deletes code written before tests.\n\n6. **requesting-code-review** - Activates between tasks. Reviews against plan, reports issues by severity. Critical issues block progress.\n\n7. **finishing-a-development-branch** - Activates when tasks complete. Verifies tests, presents options (merge/PR/keep/discard), cleans up worktree.\n\n**The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.\n\n## What's Inside\n\n### Skills Library\n\n**Testing**\n- **test-driven-development** - RED-GREEN-REFACTOR cycle (includes testing anti-patterns reference)\n\n**Debugging**\n- **systematic-debugging** - 4-phase root cause process (includes root-cause-tracing, defense-in-depth, condition-based-waiting techniques)\n- **verification-before-completion** - Ensure it's actually fixed\n\n**Collaboration** \n- **brainstorming** - Socratic design refinement\n- **writing-plans** - Detailed implementation plans\n- **executing-plans** - Batch execution with checkpoints\n- **dispatching-parallel-agents** - Concurrent subagent workflows\n- **requesting-code-review** - Pre-review checklist\n- **receiving-code-review** - Responding to feedback\n- **using-git-worktrees** - Parallel development branches\n- **finishing-a-development-branch** - Merge/PR decision workflow\n- **subagent-driven-development** - Fast iteration with two-stage review (spec compliance, then code quality)\n\n**Meta**\n- **writing-skills** - Create new skills following best practices (includes testing methodology)\n- **using-superpowers** - Introduction to the skills system\n\n## Philosophy\n\n- **Test-Driven Development** - Write tests first, always\n- **Systematic over ad-hoc** - Process over guessing\n- **Complexity reduction** - Simplicity as primary goal\n- **Evidence over claims** - Verify before declaring success\n\nRead [the original release announcement](https://blog.fsck.com/2025/10/09/superpowers/).\n\n## Contributing\n\nThe general contribution process for Superpowers is below. Keep in mind that we don't generally accept contributions of new skills and that any updates to skills must work across all of the coding agents we support.\n\n1. Fork the repository\n2. Switch to the 'dev' branch\n3. Create a branch for your work\n4. Follow the `writing-skills` skill for creating and testing new and modified skills\n5. Submit a PR, being sure to fill in the pull request template.\n\nSkill-behavior tests use the drill eval harness from [superpowers-evals](https://github.com/prime-radiant-inc/superpowers-evals/), cloned into `evals/` — see `evals/README.md` for setup. Plugin-infrastructure tests live at `tests/` and run via the relevant `run-*.sh` or `npm test`.\n\nSee `skills/writing-skills/SKILL.md` for the complete guide.\n\n## Updating\n\nSuperpowers updates are somewhat coding-agent dependent, but are often automatic.\n\n## License\n\nMIT License - see LICENSE file for details\n\n## Visual companion telemetry\n\nBecause skills and plugins don't provide any feedback to creators, we have no idea how many of you are using Superpowers. By default, the Prime Radiant logo on brainstorming's optional visual companion feature is loaded from our website. It includes the version of Superpowers in use. It does not include any details about your project, prompt, or coding agent. We don't see your clicks or anything about what you're building. This helps us have a rough idea of how many folks are using Superpowers and which version of Superpowers they're using. It's 100% optional. To disable this, set the environment variable `SUPERPOWERS_DISABLE_TELEMETRY` to any true value. Superpowers also honors Claude Code's `DISABLE_TELEMETRY` and `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` opt-outs.\n\n## Community\n\nSuperpowers is built by [Jesse Vincent](https://blog.fsck.com) and the rest of the folks at [Prime Radiant](https://primeradiant.com).\n\n- **Discord**: [Join us](https://discord.gg/35wsABTejz) for community support, questions, and sharing what you're building with Superpowers\n- **Issues**: https://github.com/obra/superpowers/issues\n- **Release announcements**: [Sign up](https://primeradiant.com/superpowers/) to get notified about new versions\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent 技能包",
+      "规格澄清",
+      "计划驱动开发"
+    ],
+    "brief_zh": {
+      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+      "audience": "希望让编码 Agent 更稳定地遵循规格、计划和 TDD 流程的开发者与团队",
+      "capabilities": "Agent Skills、规格澄清、计划驱动开发、子 Agent 协作、TDD 方法论",
+      "risk": "方法论成分高于底层技术壁垒，实际收益取决于团队是否愿意按它的流程工作"
+    },
+    "summary_source": "project_brief"
+  }
+]

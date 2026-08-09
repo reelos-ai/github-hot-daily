@@ -58,10 +58,9 @@
     },
     "strategic_score": 98,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "MCP 集成"
+      "MCP 集成",
+      "工作区"
     ]
   },
   {
@@ -146,8 +145,7 @@
     "capability_tags": [
       "Agent 长期记忆",
       "知识图谱",
-      "自托管",
-      "跨会话上下文"
+      "自托管"
     ],
     "brief_zh": {
       "summary": "一个面向 AI Agent 的开源记忆平台，用可自托管的知识图谱为跨会话任务提供持久长期记忆。",
@@ -236,8 +234,7 @@
     "capability_tags": [
       "统一模型接口",
       "免费额度聚合",
-      "自动降级",
-      "Token 压缩"
+      "自动降级"
     ],
     "brief_zh": {
       "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
@@ -314,10 +311,9 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
       "大模型应用",
-      "ai-agent"
+      "AI Agent 工具"
     ],
     "brief_zh": {
       "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
@@ -399,8 +395,7 @@
     "capability_tags": [
       "网页搜索",
       "批量抓取",
-      "交互式采集",
-      "HTML 转 Markdown"
+      "交互式采集"
     ],
     "brief_zh": {
       "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
@@ -467,9 +462,8 @@
     "strategic_score": 93,
     "capability_tags": [
       "长期记忆",
-      "运行时",
       "评测",
-      "inference"
+      "模型推理"
     ]
   },
   {
@@ -529,10 +523,9 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "技能扩展",
-      "工作区"
+      "工作区",
+      "模型推理"
     ]
   },
   {
@@ -594,11 +587,17 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "技能扩展"
-    ]
+      "Agent 视频编辑",
+      "代码化剪辑",
+      "自动化工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+      "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
+      "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
+      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "facebook",
@@ -657,8 +656,7 @@
     "capability_tags": [
       "设计系统",
       "组件定制",
-      "Agent 友好界面",
-      "前端基础设施"
+      "Agent 友好界面"
     ],
     "brief_zh": {
       "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
@@ -722,10 +720,9 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
       "长期记忆",
       "MCP 集成",
-      "inference"
+      "模型推理"
     ]
   }
 ]

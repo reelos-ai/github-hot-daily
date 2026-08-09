@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daily Radar · GitHub Signal · ReelOS</title>
+  <title>日报归档 · GitHub 热榜情报 · ReelOS</title>
+  <meta name="description" content="查看 ReelOS 最近 15 天的 GitHub 热榜情报日报。">
   <style>
     :root{
       color-scheme:light;
@@ -512,6 +513,23 @@
     .home-page .wrap{
       padding-bottom:56px;
     }
+    .skip-link{
+      position:fixed;
+      z-index:100;
+      top:12px;
+      left:16px;
+      padding:8px 11px;
+      color:#fff;
+      background:var(--text);
+      transform:translateY(-160%);
+    }
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+    .home-page :where(a,button):focus-visible{
+      outline:2px solid var(--blue);
+      outline-offset:3px;
+    }
     .home-page .topbar{
       padding-top:4px;
     }
@@ -573,8 +591,15 @@
       margin:0;
       font-size:clamp(40px,4.8vw,66px);
       line-height:1.08;
-      letter-spacing:-.065em;
+      letter-spacing:0;
       text-wrap:balance;
+    }
+    .home-masthead h1 > span{
+      display:block;
+    }
+    .home-title-subline{
+      font-size:.74em;
+      line-height:1.2;
     }
     .home-masthead-copy{
       margin:0 0 6px;
@@ -708,6 +733,27 @@
       margin-bottom:14px;
       border-bottom:1px solid var(--line);
     }
+    .home-report-nav{
+      display:flex;
+      align-items:stretch;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-nav .home-report-tabs{
+      flex:1;
+      margin-bottom:-1px;
+      border-bottom:0;
+    }
+    .home-report-index-link{
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-report-index-link:hover{
+      color:var(--blue);
+    }
     .home-report-tab{
       appearance:none;
       padding:12px 22px;
@@ -721,9 +767,21 @@
       cursor:pointer;
     }
     .home-report-tab:hover,
-    .home-report-tab[aria-selected="true"]{
+    .home-report-tab[aria-selected="true"],
+    .home-report-tab[aria-current="page"]{
       color:var(--blue);
       border-bottom-color:var(--blue);
+    }
+    .home-report-tab-meta{
+      margin-left:5px;
+      color:var(--muted);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:9px;
+      font-weight:600;
+    }
+    .home-report-tab[aria-selected="true"] .home-report-tab-meta,
+    .home-report-tab[aria-current="page"] .home-report-tab-meta{
+      color:inherit;
     }
     .home-report-panel[hidden]{
       display:none;
@@ -745,7 +803,7 @@
       margin:6px 0 4px;
       font-size:30px;
       line-height:1.2;
-      letter-spacing:-.045em;
+      letter-spacing:0;
     }
     .home-report-head p{
       margin:0;
@@ -794,7 +852,7 @@
     .home-project-main p{
       max-width:850px;
       margin:0;
-      color:var(--soft);
+      color:#2b3850;
       font-size:14px;
       line-height:1.7;
     }
@@ -807,8 +865,9 @@
       font-size:11px;
     }
     .home-project-signal strong{
-      color:var(--blue);
-      font-size:12px;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:650;
     }
     .home-project-signal a{
       color:var(--muted);
@@ -816,7 +875,18 @@
       font-weight:700;
     }
     .archive-main{
-      margin-top:26px;
+      margin-top:14px;
+    }
+    .period-index-main{
+      margin-top:14px;
+    }
+    .period-masthead .home-masthead-body{
+      grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);
+      gap:48px;
+      padding-top:34px;
+    }
+    .period-masthead h1{
+      font-size:clamp(34px,4.2vw,54px);
     }
     .archive-policy{
       display:grid;
@@ -856,6 +926,10 @@
       align-items:center;
       padding:18px 8px;
       border-bottom:1px solid var(--line);
+    }
+    .archive-report-row:hover{
+      color:inherit;
+      background:#f7f9fc;
     }
     .archive-report-row:last-child{
       border-bottom:0;
@@ -979,42 +1053,63 @@
       .home-report-tabs{
         overflow-x:auto;
       }
+      .home-report-index-link{
+        flex:0 0 auto;
+        padding:0 5px 0 10px;
+      }
       .home-masthead{
         padding-top:2px;
-        padding-bottom:26px;
+        padding-bottom:18px;
       }
       .home-masthead-top{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:10px;
+        align-items:center;
+        flex-direction:row;
+        gap:12px;
       }
+      .home-masthead-edition{display:none}
       .home-masthead-body{
         grid-template-columns:1fr;
-        gap:18px;
-        padding-top:34px;
+        gap:10px;
+        padding-top:20px;
       }
       .home-masthead h1{
-        font-size:clamp(36px,11vw,50px);
+        max-width:12em;
+        font-size:clamp(34px,9.5vw,42px);
+        line-height:1.12;
       }
       .home-masthead-copy{
         max-width:32em;
+        font-size:14px;
+        line-height:1.65;
       }
+      .home-masthead-kicker{margin-bottom:8px}
       .home-report-tab{
         flex:1 0 auto;
-        padding:11px 16px;
+        padding:10px 13px;
       }
       .home-report-head{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:14px;
+        align-items:flex-end;
+        flex-direction:row;
+        gap:10px;
+        padding:12px 0;
       }
       .home-report-head h1{
-        font-size:27px;
+        font-size:24px;
+      }
+      .home-report-head p{
+        font-size:12px;
+      }
+      .home-report-links{
+        margin-left:auto;
+      }
+      .home-report-links a{
+        padding:6px 8px;
+        white-space:nowrap;
       }
       .home-project-row{
         grid-template-columns:32px minmax(0,1fr);
         gap:10px;
-        padding:18px 0;
+        padding:16px 0;
       }
       .home-project-signal{
         grid-column:2;
@@ -1040,6 +1135,14 @@
       .archive-report-meta{
         grid-column:2;
         text-align:left;
+      }
+      .period-masthead .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:8px;
+        padding-top:18px;
+      }
+      .period-masthead h1{
+        font-size:32px;
       }
       .report-entry{
         min-height:0;
@@ -1153,77 +1256,123 @@
       }
     }</style>
 </head>
-<body>
+<body class="home-page">
+  <a class="skip-link" href="#report-list">跳至报告列表</a>
   <div class="wrap">
-    <header class="topbar">
-      <a class="reelos-lockup brand" href="/" aria-label="ReelOS.ai">
+    <header class="home-masthead period-masthead">
+      <div class="home-masthead-top">
+        <a class="reelos-lockup home-masthead-brand" href="/" aria-label="ReelOS.ai">
       <span class="reelos-mark" aria-hidden="true"><span></span></span>
       <span class="reelos-lockup-copy">
         <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a>
-      <nav class="nav"><a class="" href="/">首页</a><a class="active" href="/daily/">日报</a><a class="" href="/weekly/">周报</a><a class="" href="/monthly/">月报</a><a class="" href="/leaderboard/">总榜</a><a class="" href="/archive/">归档</a></nav>
+        <span class="home-masthead-edition mono">每日信号</span>
+      </div>
+      <div class="home-masthead-body">
+        <div>
+          <span class="home-masthead-kicker mono">Report Index</span>
+          <h1>日报 · 最近 15 天</h1>
+        </div>
+        <p class="home-masthead-copy">当天值得打开的项目，先用一句中文说明讲清楚用途。</p>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-main">
-        <div class="eyebrow mono">Daily Signal Layer</div>
-        <h1 class="headline"><span class="headline-line"><span class="ghost-word">Daily</span> <span class="texture-word">Radar</span></span></h1>
-        <p class="lead">日报负责把当天爆发项目转译成适合中文读者快速阅读的信号页。它不是简单搬运榜单，而是先给出今天应该打开哪一篇、盯哪一类项目、把哪些仓库送进观察池。</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="/daily/2026-08-04/">打开 2026-08-04 日报</a>
-          <a class="btn" href="/top10-2026-08-04.json">Top10 JSON</a>
-          <a class="btn" href="/trending-data-2026-08-04.json">Raw Data</a>
+    <main class="period-index-main" id="report-list">
+      <nav class="home-report-tabs" aria-label="报告类型">
+        <a class="home-report-tab" href="/daily/" aria-current="page">日报 <span class="home-report-tab-meta">11</span></a><a class="home-report-tab" href="/weekly/">周报 <span class="home-report-tab-meta">4</span></a><a class="home-report-tab" href="/monthly/">月报 <span class="home-report-tab-meta">1</span></a>
+      </nav>
+      <section class="home-report-panel">
+        <header class="home-report-head">
+          <div>
+            <span class="mono">11 份可见</span>
+            <h1>往期日报</h1>
+            <p>列表仅保留有效时间窗口，更早报告仍保留原链接。</p>
+          </div>
+          <div class="home-report-links">
+            <a href="/daily/2026-08-09/">打开最新日报</a>
+          </div>
+        </header>
+        <div class="archive-report-list">
+          <a class="archive-report-row" href="/daily/2026-08-09/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-09</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-08/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-08</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-06/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-06</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-05/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-05</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-04/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-04</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-03/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-03</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-02/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-02</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-01/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-01</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-07-29/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-29</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-07-28/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-28</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-07-26/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-26</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a>
         </div>
-      </div>
-      <aside class="hero-side">
-        <div class="side-label mono">Latest Issue</div>
-        <h2 class="signal-title"><a href="/daily/2026-08-04/">GitHub 热榜情报日报 · 2026-08-04</a></h2>
-        <p class="signal-copy">本期主信号是 <span class="mono">livekit/agents</span>。六个切片共抓取 60 个候选，移动端仍保持中文趋势卡片和快读密度。</p>
-        <div class="mini-list">
-          <div class="mini-item"><div><b>Top 10 完整处理</b><span>已做中文判断与加权排序</span></div><span class="mono">10</span></div>
-          <div class="mini-item"><div><b>README 覆盖</b><span>用于增强判断和依赖线索</span></div><span class="mono">60</span></div>
-          <div class="mini-item"><div><b>API 异常</b><span>越低代表元数据越完整</span></div><span class="mono">1</span></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">01 / Metrics</div>
-      <div>
-        <div class="stat-grid">
-          <div class="metric"><b class="mono">60</b><span>候选项目</span></div>
-          <div class="metric"><b class="mono">10</b><span>情报项目</span></div>
-          <div class="metric"><b class="mono">60</b><span>README 覆盖</span></div>
-          <div class="metric"><b class="mono">1</b><span>API 失败</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">02 / Use</div>
-      <div class="panel">
-        <h2>日报负责什么，不负责什么</h2>
-        <p>它负责筛出今天该先看的仓库和需要继续盯的方向，不负责做完整战略结论。真正的“是否值得投入”会交给周报完成。</p>
-        <div class="card-grid three" style="margin-top:16px">
-          <div class="card"><b>Top 10</b><p>把当天高热仓库转成可判断的优先级，而不是按星数机械排序。</p></div>
-          <div class="card"><b>中文趋势卡片</b><p>保留高密度摘要和行动含义，适合手机端和团队转发。</p></div>
-          <div class="card"><b>观察池入口</b><p>把可能进入周报深挖的项目优先送入 watchlist。</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-rail mono">03 / Archive</div>
-      <div>
-        <div class="panel">
-          <h2>最近 15 天日报</h2>
-          <p>仅展示距今天不超过 15 天的日报，减少过期信息干扰；更早报告仍保留原链接。</p>
-        </div>
-        <div class="list"><a class="row" href="/daily/2026-08-04/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-08-04</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-08-03/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-08-03</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-08-02/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-08-02</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-08-01/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-08-01</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-29/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-07-29</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-28/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-07-28</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-26/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-07-26</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-22/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-07-22</span><span class="meta mono">Top 10</span></a><a class="row" href="/daily/2026-07-21/"><span class="type mono">日报</span><span class="title">GitHub 热榜情报日报 · 2026-07-21</span><span class="meta mono">Top 10</span></a></div>
-      </div>
-    </section>
+      </section>
+    </main>
   </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="https://www.reelos.ai/">ReelOS.ai</a>
+        <p>AI Native Builder Lab</p>
+      </div>
+      <nav class="footer-column" aria-label="ReelOS">
+        <h2>ReelOS</h2>
+        <a href="https://www.reelos.ai/about/">关于</a>
+        <a href="https://www.reelos.ai/principles/">原则</a>
+        <a href="https://www.reelos.ai/faq/">FAQ</a>
+        <a href="https://github.com/reelos-ai">GitHub</a>
+      </nav>
+      <nav class="footer-column" aria-label="Projects">
+        <h2>Projects</h2>
+        <a href="https://daoyin.reelos.ai/">DaoYin</a>
+        <a href="https://yi.reelos.ai/">Yi</a>
+        <a href="https://macro.reelos.ai/">MacroFlow</a>
+      </nav>
+      <nav class="footer-column" aria-label="Channels">
+        <h2>Channels</h2>
+        <a href="https://www.reelos.ai/feed.xml">RSS Feed</a>
+        <a href="https://infra.reelos.ai/">AI Infra</a>
+        <a href="https://ainews.reelos.ai/">AI News</a>
+        <a href="https://gh.reelos.ai/">GitHub Radar</a>
+        <a href="/leaderboard/">开源信号总榜</a>
+        <a href="https://www.reelos.ai/daily/">Daily Research</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

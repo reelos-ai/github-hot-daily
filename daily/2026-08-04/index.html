@@ -280,7 +280,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -313,7 +313,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -322,7 +322,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1062,8 +1062,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1073,11 +1073,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1103,8 +1103,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1493,9 +1494,9 @@ blockquote {
           <span class="project-rank mono">01</span>
           <div class="project-main">
             <h3>livekit/agents</h3>
-            <p>A framework for building realtime voice AI agents 🤖🎙️📹</p>
+            <p>一个构建实时语音 AI Agent 的开发框架，负责把语音、视频、模型和电话系统接入低延迟对话流程。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">实时语音 Agent</span><span class="project-tag">低延迟对话</span><span class="project-tag">多模态输入</span></div>
               <a class="source-link" href="https://github.com/livekit/agents" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1507,9 +1508,9 @@ blockquote {
           <span class="project-rank mono">02</span>
           <div class="project-main">
             <h3>firecrawl/pdf-inspector</h3>
-            <p>Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>
+            <p>一个快速的 Rust PDF 检测库，可识别扫描件与文本型 PDF，并完成分类和文本提取，便于后续自动分流。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">运行时</span><span class="project-tag">大模型应用</span><span class="project-tag">评测</span><span class="project-tag">markdown</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">PDF 检测</span><span class="project-tag">扫描件识别</span><span class="project-tag">文档分类</span></div>
               <a class="source-link" href="https://github.com/firecrawl/pdf-inspector" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1523,7 +1524,7 @@ blockquote {
             <h3>jamiepine/voicebox</h3>
             <p>一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">声音克隆</span><span class="project-tag">语音听写</span><span class="project-tag">音频创作</span><span class="project-tag">AI 语音工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">声音克隆</span><span class="project-tag">语音听写</span><span class="project-tag">音频创作</span></div>
               <a class="source-link" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1537,35 +1538,21 @@ blockquote {
             <h3>NousResearch/hermes-agent</h3>
             <p>Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">自学习 Agent</span><span class="project-tag">跨会话记忆</span><span class="project-tag">Skills 生成</span><span class="project-tag">多渠道接入</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">自学习 Agent</span><span class="project-tag">跨会话记忆</span><span class="project-tag">Skills 生成</span></div>
               <a class="source-link" href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
           <div class="project-signal">
             <span>Python</span>
-            <strong>今日 +622</strong>
+            <strong>今日 +647</strong>
           </div>
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>FalkorDB/FalkorDB</h3>
-            <p>A super fast Graph Database uses GraphBLAS under the hood for its sparse adjacency matrix graph representation. Our goal is to provide the best Knowledge Graph for LLM (GraphRAG).</p>
-            <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">长期记忆</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
-              <a class="source-link" href="https://github.com/FalkorDB/FalkorDB" target="_blank" rel="noopener noreferrer">原文 ↗</a>
-            </div>
-          </div>
-          <div class="project-signal">
-            <span>Rust</span>
-            <strong>今日 +252</strong>
-          </div>
-        </article><article class="project-row">
-          <span class="project-rank mono">06</span>
-          <div class="project-main">
             <h3>multica-ai/multica</h3>
             <p>一个开源的编码 Agent 管理平台，可像分配同事一样分派 Issue、跟踪进度与阻塞，并沉淀团队可复用 Skills。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 任务分派</span><span class="project-tag">进度跟踪</span><span class="project-tag">团队协作</span><span class="project-tag">Skills 沉淀</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 任务分派</span><span class="project-tag">进度跟踪</span><span class="project-tag">团队协作</span></div>
               <a class="source-link" href="https://github.com/multica-ai/multica" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1574,12 +1561,12 @@ blockquote {
             <strong>今日 +415</strong>
           </div>
         </article><article class="project-row">
-          <span class="project-rank mono">07</span>
+          <span class="project-rank mono">06</span>
           <div class="project-main">
             <h3>browser-use/video-use</h3>
-            <p>Edit videos with coding agents</p>
+            <p>一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 视频编辑</span><span class="project-tag">代码化剪辑</span><span class="project-tag">自动化工作流</span></div>
               <a class="source-link" href="https://github.com/browser-use/video-use" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1588,12 +1575,12 @@ blockquote {
             <strong>今日 +306</strong>
           </div>
         </article><article class="project-row">
-          <span class="project-rank mono">08</span>
+          <span class="project-rank mono">07</span>
           <div class="project-main">
             <h3>TencentCloud/TencentDB-Agent-Memory</h3>
-            <p>TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.</p>
+            <p>腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">团队记忆中枢</span><span class="project-tag">对话记忆</span><span class="project-tag">Skills 管理</span></div>
               <a class="source-link" href="https://github.com/TencentCloud/TencentDB-Agent-Memory" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1602,12 +1589,12 @@ blockquote {
             <strong>今日 +1138</strong>
           </div>
         </article><article class="project-row">
-          <span class="project-rank mono">09</span>
+          <span class="project-rank mono">08</span>
           <div class="project-main">
             <h3>huangruiteng/loopx</h3>
-            <p>Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.</p>
+            <p>一个面向长期运行编码 Agent 团队的轻量状态内核，用持久目标、自动唤醒、待办和证据日志维持任务连续性。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">持久目标</span><span class="project-tag">自动唤醒</span><span class="project-tag">可执行待办</span></div>
               <a class="source-link" href="https://github.com/huangruiteng/loopx" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1616,18 +1603,32 @@ blockquote {
             <strong>今日 +618</strong>
           </div>
         </article><article class="project-row">
-          <span class="project-rank mono">10</span>
+          <span class="project-rank mono">09</span>
           <div class="project-main">
             <h3>farion1231/cc-switch</h3>
             <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">ai-tools</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">ai-tools</span></div>
               <a class="source-link" href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
           <div class="project-signal">
             <span>Rust</span>
             <strong>今日 +397</strong>
+          </div>
+        </article><article class="project-row">
+          <span class="project-rank mono">10</span>
+          <div class="project-main">
+            <h3>rtk-ai/rtk</h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
+            <div class="project-actions">
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span><span class="project-tag">agentic-coding</span></div>
+              <a class="source-link" href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+            </div>
+          </div>
+          <div class="project-signal">
+            <span>Rust</span>
+            <strong>今日 +192</strong>
           </div>
         </article></div>
   </section>

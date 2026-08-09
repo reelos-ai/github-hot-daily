@@ -513,6 +513,23 @@
     .home-page .wrap{
       padding-bottom:56px;
     }
+    .skip-link{
+      position:fixed;
+      z-index:100;
+      top:12px;
+      left:16px;
+      padding:8px 11px;
+      color:#fff;
+      background:var(--text);
+      transform:translateY(-160%);
+    }
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+    .home-page :where(a,button):focus-visible{
+      outline:2px solid var(--blue);
+      outline-offset:3px;
+    }
     .home-page .topbar{
       padding-top:4px;
     }
@@ -574,8 +591,15 @@
       margin:0;
       font-size:clamp(40px,4.8vw,66px);
       line-height:1.08;
-      letter-spacing:-.065em;
+      letter-spacing:0;
       text-wrap:balance;
+    }
+    .home-masthead h1 > span{
+      display:block;
+    }
+    .home-title-subline{
+      font-size:.74em;
+      line-height:1.2;
     }
     .home-masthead-copy{
       margin:0 0 6px;
@@ -709,6 +733,27 @@
       margin-bottom:14px;
       border-bottom:1px solid var(--line);
     }
+    .home-report-nav{
+      display:flex;
+      align-items:stretch;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-nav .home-report-tabs{
+      flex:1;
+      margin-bottom:-1px;
+      border-bottom:0;
+    }
+    .home-report-index-link{
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-report-index-link:hover{
+      color:var(--blue);
+    }
     .home-report-tab{
       appearance:none;
       padding:12px 22px;
@@ -722,9 +767,21 @@
       cursor:pointer;
     }
     .home-report-tab:hover,
-    .home-report-tab[aria-selected="true"]{
+    .home-report-tab[aria-selected="true"],
+    .home-report-tab[aria-current="page"]{
       color:var(--blue);
       border-bottom-color:var(--blue);
+    }
+    .home-report-tab-meta{
+      margin-left:5px;
+      color:var(--muted);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:9px;
+      font-weight:600;
+    }
+    .home-report-tab[aria-selected="true"] .home-report-tab-meta,
+    .home-report-tab[aria-current="page"] .home-report-tab-meta{
+      color:inherit;
     }
     .home-report-panel[hidden]{
       display:none;
@@ -746,7 +803,7 @@
       margin:6px 0 4px;
       font-size:30px;
       line-height:1.2;
-      letter-spacing:-.045em;
+      letter-spacing:0;
     }
     .home-report-head p{
       margin:0;
@@ -795,7 +852,7 @@
     .home-project-main p{
       max-width:850px;
       margin:0;
-      color:var(--soft);
+      color:#2b3850;
       font-size:14px;
       line-height:1.7;
     }
@@ -808,8 +865,9 @@
       font-size:11px;
     }
     .home-project-signal strong{
-      color:var(--blue);
-      font-size:12px;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:650;
     }
     .home-project-signal a{
       color:var(--muted);
@@ -817,7 +875,18 @@
       font-weight:700;
     }
     .archive-main{
-      margin-top:26px;
+      margin-top:14px;
+    }
+    .period-index-main{
+      margin-top:14px;
+    }
+    .period-masthead .home-masthead-body{
+      grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);
+      gap:48px;
+      padding-top:34px;
+    }
+    .period-masthead h1{
+      font-size:clamp(34px,4.2vw,54px);
     }
     .archive-policy{
       display:grid;
@@ -857,6 +926,10 @@
       align-items:center;
       padding:18px 8px;
       border-bottom:1px solid var(--line);
+    }
+    .archive-report-row:hover{
+      color:inherit;
+      background:#f7f9fc;
     }
     .archive-report-row:last-child{
       border-bottom:0;
@@ -980,42 +1053,63 @@
       .home-report-tabs{
         overflow-x:auto;
       }
+      .home-report-index-link{
+        flex:0 0 auto;
+        padding:0 5px 0 10px;
+      }
       .home-masthead{
         padding-top:2px;
-        padding-bottom:26px;
+        padding-bottom:18px;
       }
       .home-masthead-top{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:10px;
+        align-items:center;
+        flex-direction:row;
+        gap:12px;
       }
+      .home-masthead-edition{display:none}
       .home-masthead-body{
         grid-template-columns:1fr;
-        gap:18px;
-        padding-top:34px;
+        gap:10px;
+        padding-top:20px;
       }
       .home-masthead h1{
-        font-size:clamp(36px,11vw,50px);
+        max-width:12em;
+        font-size:clamp(34px,9.5vw,42px);
+        line-height:1.12;
       }
       .home-masthead-copy{
         max-width:32em;
+        font-size:14px;
+        line-height:1.65;
       }
+      .home-masthead-kicker{margin-bottom:8px}
       .home-report-tab{
         flex:1 0 auto;
-        padding:11px 16px;
+        padding:10px 13px;
       }
       .home-report-head{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:14px;
+        align-items:flex-end;
+        flex-direction:row;
+        gap:10px;
+        padding:12px 0;
       }
       .home-report-head h1{
-        font-size:27px;
+        font-size:24px;
+      }
+      .home-report-head p{
+        font-size:12px;
+      }
+      .home-report-links{
+        margin-left:auto;
+      }
+      .home-report-links a{
+        padding:6px 8px;
+        white-space:nowrap;
       }
       .home-project-row{
         grid-template-columns:32px minmax(0,1fr);
         gap:10px;
-        padding:18px 0;
+        padding:16px 0;
       }
       .home-project-signal{
         grid-column:2;
@@ -1041,6 +1135,14 @@
       .archive-report-meta{
         grid-column:2;
         text-align:left;
+      }
+      .period-masthead .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:8px;
+        padding-top:18px;
+      }
+      .period-masthead h1{
+        font-size:32px;
       }
       .report-entry{
         min-height:0;
@@ -1155,8 +1257,9 @@
     }</style>
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#archive-list">跳至报告列表</a>
   <div class="wrap">
-    <header class="home-masthead">
+    <header class="home-masthead period-masthead">
       <div class="home-masthead-top">
         <a class="reelos-lockup home-masthead-brand" href="/" aria-label="ReelOS.ai">
       <span class="reelos-mark" aria-hidden="true"><span></span></span>
@@ -1170,45 +1273,43 @@
       <div class="home-masthead-body">
         <div>
           <span class="home-masthead-kicker mono">Report Archive</span>
-          <h1>按周期查看，不让旧信息淹没新信号。</h1>
+          <h1>报告归档</h1>
         </div>
-        <p class="home-masthead-copy">日报保留 15 天，周报保留 30 天，月报保留 50 天。历史文件继续保存，列表只呈现当前有效窗口。</p>
+        <p class="home-masthead-copy">按周期查看当前有效报告，旧信息不占用阅读窗口。</p>
       </div>
     </header>
 
-    <main class="archive-main">
-      <section class="archive-policy" aria-label="报告展示期限">
-        <div class="archive-policy-item">
-          <span>日报</span>
-          <strong>≤ 15 天</strong>
-          <span>9 份可见</span>
-        </div>
-        <div class="archive-policy-item">
-          <span>周报</span>
-          <strong>≤ 30 天</strong>
-          <span>5 份可见</span>
-        </div>
-        <div class="archive-policy-item">
-          <span>月报</span>
-          <strong>≤ 50 天</strong>
-          <span>1 份可见</span>
-        </div>
-      </section>
-
-      <nav class="home-report-tabs" aria-label="报告类别">
-        <button class="home-report-tab" type="button" data-archive-tab="daily" aria-controls="archive-daily" aria-selected="true">日报</button>
-        <button class="home-report-tab" type="button" data-archive-tab="weekly" aria-controls="archive-weekly" aria-selected="false">周报</button>
-        <button class="home-report-tab" type="button" data-archive-tab="monthly" aria-controls="archive-monthly" aria-selected="false">月报</button>
+    <main class="archive-main" id="archive-list">
+      <nav class="home-report-tabs" aria-label="报告类别" role="tablist">
+        <button class="home-report-tab" id="archive-tab-daily" role="tab" type="button" data-archive-tab="daily" aria-controls="archive-daily" aria-selected="true">日报 <span class="home-report-tab-meta">11 · 15天</span></button>
+        <button class="home-report-tab" id="archive-tab-weekly" role="tab" type="button" data-archive-tab="weekly" aria-controls="archive-weekly" aria-selected="false" tabindex="-1">周报 <span class="home-report-tab-meta">4 · 30天</span></button>
+        <button class="home-report-tab" id="archive-tab-monthly" role="tab" type="button" data-archive-tab="monthly" aria-controls="archive-monthly" aria-selected="false" tabindex="-1">月报 <span class="home-report-tab-meta">1 · 50天</span></button>
       </nav>
-      <section class="home-report-panel" id="archive-daily" data-archive-panel="daily">
+      <section class="home-report-panel" id="archive-daily" data-archive-panel="daily" role="tabpanel" aria-labelledby="archive-tab-daily" tabindex="0">
       <header class="home-report-head">
         <div>
-          <span class="mono">最近 15 天</span>
-          <h1>日报</h1>
-          <p>9 份可见报告，超出时间窗口的历史报告不再占用列表。</p>
+          <span class="mono">有效期 ≤ 15 天</span>
+          <h1>最近日报</h1>
+          <p>11 份可见报告</p>
         </div>
       </header>
-      <div class="archive-report-list"><a class="archive-report-row" href="/daily/2026-08-04/">
+      <div class="archive-report-list"><a class="archive-report-row" href="/daily/2026-08-09/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-09</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-08/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-08</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-06/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-06</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-05/">
+          <span class="archive-report-category">日报</span>
+          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-05</span>
+          <span class="archive-report-meta mono">Top 10</span>
+        </a><a class="archive-report-row" href="/daily/2026-08-04/">
           <span class="archive-report-category">日报</span>
           <span class="archive-report-title">GitHub 热榜情报日报 · 2026-08-04</span>
           <span class="archive-report-meta mono">Top 10</span>
@@ -1236,21 +1337,13 @@
           <span class="archive-report-category">日报</span>
           <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-26</span>
           <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-07-22/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-22</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-07-21/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-07-21</span>
-          <span class="archive-report-meta mono">Top 10</span>
         </a></div>
-    </section><section class="home-report-panel" id="archive-weekly" data-archive-panel="weekly" hidden>
+    </section><section class="home-report-panel" id="archive-weekly" data-archive-panel="weekly" role="tabpanel" aria-labelledby="archive-tab-weekly" tabindex="0" hidden>
       <header class="home-report-head">
         <div>
-          <span class="mono">最近 30 天</span>
-          <h1>周报</h1>
-          <p>5 份可见报告，超出时间窗口的历史报告不再占用列表。</p>
+          <span class="mono">有效期 ≤ 30 天</span>
+          <h1>最近周报</h1>
+          <p>4 份可见报告</p>
         </div>
       </header>
       <div class="archive-report-list"><a class="archive-report-row" href="/weekly/2026-08-02/">
@@ -1269,17 +1362,13 @@
           <span class="archive-report-category">周报</span>
           <span class="archive-report-title">GitHub 热榜情报周报 · 2026-07-13</span>
           <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/weekly/2026-07-06/">
-          <span class="archive-report-category">周报</span>
-          <span class="archive-report-title">GitHub 热榜情报周报 · 2026-07-06</span>
-          <span class="archive-report-meta mono">Top 10</span>
         </a></div>
-    </section><section class="home-report-panel" id="archive-monthly" data-archive-panel="monthly" hidden>
+    </section><section class="home-report-panel" id="archive-monthly" data-archive-panel="monthly" role="tabpanel" aria-labelledby="archive-tab-monthly" tabindex="0" hidden>
       <header class="home-report-head">
         <div>
-          <span class="mono">最近 50 天</span>
-          <h1>月报</h1>
-          <p>1 份可见报告，超出时间窗口的历史报告不再占用列表。</p>
+          <span class="mono">有效期 ≤ 50 天</span>
+          <h1>最近月报</h1>
+          <p>1 份可见报告</p>
         </div>
       </header>
       <div class="archive-report-list"><a class="archive-report-row" href="/monthly/2026-07/">
@@ -1326,11 +1415,22 @@
       const panels = [...document.querySelectorAll("[data-archive-panel]")];
       const show = (type, updateHash = true) => {
         if (!panels.some((panel) => panel.dataset.archivePanel === type)) return;
-        tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.archiveTab === type)));
+        tabs.forEach((tab) => {
+          const active = tab.dataset.archiveTab === type;
+          tab.setAttribute("aria-selected", String(active));
+          tab.tabIndex = active ? 0 : -1;
+        });
         panels.forEach((panel) => { panel.hidden = panel.dataset.archivePanel !== type; });
         if (updateHash) history.replaceState(null, "", `#${type}`);
       };
       tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.archiveTab)));
+      tabs.forEach((tab, index) => tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[nextIndex].focus();
+        show(tabs[nextIndex].dataset.archiveTab);
+      }));
       window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
       const initial = location.hash.slice(1);
       if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);

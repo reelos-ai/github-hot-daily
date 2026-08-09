@@ -79,8 +79,7 @@
     "capability_tags": [
       "AI 安全测试",
       "漏洞发现",
-      "渗透测试",
-      "修复建议"
+      "渗透测试"
     ],
     "brief_zh": {
       "summary": "一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。",
@@ -169,8 +168,7 @@
     "capability_tags": [
       "统一模型接口",
       "免费额度聚合",
-      "自动降级",
-      "Token 压缩"
+      "自动降级"
     ],
     "brief_zh": {
       "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
@@ -257,8 +255,7 @@
     "capability_tags": [
       "自学习 Agent",
       "跨会话记忆",
-      "Skills 生成",
-      "多渠道接入"
+      "Skills 生成"
     ],
     "brief_zh": {
       "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
@@ -338,10 +335,9 @@
     },
     "strategic_score": 97,
     "capability_tags": [
-      "Agent Skills",
+      "Agent 技能包",
       "长期记忆",
-      "安全约束",
-      "研究优先流程"
+      "安全约束"
     ],
     "brief_zh": {
       "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
@@ -420,10 +416,9 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
-      "RAG",
-      "运行时"
+      "RAG 检索",
+      "大模型应用"
     ],
     "brief_zh": {
       "summary": "一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。"
@@ -487,8 +482,7 @@
     "capability_tags": [
       "设计系统",
       "组件定制",
-      "Agent 友好界面",
-      "前端基础设施"
+      "Agent 友好界面"
     ],
     "brief_zh": {
       "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
@@ -555,11 +549,17 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "技能扩展"
-    ]
+      "Agent 视频编辑",
+      "代码化剪辑",
+      "自动化工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+      "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
+      "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
+      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "logto-io",
@@ -637,10 +637,9 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "RAG",
+      "RAG 检索",
       "开放协议",
-      "authentication"
+      "身份认证"
     ]
   },
   {
@@ -709,10 +708,9 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
-      "运行时",
-      "技能扩展"
+      "技能扩展",
+      "工作区"
     ]
   },
   {
@@ -796,10 +794,9 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "MCP 集成"
+      "MCP 集成",
+      "RAG 检索"
     ]
   }
 ]

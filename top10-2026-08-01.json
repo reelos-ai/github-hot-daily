@@ -59,8 +59,7 @@
     "capability_tags": [
       "共享工作区",
       "MCP 接入",
-      "跨 Agent 复用",
-      "桌面应用"
+      "跨 Agent 复用"
     ],
     "brief_zh": {
       "summary": "一个开源桌面工作区与 MCP 入口，支持把 Skills、插件、外部服务和共享工作流复用到不同 AI Agent 中。",
@@ -147,8 +146,7 @@
     "capability_tags": [
       "自学习 Agent",
       "跨会话记忆",
-      "Skills 生成",
-      "多渠道接入"
+      "Skills 生成"
     ],
     "brief_zh": {
       "summary": "Nous Research 开源的自学习个人 Agent，可从任务经验生成和改进 Skills，并用跨会话记忆、多渠道入口和子 Agent 持续工作。",
@@ -231,7 +229,6 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "Agent 工具",
       "MCP 集成",
       "大模型应用",
       "工作流"
@@ -316,8 +313,7 @@
     "capability_tags": [
       "近期研究",
       "跨平台检索",
-      "信号排序",
-      "证据综合"
+      "信号排序"
     ],
     "brief_zh": {
       "summary": "一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。",
@@ -403,10 +399,9 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "MCP 集成",
-      "技能扩展"
+      "技能扩展",
+      "工作流"
     ],
     "brief_zh": {
       "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。"
@@ -481,11 +476,17 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
-      "长期记忆",
-      "技能扩展"
-    ]
+      "团队记忆中枢",
+      "对话记忆",
+      "Skills 管理"
+    ],
+    "brief_zh": {
+      "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
+      "audience": "需要在多个 Agent 和团队成员之间共享知识、技能与代码上下文的研发组织",
+      "capabilities": "团队记忆中枢、对话记忆、Skills 管理、知识库、代码图谱",
+      "risk": "集中记忆会扩大隐私、权限和数据治理边界，落地前需要明确隔离、删除和审计机制"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "multica-ai",
@@ -543,8 +544,7 @@
     "capability_tags": [
       "Agent 任务分派",
       "进度跟踪",
-      "团队协作",
-      "Skills 沉淀"
+      "团队协作"
     ],
     "brief_zh": {
       "summary": "一个开源的编码 Agent 管理平台，可像分配同事一样分派 Issue、跟踪进度与阻塞，并沉淀团队可复用 Skills。",
@@ -624,8 +624,7 @@
     "capability_tags": [
       "语音识别",
       "语音合成",
-      "实时对话",
-      "OpenAI Realtime 兼容"
+      "实时对话"
     ],
     "brief_zh": {
       "summary": "一个低延迟语音 Agent 管线，把 VAD、语音识别、LLM 和语音合成串成可替换的实时语音后端。",
@@ -680,10 +679,9 @@
     },
     "strategic_score": 87,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "长期记忆",
-      "MCP 集成"
+      "MCP 集成",
+      "RAG 检索"
     ]
   },
   {
@@ -740,10 +738,9 @@
     },
     "strategic_score": 86,
     "capability_tags": [
-      "Agent 工具",
-      "多 Agent",
       "MCP 集成",
-      "技能扩展"
+      "技能扩展",
+      "工作流"
     ]
   }
 ]
