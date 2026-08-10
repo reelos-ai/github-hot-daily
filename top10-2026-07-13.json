@@ -657,10 +657,17 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "长期记忆",
-      "MCP 集成",
-      "RAG 检索"
-    ]
+      "多 Agent 协作",
+      "Agent 元调度",
+      "自适应记忆"
+    ],
+    "brief_zh": {
+      "summary": "一个面向多 Agent swarm 的元调度框架，强调把自主工作流、记忆、RAG 和对话系统组合成可部署的协作网络。",
+      "audience": "想把多个 Agent 组织成持续协作工作流，而不是单次聊天机器人的开发者与实验团队",
+      "capabilities": "多 Agent 协作、Agent 元调度、自适应记忆、RAG 集成、对话式工作流",
+      "risk": "概念覆盖很广，真正的协作效果、稳定性和与现有 Agent 生态的差异仍需通过样例和代码验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Gentleman-Programming",

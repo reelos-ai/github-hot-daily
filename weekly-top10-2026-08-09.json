@@ -75,7 +75,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "esengine",
@@ -149,7 +161,12 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "工作区",
+      "大模型应用",
+      "工作流"
+    ]
   },
   {
     "owner": "alibaba",
@@ -214,7 +231,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "different-ai",
@@ -272,7 +301,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "共享工作区",
+      "MCP 接入",
+      "跨 Agent 复用"
+    ],
+    "brief_zh": {
+      "summary": "一个开源桌面工作区与 MCP 入口，支持把 Skills、插件、外部服务和共享工作流复用到不同 AI Agent 中。",
+      "audience": "想在 Codex、Claude Code、Cursor 等工具之间共享能力和工作流的个人与团队",
+      "capabilities": "共享工作区、MCP 接入、跨 Agent 复用、桌面应用、团队能力分发",
+      "risk": "真正价值依赖共享能力和权限管理体验，组织级场景还要验证稳定性与治理成本"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "livekit",
@@ -340,7 +381,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "实时语音 Agent",
+      "低延迟对话",
+      "多模态输入"
+    ],
+    "brief_zh": {
+      "summary": "一个构建实时语音 AI Agent 的开发框架，负责把语音、视频、模型和电话系统接入低延迟对话流程。",
+      "audience": "需要开发语音助手、电话 Agent 或实时多模态交互产品的团队",
+      "capabilities": "实时语音 Agent、低延迟对话、多模态输入、模型接入、电话系统集成",
+      "risk": "实时体验高度依赖音频链路、模型延迟和部署环境，需要按目标地区与并发规模实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "firecrawl",
@@ -407,7 +460,19 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "PDF 检测",
+      "扫描件识别",
+      "文档分类"
+    ],
+    "brief_zh": {
+      "summary": "一个快速的 Rust PDF 检测库，可识别扫描件与文本型 PDF，并完成分类和文本提取，便于后续自动分流。",
+      "audience": "需要批量处理 PDF、区分 OCR 路径并搭建文档解析流水线的开发者",
+      "capabilities": "PDF 检测、扫描件识别、文档分类、文本提取、Rust 库",
+      "risk": "复杂版式、混合扫描页和损坏文件仍需要单独验证，检测结果不能替代完整解析质量评估"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "FalkorDB",
@@ -476,7 +541,19 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "图数据库",
+      "知识图谱",
+      "GraphRAG"
+    ],
+    "brief_zh": {
+      "summary": "一个以 GraphBLAS 稀疏矩阵为底层的高性能图数据库，重点服务知识图谱和 GraphRAG 场景。",
+      "audience": "构建知识图谱、关系检索或 GraphRAG 应用的数据与 AI 工程团队",
+      "capabilities": "图数据库、知识图谱、GraphRAG、稀疏矩阵计算、高性能查询",
+      "risk": "实际价值取决于数据建模、查询复杂度和运维能力，需要用真实图规模验证性能优势"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "huangruiteng",
@@ -543,7 +620,19 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "持久目标",
+      "自动唤醒",
+      "可执行待办"
+    ],
+    "brief_zh": {
+      "summary": "一个面向长期运行编码 Agent 团队的轻量状态内核，用持久目标、自动唤醒、待办和证据日志维持任务连续性。",
+      "audience": "需要让 Codex、Claude Code 等 Agent 跨轮次持续执行并可靠交接的开发者",
+      "capabilities": "持久目标、自动唤醒、可执行待办、证据日志、Agent 交接",
+      "risk": "长期自动执行需要严格控制额度、唤醒条件和完成判定，避免任务循环与资源失控"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "freestylefly",
@@ -612,7 +701,12 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "技能扩展"
+    ]
   },
   {
     "owner": "QwenLM",
@@ -687,6 +781,11 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ]
   }
 ]
