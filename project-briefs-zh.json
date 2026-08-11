@@ -11,6 +11,12 @@
     "capabilities": "长时自主任务、编码工作流、自我改进 Agent、持续执行",
     "risk": "公开说明较短，真正的自我改进机制、边界条件和稳定性还需要结合代码与示例验证"
   },
+  "corsairdev/corsair": {
+    "summary": "一个面向 Agent 的统一集成层，把外部应用连接、权限控制和带范围的授权封装成更安全的工具调用接口。",
+    "audience": "需要让 Agent 安全连接业务应用、同时控制工具权限边界的开发者和平台团队",
+    "capabilities": "应用集成层、MCP 接入、权限控制、范围授权、Agent 工具调用",
+    "risk": "核心价值依赖权限模型和连接器覆盖，真实安全边界仍需结合部署方式和示例验证"
+  },
   "vitali87/code-graph-rag": {
     "summary": "一个把多语言代码库转成知识图谱式 RAG 索引的代码理解工具，方便开发者和 Agent 查询、理解并修改大型 monorepo。",
     "audience": "需要让开发者或编码 Agent 快速理解大型代码库结构、依赖关系和上下文的团队",
@@ -149,6 +155,18 @@
   "calesthio/OpenMontage": {
     "summary": "一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。"
   },
+  "semantica-agi/semantica": {
+    "summary": "一个图原生的上下文基础设施，把企业数据整理成 Context Graph 和知识图谱，供可审计的 AI 系统与 Agent 使用。",
+    "audience": "需要给企业 Agent 构建可追溯上下文层、知识图谱和因果分析能力的平台团队",
+    "capabilities": "上下文图谱、知识图谱、图 RAG、可审计 AI、语义检索、推理基础设施",
+    "risk": "图建模和本体治理成本较高，真正价值取决于数据接入质量和后续维护能力"
+  },
+  "stablyai/orca": {
+    "summary": "一个面向并行编码 Agent 的 ADE，可在桌面、移动端和 VPS 上统一调度多条 Agent 工作流。",
+    "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
+    "capabilities": "并行 Agent、ADE、编码工作流、跨端使用、终端编排、worktree 协作",
+    "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性"
+  },
   "Egonex-AI/Understand-Anything": {
     "summary": "把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。"
   },
@@ -193,6 +211,18 @@
     "audience": "需要为 RAG、研究 Agent 或自动化流程稳定抓取网页数据的团队",
     "capabilities": "网页搜索、批量抓取、交互式采集、HTML 转 Markdown、Agent 数据入口",
     "risk": "AGPL 许可和网页抓取的合规边界需要提前评估，真实成本也取决于目标站点复杂度"
+  },
+  "HKUDS/DeepTutor": {
+    "summary": "一个面向终身个性化学习的 AI 导师系统，把多 Agent、检索和交互式教学流程组合成持续辅导平台。",
+    "audience": "希望构建个性化教学助手、学习陪练或教育研究系统的开发者与研究团队",
+    "capabilities": "个性化辅导、多 Agent 教学、RAG 检索、交互式学习、教育工作流",
+    "risk": "教学效果高度依赖知识库质量、评测设计和长期用户反馈，不能只凭热度判断真实学习成效"
+  },
+  "macro-inc/macro": {
+    "summary": "一个面向团队的统一工作区，把邮件、聊天、文档、任务、通话、CRM 和 Agent 放进同一套共享 AI 记忆层。",
+    "audience": "想把协作工具、客户信息和 Agent 工作流集中到一个团队工作台的创业团队和运营组织",
+    "capabilities": "统一工作区、共享 AI 记忆、邮件与聊天整合、任务协同、CRM、Agent 协作",
+    "risk": "产品边界很大，真实落地会受迁移成本、权限体系和与现有协作工具的替换阻力影响"
   },
   "agentscope-ai/QwenPaw": {
     "summary": "一个可自托管的个人 AI 助手框架，支持多聊天渠道接入，并把能力扩展、部署和日常使用打包成一体。",

@@ -484,10 +484,17 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "RAG 检索",
+      "并行 Agent",
       "Agent 开发环境",
-      "Claude Code 生态"
-    ]
+      "编码工作流"
+    ],
+    "brief_zh": {
+      "summary": "一个面向并行编码 Agent 的 ADE，可在桌面、移动端和 VPS 上统一调度多条 Agent 工作流。",
+      "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
+      "capabilities": "并行 Agent、ADE、编码工作流、跨端使用、终端编排、worktree 协作",
+      "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "opendatalab",
