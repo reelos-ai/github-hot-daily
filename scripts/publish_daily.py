@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 from datetime import date, datetime, timedelta
@@ -99,6 +100,14 @@ def read_json(path: Path):
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def report_timestamp(report_date: str | None = None) -> str:
+    now = datetime.now().astimezone()
+    value = report_date or os.getenv("REPORT_DATE")
+    if not value:
+        return now.isoformat(timespec="minutes")
+    return now.replace(year=int(value[:4]), month=int(value[5:7]), day=int(value[8:10])).isoformat(timespec="minutes")
 
 
 def split_capabilities(raw: str) -> list[str]:
@@ -255,7 +264,7 @@ def upsert_report_entry(period: str, stats: dict) -> list[dict]:
     reports = normalize_report_entries(reports)
     reports.sort(key=lambda item: (item.get("period", ""), item.get("type", "")), reverse=True)
     payload = {
-        "updated_at": datetime.now().astimezone().isoformat(timespec="minutes"),
+        "updated_at": report_timestamp(period),
         "site": SITE,
         "reports": reports,
     }

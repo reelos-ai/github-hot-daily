@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
 from collections import Counter, defaultdict
 from datetime import date, datetime
@@ -95,6 +96,14 @@ def read_json(path: Path):
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def report_timestamp() -> str:
+    now = datetime.now().astimezone()
+    value = os.getenv("REPORT_DATE")
+    if not value:
+        return now.isoformat(timespec="minutes")
+    return now.replace(year=int(value[:4]), month=int(value[5:7]), day=int(value[8:10])).isoformat(timespec="minutes")
 
 
 def strip_tags(value: str) -> str:
@@ -923,7 +932,7 @@ def render_page() -> str:
 def build_leaderboard(root: Path = ROOT) -> dict:
     items, metadata = build_items(root)
     payload = {
-        "generated_at": datetime.now().astimezone().isoformat(timespec="minutes"),
+        "generated_at": report_timestamp(),
         "methodology": {
             "name": "ReelOS Open Source Signal Index",
             "version": 2,
