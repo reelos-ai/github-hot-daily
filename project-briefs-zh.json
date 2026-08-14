@@ -35,6 +35,12 @@
     "capabilities": "Agent Skills、Google Cloud 集成、RAG 工作流、基础设施操作、开发者工具",
     "risk": "技能覆盖很广，但质量和维护节奏会因具体子技能不同而存在差异"
   },
+  "holaboss-ai/holaOS": {
+    "summary": "一个本地优先的 AI Agent 工作区，把 Claude Code、Codex 等不同 Agent 放进同一桌面环境，并共享工具、文件和长期记忆。",
+    "audience": "希望在同一工作台里切换多个 Agent、统一上下文和外部集成的开发者与团队",
+    "capabilities": "Agent 工作区、多 Agent 切换、共享记忆、MCP 集成、本地优先桌面端",
+    "risk": "核心价值依赖本地状态管理、权限边界和多 Agent 一致性，真实稳定性需要长时间使用验证"
+  },
   "cloudflare/computer": {
     "summary": "Cloudflare 开源的虚拟计算机底座，把文件系统和状态放进 Durable Object，并通过统一 runtime 暴露给 Agent 使用。",
     "audience": "需要给 Agent 提供可持久化执行环境、浏览器或桌面式工作区的开发者",
@@ -46,6 +52,18 @@
     "audience": "希望用多 Agent 方法辅助投资研究和量化交易实验的个人研究者与团队",
     "capabilities": "多 Agent 交易、市场分析、LLM 研究流程、金融决策支持",
     "risk": "交易类框架容易放大数据质量和假设偏差，研究结果不能直接等同于可执行收益"
+  },
+  "infiniflow/ragflow": {
+    "summary": "一个把 RAG、检索和 Agent 能力组合成统一上下文层的开源引擎，目标是为 LLM 应用提供可运营的知识接入底座。",
+    "audience": "需要给企业知识库、搜索或 Agent 产品搭建统一 RAG 基础设施的开发者和平台团队",
+    "capabilities": "RAG 引擎、Agent 检索、上下文工程、知识接入、LLM 应用底座",
+    "risk": "能力面较广，真实效果取决于数据接入质量、检索调优成本和持续运维能力"
+  },
+  "JuliusBrussee/caveman": {
+    "summary": "一个面向 Claude Code 及其他编码 Agent 的极简压缩技能与代理工具，通过减少输入输出 token 和浏览负担来降低上下文成本。",
+    "audience": "希望压缩 AI 编程助手 token 开销、同时保留现有 Agent 工作流的开发者",
+    "capabilities": "Token 压缩、Agent 技能、输入裁剪、浏览压缩、本地代理包装",
+    "risk": "压缩策略会直接影响信息保真度，需要在节省 token 和任务成功率之间持续平衡"
   },
   "addyosmani/agent-skills": {
     "summary": "一套面向 AI 编码 Agent 的工程技能包，把资深工程师常用的工作流、质量门槛和最佳实践固化成可复用 Skills。",
@@ -64,6 +82,12 @@
     "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
     "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
     "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+  },
+  "cactus-compute/needle": {
+    "summary": "一个面向手机、可穿戴设备和机器人等小设备的超轻量基础模型，把工具调用、结构化抽取和低内存推理压缩进单个 14MB 二进制。",
+    "audience": "需要在边缘设备、本地硬件或超低内存环境运行 AI 能力的开发者和设备团队",
+    "capabilities": "端侧基础模型、工具调用、结构化抽取、低内存推理、LoRA 微调",
+    "risk": "体积优势很明显，但复杂任务精度、工具选择稳定性和设备侧部署边界仍需实测"
   },
   "heygen-com/hyperframes": {
     "summary": "一个让 Agent 直接用 HTML 驱动视频生成的开源引擎，把时间轴、动画和渲染流程压缩成更轻量的可编排接口。",
@@ -88,6 +112,12 @@
     "audience": "研究国际事件、风险情报或全球运营状态的分析人员",
     "capabilities": "新闻聚合、地缘事件监控、基础设施追踪、统一态势界面",
     "risk": "判断质量高度依赖数据源覆盖、更新速度和事件去重能力"
+  },
+  "lightningpixel/modly": {
+    "summary": "一个本地运行的图像转 3D 桌面应用，利用开源 AI 模型在用户 GPU 上直接生成 3D mesh。",
+    "audience": "想把图片快速转换成 3D 模型、又希望数据留在本地设备上的创作者和开发者",
+    "capabilities": "图像转 3D、本地 GPU 推理、桌面应用、3D mesh 生成、开源工作流",
+    "risk": "生成质量依赖显卡能力和模型适配，复杂几何与真实生产精度仍需进一步验证"
   },
   "block/buzz": {
     "summary": "一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。",
@@ -323,6 +353,12 @@
     "audience": "希望自托管长期运行、可积累个人上下文与技能的 AI 助手用户和开发者",
     "capabilities": "自学习 Agent、跨会话记忆、Skills 生成、多渠道接入、子 Agent 协作",
     "risk": "自主学习和长期记忆会扩大权限与隐私边界，需要严格控制工具访问、数据留存和自动执行范围"
+  },
+  "unslothai/unsloth": {
+    "summary": "一个可在桌面端本地运行和训练大模型与扩散模型的应用，把模型下载、推理和训练入口整合进统一 UI。",
+    "audience": "想在本地机器上试跑、微调或管理多种开源模型的开发者与 AI 极客用户",
+    "capabilities": "本地模型运行、桌面训练界面、多模型管理、扩散模型支持、自托管 UI",
+    "risk": "模型覆盖很广，但真实体验受显存、平台兼容性和桌面端稳定性影响明显"
   },
   "mvanhorn/last30days-skill": {
     "summary": "一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。",

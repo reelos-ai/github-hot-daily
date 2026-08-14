@@ -158,10 +158,17 @@
     },
     "strategic_score": 89,
     "capability_tags": [
-      "长期记忆",
-      "评测",
-      "模型推理"
-    ]
+      "端侧基础模型",
+      "工具调用",
+      "结构化抽取"
+    ],
+    "brief_zh": {
+      "summary": "一个面向手机、可穿戴设备和机器人等小设备的超轻量基础模型，把工具调用、结构化抽取和低内存推理压缩进单个 14MB 二进制。",
+      "audience": "需要在边缘设备、本地硬件或超低内存环境运行 AI 能力的开发者和设备团队",
+      "capabilities": "端侧基础模型、工具调用、结构化抽取、低内存推理、LoRA 微调",
+      "risk": "体积优势很明显，但复杂任务精度、工具选择稳定性和设备侧部署边界仍需实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "infiniflow",
@@ -209,10 +216,17 @@
     },
     "strategic_score": 89,
     "capability_tags": [
-      "RAG 检索",
-      "大模型应用",
-      "评测"
-    ]
+      "RAG 引擎",
+      "Agent 检索",
+      "上下文工程"
+    ],
+    "brief_zh": {
+      "summary": "一个把 RAG、检索和 Agent 能力组合成统一上下文层的开源引擎，目标是为 LLM 应用提供可运营的知识接入底座。",
+      "audience": "需要给企业知识库、搜索或 Agent 产品搭建统一 RAG 基础设施的开发者和平台团队",
+      "capabilities": "RAG 引擎、Agent 检索、上下文工程、知识接入、LLM 应用底座",
+      "risk": "能力面较广，真实效果取决于数据接入质量、检索调优成本和持续运维能力"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "anthropics",
@@ -309,10 +323,17 @@
     },
     "strategic_score": 88,
     "capability_tags": [
-      "长期记忆",
-      "MCP 集成",
-      "技能扩展"
-    ]
+      "Agent 工作区",
+      "多 Agent 切换",
+      "共享记忆"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的 AI Agent 工作区，把 Claude Code、Codex 等不同 Agent 放进同一桌面环境，并共享工具、文件和长期记忆。",
+      "audience": "希望在同一工作台里切换多个 Agent、统一上下文和外部集成的开发者与团队",
+      "capabilities": "Agent 工作区、多 Agent 切换、共享记忆、MCP 集成、本地优先桌面端",
+      "risk": "核心价值依赖本地状态管理、权限边界和多 Agent 一致性，真实稳定性需要长时间使用验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "stablyai",
@@ -517,9 +538,16 @@
     },
     "strategic_score": 86,
     "capability_tags": [
-      "MCP 集成",
-      "RAG 检索",
-      "大模型应用"
-    ]
+      "本地模型运行",
+      "桌面训练界面",
+      "多模型管理"
+    ],
+    "brief_zh": {
+      "summary": "一个可在桌面端本地运行和训练大模型与扩散模型的应用，把模型下载、推理和训练入口整合进统一 UI。",
+      "audience": "想在本地机器上试跑、微调或管理多种开源模型的开发者与 AI 极客用户",
+      "capabilities": "本地模型运行、桌面训练界面、多模型管理、扩散模型支持、自托管 UI",
+      "risk": "模型覆盖很广，但真实体验受显存、平台兼容性和桌面端稳定性影响明显"
+    },
+    "summary_source": "project_brief"
   }
 ]

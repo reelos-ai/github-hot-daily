@@ -375,10 +375,17 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "技能扩展",
-      "大模型应用",
-      "Anthropic 生态"
-    ]
+      "Token 压缩",
+      "Agent 技能",
+      "输入裁剪"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Claude Code 及其他编码 Agent 的极简压缩技能与代理工具，通过减少输入输出 token 和浏览负担来降低上下文成本。",
+      "audience": "希望压缩 AI 编程助手 token 开销、同时保留现有 Agent 工作流的开发者",
+      "capabilities": "Token 压缩、Agent 技能、输入裁剪、浏览压缩、本地代理包装",
+      "risk": "压缩策略会直接影响信息保真度，需要在节省 token 和任务成功率之间持续平衡"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tirth8205",
