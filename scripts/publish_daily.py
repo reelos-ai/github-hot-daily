@@ -171,6 +171,9 @@ def enrich_top10_payload(path: Path, briefs: dict[str, dict]) -> bool:
         if brief.get("summary") and repo.get("summary_source") != "project_brief":
             repo["summary_source"] = "project_brief"
             changed = True
+        elif not brief.get("summary") and repo.get("description") and repo.get("summary_source") != "original_description":
+            repo["summary_source"] = "original_description"
+            changed = True
     if changed:
         write_text(path, json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
     return changed
