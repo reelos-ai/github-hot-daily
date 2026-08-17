@@ -1,0 +1,772 @@
+[
+  {
+    "owner": "unslothai",
+    "name": "unsloth",
+    "full_name": "unslothai/unsloth",
+    "url": "https://github.com/unslothai/unsloth",
+    "description": "Local UI to run and train LLMs and diffusion models, including Qwen3.8, Kimi K3, MiniMax-H3, Gemma 4, DeepSeek-V4, FLUX and more.",
+    "language": "Python",
+    "total_stars": 73175,
+    "forks": 6596,
+    "stars_this_period": 784,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai",
+        "chatgpt",
+        "deepseek",
+        "fine-tuning",
+        "gemma",
+        "image-generation",
+        "llama",
+        "llm",
+        "llms",
+        "openai",
+        "python",
+        "qwen",
+        "reinforcement-learning",
+        "self-hosted",
+        "stable-diffusion",
+        "text-to-speech",
+        "tts",
+        "ui",
+        "unsloth"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1282,
+      "created_at": "2023-11-29T16:50:09Z",
+      "pushed_at": "2026-08-17T22:00:40Z",
+      "homepage": "https://unsloth.ai/docs",
+      "default_branch": "main",
+      "forks": 6596,
+      "watchers": 375,
+      "archived": false,
+      "size_kb": 206546
+    },
+    "readme_content": "<h1 align=\"center\" style=\"margin:0;\">\n  <a href=\"https://unsloth.ai/docs\"><picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/unslothai/unsloth/main/images/unsloth%20logo%20white%20text.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/unslothai/unsloth/main/images/unsloth%20logo%20black%20text.png\">\n    <img alt=\"Unsloth logo\" src=\"https://raw.githubusercontent.com/unslothai/unsloth/main/images/unsloth%20logo%20black%20text.png\" height=\"80\" style=\"max-width:100%;\">\n  </picture></a>\n</h1>\n<h3 align=\"center\" style=\"margin: 0; margin-top: 0;\">\nUnsloth is the first desktop app to run and train models.\n</h3>\n\n<p align=\"center\">\n  <a href=\"#-features\">Features</a> •\n  <a href=\"#-install\">Quickstart</a> •\n  <a href=\"#-free-notebooks\">Notebooks</a> •\n  <a href=\"https://unsloth.ai/docs\">Documentation</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://unsloth.ai/docs/desktop\">\n    <img height=\"400\" alt=\"unsloth desktop\" src=\"https://unsloth.ai/cgi/image/unsloth_qwen3.8_final_ut2eqWnYJ-SLmu0s7x522.png?format=raw\" />\n  </a>\n</p>\n\n## ⚡ Get started\nDownload the native Unsloth Desktop app for your operating system:\n<table>\n  <tr>\n    <td><b>Platform</b></td>\n    <td><b>Link</b></td>\n  </tr>\n  <tr>\n    <td><b>Windows</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Windows.exe'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>macOS</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-MacOS.dmg'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux / Ubuntu (deb)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Ubuntu.deb'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux (AppImage)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Linux.AppImage'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux (Arm64)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-ARM64.app.tar.gz'>Download</a></td>\n  </tr>\n</table>\n\nDownload from [Unsloth](https://unsloth.ai/download) or [GitHub Releases](https://github.com/unslothai/unsloth/releases).\n\nOr if you prefer to install manually:\n\n#### macOS, Linux, WSL:\n```bash\ncurl -fsSL https://unsloth.ai/install.sh | sh\n```\n#### Windows:\n```powershell\nirm https://unsloth.ai/install.ps1 | iex\n```\n#### Community:\n\n- [Discord](https://discord.gg/unsloth)\n- [𝕏 (Twitter)](https://x.com/UnslothAI)\n- [Reddit](https://reddit.com/r/unsloth)\n\n## ⭐ Features\nUnsloth lets you run, train, and deploy AI models locally, with support for all types of models.\n\n### Run & Build with AI\n* Run and train LLMs, diffusion, embedding, audio models: [Kimi K3](https://unsloth.ai/docs/models/kimi-k3), MiniMax-H3, Qwen3.8, [Muse Glimmer](https://unsloth.ai/docs/models/muse-glimmer), [DeepSeek-V4](https://unsloth.ai/docs/models/deepseek-v4), [Gemma 4](https://unsloth.ai/docs/models/gemma-4).\n* **Agents & Tools:** Use local models with [Claude Code](https://unsloth.ai/docs/basics/claude-code), [Codex](https://unsloth.ai/docs/basics/codex), and [MCP](https://unsloth.ai/docs/basics/mcp), including tool calling and code execution.\n* **Search & RAG:** Use private and unlimited web search, deep research, and RAG.\n* **Image and video:** Run and train [image](https://unsloth.ai/docs/basics/diffusion-image) and video diffusion or multimodal models\n* **Search:** Use private and unlimited web search, deep research, and RAG.\n* **Hardware:** Supports CPU, Apple, NVIDIA, AMD, Intel, and multi GPU setups.\n* **Remote Access:** Serve your local models remotely through secure [Cloudflare](https://unsloth.ai/docs/basics/how-to-serve-local-llms-anywhere-secure-remote-access-with-cloudflare-and-unsloth) HTTPS.\n\n\n### Train & Deploy\n* **Fine-tuning:** Train LLMs, diffusion, TTS, and embedding models 2× faster with 70% less VRAM with [no accuracy loss](https://unsloth.ai/blog#training)\n* **Complete support:** Supports [reinforcement learning](https://unsloth.ai/docs/get-started/reinforcement-learning-rl-guide), LoRA, QLoRA, full fine tuning, pretraining, RL, GRPO, DPO, and FP8.\n* **Export & Deploy:** [Export](https://unsloth.ai/docs/new/studio/export) or Deploy models with including [GGUF](https://unsloth.ai/docs/basics/inference-and-deployment/saving-to-gguf), NVFP4, FP8 and more formats.\n* **Datasets:** Build datasets from PDFs, CSVs, DOCX files, and more with [Data Recipes](https://unsloth.ai/docs/new/studio/data-recipe).\n* **OpenAI Compatible API:** Serve models through an [OpenAI compatible API](https://unsloth.ai/docs/basics/api) and also connect to [cloud providers](https://unsloth.ai/docs/integrations/connections)\n\n## 🚀 Unsloth Start\n\n[Unsloth Start](https://unsloth.ai/docs/integrations/unsloth-start) connects [Claude Code](https://unsloth.ai/docs/basics/claude-code), [Codex](https://unsloth.ai/docs/basics/codex) and other agents to local models with one command.\n\nStart Unsloth, load a model, open your project folder, then run:\n\n```bash\nunsloth start claude\n```\n\nReplace `claude` with any supported agent:\n\n| Agent | Command |\n| --- | --- |\n| Claude Code | `unsloth start claude` |\n| OpenAI Codex | `unsloth start codex` |\n| Hermes Agent | `unsloth start hermes` |\n| OpenClaw | `unsloth start openclaw` |\n| OpenCode | `unsloth start opencode` |\n\nClaude Code, Codex and OpenCode can keep their current model and use Unsloth as a local\nsubagent:\n\n```bash\nunsloth start claude --as-subagent --model unsloth/model-GGUF:quant\n```\n\n## 📥 Install\nUnsloth can be used in three ways: **[Unsloth Desktop](https://unsloth.ai/download)**, the desktop app; **[Unsloth Studio](https://unsloth.ai/docs/new/studio/)**, the web UI; or **Unsloth Core**, the code based version.\n\n### Unsloth Desktop (recommended)\n\nThe Tauri based desktop app is the easiest way to use Unsloth and needs no setup, so start here.\n\n<table>\n  <tr>\n    <td><b>Platform</b></td>\n    <td><b>Link</b></td>\n  </tr>\n  <tr>\n    <td><b>Windows</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Windows.exe'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>macOS</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-MacOS.dmg'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux / Ubuntu (deb)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Ubuntu.deb'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux (AppImage)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Linux.AppImage'>Download</a></td>\n  </tr>\n  <tr>\n    <td><b>Linux (Arm64)</b></td>\n    <td><a href='https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-ARM64.app.tar.gz'>Download</a></td>\n  </tr>\n</table>\n\n### Unsloth Studio (web UI)\nUnsloth Studio (Beta) works on **Windows, Linux, WSL** and **macOS**.\n\n* **CPU:** Supported for Chat and Data Recipes currently\n* **NVIDIA:** Training works on RTX 30/40/50, Blackwell, DGX Spark, Station and more\n* **macOS:** Training, MLX and GGUF inference are ALL supported.\n* **AMD:** Training, RL, chat and deployment work on Windows, WSL and Linux. [Read the AMD guide](https://unsloth.ai/docs/basics/amd).\n* **Vulkan:** GGUF inference is supported on [compatible GPUs, including Intel GPUs](https://github.com/unslothai/unsloth/pull/5819). Vulkan accelerates GGUF inference only; training still requires a supported PyTorch or MLX backend.\n* **Multi-GPU:** Available now, with a major upgrade on the way\n\n#### macOS, Linux, WSL:\n```bash\ncurl -fsSL https://unsloth.ai/install.sh | sh\n```\nUse the same command to update.\n\nThe GGUF inference backend can be changed from **Settings > System > GGUF inference engine** once Studio is running: pick CPU, CUDA, ROCm or Vulkan (only the ones with a build for your machine are listed) and Apply. The choice is recorded with the install, so updates keep it, and Automatic returns to hardware detection.\n\nTo pick it before the first launch instead, set `UNSLOTH_LLAMA_CPP_BACKEND` **before installing or updating**. It selects the llama.cpp binary bundle, so setting it only when launching Studio cannot replace an existing one, and it overrides whatever was chosen in Settings:\n\n```bash\nexport UNSLOTH_LLAMA_CPP_BACKEND=vulkan   # or cpu, cuda, rocm, auto\ncurl -fsSL https://unsloth.ai/install.sh | sh\n```\n\nOn Linux and WSL this is the path for the AMD GPUs Unsloth has no ROCm PyTorch wheels for: Polaris (RX 470/480/570/580/590) and RDNA 1 (RX 5500/5600/5700). torch stays on CPU there, so training and GPU inference are unavailable, but GGUF chat runs on the GPU through Vulkan. Not every pre-RDNA 2 card is in this group: Vega 20 (Radeon VII, MI50, `gfx906`) keeps a ROCm PyTorch path and the installer routes it there. The older `UNSLOTH_FORCE_VULKAN=1` still works and is read when `UNSLOTH_LLAMA_CPP_BACKEND` is unset.\n\nmacOS has no Vulkan llama.cpp bundle and does not need one: the installer always uses the Metal build, which covers Apple Silicon and the AMD GPUs in Intel Macs, and it says so and carries on if the variable is set.\n\n#### Windows:\n```powershell\nirm https://unsloth.ai/install.ps1 | iex\n```\nUse the same command to update.\n\nTo pick the GGUF inference backend before the first launch, set the environment variable before running the installer or updater (or change it later in **Settings > System > GGUF inference engine**):\n\n```powershell\n$env:UNSLOTH_LLAMA_CPP_BACKEND=\"vulkan\"   # or cpu, cuda, rocm, auto\nirm https://unsloth.ai/install.ps1 | iex\n```\n\nRe-running the current installer replaces a previously selected bundle when the backend differs. A separate Vulkan SDK is not required; the GPU driver must provide a working Vulkan runtime.\n\n#### Launch\n```bash\nunsloth studio -p 8888\n```\nFor LAN or cloud access, add `-H 0.0.0.0` (raw port only; add `--cloudflare` for a public URL). By default, Unsloth is accessible only locally.\n\nTo reach Unsloth over HTTPS, use `unsloth studio --secure`. Unsloth stays bound to localhost and is reached only through a free Cloudflare tunnel, which publishes it at a public `https://*.trycloudflare.com` URL (it fails closed if the tunnel can't start, so the raw port is never exposed). This makes Unsloth reachable from the internet, so anyone with the link and API key can use it and run code: keep your API key private (see Remote access below).\n\n#### Docker\nUse our [Docker image](https://hub.docker.com/r/unsloth/unsloth) ```unsloth/unsloth``` container. Run:\n```bash\ndocker run -d -e JUPYTER_PASSWORD=\"mypassword\" \\\n  -p 8888:8888 -p 8000:8000 -p 2222:22 \\\n  -v $(pwd)/work:/workspace/work \\\n  --gpus all \\\n  unsloth/unsloth\n  ```\n\n#### Developer, Nightly, Uninstall\nTo see developer, nightly and uninstallation etc. instructions, see [advanced installation](#-advanced-installation).\n\n### Unsloth Core (code-based)\n#### Linux, WSL:\n```bash\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nuv venv unsloth_env --python 3.13\nsource unsloth_env/bin/activate\nuv pip install unsloth --torch-backend=auto\n```\n#### Windows:\n```powershell\nwinget install -e --id Python.Python.3.13\nwinget install --id=astral-sh.uv  -e\nuv venv unsloth_env --python 3.13\n.\\unsloth_env\\Scripts\\activate\nuv pip install unsloth --torch-backend=auto\n```\nFor Windows, `pip install unsloth` works only if you have PyTorch installed. Read our [Windows Guide](https://unsloth.ai/docs/get-started/install/windows-installation).\nYou can use the same Docker image as Unsloth Studio.\n\n#### AMD, Intel:\nFor RTX 50x, B200, 6000 GPUs: `uv pip install unsloth --torch-backend=auto`. Read our guides for: [Blackwell](https://unsloth.ai/do",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools==80.9.0\", \"setuptools-scm==9.2.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"unsloth\"\ndynamic = [\"version\"]\ndescription = \"2-5X faster training, reinforcement learning & finetuning\"\nreadme = \"README.md\"\nrequires-python = \">=3.9,<3.15\"\nlicense = \"Apache-2.0\"\nkeywords = [\"ai\", \"llm\", \"reinforcement learning\", \"machine learning\", \"artificial intelligence\", \"pytorch\"]\nauthors = [\n    {email = \"info@unsloth.ai\"},\n    {name = \"Unsloth AI team\"},\n]\nmaintainers = [\n    {name = \"Daniel Han\", email = \"daniel@unsloth.ai\"},\n    {name = \"Michael Han\", email = \"info@unsloth.ai\"},\n]\nclassifiers = [\n    \"Programming Language :: Python\",\n    \"Environment :: GPU\",\n    \"Environment :: GPU :: NVIDIA CUDA\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n]\ndependencies = [\n    \"typer>=0.12.0\",\n    \"rich\",\n    \"pydantic\",\n    \"pyyaml\",\n    \"nest-asyncio\",\n    # Every CLI command imports studio.backend.*, which reaches structlog at\n    # module level. The rest of the server stack lives in the studio extra.\n    \"structlog>=24.1.0\",\n    # unsloth_cli/__init__.py reaches click via commands/start.py, so every\n    # command needs it. typer supplied it until 0.27 dropped the dependency.\n    \"click>=8.0\",\n]\n\n[project.scripts]\nunsloth = \"unsloth_cli:app\"\n\n[tool.setuptools.dynamic]\nversion = {attr = \"unsloth._version.__version__\"}\n\n[tool.setuptools]\ninclude-package-data = true\n\n[tool.setuptools.package-data]\nunsloth_cli = [\"codex_fallback_prompt.md\", \"pi_subagent.ts\"]\nstudio = [\n    \"*.sh\",\n    \"*.ps1\",\n    \"*.bat\",\n    \"node_prebuilt_pins.json\",\n    \"src-tauri/icons/icon.icns\",\n    \"src-tauri/icons/icon.png\",\n    \"frontend/dist/**/*\",\n    \"frontend/*.json\",\n    \"frontend/*.ts\",\n    \"frontend/*.js\",\n    \"frontend/*.html\",\n    \"frontend/*.yaml\",\n    \"frontend/.git*\",\n    \"backend/requirements/**/*\",\n    # Vendored truststore: not a package (no __init__.py), so it ships as data.\n    \"backend/vendor/**/*\",\n    \"backend/plugins/**/*\",\n    \"backend/assets/**/*.jinja\",\n    \"backend/assets/**/*.html\",\n    # Swagger UI / ReDoc, served from this origin instead of a CDN. Without these the\n    # /docs and /redoc pages render blank in an installed Studio.\n    \"backend/assets/docs_ui/*\",\n    \"backend/core/data_recipe/oxc-validator/*.json\",\n    \"backend/core/data_recipe/oxc-validator/*.mjs\",\n]\n\n[tool.setuptools.packages.find]\ninclude = [\"unsloth*\", \"unsloth_cli*\", \"studio\", \"studio.backend*\"]\nexclude = [\n    \"images*\",\n    \"tests*\",\n    \"studio.backend.tests*\",\n    \"studio.backend.*.tests*\",\n    \"unsloth_compiled_cache*\",\n    \"*.unsloth_compiled_cache*\",\n    \"*.node_modules\",\n    \"*.node_modules.*\",\n]\n\n# packages.find only decides what is importable. include-package-data then hands\n# every tracked file to the nearest parent package that survived, so dropping\n# studio.backend.tests above just re-shipped the same 505 files as data of\n# studio.backend (pypa/setuptools#3260). exclude-package-data has the highest\n# precedence of the file selection options, so the veto has to be repeated here.\n# Source layout, not the wheel, so the sdist keeps the suites either way.\n[tool.setuptools.exclude-package-data]\n\"studio.backend\" = [\"tests/*\"]\n\"studio.backend.hub\" = [\"tests/*\"]\n\n[project.optional-dependencies]\n# Studio's server stack, mirroring studio/backend/requirements/studio.txt.\n# test_studio_extra_matches_requirements.py catches drift.\nstudio = [\n    \"typer==0.27.1 ; python_version >= '3.10'\",\n    \"typer==0.23.2 ; python_version < '3.10'\",\n    \"fastapi==0.141.1 ; python_version >= '3.10'\",\n    \"fastapi==0.128.8 ; python_version < '3.10'\",\n    \"uvicorn==0.52.1 ; python_version >= '3.10'\",\n    \"uvicorn==0.39.0 ; python_version < '3.10'\",\n    \"pydantic==2.13.4\",\n    \"packaging==26.3\",\n    \"matplotlib==3.10.9\",\n    \"pandas==2.3.3\",\n    \"nest_asyncio==1.6.0\",\n    \"datasets==4.3.0\",\n    \"pyjwt==2.13.0\",\n    \"huggingface-hub>=1.23.0,<2.0 ; python_version >= '3.10'\",\n    \"huggingface-hub==0.36.2 ; python_version < '3.10'\",\n    \"urllib3>=2.3.0\",\n    \"structlog>=24.1.0\",\n    \"diceware==1.0.1\",\n    \"ddgs==9.14.4 ; python_version >= '3.10'\",\n    \"ddgs==9.8.0 ; python_version < '3.10'\",\n    \"cryptography>=42.0.0\",\n    \"boto3>=1.34.0\",\n    \"httpx>=0.27.0\",\n    \"fastmcp>=3.0.2\",\n    \"gguf==0.19.0 ; python_version >= '3.10'\",\n    \"gguf==0.18.0 ; python_version < '3.10'\",\n    \"av>=12.0.0\",\n    \"sqlite-vec==0.1.9\",\n    \"pymupdf==1.27.2.3\",\n    \"pymupdf4llm==0.3.4\",\n    \"python-docx==1.2.0\",\n]\n\ntriton = [\n    \"triton>=3.0.0 ; ('linux' in sys_platform)\",\n    \"triton-windows ; (sys_platform == 'win32') and (platform_machine == 'AMD64' or platform_machine == 'x86_64')\",\n]\n\nhuggingfacenotorch = [\n    \"unsloth_zoo>=2026.8.12\",\n    \"wheel>=0.42.0\",\n    \"packaging\",\n    \"numpy\",\n    \"tqdm\",\n    \"psutil\",\n    \"tyro\",\n    \"protobuf\",\n    \"sentencepiece>=0.2.0\",\n    \"datasets>=3.4.1,!=4.0.*,!=4.1.0,<4.4.0\",\n    \"accelerate>=0.34.1\",\n    \"peft>=0.18.0,!=0.11.0\",\n    \"huggingface_hub>=0.34.0\",\n    \"hf_transfer\",\n    # ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "llm",
+      "embedding"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "本地模型运行",
+      "桌面训练界面",
+      "多模型管理"
+    ],
+    "brief_zh": {
+      "summary": "一个可在桌面端本地运行和训练大模型与扩散模型的应用，把模型下载、推理和训练入口整合进统一 UI。",
+      "audience": "想在本地机器上试跑、微调或管理多种开源模型的开发者与 AI 极客用户",
+      "capabilities": "本地模型运行、桌面训练界面、多模型管理、扩散模型支持、自托管 UI",
+      "risk": "模型覆盖很广，但真实体验受显存、平台兼容性和桌面端稳定性影响明显"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "volcengine",
+    "name": "OpenViking",
+    "full_name": "volcengine/OpenViking",
+    "url": "https://github.com/volcengine/OpenViking",
+    "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+    "language": "Python",
+    "total_stars": 28885,
+    "forks": 2276,
+    "stars_this_period": 254,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-memory",
+        "agent-plugins",
+        "agentic-rag",
+        "context-database",
+        "dsh-plugin",
+        "self-evolving"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 453,
+      "created_at": "2026-01-05T07:11:17Z",
+      "pushed_at": "2026-08-17T14:58:29Z",
+      "homepage": "https://openviking.ai/",
+      "default_branch": "main",
+      "forks": 2276,
+      "watchers": 79,
+      "archived": false,
+      "size_kb": 246301
+    },
+    "readme_content": "<div align=\"center\">\n\n<a href=\"https://openviking.ai/\" target=\"_blank\">\n  <picture>\n    <img alt=\"OpenViking\" src=\"docs/images/ov-logo.png\" width=\"200px\" height=\"auto\">\n  </picture>\n</a>\n\n### OpenViking: The Context Database for AI Agents\n\nEnglish / [中文](README_CN.md) / [日本語](README_JA.md)\n\n<a href=\"https://www.openviking.ai\">Website</a> · <a href=\"https://openviking.ai/studio\">Live Demo</a> · <a href=\"https://github.com/volcengine/OpenViking\">GitHub</a> · <a href=\"https://github.com/volcengine/OpenViking/issues\">Issues</a> · <a href=\"https://docs.openviking.ai/\">Docs</a>\n\n[![](https://img.shields.io/github/v/release/volcengine/OpenViking?color=369eff\\&labelColor=black\\&logo=github\\&style=flat-square)](https://github.com/volcengine/OpenViking/releases)\n[![](https://img.shields.io/github/stars/volcengine/OpenViking?labelColor\\&style=flat-square\\&color=ffcb47)](https://github.com/volcengine/OpenViking)\n[![](https://img.shields.io/github/issues/volcengine/OpenViking?labelColor=black\\&style=flat-square\\&color=ff80eb)](https://github.com/volcengine/OpenViking/issues)\n[![](https://img.shields.io/github/contributors/volcengine/OpenViking?color=c4f042\\&labelColor=black\\&style=flat-square)](https://github.com/volcengine/OpenViking/graphs/contributors)\n[![](https://img.shields.io/badge/license-AGPLv3-white?labelColor=black\\&style=flat-square)](https://github.com/volcengine/OpenViking/blob/main/LICENSE)\n[![](https://img.shields.io/github/last-commit/volcengine/OpenViking?color=c4f042\\&labelColor=black\\&style=flat-square)](https://github.com/volcengine/OpenViking/commits/main)\n\n👋 Join our Community\n\n📱 <a href=\"https://docs.openviking.ai/en/about/01-about-us#lark-group\">Lark Group</a> · <a href=\"https://docs.openviking.ai/en/about/01-about-us#wechat-group\">WeChat</a> · <a href=\"https://discord.com/invite/eHvx8E9XF3\">Discord</a> · <a href=\"https://x.com/openvikingai\">X</a>\n\n<a href=\"https://trendshift.io/repositories/19668\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/19668\" alt=\"volcengine%2FOpenViking | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n</div>\n\n***\n\n## What is OpenViking\n\nOpenViking is an open-source context database for AI agents. It stores memories, resources, and skills as one virtual filesystem under the `viking://` protocol, so an agent browses its own context with `ls`, `tree`, and `find` instead of querying a black-box vector store. Content is processed into three tiers — L0 abstract, L1 overview, L2 details — and loaded on demand. Every retrieval leaves a trajectory you can watch and debug. Full introduction: [Getting started](https://docs.openviking.ai/en/getting-started/01-introduction).\n\n[![OpenViking Studio playground](docs/images/studio-playground.png)](https://openviking.ai/studio)\n\n*The [OpenViking Studio](https://openviking.ai/studio) playground — a live demo you can open in the browser, no installation required.*\n\n## Why OpenViking\n\n- **One filesystem for all context.** Memories, resources, and skills each get a `viking://` URI. Agents locate and manipulate context deterministically, like a developer working with files. → [Viking URI](https://docs.openviking.ai/en/concepts/04-viking-uri) · [Context types](https://docs.openviking.ai/en/concepts/02-context-types)\n- **Tiered loading cuts token spend.** Every entry is processed into L0 (abstract), L1 (overview), and L2 (details) on write, then loaded only as deep as the task requires. → [Context layers](https://docs.openviking.ai/en/concepts/03-context-layers)\n- **Directory recursive retrieval.** Vector search first locates the highest-scoring directory, then drills down layer by layer, so results arrive with their surrounding context intact. → [Retrieval](https://docs.openviking.ai/en/concepts/07-retrieval)\n- **Observable retrieval.** Each query preserves its directory-browsing trajectory. When a result looks wrong, you can see exactly which path produced it. → [Retrieval](https://docs.openviking.ai/en/concepts/07-retrieval)\n- **Sessions become memory.** After a session commits, OpenViking asynchronously extracts user preferences and agent experience into long-term memory. → [Session](https://docs.openviking.ai/en/concepts/08-session)\n\nHow the pieces fit together: [Architecture](https://docs.openviking.ai/en/concepts/01-architecture). The thinking behind the design: [The Database Paradigm for Context Engineering](https://blog.openviking.ai/post/openviking-context-database/).\n\n```\nviking://\n├── resources/              # Resources: project docs, repos, web pages, etc.\n│   └── my_project/\n│       ├── docs/\n│       │   ├── api/\n│       │   └── tutorials/\n│       └── src/\n└── user/\n    └── {user_id}/\n        ├── memories/\n        │   └── preferences/\n        │       ├── writing_style\n        │       └── coding_habits\n        ├── resources/\n        │   └── private_project/\n        ├── skills/\n        │   ├── search_code\n        │   └── analyze_data\n        └── peers/\n            └── web-visitor-alice/\n```\n\nThe three loading tiers:\n\n- **L0 (Abstract)**: a one-sentence summary for quick relevance checks.\n- **L1 (Overview)**: core information and usage scenarios for planning.\n- **L2 (Details)**: the full original data, read only when needed.\n\nEach directory carries its own L0/L1 layers, so relevance can be judged before any full file is read:\n\n```\nviking://resources/my_project/\n├── .abstract               # L0: ~100 tokens - quick relevance check\n├── .overview               # L1: ~2k tokens - structure and key points\n└── docs/\n    ├── .abstract\n    ├── .overview\n    └── api/\n        ├── auth.md         # L2: full content, loaded on demand\n        └── endpoints.md\n```\n\n## Proof it works\n\nOpenViking 0.3.22 has been evaluated on long-conversation user memory (LoCoMo) and multi-turn agent tasks (tau2-bench). Full results and setup details, including knowledge-base QA, are in the [benchmark report](https://blog.openviking.ai/post/openviking-benchmark-results/); reproduction scripts live in [./benchmark](./benchmark).\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/images/benchmark-dark.svg\">\n  <img alt=\"Benchmark results. LoCoMo accuracy: OpenClaw 24.20% native vs 82.08% with OpenViking; Hermes 33.38% vs 82.86%; Claude Code 57.21% vs 80.32%. tau2-bench task success: Retail 70.94% vs 77.81%; Airline 54.38% vs 66.25%.\" src=\"docs/images/benchmark-light.svg\">\n</picture>\n\n- **User memory (LoCoMo)**: with OpenViking, all three agent integrations land at 80–83% accuracy — up from 24–57% on their native memory — while input tokens drop by 34.3–91.0% and query latency by 58.45–66.10%.\n- **Agent experience (tau2-bench)**: experience memory lifts task success by +6.87pp (retail) and +11.87pp (airline) over the same LLM without memory.\n\n## Quick start\n\n> 💡 **Want to see it in action first?** Try [OpenViking Studio](https://openviking.ai/studio) — a live hosted instance with a context playground, semantic search, and a multi-agent hub. No installation required.\n\nRequires Python 3.10 or higher.\n\n```bash\npip install openviking --upgrade\nopenviking-server init      # interactive wizard: providers, models, ov.conf\nopenviking-server doctor    # validate setup\nopenviking-server           # start (background: nohup openviking-server > openviking.log 2>&1 &)\n```\n\n`init` walks you through provider setup and writes `~/.openviking/ov.conf`. It supports Volcengine, OpenAI, Codex OAuth, Kimi, GLM, and local Ollama — for Ollama it can detect and install the runtime and pull models suited to your hardware. `doctor` checks the config file, Python version, provider connectivity, and disk space without a running server. Manual `ov.conf` templates, per-provider examples, environment variables, and Windows setup: [Configuration guide](https://docs.openviking.ai/en/guides/01-configuration) · [Quick start docs](https://docs.openviking.ai/en/getting-started/02-quickstart).\n\nThe install already includes the `ov` client CLI. With the server running:\n\n```bash\nov status\nov add-resource https://github.com/volcengine/OpenViking # --wait\nov ls viking://resources/\nov tree viking://resources/volcengine -L 2\n# wait some time for semantic processing if not --wait\nov find \"what is openviking\"\nov grep \"openviking\" --uri viking://resources/volcengine/OpenViking/docs/en\n```\n\nNext steps:\n\n- Client configuration (`ov config`), standalone CLI installs (npm / cargo), and advanced usage such as index rebuilding: [CLI setup](https://docs.openviking.ai/en/getting-started/05-cli-setup)\n- Docker and production deployment: [Deployment guide](https://docs.openviking.ai/en/guides/03-deployment)\n\n## Use it with your agent\n\nIntegrations inject OpenViking recall into your agent's context and auto-commit session memory:\n\n- [Claude Code](https://docs.openviking.ai/en/agent-integrations/02-claude-code)\n- [Codex](https://docs.openviking.ai/en/agent-integrations/04-codex)\n- [OpenClaw](https://docs.openviking.ai/en/agent-integrations/03-openclaw)\n- [Hermes](https://docs.openviking.ai/en/agent-integrations/05-hermes)\n- [Cursor](https://docs.openviking.ai/en/agent-integrations/12-cursor)\n- [TRAE / TRAE CN / TRAE CLI](https://docs.openviking.ai/en/agent-integrations/13-trae)\n- [OpenCode](https://docs.openviking.ai/en/agent-integrations/10-opencode)\n- [pi](https://docs.openviking.ai/en/agent-integrations/11-pi)\n- [Agent Plugins 1.0](https://docs.openviking.ai/en/agent-integrations/15-agent-plugins)\n- [MCP clients](https://docs.openviking.ai/en/agent-integrations/06-mcp-clients)\n- [LangChain / LangGraph](https://docs.openviking.ai/en/agent-integrations/07-langchain-langgraph)\n\nSetup instructions for each agent: [Agent integrations overview](https://docs.openviking.ai/en/agent-integrations/01-overview).\n\n## OpenViking Helper (Beta)\n\nOpenViking Helper is a desktop console, currently in beta for macOS and Windows x64:\n\n- **Visual local agent setup**: detects OpenViking CLI, Claude Code, Codex, Cursor, Trae, and OpenCode, then configures supported plugin, MCP, Hook, and CLI integrations.\n- **Session trace inspection**: parses Claude Code, Codex, and Trae sessions to show OpenViking recall, prompt injection, MCP calls, capture, and commit events.\n- **Local memory and skill management**: views local memory / rule files and `SKILL.md` skills, then syncs them to OpenViking.\n\nDownload:\n\n- [macOS Apple Silicon (arm64)](https://lf3-cdn-tos.bytegoofy.com/obj/tron-demo/7654844610543360265/420238785/0.0.19/darwin-arm64/openviking-helper-0.0.19-arm64.dmg)\n- [macOS Intel (x64)](https://lf3-cdn-tos.bytegoofy.com/obj/tron-demo/7654844610543360265/420238785/0.0.19/darwin-x64/openviking-helper-0.0.19-x64.dmg)\n- [Windows (x64)](https://lf3-cdn-tos.bytegoofy.com/obj/tron-demo/7654844610543360265/420238785/0.0.19/win32-x64/openviking-helper-0.0.19-x64.exe)\n\n## VikingBot\n\nVikingBot is an AI agent framework built on top of OpenViking:\n\n```bash\npip install \"openviking[bot]\"\nopenviking-server --with-bot\nov chat   # in another terminal\n```\n\nThe official Docker image bundles VikingBot and starts it by default alongside the server and console UI. Details: [VikingBot guide](https://docs.openviking.ai/en/guides/17-vikingbot).\n\n## Deploy in production\n\nFor production, run OpenViking as a standalone HTTP service — see [Server deployment](https://docs.openviking.ai/en/getting-started/03-quickstart-server) and the [Deployment guide](https://docs.openviking.ai/en/guides/03-deployment).\n\n## Commercial editions\n\n**The open-source edition is not crippled.** OpenViking in this repo is fully open source under AGPLv3: no feature gates, no account required, no activation key. Follow [Deploy in production](#deploy-in-production) above and run it in production yourself — and that will stay true.\n\nThe two editions below answer \"who operates it and where it runs\", not \"can I use it\".\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"top\">\n\n<img src=\"docs/images/commercial-saas.png\" alt=\"Managed SaaS\" width=\"100%\" />\n\n<h3>☁️ Managed SaaS</h3>\n<p>Officially hosted on <b>Volca",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\n    \"setuptools>=61.0\",\n    \"setuptools-scm>=8.0\",\n    \"cmake>=3.15\",\n    \"maturin>=1.0,<2.0\",\n    \"wheel\",\n]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"openviking\"\ndynamic = [\"version\"]\ndescription = \"An Agent-native context database\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\nauthors = [\n    {name = \"ByteDance\", email = \"noreply@bytedance.com\"}\n]\nlicense = \"AGPL-3.0\"\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Developers\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Programming Language :: Python :: 3.14\",\n]\ndependencies = [\n    \"openviking-sdk>=0.1.1\",\n    \"pydantic>=2.0.0\",\n    \"typing-extensions>=4.5.0\",\n    \"pyyaml>=6.0\",\n    \"httpx>=0.25.0\",\n    \"pdfplumber>=0.10.0\",\n    \"scrapy>=2.11.0\",\n    \"trafilatura>=1.12.0\",\n    \"feedparser>=6.0.0\",\n    \"defusedxml>=0.7.1\",\n    \"openai>=1.0.0\",\n    \"requests>=2.33.0\",\n    \"charset-normalizer>=3.4,<4\",\n    \"python-docx>=1.0.0\",\n    \"olefile>=0.47\",\n    \"xlrd>=2.0.1\",\n    \"python-pptx>=1.0.0\",\n    \"openpyxl>=3.0.0\",\n    \"ebooklib>=0.18.0\",\n    \"json-repair>=0.25.0\",\n    \"apscheduler>=3.11.0\",\n    \"volcengine>=1.0.216\",\n    \"volcengine-python-sdk[ark]>=5.0.3\",\n    \"fastapi>=0.128.0\",\n    \"uvicorn>=0.39.0\",\n    \"xxhash>=3.0.0\",\n    \"jinja2>=3.1.6\",\n    \"tabulate>=0.9.0\",\n    \"urllib3>=2.7.0\",\n    \"protobuf>=6.33.5\",\n    \"pdfminer-six>=20251230\",\n    \"typer>=0.12.0\",\n    \"litellm>=1.83.7,<1.91.2\",\n    \"python-multipart>=0.0.31\",\n    \"tree-sitter>=0.23.0\",\n    \"tree-sitter-python>=0.23.0\",\n    \"tree-sitter-javascript>=0.23.0\",\n    \"tree-sitter-typescript>=0.23.0\",\n    \"tree-sitter-java>=0.23.0\",\n    \"tree-sitter-cpp>=0.23.0\",\n    \"tree-sitter-rust>=0.23.0\",\n    \"tree-sitter-go>=0.23.0\",\n    \"tree-sitter-c-sharp>=0.23.0\",\n    \"tree-sitter-php>=0.23.0\",\n    \"tree-sitter-lua>=0.1.0\",\n    # OpenTelemetry\n    \"opentelemetry-api>=1.14\",\n    \"opentelemetry-sdk>=1.14\",\n    \"opentelemetry-exporter-otlp-proto-grpc>=1.14\",\n    \"opentelemetry-exporter-otlp-proto-http>=1.14\",\n    \"opentelemetry-instrumentation-asyncio>=0.61b0\",\n    \"loguru>=0.7.3\",\n    \"cryptography>=48.0.1\",\n    \"argon2-cffi>=23.0.0\",\n    \"lark-oapi>=1.5.3\",\n    \"mcp>=1.27,<2\",\n    \"pathspec>=1.1.1\",\n    \"grep-ast>=0.9.0\",\n    \"tree-sitter-language-pack>=1.12,<2.0\",\n]\n\n\n[project.optional-dependencies]\ntest = [\n  \"pytest>=7.0.0\",\n  \"pytest-asyncio>=0.21.0\",\n  \"pytest-xdist>=3.5.0\",\n  \"boto3>=1.42.44\",\n  \"pytest-cov>=4.0.0\",\n  \"ragas>=0.1.0\",\n  \"datasets>=2.0.0\",\n  \"pandas>=2.0.0\",\n  \"diff-match-patch>=20200713\",\n  \"hvac>=2.0.0\",\n]\nauth = [\n  \"python-jose[cryptography]>=3.3.0\",\n  \"httpx>=0.25.0\",\n  \"python-ldap>=3.4.0\",\n]\ndev = [\n    \"mypy>=1.0.0\",\n    \"ruff>=0.1.0\",\n    \"setuptools_scm>=10.0.0\",\n]\ndoc = [\n    \"sphinx>=7.0.0\",\n    \"sphinx-rtd-theme>=1.3.0\",\n    \"myst-parser>=2.0.0\",\n]\neval = [\n    \"ragas>=0.1.0\",\n    \"datasets>=2.0.0\",\n    \"pandas>=2.0.0\",\n]\ngemini = [\n    \"google-genai>=1.0.0\",\n]\ngemini-async = [\n    \"google-genai>=1.0.0\",\n    \"anyio>=4.0.0\",\n]\nocr = [\n    \"pytesseract>=0.3.10\",\n]\nbuild = [\n    \"setuptools>=61.0\",\n    \"setuptools-scm>=8.0\",\n    \"cmake>=3.15\",\n    \"wheel\",\n    \"build\",\n]\n# vikingbot - all features included\nbot = [\n  \"pydantic-settings>=2.0.0\",\n  \"websockets>=12.0\",\n  \"websocket-client>=1.6.0\",\n  \"httpx[socks]>=0.25.0\",\n  \"readability-lxml>=0.8.0\",\n  \"rich>=13.0.0\",\n  \"croniter>=2.0.0\",\n  \"socksio>=1.0.0\",\n  \"python-socketio>=5.16.2\",\n  \"python-engineio>=4.13.2\",\n  \"msgpack>=1.0.8\",\n  \"python-socks[asyncio]>=2.4.0\",\n  \"prompt-toolkit>=3.0.0\",\n  \"pygments>=2.16.0\",\n  \"html2text>=2020.1.16\",\n  \"beautifulsoup4>=4.12.0\",\n  \"ddgs>=9.0.0\",\n  \"tavily-python>=0.5.0\",\n  \"gradio>=6.6.0\",\n  \"py-machineid>=1.0.0\",\n  \"mcp>=1,<2\",\n  # All optional features included by default\n  \"langfuse>=3.0.0\",\n  \"python-telegram-bot[socks]>=21.0\",\n  \"lark-oapi>=1.0.0\",\n  \"dingtalk-stream>=0.4.0\",\n  \"slack-sdk>=3.26.0\",\n  \"qq-botpy>=1.0.0\",\n  \"opensandbox>=0.1.0\",\n  \"opensandbox-server>=0.1.0\",\n  \"agent-sandbox>=0.0.23\",\n  \"fusepy>=3.0.1\",\n  \"opencode-ai>=0.1.0a0\",\n  # Auth dependencies\n  \"python-jose[cryptography]>=3.3.0\",\n]\nbenchmark = [\n    \"langchain>=1.0.0\",\n    \"langchain-core>=1.0.0\",\n    \"langchain-openai>=1.0.0\",\n    \"tiktoken>=0.5.0\",\n    \"datasets>=2.0.0\",\n    \"pandas>=2.0.0\",\n]\nlocal-embed = [\n    \"llama-cpp-python>=0.3.0\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/volcengine/openviking\"\nDocumentation = \"https://openviking.ai\"\nRepository = \"https://github.com/volcengine/openviking\"\nIssues = \"https://github.com/volcengine/openviking/issues\"\n\n[project.scripts]\nov = \"openviking_cli.rust_cli:main\"  # Rust CLI 入口（极简包装器）\nopenviking = \"openviking_cli.rust_cli:main\"  # Rust CLI 入口（放弃 python CLI）\nopenviking-server = \"openviking_cli.server_bootstrap:main\"  # also: `o",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "skill",
+      "eval",
+      "vector",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "长期记忆",
+      "上下文数据库",
+      "知识 RAG"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
+      "audience": "需要给 Agent 搭建统一记忆与知识层的开发者和平台团队",
+      "capabilities": "长期记忆、上下文数据库、知识 RAG、插件化技能、自演化知识更新",
+      "risk": "把记忆、检索和技能同时耦合到一层，后续扩展性、数据治理和调试复杂度需要重点验证"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "OpenCut-app",
+    "name": "OpenCut",
+    "full_name": "OpenCut-app/OpenCut",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "description": "The open-source CapCut alternative",
+    "language": "TypeScript",
+    "total_stars": 84380,
+    "forks": 8324,
+    "stars_this_period": 821,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "open_issues": 370,
+      "created_at": "2025-06-22T08:02:17Z",
+      "pushed_at": "2026-08-10T16:38:36Z",
+      "homepage": "https://opencut.app",
+      "default_branch": "main",
+      "forks": 8324,
+      "watchers": 379,
+      "archived": false,
+      "size_kb": 28268
+    },
+    "readme_content": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n**Linux, macOS, WSL:**\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\n**Windows (PowerShell):**\n\n```powershell\nirm https://moonrepo.dev/install/proto.ps1 | iex\n```\n\nIf shims fail to run, allow local scripts for your user:\n\n```powershell\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "视频编辑",
+      "开源创作工具",
+      "桌面工作流"
+    ],
+    "brief_zh": {
+      "summary": "一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。",
+      "capabilities": "视频编辑、开源创作工具、桌面工作流、内容生产"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cactus-compute",
+    "name": "needle",
+    "full_name": "cactus-compute/needle",
+    "url": "https://github.com/cactus-compute/needle",
+    "description": "14MB foundation model for tiny devices; phones, wearables, smart home, and robots.",
+    "language": "Python",
+    "total_stars": 7098,
+    "forks": 456,
+    "stars_this_period": 729,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "cactus",
+        "gemini",
+        "gemma",
+        "llm",
+        "on-device-ai"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 25,
+      "created_at": "2026-02-24T04:50:47Z",
+      "pushed_at": "2026-08-17T16:04:35Z",
+      "homepage": "https://cactuscompute.com",
+      "default_branch": "main",
+      "forks": 456,
+      "watchers": 43,
+      "archived": false,
+      "size_kb": 4424
+    },
+    "readme_content": "![Needle](assets/banner.png)\n\n# Needle 2\n\nNeedle 2 is an open 45M-parameter model for tool calling, device use and structured extraction. The whole model is a single 14MB binary that runs a full session in about 28MB of RAM. It is built on our Simple Attention Network findings, compressed to CQ2-bit with Cactus Quants, and baked into its own engine. On the benchmarks below, Needle 2 trades wins with other small models like FunctionGemma 270M, LFM2.5 230M and Apple FM, at 5x to 70x smaller, and 2 bits against their f16.\n\nThis repository is the Python package: inference, LoRA fine-tuning, and export. `pip install cactus-needle`, describe your tools, and call them from Python. The inference engine is fetched once from Hugging Face and cached; there is nothing else to build, and offline setup for air gapped devices is covered in [doc/apis.md](doc/apis.md).\n\n- **Self-contained**: weights baked into a single 14MB engine; no separate model files to manage, and inference does no network.\n- **Simple contract**: tool calls come back as structured data, text in, JSON out; a byte-level grammar compiled from your schemas constrains every token.\n- **Confidence-gated**: every response carries a calibrated confidence score from a learned head; set a threshold, act above it, escalate below it.\n- **Tool retrieval**: declare a large catalogue and a built-in retrieval head renders only the top five tools per turn, with the grammar constrained to that subset.\n- **Bounded memory**: a 256-token sliding window with the tools pinned as KV sinks, so total memory stays near 28MB no matter how long the conversation runs.\n\nWeights: [huggingface.co/Cactus-Compute/needle2](https://huggingface.co/Cactus-Compute/needle2) &middot; source: [github.com/cactus-compute/needle](https://github.com/cactus-compute/needle).\n\n![Size-quality frontier: mobile-class and below](assets/frontier.png)\n\n## Simple Attention Network\n\nNeedle 2 is a Simple Attention Network, our dense small-model recipe: a Hadamard MLP in place of the FFN, GQA attention, engram key-value memory, and multi-lane hyper-connections. See the paper for the design and ablations: [arXiv:2607.18363](https://arxiv.org/abs/2607.18363).\n\n![Simple Attention Network architecture](assets/architecture.png)\n\nEach block carries its update rule. Here x̂ is the RMS-normalised flattening of the four residual streams, H the orthonormal Walsh-Hadamard transform (a fixed matrix, applied in n log n time with no weights to read), (kₜ, vₜ) rows gathered from hashed n-gram tables, and P the doubly-stochastic normalisation of the routing logits A, computed by Sinkhorn iteration; a, b, g and all σ-gates are learned and input-dependent. Both attention and MLP residuals are sandwich-normed and gated, the engram sites fire at two layers, and decoding is constrained by a byte-level grammar compiled from the declared schemas.\n\n## Quickstart\n\n```sh\npip install cactus-needle\n```\n\nNeedle reads your tool descriptions to decide what to call and how to fill arguments, so describing them well is the whole game.\n\n**Simple**: decorate a function. The signature gives the argument types, the docstring is the tool description, and `run()` completes the loop: model picks the call, Needle executes your function, feeds the result back, and returns the final response with the executed tool results attached as `results`.\n\n```python\nimport needle\n\n@needle.tool\ndef get_weather(city: str):\n    \"Get the current weather for a city.\"\n    return {\"city\": city, \"temp_c\": 27, \"sky\": \"clear\"}\n\nagent = needle.Needle(tools=[get_weather])\nprint(agent.run(\"what's it like in Lagos right now?\")[\"results\"])\n# [{'city': 'Lagos', 'temp_c': 27, 'sky': 'clear'}]\n```\n\n**Extraction**: to pull structured data out of text, declare the shape and call `extract()`. Pass a Pydantic model and you get a typed object back.\n\n```python\nfrom pydantic import BaseModel\n\nclass Invoice(BaseModel):\n    vendor: str\n    total: float\n    due_date: str\n\ninvoice = needle.extract(\"Invoice from Acme Corp, $1,200.00, due 2026-09-01\", Invoice)\nprint(invoice.vendor, invoice.total)   # -> Acme Corp 1200.0\n```\n\nPer argument descriptions and choices, value constraints compiled into the decode grammar, raw JSON schemas, driving the loop with `complete()`, the response contract, system facts, tool retrieval, and confidence gating are all covered in [doc/apis.md](doc/apis.md).\n\n## Playground\n\nTry any model in the browser: pick a preset, edit the tools or prompt, and Run. Follow-up queries continue the same conversation.\n\n```sh\nneedle playground                      # base model, http://127.0.0.1:7860\nneedle playground --weights my.cact    # a tuned model\n```\n\nThe server downloads and initializes the model before serving, so the first query is instant. The **Finetune on these tools** button runs the fine-tuning pipeline below from the UI and hands back a downloadable `.cact`.\n\n## Fine-tuning\n\nNeedle fine-tunes with LoRA on the frozen base and merges the adapter at export, so a run is cheap and the tuned model is still a single `.cact` that runs on the same engine. The workflow is: (optionally) synthesize data, LoRA fine-tune, then build a tuned `.cact`. See [doc/finetuning.md](doc/finetuning.md) for dataset sizing, reading the loss curve, and troubleshooting.\n\n**Data format.** A JSONL file, one example per line. `reasoning` is optional; an off-topic example has `answers: []`.\n\n```json\n{\"query\": \"dim the kitchen to 10\", \"tools\": [{\"name\": \"set_lights\", \"parameters\": {\"type\": \"object\", \"properties\": {\"room\": {\"type\": \"string\"}, \"brightness\": {\"type\": \"integer\"}}, \"required\": [\"room\"]}}], \"answers\": [{\"name\": \"set_lights\", \"arguments\": {\"room\": \"kitchen\", \"brightness\": 10}}], \"reasoning\": \"'kitchen' -> room; 'dim to 10' -> brightness 10\"}\n```\n\n**1. Synthesize data (optional).** Needs `OPENROUTER_API_KEY`. Seed from a tool schema file, or expand an existing set:\n\n```sh\nexport OPENROUTER_API_KEY=sk-or-...\nneedle generate-data --tools my_tools.json --num-samples 500 --output data.jsonl\nneedle generate-data --augment data.jsonl --num-samples 500      # expand an existing JSONL\n```\n\nSet `OPENROUTER_URL` to use an OpenAI-compatible gateway instead of the default OpenRouter endpoint.\n\n**2. LoRA fine-tune.** The base checkpoint auto-downloads from Hugging Face if you do not pass `--checkpoint`. `--generate N` first synthesizes N more examples from the tools in your data (also needs `OPENROUTER_API_KEY`).\n\n```sh\nneedle finetune data.jsonl --epochs 10\nneedle finetune data.jsonl --epochs 10 --generate 300 --lora-rank 16 --lora-alpha 32\n```\n\nKey options: `--epochs` (default 3), `--lora-rank` (16), `--lora-alpha` (32), `--lr` (1e-4), `--batch-size` (16), `--max-len` (1024), `--val-split` (0.1), `--checkpoint <base.pkl>`, `--out <adapter.pkl>`. The adapter is written to `checkpoints/needle_lora.pkl`. A validation loss prints each epoch from the held out split.\n\nTraining is plain JAX and runs on any accelerator jax supports. On an NVIDIA machine install the CUDA build and the same command trains on the GPU:\n\n```sh\npip install \"cactus-needle[gpu]\"\n```\n\nOn Apple Silicon the `metal` extra trains on the GPU:\n\n```sh\npip install \"cactus-needle[metal]\"\n```\n\n**3. Build a tuned `.cact`.** Merge the adapter into the base and quantize. The base auto-downloads if absent.\n\n```sh\nneedle build checkpoints/needle2.pkl --lora checkpoints/needle_lora.pkl --out my_needle.cact\n```\n\nAdd `--bits 2` for a smaller model (by default the export follows the checkpoint's declared per-layer bit map, falling back to 4 when the checkpoint declares none), or set `NEEDLE_HF_REPO=<you>/<model>` and pass `--upload` to publish the `.cact`. The counterpart `needle download <you>/<model>/my_needle.cact` pulls a published archive on any machine.\n\n**4. Run it.** The engine is weights-agnostic, so a tuned `.cact` runs on it directly - no recompilation:\n\n```python\nimport needle\nagent = needle.Needle(weights=\"my_needle.cact\", tools=[...])\nagent.run(\"...\")\n```\n\n## Citation\n\nNeedle 2 is built by the Cactus Compute team. If you use it in your work, please cite:\n\n```bibtex\n@misc{needle2_2026,\n  title        = {Needle 2: A 45M-Parameter Foundation Tool-Calling Model for Tiny Devices},\n  author       = {Ndubuaku, Henry and Mosoyan, Karen and Mroz, Jakub and Cylich, Noah and\n                  Kumar, Satyajit and Sandhu, Parkirat and Shemet, Roman and Lee, Justin H.},\n  year         = {2026},\n  organization = {Cactus Compute, Inc.},\n  howpublished = {\\url{https://github.com/cactus-compute/needle}}\n}\n```\n\nReach out on founders@cactuscompute.com for partnerships, collaborations, synergies and deploying Needle2 in your product.\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"cactus-needle\"\nversion = \"2.0.0\"\ndescription = \"A 14MB foundation tool-calling model for tiny devices: inference, LoRA finetuning, and build.\"\nrequires-python = \">=3.9\"\nreadme = \"README.md\"\nlicense = { text = \"Apache-2.0\" }\ndependencies = [\n    \"huggingface_hub\",\n    \"numpy\",\n    \"jax\",\n    \"jaxlib\",\n    \"flax>=0.10.2\",\n    \"optax\",\n    \"sentencepiece\",\n]\n\n[project.optional-dependencies]\ngpu = [\"jax[cuda12]\"]\nmetal = [\"jax==0.4.38\", \"jaxlib==0.4.38\", \"jax-metal\", \"flax==0.10.2\", \"optax==0.2.4\"]\ntest = [\"pytest\", \"pydantic\"]\n\n[project.scripts]\nneedle = \"needle.cli:main\"\n\n[tool.setuptools.packages.find]\ninclude = [\"needle*\"]\n\n[tool.setuptools.package-data]\n\"needle.model\" = [\"*.model\", \"*.vocab\"]\n\"needle.playground\" = [\"index.html\", \"app.js\", \"style.css\"]\n\n[build-system]\nrequires = [\"setuptools>=68.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\nmarkers = [\"slow: end-to-end JAX build/finetune tests (init a tiny model)\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "llm",
+      "eval",
+      "inference"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "端侧基础模型",
+      "工具调用",
+      "结构化抽取"
+    ],
+    "brief_zh": {
+      "summary": "一个面向手机、可穿戴设备和机器人等小设备的超轻量基础模型，把工具调用、结构化抽取和低内存推理压缩进单个 14MB 二进制。",
+      "audience": "需要在边缘设备、本地硬件或超低内存环境运行 AI 能力的开发者和设备团队",
+      "capabilities": "端侧基础模型、工具调用、结构化抽取、低内存推理、LoRA 微调",
+      "risk": "体积优势很明显，但复杂任务精度、工具选择稳定性和设备侧部署边界仍需实测"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "freestylefly",
+    "name": "awesome-gpt-image-2",
+    "full_name": "freestylefly/awesome-gpt-image-2",
+    "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+    "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，470+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+    "language": "JavaScript",
+    "total_stars": 11055,
+    "forks": 1277,
+    "stars_this_period": 515,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai-image-generation",
+        "chatgpt",
+        "dsh-plugin",
+        "gpt-image-2",
+        "image-prompts",
+        "prompt-as-code",
+        "prompt-engineering",
+        "skills",
+        "workflow-automation"
+      ],
+      "license": "MIT",
+      "open_issues": 9,
+      "created_at": "2026-04-25T09:19:13Z",
+      "pushed_at": "2026-07-22T16:57:36Z",
+      "homepage": "https://gpt-image2.canghe.ai",
+      "default_branch": "main",
+      "forks": 1277,
+      "watchers": 31,
+      "archived": false,
+      "size_kb": 190744
+    },
+    "readme_content": "<p align=\"center\"><img src=\"./data/images/banner.svg\" alt=\"GPT-Image2 Prompt System\" width=\"800\" /></p>\n\n<h3 align=\"center\">Prompt as Code | GPT-Image2 Industrial Prompt Engine & Template Library, 500+ Reverse-Engineered Cases, 20+ Industrial Templates</h3>\n\n<p align=\"center\">\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/stars/freestylefly/awesome-gpt-image-2?style=flat-square&color=rgb(25%2C%20121%2C%20255)\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/forks/freestylefly/awesome-gpt-image-2?style=flat-square&color=green\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/Cases-520-blueviolet?style=flat-square\" alt=\"Cases\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/100%25-Original_AI_Rewritten-green?style=flat-square\" alt=\"Original\"></a>\n  <a href=\"https://github.com/sponsors/freestylefly\"><img src=\"https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ff69b4?style=flat-square\" alt=\"Sponsor\"></a>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong> | <a href=\"./README.zh-CN.md\">简体中文</a> | <a href=\"./README.ja.md\">日本語</a>\n</p>\n\n> Updated irregularly with new workflows. Stars are welcome.\n> This project is sponsored by [Ciyuan API](https://ciyuan.today/), an AI aggregation platform for cost-effective GPT Image 2 access.\n\n## 🌐 Visual Website\n\nUse the live site at [gpt-image2.canghe.ai](https://gpt-image2.canghe.ai/) to browse the gallery as a product experience: open large previews, copy full prompts, filter by style or scenario, test generation after Google sign-in, and jump back to the source case on GitHub.\n\n<p align=\"center\">\n  <a href=\"https://gpt-image2.canghe.ai/\">\n    <img src=\"data/images/site-preview.png\" alt=\"GPT-Image2 Gallery website preview\" width=\"900\">\n  </a>\n</p>\n\n## Paid Community\n\nThe GPT-Image2 discussion group is now a paid community. Sign in on the [community page](https://gpt-image2.canghe.ai/community), make a one-time **¥9.90** Alipay payment, and the protected group QR will appear only after the server confirms payment.\n\nFor payment, access, refund, or product questions, follow the WeChat official account **苍何** or scan the card below and send a message.\n\n<p align=\"center\">\n  <img src=\"src/assets/canghe-official-account.png\" alt=\"苍何 WeChat official account QR code and search card\" width=\"760\">\n</p>\n\n## ❤️ Sponsors\n\n> [Want to appear here?](data/images/sponsors/wechat-personal.jpg) Support the project through GitHub Sponsors, or search 苍何 on WeChat and send your product name plus a short sponsorship note.\n\n| Sponsor | Description |\n| ------- | ----------- |\n| <a href=\"https://www.hiapi.ai/zh/register?aff=DzuH\"><img src=\"data/images/sponsors/hiapi.jpg\" alt=\"hiapi\" width=\"240\"></a> | Thanks to hiapi for sponsoring this project! hiapi is an AI image & video generation API platform — GPT-Image-2 (text-to-image, image edit, 1K–4K) alongside video models like Seedance, Kling and Wan, all through one unified async API: submit a task, get a `task_id`, fetch results by polling or callback, batch without timeouts, switch models without code changes. Every result is stored on hiapi's own CDN with **persistent storage**, so your image/video URLs stay available long-term and can be fetched anytime — no rushing to download and back them up yourself. Native Remote MCP and Agent Skills plug straight into Claude Code & Cursor. Chinese UI & docs, WeChat Pay, pay-as-you-go with no monthly fee — new users get $1 free credit (~50 images). [Sign up here](https://www.hiapi.ai/en/register?aff=DzuH&utm_source=github&utm_medium=sponsor&utm_campaign=awesome-gpt-image-2). |\n| <a href=\"https://apimart.ai/register?aff=oQgzUQ\"><img src=\"data/images/sponsors/apimart.jpg\" alt=\"APIMart\" width=\"240\"></a> | Thanks to APIMart for sponsoring this project! APIMart is a low-cost API platform for AI image & video generation — GPT-Image-2 from `$0.006/image`, 160+ images per dollar. One async API covers both image and video: submit a task, get an ID, fetch results via polling or callback. Batch tens of thousands of images without timeouts, switch models without changing code. Pay-as-you-go with no monthly fee — [sign up here](https://apimart.ai/register?aff=oQgzUQ) to get started. |\n| <a href=\"https://doloffer.com/friend/HuHEKQOk\"><img src=\"data/images/sponsors/doloffer.jpg\" alt=\"DolOffer\" width=\"240\"></a> | Thank you to DolOffer for supporting this project. DolOffer is a platform focused on digital product recommendations and deal sharing, helping users quickly discover useful tools, services, and limited-time benefits. It offers popular subscriptions including YouTube Premium, Claude, ChatGPT Plus, Spotify, and Apple Music at prices as low as 30% of official pricing or even lower, with genuine stable service and worry-free support. Register through our [exclusive link](https://doloffer.com/friend/HuHEKQOk) and enter promo code `AI8888` when topping up to get an extra 10% off. |\n| <a href=\"https://pptoken.cc/\"><img src=\"data/images/sponsors/pptoken.png\" alt=\"PPToken\" width=\"240\"></a> | Project sponsor. PPToken provides API relay and key distribution for ChatGPT, Claude, Gemini, and other mainstream AI models, with low-latency access, high availability, pay-as-you-go billing, and flexible subscription plans. |\n| <a href=\"https://ciyuan.today/\"><img src=\"data/images/sponsors/ciyuan-api.jpg\" alt=\"Ciyuan API\" width=\"240\"></a> | Project sponsor. Ciyuan API is an AI aggregation platform for stable, low-latency large-model API services, and supports this project in making GPT Image 2 exploration more practical for developers. |\n| <a href=\"https://github.com/sponsors/freestylefly\"><img src=\"https://img.shields.io/badge/GitHub%20Sponsors-freestylefly-ff69b4?style=for-the-badge\" alt=\"GitHub Sponsors\" width=\"240\"></a> | Community sponsor channel. GitHub Sponsors helps fund ongoing case collection, website maintenance, industrial template distillation, and Agent Skill updates. |\n\n<a name=\"section-vision\"></a>\n\n## ⚡️ Project Vision\n\nAfter GPT-Image2 became widely available, AI image generation moved from \"can it make an image?\" to \"can it make stable, controllable, reusable images?\" This project turns scattered community examples into Prompt-as-Code assets that are easier for agents and automation workflows to reuse.\n\nThe core goal is simple: compress prose-style prompts into structured protocols. When you need batch generation, template systems, or production workflows, this structure is more valuable than a pile of isolated examples.\n\n- 🧱 Atomic schema: split subjects, lighting, materials, layout, and visual details into composable parts\n- ⚙️ Workflow friendly: designed for agents, scripts, and automation systems\n- 🧬 Structured control: improve controllability for layout, copy, and information hierarchy\n\n## 📖 Quick Links\n\n- [Full case gallery](docs/gallery.md)\n- [Gallery Part 1: cases 1-165](docs/gallery-part-1.md)\n- [Gallery Part 2: cases 166-520](docs/gallery-part-2.md)\n- [Industrial prompt templates and pitfalls guide](docs/templates.md)\n- [Agent skill: GPT-Image2 Style Library](agents/skills/gpt-image-2-style-library/SKILL.md)\n- [MIT License](LICENSE)\n- [Full disclaimer](docs/disclaimer.md#section-disclaimer)\n\n## 🗂️ Category Overview\n\nStart with the case album to find a visual direction, then open the prompt template categories to turn that direction into reusable structure.\n\n### 🖼️ Case Album\n\n<table>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧩 UI & Interfaces</strong><br><sub>73 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-ui\"><img src=\"data/images/category-covers/ui.jpg\" alt=\"UI and interfaces\" width=\"220\"></a><br>\n      <sub>Apps, websites, dashboards, social screenshots, and product interfaces.</sub><br>\n      <a href=\"docs/gallery.md#cat-ui\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📊 Charts & Infographics</strong><br><sub>52 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-infographic\"><img src=\"data/images/category-covers/infographic.jpg\" alt=\"Charts and infographics\" width=\"220\"></a><br>\n      <sub>Infographics, knowledge maps, technical explainers, and structured diagrams.</sub><br>\n      <a href=\"docs/gallery.md#cat-infographic\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📰 Posters & Typography</strong><br><sub>82 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-poster\"><img src=\"data/images/category-covers/poster.jpg\" alt=\"Posters and typography\" width=\"220\"></a><br>\n      <sub>Event posters, covers, type-driven visuals, and strong layout compositions.</sub><br>\n      <a href=\"docs/gallery.md#cat-poster\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🛍️ Products & E-commerce</strong><br><sub>40 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-product\"><img src=\"data/images/category-covers/product.jpg\" alt=\"Products and e-commerce\" width=\"220\"></a><br>\n      <sub>Product shots, detail pages, packaging, selling points, and ads.</sub><br>\n      <a href=\"docs/gallery.md#cat-product\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏷️ Brand & Logos</strong><br><sub>27 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-brand\"><img src=\"data/images/category-covers/brand.jpg\" alt=\"Brand and logos\" width=\"220\"></a><br>\n      <sub>Logos, identity systems, brand touchpoints, and campaign visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-brand\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏛️ Architecture & Spaces</strong><br><sub>12 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-architecture\"><img src=\"data/images/category-covers/architecture.jpg\" alt=\"Architecture and spaces\" width=\"220\"></a><br>\n      <sub>Architecture renders, interiors, city maps, and spatial concepts.</sub><br>\n      <a href=\"docs/gallery.md#cat-architecture\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📷 Photography & Realism</strong><br><sub>75 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-photo\"><img src=\"data/images/category-covers/photo.jpg\" alt=\"Photography and realism\" width=\"220\"></a><br>\n      <sub>Portraits, phone photography, film texture, and commercial photography.</sub><br>\n      <a href=\"docs/gallery.md#cat-photo\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎨 Illustration & Art</strong><br><sub>56 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-illustration\"><img src=\"data/images/category-covers/illustration.jpg\" alt=\"Illustration and art\" width=\"220\"></a><br>\n      <sub>Illustration, art styles, material experiments, and decorative images.</sub><br>\n      <a href=\"docs/gallery.md#cat-illustration\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧍 Characters & People</strong><br><sub>26 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-character\"><img src=\"data/images/category-covers/character.jpg\" alt=\"Characters and people\" width=\"220\"></a><br>\n      <sub>Character design, pose references, cards, and 3D toys.</sub><br>\n      <a href=\"docs/gallery.md#cat-character\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎬 Scenes & Storytelling</strong><br><sub>20 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-scene\"><img src=\"data/images/category-covers/scene.jpg\" alt=\"Scenes and storytelling\" width=\"220\"></a><br>\n      <sub>Storyboards, narrative scenes, livestream frames, and worldbuilding.</su",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"awesome-gpt-image-2-site\",\n  \"private\": true,\n  \"version\": \"1.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"generate:site-data\": \"node scripts/generate-site-data.mjs\",\n    \"generate:style-skill\": \"node scripts/generate-style-skill.mjs\",\n    \"ga4:oauth\": \"node scripts/google-analytics-oauth.mjs\",\n    \"install:skill\": \"node scripts/install-style-skill.mjs\",\n    \"pack:skill\": \"npm pack ./agents/skills/gpt-image-2-style-library --dry-run\",\n    \"publish:skill:npm\": \"npm publish ./agents/skills/gpt-image-2-style-library --access public\",\n    \"predev\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"dev\": \"vite\",\n    \"dev:alipay-sandbox\": \"node scripts/alipay-webpay-sandbox-server.mjs\",\n    \"prebuild\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\",\n    \"test\": \"node --test api/_lib/*.test.js\"\n  },\n  \"dependencies\": {\n    \"@google-analytics/data\": \"^5.2.2\",\n    \"@supabase/supabase-js\": \"^2.105.4\",\n    \"@vitejs/plugin-react\": \"^5.1.1\",\n    \"alipay-sdk\": \"^4.14.0\",\n    \"google-auth-library\": \"^10.6.2\",\n    \"lucide-react\": \"^0.561.0\",\n    \"react\": \"^19.2.1\",\n    \"react-dom\": \"^19.2.1\",\n    \"stripe\": \"^22.1.1\",\n    \"vite\": \"^7.2.7\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "技能扩展"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "AlexsJones",
+    "name": "llmfit",
+    "full_name": "AlexsJones/llmfit",
+    "url": "https://github.com/AlexsJones/llmfit",
+    "description": "Hundreds of models & providers. One command to find what runs on your hardware.",
+    "language": "Rust",
+    "total_stars": 32213,
+    "forks": 1997,
+    "stars_this_period": 239,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "gguf",
+        "llm",
+        "localai",
+        "mlx",
+        "skill",
+        "unsloth"
+      ],
+      "license": "MIT",
+      "open_issues": 62,
+      "created_at": "2026-02-15T16:11:31Z",
+      "pushed_at": "2026-08-17T07:35:58Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 1997,
+      "watchers": 97,
+      "archived": false,
+      "size_kb": 27443
+    },
+    "readme_content": "# llmfit\n\n<p align=\"center\">\n  <img src=\"assets/icon.svg\" alt=\"llmfit icon\" width=\"128\" height=\"128\">\n</p>\n\n<p align=\"center\">\n  <b>English</b> ·\n  <a href=\"README.zh.md\">中文</a> ·\n  <a href=\"README.ja.md\">日本語</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/AlexsJones/llmfit/actions/workflows/ci.yml\"><img src=\"https://github.com/AlexsJones/llmfit/actions/workflows/ci.yml/badge.svg\" alt=\"CI\"></a>\n  <a href=\"https://crates.io/crates/llmfit\"><img src=\"https://img.shields.io/crates/v/llmfit.svg\" alt=\"Crates.io\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-blue.svg\" alt=\"License\"></a>\n  <a href=\"https://about.signpath.io\"><img src=\"https://img.shields.io/badge/SignPath-signed-brightgreen?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTEwLjA2NyA0LjU2N2wtNC43MzQgNC43MzMtMS40LTEuNGExIDEgMCAwIDAtMS40MTQgMS40MTRsMi4xIDIuMWExIDEgMCAwIDAgMS40MTQgMGw1LjQ0LTUuNDRhMSAxIDAgMCAwLTEuNDE0LTEuNDE0eiIvPjwvc3ZnPg==\" alt=\"Signed with SignPath\"></a>\n</p>\n\n> **📊 New: benchmark & share — real numbers from your machine, better estimates for everyone.** Download a model, serve it, and measure real tok/s on your hardware — then contribute the results back to the project as a PR, straight from the TUI. No `gh` CLI, no third-party account. Every run is saved locally first, your own measurements replace estimates in the fit table, and each merged submission ships in the next release: anyone on identical hardware gets measured `✓` numbers before they ever run a benchmark. [Follow the step-by-step benchmarking guide →](docs/benchmarking.md)\n>\n> *Previously: [llmfit 1.0 — the release where the numbers became verifiable →](https://github.com/AlexsJones/llmfit/discussions/708)*\n\n**Hundreds of models & providers. One command to find what runs on your hardware.**\n\nA terminal tool that right-sizes LLM models to your system's RAM, CPU, and GPU. Detects your hardware, scores each model across quality, speed, fit, and context dimensions, and tells you which ones will actually run well on your machine.\n\nShips with an interactive TUI (default) and a classic CLI mode. Supports multi-GPU setups, MoE architectures, dynamic quantization selection, speed estimation, and local runtime providers (Ollama, llama.cpp, MLX, Docker Model Runner, LM Studio).\n\n> **Sister projects:**\n> - [sympozium](https://github.com/sympozium-ai/sympozium/) — managing agents in Kubernetes.\n> - [llmserve](https://github.com/AlexsJones/llmserve) — a simple TUI for serving local LLM models. Pick a model, pick a backend, serve it.\n> - [llama-panel](https://github.com/AlexsJones/llama-panel) — a native macOS app for managing local llama-server instances.\n\n![demo](assets/demo.gif)\n\n## Documentation\n\n|  |  |\n|---|---|\n| **Get started** | [Install](#install) · [Usage](#usage) · [How it works](#how-it-works) |\n| **Guides** | [TUI guide](docs/tui.md) · [Benchmarking step-by-step](docs/benchmarking.md) · [CLI & automation](docs/cli.md) · [Runtime providers](docs/providers.md) · [OpenClaw integration](docs/openclaw.md) |\n| **Reference** | [How it works (full)](docs/how-it-works.md) · [Platform & GPU support](docs/platform-support.md) · [Custom models](docs/custom-models.md) · [Development](docs/development.md) |\n| **Project** | [Contributing](#contributing) · [Alternatives](#alternatives) · [Code signing](#code-signing) · [License](#license) |\n\n---\n\n## Install\n\n### Windows\n```sh\nscoop install llmfit\n```\n\nIf Scoop is not installed, follow the [Scoop installation guide](https://scoop.sh/).\n\n### macOS / Linux\n\n#### Homebrew\n\nPrebuilt binary (recommended, works on all macOS/Linux versions):\n```sh\nbrew install AlexsJones/llmfit/llmfit\n```\n\nOr from the homebrew-core formula, which builds from source on macOS versions without a bottle:\n```sh\nbrew install llmfit\n```\n\n#### MacPorts\n```sh\nport install llmfit\n```\n\n#### Quick install\n```sh\ncurl -fsSL https://llmfit.axjns.dev/install.sh | sh\n```\n\nDownloads the latest release binary from GitHub and installs it to `/usr/local/bin` (or `~/.local/bin` if no sudo).\n\n**Install to `~/.local/bin` without sudo:**\n```sh\ncurl -fsSL https://llmfit.axjns.dev/install.sh | sh -s -- --local\n```\n\n### uv / pip\nTo install or update llmfit:\n```sh\nuv tool install -U llmfit\n```\n\nTo run without installing:\n```sh\nuvx llmfit\n```\n\nYou can also install llmfit as a Python package in the normal way with tools such as pip or uv.\n\n### Docker / Podman\n```sh\ndocker run ghcr.io/alexsjones/llmfit\n```\nThis prints JSON from `llmfit recommend` command. The JSON could be further queried with `jq`.\n```\npodman run ghcr.io/alexsjones/llmfit recommend --use-case coding | jq '.models[].name'\n```\nTo launch the interactive TUI instead, pass the global `--tui` flag:\n```sh\ndocker run --rm -it ghcr.io/alexsjones/llmfit --tui\n```\n\n### From source\n```sh\ngit clone https://github.com/AlexsJones/llmfit.git\ncd llmfit\ncargo build --release\n# binary is at target/release/llmfit\n```\n\n---\n\n## Usage\n\n```sh\nllmfit          # interactive TUI: your hardware, every model, ranked\n```\n\nThe TUI shows your detected specs at the top and every model scored for fit, speed, quality, and context. See the [TUI guide](docs/tui.md) for navigation, planning, simulation, downloads, the community leaderboard, and benchmarking.\n\nFor scripts, agents, and classic terminal output:\n\n```sh\nllmfit fit                    # table of all models ranked by fit\nllmfit recommend --json       # top picks as JSON (agent/script consumption)\nllmfit info \"<model>\"         # one model: fit analysis, estimate basis, verify commands\nllmfit bench                  # measure real tok/s/TTFT against your running provider\nllmfit doctor                 # hardware detection report for bug reports\n```\n\nFull reference: [CLI & automation](docs/cli.md).\n\n---\n\n## How it works\n\nllmfit detects your hardware (RAM, CPU, GPU/VRAM, backend), then scores every model in its catalog across four dimensions: memory fit, estimated speed, quality, and context. Speed estimates come from a memory-bandwidth model grounded in runtime sampling and real community measurements — and every estimate ships its inputs, so `llmfit info` shows exactly what a number assumes and how to verify it on your machine.\n\nFull detail, including the estimation formulas and the model database: [How llmfit works](docs/how-it-works.md).\n\n---\n\n## Contributing\n\nContributions are welcome, especially new models.\n\n### Before submitting a PR\n\nPlease run `cargo fmt` before pushing your changes. Most CI check failures are caused by unformatted code:\n\n```sh\ncargo fmt\n```\n\nGuides for adding models — locally (no rebuild) or to the built-in catalog: [Custom models](docs/custom-models.md).\n\n---\n\n## Alternatives\n\nIf you're looking for a different approach, check out [llm-checker](https://github.com/Pavelevich/llm-checker) -- a Node.js CLI tool with Ollama integration that can pull and benchmark models directly. It takes a more hands-on approach by actually running models on your hardware via Ollama, rather than estimating from specs. Good if you already have Ollama installed and want to test real-world performance. Note that it doesn't support MoE (Mixture-of-Experts) architectures -- all models are treated as dense, so memory estimates for models like Mixtral or DeepSeek-V3 will reflect total parameter count rather than the smaller active subset.\n\n---\n\n## Code signing\n\nllmfit's Windows release binaries are digitally signed (Authenticode) via [SignPath.io](https://about.signpath.io/), with a free code signing certificate provided by the [SignPath Foundation](https://signpath.org/).\n\nSigning happens automatically in the [release pipeline](.github/workflows/release.yml): only artifacts built by GitHub Actions from this repository are submitted for signing, and signing requests are approved by the project maintainer ([@AlexsJones](https://github.com/AlexsJones)).\n\n**Code signing policy:** see the [SignPath Foundation code signing policy and terms](https://signpath.org/terms).\n\n**Privacy:** this program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it. llmfit only contacts external services when you explicitly use the corresponding feature (e.g. model downloads, runtime provider queries, or the community leaderboard).\n\n---\n\n## License\n\nMIT\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\nmembers = [\"llmfit-core\", \"llmfit-tui\", \"llmfit-desktop\"]\ndefault-members = [\"llmfit-core\", \"llmfit-tui\"]\nresolver = \"3\"\n\n[workspace.package]\nversion = \"1.1.10\"\nlicense = \"MIT\"\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "技能扩展",
+      "工作区",
+      "大模型应用"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "D4Vinci",
+    "name": "Scrapling",
+    "full_name": "D4Vinci/Scrapling",
+    "url": "https://github.com/D4Vinci/Scrapling",
+    "description": "🕷️ An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl!",
+    "language": "Python",
+    "total_stars": 74797,
+    "forks": 7477,
+    "stars_this_period": 338,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-scraping",
+        "automation",
+        "crawler",
+        "crawling",
+        "crawling-python",
+        "data",
+        "data-extraction",
+        "mcp",
+        "mcp-server",
+        "playwright",
+        "python",
+        "scraping",
+        "selectors",
+        "stealth",
+        "web-scraper",
+        "web-scraping",
+        "web-scraping-python",
+        "webscraping",
+        "xpath"
+      ],
+      "license": "BSD-3-Clause",
+      "open_issues": 5,
+      "created_at": "2024-10-13T20:29:53Z",
+      "pushed_at": "2026-08-11T18:45:32Z",
+      "homepage": "https://scrapling.readthedocs.io/en/latest/",
+      "default_branch": "main",
+      "forks": 7477,
+      "watchers": 267,
+      "archived": false,
+      "size_kb": 10438
+    },
+    "readme_content": "<!-- mcp-name: io.github.D4Vinci/Scrapling -->\n\n<h1 align=\"center\">\n    <a href=\"https://scrapling.readthedocs.io\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/docs/assets/cover_dark.svg?sanitize=true\">\n          <img alt=\"Scrapling Poster\" src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/docs/assets/cover_light.svg?sanitize=true\">\n        </picture>\n    </a>\n    <br>\n    <small>Effortless Web Scraping for the Modern Web</small>\n</h1>\n\n<p align=\"center\">\n    <a href=\"https://trendshift.io/repositories/14244\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/14244\" alt=\"D4Vinci%2FScrapling | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n    <br/>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_AR.md\">العربيه</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_ES.md\">Español</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_PT_BR.md\">Português (Brasil)</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_FR.md\">Français</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_DE.md\">Deutsch</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_CN.md\">简体中文</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_JP.md\">日本語</a> |  <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_RU.md\">Русский</a> | <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_KR.md\">한국어</a>\n    <br/>\n    <a href=\"https://github.com/D4Vinci/Scrapling/actions/workflows/tests.yml\" alt=\"Tests\">\n        <img alt=\"Tests\" src=\"https://github.com/D4Vinci/Scrapling/actions/workflows/tests.yml/badge.svg\"></a>\n    <a href=\"https://badge.fury.io/py/Scrapling\" alt=\"PyPI version\">\n        <img alt=\"PyPI version\" src=\"https://badge.fury.io/py/Scrapling.svg\"></a>\n    <a href=\"https://hub.docker.com/r/pyd4vinci/scrapling\" target=\"_blank\">\n        <img alt=\"Docker Pulls\" src=\"https://img.shields.io/docker/pulls/pyd4vinci/scrapling?labelColor=%20%23FDB062&logo=Docker&labelColor=%20%23528bff\"></a>\n    <a href=\"https://clickpy.clickhouse.com/dashboard/scrapling\" rel=\"nofollow\"><img src=\"https://img.shields.io/pypi/dm/scrapling\" alt=\"PyPI package downloads\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/tree/main/agent-skill\" alt=\"AI Agent Skill directory\">\n        <img alt=\"Static Badge\" src=\"https://img.shields.io/badge/Skill-black?style=flat&label=Agent&link=https%3A%2F%2Fgithub.com%2FD4Vinci%2FScrapling%2Ftree%2Fmain%2Fagent-skill\"></a>\n    <a href=\"https://clawhub.ai/D4Vinci/scrapling-official\" alt=\"OpenClaw Skill\">\n        <img alt=\"OpenClaw Skill\" src=\"https://img.shields.io/badge/Clawhub-darkred?style=flat&label=OpenClaw&link=https%3A%2F%2Fclawhub.ai%2FD4Vinci%2Fscrapling-official\"></a>\n    <br/>\n    <a href=\"https://discord.gg/EMgGbDceNQ\" alt=\"Discord\" target=\"_blank\">\n      <img alt=\"Discord\" src=\"https://img.shields.io/discord/1360786381042880532?style=social&logo=discord&link=https%3A%2F%2Fdiscord.gg%2FEMgGbDceNQ\">\n    </a>\n    <a href=\"https://x.com/Scrapling_dev\" alt=\"X (formerly Twitter)\">\n      <img alt=\"X (formerly Twitter) Follow\" src=\"https://img.shields.io/twitter/follow/Scrapling_dev?style=social&logo=x&link=https%3A%2F%2Fx.com%2FScrapling_dev\">\n    </a>\n    <br/>\n    <a href=\"https://pypi.org/project/scrapling/\" alt=\"Supported Python versions\">\n        <img alt=\"Supported Python versions\" src=\"https://img.shields.io/pypi/pyversions/scrapling.svg\"></a>\n</p>\n\n<p align=\"center\">\n    <a href=\"https://scrapling.readthedocs.io/en/latest/parsing/selection.html\"><strong>Selection methods</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/fetching/choosing.html\"><strong>Fetchers</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/spiders/architecture.html\"><strong>Spiders</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/spiders/proxy-blocking.html\"><strong>Proxy Rotation</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/cli/overview.html\"><strong>CLI</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/ai/mcp-server.html\"><strong>MCP</strong></a>\n</p>\n\nScrapling is an adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl.\n\nIts parser learns from website changes and automatically relocates your elements when pages update. Its fetchers bypass anti-bot systems like Cloudflare Turnstile out of the box. And its spider framework lets you scale up to concurrent, multi-session crawls with pause/resume and automatic proxy rotation - all in a few lines of Python. One library, zero compromises.\n\nBlazing fast crawls with real-time stats and streaming. Built by Web Scrapers for Web Scrapers and regular users, there's something for everyone.\n\n```python\nfrom scrapling.fetchers import Fetcher, AsyncFetcher, StealthyFetcher, DynamicFetcher\nStealthyFetcher.adaptive = True\np = StealthyFetcher.fetch('https://example.com', headless=True, network_idle=True)  # Fetch website under the radar!\nproducts = p.css('.product', auto_save=True)                                        # Scrape data that survives website design changes!\nproducts = p.css('.product', adaptive=True)                                         # Later, if the website structure changes, pass `adaptive=True` to find them!\n```\nOr scale up to full crawls\n```python\nfrom scrapling.spiders import Spider, Response\n\nclass MySpider(Spider):\n  name = \"demo\"\n  start_urls = [\"https://example.com/\"]\n\n  async def parse(self, response: Response):\n      for item in response.css('.product'):\n          yield {\"title\": item.css('h2::text').get()}\n\nMySpider().start()\n```\n\n<p align=\"center\">\n    <a href=\"https://dataimpulse.com/?utm_source=scrapling&utm_medium=banner&utm_campaign=scrapling\" target=\"_blank\" style=\"display:flex; justify-content:center; padding:4px 0;\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/DataImpulse.png\" alt=\"At DataImpulse, we specialize in developing custom proxy services for your business. Make requests from anywhere, collect data, and enjoy fast connections with our premium proxies.\" style=\"max-height:60px;\">\n    </a>\n</p>\n\n# Platinum Sponsors\n<table>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://go.nodemaven.com/scraplingjuly\" target=\"_blank\" title=\"Proxies with the Highest IP Scores\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/NodeMaven.jpg\" width=\"240\" height=\"100\">\n      </a>\n    </td>\n    <td>\n    <a href=\"https://go.nodemaven.com/scraplingjuly\" target=\"_blank\">NodeMaven</a> - reliable proxy provider with the highest quality IP on the market. Use promo code SCRAPLING35 for 35% discount on proxies.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://proxidize.com/?utm_source=github&utm_medium=sponsorship&utm_campaign=scrapling&utm_content=d4vinci\" target=\"_blank\" title=\"Clean Proxies with No Nonsense.\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/proxidize.png\">\n      </a>\n    </td>\n    <td> <a href=\"https://proxidize.com/?utm_source=github&utm_medium=sponsorship&utm_campaign=scrapling&utm_content=d4vinci\" target=\"_blank\"><b>Proxidize</b></a> provides mobile and residential proxies for scraping, browser automation, SEO monitoring, AI agents, and data collection. <i>Use code <b>scrapling20</b> for 20% off</i>.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://coldproxy.com/?utm_source=scrapling&utm_medium=github&utm_campaign=coldproxy&utm_content=platinum_sponsor\" target=\"_blank\" title=\"Residential, IPv6 & Datacenter Proxies for Web Scraping\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/coldproxy.png\">\n      </a>\n    </td>\n    <td> <a href=\"https://coldproxy.com/?utm_source=scrapling&utm_medium=github&utm_campaign=coldproxy&utm_content=platinum_sponsor\" target=\"_blank\"><b>ColdProxy</b></a> provides residential and datacenter proxies for stable web scraping, public data collection, and geo-targeted testing across 195+ countries.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://hypersolutions.co/?utm_source=github&utm_medium=readme&utm_campaign=scrapling\" target=\"_blank\" title=\"Bot Protection Bypass API for Akamai, DataDome, Incapsula & Kasada\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/HyperSolutions.png\">\n      </a>\n    </td>\n    <td> Scrapling handles Cloudflare Turnstile. For enterprise-grade protection, <a href=\"https://hypersolutions.co?utm_source=github&utm_medium=readme&utm_campaign=scrapling\">\n        <b>Hyper Solutions</b>\n      </a> provides API endpoints that generate valid antibot tokens for <b>Akamai</b>, <b>DataDome</b>, <b>Kasada</b>, and <b>Incapsula</b>. Simple API calls, no browser automation required. </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://birdproxies.com/t/scrapling\" target=\"_blank\" title=\"At Bird Proxies, we eliminate your pains such as banned IPs, geo restriction, and high costs so you can focus on your work.\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/BirdProxies.jpg\">\n      </a>\n    </td>\n    <td>Hey, we built <a href=\"https://birdproxies.com/t/scrapling\">\n        <b>BirdProxies</b>\n      </a> because proxies shouldn't be complicated or overpriced. Fast residential and ISP proxies in 195+ locations, fair pricing, and real support. <br />\n      <b>Try our FlappyBird game on the landing page for free data!</b>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=d4vinci-scrapling\" target=\"_blank\" title=\"Evomi is your Swiss Quality Proxy Provider, starting at $0.49/GB\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/evomi.png\">\n      </a>\n    </td>\n    <td>\n      <a href=\"https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=d4vinci-scrapling\">\n        <b>Evomi</b>\n      </a>: residential proxies from $0.49/GB. Scraping browser with fully spoofed Chromium, residential IPs, auto CAPTCHA solving, and anti-bot bypass. </br>\n      <b>Scraper API for hassle-free results. MCP and N8N integrations are available.</b>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://tikhub.io/?utm_source=github.com/D4Vinci/Scrapling&utm_medium=marketing_social&utm_campaign=retargeting&utm_content=carousel_ad\" target=\"_blank\" title=\"Unlock the Power of Social Media Data & AI\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/TikHub.jpg\">\n      </a>\n    </td>\n    <td>\n      <a href=\"https://tikhub.io/?utm_source=github.com/D4Vinci/Scrapling&utm_medium=marketing_social&utm_campaign=retargeting&utm_content=carousel_ad\" target=\"_blank\">TikHub.io</a> provides 900+ stable APIs across 16+ platforms including TikTok, X, YouTube & Instagram, with 40M+ datasets. <br /> Also offers <a href=\"https://ai.tikhub.io/?ref=KarimShoair\" target=\"_blank\">DISCOUNTED AI models</a> - Claude, GPT, GEMINI & more up to 71% off.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://petrosky.io/d4vinci\" target=\"_blank\" title=\"PetroSky delivers cutting-edge VPS hosting.\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/petrosky.png\">\n      </a>\n    </td>\n    <td>\n    Close your laptop. Your scrapers keep running. <br />\n    <a href=\"https://petrosky.io/d4vinci\" target=\"_blank\">PetroSky VPS</a> - cloud servers built for nonstop automation. Windows and Linux machines with full control. From €6.99/mo.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://substack.thewebscraping.club/p/scrapling-hands-on-guide?u",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=61.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"scrapling\"\n# Static version instead of a dynamic version so we can get better layer caching while building docker, check the docker file to understand\nversion = \"0.4.14\"\ndescription = \"Scrapling is an undetectable, powerful, flexible, high-performance Python library that makes Web Scraping easy and effortless as it should be!\"\nreadme = {file = \"README.md\", content-type = \"text/markdown\"}\nlicense = {file = \"LICENSE\"}\nauthors = [\n    {name = \"Karim Shoair\", email = \"karim.shoair@pm.me\"}\n]\nmaintainers = [\n    {name = \"Karim Shoair\", email = \"karim.shoair@pm.me\"}\n]\nkeywords = [\n    \"web-scraping\",\n    \"scraping\",\n    \"automation\",\n    \"browser-automation\",\n    \"data-extraction\",\n    \"html-parsing\",\n    \"undetectable\",\n    \"playwright\",\n    \"selenium-alternative\",\n    \"web-crawler\",\n    \"browser\",\n    \"crawling\",\n    \"headless\",\n    \"scraper\",\n    \"chrome\",\n]\nrequires-python = \">=3.10\"\nclassifiers = [\n    \"Operating System :: OS Independent\",\n    \"Development Status :: 4 - Beta\",\n    # \"Development Status :: 5 - Production/Stable\",\n    # \"Development Status :: 6 - Mature\",\n    # \"Development Status :: 7 - Inactive\",\n    \"Intended Audience :: Developers\",\n    \"Intended Audience :: Information Technology\",\n    \"License :: OSI Approved :: BSD License\",\n    \"Natural Language :: English\",\n    \"Topic :: Internet :: WWW/HTTP\",\n    \"Topic :: Internet :: WWW/HTTP :: Browsers\",\n    \"Topic :: Text Processing :: Markup\",\n    \"Topic :: Text Processing :: Markup :: HTML\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Topic :: Software Development :: Libraries\",\n    \"Topic :: Software Development :: Libraries :: Application Frameworks\",\n    \"Topic :: Software Development :: Libraries :: Python Modules\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3 :: Only\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Programming Language :: Python :: Implementation :: CPython\",\n    \"Typing :: Typed\",\n]\ndependencies = [\n    \"lxml>=6.1.1\",\n    \"cssselect>=1.5.0\",\n    \"orjson>=3.11.8\",\n    \"tld>=0.13.2\",\n    \"w3lib>=2.4.1\",\n    \"typing_extensions\"\n]\n\n[project.optional-dependencies]\nfetchers = [\n    \"click>=8.3.0\",\n    \"curl_cffi>=0.16.0\",\n    \"playwright>=1.61.0\",\n    \"patchright>=1.61.2\",\n    \"browserforge>=1.2.4\",\n    \"apify-fingerprint-datapoints>=0.15.0\",\n    \"msgspec>=0.21.1\",\n    \"anyio>=4.14.0\",\n    \"protego>=0.6.2\",\n]\nai = [\n    \"mcp>=2.0.0\",\n    \"markdownify>=1.2.0\",\n    \"scrapling[fetchers]\",\n]\nshell = [\n    \"IPython>=8.37\",  # The last version that supports Python 3.10\n    \"markdownify>=1.2.0\",\n    \"scrapling[fetchers]\",\n]\nall = [\n    \"scrapling[ai,shell]\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/D4Vinci/Scrapling\"\nChangelog = \"https://github.com/D4Vinci/Scrapling/releases\"\nDocumentation = \"https://scrapling.readthedocs.io/en/latest/\"\nRepository = \"https://github.com/D4Vinci/Scrapling\"\n\"Bug Tracker\" = \"https://github.com/D4Vinci/Scrapling/issues\"\n\"Discord\" = \"https://discord.gg/EMgGbDceNQ\"\n\"Release Notes\" = \"https://github.com/D4Vinci/Scrapling/releases\"\n\n[project.scripts]\nscrapling = \"scrapling.cli:main\"\nscrapling-mcp = \"scrapling.cli:mcp\"\n\n[tool.setuptools]\nzip-safe = false\ninclude-package-data = true\n\n[tool.setuptools.packages.find]\nwhere = [\".\"]\ninclude = [\"scrapling*\"]\n\n[tool.mypy]\npython_version = \"3.10\"\nwarn_unused_configs = true\nignore_missing_imports = true\ncheck_untyped_defs = true\n\n[tool.pyright]\npythonVersion = \"3.10\"\ntypeCheckingMode = \"basic\"\ninclude = [\"scrapling\"]\nignore = [\"tests\", \"benchmarks.py\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "MCP 集成",
+      "技能扩展",
+      "工作流"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "agalwood",
+    "name": "Motrix",
+    "full_name": "agalwood/Motrix",
+    "url": "https://github.com/agalwood/Motrix",
+    "description": "A full-featured download manager.",
+    "language": "TypeScript",
+    "total_stars": 53020,
+    "forks": 4925,
+    "stars_this_period": 295,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "aria2",
+        "bittorrent",
+        "bt",
+        "download",
+        "download-manager",
+        "electron",
+        "linux",
+        "mac",
+        "macos",
+        "magnet",
+        "motrix",
+        "torrent",
+        "windows"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 776,
+      "created_at": "2018-12-18T11:45:05Z",
+      "pushed_at": "2026-08-17T16:58:08Z",
+      "homepage": "https://motrix.app",
+      "default_branch": "main",
+      "forks": 4925,
+      "watchers": 487,
+      "archived": false,
+      "size_kb": 78090
+    },
+    "readme_content": "<div>\n  <img src=\"./public/app-icon.png\" alt=\"Motrix\" width=\"256\" />\n  <h1>Motrix</h1>\n  <p>A modern, full-featured download manager that stays simple to use</p>\n</div>\n\n[![GitHub release](https://img.shields.io/github/v/release/agalwood/Motrix.svg)](https://github.com/agalwood/Motrix/releases) ![Build/release](https://github.com/agalwood/Motrix/workflows/Build/release/badge.svg) ![Total Downloads](https://img.shields.io/github/downloads/agalwood/Motrix/total.svg)\n\nEnglish | [简体中文](./README.zh-CN.md)\n\n## Overview\n\nMotrix is a clean, full-featured desktop download manager for HTTP, FTP, BitTorrent, magnet links, and more.\n\n**Motrix Turbo** is Motrix v2, rebuilt from the ground up with Electron, React, and TypeScript while keeping the clean, straightforward experience of v1. The download core is independent of the UI. Browser extensions and command-line tools communicate with the app over **MDXP** (Motrix Download eXchange Protocol), an open protocol built on JSON-RPC 2.0, while plugins run in isolated sandboxes.\n\nThe same core powers two ways to run Motrix:\n\n- **Desktop app:** Runs on macOS, Windows, and Linux\n- **Headless server:** Runs without a desktop environment, either directly on Node.js or in Docker, and includes a web UI for NAS devices and home servers\n\n## 🧪 Beta testing\n\nMotrix Turbo v2 is currently in beta. After its remaining release gates pass,\ndownload [v2.0.0-beta.18 from GitHub Releases](https://github.com/agalwood/Motrix/releases/tag/v2.0.0-beta.18)\nand read the [full release notes](./docs/release-notes/2.0.0-beta.18.md) before\ninstalling it.\n\nBack up your existing Motrix data and downloads before testing. Migration from\nMotrix v1 data has not yet been validated, so do not use your only copy of v1\ndata with this beta. When practical, test v2 in parallel using a separate OS\naccount, machine, or Docker data directory.\n\n## Screenshots\n\n### Dashboard\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./screenshots/motrix-dashboard-dark.webp\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./screenshots/motrix-dashboard.webp\">\n  <img alt=\"Motrix Dashboard\" src=\"./screenshots/motrix-dashboard.webp\">\n</picture>\n\n### Downloads\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./screenshots/motrix-downloads-dark.webp\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./screenshots/motrix-downloads.webp\">\n  <img alt=\"Motrix Downloads\" src=\"./screenshots/motrix-downloads.webp\">\n</picture>\n\n### Settings\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./screenshots/motrix-settings-dark.webp\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./screenshots/motrix-settings.webp\">\n  <img alt=\"Motrix Settings\" src=\"./screenshots/motrix-settings.webp\">\n</picture>\n\n## ✨ Features\n\n- 🕹 Clean, intuitive interface with dark mode\n- 🦄 BitTorrent downloads with per-file selection, plus magnet link support\n- 📡 Built-in tracker list management with automatic updates and health checks\n- 🔌 UPnP and NAT-PMP port mapping\n- 🚥 Upload and download limits with multiple speed-limit profiles\n- 💾 SQLite-backed sessions that restore downloads after a restart\n- 📊 Customizable Dashboard with transfer stats, live activity, and task tiles\n- 🔔 System notifications when downloads finish, plus an in-app notification center\n- 🧩 QuickJS-based plugin sandboxing, fine-grained permissions, and an in-app marketplace\n- 🌐 Chrome and Firefox extensions that hand browser downloads off to Motrix in one click\n- ⌨️ Official `@motrix/cli` client for everyday shell use and AI agents\n- 🐳 Docker-ready headless server with secure device-code pairing for remote CLI and agent clients\n- 🎬 Extensible URL Resolver plugins for extracting media from supported sites\n- 🤖 System tray integration and launch at startup\n- 🌍 Simplified Chinese and English UI, with more languages planned\n- 🔗 Handlers for `motrix://` and `magnet:` links, plus `.torrent` file associations\n\n## 🧩 Ecosystem\n\nMotrix extends beyond the desktop app with a shared protocol library, command-line client, browser extensions, and a complete plugin toolchain:\n\n| Project | Distribution | What it does |\n|---------|--------------|--------------|\n| [`@motrix/mdxp`](https://github.com/motrixapp/mdxp) | npm package | Defines the shared JSON-RPC 2.0 wire schemas and Zod types for MDXP, with helpers for bidirectional connections |\n| [`@motrix/cli`](https://github.com/motrixapp/cli) | npm package | Provides the `motrix` command, automatically discovers a local desktop app, and pairs with remote instances |\n| Motrix Browser Extension | Browser extension | Intercepts downloads in Chrome and Firefox (Manifest V3), hands them off to Motrix, and pairs securely with the desktop app over native messaging |\n| [Motrix Plugin SDK](https://github.com/motrixapp/plugin-sdk) | Four npm packages | Includes `@motrix/plugin-manifest-schema`, `@motrix/plugin-api`, `@motrix/plugin-cli`, and `create-motrix-plugin` for developing, testing, and packaging plugins |\n| [Builtin Plugins](https://github.com/motrixapp/builtin-plugins) | Signed `.moext` packages | Includes three official plugins: **Filename Template** for renaming files from a template before they are saved, **Page Scraper** for extracting direct file links from HTML pages, and **URL Resolver** as the foundation for site-specific media resolution |\n| Plugin Registry | Public JSON feed | Publishes plugin listings and install metadata at `dl.motrix.app/registry/plugins.json` for both the website and the in-app marketplace |\n\n### CLI quick start\n\n```bash\nnpm install -g @motrix/cli    # Requires Node.js 22 or later\n\nmotrix add https://example.com/file.iso --save-dir ~/Downloads\nmotrix list                   # List downloads\nmotrix watch --stats          # Stream live progress as NDJSON\nmotrix pair --name my-nas     # Pair with a remote or headless instance\n```\n\n### Build a plugin\n\nThe [Motrix Plugin SDK](https://github.com/motrixapp/plugin-sdk) provides the TypeScript API, manifest schema, project scaffolder, and CLI used throughout the plugin development workflow:\n\n```bash\npnpm create motrix-plugin my-plugin\ncd my-plugin && pnpm install\npnpm dev                         # Watch-build and launch Motrix with the plugin\npnpm exec motrix-plugin validate # Validate motrix-plugin.json\npnpm run pack                    # Create dist/<id>-<version>.moext\npnpm exec motrix-plugin lint     # Check the packed bundle\n```\n\nThe default scaffold starts with a `beforeCreate` URL resolver. Pass `post-action` after the project name to start with an `afterComplete` notification plugin instead. Plugins can hook into `beforeCreate`, `beforeFinalize`, `afterComplete`, and `onError`, contribute callable commands and settings, and access the runtime through the `motrix:plugin-api` virtual module.\n\nPlugins are bundled as a single ES2020 module and run inside a QuickJS sandbox without Node.js APIs or direct file and network access. Declare activation events, required capabilities, and URL-scoped host permissions in `motrix-plugin.json`; Motrix shows those requests to the user before granting access. See the [Plugin SDK documentation](https://github.com/motrixapp/plugin-sdk) for templates, the manifest and runtime API references, localization, sandbox constraints, packaging, and distribution.\n\n## 📦 Installation\n\n### Desktop app\n\nDownload Motrix from [motrix.app](https://motrix.app) and choose the package for your operating system. Most Mac users should choose the Apple Silicon build; Intel builds are available for older Macs with Intel processors.\n\nAfter the remaining release gates pass, the current beta desktop packages\nwill be distributed through the GitHub prerelease linked above. Snap is not\npublished for this beta; prerelease tag runs stop after source validation and\ndo not build or publish Snap artifacts. Choose the package that matches your\noperating system and architecture:\n\n| Platform | Architectures | Packages / channel | Recommendation |\n|----------|---------------|--------------------|----------------|\n| macOS 12+ | `arm64` (Apple Silicon), `x64` (Intel) | `.dmg` / `.zip` | Use the `.dmg` matching your Mac; choose `x64` only for an Intel-based Mac |\n| Windows | `x64` | `.exe` (NSIS installer) / `.zip` | Use the `.exe` installer for a normal installation or `.zip` for a manually extracted copy |\n| Linux | `x64`, `arm64` | `.deb` / `.rpm` | Use `.deb` on Debian or Ubuntu, or `.rpm` on Fedora or openSUSE |\n\nThis beta does not publish an AppImage or Snap. Flatpak is validated separately\nand is not published by the release tag. Windows `arm64` and all 32-bit\npackages are not available. Windows `x64` packages are unsigned and may\ntrigger a Windows SmartScreen warning.\n\n### Command-line client\n\n```bash\nnpm install -g @motrix/cli\n```\n\nYou can also install it from Settings → Integration → Command-line tools in the desktop app.\n\n### Headless server with Docker\n\nTagged releases publish a multi-architecture Server image to Docker Hub and\nGHCR. Beta releases publish only the immutable version tag and do not update\n`latest`; the included `compose.yaml` keeps Server state separate from\ndownloaded resources:\n\n```bash\nmkdir -p motrix-data downloads\nsudo chown 1000:1000 motrix-data downloads\nexport MOTRIX_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.18'\nexport MOTRIX_PUBLIC_URL='http://nas.example.lan:8080'\ndocker compose pull server\ndocker compose up -d --wait\n```\n\nThe runtime is non-root, supports a read-only root filesystem, validates mount\npermissions before accepting work, and preserves downloads, sessions, and\ninstalled plugins across container replacement. The standard direct-LAN setup\npublishes the Web service on port 8080 and MDXP on port 16801. Set\n`MOTRIX_PUBLIC_URL` to the Web approval URL that remote clients can actually\nreach; the Compose files do not substitute a misleading localhost URL.\n\nIf the Web approval URL is temporarily unavailable, an SSH operator can list\nand approve the exact client code without exposing another port:\n\n```bash\ndocker compose exec server motrix-admin pairing pending\ndocker compose exec server motrix-admin pairing approve ABCD-EFGH\n```\n\nRemote CLI and agent clients pair through the device-code flow. Browser\nextensions pair with the desktop app through native messaging; first-time\nextension pairing is not provided by the headless server. Direct HTTP is\nappropriate only on a trusted LAN. Internet or untrusted-LAN access requires a\nTLS reverse proxy and firewall rules around the origin ports. See the\n[Docker Server deployment guide](./docs/docker-server.md) for ownership setup,\nDocker Hub/GHCR image and tag selection, DSM 7 and fnOS installation, ports,\ndiagnostics, and backup/upgrade instructions.\n\n## 🛠 Development\n\nDevelopment requires Node.js 22 or later and pnpm. Use the pnpm version specified by the `packageManager` field in `package.json`.\n\n```bash\ngit clone https://github.com/agalwood/Motrix.git\ncd Motrix\n\npnpm install     # Install dependencies, download aria2 for your platform, and rebuild native modules\npnpm start       # Start the Electron app in development mode with Vite HMR in the renderer\n\npnpm test        # Run the Vitest unit tests\npnpm test:e2e    # Run the Playwright E2E tests\npnpm run lint    # Run Biome checks\n\npnpm build       # Fetch signed built-in plugins, then build the native host and four Vite targets\n```\n\n### Preview the in-window application menu on macOS\n\nWindows and Linux render the application menu inside the Motrix window. To\npreview that chrome while developing on macOS, start the app with the preview\nflag enabled:\n\n```bash\nMOTRIX_PREVIEW_MAC_MENU=1 pnpm start\n```\n\nThe flag hides the main window's macOS traffic-light buttons and enables the\nrenderer dropdown menu. Restart the development process after changing the\nflag because both Electron and Vite read it at startup.\n\nThis mode is intended for layout and command-item debugging. Electron routes\nmacOS role items through AppKit's native menu, so role-backed actions such as\n*",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"motrix-turbo\",\n  \"type\": \"module\",\n  \"productName\": \"Motrix\",\n  \"homepage\": \"https://motrix.app\",\n  \"version\": \"2.0.0-beta.18\",\n  \"packageManager\": \"pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1\",\n  \"description\": \"A full-featured download manager\",\n  \"keywords\": [],\n  \"author\": {\n    \"name\": \"Dr_rOot\",\n    \"email\": \"agalwood.net@gmail.com\"\n  },\n  \"license\": \"MIT\",\n  \"main\": \"dist/main/index.cjs\",\n  \"private\": true,\n  \"scripts\": {\n    \"prestart\": \"node scripts/ensure-native-abi.mjs electron\",\n    \"start\": \"node scripts/dev.mjs\",\n    \"build\": \"pnpm run build:builtin && pnpm run build:native-host && pnpm build:electron\",\n    \"build:electron\": \"pnpm run build:legal && node scripts/ensure-native-abi.mjs electron && vite build --config vite.main.config.ts && vite build --config vite.preload.config.ts && vite build --config vite.worker.config.ts && vite build --config vite.renderer.config.ts\",\n    \"stage:electron\": \"node scripts/stage-electron-app.mjs\",\n    \"verify:electron-package\": \"node scripts/verify-electron-package.mjs\",\n    \"smoke:electron-package\": \"node scripts/smoke-electron-package.mjs\",\n    \"build:server\": \"pnpm run build:builtin && pnpm run build:legal && vite build --config vite.server.config.ts && vite build --config vite.worker.config.ts && vite build --config vite.renderer.web.config.ts\",\n    \"stage:server\": \"node scripts/stage-server-app.mjs\",\n    \"verify:server-package\": \"node scripts/verify-server-package.mjs\",\n    \"smoke:server-package\": \"node scripts/smoke-server-package.mjs\",\n    \"smoke:server-image\": \"node scripts/smoke-server-image.mjs\",\n    \"measure:server-images\": \"node scripts/measure-server-images.mjs\",\n    \"build:builtin\": \"node scripts/fetch-builtins.mjs\",\n    \"build:native-host\": \"node packages/native-host/build.mjs\",\n    \"build:legal\": \"node scripts/generate-third-party-notices.mjs\",\n    \"package:flatpak-native-host\": \"node packages/native-host/package-flatpak-companion.mjs\",\n    \"build:snap:prepare\": \"node scripts/prepare-snap-project.mjs\",\n    \"build:mac-arm64\": \"pnpm run build:builtin && pnpm run build:native-host -- --platform darwin --arch arm64 && pnpm run build:electron\",\n    \"prestart:server\": \"node scripts/ensure-native-abi.mjs node\",\n    \"start:server\": \"MOTRIX_SKIP_ELECTRON_REBUILD=1 node dist/server/index.mjs\",\n    \"check:boundaries\": \"node scripts/check-boundaries.mjs\",\n    \"check:file-names\": \"node scripts/check-file-names.mjs\",\n    \"check:flatpak\": \"node scripts/verify-flatpak-packaging.mjs\",\n    \"check:i18n\": \"node --import tsx scripts/check-i18n.mjs\",\n    \"check:registry-runtime\": \"node scripts/check-registry-electron-runtime.mjs\",\n    \"check:schema-parity\": \"node scripts/check-schema-parity.mjs\",\n    \"check:third-party-notices\": \"node scripts/generate-third-party-notices.mjs --check && vitest run tests/check-third-party-notices.test.ts tests/generate-third-party-notices.test.ts\",\n    \"check:update-artifacts\": \"node scripts/verify-update-artifacts.mjs\",\n    \"check:snap\": \"node scripts/verify-snap-artifact.mjs\",\n    \"check:snap-store\": \"node scripts/verify-snap-store-channel.mjs\",\n    \"docs\": \"node scripts/obsidian-docs.mjs\",\n    \"docs:clear\": \"node scripts/obsidian-docs.mjs clear\",\n    \"docs:context\": \"node scripts/obsidian-docs.mjs context\",\n    \"docs:doctor\": \"node scripts/obsidian-docs.mjs doctor\",\n    \"docs:list\": \"node scripts/obsidian-docs.mjs list\",\n    \"docs:status\": \"node scripts/obsidian-docs.mjs status\",\n    \"docs:task\": \"node scripts/obsidian-docs.mjs task\",\n    \"docs:use\": \"node scripts/obsidian-docs.mjs use\",\n    \"docs:check\": \"node scripts/obsidian-docs.mjs check\",\n    \"lint\": \"biome check .\",\n    \"lint:fix\": \"biome check --fix .\",\n    \"format\": \"biome format --write .\",\n    \"pretest\": \"node scripts/ensure-native-abi.mjs node\",\n    \"test\": \"vitest run\",\n    \"pretest:watch\": \"node scripts/ensure-native-abi.mjs node\",\n    \"test:watch\": \"vitest\",\n    \"pretest:e2e\": \"node scripts/ensure-native-abi.mjs electron\",\n    \"test:e2e\": \"playwright test\",\n    \"pretest:e2e:ui\": \"node scripts/ensure-native-abi.mjs electron\",\n    \"test:e2e:ui\": \"playwright test --ui\",\n    \"pretest:e2e:debug\": \"node scripts/ensure-native-abi.mjs electron\",\n    \"test:e2e:debug\": \"PWDEBUG=1 playwright test\",\n    \"postinstall\": \"node scripts/postinstall.mjs\",\n    \"fetch:engine\": \"node scripts/fetch-engine.mjs\",\n    \"rebuild:for-node\": \"pnpm rebuild better-sqlite3\",\n    \"rebuild:for-electron\": \"electron-rebuild --force --only better-sqlite3\",\n    \"pack:mac\": \"pnpm run check:third-party-notices && pnpm run build:mac-arm64 && pnpm run stage:electron -- --platform darwin --arch arm64 && CSC_IDENTITY_AUTO_DISCOVERY=false pnpm exec electron-builder --mac --arm64 -c.mac.target=dir && codesign --force --deep --sign - release/mac-arm64/Motrix.app\",\n    \"dist:mac\": \"pnpm run check:third-party-notices && pnpm run build:mac-arm64 && pnpm run stage:electron -- --platform darwin --arch",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "工作流",
+      "开放协议",
+      "aria2"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "ToolJet",
+    "name": "ToolJet",
+    "full_name": "ToolJet/ToolJet",
+    "url": "https://github.com/ToolJet/ToolJet",
+    "description": "ToolJet is the open-source foundation of ToolJet AI - the enterprise app generation platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀",
+    "language": "JavaScript",
+    "total_stars": 40389,
+    "forks": 5349,
+    "stars_this_period": 639,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-app-builder",
+        "docker",
+        "hacktoberfest",
+        "internal-applications",
+        "internal-project",
+        "internal-tool",
+        "internal-tools",
+        "javascript",
+        "kubernetes",
+        "low-code",
+        "low-code-development-platform",
+        "low-code-framework",
+        "no-code",
+        "nodejs",
+        "reactjs",
+        "self-hosted",
+        "typescript",
+        "web-development-tools",
+        "workflow-automation"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 1142,
+      "created_at": "2021-03-30T08:51:34Z",
+      "pushed_at": "2026-08-17T14:07:35Z",
+      "homepage": "https://tooljet.com",
+      "default_branch": "main",
+      "forks": 5349,
+      "watchers": 200,
+      "archived": false,
+      "size_kb": 1685453
+    },
+    "readme_content": "ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building and deploying internal tools, workflows and AI agents. The community edition provides a powerful visual builder, drag-and-drop UI, and integrations with databases, APIs, SaaS apps, and object storage. For AI-powered UI generation, query building, debugging, and enterprise features, see ToolJet AI.\n\n :star: If you find ToolJet useful, please consider giving us a star on GitHub! Your support helps us continue to innovate and deliver exciting features.\n\n![Docker Cloud Build Status](https://img.shields.io/docker/automated/tooljet/tooljet-ce)\n![Number of GitHub contributors](https://img.shields.io/github/contributors/tooljet/tooljet)\n[![Number of GitHub issues that are open](https://img.shields.io/github/issues/ToolJet/ToolJet)](https://github.com/ToolJet/ToolJet/issues)\n[![Number of GitHub stars](https://img.shields.io/github/stars/ToolJet/ToolJet)](https://github.com/ToolJet/ToolJet/stargazers)\n![Number of GitHub closed issues](https://img.shields.io/github/issues-closed/tooljet/tooljet)\n![Number of GitHub pull requests that are open](https://img.shields.io/github/issues-pr-raw/tooljet/tooljet)\n![GitHub release; latest by date](https://img.shields.io/github/v/release/tooljet/tooljet)\n![GitHub commit activity](https://img.shields.io/github/commit-activity/m/tooljet/tooljet)\n[![GitHub license which is AGPL license](https://img.shields.io/github/license/ToolJet/ToolJet)](https://github.com/ToolJet/ToolJet)\n[![Follow us on X, formerly Twitter](https://img.shields.io/twitter/follow/ToolJet?style=social)](https://twitter.com/ToolJet)\n\n<p align=\"center\">\n    <img src=\"docs/static/img/readme/banner.png\" alt=\"Tooljet dashboard showing inventory and orders\"/>\n</p>\n\n<p align=\"center\">\n    <img src=\"docs/static/img/readme/flowchart.png\"/>\n</p>\n\n## Features  \n\n### Community Edition (CE)  \n- **Visual App Builder:** 60+ responsive components (Tables, Charts, Forms, Lists, Progress Bars, and more).  \n- **ToolJet Database:** Built-in no-code database.  \n- **Multi-page Apps & Multiplayer Editing:** Build complex apps collaboratively.  \n- **80+ Data Sources:** Connect to databases, APIs, cloud storage, and SaaS tools.  \n- **Flexible Deployment:** Self-host with Docker, Kubernetes, AWS, GCP, Azure, and more.  \n- **Collaboration Tools:** Inline comments, mentions, and granular access control.  \n- **Extensibility:** Create plugins and connectors with the [ToolJet CLI](https://www.npmjs.com/package/@tooljet/cli).  \n- **Code Anywhere:** Run JavaScript and Python inside your apps.  \n- **Secure by Design:** AES-256-GCM encryption, proxy-only data flow, SSO support.  \n\n### ToolJet AI (Enterprise)  \nEverything in CE, plus:  \n- **AI App Generation:** Create apps instantly from natural language prompts.  \n- **AI Query Builder:** Generate and transform queries with AI assistance.  \n- **AI Debugging:** Identify and fix issues with one click.  \n- **Agent Builder:** Create intelligent agents to automate workflows and orchestrate processes.  \n- **Enterprise-grade Security & Compliance:** SOC 2 and GDPR readiness, audit logs, and advanced access control.\n- **User Management:** Role-based access (RBAC), custom groups, and granular app/data permissions.  \n- **Multi-environment Management:** Seamless dev/stage/prod environments.  \n- **GitSync & CI/CD:** Integrate with GitHub/GitLab for version control and streamlined deployments.  \n- **Branding & Customization:** White-labeling, and custom theming for organizational branding.  \n- **Fine-Grained Access Control:** Secure data and actions at the row, component, page, and query levels.  \n- **Embedded Apps:** Embed ToolJet apps securely within other applications or portals.  \n- **Enterprise Support:** SLAs, priority bug fixes, and onboarding assistance.  \n\n<hr>\n\n## Quickstart\nThe easiest way to get started with ToolJet is by creating a [ToolJet Cloud](https://tooljet.com) account. ToolJet Cloud offers a hosted solution of ToolJet. If you want to self-host ToolJet, kindly proceed to [deployment documentation](https://docs.tooljet.com/docs/setup/).\n\n### Try using Docker\nWant to give ToolJet a quick spin on your local machine? You can run the following command from your terminal to have ToolJet up and running right away.\n\n\n```bash\ndocker run \\\n  --name tooljet \\\n  --restart unless-stopped \\\n  -p 80:80 \\\n  --platform linux/amd64 \\\n  -v tooljet_data:/var/lib/postgresql/13/main \\\n  tooljet/try:ee-lts-latest\n```\n\n*For users upgrading their ToolJet version, we recommend choosing the LTS version over the latest version. The LTS version ensures stability with production bug fixes, security patches, and performance enhancements.*\n\n## Tutorials and examples\n\n[Time Tracker Application](https://docs.tooljet.com/docs/#quickstart-guide)<br>\n[Build your own CMS using low-code](https://blog.tooljet.com/build-cms-using-lowcode-and-mongodb/)<br>\n[AWS S3 Browser](https://blog.tooljet.com/build-an-aws-s3-broswer-with-tooljet/)<br>\n\n## Documentation\nDocumentation is available at https://docs.tooljet.com.\n\n- [Getting Started](https://docs.tooljet.com)<br>\n- [Data source Reference](https://docs.tooljet.com/docs/data-sources/airtable/)<br>\n- [Component Reference](https://docs.tooljet.com/docs/widgets/button)\n\n## Self-hosted\nYou can use ToolJet Cloud for a fully managed solution. If you want to self-host ToolJet, we have guides on deploying ToolJet on Kubernetes, AWS EC2, Docker, and more.\n\n| Provider  | Documentation |\n| :------------- | :------------- |\n| Digital Ocean | [Link](https://docs.tooljet.com/docs/setup/digitalocean)  |\n| Docker  | [Link](https://docs.tooljet.com/docs/setup/docker)   |\n| AWS EC2 | [Link](https://docs.tooljet.com/docs/setup/ec2)  |\n| AWS ECS | [Link](https://docs.tooljet.com/docs/setup/ecs)   |\n| OpenShift | [Link](https://docs.tooljet.com/docs/setup/openshift)   |\n| Helm | [Link](https://docs.tooljet.com/docs/setup/helm)   |\n| AWS EKS (Kubernetes) | [Link](https://docs.tooljet.com/docs/setup/kubernetes)   |\n| GCP GKE (Kubernetes) | [Link](https://docs.tooljet.com/docs/setup/kubernetes-gke)   |\n| Azure AKS (Kubernetes) | [Link](https://docs.tooljet.com/docs/setup/kubernetes-aks)   |\n| Azure Container | [Link](https://docs.tooljet.com/docs/setup/azure-container)   |\n| Google Cloud Run  | [Link](https://docs.tooljet.com/docs/setup/google-cloud-run)   |\n| Deploying ToolJet client  | [Link](https://docs.tooljet.com/docs/setup/client)   |\n| Deploying ToolJet on a Subpath  | [Link](https://docs.tooljet.com/docs/setup/tooljet-subpath/)   |\n\n## Marketplace \nToolJet can now be found on both AWS and Azure Marketplaces, making it simpler than ever to access and deploy our app-building platform.\n\nFind ToolJet on AWS Marketplace [here](https://aws.amazon.com/marketplace/pp/prodview-fxjto27jkpqfg?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and explore seamless integration on Azure Marketplace [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tooljetsolutioninc1679496832216.tooljet?tab=Overview).\n\n## Community support\nFor general help using ToolJet, please refer to the official [documentation](https://docs.tooljet.com/docs/). For additional help, you can use one of these channels to ask a question:\n\n- [Slack](https://tooljet.com/slack) - Discussions with the community and the team.\n- [GitHub](https://github.com/ToolJet/ToolJet/issues) - For bug reports and feature requests.\n- [𝕏 (Twitter)](https://twitter.com/ToolJet) - Get the product updates quickly.\n\n## Roadmap\nCheck out our [roadmap](https://github.com/orgs/ToolJet/projects/15) to stay updated on recently released features and learn about what's coming next.\n\n## Branching model\nWe use the git-flow branching model. The base branch is `develop`. If you are looking for a stable version, please use the main branch or tags labeled as v1.x.x.\n\n## Contributing\nKindly read our [Contributing Guide](CONTRIBUTING.md) to familiarize yourself with ToolJet's development process, how to suggest bug fixes and improvements, and the steps for building and testing your changes. <br>\n\n## Contributors\n<a href=\"https://github.com/tooljet/tooljet/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=tooljet/tooljet&max=400&columns=20\" />\n  <img src=\"https://us-central1-tooljet-hub.cloudfunctions.net/github\" width=\"0\" height=\"0\" />\n</a>\n\n## License\nToolJet © 2023, ToolJet Solutions Inc - Released under the GNU Affero General Public License v3.0.\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"tooljet\",\n  \"version\": \"1.18.0\",\n  \"description\": \"ToolJet is an open-source low-code framework to build and deploy internal tools.\",\n  \"engines\": {\n    \"node\": \"22.15.1\",\n    \"npm\": \"10.9.2\"\n  },\n  \"lint-staged\": {\n    \"./frontend/src/**/*.{js,jsx}\": [\n      \"eslint --fix\"\n    ]\n  },\n  \"devDependencies\": {\n    \"@tooljet/cli\": \"^0.0.13\",\n    \"eslint\": \"^9.26.0\",\n    \"husky\": \"^9.1.7\",\n    \"lint-staged\": \"^16.1.0\"\n  },\n  \"scripts\": {\n    \"prebuild:plugins\": \"npm run install:plugins\",\n    \"install:plugins\": \"npm --prefix plugins install\",\n    \"build:plugins\": \"npm --prefix plugins run build\",\n    \"prebuild:plugins:prod\": \"npm run install:plugins\",\n    \"build:plugins:prod\": \"NODE_ENV=production npm run build:plugins\",\n    \"postbuild:plugins:prod\": \"npm --prefix plugins prune --production\",\n    \"prebuild:frontend\": \"npm --prefix frontend install --production=false\",\n    \"build:frontend\": \"NODE_ENV=production npm --prefix frontend run build\",\n    \"prebuild:frontend:cloud\": \"npm --prefix frontend install --production=false\",\n    \"build:frontend:cloud\": \"NODE_ENV=production TOOLJET_EDITION=cloud npm --prefix frontend run build:cloud\",\n    \"postbuild:frontend:cloud\": \"npm --prefix frontend prune --production\",\n    \"postbuild:frontend\": \"npm --prefix frontend prune --production\",\n    \"prebuild:server\": \"npm --prefix server install --production=false\",\n    \"build:server\": \"NODE_ENV=production npm --prefix server run build\",\n    \"postbuild:server\": \"npm --prefix server prune --production\",\n    \"build\": \"npm run build:plugins:prod && npm run build:frontend && npm run build:server\",\n    \"start:prod\": \"npm --prefix server run start:prod\",\n    \"cloud:setup\": \"npm run db:setup && npm run plugins:install && npm run plugins:uninstall && npm run plugins:reload\",\n    \"cloud:setup:prod\": \"npm run db:setup:prod && npm run plugins:install:prod && npm run plugins:uninstall:prod && npm run plugins:reload:prod\",\n    \"db:create\": \"npm --prefix server run db:create\",\n    \"db:create:prod\": \"npm --prefix server run db:create:prod\",\n    \"db:migrate\": \"npm --prefix server run db:migrate\",\n    \"db:migrate:prod\": \"npm --prefix server run db:migrate:prod\",\n    \"db:seed\": \"npm --prefix server run db:seed\",\n    \"db:seed:prod\": \"npm --prefix server run db:seed:prod\",\n    \"db:setup\": \"npm --prefix server run db:setup\",\n    \"db:setup:prod\": \"npm --prefix server run db:setup:prod\",\n    \"db:reset\": \"npm --prefix server run db:reset\",\n    \"db:drop\": \"npm --prefix server run db:drop\",\n    \"deploy\": \"cp -a frontend/build/. public/\",\n    \"worker:prod\": \"npm --prefix server run worker:prod\",\n    \"plugins:install\": \"npm --prefix server run plugins:install\",\n    \"plugins:install:prod\": \"npm --prefix server run plugins:install:prod\",\n    \"plugins:uninstall\": \"npm --prefix server run plugins:uninstall\",\n    \"plugins:uninstall:prod\": \"npm --prefix server run plugins:uninstall:prod\",\n    \"plugins:reload\": \"npm --prefix server run plugins:reload\",\n    \"plugins:reload:prod\": \"npm --prefix server run plugins:reload:prod\",\n    \"rotate:keys\": \"npm --prefix server run rotate:keys --\",\n    \"rotate:keys:prod\": \"npm --prefix server run rotate:keys:prod --\",\n    \"heroku-postbuild\": \"./heroku-postbuild.sh\",\n    \"prepare\": \"husky install\",\n    \"update-version\": \"node update-version.js\"\n  },\n  \"dependencies\": {}\n}",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 8,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "RAG 检索",
+      "工作流",
+      "自动化"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "anthropics",
+    "name": "defending-code-reference-harness",
+    "full_name": "anthropics/defending-code-reference-harness",
+    "url": "https://github.com/anthropics/defending-code-reference-harness",
+    "description": "Skills for threat modeling, scanning, triage, patching, plus an autonomous scanning harness you can /customize",
+    "language": "Python",
+    "total_stars": 7289,
+    "forks": 586,
+    "stars_this_period": 176,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "security"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 23,
+      "created_at": "2026-05-22T16:00:56Z",
+      "pushed_at": "2026-08-06T21:42:09Z",
+      "homepage": "https://claude.com/blog/using-llms-to-secure-source-code",
+      "default_branch": "main",
+      "forks": 586,
+      "watchers": 43,
+      "archived": false,
+      "size_kb": 1062
+    },
+    "readme_content": "# Defending Code Reference Harness\n\nA reference implementation for autonomous vulnerability discovery and\nremediation with Claude, based on our learnings from [partnering with security\nteams at several organizations](https://www.anthropic.com/glasswing)\nsince launching Claude Mythos Preview. For a write up of these learnings along with\nbest practices, see the [accompanying blog post](https://claude.com/blog/using-llms-to-secure-source-code)\n(also available in [`blog-post.md`](docs/blog-post.md)). For a lightweight SDK-only \nwalkthrough of the same recon → find → triage → report → patch loop, see the \n[companion cookbook](https://platform.claude.com/cookbook/claude-agent-sdk-06-the-vulnerability-detection-agent).\n\nThis repo is not maintained and is not accepting contributions.\n\n> 🔒 **Want a managed option?** Anthropic offers\n> [Claude Security](https://claude.com/product/claude-security), a hosted product\n> that finds and fixes vulnerabilities in your source code across multiple\n> projects. Claude Security scans your repository for vulnerabilities,\n> applies a multi-stage verification pipeline to reduce false positives, and\n> lets you manage findings through their lifecycle: triage, fix validation,\n> and rapid fix generation.\n>\n> This repository is an open-source reference implementation based on general\n> best practices for finding vulnerabilities using Claude. You can use it to\n> build your own vulnerability finding pipeline, customize the logic, and it\n> can be used with whatever access you have to Claude APIs (including\n> Bedrock, Vertex, or Azure).\n\n## Contents\n\n- **Claude Code skills**: `/quickstart`, `/threat-model`, `/vuln-scan`,\n  `/triage`, `/patch`, `/customize`: interactive scoping, scanning, triage,\n  and patching. Open this repo in Claude Code and run `/quickstart` to get\n  oriented.\n- **`harness/`**: the autonomous reference pipeline (recon → find → verify\n  → report → patch), configured for finding C/C++ memory vulnerabilities\n  using Docker and ASAN. This harness is a **reference, not a product**. \n  The general shape, prompts, and sandboxing are reusable, but the harness\n  will not work on every codebase out of the box. Run `/customize` to port it \n  to your language, detector, or vuln class.\n- **Detection & response**: the `/dnr-hunt` and `/dnr-respond` skills plus\n  `dnr_harness/`, their autonomous mirror (`dnr-pipeline`). Everything else\n  in this repo is preventive; this track assumes an attacker is already in\n  the logs — hunt the corpus, scope the damage, and propose a response.\n  Demo target: `targets/dnrcanary/`. See\n  [docs/detection-response.md](docs/detection-response.md).\n\n> ⚠️ **Security:** `/quickstart`, `/threat-model`, `/vuln-scan`, and `/triage`\n> only read and write files. Running `/patch` on static findings (`TRIAGE.json`\n> or `VULN-FINDINGS.json`) is likewise read- and write-only. `/customize` edits\n> the harness code and runs validation commands. Any of these skills are safe to\n> run unsandboxed, as long as you review and approve each tool use in Claude Code.\n> The autonomous pipelines (`vuln-pipeline`, `dnr-pipeline`, and `/patch` on\n> pipeline results) **execute target code**, so they refuse to run outside of\n> a gVisor sandbox\n> unless explicitly overridden. To get set up, run `scripts/setup_sandbox.sh` once,\n> then invoke the pipeline via `bin/vp-sandboxed`. The detection & response\n> skills (`/dnr-hunt`, `/dnr-respond`) additionally run the demo app on\n> `127.0.0.1` to verify PoCs. See [docs/security.md](docs/security.md)\n> and [docs/agent-sandbox.md](docs/agent-sandbox.md) for more details.\n\n## Getting Started\n\n```bash\ngit clone https://github.com/anthropics/defending-code-reference-harness\ncd defending-code-reference-harness\nclaude\n\n# 30-sec intro + guided first run on the canary target\n> /quickstart\n\n> /quickstart how do I port the pipeline to Java?\n> /quickstart how do I triage all these bugs?\n```\n\n## Further Reading\n\n- [**Blog Post**](docs/blog-post.md) · The accompanying blog post with learnings + best practices\n- [**Pipeline**](docs/pipeline.md) · How it works: diagram, stages, CLI flags\n- [**Security**](docs/security.md) · Sandboxing, what not to mount\n- [**Agent sandbox**](docs/agent-sandbox.md) · gVisor isolation + egress allowlist for every agent\n- [**Best practices**](docs/best-practices.md) · Field-tested principles: verification, severity, iteration, large codebases\n- [**Prompting**](docs/prompting.md) · Prompting the model for defensive security tasks\n- [**Threat model**](docs/threat-model.md) · Why a threat model cuts false positives, and the `/threat-model` skill\n- [**Detection & response**](docs/detection-response.md) · Hunting an attacker already in the logs; the D&R skills and pipeline\n- [**Customize**](docs/customizing.md) · Port to my stack; which files change and why\n- [**Patching**](docs/patching.md) · Generate and verify fixes for verified crashes\n- [**Other use cases**](docs/other-use-cases.md) · Binary analysis, embedded, bug chains, threat intel\n- [**Troubleshooting**](docs/troubleshooting.md) · Duplicates, rate limits, subagent model pinning\n- [**Safeguards**](https://support.claude.com/en/articles/14604842-real-time-cyber-safeguards-on-claude) · Block for dangerous cyber work\n\n---\n\n## Ramp Up\n\nThe most successful security teams we've partnered with are those \nthat have gotten hands-on the fastest. Though it's tempting to \nspend months designing the perfect pipeline, we recommend starting\nsmall on Day 1 and building from there as learnings come. The\nsteps below follow that pattern and set an ambitious (but reasonable)\npace based on what we've seen.\n\n|                                                                                     |              |                                                              |\n|-------------------------------------------------------------------------------------|--------------|--------------------------------------------------------------|\n| [Step 1](#step-1-day-1-build-a-threat-model-and-run-your-first-static-scan--triage) | **Day 1**    | Build a threat model and run your first static scan + triage |\n| [Step 2](#step-2-day-2-run-the-reference-pipeline-on-a-cc-library)                  | **Day 2**    | Run the reference pipeline on a C/C++ library                | \n| [Step 3](#step-3-days-3-5-customize-the-pipeline-for-your-target)                   | **Days 3-5** | Customize the pipeline for your target                       |\n| [Step 4](#step-4-week-2-start-autonomous-scanning-triage-and-patching)              | **Week 2**   | Start autonomous scanning, triage, and patching              | \n| [Step 5](#step-5-optional-detection--response)                                      | **Optional** | Hunt a planted campaign in logs (detection & response)       | \n\n### Step 1 (Day 1): Build a threat model and run your first static scan + triage\n\nDay 1 is focused on seeing the whole loop end-to-end. Using only the \ninteractive skills, you'll build a threat model, run a static scan scoped \nby it, triage what comes back, and draft candidate fixes. You'll finish \nthe day with a threat model, a ranked list of static findings, and candidate \npatches.\n\nThe relevant skills **only read and write files** in your repo. As long as you \nrun Claude Code interactively and approve each tool use, no sandbox is needed.\n\n```bash\n# Pin every subagent to the model you want\nexport CLAUDE_CODE_SUBAGENT_MODEL=<model-id>\nclaude\n\n# 0. intro + guided first run\n> /quickstart\n\n# 1. Build a threat model (aim before you shoot)\n> /threat-model bootstrap targets/canary\n\n# 2. Run a static scan, scoped by that threat model\n> /vuln-scan targets/canary\n\n# 3. Verify, dedupe, and rank what came back\n> /triage targets/canary/VULN-FINDINGS.json\n\n# 4. Generate candidate fixes for the verified findings\n> /patch ./TRIAGE.json --repo targets/canary\n```\n\nThis flow produces `THREAT_MODEL.md`, `VULN-FINDINGS.{json,md}`, \n`TRIAGE.{json,md}`, and `PATCHES/`.\n\nThe vulnerability candidates produced in Step 1 come from Claude's static \nreview of the source (nothing is built or run), so expect more false positives on \nany non-canary targets. In Step 2, you'll produce *execution-verified* findings.\n\n> **Note:** on the canary target, `/triage` may dismiss the scan's findings\n> as false positives. `entry.c` announces itself as deliberately vulnerable\n> demo code, and `/triage` correctly excludes bugs in test / fixture code.\n> To see the full confirm / dedupe / false positive flow, run it on the\n> curated fixture instead (`/triage .claude/skills/triage/fixtures/canary-findings.json\n> --repo targets/canary`) or point the Step 1 skills at your own code.\n\n### Step 2 (Day 2): Run the reference pipeline on a C/C++ library\n\nOn Day 2, you'll move from interactive skills to your first autonomous\nrun using the reference pipeline. You'll run the full recon → find → \nverify → report loop in your environment on a known-vulnerable open-source\nlibrary, then generate a candidate patch for what it finds. You'll finish\nwith a set of reproducible crashes, exploitability reports, and candidate patches,\nalong with a feel for how the pipeline works.\n\nRunning the pipeline is simple:\n\n```bash\n# One-time setup\npython3 -m venv .venv && .venv/bin/pip install -e .\n./scripts/setup_sandbox.sh   # installs gVisor, builds the agent images, and verifies isolation; note: requires Docker\nexport ANTHROPIC_API_KEY=sk-ant-...   # or CLAUDE_CODE_OAUTH_TOKEN, or Bedrock — see docs/agent-sandbox.md\n\n# Run the recon → find → verify → report loop\nbin/vp-sandboxed run drlibs --model <model-id> --runs 3 --parallel --stream --auto-focus\n# Generate a candidate patch for each finding\nbin/vp-sandboxed patch results/drlibs/<timestamp>/ --model <model-id>\n\n# Or, ask Claude Code to launch the pipeline and watch the run for you\nclaude\n> run the pipeline on drlibs and explain findings as they come\n```\n\nResults from the loop land in a `results/drlibs/<timestamp>/` directory. With \nthe `--stream` flag, the first report will appear in minutes under `reports/bug_NN/`.\n\n> ⚠️ **`run` spawns autonomous agents.** The pipeline runs each agent\n> inside a gVisor container with egress restricted to the Claude API.\n> Agent-spawning subcommands refuse to start outside it unless explicitly \n> overridden. For more information, see [docs/security.md](docs/security.md)\n> and [docs/agent-sandbox.md](docs/agent-sandbox.md).\n\nUnder the hood, the pipeline walks through seven stages:\n\n1. **Build**: Compiles the target into a Docker image with ASAN (the memory\nerror detector for C and C++). The pipeline builds this image automatically\non first run using the target's `Dockerfile`.\n2. **Recon**: A lightweight agent reads the source inside a network-isolated\ncontainer and proposes a partition, i.e., *\"here are N distinct input-parsing \nsubsystems worth attacking separately\"*, so that parallel find agents explore\ndifferent areas instead of converging on the same bug. Without the `--auto-focus`\nflag, the pipeline uses the `focus_areas` list from the target's `config.yaml`.\n3. **Find**: N agents run in parallel, each in its own isolated container.\nEach agent reads the source, crafts malformed inputs, and runs the ASAN\nbinary until a given input produces a crash 3 out of 3 times.\n4. **Verify**: A separate grader agent reproduces each crash in a fresh\ncontainer that the find agent hasn't touched. The only thing that crosses over\nfrom the find agent to the grader is the proof of concept it produced.\n5. **Dedupe**: A judge agent compares verified crashes against bugs already\nreported and decides whether each is a new bug, a better example of a known\nbug, or a duplicate to skip.\n6. **Report**: A report agent writes a structured exploitability analysis per\nunique bug, including details on primitive class, reachability, escalation\npath, and severity.\n7. **Patch** (the separate patch command above): A patch agent writes a proposed\nfix, and a grader agent confirms that the new code builds, that the original \nproof of c",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"vuln-pipeline\"\nversion = \"0.2.1\"\ndescription = \"Agent-driven security pipelines: execution-verified vulnerability discovery for C/C++ targets and log-based detection and response\"\nrequires-python = \">=3.11\"\nlicense = {file = \"LICENSE\"}\ndependencies = [\n    \"pyyaml>=6.0\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"pytest>=8.0\",\n]\n\n[project.scripts]\nvuln-pipeline = \"harness.cli:main\"\ndnr-pipeline = \"dnr_harness.cli:main\"\n\n[build-system]\nrequires = [\"setuptools>=61.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[tool.setuptools.packages.find]\ninclude = [\"harness*\", \"dnr_harness*\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "长期记忆",
+      "技能扩展",
+      "大模型应用"
+    ],
+    "summary_source": "original_description"
+  }
+]
