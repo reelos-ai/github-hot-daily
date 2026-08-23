@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
-from datetime import datetime
 from pathlib import Path
 
 from generate_leaderboard import build_leaderboard
@@ -96,7 +95,7 @@ def upsert_report_entry(period: str, stats: dict, assets: dict) -> list[dict]:
     reports.sort(key=lambda item: (item.get("period", ""), item.get("type", "")), reverse=True)
 
     payload = {
-        "updated_at": datetime.now().astimezone().isoformat(timespec="minutes"),
+        "updated_at": shared_publisher.report_timestamp(f"{period}-01"),
         "site": SITE,
         "reports": reports,
     }

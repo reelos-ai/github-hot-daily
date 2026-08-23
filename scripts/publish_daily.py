@@ -110,6 +110,13 @@ def report_timestamp(report_date: str | None = None) -> str:
     return now.replace(year=int(value[:4]), month=int(value[5:7]), day=int(value[8:10])).isoformat(timespec="minutes")
 
 
+def reference_today() -> date:
+    value = os.getenv("REPORT_DATE")
+    if value:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    return date.today()
+
+
 def split_capabilities(raw: str) -> list[str]:
     return [
         item.strip()
@@ -217,7 +224,7 @@ def visible_reports(
     reference_date: date | None = None,
 ) -> list[dict]:
     window_days = REPORT_WINDOWS_DAYS[report_type]
-    today = reference_date or date.today()
+    today = reference_date or reference_today()
     cutoff = today - timedelta(days=window_days)
     return [
         report
@@ -2040,7 +2047,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Publish daily GitHub trending report pages.")
     parser.add_argument("--period", default=None, help="Daily report period in YYYY-MM-DD.")
     args = parser.parse_args()
-    period = resolve_daily_period(args.period or datetime.now().strftime("%Y-%m-%d"))
+    period = resolve_daily_period(args.period or reference_today().strftime("%Y-%m-%d"))
     backfill_top10_payloads()
     stats = load_report_stats(period)
     sync_daily_report_dir(period)

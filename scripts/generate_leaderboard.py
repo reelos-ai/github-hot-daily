@@ -103,6 +103,8 @@ def report_timestamp() -> str:
     value = os.getenv("REPORT_DATE")
     if not value:
         return now.isoformat(timespec="minutes")
+    if len(value) == 7:
+        value = f"{value}-01"
     return now.replace(year=int(value[:4]), month=int(value[5:7]), day=int(value[8:10])).isoformat(timespec="minutes")
 
 

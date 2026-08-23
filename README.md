@@ -13,6 +13,7 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
 - `/` - 情报中心首页
 - `/daily/` - 日报入口
 - `/weekly/` - 周报入口
+- `/weekly/2026-08-23/` - 当前周报
 - `/monthly/` - 月报入口
 - `/leaderboard/` - 历史项目总榜（搜索、排序、分页）
 - `/archive/` - 往期归档
