@@ -65,7 +65,19 @@
       "risk_signal": 10,
       "total": 99
     },
-    "strategic_score": 99
+    "strategic_score": 99,
+    "capability_tags": [
+      "长期记忆",
+      "上下文数据库",
+      "知识 RAG"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
+      "audience": "需要给 Agent 搭建统一记忆与知识层的开发者和平台团队",
+      "capabilities": "长期记忆、上下文数据库、知识 RAG、插件化技能、自演化知识更新",
+      "risk": "把记忆、检索和技能同时耦合到一层，后续扩展性、数据治理和调试复杂度需要重点验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "unslothai",
@@ -144,7 +156,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "本地模型运行",
+      "桌面训练界面",
+      "多模型管理"
+    ],
+    "brief_zh": {
+      "summary": "一个可在桌面端本地运行和训练大模型与扩散模型的应用，把模型下载、推理和训练入口整合进统一 UI。",
+      "audience": "想在本地机器上试跑、微调或管理多种开源模型的开发者与 AI 极客用户",
+      "capabilities": "本地模型运行、桌面训练界面、多模型管理、扩散模型支持、自托管 UI",
+      "risk": "模型覆盖很广，但真实体验受显存、平台兼容性和桌面端稳定性影响明显"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "chaitanyagiri",
@@ -207,7 +231,13 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "大模型应用",
+      "Claude Code 生态"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "lightningpixel",
@@ -273,7 +303,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "图像转 3D",
+      "本地 GPU 推理",
+      "桌面应用"
+    ],
+    "brief_zh": {
+      "summary": "一个本地运行的图像转 3D 桌面应用，利用开源 AI 模型在用户 GPU 上直接生成 3D mesh。",
+      "audience": "想把图片快速转换成 3D 模型、又希望数据留在本地设备上的创作者和开发者",
+      "capabilities": "图像转 3D、本地 GPU 推理、桌面应用、3D mesh 生成、开源工作流",
+      "risk": "生成质量依赖显卡能力和模型适配，复杂几何与真实生产精度仍需进一步验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "PostHog",
@@ -348,7 +390,16 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一套面向产品团队的开源数据平台，把分析、回放、实验、错误追踪和 AI 可观测性集中到一起。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "cactus-compute",
@@ -411,7 +462,19 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "端侧基础模型",
+      "工具调用",
+      "结构化抽取"
+    ],
+    "brief_zh": {
+      "summary": "一个面向手机、可穿戴设备和机器人等小设备的超轻量基础模型，把工具调用、结构化抽取和低内存推理压缩进单个 14MB 二进制。",
+      "audience": "需要在边缘设备、本地硬件或超低内存环境运行 AI 能力的开发者和设备团队",
+      "capabilities": "端侧基础模型、工具调用、结构化抽取、低内存推理、LoRA 微调",
+      "risk": "体积优势很明显，但复杂任务精度、工具选择稳定性和设备侧部署边界仍需实测"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "freestylefly",
@@ -480,7 +543,13 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "RAG 检索",
+      "技能扩展",
+      "工作流"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "RyanCodrai",
@@ -555,7 +624,13 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "RAG 检索",
+      "工作区"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "superradcompany",
@@ -635,7 +710,13 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "技能扩展"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "AlexsJones",
@@ -702,6 +783,12 @@
       "risk_signal": 8,
       "total": 94
     },
-    "strategic_score": 94
+    "strategic_score": 94,
+    "capability_tags": [
+      "技能扩展",
+      "工作区",
+      "大模型应用"
+    ],
+    "summary_source": "original_description"
   }
 ]

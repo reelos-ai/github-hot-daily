@@ -1,0 +1,807 @@
+[
+  {
+    "owner": "tinyhumansai",
+    "name": "openhuman",
+    "full_name": "tinyhumansai/openhuman",
+    "url": "https://github.com/tinyhumansai/openhuman",
+    "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+    "language": "Rust",
+    "total_stars": 38170,
+    "forks": 3757,
+    "stars_this_period": 522,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "GPL-3.0",
+      "open_issues": 319,
+      "created_at": "2026-02-18T20:01:27Z",
+      "pushed_at": "2026-08-26T20:40:15Z",
+      "homepage": "https://tinyhumans.ai/openhuman",
+      "default_branch": "main",
+      "forks": 3757,
+      "watchers": 192,
+      "archived": false,
+      "size_kb": 177713
+    },
+    "readme_content": "<h1 align=\"center\">OpenHuman</h1>\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/demo.png\" alt=\"The Tet\" />\n</p>\n\n<p align=\"center\" style=\"display: inline-block\">\n\t<a href=\"https://trendshift.io/repositories/23680\" target=\"_blank\" style=\"display: inline-block\">\n\t\t<img src=\"https://trendshift.io/api/badge/repositories/23680\" alt=\"tinyhumansai%2Fopenhuman | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n\t</a>\n\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823\">\n\t\t</a>\n\t\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565\">\n\t\t</a>\n</p>\n<p align=\"center\" style=\"display: inline-block\">\n <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756\">\n  </a>\n  <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n   <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756\">\n   </a>\n </p>\n\n<p align=\"center\">\n <strong>OpenHuman is your personal AI super intelligence: a brain that remembers everything, a fantastic orchestrator, a deep researcher. Local-first, simple, powerful.</strong>\n</p>\n\n<p align=\"center\">\n <a href=\"https://github.com/tinyhumansai/openhuman/discussions\">Discussions</a> •\n <a href=\"https://discord.tinyhumans.ai/\">Discord</a> •\n <a href=\"https://www.reddit.com/r/tinyhumansai/\">Reddit</a> •\n <a href=\"https://x.com/intent/follow?screen_name=tinyhumansai\">X/Twitter</a> •\n <a href=\"https://tinyhumans.gitbook.io/openhuman/\">Docs</a> •\n <a href=\"https://x.com/intent/follow?screen_name=senamakel\">Follow @senamakel (Creator)</a>\n</p>\n\n<p align=\"center\">\n  🇺🇸 <a href=\"./README.md\">English</a> | 🇨🇳 <a href=\"./docs/README.zh-CN.md\">简体中文</a> | 🇯🇵 <a href=\"./docs/README.ja-JP.md\">日本語</a> | 🇰🇷 <a href=\"./docs/README.ko.md\">한국어</a> | 🇩🇪 <a href=\"./docs/README.de.md\">Deutsch</a> | 🇵🇰 <a href=\"./docs/README.ur-pk.md\">اردو</a>\n</p>\n\n<p align=\"center\">\n <img src=\"https://img.shields.io/badge/status-early%20beta-orange\" alt=\"Early Beta\" />\n <a href=\"https://github.com/tinyhumansai/openhuman/releases/latest\"><img src=\"https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest\" alt=\"Latest Release\" /></a>\n <a href=\"https://github.com/tinyhumansai/openhuman/stargazers\"><img src=\"https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat\" alt=\"GitHub Stars\" /></a>\n <a href=\"./LICENSE\"><img src=\"https://img.shields.io/github/license/tinyhumansai/openhuman\" alt=\"License\" /></a>\n</p>\n\n> **Early Beta**: Under active development. Expect rough edges.\n\n> OpenHuman is not AGI. But it is a meaningful architectural step closer, with better memory, better orchestration, and better tooling.\n\n> 🎉 Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.\n\n# Install\n\nDownload installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.\n\nFor terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.\n\n# What is OpenHuman?\n\nOpenHuman is three things most assistants aren't: **a brain** that builds a persistent, local memory of your world; **a fantastic orchestrator** that runs fleets of agents on durable graphs; and **a deep researcher** that sweeps your data and the web before you finish asking. Every bullet links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).\n\n### 🧠 The brain\n\n- **[Memory Tree](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) + [Obsidian Wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki)**: your data compressed into scored Markdown trees in SQLite on your machine, mirrored as an [Obsidian vault](https://x.com/karpathy/status/2039805659525644595) you can open and edit. No vector-soup black box.\n- **[100+ OAuth integrations, 5,000+ MCP servers, 90,000+ Skills](https://tinyhumans.gitbook.io/openhuman/features/integrations)**: one click into Gmail, Notion, GitHub, Slack and the rest of your stack. [Auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/auto-fetch) feeds the brain every 20 minutes, so it has tomorrow's context this morning.\n- **[Goals & Todos](https://tinyhumans.gitbook.io/openhuman/features/goals-and-todos)**: long-term goals, durable per-thread goals, and a shared kanban board per conversation.\n- **[TokenJuice](https://tinyhumans.gitbook.io/openhuman/features/token-compression)**: tool output compressed before it hits the model: same information, up to 80% fewer tokens. A brain this big would be unaffordable without it.\n\n### 🕸️ The orchestrator\n\n- **[Workflows](https://tinyhumans.gitbook.io/openhuman/features/workflows)**: the agent proposes the automation; you review it on a canvas and save. Durable, trigger-driven, approval-gated runs on open-source [tinyflows](https://github.com/tinyhumansai/tinyflows).\n- **[A harness that finishes the job](https://tinyhumans.gitbook.io/openhuman/developing/architecture/agent-harness)**: checkpointed graph runs on open-source [tinyagents](https://github.com/tinyhumansai/tinyagents). Stuck agents get steered, halted ones return a root cause, and every run replays with real per-call costs.\n- **[A split brain, always on](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**: a fast reflex agent triages inbound traffic while a deep reasoning core delegates to worker fleets, steered by the subconscious.\n- **[An agent economy](https://tinyhumans.gitbook.io/openhuman/features/tinyplace)**: a `@handle` on [tiny.place](https://tiny.place), Signal-encrypted agent-to-agent orchestration, x402 USDC bounties and trading. Keys never touch disk.\n\n### 🔬 The deep researcher & doer\n\n- **Batteries included**: managed [web search](https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search), powered by [Exa](https://exa.ai), is included with your OpenHuman subscription and needs no API key; bring your own Exa key to search directly on your own Exa account and billing. Plus scraper, coder toolset, a real [browser](https://tinyhumans.gitbook.io/openhuman/features/native-tools/browser-and-computer), and [native voice](gitbooks/features/native-tools/voice.md) with in-process Whisper. [Model routing](https://tinyhumans.gitbook.io/openhuman/features/model-routing) picks the right LLM per workload on one subscription. That subscription is a default, not a lock-in: point any workload at [your own provider key or a fully local Ollama model](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-and-byok-models), and mix the three however you like.\n- **[Image & video generation](https://tinyhumans.gitbook.io/openhuman/features/native-tools)**: Seedream/SeedEdit images and Seedance/Veo video, straight into your workspace on the same subscription.\n- **[17 messaging channels](https://tinyhumans.gitbook.io/openhuman/features/channels)**: Telegram, Discord, Slack, WhatsApp, Signal, iMessage… plus **native email** (IMAP IDLE + SMTP). Your agent reaches you where you already are.\n\n### 🧍 Human, private, yours\n\n- **Simple, UI-first & Human**: install to working agent in a few clicks, with no config files and no terminal. And it has [a face](https://tinyhumans.gitbook.io/openhuman/features/mascot): a mascot that speaks, reacts, and remembers you.\n- **[Privacy & security](https://tinyhumans.gitbook.io/openhuman/features/privacy-and-security)**: on-device encrypted data, approval gate, OS-keyring secrets, and opt-in sandboxing. There is also **[Privacy Mode](https://tinyhumans.gitbook.io/openhuman/features/privacy-mode)**: flip one switch and no inference leaves your machine, enforced in the Rust core.\n- **[Themes & Theme Studio](https://tinyhumans.gitbook.io/openhuman/features/theming)**: five theme families plus a full visual editor, exportable as JSON.\n\n## Context in minutes, not weeks\n\nOpenHuman is the first agent harness that gets to know you in minutes. Inspired by [Karpathy's LLM Knowledgebase](https://x.com/karpathy/status/2039805659525644595). Most agents start cold. Hermes learns by watching you work; OpenClaw waits for plugins to ferry context in. Either way, you spend days or weeks before the agent knows enough about your stack to be genuinely useful.\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/memory.png\" alt=\"OpenHuman context-building diagram\">\n</p>\n\n> OpenHuman summarizes and compresses all your documents, emails & chats; and creates a memory graph that lets your agent remember everything about you.\n\nOpenHuman skips the wait. Connect your accounts, let [auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/integrations/auto-fetch) pull data locally on a 20-minute loop, and then have [Memory Trees](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) compress everything into Markdown files stored intelligently in a [Karpathy-style Obsidian wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki).\n\nIn just one sync pass, the agent has full (compressed) context of your inbox, your calendar, your repos, your docs, your messages. No training period. No \"give it a few weeks.\". It becomes you, controlled by you.\n\nAlready self-host [agentmemory](https://github.com/rohitg00/agentmemory) across other coding agents? OpenHuman ships an optional `Memory` backend that proxies to it. Set `memory.backend = \"agentmemory\"` in `config.toml` and the same durable store powers OpenHuman alongside Claude Code, Cursor, Codex, and OpenCode. See the [agentmemory backend](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/agentmemory-backend) page for setup.\n\n## An orchestrator, not a chatbot\n\nMost agent harnesses run one agent in one loop. OpenHuman is an **[orchestrator](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**:\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/orchestration.png\" alt=\"OpenHuman orchestration diagram\">\n</p>\n\n> Agent-to-agent messaging runs over Signal-protocol end-to-end encryption, so you can connect anything (Claude Code, Codex, OpenClaw, Hermes) and use OpenHuman to orchestrate all of your agents and tools.\n\n- **Graphs, not loops**: turns run as checkpointed graphs on [tinyagents](https://github.com/tinyhumansai/tinyagents). They pause for a human, survive a restart, and resume mid-run.\n- **Sub-agent fleets**: specialist",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"openhuman\"\nversion = \"0.63.17\"\nedition = \"2021\"\ndescription = \"OpenHuman core business logic and RPC server\"\n# The crate ships a verbatim GPLv3 `LICENSE` file but carried no `license` key,\n# which left the grant ambiguous to every tool that reads metadata rather than\n# the file (cargo-deny, crates.io, SBOM generators). Declared explicitly as\n# `only` — not `or-later` — to match `medulla-public` and the `GPL-3.0-only`\n# first-party crates in the closure (`tinyagents`).\nlicense = \"GPL-3.0-only\"\nautobins = false\n# build.rs globs tests/raw_coverage/*.rs into the single `raw_coverage_all`\n# integration target (see tests/raw_coverage_all.rs). Those files used to be ~76\n# individual `tests/*.rs` targets, each statically relinking the whole crate —\n# collapsing them into one target removes ~75 full-crate link steps per test run.\nbuild = \"build.rs\"\n\n# `cargo machete` reports a dependency as unused when no `use` names it. These\n# two have no `use` and are still load-bearing, so they are suppressed here\n# rather than deleted — an unsuppressed false positive is how a real finding\n# gets ignored next time.\n#\n# `tinymemory` (the facade) and `tinymemory-tinycortex` (the TinyCortex\n# adapter) exist for DRIVER ADMISSION: the memory subsystem resolves its\n# engine through `tinymemory`'s driver registry, and the adapter is what makes\n# TinyCortex admissible as that engine. Both must stay linked so a second host\n# embedding the `flows` kernel profile can still bind a memory engine — see\n# the 2026-08-10 entry in `scripts/kernel-floor.limits`, which ratchets them in\n# deliberately. Dropping either would compile clean and fail at runtime.\n#\n# `tinymemory-api` and `tinymemory-core` are NOT listed: they are named\n# directly by `src/openhuman/memory/`, so machete is already satisfied.\n[package.metadata.cargo-machete]\nignored = [\"tinymemory\", \"tinymemory-tinycortex\"]\n\n[[bin]]\nname = \"openhuman-core\"\npath = \"src/main.rs\"\n\n[[bin]]\nname = \"test-mcp-stub\"\npath = \"src/bin/test_mcp_stub.rs\"\n\n[[bin]]\nname = \"openhuman-fleet\"\npath = \"src/bin/fleet.rs\"\n# The fleet supervisor embeds the axum control-plane server, so it only builds\n# with the HTTP transport compiled in (#5048). Under `--no-default-features`\n# (no `http-server`) this target is skipped rather than failing to link.\nrequired-features = [\"http-server\", \"bin-tools\"]\n\n# Embedded-RSS benchmark harness (#5046). Gated behind the default-OFF\n# `rss-bench` feature so no benchmark code enters the shipped build. Build with\n# `cargo build --release --features rss-bench --bin rss-bench`.\n[[bin]]\nname = \"rss-bench\"\npath = \"src/bin/rss_bench.rs\"\nrequired-features = [\"rss-bench\"]\n\n# Stateful library profiling workloads (memory ingestion + real sub-agent\n# delegation under a hermetic mock provider). Local/dev only.\n[[bin]]\nname = \"library-profile\"\npath = \"src/bin/library_profile/main.rs\"\nrequired-features = [\"rss-bench\"]\n\n# ── Integration tests that need a PRODUCT gate ──────────────────────────────\n#\n# `[features] default` is the contributor set and no longer turns on `voice`,\n# `web3`, `crash-reporting` or `inference`. These four `tests/` targets name\n# symbols that only exist behind those gates, so without a `required-features`\n# line a bare `cargo test` fails to COMPILE — not skip, fail — and the failure\n# is in a file the contributor did not touch.\n#\n# `required-features` makes cargo skip the target instead, which is the honest\n# outcome: the test exercises a domain that build does not contain. The CI\n# product lanes pass `--features \"$(scripts/ci/product-features.sh)\"`, so every\n# one of these still runs there, against the code that ships.\n#\n# Autodiscovery stays on for the other ~59 `tests/*.rs` targets; declaring a\n# target explicitly only opts THAT file out of it.\n#\n# This replaces the per-symbol `#[cfg]` cleanup tracked in #5021 for these four\n# files. #5021 is still the right fix for symbols named in the middle of an\n# otherwise gate-free target — required-features is the blunt instrument, and\n# it costs the whole target when the gate is off.\n[[test]]\nname = \"observability_smoke\"\npath = \"tests/observability_smoke.rs\"\n# The `is_*_event` Sentry filters are all `#[cfg(feature = \"crash-reporting\")]`.\nrequired-features = [\"crash-reporting\"]\n\n[[test]]\nname = \"memory_artifacts_e2e\"\npath = \"tests/memory_artifacts_e2e.rs\"\n# Opens the wiki ledger with `tinycortex::git2::Repository::open` and asserts on\n# `content::wiki_git` artifacts — both of which exist only behind this gate.\nrequired-features = [\"memory-git\"]\n\n[[test]]\nname = \"x402_twit_sh_live\"\npath = \"tests/x402_twit_sh_live.rs\"\n# `x402::tools::X402RequestTool` — the x402 domain is part of the web3 family.\nrequired-features = [\"web3\"]\n\n[[test]]\nname = \"json_rpc_e2e\"\npath = \"tests/json_rpc_e2e.rs\"\n# `voice::reply_speech::{test_seam, TEST_SEAM_ENV}` — the reply-speech seam\n# only exists in the real voice module, not the stub.\nrequired-features = [\"voice\"]\n\n[[test]]\nname = \"raw_coverage_all\"\npath = \"tests/raw_coverage_all.rs\"",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 99
+    },
+    "strategic_score": 99,
+    "capability_tags": [
+      "长期记忆",
+      "本地优先",
+      "Agent 编排"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+      "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+      "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+      "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "diegosouzapw",
+    "name": "OmniRoute",
+    "full_name": "diegosouzapw/OmniRoute",
+    "url": "https://github.com/diegosouzapw/OmniRoute",
+    "description": "Never stop coding. Free MIT AI gateway: one endpoint, 350 providers (90+ free), 1200+ models Kimi, Claude, GPT, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 450+ contributors",
+    "language": "TypeScript",
+    "total_stars": 56167,
+    "forks": 7724,
+    "stars_this_period": 976,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "a2a",
+        "ai-agents",
+        "ai-gateway",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "cline",
+        "codex",
+        "copilot",
+        "cursor",
+        "deepseek",
+        "free-ai",
+        "gemini",
+        "kimi",
+        "llm-gateway",
+        "mcp",
+        "openai",
+        "openai-proxy",
+        "qwen",
+        "token-saver"
+      ],
+      "license": "MIT",
+      "open_issues": 110,
+      "created_at": "2026-02-13T12:38:31Z",
+      "pushed_at": "2026-08-26T22:01:39Z",
+      "homepage": "https://omniroute.online",
+      "default_branch": "release/v3.8.51",
+      "forks": 7724,
+      "watchers": 327,
+      "archived": false,
+      "size_kb": 456245
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./docs/screenshots/MainOmniRoute.png\" alt=\"OmniRoute Dashboard\" width=\"820\"/>\n\n<br/>\n<br/>\n\n# 🚀 OmniRoute — The Free AI Gateway\n\n<img src=\"./docs/diagrams/readme-hero.svg\" width=\"100%\" alt=\"OmniRoute — Never stop coding. Every AI tool → 356 providers — 90+ free — through one endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity into FREE Claude / GPT / Gemini with auto-fallback. RTK + Caveman stacked compression saves 15–95% tokens (~89% avg) — never hit limits. 356 AI providers · 90+ free tiers · ~1.51B free tokens/mo · 19 routing strategies · $0 to start.\"/>\n\n</div>\n\n<div align=\"center\">\n\n## 💰 ~1.51B Free Tokens / Month\n\n</div>\n\n> Stacking free tiers by hand is painful — dozens of SDKs, dozens of rate limits, and no idea how much you actually have. OmniRoute catalogs **455 free-tier entries across 40 recurring pool keys** and computes the token headline from the **20 pools with a published positive monthly budget**, deduplicated by shared pool. The result stays visible on the dashboard (`/dashboard/free-tiers`).\n\n<img src=\"./docs/diagrams/free-tier-budget.svg\" width=\"100%\" alt=\"OmniRoute free-tier budget card: ~1.51B free tokens per month steady, up to ~2.13B in the first month with signup credits, from 40 documented recurring pool keys covering 455 cataloged free-tier entries behind one endpoint. Honest pool-deduped math — each shared pool counted once, including 20 recurring pools with a published positive monthly token budget; 15 providers are marked avoid in the terms-risk catalog so you decide. Budget bar includes Mistral 1B, LLM7 150M, Nara 150M, Gemini 60M and smaller pools, plus first-month signup credits and permanently-free no-token-cap providers surfaced separately so they never inflate the headline. Live used/remaining on /dashboard/free-tiers.\"/>\n\n> Animated summary of the live `/dashboard/free-tiers` page. Full methodology (pool dedupe, credit tiers, provider terms): **[docs/reference/FREE_TIERS.md](docs/reference/FREE_TIERS.md)**.\n>\n> <sub>These figures are re-audited every two weeks against the live catalog and **move both ways** — a provider ends a free tier and the number drops; a new one lands and it climbs. We publish what the catalog actually computes, never a rounded-up best case.</sub>\n\n<br/>\n\n<div align=\"center\">\n\n<h3>\n\n⭐ Star the repo if OMNIROUTE helped you save money and make your work easier.\n\n</h3>\n\n[![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=social)](https://github.com/diegosouzapw/OmniRoute)\n<a href=\"https://trendshift.io/repositories/23589\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/23589\" alt=\"diegosouzapw%2FOmniRoute | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n[![Star History Rank](https://api.star-history.com/badge?repo=diegosouzapw/OmniRoute&theme=dark)](https://www.star-history.com/diegosouzapw/omniroute)\n[![olud.ai](https://olud.ai/badge.php?tool=diegosouzapw-omniroute)](https://olud.ai/project/diegosouzapw-omniroute.html)\n\n### 💬 Join the community\n\n**👋 Follow the maintainer — get new providers, releases & tips first:**\n\n[![Follow Diego on LinkedIn](https://img.shields.io/badge/Follow_Diego_on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/diegosouzapw/)\n[![Follow @diegosouzapw on GitHub](https://img.shields.io/github/followers/diegosouzapw?style=for-the-badge&logo=github&logoColor=white&label=Follow%20on%20GitHub&color=181717)](https://github.com/diegosouzapw)\n\n[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/U47eFqAXCn)\n[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/omnirouteOficial)\n[![WhatsApp Global](https://img.shields.io/badge/WhatsApp_Global-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t)\n[![WhatsApp Brasil](https://img.shields.io/badge/WhatsApp_Brasil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)\n[![Website](https://img.shields.io/badge/Website-omniroute.online-blue?logo=google-chrome&logoColor=white)](https://omniroute.online)\n\n**Questions, provider tips, roadmap & support → [Discord](https://discord.gg/U47eFqAXCn) · [Telegram](https://t.me/omnirouteOficial) · WhatsApp [🌍 Global](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t) / [🇧🇷 Brasil](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)**\n\n<br/>\n\n## 📈 The Gateway Keeps Growing\n\n<div align=\"center\">\n\n|                           | v3.8.49 |        **v3.8.50**        | `v3.8.51+`  |\n| ------------------------- | :-----: | :-----------------------: | :---------: |\n| 🌐 Providers              |   290   |          **350**          | more queued |\n| 🧠 Unique chat model IDs  |  1185   |         **1312**          |      —      |\n| 🖼️ Modality Bridge        |    —    | 🆕 vision + audio + video |      —      |\n| 📡 Radar free catalog     |    —    |         🆕 opt-in         |      —      |\n| ⚖️ Quota-aware scheduling |    —    |      🆕 Quota-Share       |      —      |\n| 📊 Quota telemetry        |    —    |          🆕 live          |      —      |\n\n**→ [Roadmap](ROADMAP.md) — riding the rail to `v3.9.0 LTS`**\n\n</div>\n\n<br/>\n\n## 🧩 Available\n\n[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)\n![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)\n[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)\n![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)\n![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)\n\n<table>\n  <tr>\n    <td align=\"right\"><b>🚀 Start</b></td>\n    <td align=\"center\"><a href=\"#-quick-start\">🚀 Quick Start</a></td>\n    <td align=\"center\"><a href=\"#-more-install-methods--docker-source-pnpm-arch\">📦 Install</a></td>\n    <td align=\"center\"><a href=\"#-works-the-second-you-install-it--no-keys-no-config\">🆓 Zero-config</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>💡 Learn</b></td>\n    <td align=\"center\"><a href=\"#-the-promise\">💥 The Promise</a></td>\n    <td align=\"center\"><a href=\"#-why-omniroute\">🤔 Why OmniRoute</a></td>\n    <td align=\"center\"><a href=\"#-what-sets-omniroute-apart\">🏆 What Sets Apart</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>⚙️ Features</b></td>\n    <td align=\"center\"><a href=\"#-combos--the-flagship\">🎯 Combos</a></td>\n    <td align=\"center\"><a href=\"#-350-ai-providers--154-catalog-marked-free\">🌐 Providers</a></td>\n    <td align=\"center\"><a href=\"#-full-cli--a2a--mcp\">🔌 CLI &amp; MCP</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-save-1595-tokens--automatically\">🗜️ Compression</a></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-where-omniroute-runs--anywhere\">🖥️ Where It Runs</a></td>\n    <td align=\"center\"><a href=\"#-private--local-first\">🔒 Private</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>👀 See it</b></td>\n    <td align=\"center\"><a href=\"#-omniroute-in-action\">🎬 In Action</a></td>\n    <td align=\"center\"><a href=\"#-whats-new\">✨ What's New</a></td>\n    <td align=\"center\"><a href=\"#-compatible-clis--coding-agents\">🤖 Compatible CLIs</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>💚 Support</b></td>\n    <td align=\"center\"><a href=\"#-support-omniroute\">💚 Support / Donate</a></td>\n    <td align=\"center\"><a href=\"#-community--help\">💬 Community</a></td>\n    <td align=\"center\"><a href=\"#-sponsors\">💖 Sponsors</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>📦 Project</b></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-tech-stack\">🛠️ Tech Stack</a></td>\n    <td align=\"center\"><a href=\"#-documentation\">📖 Docs</a></td>\n    <td align=\"center\"><a href=\"#-600-contributors\">👥 Contributors</a></td>\n  </tr>\n</table>\n\n</div>\n\n<div align=\"center\">\n  <b>🌐 In 43 languages</b>\n  <br/><br/>\n  <a href=\"README.md\"><img src=\"docs/assets/flags/us.svg\" width=\"30\" alt=\"English (en)\" title=\"English (en)\"></a>\n  <a href=\"docs/i18n/pt-BR/README.md\"><img src=\"docs/assets/flags/br.svg\" width=\"30\" alt=\"Português — Brasil (pt-BR)\" title=\"Português — Brasil (pt-BR)\"></a>\n  <a href=\"docs/i18n/pt/README.md\"><img src=\"docs/assets/flags/pt.svg\" width=\"30\" alt=\"Português (pt)\" title=\"Português (pt)\"></a>\n  <a href=\"docs/i18n/es/README.md\"><img src=\"docs/assets/flags/es.svg\" width=\"30\" alt=\"Español (es)\" title=\"Español (es)\"></a>\n  <a href=\"docs/i18n/fr/README.md\"><img src=\"docs/assets/flags/fr.svg\" width=\"30\" alt=\"Français (fr)\" title=\"Français (fr)\"></a>\n  <a href=\"docs/i18n/it/README.md\"><img src=\"docs/assets/flags/it.svg\" width=\"30\" alt=\"Italiano (it)\" title=\"Italiano (it)\"></a>\n  <a href=\"docs/i18n/de/README.md\"><img src=\"docs/assets/flags/de.svg\" width=\"30\" alt=\"Deutsch (de)\" title=\"Deutsch (de)\"></a>\n  <a href=\"docs/i18n/nl/README.md\"><img src=\"docs/assets/flags/nl.svg\" width=\"30\" alt=\"Nederlands (nl)\" title=\"Nederlands (nl)\"></a>\n  <a href=\"docs/i18n/ru/README.md\"><img src=\"docs/assets/flags/ru.svg\" width=\"30\" alt=\"Русский (ru)\" title=\"Русский (ru)\"></a>\n  <a href=\"docs/i18n/uk-UA/README.md\"><img src=\"docs/assets/flags/ua.svg\" width=\"30\" alt=\"Українська (uk-UA)\" title=\"Українська (uk-UA)\"></a>\n  <a href=\"docs/i18n/pl/README.md\"><img src=\"docs/assets/flags/pl.svg\" width=\"30\" alt=\"Polski (pl)\" title=\"Polski (pl)\"></a>\n  <a href=\"docs/i18n/cs/README.md\"><img src=\"docs/assets/flags/cz.svg\" width=\"30\" alt=\"Čeština (cs)\" title=\"Čeština (cs)\"></a>\n  <a href=\"docs/i18n/sk/README.md\"><img src=\"docs/assets/flags/sk.svg\" width=\"30\" alt=\"Slovenčina (sk)\" title=\"Slovenčina (sk)\"></a>\n  <a href=\"docs/i18n/ro/README.md\"><img src=\"docs/assets/flags/ro.svg\" width=\"30\" alt=\"Română (ro)\" title=\"Română (ro)\"></a>\n  <a href=\"docs/i18n/hu/README.md\"><img src=\"docs/assets/flags/hu.svg\" width=\"30\" alt=\"Magyar (hu)\" title=\"Magyar (hu)\"></a>\n  <a href=\"docs/i18n/bg/README.md\"><img src=\"docs/assets/flags/bg.svg\" width=\"30\" alt=\"Български (bg)\" title=\"Български (bg)\"></a>\n  <a href=\"docs/i18n/da/README.md\"><img src=\"docs/assets/flags/dk.svg\" width=\"30\" alt=\"Dansk (da)\" title=\"Dansk (da)\"></a>\n  <a href=\"docs/i18n/fi/README.md\"><img src=\"docs/assets/flags/fi.svg\" width=\"30\" alt=\"Suomi (fi)\" title=\"Suomi (fi)\"></a>\n  <a href=\"docs/i18n/no/README.md\"><img src=\"docs/assets/flags/no.svg\" width=\"30\" alt=\"Norsk (no)\" title=\"Norsk (no)\"></a>\n  <a href=\"docs/i18n/sv/README.md\"><img src=\"docs/assets/flags/se.svg\" width=\"30\" alt=\"Svenska (sv)\" title=\"Svenska (sv)\"></a>\n  <a href=\"docs/i18n/zh-CN/README.md\"><img src=\"docs/assets/flags/cn.svg\" width=\"30\" alt=\"中文 — 简体 (zh-CN)\" title=\"中文 — 简体 (zh-CN)\"></a>\n  <a href=\"docs/i18n/zh-TW/README.md\"><img src=\"docs/assets/flags/tw.svg\" width=\"30\" alt=\"中文 — 繁體 (zh-TW)\" title=\"中文 — 繁體 (zh-TW)\"></a>\n  <a href=\"docs/i18n/ja/README.md\"><img src=\"docs/assets/flags/jp.svg\" width=\"30\" alt=\"日本語 (ja)\" title=\"日本語 (ja)\"></a>\n  <a href=\"docs/i18n/ko/README.md\"><img src=\"docs/assets/flags/kr.svg\" width=\"30\" alt=\"한국어 (ko)\" title=\"한국어 (ko)\"></a>\n  <a href=\"docs/i18n/th/README.md\"><img src=\"docs/assets/flags/th.svg\" width=\"30\" alt=\"ไทย (th)\" title=\"ไทย (th)\"></a>\n  <a href=\"docs/i18n/vi/README.md\"><img src=\"docs/assets/flags/vn.svg\" width=\"30\" alt=\"Tiếng Việt (vi)\" title=\"Tiếng Việt (vi)\"></a>\n  <a href=\"docs/i18n/id/README.md\"><img src=\"docs/assets/flags/id.svg\" width=\"30\" alt=\"Bahasa Indonesia (id)\" title=\"Bahasa Indonesia (id)\"></a>\n  <a href=\"docs/i18n/ms/README.md\"><img src=\"docs/assets/flags/my.svg\" width=\"30\" alt=\"Bahasa Melayu (ms)\" title=\"Bahasa Melayu (ms)\"></a>\n  <a href=\"docs/i",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"omniroute\",\n  \"version\": \"3.8.51\",\n  \"description\": \"Unified AI router with 356 providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"omniroute\": \"bin/omniroute.mjs\",\n    \"omniroute-reset-password\": \"bin/reset-password.mjs\"\n  },\n  \"files\": [\n    \"bin/\",\n    \"dist/\",\n    \"@omniroute/\",\n    \"open-sse/\",\n    \"src/domain/\",\n    \"src/lib/\",\n    \"src/models/\",\n    \"src/mitm/\",\n    \"src/server/\",\n    \"src/shared/\",\n    \"src/sse/\",\n    \"src/types/\",\n    \".env.example\",\n    \"scripts/build/postinstall.mjs\",\n    \"scripts/build/fixTlsClientNodeBinary.mjs\",\n    \"scripts/build/fixPlaywrightAndroid.mjs\",\n    \"bin/cli/runtime/\",\n    \"scripts/postinstall.mjs\",\n    \"scripts/build/postinstallSupport.mjs\",\n    \"scripts/build/runtime-env.mjs\",\n    \"scripts/build/colocateOptionals.mjs\",\n    \"scripts/build/sync-env.mjs\",\n    \"scripts/dev/responses-ws-proxy.mjs\",\n    \"scripts/dev/tls-options.mjs\",\n    \"scripts/check/check-supported-node-runtime.ts\",\n    \"scripts/dev/sync-env.mjs\",\n    \"scripts/build/assembleStandalone.mjs\",\n    \"scripts/build/backendOnlyPages.mjs\",\n    \"scripts/build/build-tproxy-native.mjs\",\n    \"scripts/build/native-binary-compat.mjs\",\n    \"scripts/build/build-next-isolated.mjs\",\n    \"scripts/build/runtime-env.mjs\",\n    \"scripts/packs/optionalPackManifest.mjs\",\n    \"scripts/packs/optionalPackInstaller.mjs\",\n    \"README.md\",\n    \"LICENSE\",\n    \"!**/node_modules/**\",\n    \"THIRD_PARTY_NOTICES.md\",\n    \"!**/__tests__/**\",\n    \"!**/*.test.ts\",\n    \"!**/*.test.tsx\",\n    \"!**/*.test.js\",\n    \"!**/*.test.mjs\",\n    \"!**/*.spec.ts\",\n    \"!**/*.spec.tsx\"\n  ],\n  \"workspaces\": [\n    \"open-sse\",\n    \"packages/browser-pool\"\n  ],\n  \"engines\": {\n    \"node\": \">=22.22.2 <23 || >=24.0.0 <27\"\n  },\n  \"keywords\": [\n    \"ai\",\n    \"router\",\n    \"proxy\",\n    \"openai\",\n    \"claude\",\n    \"anthropic\",\n    \"gemini\",\n    \"fallback\",\n    \"cursor\",\n    \"cline\",\n    \"codex\",\n    \"llm\",\n    \"auto-fallback\"\n  ],\n  \"license\": \"MIT\",\n  \"author\": \"diegosouzapw\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/diegosouzapw/OmniRoute\"\n  },\n  \"homepage\": \"https://omniroute.online\",\n  \"scripts\": {\n    \"dev\": \"node --max-old-space-size=8192 scripts/dev/run-next.mjs dev\",\n    \"prebuild:docs\": \"node scripts/docs/gen-openapi-module.mjs\",\n    \"gen:provider-reference\": \"bun scripts/docs/gen-provider-reference.ts\",\n    \"bench:compression\": \"bun scripts/compression/benchmark.ts\",\n    \"bench:heap-body\": \"node --expose-gc --import tsx/esm scripts/perf/request-body-heap.ts\",\n    \"bench:routing-events\": \"node --import tsx/esm scripts/perf/routing-events-bench.ts\",\n    \"eval:compression\": \"node --import tsx scripts/compression-eval/index.ts\",\n    \"eval:router\": \"node --import tsx scripts/router-eval/index.ts\",\n    \"eval:router:compare\": \"node --import tsx scripts/router-eval/compare.ts\",\n    \"eval:router:patch-compare\": \"node --import tsx scripts/router-eval/patch-compare.ts\",\n    \"eval:router:search\": \"node --import tsx scripts/router-eval/search.ts\",\n    \"eval:router:trends\": \"node --import tsx scripts/router-eval/trends.ts\",\n    \"release:sync-changelog-i18n\": \"node scripts/release/sync-changelog-i18n.mjs\",\n    \"build\": \"node scripts/build/build-next-isolated.mjs\",\n    \"build:secure\": \"OMNIROUTE_BUILD_PROFILE=minimal node scripts/build/build-next-isolated.mjs\",\n    \"build:backend\": \"cross-env OMNIROUTE_BUILD_BACKEND_ONLY=1 node scripts/build/build-next-isolated.mjs\",\n    \"build:cli\": \"node --import tsx scripts/build/prepublish.ts\",\n    \"omniroute:verify\": \"node scripts/check/omniroute-verify.mjs\",\n    \"build:release\": \"rm -rf .build dist && OMNIROUTE_BUILD_SHA=$(git rev-parse --short HEAD) npm run build && npm run build:cli && node scripts/build/write-build-sha.mjs\",\n    \"build:native:tproxy\": \"cd src/mitm/tproxy/native && npx --yes node-gyp rebuild\",\n    \"start\": \"node scripts/dev/run-next.mjs start\",\n    \"homolog\": \"node scripts/homolog/run.mjs\",\n    \"lint\": \"eslint . --cache --cache-location .eslintcache --suppressions-location config/quality/eslint-suppressions.json\",\n    \"lint:json\": \"node scripts/quality/run-eslint-json.mjs\",\n    \"lint:md\": \"npx --yes markdownlint-cli2 \\\"docs/**/*.md\\\" \\\"*.md\\\" \\\"!docs/i18n\\\" \\\"!docs/research\\\"\",\n    \"lint:prose\": \"vale docs\",\n    \"electron:dev\": \"concurrently \\\"npm run dev\\\" \\\"wait-on http://localhost:20128 && cd electron && npm run dev\\\"\",\n    \"electron:build\": \"npm run build && cd electron && npm run build\",\n    \"electron:build:win\": \"npm run build && cd electron && npm run build:win\",\n    \"electron:build:mac\": \"npm run build && cd electron && npm run build:mac\",\n    \"electron:build:linux\": \"npm run build && cd electron && npm run build:linux\",\n    \"electron:smoke:packaged\": \"node scripts/dev/smoke-electron-packaged.mjs\",\n    \"test\": \"cross-env DISABLE_SQLITE_AUTO_BACKUP=true node --max-old-space-size=8192 --import tsx/esm --import ./open-sse/utils/setupPolyfill.ts --import ./tests/_setup/isolateDataDir.ts",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "llm"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rohitg00",
+    "name": "ai-engineering-from-scratch",
+    "full_name": "rohitg00/ai-engineering-from-scratch",
+    "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "description": "Learn it. Build it. Ship it for others.",
+    "language": "Python",
+    "total_stars": 49554,
+    "forks": 8628,
+    "stars_this_period": 837,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "nlp",
+        "python",
+        "reinforcement-learning",
+        "rust",
+        "swarm-intelligence",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 97,
+      "created_at": "2026-03-18T18:38:02Z",
+      "pushed_at": "2026-08-23T20:29:51Z",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "default_branch": "main",
+      "forks": 8628,
+      "watchers": 309,
+      "archived": false,
+      "size_kb": 31246
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/banner.svg\" alt=\"AI Engineering from Scratch — reference manual banner\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <b>Read in your language:</b>\n  <a href=\"i18n/es/README.md\">Español</a> ·\n  <a href=\"i18n/fr/README.md\">Français</a> ·\n  <a href=\"i18n/pt/README.md\">Português</a> ·\n  <a href=\"i18n/de/README.md\">Deutsch</a> ·\n  <a href=\"i18n/it/README.md\">Italiano</a> ·\n  <a href=\"i18n/zh/README.md\">简体中文</a> ·\n  <a href=\"i18n/ja/README.md\">日本語</a> ·\n  <a href=\"i18n/ko/README.md\">한국어</a> ·\n  <a href=\"i18n/hi/README.md\">हिन्दी</a> ·\n  <a href=\"i18n/ar/README.md\">العربية</a> ·\n  <a href=\"i18n/ru/README.md\">Русский</a> ·\n  <a href=\"i18n/tr/README.md\">Türkçe</a>\n  <br><sub>Translated landing pages, committed to the repo. English is canonical; lesson pages are machine-translated on the <code>translations</code> branch. See <a href=\"docs/i18n.md\">docs/i18n.md</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-511-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"511 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n## From the creator of [Agent Memory - #1 Persistent memory ⭐](https://github.com/rohitg00/agentmemory) <a href=\"https://github.com/rohitg00/agentmemory/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a> which naturally works with any agents or chat assistants.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n> **84% of students already use AI tools. Only 18% feel prepared to use them\n> professionally.** This curriculum closes that gap.\n>\n> 511 lessons. 20 phases. ~329 hours. Python, TypeScript, Rust, Julia. Every lesson ships\n> a reusable artifact: a prompt, a skill, an agent, an MCP server. Free, open source, MIT.\n>\n> You don't just learn AI. You build it. End-to-end. By hand.\n\n<!-- STATS:START (generated from site/stats.json by build.js — do not edit by hand) -->\n<p align=\"center\"><sub><b>150,639</b> readers &nbsp;·&nbsp; <b>241,669</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-06-07</sub></p>\n<!-- STATS:END -->\n\n## Start here: choose what you want to build\n\nYou do not need to scan 511 lessons before beginning. Pick one goal. Each link\nopens the same curriculum on GitHub or the website, and both versions use the\nsame lesson code.\n\n| Your goal | Learn on GitHub | Learn on the website |\n|---|---|---|\n| I am new and want the complete foundation | [Phase 0: Setup and Tooling](phases/00-setup-and-tooling/) | [Dev Environment](https://aiengineeringfromscratch.com/lesson.html?path=phases/00-setup-and-tooling/01-dev-environment) |\n| I know Python and want math plus ML foundations | [Phase 1: Math Foundations](phases/01-math-foundations/) | [Linear Algebra Intuition](https://aiengineeringfromscratch.com/lesson.html?path=phases/01-math-foundations/01-linear-algebra-intuition) |\n| I want to build production LLM applications | [Phase 11: LLM Engineering](phases/11-llm-engineering/) | [Prompt Engineering](https://aiengineeringfromscratch.com/lesson.html?path=phases/11-llm-engineering/01-prompt-engineering) |\n| I want to build agents | [Phase 14: Agent Engineering](phases/14-agent-engineering/) | [The Agent Loop](https://aiengineeringfromscratch.com/lesson.html?path=phases/14-agent-engineering/01-the-agent-loop) |\n| I want to build with Model Context Protocol (MCP) | [Model Context Protocol (MCP) route](phases/13-tools-and-protocols/README.md#model-context-protocol-mcp-path) | [Model Context Protocol (MCP) path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/06-mcp-fundamentals&learningPath=model-context-protocol) |\n| I want to write and ship Agent Skills | [Focused Agent Skills route](phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |\n| I want to prepare for a Claude certification | [Certification onboarding](certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |\n\nNot sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md)\nor the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).\n\n### Use every lesson the same way\n\n1. **Read** `docs/en.md` and explain the core idea in your own words.\n2. **Type and build** the important code instead of treating the code block as decoration.\n3. **Run** the lesson command from the repository root, the directory containing `README.md` and `phases/`.\n4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.\n5. **Continue** only when you can explain the output and make one small change without guessing.\n\nCommands in lesson pages are paths from the repository root unless the lesson\nexplicitly says to change directories. If a lesson offers several languages,\nrun the implementation for the language you are learning.\n\n### Clone it and produce your first evidence\n\n```bash\ngit clone https://github.com/rohitg00/ai-engineering-from-scratch.git\ncd ai-engineering-from-scratch\npython3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner\npython3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py\n```\n\nThe preflight separates requirements needed now from tools needed later. Every\nrequired failure includes the detected reason and a corrective command. The\nsecond command is a dependency-free lesson and ends by showing that a matrix\ntimes a vector is the operation inside a neural network layer. Save that\nterminal output as your first evidence.\n\n## Add the AI tutor in 30 seconds\n\nIf Node.js, `npx`, and a skill-capable coding agent are already installed,\nyour coding agent can become your tutor in two commands. A repository clone is\nnot needed to install or read the tutor. Runnable focused-path labs need\n`python3`. Agent Skills host labs also need a selected host and a writable\nuser or project skill scope.\n\nCheck the local requirements first:\n\n```bash\nnode --version\nnpx --version\npython3 --version\n```\n\nThen install the curriculum skills and choose the host and scope you intend to\nuse when the installer asks:\n\n```bash\nnpx skills add rohitg00/ai-engineering-from-scratch\n```\n\nInvocation syntax belongs to the host, not to the portable `SKILL.md` format:\n\n| Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |\n|---|---|---|---|---|\n| Codex | `start-learning`, or choose it from `/skills` | `learn-mcp`, or choose it from `/skills` | `learn-agent-skills`, or choose it from `/skills` | `check-understanding 13`, or choose it from `/skills` |\n| Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |\n| Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |\n\nA ten-question placement quiz maps what you already know to a starting phase and\nsaves a personalized study plan to `LEARNING.md`. From there, the `learn` skill\nteaches one lesson per session: concept, math, code, quiz. It streams lessons\nstraight from this repo, and the `course-guide` skill jumps you to the exact\nlesson that covers anything you are stuck on. In Codex, invoke these skills with\n`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;\nin other compatible hosts, ask to use the skill by name.\n\nOnly want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates\n`MCP-LEARNING.md` and follows one 17-lesson route through stateless\nrequests, transports, bidirectional work, security, reliability, registry\ngovernance, and conformance evidence. The exact order and checkpoints live in\nthe [Model Context Protocol (MCP) manifest](learning-paths/model-context-protocol.json).\n\nOnly want Agent Skills? Use the Agent Skills invocation for your host. It\ncreates `AGENT-SKILLS-LEARNING.md` and follows one coherent five-lesson route:\ncontract, discovery, invocation, sandbox boundaries, then release evals and\nreal-host portability. Start on the web with the\n[Agent Skills path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills).\n\nThe installer lists the hosts it can configure and asks where to install. If\nyou do not have Node.js, `npx`, `python3`, a supported host, or a writable\nscope yet, use the website or read `docs/en.md` manually. That path teaches the\nconcepts, but real-host discovery, invocation, script, and uninstall evidence\nremains pending until the preflight is available. Read the lessons at\n[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com).\n\n## How this works\n\nMost AI material teaches in scattered pieces. A paper here, a fine-tuning post there, a\nflashy agent demo somewhere else. The pieces rarely line up. You ship a chatbot but can't\nexplain its loss curve. You hook a function to an agent but can't say what attention does\ninside the model that's calling it.\n\nThis curriculum is the spine. 20 phases, 511 lessons, four languages: Python, TypeScript,\nRust, Julia. Linear algebra at one end, autonomous swarms at the other. Every algorithm\ngets built from raw math first. Backprop. Tokenizer. Attention. Agent loop. By the time\nPyTorch shows up, you already know what it's doing under the hood.\n\nEach lesson runs the same loop: read the problem, derive the math, write the code, run\nthe test, keep the artifact. No five-minute videos, no copy-paste deploys, no hand-holding.\nFree, open source, and built to run on your own laptop.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n## The shape of the curriculum\n\nTwenty phases stack on top of each other. Math is the floor. Agents and production are the roof.\nSkip ahead if you already know the lower layers, but don't skip and then wonder why something at\nthe top is breaking.\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fafaf5','primaryTextColor':'#1a1a1a','primaryBorderColor':'#3553ff','lineColor':'#3553ff','fontFamily':'JetBrains Mono','fontSize':'12px'}}}%%\nflowchart TB\n  P0[\"Phase 0 — Setup &amp; Tooling\"] --> P1[\"Phase 1 — Math Foundations\"]\n  P1 --> P2[\"Phase 2 — ML Fundamentals\"]\n  P2 --> P3[\"Phase 3 — Deep Learning Core\"]\n  P3 --> P4[\"Phase 4 — Vision\"]\n  P3 --> P5[\"Phase 5 — NLP\"]\n  P3 --> P6[\"Phase 6 — Speech &amp; Audio\"]\n  P3 --> P9[\"Phase 9 — RL\"]\n  P5 --> P7[\"Phase 7 — Transformers\"]\n  P7 --> P8[\"Phase 8 — GenAI\"]\n  P7 --> P10[\"Phase 10 — LLMs from Scratch\"]\n  P10 --> P11[\"Phase 11 — LLM Engineering\"]\n  P10 --> P12[\"Phase 12 — Multimodal\"]\n  P11 --> P13[\"Phase 13 — Tools &amp; Protocols\"]\n  P13 --> P14[\"Phase 14 — Agent Engineering\"]\n  P14 --> P15[\"Phase 15 — Autonomous Systems\"]\n  P15 --> P16[\"Phase 16 — Multi-Agent &amp; Swarms\"]\n  P14 --> P17[\"Phase 17 — Infrastructure &amp; Production\"]\n  P15 --> ",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "numpy>=1.24\nmatplotlib>=3.7\njupyter>=1.0\ntorch>=2.0\ntorchvision>=0.15\ntorchaudio>=2.0\ntransformers>=4.30\ndatasets>=2.14\ntokenizers>=0.13\naccelerate>=0.20\nscikit-learn>=1.3\npandas>=2.0\npillow>=10.0\nlibrosa>=0.10\nsoundfile>=0.12\ntiktoken>=0.5\nanthropic>=0.25\nopenai>=1.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "freestylefly",
+    "name": "awesome-gpt-image-2",
+    "full_name": "freestylefly/awesome-gpt-image-2",
+    "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+    "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+    "language": "JavaScript",
+    "total_stars": 21199,
+    "forks": 2118,
+    "stars_this_period": 4044,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai-image-generation",
+        "chatgpt",
+        "dsh-plugin",
+        "gpt-image-2",
+        "image-prompts",
+        "prompt-as-code",
+        "prompt-engineering",
+        "skills",
+        "workflow-automation"
+      ],
+      "license": "MIT",
+      "open_issues": 13,
+      "created_at": "2026-04-25T09:19:13Z",
+      "pushed_at": "2026-08-26T08:54:32Z",
+      "homepage": "https://gpt-image2.canghe.ai",
+      "default_branch": "main",
+      "forks": 2118,
+      "watchers": 74,
+      "archived": false,
+      "size_kb": 197065
+    },
+    "readme_content": "<p align=\"center\"><img src=\"./data/images/banner.svg\" alt=\"GPT-Image2 Prompt System\" width=\"800\" /></p>\n\n<h3 align=\"center\">Prompt as Code | GPT-Image2 Industrial Prompt Engine & Template Library, 500+ Reverse-Engineered Cases, 20+ Industrial Templates</h3>\n\n<p align=\"center\">\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/stars/freestylefly/awesome-gpt-image-2?style=flat-square&color=rgb(25%2C%20121%2C%20255)\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/forks/freestylefly/awesome-gpt-image-2?style=flat-square&color=green\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/Cases-538-blueviolet?style=flat-square\" alt=\"Cases\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/100%25-Original_AI_Rewritten-green?style=flat-square\" alt=\"Original\"></a>\n  <a href=\"https://github.com/sponsors/freestylefly\"><img src=\"https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ff69b4?style=flat-square\" alt=\"Sponsor\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/28623?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-28623\">\n    <img src=\"https://trendshift.io/api/badge/repositories/28623\" alt=\"freestylefly/awesome-gpt-image-2 | Trendshift\" width=\"250\" height=\"55\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong> | <a href=\"./README.zh-CN.md\">简体中文</a> | <a href=\"./README.ja.md\">日本語</a>\n</p>\n\n## 🌐 Visual Website\n\nUse the live site at [gpt-image2.canghe.ai](https://gpt-image2.canghe.ai/) to browse the gallery as a product experience: open large previews, copy full prompts, filter by style or scenario, test generation after Google sign-in, and jump back to the source case on GitHub.\n\n<p align=\"center\">\n  <a href=\"https://gpt-image2.canghe.ai/\">\n    <img src=\"data/images/site-preview.png\" alt=\"GPT-Image2 Gallery website preview\" width=\"900\">\n  </a>\n</p>\n\n## Community 交流群\n\nJoin the GPT-Image2 discussion group to exchange prompts, workflows, and creative ideas with other users. Visit the [community page](https://gpt-image2.canghe.ai/community) to join.\n\nFollow the WeChat official account **苍何** or scan the QR code below to receive project updates, new cases, and practical tutorials.\n\n<p align=\"center\">\n  <img src=\"src/assets/canghe-official-account.png\" alt=\"苍何 WeChat official account QR code and search card\" width=\"760\">\n</p>\n\n## ❤️ Sponsors\n\n> [Want to appear here?](data/images/sponsors/wechat-personal.jpg) Support the project through GitHub Sponsors, or search 苍何 on WeChat and send your product name plus a short sponsorship note.\n\n| Sponsor | Description |\n| ------- | ----------- |\n| <a href=\"https://apimart.ai/register?aff=oQgzUQ\"><img src=\"data/images/sponsors/apimart.jpg\" alt=\"APIMart\" width=\"240\"></a> | Thanks to APIMart for sponsoring this project! APIMart is a low-cost API platform for AI image & video generation — GPT-Image-2 from `$0.006/image`, 160+ images per dollar. One async API covers both image and video: submit a task, get an ID, fetch results via polling or callback. Batch tens of thousands of images without timeouts, switch models without changing code. Pay-as-you-go with no monthly fee — [sign up here](https://apimart.ai/register?aff=oQgzUQ) to get started. |\n| <a href=\"https://www.hiapi.ai/zh/register?aff=DzuH\"><img src=\"data/images/sponsors/hiapi.jpg\" alt=\"hiapi\" width=\"240\"></a> | Thanks to hiapi for sponsoring this project! hiapi is an AI image & video generation API platform — GPT-Image-2 (text-to-image, image edit, 1K–4K) alongside video models like Seedance, Kling and Wan, all through one unified async API: submit a task, get a `task_id`, fetch results by polling or callback, batch without timeouts, switch models without code changes. Every result is stored on hiapi's own CDN with **persistent storage**, so your image/video URLs stay available long-term and can be fetched anytime — no rushing to download and back them up yourself. Native Remote MCP and Agent Skills plug straight into Claude Code & Cursor. Chinese UI & docs, WeChat Pay, pay-as-you-go with no monthly fee — new users get $1 free credit (~50 images). [Sign up here](https://www.hiapi.ai/en/register?aff=DzuH&utm_source=github&utm_medium=sponsor&utm_campaign=awesome-gpt-image-2). |\n| <a href=\"https://www.packyapi.ai/register?aff=CV0c\"><img src=\"data/images/sponsors/packycode.png\" alt=\"PackyCode\" width=\"240\"></a> | Thanks to PackyCode for sponsoring this project! PackyCode is a stable, high-performance API relay provider for Claude Code, Codex, Gemini, and more. Automatic failover, smart routing, and unlimited concurrency help turn AI coding into a reliable productivity tool. [Register here](https://www.packyapi.ai/register?aff=CV0c) to get started. |\n| <a href=\"https://pptoken.cc/\"><img src=\"data/images/sponsors/pptoken.png\" alt=\"PPToken\" width=\"240\"></a> | Project sponsor. PPToken provides API relay and key distribution for ChatGPT, Claude, Gemini, and other mainstream AI models, with low-latency access, high availability, pay-as-you-go billing, and flexible subscription plans. |\n\n<a name=\"section-vision\"></a>\n\n## ⚡️ Project Vision\n\nAfter GPT-Image2 became widely available, AI image generation moved from \"can it make an image?\" to \"can it make stable, controllable, reusable images?\" This project turns scattered community examples into Prompt-as-Code assets that are easier for agents and automation workflows to reuse.\n\nThe core goal is simple: compress prose-style prompts into structured protocols. When you need batch generation, template systems, or production workflows, this structure is more valuable than a pile of isolated examples.\n\n- 🧱 Atomic schema: split subjects, lighting, materials, layout, and visual details into composable parts\n- ⚙️ Workflow friendly: designed for agents, scripts, and automation systems\n- 🧬 Structured control: improve controllability for layout, copy, and information hierarchy\n\n## 📖 Quick Links\n\n- [Full case gallery](docs/gallery.md)\n- [Gallery Part 1: cases 1-165](docs/gallery-part-1.md)\n- [Gallery Part 2: cases 166-538](docs/gallery-part-2.md)\n- [Industrial prompt templates and pitfalls guide](docs/templates.md)\n- [Agent skill: GPT-Image2 Style Library](agents/skills/gpt-image-2-style-library/SKILL.md)\n- [MIT License](LICENSE)\n- [Full disclaimer](docs/disclaimer.md#section-disclaimer)\n\n## 🗂️ Category Overview\n\nStart with the case album to find a visual direction, then open the prompt template categories to turn that direction into reusable structure.\n\n### 🖼️ Case Album\n\n<table>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧩 UI & Interfaces</strong><br><sub>73 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-ui\"><img src=\"data/images/category-covers/ui.jpg\" alt=\"UI and interfaces\" width=\"220\"></a><br>\n      <sub>Apps, websites, dashboards, social screenshots, and product interfaces.</sub><br>\n      <a href=\"docs/gallery.md#cat-ui\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📊 Charts & Infographics</strong><br><sub>52 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-infographic\"><img src=\"data/images/category-covers/infographic.jpg\" alt=\"Charts and infographics\" width=\"220\"></a><br>\n      <sub>Infographics, knowledge maps, technical explainers, and structured diagrams.</sub><br>\n      <a href=\"docs/gallery.md#cat-infographic\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📰 Posters & Typography</strong><br><sub>88 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-poster\"><img src=\"data/images/category-covers/poster.jpg\" alt=\"Posters and typography\" width=\"220\"></a><br>\n      <sub>Event posters, covers, type-driven visuals, and strong layout compositions.</sub><br>\n      <a href=\"docs/gallery.md#cat-poster\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🛍️ Products & E-commerce</strong><br><sub>41 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-product\"><img src=\"data/images/category-covers/product.jpg\" alt=\"Products and e-commerce\" width=\"220\"></a><br>\n      <sub>Product shots, detail pages, packaging, selling points, and ads.</sub><br>\n      <a href=\"docs/gallery.md#cat-product\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏷️ Brand & Logos</strong><br><sub>27 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-brand\"><img src=\"data/images/category-covers/brand.jpg\" alt=\"Brand and logos\" width=\"220\"></a><br>\n      <sub>Logos, identity systems, brand touchpoints, and campaign visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-brand\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏛️ Architecture & Spaces</strong><br><sub>12 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-architecture\"><img src=\"data/images/category-covers/architecture.jpg\" alt=\"Architecture and spaces\" width=\"220\"></a><br>\n      <sub>Architecture renders, interiors, city maps, and spatial concepts.</sub><br>\n      <a href=\"docs/gallery.md#cat-architecture\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📷 Photography & Realism</strong><br><sub>78 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-photo\"><img src=\"data/images/category-covers/photo.jpg\" alt=\"Photography and realism\" width=\"220\"></a><br>\n      <sub>Portraits, phone photography, film texture, and commercial photography.</sub><br>\n      <a href=\"docs/gallery.md#cat-photo\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎨 Illustration & Art</strong><br><sub>58 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-illustration\"><img src=\"data/images/category-covers/illustration.jpg\" alt=\"Illustration and art\" width=\"220\"></a><br>\n      <sub>Illustration, art styles, material experiments, and decorative images.</sub><br>\n      <a href=\"docs/gallery.md#cat-illustration\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧍 Characters & People</strong><br><sub>31 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-character\"><img src=\"data/images/category-covers/character.jpg\" alt=\"Characters and people\" width=\"220\"></a><br>\n      <sub>Character design, pose references, cards, and 3D toys.</sub><br>\n      <a href=\"docs/gallery.md#cat-character\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎬 Scenes & Storytelling</strong><br><sub>21 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-scene\"><img src=\"data/images/category-covers/scene.jpg\" alt=\"Scenes and storytelling\" width=\"220\"></a><br>\n      <sub>Storyboards, narrative scenes, livestream frames, and worldbuilding.</sub><br>\n      <a href=\"docs/gallery.md#cat-scene\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏮 History & Classical Chinese Themes</strong><br><sub>16 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-history\"><img src=\"data/images/category-covers/history.jpg\" alt=\"History and classical Chinese themes\" width=\"220\"></a><br>\n      <sub>Classical scrolls, historical figures, traditional themes, and poetry visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-history\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📚 Documents & Publishing</strong><br><sub>10 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-document\"><img src=\"data/images/category-covers/document.jpg\" alt=\"Documents and publishing\" width=\"220\"></a><br>\n     ",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"awesome-gpt-image-2-site\",\n  \"private\": true,\n  \"version\": \"1.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"generate:site-data\": \"node scripts/generate-site-data.mjs\",\n    \"generate:style-skill\": \"node scripts/generate-style-skill.mjs\",\n    \"ga4:oauth\": \"node scripts/google-analytics-oauth.mjs\",\n    \"install:skill\": \"node scripts/install-style-skill.mjs\",\n    \"pack:skill\": \"npm pack ./agents/skills/gpt-image-2-style-library --dry-run\",\n    \"publish:skill:npm\": \"npm publish ./agents/skills/gpt-image-2-style-library --access public\",\n    \"predev\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"dev\": \"vite\",\n    \"dev:alipay-sandbox\": \"node scripts/alipay-webpay-sandbox-server.mjs\",\n    \"prebuild\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\",\n    \"test\": \"node --test api/_lib/*.test.js\"\n  },\n  \"dependencies\": {\n    \"@google-analytics/data\": \"^5.2.2\",\n    \"@supabase/supabase-js\": \"^2.105.4\",\n    \"@vitejs/plugin-react\": \"^5.1.1\",\n    \"alipay-sdk\": \"^4.14.0\",\n    \"google-auth-library\": \"^10.6.2\",\n    \"lucide-react\": \"^0.561.0\",\n    \"react\": \"^19.2.1\",\n    \"react-dom\": \"^19.2.1\",\n    \"stripe\": \"^22.1.1\",\n    \"vite\": \"^7.2.7\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "技能扩展",
+      "工作流",
+      "自动化"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "OpenCut-app",
+    "name": "OpenCut",
+    "full_name": "OpenCut-app/OpenCut",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "description": "The open-source CapCut alternative",
+    "language": "TypeScript",
+    "total_stars": 86918,
+    "forks": 8582,
+    "stars_this_period": 943,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "open_issues": 371,
+      "created_at": "2025-06-22T08:02:17Z",
+      "pushed_at": "2026-08-10T16:38:36Z",
+      "homepage": "https://opencut.app",
+      "default_branch": "main",
+      "forks": 8582,
+      "watchers": 390,
+      "archived": false,
+      "size_kb": 28268
+    },
+    "readme_content": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n**Linux, macOS, WSL:**\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\n**Windows (PowerShell):**\n\n```powershell\nirm https://moonrepo.dev/install/proto.ps1 | iex\n```\n\nIf shims fail to run, allow local scripts for your user:\n\n```powershell\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "视频编辑",
+      "开源创作工具",
+      "桌面工作流"
+    ],
+    "brief_zh": {
+      "summary": "一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。",
+      "capabilities": "视频编辑、开源创作工具、桌面工作流、内容生产"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "AgriciDaniel",
+    "name": "claude-obsidian",
+    "full_name": "AgriciDaniel/claude-obsidian",
+    "url": "https://github.com/AgriciDaniel/claude-obsidian",
+    "description": "Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.",
+    "language": "Python",
+    "total_stars": 13365,
+    "forks": 1397,
+    "stars_this_period": 812,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "ai-note-taking",
+        "ai-second-brain",
+        "claude-code",
+        "claude-code-skill",
+        "claude-memory",
+        "claude-plugin",
+        "karpathy-llm-wiki",
+        "knowledge-graph",
+        "knowledge-management",
+        "note-taking",
+        "notion-alternative",
+        "obsidian",
+        "obsidian-ai",
+        "obsidian-plugin",
+        "obsidian-second-brain",
+        "open-source",
+        "personal-knowledge-management",
+        "pkm",
+        "second-brain"
+      ],
+      "license": "MIT",
+      "open_issues": 136,
+      "created_at": "2026-04-07T08:59:37Z",
+      "pushed_at": "2026-08-26T11:43:21Z",
+      "homepage": "skool.com/ai-marketing-hub-pro",
+      "default_branch": "main",
+      "forks": 1397,
+      "watchers": 62,
+      "archived": false,
+      "size_kb": 36288
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/cover.png\" alt=\"claude-obsidian cover featuring an astronaut, the Obsidian crystal, and a connected knowledge graph\" width=\"100%\">\n</p>\n\n<h1 align=\"center\">claude-obsidian</h1>\n\n<p align=\"center\">\n  <strong>Build an Obsidian knowledge base that becomes more useful every time you use it.</strong><br>\n  Capture sources, create connected notes, retrieve grounded answers, and keep the vault healthy—without giving up ownership of your files.\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-2563eb.svg\" alt=\"MIT license\"></a>\n  <a href=\"https://agentskills.io\"><img src=\"https://img.shields.io/badge/Agent%20Skills-compatible-2563eb\" alt=\"Agent Skills compatible\"></a>\n  <a href=\"https://code.claude.com/docs/en/plugins\"><img src=\"https://img.shields.io/badge/Claude%20Code-plugin-7c3aed\" alt=\"Claude Code plugin\"></a>\n  <a href=\"CHANGELOG.md\"><img src=\"https://img.shields.io/badge/release-v2.1.1-d97745\" alt=\"Release v2.1.1\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#from-source-to-living-knowledge\">See the workflow</a> ·\n  <a href=\"#quick-start\">Quick start</a> ·\n  <a href=\"#15-skills-one-system\">Explore the skills</a> ·\n  <a href=\"docs/install-guide.md\">Installation guide</a> ·\n  <a href=\"docs/windows-wsl.md\">Windows &amp; WSL</a>\n</p>\n\nclaude-obsidian is a local-first knowledge system for Claude Code and compatible\n[Agent Skills](https://agentskills.io) hosts. It turns source material into\nlinked, source-cited Obsidian pages; answers from the evidence already in the\nvault; and provides explicit workflows for research, retrieval, maintenance,\nand visual mapping.\n\nYour vault remains a normal directory of Markdown, JSON, and source files. It is\nnot hidden in a plugin cache, locked in a cloud database, or silently uploaded\nto a model.\n\n## From source to living knowledge\n\nMost AI note workflows stop after saving text. claude-obsidian is organized\naround a repeatable loop: retain the source, ground the claims, connect the\nknowledge, then put it back to work.\n\n![The claude-obsidian compounding knowledge loop](assets/diagrams/knowledge-loop.svg)\n\n- **Capture with context.** Bring local sources through a visible inbox and\n  preserve immutable, content-addressed copies before synthesis.\n- **Ground every important claim.** Source and claim ledgers retain authority,\n  freshness, support, contradiction, confidence, and review state.\n- **Connect what you learn.** Build linked pages, indexes, Maps of Content,\n  methodology-aware structures, and Obsidian Canvas views.\n- **Use the vault again.** Query, research, retrieve, lint, and fold what is\n  already known instead of starting every conversation from zero.\n\n## See the vault\n\nThe output is meant to remain useful with or without an agent: plain Markdown\nfor portability, Obsidian for navigation and visual exploration.\n\n<p align=\"center\">\n  <img src=\"assets/screenshots/graph-view.png\" alt=\"Example claude-obsidian vault in Obsidian Graph view\" width=\"49%\">\n  <img src=\"assets/screenshots/wiki-map-view.png\" alt=\"Example claude-obsidian knowledge map in Obsidian Canvas\" width=\"49%\">\n</p>\n\n<p align=\"center\">\n  <sub>Linked knowledge in Graph view · A visual knowledge map in Obsidian Canvas</sub>\n</p>\n\n## Why it feels different\n\n- **Local by default.** The vault is user-owned and works as ordinary files.\n  Network egress is a separate, explicit decision.\n- **Sources survive the summary.** Notes point back to durable source evidence;\n  unsupported and contradictory claims remain visible.\n- **Knowledge compounds deliberately.** Ingestion, querying, linting, retrieval,\n  research, and rollups share one provenance-aware model.\n- **Parallel agents cannot race the vault.** Workers return drafts. One\n  orchestrator inspects and applies one recoverable transaction.\n- **Capabilities are stated honestly.** Optional tools are detected, maturity\n  is declared, and missing adapters degrade clearly instead of being simulated.\n\nThis is not an automatic transcript recorder, a cloud sync service, a factual\noracle, or a substitute for backups and source control.\n\n## Quick start\n\nThe safest first run uses a source checkout and a separate user vault. Every\nmutating setup command previews its exact operation before it can apply.\n\n### 1. Get the product\n\n```bash\ngit clone https://github.com/AgriciDaniel/claude-obsidian.git\ncd claude-obsidian\n```\n\nThe checkout contains the product. It is not your knowledge vault.\n\n### 2. Initialize a separate vault\n\n```bash\nexport GENERATED_AT=\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"\nexport OPERATION_ID=\"init-reviewed\"\n\npython3 scripts/claude-obsidian.py init \"$HOME/Documents/MyKnowledgeVault\" \\\n  --generated-at \"$GENERATED_AT\" --operation-id \"$OPERATION_ID\"\n```\n\nReview the JSON plan and copy its `approved_plan_sha256`, then apply that exact\noperation:\n\n```bash\npython3 scripts/claude-obsidian.py init \"$HOME/Documents/MyKnowledgeVault\" \\\n  --generated-at \"$GENERATED_AT\" --operation-id \"$OPERATION_ID\" \\\n  --approved-plan-sha256 \"<sha256-from-the-plan>\" --apply\n```\n\nFor an existing Obsidian vault, use the non-destructive `adopt` workflow\ndescribed in the [installation guide](docs/install-guide.md#adopt-an-existing-vault).\n\n### 3. Start from the vault\n\nOpen the new directory in Obsidian, then run Claude Code from that directory\nwith the local plugin:\n\n```bash\ncd \"$HOME/Documents/MyKnowledgeVault\"\nclaude --plugin-dir /absolute/path/to/claude-obsidian\n```\n\nStart with:\n\n```text\n/claude-obsidian:wiki\n```\n\nThen place a source in `inbox/` and invoke\n`/claude-obsidian:wiki-ingest`. Save an answer explicitly with\n`/claude-obsidian:save`; ask the vault with `/claude-obsidian:wiki-query`.\n\nFor Codex, OpenCode, or Gemini, preview and then apply the portable skill links\nfrom the product checkout:\n\n```bash\nbash bin/setup-multi-agent.sh --host codex\nbash bin/setup-multi-agent.sh --host codex --apply\n```\n\nCursor and Windsurf use workspace-local skill discovery. Marketplace setup,\nevery supported host, vault adoption, upgrades, and uninstall steps are covered\nin the [full installation guide](docs/install-guide.md).\n\n## 15 skills, one system\n\nThe skills are small enough to invoke directly and coordinated enough to share\nthe same evidence, vault-selection, and mutation rules.\n\n### Build and use the wiki\n\n| Skill | What it does |\n|---|---|\n| `wiki` | Initializes or adopts a vault, diagnoses readiness, and routes work |\n| `save` | Saves one scoped answer or insight—never an automatic transcript |\n| `wiki-ingest` | Turns captured sources into linked pages and provenance records |\n| `wiki-query` | Answers read-only from relevant vault evidence |\n| `wiki-lint` | Reports dead links, orphans, metadata gaps, stale indexes, and empty sections |\n\n### Extend the workflow\n\n| Skill | What it adds |\n|---|---|\n| `autoresearch` | Bounded web research with explicit egress and a separate canonical merge |\n| `canvas` | Wiki-scoped Obsidian Canvas creation and maintenance |\n| `defuddle` | Clean, readable web content before ingestion |\n| `wiki-fold` | Extractive, traceable rollups of the operation log |\n| `wiki-mode` | Generic, LYT, PARA, or Zettelkasten filing conventions |\n| `wiki-retrieve` | Contextual prefixes, BM25, and optional cosine reranking |\n| `wiki-cli` | Obsidian CLI reads and search with transaction-safe writes |\n\n### Reference skills\n\n| Skill | What it provides |\n|---|---|\n| `obsidian-markdown` | Correct Obsidian Flavored Markdown, links, embeds, and callouts |\n| `obsidian-bases` | Native `.base` tables, cards, filters, formulas, and summaries |\n| `think` | A structured observe, listen, connect, create, and grow review loop |\n\nClaude Code exposes namespaced invocations such as\n`/claude-obsidian:wiki-lint`; other hosts use their native Agent Skills\ninvocation. Trigger phrases and exact contracts live in each\n`skills/<name>/SKILL.md`.\n\n## Trust is part of the architecture\n\n![The claude-obsidian product and vault trust boundary](assets/diagrams/product-vault-boundary.svg)\n\nThe product never treats a source checkout, plugin cache, or contributor state\nas the default vault. A vault is selected explicitly, through\n`CLAUDE_OBSIDIAN_VAULT`, by the nearest `.claude-obsidian.json`, or by one\nunambiguous initialized ancestor. If selection is uncertain, the command exits\nwithout writing.\n\nOne logical knowledge operation is one recoverable transaction:\n\n1. Read every target and record its expected SHA-256.\n2. Let parallel workers return drafts and evidence only.\n3. Merge the complete change into one operation bundle.\n4. Inspect the bundle, then apply it once.\n5. Report the operation ID and exact changed paths.\n\nThe core holds one process-lifetime vault lock, journals backups, uses atomic\nreplacement, and restores the prior state if an apply cannot finish. A changed\ntarget is a conflict, never a silent overwrite. Git checkpoints, destructive\nrepairs, network egress, and canonical research merges remain explicit\noperations.\n\nRead the [transaction contract](skills/wiki/references/operation-transactions.md),\n[provenance contract](skills/wiki/references/provenance.md), and\n[Compound Vault architecture](docs/compound-vault-guide.md) for the\nmachine-facing detail.\n\n## Honest capability boundaries\n\n| Input or capability | Current support |\n|---|---|\n| Local filesystem sources | Implemented bounded, content-addressed byte capture |\n| Images | Metadata, hash, size, and bounded dimensions when available |\n| PDF and EPUB | Metadata, hash, and size; no built-in semantic extraction |\n| URL and YouTube | Validated consent plans; a configured external runner is required |\n| OCR | Local-file consent plan; a configured external runner is required |\n| BM25 retrieval | Local and deterministic |\n| Contextual prefixes or remote models | Optional and gated by explicit egress consent |\n| Obsidian CLI | Optional for reads/search; filesystem transport remains available |\n\nHigh-risk accepted claims require two independent sources. Unsupported or\ncontradictory evidence stays visible, and a grounded refusal is preferred over\nan invented citation. Model-based retrieval falls back to deterministic BM25\nwhen the embedding or reranking stage cannot be trusted.\n\n## Shape the vault to the way you think\n\n`wiki-mode` can route new notes using four methodologies without bulk-moving\nexisting knowledge:\n\n| Mode | Filing principle |\n|---|---|\n| Generic | Sources, concepts, entities, and sessions |\n| LYT | Maps of Content and linked atomic notes |\n| PARA | Projects, Areas, Resources, and Archives |\n| Zettelkasten | Stable identifiers, atomic notes, and dense links |\n\nGeneric is the default when no mode is configured. Switching modes changes how\nnew notes are routed; it does not silently reorganize old ones. See the\n[methodology modes guide](docs/methodology-modes-guide.md).\n\n## Operator reference\n\n<details>\n<summary><strong>Portable CLI</strong></summary>\n\nThe wrapper is `python3 scripts/claude-obsidian.py`.\n\n| Command | Effect |\n|---|---|\n| `doctor --vault PATH` | Show vault selection and readiness |\n| `init PATH [--approved-plan-sha256 HASH --apply]` | Plan or create a separate vault |\n| `adopt PATH [--approved-plan-sha256 HASH --apply]` | Plan or adopt an existing Obsidian vault |\n| `migrate --vault PATH [--approved-plan-sha256 HASH --apply]` | Add v1 ledgers and configuration without rewriting legacy data |\n| `transaction inspect BUNDLE --vault PATH` | Validate a write bundle without mutation |\n| `transaction apply BUNDLE --vault PATH --approved-plan-sha256 HASH` | Apply one inspected, recoverable operation |\n| `transaction recover --vault PATH [--force-stale-lock]` | Restore an interrupted operation |\n| `lint --vault PATH [--as-of YYYY-MM-DD]` | Emit findings deterministic for the declared UTC date |\n| `contracts --verify --vault PATH` | Execute capability readiness contracts |\n| `capture plan --vault PATH [SOURCE ...]` | Run a local capture preflight without writes |\n| `capture apply --vault PATH [SOURCE ...]` | Plan or create immutable content",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "llm",
+      "eval",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "本地优先知识库",
+      "来源引用",
+      "Obsidian 笔记图谱"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Obsidian 和 Claude Code 的本地优先知识系统，可把原始资料整理成带来源引用、相互链接的 Markdown 知识库。",
+      "audience": "希望把个人资料库沉淀为可检索、可追溯第二大脑的研究者、写作者和 Agent 用户",
+      "capabilities": "本地优先知识库、来源引用、Obsidian 笔记图谱、Agent Skills、检索与维护工作流",
+      "risk": "知识质量依赖导入规范、来源治理和人工复核，不能把自动整理结果直接当成事实结论"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "claude-plugins-official",
+    "full_name": "anthropics/claude-plugins-official",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+    "language": "Python",
+    "total_stars": 34341,
+    "forks": 3887,
+    "stars_this_period": 307,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1019,
+      "created_at": "2025-11-20T18:36:20Z",
+      "pushed_at": "2026-08-26T07:40:55Z",
+      "homepage": "https://code.claude.com/docs/en/plugins",
+      "default_branch": "main",
+      "forks": 3887,
+      "watchers": 214,
+      "archived": false,
+      "size_kb": 10228
+    },
+    "readme_content": "# Claude Code Plugins Directory\n\nA curated directory of high-quality plugins for Claude Code.\n\n> **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.\n\n## Structure\n\n- **`/plugins`** - Internal plugins developed and maintained by Anthropic\n- **`/external_plugins`** - Third-party plugins from partners and the community\n\n## Installation\n\nPlugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`\n\n## Contributing\n\n### Internal Plugins\n\nInternal plugins are developed by Anthropic team members. See `/plugins/example-plugin` for a reference implementation.\n\n### External Plugins\n\nThird-party partners can submit plugins for inclusion in the marketplace. External plugins must meet quality and security standards for approval. To submit a new plugin, use the [plugin directory submission form](https://clau.de/plugin-directory-submission).\n\n## Plugin Structure\n\nEach plugin follows a standard structure:\n\n```\nplugin-name/\n├── .claude-plugin/\n│   └── plugin.json      # Plugin metadata (required)\n├── .mcp.json            # MCP server configuration (optional)\n├── commands/            # Slash commands (optional)\n├── agents/              # Agent definitions (optional)\n├── skills/              # Skill definitions (optional)\n└── README.md            # Documentation\n```\n\n## Plugin names are immutable\n\nThe `name` field in a marketplace entry is an **immutable slug**. Once a plugin has been published, its `name` must not change — users have it installed under that slug, and renaming it breaks their install with a `plugin-not-found` error.\n\n- To change how a plugin is labeled in the UI, set or update `displayName` instead.\n- If a rename is genuinely unavoidable, add an entry to the top-level `renames` map in `.claude-plugin/marketplace.json` so existing installs auto-migrate:\n\n```json\n\"renames\": {\n  \"old-name\": \"new-name\"\n}\n```\n\nThe Claude Code plugin loader reads this map and transparently rewrites the old slug to the new one on the user's next sync.\n\n## Skill-bundle plugins\n\nWhen a plugin's source repository ships skills (`SKILL.md` files) without a `.claude-plugin/plugin.json` manifest, the marketplace entry can declare the skills directly using `strict: false` and an explicit `skills` array.\n\n```json\n{\n  \"name\": \"example-bundle\",\n  \"description\": \"Brief description of the bundled skills.\",\n  \"author\": { \"name\": \"Author Name\" },\n  \"category\": \"development\",\n  \"source\": {\n    \"source\": \"git-subdir\",\n    \"url\": \"https://github.com/example-org/sdk.git\",\n    \"path\": \"packages/agent-skills\",\n    \"ref\": \"main\",\n    \"sha\": \"<commit sha>\"\n  },\n  \"strict\": false,\n  \"skills\": [\n    \"./skill-a\",\n    \"./skill-b\",\n    \"./skill-c\"\n  ],\n  \"homepage\": \"https://github.com/example-org/sdk\"\n}\n```\n\nEach path in `skills` is relative to `source.path` and points at a directory containing a `SKILL.md`. Paths can reach deeper than a single level — for example, `[\"./libA/skill-1\", \"./libB/skill-2\"]` exposes a curated subset across multiple library subdirectories. Each skill is registered as `<plugin-name>:<skill-name>` in Claude Code.\n\nFor the underlying schema, see [Strict mode](https://code.claude.com/docs/en/plugin-marketplaces) in the marketplace documentation.\n\n## License\n\nPlease see each linked plugin for the relevant LICENSE file.\n\n## Documentation\n\nFor more information on developing Claude Code plugins, see the [official documentation](https://code.claude.com/docs/en/plugins).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "官方插件目录",
+      "Claude Code 生态",
+      "插件发现"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "Anthropic 官方维护的 Claude Code 插件目录，用来集中分发和管理高质量插件条目。",
+      "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
+      "capabilities": "官方插件目录、Claude Code 生态、插件发现、插件分发",
+      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证"
+    }
+  },
+  {
+    "owner": "can1357",
+    "name": "oh-my-pi",
+    "full_name": "can1357/oh-my-pi",
+    "url": "https://github.com/can1357/oh-my-pi",
+    "description": "⌥ Coding agent with the IDE wired in",
+    "language": "TypeScript",
+    "total_stars": 27678,
+    "forks": 2740,
+    "stars_this_period": 273,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agent",
+        "ai-coding-agent",
+        "anthropic",
+        "bun",
+        "claude",
+        "cli",
+        "coding-assistant",
+        "llm",
+        "mcp",
+        "multi-provider",
+        "openai",
+        "rust",
+        "terminal",
+        "tui",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 1770,
+      "created_at": "2025-12-31T14:01:28Z",
+      "pushed_at": "2026-08-26T20:18:18Z",
+      "homepage": "https://omp.sh",
+      "default_branch": "main",
+      "forks": 2740,
+      "watchers": 83,
+      "archived": false,
+      "size_kb": 568777
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://github.com/can1357/oh-my-pi/blob/main/assets/hero.png?raw=true\" alt=\"omp\">\n</p>\n\n<p align=\"center\">\n  <strong>A coding agent with the IDE wired in.</strong>\n  <strong><a href=\"https://omp.sh\">omp.sh</a></strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/@oh-my-pi/pi-coding-agent\"><img src=\"https://img.shields.io/npm/v/@oh-my-pi/pi-coding-agent?style=flat&colorA=222222&colorB=CB3837\" alt=\"npm version\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/CHANGELOG.md\"><img src=\"https://img.shields.io/badge/changelog-keep-E05735?style=flat&colorA=222222\" alt=\"Changelog\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/can1357/oh-my-pi/ci.yml?style=flat&colorA=222222&colorB=3FB950\" alt=\"CI\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/LICENSE\"><img src=\"https://img.shields.io/github/license/can1357/oh-my-pi?style=flat&colorA=222222&colorB=58A6FF\" alt=\"License\"></a>\n  <a href=\"https://www.typescriptlang.org\"><img src=\"https://img.shields.io/badge/TypeScript-3178C6?style=flat&colorA=222222&logo=typescript&logoColor=white\" alt=\"TypeScript\"></a>\n  <a href=\"https://www.rust-lang.org\"><img src=\"https://img.shields.io/badge/Rust-DEA584?style=flat&colorA=222222&logo=rust&logoColor=white\" alt=\"Rust\"></a>\n  <a href=\"https://bun.sh\"><img src=\"https://img.shields.io/badge/runtime-Bun-f472b6?style=flat&colorA=222222\" alt=\"Bun\"></a>\n  <a href=\"https://discord.gg/4NMW9cdXZa\"><img src=\"https://img.shields.io/badge/Discord-5865F2?style=flat&colorA=222222&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\">\n  Fork of <a href=\"https://github.com/badlogic/pi-mono\">Pi</a> by <a href=\"https://github.com/mariozechner\">@mariozechner</a> \n</p>\n\nThe most capable agent surface that ships. Continuously tuned by real-world use — complete out of the box, open all the way down.\n\n**60+** providers · **31** built-in tools · **14** lsp ops · **28** dap ops · **~80k** lines of Rust core.\n\n> [!NOTE]\n> Pull requests are **temporarily open to everyone** as a trial. We previously\n> required a vouch before accepting PRs; that requirement is lifted for now\n> while we evaluate how open contributions go. Depending on the results, the\n> vouch system may return.\n\n## Install\n\n**macOS · Linux**\n\n```sh\ncurl -fsSL https://omp.sh/install | sh\n```\n\n> **Alpine / musl:** the prebuilt musl binary links `libstdc++`/`libgcc` dynamically, which stock Alpine does not ship. Install them first: `apk add libstdc++ libgcc`.\n\n**Homebrew**\n\n```sh\nbrew install can1357/tap/omp\n```\n\n**Bun (recommended)**\n\n```sh\nbun install -g @oh-my-pi/pi-coding-agent\n```\n\n**Nix**\n\n```sh\n# Run without installing\nnix run github:can1357/oh-my-pi\n\n# Or install into the active profile\nnix profile install github:can1357/oh-my-pi\n```\n\nFlake consumers can use `packages.<system>.omp`, `overlays.default`, `nixosModules.default`, or `homeManagerModules.default`. A Home Manager configuration can install OMP and own its settings declaratively:\n\n```nix\n{\n  inputs.omp.url = \"github:can1357/oh-my-pi\";\n\n  # In your Home Manager module:\n  imports = [ inputs.omp.homeManagerModules.default ];\n  programs.omp = {\n    enable = true;\n    settings.startup.quiet = true;\n  };\n}\n```\n\n**Windows (PowerShell)**\n\n```powershell\nirm https://omp.sh/install.ps1 | iex\n```\n\n**Pinned versions (mise)**\n\n```sh\nmise use -g github:can1357/oh-my-pi\n```\n\nmacOS · Linux · Windows · bun ≥ 1.3.14\n\n### Shell completions\n\n`omp` generates its own completion scripts for **bash**, **zsh**, and **fish** from the live command/flag metadata, so they never drift from the actual CLI. Subcommands, flags, and enum values complete statically; model names (`--model`, `--smol`, `--slow`, `--plan`) resolve against the bundled model catalog and `--resume` against your on-disk sessions.\n\n```sh\n# zsh — add to ~/.zshrc (or write the output into a file on your $fpath)\neval \"$(omp completions zsh)\"\n\n# bash — add to ~/.bashrc\neval \"$(omp completions bash)\"\n\n# fish\nomp completions fish > ~/.config/fish/completions/omp.fish\n```\n\n## Every tool, _benchmaxxed_.\n\nEdits that land on the first attempt. Reads that summarize files instead of dumping their content. Searches that return instantly. Pick any model — omp will get it right.\n\n| model            | metric       | what                                                                  |\n| ---------------- | ------------ | --------------------------------------------------------------------- |\n| Grok Code Fast 1 | 6.7% → 68.3% | Tenfold lift the moment the edit format stops eating the model alive. |\n| Gemini 3 Flash   | +5 pp        | Over str_replace — beats Google's own best attempt at the format.     |\n| Grok 4 Fast      | −61% tokens  | Output collapses once the retry loop on bad diffs disappears.         |\n| MiniMax          | 2.1×         | Pass rate more than doubles. Same weights, same prompt.               |\n\n- `read` : summarized snippets · ideal defaults · selector hit rate\n- `grep` : fastest in the west\n- `lsp` : everything your IDE knows, the agent knows\n- `prompts` : adjusted relentlessly for each model\n\n[Read the full post ↗](https://blog.can.ac/2026/02/12/the-harness-problem/)\n\n## The Pi _you love_, with **batteries included**.\n\nOriginally built on [Mario Zechner](https://github.com/mariozechner)'s wonderful [Pi](https://github.com/badlogic/pi-mono), omp adds everything you're missing.\n\n### 01 · Code execution w/ tool-calling\n\nMost harnesses give the agent a Python sandbox and call it done. Ours runs persistent Python and a Bun worker, and either kernel can call back into the agent's own tools — read, search, task — over a loopback bridge. The agent loads a CSV with tool.read from inside Python, charts it from JavaScript, and never leaves the cell.\n\n![omp TUI running Python code and rendering a chart.](assets/python.webp)\n\n### 02 · LSP wired into every write\n\nAsk for a rename and you get a rename. The call goes through workspace/willRenameFiles, so re-exports, barrel files, and aliased imports update before the file moves. Everything your IDE knows, the agent knows.\n\n![omp TUI with TypeScript and Biome language servers active.](assets/lspv.webp)\n\n_[Read the LSP config docs](docs/lsp-config.md)_\n\n### 03 · Drives a real debugger\n\nA C binary segfaults: the agent attaches lldb, steps to the bad pointer, reads the frame. A Go service hangs: it attaches dlv and walks the goroutines. A Python process is wedged: debugpy, pause, inspect, evaluate. Most agents are still sprinkling print statements.\n\n![omp TUI: a live lldb-dap session against a native binary at /tmp/omp-native/demo. Adapter=lldb-dap, Status=stopped, Frame=xorshift32, Instruction pointer 0x10000055C, Location demo.c:6:10. Debug scopes and Debug variables cards show locals (x = 57351) and the agent confirms the math: x went from 7 → 57351 (= 7 ^ (7<<13)).](https://omp.sh/clips/dap-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/dap.mp4)_\n\n### 04 · Time-traveling stream rules\n\nYour rules sit dormant until the model goes off-script. A regex match aborts the stream mid-token, injects the rule as a system reminder, and retries from the same point. You get course-correction without paying context tax on every turn. Injections survive compaction, so the fix sticks.\n\n![omp TUI: agent reading src.rs and about to write Box::leak when the request aborts (red `Error: Request was aborted`), an amber `⚠ Injecting rule: box-leak` card injects the rule body `Don't reach for Box::leak in production code paths`, and the agent then course-corrects by proposing `Arc<str>` and asking the user to confirm.](https://omp.sh/clips/ttsr-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/ttsr.mp4)_\n\n### 05 · First-class subagents\n\nSplit a job across workers and get typed results back. task fans out into isolated worktrees, each worker runs its own tool surface, and the final yield is a schema-validated object the parent reads directly. No prose to parse, no merge conflicts between siblings, no orphaned edits.\n\n![omp TUI showing `task` spawning two subagents `ComponentsExports` and `RoutesExports`, the constraints block requiring an IRC DM between peers, the per-subagent status cards with cost and duration, and a final Findings section listing both exports plus an honest 'IRC coordination note' about a one-sided handshake.](https://omp.sh/clips/irc-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/irc.mp4)_\n\nWatch the fan-out while it runs: `Alt+A` opens [Agent Hub](docs/agent-hub.md), where the roster shows current activity and usage for every subagent. Open one to read its live transcript, type a steering message, revive a parked worker, or kill a stuck one without aborting the parent session.\n\n### 06 · A second model, watching every turn.\n\nPair a reviewer model to the 'advisor' role and it reads every turn the main agent takes, injecting notes inline — a quiet aside, a concern, or a hard blocker. It runs on its own context and its own model, so it catches what the doer rushed past. The main agent sees the note and course-corrects, or tells you why it won't.\n\n![omp TUI: /advisor status shows the advisor running on openai-codex/gpt-5.5; after the main agent scopes a catch to ENOENT instead of swallowing every error, an amber 'Advisor 1 note (concern)' card warns the fix no longer matches the user's literal acceptance criterion.](https://omp.sh/clips/advisor-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/advisor.mp4)_\n\n### 07 · Hand someone the link, they're in.\n\n/collab puts your live session on a relay and hands back a link — and a QR. A teammate joins from another terminal with omp join, or just opens it in a browser. Share read-write to pair on the same agent, or /collab view for a read-only link anyone can watch but no one can steer. Frames are sealed client-side; the relay never sees your keys.\n\n![omp TUI: /collab view prints 'Collab session started!' with an omp join command, a my.omp.sh browser link, the note 'Anyone with this link can watch the session but cannot prompt the agent', and a large scannable QR code.](https://omp.sh/clips/collab-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/collab.mp4)_\n\n### 08 · Read a pdf on arxiv, why not?\n\nweb_search chains twenty-three ranked providers and hands whatever URLs it finds straight to read. Arxiv PDFs, GitHub pages, Stack Overflow threads come back as structured markdown with anchors intact — the same tool surface you use on local files. Cite, follow, quote, never lose where you came from.\n\n![omp TUI: web_search returns 10 ranked Perplexity sources for inference-time compute scaling, the agent picks an arxiv paper, calls read https://arxiv.org/pdf/2604.10739v1, and summarizes the paper's headline result with real numbers.](https://omp.sh/clips/web-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/web.mp4)_\n\n### 09 · Unapologetically native. Even on Windows.\n\nOther agents shell out to rg, grep, find, and bash. On many machines those binaries don't exist, and on the ones where they do, every call costs a fork-exec round-trip. omp links the real implementations into the process. ripgrep, glob, find: in-process. brush is the bash — with sessions that survive across calls, and 58 command-line utilities (ls, sed, sort, xargs, even jq) ported into the builtins crate and run in-process, zero fork/exec. The same omp binary runs on macOS, Linux, and Windows — no WSL bridge.\n\n### 10 · Code review with priorities and a verdict\n\nGet a clear verdict on whether the change ships, with every issue ranked P0 through P3 and scored for confidence. /review spawns dedicated reviewer subagents that sweep branches, single commits, or uncommitted work in parallel. You tackle what blocks release first; nothing important hides in a wall of prose.\n\n### 11 · Hashline: edit by content hash\n\nPerfect edits, fewer tokens. The model points at anchors instead o",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"omp\",\n  \"homepage\": \"https://omp.sh\",\n  \"private\": true,\n  \"author\": \"Stencil Labs, Inc.\",\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"packageManager\": \"bun@1.4.0\",\n  \"patchedDependencies\": {\n    \"@ark/schema@0.56.2\": \"patches/@ark%2Fschema@0.56.2.patch\",\n    \"puppeteer-core@25.3.0\": \"patches/puppeteer-core@25.3.0.patch\"\n  },\n  \"workspaces\": {\n    \"packages\": [\n      \"packages/*\",\n      \"python/robomp/web\"\n    ],\n    \"catalog\": {\n      \"@babel/generator\": \"^7.29.7\",\n      \"@babel/parser\": \"^7.29.7\",\n      \"@babel/traverse\": \"^7.29.7\",\n      \"@babel/types\": \"^7.29.7\",\n      \"@biomejs/biome\": \"^2.5.3\",\n      \"@huggingface/transformers\": \"^4.2.0\",\n      \"@napi-rs/cli\": \"3.7.2\",\n      \"@oh-my-pi/hashline\": \"18.0.7\",\n      \"@oh-my-pi/omp-stats\": \"18.0.7\",\n      \"@oh-my-pi/omptype\": \"18.0.7\",\n      \"@oh-my-pi/pi-agent-core\": \"18.0.7\",\n      \"@oh-my-pi/pi-ai\": \"18.0.7\",\n      \"@oh-my-pi/pi-catalog\": \"18.0.7\",\n      \"@oh-my-pi/pi-coding-agent\": \"18.0.7\",\n      \"@oh-my-pi/pi-mnemopi\": \"18.0.7\",\n      \"@oh-my-pi/pi-natives\": \"18.0.7\",\n      \"@oh-my-pi/pi-tui\": \"18.0.7\",\n      \"@oh-my-pi/pi-utils\": \"18.0.7\",\n      \"@oh-my-pi/pi-wire\": \"18.0.7\",\n      \"@oh-my-pi/snapcompact\": \"18.0.7\",\n      \"@opentelemetry/api\": \"^1.9.1\",\n      \"@opentelemetry/api-logs\": \"^0.220.0\",\n      \"@opentelemetry/context-async-hooks\": \"^2.9.0\",\n      \"@opentelemetry/exporter-logs-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/exporter-metrics-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/exporter-trace-otlp-proto\": \"^0.220.0\",\n      \"@opentelemetry/resources\": \"^2.9.0\",\n      \"@opentelemetry/sdk-logs\": \"^0.220.0\",\n      \"@opentelemetry/sdk-metrics\": \"^2.9.0\",\n      \"@opentelemetry/sdk-trace-base\": \"^2.9.0\",\n      \"@opentelemetry/sdk-trace-node\": \"^2.9.0\",\n      \"@tailwindcss/node\": \"^4.3.2\",\n      \"@tailwindcss/vite\": \"^4.3.2\",\n      \"@types/babel__generator\": \"^7.27.0\",\n      \"@types/babel__traverse\": \"^7.28.0\",\n      \"@types/bun\": \"^1.3.14\",\n      \"@types/react\": \"^19.2.17\",\n      \"@types/react-dom\": \"^19.2.3\",\n      \"@typescript/native-preview\": \"7.0.0-dev.20260707.2\",\n      \"chart.js\": \"^4.5.1\",\n      \"diff\": \"^9.0.0\",\n      \"fastembed\": \"2.1.0\",\n      \"kitty-vt-wasm\": \"^0.2.0\",\n      \"lint-staged\": \"^17.0.8\",\n      \"lucide-react\": \"^1.24.0\",\n      \"onnxruntime-node\": \"1.26.0\",\n      \"postcss\": \"^8.5.16\",\n      \"prettier\": \"^3.9.5\",\n      \"puppeteer-core\": \"25.3.0\",\n      \"react\": \"19.2.7\",\n      \"react-chartjs-2\": \"^5.3.1\",\n      \"react-dom\": \"19.2.7\",\n      \"regexp-tree\": \"^0.1.27\",\n      \"solid-js\": \"^1.9.14\",\n      \"tailwindcss\": \"^4.3.2\",\n      \"ts-morph\": \"^28.0.0\",\n      \"typescript\": \"^7.0.2\",\n      \"vite\": \"^8.1.4\",\n      \"vite-plugin-solid\": \"^2.11.12\"\n    }\n  },\n  \"overrides\": {\n    \"@ark/schema\": \"0.56.2\"\n  },\n  \"scripts\": {\n    \"setup\": \"bun scripts/setup.ts\",\n    \"dev\": \"bun --cwd=packages/coding-agent src/cli.ts\",\n    \"dev:timing\": \"PI_TIMING=x bun --cwd=packages/coding-agent --preload ../utils/src/module-timer.ts src/cli.ts\",\n    \"stats\": \"bun --cwd=packages/coding-agent src/cli.ts stats\",\n    \"collab:web:dev\": \"bun --cwd=packages/collab-web run dev\",\n    \"collab:relay\": \"bun --cwd=packages/collab-web run relay\",\n    \"collab:mock-host\": \"bun --cwd=packages/collab-web run mock-host\",\n    \"collab:web:build\": \"bun --cwd=packages/collab-web run build\",\n    \"meta\": \"bun --cwd=packages/metaharness run dev\",\n    \"claude:trace\": \"bun scripts/claude-trace.ts\",\n    \"build\": \"bun run --workspaces --if-present build\",\n    \"build:native\": \"bun --cwd=packages/natives run build\",\n    \"test\": \"bun scripts/ci-test-ts.ts local\",\n    \"test:ts\": \"bun scripts/ci-test-ts.ts local-ts\",\n    \"test:scripts\": \"bun test scripts/ci-test-ts.test.ts scripts/ci-release-build-binaries.test.ts scripts/musl-release.test.ts scripts/ci-release-publish.test.ts scripts/release.test.ts\",\n    \"test:rs\": \"bun scripts/run-rs-task.ts test:rs\",\n    \"check\": \"bun run --parallel check:ts check:rs\",\n\"check:ts\": \"bun run check:tools && bun run --workspaces --if-present check\",\n    \"check:tools\": \"biome check . --no-errors-on-unmatched\",\n    \"check:rs\": \"bun scripts/run-rs-task.ts check:rs\",\n    \"lint\": \"bun run --parallel lint:ts lint:rs\",\n    \"lint:ts\": \"bun run --parallel lint:tools && bun run --workspaces --if-present lint\",\n    \"lint:tools\": \"biome lint . --no-errors-on-unmatched\",\n    \"lint:rs\": \"bun scripts/run-rs-task.ts lint:rs\",\n    \"fmt\": \"bun run --parallel fmt:ts fmt:rs\",\n    \"fmt:ts\": \"bun run fmt:tools && bun run --workspaces --if-present fmt\",\n    \"fmt:tools\": \"biome format --write . --no-errors-on-unmatched\",\n    \"fmt:rs\": \"bun scripts/run-rs-task.ts fmt:rs\",\n    \"fix\": \"bun run --parallel fix:ts fix:rs\",\n    \"fix:all\": \"bun run --parallel fix:ts:all fix:rs fix:changelogs\",\n    \"fix:ts\": \"bun run fix:tools && bun run --workspaces --if-present fix\",\n    \"fix:ts:all\": \"bun run fix:tools:all && bun run --workspaces --if-present fix\",\n    \"fix:tools\": \"biome check --write --unsafe --changed --no-errors-on-unmatched .\",\n    \"fix:tools:all\": \"biome ",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "runtime",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "MCP 集成",
+      "工作区",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "DietrichGebert",
+    "name": "ponytail",
+    "full_name": "DietrichGebert/ponytail",
+    "url": "https://github.com/DietrichGebert/ponytail",
+    "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+    "language": "JavaScript",
+    "total_stars": 112463,
+    "forks": 6162,
+    "stars_this_period": 1598,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "cursor-rules",
+        "developer-tools",
+        "llm",
+        "prompt-engineering",
+        "yagni"
+      ],
+      "license": "MIT",
+      "open_issues": 174,
+      "created_at": "2026-06-12T00:52:37Z",
+      "pushed_at": "2026-08-07T21:44:01Z",
+      "homepage": "https://ponytail.dev",
+      "default_branch": "main",
+      "forks": 6162,
+      "watchers": 281,
+      "archived": false,
+      "size_kb": 2059
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/logo-dark.png\">\n    <img src=\"assets/logo.png\" width=\"220\" alt=\"Ponytail, the lazy senior dev\">\n  </picture>\n</p>\n\n<h1 align=\"center\">Ponytail</h1>\n\n<p align=\"center\">\n  <em>He says nothing. He writes one line. It works.</em>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/github/stars/DietrichGebert/ponytail?style=flat-square&color=111111&label=stars\" alt=\"Stars\">\n  <img src=\"https://img.shields.io/github/v/release/DietrichGebert/ponytail?style=flat-square&color=111111&label=release\" alt=\"Release\">\n  <img src=\"https://img.shields.io/npm/v/@dietrichgebert/ponytail?style=flat-square&color=111111&label=npm\" alt=\"npm\">\n  <img src=\"https://img.shields.io/badge/works%20with-20%20agents-111111?style=flat-square\" alt=\"Works with 20 agents\">\n  <img src=\"https://img.shields.io/badge/license-MIT-111111?style=flat-square\" alt=\"MIT license\">\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/50668/daily\" alt=\"DietrichGebert/ponytail | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/50668/weekly\" alt=\"DietrichGebert/ponytail | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <strong>~54% less code (up to 94%) &middot; ~20% cheaper &middot; ~27% faster &middot; 100% safe</strong><br>\n  <sub>Measured on real Claude Code sessions editing a real open-source repo (FastAPI + React), against the same agent with no skill. ~54% is the mean across 12 feature tasks (Haiku 4.5, n=4); it reaches 94% where an agent over-builds (a date picker) and is near zero where the code is already minimal. ponytail keeps every safety guard while a bare \"write one-liners\" prompt drops one. (The earlier single-shot benchmark reported 80-94% as a flat figure; against a fair agentic baseline that is the per-task ceiling, not the average.) <a href=\"benchmarks/results/2026-06-18-agentic.md\">Full writeup</a> &middot; <a href=\"benchmarks/\">reproduce it</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <sub><a href=\"README.es.md\">Español</a> &middot; <a href=\"README.ko.md\">한국어</a></sub>\n</p>\n\n---\n\n<p align=\"center\">\n  <a href=\"https://ponytail.dev/soon\"><img src=\"assets/waitlist-banner.png\" alt=\"Something's coming, join the waitlist\" width=\"760\"></a>\n</p>\n\nYou know him. Long ponytail. Oval glasses. Has been at the company longer than the version control. You show him fifty lines; he looks at them, says nothing, and replaces them with one.\n\nPonytail puts him inside your AI agent.\n\n## Before / after\n\nYou ask for a date picker. Your agent installs flatpickr, writes a wrapper component, adds a stylesheet, and starts a discussion about timezones.\n\nWith ponytail:\n\n```html\n<!-- ponytail: browser has one -->\n<input type=\"date\">\n```\n\nMore survivors in [examples/](examples/).\n\n## Numbers\n\nThe honest measurement is a real agent doing real work: a headless Claude Code session editing [tiangolo's full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) (a real FastAPI + React repo), scored on the `git diff` it leaves behind. Twelve feature tickets, the same agent with and without the skill, n=4, Haiku 4.5.\n\n<p align=\"center\">\n  <img src=\"assets/benchmark-agentic.svg\" width=\"860\" alt=\"Each arm as a percent of the no-skill baseline across LOC, tokens, cost and time (Haiku 4.5). ponytail is lowest on every metric (LOC 46%, tokens 78%, cost 80%, time 73%); caveman rises above 100% on tokens, cost and time; yagni-oneliner LOC 67%. Safety, separate adversarial tier: baseline, caveman and ponytail 100%, yagni-oneliner 95%.\">\n</p>\n\n| vs no-skill baseline | LOC | tokens | cost | time | safe |\n|---|--:|--:|--:|--:|--:|\n| **ponytail** | **-54%** | **-22%** | **-20%** | **-27%** | **100%** |\n| caveman (terse-prose control) | -20% | +7% | +3% | +2% | 100% |\n| \"YAGNI + one-liners\" prompt | -33% | -14% | -21% | -30% | 95% |\n\nponytail is the only arm that cuts every metric, and the only one that stays fully safe while doing it. The cut is biggest where there is a real over-build trap (date picker 404 to 23 lines, color picker 287 to 23, because it reaches for a native `<input>` instead of a component) and near zero on code that is already minimal. Full method, per-task tables, and limitations: [benchmarks/results/2026-06-18-agentic.md](benchmarks/results/2026-06-18-agentic.md).\n\n<details>\n<summary><strong>Older single-shot numbers (isolated generation)</strong></summary>\n\nFive everyday tasks, three models, three arms (no skill, [caveman](https://github.com/JuliusBrussee/caveman), ponytail), ten runs, median reported. One prompt, one completion, counting lines of the answer:\n\n<p align=\"center\">\n  <img src=\"assets/benchmark-3model.svg\" width=\"860\" alt=\"Median lines of code per arm across Haiku, Sonnet and Opus\">\n</p>\n\nThis showed **80-94% less code**. [#126](https://github.com/DietrichGebert/ponytail/issues/126) fairly pointed out that the bare-model baseline pads its answer with prose and options, so that gap is partly a conversational-baseline artifact. The agentic numbers above are the corrected, defensible version. Reproduce the single-shot run with `npx promptfoo eval -c benchmarks/promptfooconfig.yaml`.\n\n</details>\n\n**The rule was never \"fewest tokens.\"** It is: write only what the task needs, and never cut validation, error handling, security, or accessibility. The code ends up small because it is necessary, not golfed. Lower cost and latency are a side effect on the models that follow the ladder; a terse reasoning model that spends thinking tokens deliberating the rungs can go the other way (on GPT-5.5 it does).\n\n## How it works\n\nBefore writing code, the agent stops at the first rung that holds:\n\n```\n1. Does this need to exist?   → no: skip it (YAGNI)\n2. Already in this codebase?  → reuse it, don't rewrite\n3. Stdlib does it?            → use it\n4. Native platform feature?   → use it\n5. Installed dependency?      → use it\n6. One line?                  → one line\n7. Only then: the minimum that works\n```\n\nThe ladder runs *after* it understands the problem, not instead of it: it reads the code the change touches and traces the real flow before picking a rung. Lazy about the solution, never about reading.\n\nLazy, not negligent: trust-boundary validation, data-loss handling, security, and accessibility are never on the chopping block.\n\n## Install\n\nThe most effort ponytail will ever ask of you:\n\nThe Claude Code and Codex plugins run two tiny Node.js lifecycle hooks, so `node` needs to be on your PATH (note for Nix/nvm users: it must be on the non-interactive shell's PATH). If it isn't, the skills still work, the always-on activation just stays quiet instead of erroring on every prompt.\n\n### Claude Code\n\n```\n/plugin marketplace add DietrichGebert/ponytail\n```\n```\n/plugin install ponytail@ponytail\n```\n(You have to send two separate prompts for the install to work) \n\nSame steps in the Claude Code Desktop app's Code tab: type the two `/plugin` commands above into the prompt box, or click the **+** button next to it, choose **Plugins** → **Add plugin** to browse your configured marketplaces, and manage marketplaces from **Customize** in the sidebar.\n\n### Codex\n\n```bash\ncodex plugin marketplace add DietrichGebert/ponytail\ncodex plugin add ponytail@ponytail\n```\n\nRun `codex` and open `/hooks`, review and trust its two lifecycle hooks, and start a new thread.\n\nThis same install also covers the Codex desktop app: restart the app after installing and it picks up the plugin.\n\n### GitHub Copilot CLI\n\n```bash\ncopilot plugin marketplace add DietrichGebert/ponytail\ncopilot plugin install ponytail@ponytail\n```\n\nIn an interactive Copilot CLI session, use the slash equivalents:\n\n```\n/plugin marketplace add DietrichGebert/ponytail\n/plugin install ponytail@ponytail\n```\n\nCopilot CLI namespaces plugin commands by plugin name. For example:\n\n```text\n/ponytail:ponytail ultra\n/ponytail:ponytail-review\n```\n\n### Pi agent harness\n\n```\npi install git:github.com/DietrichGebert/ponytail\n```\n\n### OpenCode\n\nAdd to `opencode.json`:\n\n```json\n{ \"plugin\": [\"@dietrichgebert/ponytail\"] }\n```\n\nRun from a checkout instead (the plugin reuses `hooks/` and `skills/`):\n\n```json\n{ \"plugin\": [\"./.opencode/plugins/ponytail.mjs\"] }\n```\n\nInjects the ruleset every turn at the active level; adds the `/ponytail` commands (see [Commands](#commands)). OpenCode also auto-loads this repo's `AGENTS.md`, so the rules hold even without the plugin. The plugin adds the `lite/full/ultra/off` levels.\n\nThe `./` path resolves against your project's `opencode.json`; to share one checkout across projects, point it at the absolute path of the `.mjs` instead (it finds its `hooks/` and `skills/` relative to its own file).\n\n### Gemini CLI\n\n```bash\ngemini extensions install https://github.com/DietrichGebert/ponytail\n```\n\nLoads the ruleset as always-on context every session and registers the `/ponytail` commands; the `skills/` ship too, activated when a task needs them.\nThe Gemini adapter intentionally does not ship a root `hooks/hooks.json`: Gemini auto-loads that path, while Ponytail's lifecycle hooks use Claude/Codex event names.\n\n### Qoder\n\nQoder auto-loads `AGENTS.md` from the repo root as always-on context, so running ponytail from a checkout works with zero setup. For per-project rules, copy [`.qoder/rules/ponytail.md`](.qoder/rules/ponytail.md) into your project's `.qoder/rules/`. The six ponytail skills (`/ponytail`, `/ponytail-review`, `/ponytail-audit`, `/ponytail-debt`, `/ponytail-gain`, `/ponytail-help`) are available via Qoder's Skill system; the plugin manifest at [`.qoder-plugin/plugin.json`](.qoder-plugin/plugin.json) points at the `skills/` directory.\n\nFor full plugin-tier support (automatic mode activation + ruleset injection on every prompt), add the hooks from [`hooks/qoder-hooks.json`](hooks/qoder-hooks.json) to your `.qoder/settings.json`. Replace `PONYTAIL_DIR` with the path to your ponytail checkout. Qoder's `UserPromptSubmit` hook activates the default mode on first prompt and injects the ruleset every turn; `PreToolUse` with `task|Task` matcher injects the ruleset into subagents. Level switches (`/ponytail lite|full|ultra|off`) work automatically.\n\n### Antigravity CLI\n\nGoogle is renaming Gemini CLI to Antigravity CLI (the `agy` binary); the same extension installs there:\n\n```bash\nagy plugin install https://github.com/DietrichGebert/ponytail\n```\n\nIt reuses this repo's `gemini-extension.json`. One difference: Antigravity converts the `/ponytail` commands into skills, so you type them into the chat (e.g. `/ponytail-review` as a message) instead of picking them from a slash menu. Until the migration completes (around June 18, 2026), `gemini extensions install` still works too. To run it as an always-on rule instead, drop the ruleset into `.agents/rules/`.\n\n### Hermes Agent\n\n```bash\nhermes plugins install DietrichGebert/ponytail --enable\n```\n\nRestart Hermes after installing. The plugin injects the active Ponytail mode before each LLM turn, registers the bundled skills as `ponytail:<skill>`, and adds `/ponytail`, `/ponytail-review`, `/ponytail-audit`, `/ponytail-debt`, `/ponytail-gain`, and `/ponytail-help`. In shared gateways, restrict `/ponytail` to trusted users with Hermes slash-command access controls; runtime mode is process-local.\n\n### CodeWhale\n\nReads `AGENTS.md` from the project root, zero setup. Copy [`AGENTS.md`](AGENTS.md) to your project, or run `codewhale` from a checkout of this repo. That's it.\n\n### Swival\n\nStage the collection in your library first, then add the skills you want:\n\n```bash\nswival skills add --global https://github.com/DietrichGebert/ponytail  # stage into ~/.config/swival/library\nswival skills add ponytail                                         ",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@dietrichgebert/ponytail\",\n  \"version\": \"4.9.0\",\n  \"description\": \"Lazy senior dev mode for AI agents. The best code is the code you never wrote.\",\n  \"keywords\": [\"opencode-plugin\", \"opencode\", \"ponytail\", \"pi-package\", \"pi\", \"skills\", \"qoder\"],\n  \"license\": \"MIT\",\n  \"author\": {\n    \"name\": \"Dietrich Gebert\",\n    \"url\": \"https://github.com/DietrichGebert\"\n  },\n  \"homepage\": \"https://github.com/DietrichGebert/ponytail\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/DietrichGebert/ponytail.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/DietrichGebert/ponytail/issues\"\n  },\n  \"main\": \"./.opencode/plugins/ponytail.mjs\",\n  \"exports\": {\n    \".\": \"./.opencode/plugins/ponytail.mjs\",\n    \"./plugin\": \"./.opencode/plugins/ponytail.mjs\"\n  },\n  \"files\": [\n    \"AGENTS.md\",\n    \"hooks/\",\n    \"skills/\",\n    \".opencode/\",\n    \".qoder/\",\n    \".qoder-plugin/\",\n    \"pi-extension/\",\n    \"scripts/uninstall.js\",\n    \"assets/\",\n    \"LICENSE\"\n  ],\n  \"scripts\": {\n    \"test\": \"node --test tests/*.test.js && npm test --prefix pi-extension && npm test --prefix ponytail-mcp\"\n  },\n  \"pi\": {\n    \"extensions\": [\"./pi-extension/index.js\"],\n    \"skills\": [\"./skills\"]\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  }\n}\n\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 提示策略",
+      "编码约束",
+      "复用优先"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个试图把“少写代码”原则固化给 AI Agent 的提示与工作流项目，强调先复用、再改动、最后才新增实现。",
+      "audience": "希望约束编码 Agent 决策方式、减少无效实现和重复造轮子的开发者",
+      "capabilities": "Agent 提示策略、编码约束、复用优先、工作流规范",
+      "risk": "如果缺少配套评测和边界规则，理念型约束很容易停留在口号层，效果需要实测验证"
+    }
+  },
+  {
+    "owner": "tt-a1i",
+    "name": "archify",
+    "full_name": "tt-a1i/archify",
+    "url": "https://github.com/tt-a1i/archify",
+    "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+    "language": "HTML",
+    "total_stars": 17715,
+    "forks": 1230,
+    "stars_this_period": 1002,
+    "source_slice": "all",
+    "source_slices": [
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "license": "MIT",
+      "open_issues": 30,
+      "created_at": "2026-04-15T05:27:37Z",
+      "pushed_at": "2026-08-26T14:10:32Z",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "default_branch": "main",
+      "forks": 1230,
+      "watchers": 84,
+      "archived": false,
+      "size_kb": 98007
+    },
+    "readme_content": "<p align=\"center\">\n  <strong>English</strong> · <a href=\"./README_ZH.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/31352?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-31352\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/31352\" alt=\"Archify on Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n![Archify product preview](docs/assets/archify-readme-hero.png)\n\n# Archify\n\n**Turn a codebase or system description into a polished, interactive system map — directly in chat.**\n\nArchify is an agent skill for Raven, Cursor, Claude Code, Codex CLI, and OpenCode. Give it a system description or repository; get an interactive, shareable technical map.\n\n- **Open it and present** — five diagram types, four presets, dark/light themes, built-in brand marks, and finite motion\n- **Review architecture changes before merge** — compare two validated snapshots as Before / Delta / After, with exact added, removed, changed, moved, and rerouted facts\n- **Every interaction stays grounded** — search nodes, optionally open revision-verified source, trace upstream/downstream authored reach and exact routes, compare roles, and play guided stories without inventing topology\n- **One file, ready to trust and share** — typed JSON IR and deterministic checks produce self-contained HTML plus PNG, SVG, WebM, and 1200×630 share cards\n\n![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)\n![Agent Skill](https://img.shields.io/badge/Agent-Skill-7C3AED?style=flat-square)\n![Development Version](https://img.shields.io/badge/version-2.16.0--dev.0-0891b2?style=flat-square)\n\n**Current development version:** `v2.16.0-dev.0`. See [Changelog](CHANGELOG.md#unreleased).\n\n**[Project page](https://tt-a1i.github.io/archify/)** · **[Scenario guide](https://tt-a1i.github.io/archify/guide.html)** · **[Proof Lab](https://tt-a1i.github.io/archify/gallery.html)**\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nUsing Cursor? Open the [agent-aware quick start](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) for exact global and project commands.\n\nThen ask your agent: `Use archify to map this repository's runtime architecture.`\n\n## ❤️ Sponsors\n\n<table>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://apinebula.ai/ref/wywnaATT\"><img src=\"docs/assets/sponsors/apinebula-archify.jpg\" alt=\"APINEBULA\" width=\"200\" /></a><br/><strong><a href=\"https://apinebula.ai/ref/wywnaATT\">APINEBULA</a></strong></td><td>APINEBULA sponsors Archify with one API for Claude, GPT, Gemini, and more. <a href=\"https://apinebula.ai/ref/wywnaATT\">Register through Archify</a> and use <strong><code>Archify</code></strong> for <strong>10% off</strong>.</td></tr>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://github.com/EverMind-AI/Raven\"><img src=\"docs/assets/sponsors/evermind-archify-raven.png\" alt=\"Archify × Raven\" width=\"200\" /></a><br/><strong><a href=\"https://github.com/EverMind-AI\">EverMind</a> · <a href=\"https://github.com/EverMind-AI/Raven\">Raven</a></strong></td><td>EverMind sponsors Archify and builds memory infrastructure for agents. Its <a href=\"https://github.com/EverMind-AI/Raven\"><strong>Raven</strong></a> harness supports Archify as a Skill for verified, interactive system maps.</td></tr>\n</table>\n\n> Want to sponsor Archify? [Contact us by email.](mailto:2801884530@qq.com)\n\n## See Archify in action\n\nThese are generated Archify artifacts, not product mockups. Click a frame to open its live, shareable state.\n\n<p align=\"center\">\n  <a href=\"https://tt-a1i.github.io/archify/gallery.html\"><img src=\"docs/assets/archify-live-proof.gif\" alt=\"Three verified Archify artifacts moving through Signal Flow, Blueprint, and Classic presets\" width=\"960\"/></a>\n  <br/>\n  <sub><strong>Three real generated artifacts.</strong> Signal Flow · Blueprint · Classic · <a href=\"https://tt-a1i.github.io/archify/gallery.html\">open the interactive Proof Lab ↗</a></sub>\n</p>\n\n| Guided story | Route probe | Semantic lens |\n|---|---|---|\n| [![Agent workflow playing one authored chapter](docs/assets/archify-demo-story.png)](https://tt-a1i.github.io/archify/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1&play=1#view=happy-path) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://tt-a1i.github.io/archify/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://tt-a1i.github.io/archify/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |\n| Play one finite named chapter. | Inspect the shortest authored directed path. | Compare real traffic between semantic roles. |\n\nThe [Proof Lab](https://tt-a1i.github.io/archify/gallery.html) contains all 11 checked-in scenarios, their JSON sources, named views, and validation receipts.\n\n### A real repository, mapped from source\n\n[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)\n\nArchify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)** · [trace reach ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)\n\n## Preview\n\nSame diagram, two themes, one click to switch:\n\n| Dark | Light |\n|---|---|\n| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |\n\nThe Export menu copies PNG to the clipboard and downloads static or motion formats:\n\n![Export menu](docs/assets/archify-menu.png)\n\nUse **Copy Share Card** when you want a canonical 1200×630 image for a README, release, or social post.\n\nAfter tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.\n\n![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)\n\nAfter tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.\n\n![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)\n\nOpen [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.\n\n## Quick start\n\n### 1. Install\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nFor an explicit, non-interactive Cursor install:\n\n```bash\nnpx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes\n```\n\nTo try without installing:\n\n```bash\nnpx skills use tt-a1i/archify@archify --agent codex\n```\n\n[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@0.1.0`\n\nThe [agent switcher](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`. For Raven's manual ZIP install, extract [`archify.zip`](archify.zip) into `~/.raven/workspace/skills`; it yields `~/.raven/workspace/skills/archify`. Raven is not a switcher target.\n\n### 2. Ask for one bounded view\n\n```text\nAnalyze this repository, then use archify to create a high-level runtime architecture diagram.\nShow 8–12 core components, one primary path, external dependencies, and trust boundaries.\nPut supporting detail in cards instead of adding more edges.\n```\n\nFor a focused flow:\n\n```text\nUse archify to draw this login flow: Browser -> Web App -> API -> JWT validation ->\nRedis session lookup -> PostgreSQL fallback. Keep the cache-miss path secondary.\n```\n\n### 3. Refine in chat\n\nContinue with focused requests such as `add Redis`, `move auth to the left`, or `highlight the rollback path`. Archify keeps the typed source available for targeted iteration.\n\n## Choose the right diagram\n\n| Type | Best for | Include in your prompt |\n|---|---|---|\n| **Architecture** | Components, services, storage, boundaries | Scope, core components, primary path |\n| **Workflow** | CI/CD, approvals, tool calls, runbooks | Participants, order, branches, exceptions |\n| **Sequence** | API calls, cache fallback, auth, async traces | Callers, callees, returns, timing |\n| **Data Flow** | Pipelines, lineage, PII, consumers | Sources, transforms, stores, boundaries |\n| **Lifecycle** | States, retries, waits, terminal outcomes | States, events, retry and cancellation paths |\n\nFor a production deployment review, Architecture can optionally enable the\n`deployment-ownership` engineering profile. It fails closed when owners,\nsingle-region placement, private database scope, or named boundary crossings\nare missing. It is never enabled silently and validates authored facts—not live\ninfrastructure. See the [checked deployment proof](https://tt-a1i.github.io/archify/gallery.html#proof-deployment-ownership).\n\nFor design or PR review, Architecture Delta compares validated Before / Delta / After snapshots with a machine receipt. Select an exact authored change or play one finite Review—viewer-only, with no impact, risk, or merge-safety inference.\n\n`node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html --json`\n\n[![Architecture Delta showing added, removed, changed, and moved authored facts](docs/assets/architecture-delta-proof.jpg)](examples/checkout-platform-delta.html)\n\nNot sure which one fits? Use the [interactive scenario guide](https://tt-a1i.github.io/archify/guide.html), or ask the zero-dependency CLI:\n\n```bash\nnode archify/bin/archify.mjs guide \"Show an API request with Redis cache miss\"\nnode archify/bin/archify.mjs guide \"Map Kafka topics, consumer groups, replay, and DLQ\" --json\n```\n\nWorkflow keeps the happy path clear across lanes:\n\n![Workflow example](docs/assets/archify-workflow.png)\n\nSequence explains one interaction over time:\n\n![Sequence example](docs/assets/archify-sequence.png)\n\nData Flow makes movement and sensitivity boundaries explicit:\n\n![Data Flow example](docs/assets/archify-dataflow.png)\n\nLifecycle separates progress, waits, retries, and terminal outcomes:\n\n![Lifecycle example](docs/assets/archify-lifecycle.png)\n\nArchitecture examples: [`web-app`](examples/web-app.html) · [`Archify pipeline`](examples/archify-repo.html) · [`grid placement`](examples/archify-repo-grid.html) · [`desktop agent`](examples/maka-architecture.html)\n\n## Why Archify\n\n- **Layout judgment over generic auto-layout** — the agent chooses hierarchy, spacing, routes, and emphasis; shared automatic endpoints spread deterministically instead of piling arrows on one midpoint.\n- **Typed JSON IR** — every renderer-backed mode has a schema and reproducible source.\n- **Atomic validation before delivery** — schema, layout, HTML/SVG, route, and label-to-route clearance checks must all pass before a showcase artifact replaces the last known good output.\n- **Failures come with a repair receipt** — `validate --json` and `deliver --json` return stable rule codes, the exact subject, measured evidence, and only supported repair controls instead of a Node stack or an unstructured retry guess.\n- **Last-good live preview** — an optional desktop loop watches one JSON file, refreshes only after the latest candidate passes every gate, and keeps the previous verified diagram visible when a save is incomplete or invalid.\n- **Truthful interaction** — focus, upstream/downstream reach, exact routes, role comparison, and stories reuse authored nodes and relationships instead of inventing topology or claiming runtime impact.\n- **Sou",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "runtime",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "架构制图",
+      "时序图",
+      "数据流图"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个把架构图、时序图、数据流和生命周期图封装为 Agent Skill 的可验证制图工具，输出自包含 HTML。",
+      "audience": "需要让 Agent 自动生成结构化系统图，并保留可核对输出结果的开发者与架构师",
+      "capabilities": "架构制图、时序图、数据流图、生命周期图、HTML 导出",
+      "risk": "图形表达是否可靠取决于输入约束和验证机制，复杂系统下仍需人工复核"
+    }
+  }
+]

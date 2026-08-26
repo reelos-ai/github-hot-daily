@@ -354,6 +354,18 @@
     "capabilities": "自学习 Agent、跨会话记忆、Skills 生成、多渠道接入、子 Agent 协作",
     "risk": "自主学习和长期记忆会扩大权限与隐私边界，需要严格控制工具访问、数据留存和自动执行范围"
   },
+  "AgriciDaniel/claude-obsidian": {
+    "summary": "一个面向 Obsidian 和 Claude Code 的本地优先知识系统，可把原始资料整理成带来源引用、相互链接的 Markdown 知识库。",
+    "audience": "希望把个人资料库沉淀为可检索、可追溯第二大脑的研究者、写作者和 Agent 用户",
+    "capabilities": "本地优先知识库、来源引用、Obsidian 笔记图谱、Agent Skills、检索与维护工作流",
+    "risk": "知识质量依赖导入规范、来源治理和人工复核，不能把自动整理结果直接当成事实结论"
+  },
+  "tinyhumansai/openhuman": {
+    "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+    "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+    "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+    "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+  },
   "unslothai/unsloth": {
     "summary": "一个可在桌面端本地运行和训练大模型与扩散模型的应用，把模型下载、推理和训练入口整合进统一 UI。",
     "audience": "想在本地机器上试跑、微调或管理多种开源模型的开发者与 AI 极客用户",
@@ -425,5 +437,23 @@
     "audience": "需要让 Codex、Claude Code 等 Agent 跨轮次持续执行并可靠交接的开发者",
     "capabilities": "持久目标、自动唤醒、可执行待办、证据日志、Agent 交接",
     "risk": "长期自动执行需要严格控制额度、唤醒条件和完成判定，避免任务循环与资源失控"
+  },
+  "anthropics/claude-plugins-official": {
+    "summary": "Anthropic 官方维护的 Claude Code 插件目录，用来集中分发和管理高质量插件条目。",
+    "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
+    "capabilities": "官方插件目录、Claude Code 生态、插件发现、插件分发",
+    "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证"
+  },
+  "DietrichGebert/ponytail": {
+    "summary": "一个试图把“少写代码”原则固化给 AI Agent 的提示与工作流项目，强调先复用、再改动、最后才新增实现。",
+    "audience": "希望约束编码 Agent 决策方式、减少无效实现和重复造轮子的开发者",
+    "capabilities": "Agent 提示策略、编码约束、复用优先、工作流规范",
+    "risk": "如果缺少配套评测和边界规则，理念型约束很容易停留在口号层，效果需要实测验证"
+  },
+  "tt-a1i/archify": {
+    "summary": "一个把架构图、时序图、数据流和生命周期图封装为 Agent Skill 的可验证制图工具，输出自包含 HTML。",
+    "audience": "需要让 Agent 自动生成结构化系统图，并保留可核对输出结果的开发者与架构师",
+    "capabilities": "架构制图、时序图、数据流图、生命周期图、HTML 导出",
+    "risk": "图形表达是否可靠取决于输入约束和验证机制，复杂系统下仍需人工复核"
   }
 }

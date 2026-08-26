@@ -489,11 +489,17 @@
     },
     "strategic_score": 86,
     "capability_tags": [
-      "RAG 检索",
-      "技能扩展",
-      "Skill 来源"
+      "Agent 提示策略",
+      "编码约束",
+      "复用优先"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个试图把“少写代码”原则固化给 AI Agent 的提示与工作流项目，强调先复用、再改动、最后才新增实现。",
+      "audience": "希望约束编码 Agent 决策方式、减少无效实现和重复造轮子的开发者",
+      "capabilities": "Agent 提示策略、编码约束、复用优先、工作流规范",
+      "risk": "如果缺少配套评测和边界规则，理念型约束很容易停留在口号层，效果需要实测验证"
+    }
   },
   {
     "owner": "unslothai",
