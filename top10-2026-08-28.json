@@ -1,0 +1,808 @@
+[
+  {
+    "owner": "calesthio",
+    "name": "OpenMontage",
+    "full_name": "calesthio/OpenMontage",
+    "url": "https://github.com/calesthio/OpenMontage",
+    "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+    "language": "Python",
+    "total_stars": 53240,
+    "forks": 6640,
+    "stars_this_period": 1144,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "ai",
+        "claude",
+        "copilot",
+        "cursor",
+        "elevenlabs",
+        "ffmpeg",
+        "flux",
+        "image-generation",
+        "open-source",
+        "openai",
+        "python",
+        "remotion",
+        "stable-diffusion",
+        "text-to-speech",
+        "text-to-video",
+        "video-generation",
+        "video-production"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 257,
+      "created_at": "2026-03-29T15:23:22Z",
+      "pushed_at": "2026-08-22T18:22:24Z",
+      "homepage": "https://www.openmontage.video/",
+      "default_branch": "main",
+      "forks": 6640,
+      "watchers": 302,
+      "archived": false,
+      "size_kb": 76443
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/monty-dark.svg\">\n    <img src=\"assets/monty-light.svg\" alt=\"Monty the Clapper — the official mascot of OpenMontage\" width=\"200\">\n  </picture>\n</p>\n\n<p align=\"center\"><sub><em>Monty the Clapper — the official mascot of OpenMontage</em></sub></p>\n\n<h1 align=\"center\">OpenMontage</h1>\n\n<p align=\"center\"><strong>The first open-source, agentic video production system.</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://openmontage.video\"><img src=\"https://img.shields.io/badge/Website-openmontage.video-d14a28?style=for-the-badge\" alt=\"openmontage.video\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#start-from-a-video-you-already-love\">Paste A Video</a> &nbsp;·&nbsp;\n  <a href=\"#quick-start\">Quick Start</a> &nbsp;·&nbsp;\n  <a href=\"#try-these-prompts\">Try These Prompts</a> &nbsp;·&nbsp;\n  <a href=\"#pipelines\">Pipelines</a> &nbsp;·&nbsp;\n  <a href=\"#how-it-works\">How It Works</a> &nbsp;·&nbsp;\n  <a href=\"#sponsors\">Sponsors</a> &nbsp;·&nbsp;\n  <a href=\"docs/PROVIDERS.md\">Providers</a> &nbsp;·&nbsp;\n  <a href=\"docs/PR_REVIEW_GUIDE.md\">Review Guide</a> &nbsp;·&nbsp;\n  <a href=\"AGENT_GUIDE.md\">Agent Guide</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPLv3-blue.svg\" alt=\"License\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/trending\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\".github/assets/repo-of-the-day-dark.svg\">\n      <img alt=\"🏆 #1 Repository of the Day on GitHub Trending\" src=\".github/assets/repo-of-the-day-light.svg\" height=\"60\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\"><strong>Follow The Build</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage\"><img src=\"https://img.shields.io/badge/YouTube-%40OpenMontage-FF0000?style=for-the-badge&logo=youtube&logoColor=white\" alt=\"YouTube\"></a>\n  <a href=\"https://x.com/calesthioailabs\"><img src=\"https://img.shields.io/badge/X-%40calesthioailabs-111111?style=for-the-badge&logo=x&logoColor=white\" alt=\"X\"></a>\n  <a href=\"https://github.com/calesthio/OpenMontage/discussions\"><img src=\"https://img.shields.io/badge/Community-GitHub%20Discussions-0b1220?style=for-the-badge&logo=github&logoColor=white\" alt=\"GitHub Discussions\"></a>\n</p>\n\n## Sponsors\n\n> Want to support OpenMontage? [Sponsor the project](https://github.com/sponsors/calesthio).\n\n<details open>\n<summary>Click to collapse</summary>\n\n<table>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\"><img src=\"assets/sponsors/bloome.png\" alt=\"Bloome\" width=\"150\"></a></td>\n<td><strong>Bloome</strong> lets multiple AI agents (Claude, ChatGPT, DeepSeek, and more) collaborate in one conversation for agentic video pipelines. It has zero setup, runs in the cloud, works on web and mobile, and lets you share a configured agent with your whole team. <strong><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\">Try Bloome</a></strong>.</td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.atlascloud.ai/coding-plan\"><img src=\"assets/sponsors/atlas-cloud.png\" alt=\"Atlas Cloud\" width=\"150\"></a></td>\n<td><strong>Atlas Cloud</strong> is a full-modal AI inference platform that gives developers a single AI API for video generation, image generation, and LLM APIs. Instead of managing multiple vendor integrations, you connect once and get unified access to 300+ curated models across all modalities. Check out Atlas Cloud's new <a href=\"https://www.atlascloud.ai/coding-plan\">coding plan</a> promotion for more budget-friendly API access.</td>\n</tr>\n</table>\n\n</details>\n\n---\n\nTurn your AI coding assistant into a full video production studio. Describe what you want in plain language — your agent handles research, scripting, asset generation, editing, and final composition.\n\n**Important distinction:** OpenMontage can make image-based videos, but it can also make a real **video video** for free/open-source workflows: the agent builds a corpus from free stock footage and open archives, retrieves actual motion clips, edits them into a timeline, and renders a finished piece. That is not the usual \"animate a handful of stills and call it video\" trick.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/f77ce7a4-68b8-4f94-a287-e94bf50a32e1\" width=\"100%\" controls></video>\n</div>\n\n> **\"SIGNAL FROM TOMORROW\"** — a cinematic sci-fi trailer fully produced through OpenMontage: concept, script, scene plan, Veo-generated motion clips, soundtrack, and Remotion composition.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/8daca07f-cdf8-4bec-89c3-9dc2176363fa\" width=\"100%\" controls></video>\n</div>\n\n> **\"THE LAST BANANA\"** — a 60-second Pixar-style animated short about a lonely banana who finds friendship with a kiwi. 6 Kling v3-generated motion clips (via fal.ai), Google Chirp3-HD narration, royalty-free piano music, TikTok-style word-level captions, and Remotion composition. Total cost: **$1.33**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/88962725-97a0-4aac-a08e-34aaa9d8bb92\" width=\"100%\" controls></video>\n</div>\n\n> **\"Reimagine Your Universe\"** — a 50-second vertical transformation film in which one visual idea moves across objects, eras, materials, and scale. Five generated motion scenes, sparse Google Chirp narration, a Pixabay score, and a bespoke HyperFrames composition turn separate clips into one authored cinematic journey. Total cost: **about $4**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/c947070c-95ee-4d73-8d76-0bd3dc4826eb\" width=\"100%\" controls></video>\n</div>\n\n> **\"Products Come to Life\"** — a 60-second product film built from approved hero stills. Five hard-surface products separate into their own engineering and reassemble, with each still pinned as the first and last frame so the model invents motion without losing product identity. Image-to-video generation, bespoke sound, narration, and a custom composition complete the film.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/6815c2d2-17a3-4057-b9a0-893fc9c05bef\" width=\"100%\" controls></video>\n</div>\n\n> **\"Imagine the Possibilities with OpenMontage\"** — seven generated worlds collected into one music-only showcase. Three image models supply campaign, fashion, and miniature-world artwork; four video models expand the journey through architecture, material transformation, a living greenhouse, and a creature encounter. OpenMontage animates the stills, edits the motion, unifies the soundtrack, and closes with Monty the Clapper. Source generation cost: **about $5**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/a524f02a-2d18-42ca-a2c4-d3dc09503546\" width=\"100%\" controls></video>\n</div>\n\n> **\"How Salt Made History\"** — a 100-second cinematic documentary about the mineral that funded empires, shaped trade routes, sparked revolutions, and gave us the word “salary.” Real-world footage is woven together with original narration and hand-authored motion graphics for its etched title, etymology reveal, animated maps, historical timeline, and closing thesis.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/61919fb8-9dd1-446c-b833-dca82f6a3af8\" width=\"100%\" controls></video>\n</div>\n\n> **\"One Prompt Built This Complete 3D World\"** — a continuous 60-second journey through one coherent, editable fantasy world. Distinct terrain regions, an inhabited village, waterways, ruins, dense vegetation, and a late hero-landmark reveal are assembled from textured 3D assets, then brought together with cinematic lighting, atmospheric music, and a planned camera path.\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage?sub_confirmation=1\"><strong>Subscribe to @OpenMontage on YouTube</strong></a> to see new videos as they ship — every video includes the full prompt, pipeline, tools used, and cost so you can reproduce it yourself.\n</p>\n\n---\n\n## Start From A Video You Already Love\n\nStarting from a reference video is often faster than starting from a blank prompt.\n\nOpenMontage can start from a **YouTube video, Short, Reel, TikTok, or local clip** and turn it into a grounded production plan:\n\n1. **Paste a reference video**\n2. **The agent analyzes transcript, pacing, scenes, keyframes, and style**\n3. **You get 2-3 differentiated concepts, an honest tool path, cost estimates, and a sample before full production**\n\n```text\n\"Here's a YouTube Short I love. Make me something like this, but about quantum computing.\"\n```\n\nWhat you get back is not \"best guess prompt spaghetti.\" You get:\n\n- **What it keeps** from the reference: pacing, hook style, structure, tone\n- **What it changes**: topic, visual treatment, angle, narration approach\n- **What it will cost** at your target duration, before asset generation starts\n- **What it will actually look like** with your currently available tools\n\nWorks with **Claude Code, Cursor, Copilot, Windsurf, Codex** — any AI coding assistant that can read files and run code.\n\n---\n\n## Watch It Happen — The Backlot Living Storyboard\n\nChat tells you what the agent *said*. **Backlot shows you what the production is actually doing** — a local board that fills itself in as the pipeline runs. Stages light up, the script lands as a screenplay page, scene cards shimmer while assets generate, and every provider decision and dollar spent is on the wall.\n\nWhen a production starts, the agent opens it for you automatically. No setup, no reporting — the board derives everything from the project files the pipeline already writes.\n\n<p align=\"center\"><img src=\"docs/images/backlot/board-live.png\" alt=\"Backlot live board — assets generating\" width=\"920\"></p>\n\n**The storyboard is now a real approval gate.** Asset generation pauses on a scene-by-scene contact sheet — takes, prompts, per-asset cost, quality scores — so you approve the visuals *before* the render, not after it's too late:\n\n<p align=\"center\"><img src=\"docs/images/backlot/storyboard.png\" alt=\"Backlot storyboard — filmstrip with takes and renders\" width=\"920\"></p>\n\nCreative gates hold until you answer. The board shows what's waiting and why; you reply in chat:\n\n<p align=\"center\"><img src=\"docs/images/backlot/script-gate.png\" alt=\"Backlot script gate — awaiting approval\" width=\"920\"></p>\n\nEvery production on your machine, live-first, in the library:\n\n<p align=\"center\"><img src=\"docs/images/backlot/library.png\" alt=\"Backlot library\" width=\"920\"></p>\n\n```bash\npython -m backlot open                  # the library — every project on disk\npython -m backlot open <project-id>     # one production's live board\npython scripts/backlot_simulate_run.py  # no production yet? watch a simulated one live\n```\n\nAnd when a run is done, hit **▶ REPLAY RUN** — the whole production replays from its timestamps, scrubbable end to end. See [`backlot/README.md`](backlot/README.md) for how it works.\n\n---\n\n## Quick Start\n\n### Prerequisites\n\n- **Python 3.10+** — [python.org](https://www.python.org/downloads/)\n- **FFmpeg** — `brew install ffmpeg` / `sudo apt install ffmpeg` / [ffmpeg.org](https://ffmpeg.org/download.html)\n- **Node.js 18+** — [nodejs.org](https://nodejs.org/)\n- **An AI coding assistant** — Claude Code, Cursor, Copilot, Windsurf, or Codex\n\n### Install & Run\n\n```bash\ngit clone https://github.com/calesthio/OpenMontage.git\ncd OpenMontage\nmake setup\n```\n\nOpen the project in your AI coding assistant and tell it what you want:\n\n```\n\"Make a 60-second animated explainer about how neural networks learn\"\n```\n\nOr if you want the real-footage path:\n\n```text\n\"Make a 75-second documentary montage about city life in the rain. Use real footage only, no narration, elegiac tone, with music.\"\n```\n\nThat's it. The agent researches your topic with live web search, ge",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "# OpenMontage - Core Dependencies\npyyaml>=6.0\npydantic>=2.0\njsonschema>=4.20\npython-dotenv>=1.0\nPillow>=10.0\nnumpy>=1.24\nrequests>=2.31\ngoogle-auth>=2.0       # service-account auth for Google TTS + Imagen (Vertex AI)\ngoogle-genai>=1.0.0    # Gemini Developer API clients for Lyria, Veo, and Gemini Omni\nopenai>=2.44.0         # Videos API support for Sora 2\n\n# Backlot - the living storyboard (local board server)\nfastapi>=0.110\nuvicorn>=0.29\nwatchfiles>=0.21\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "llm",
+      "inference"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 99
+    },
+    "strategic_score": 99,
+    "capability_tags": [
+      "技能扩展",
+      "大模型应用",
+      "模型推理"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rohitg00",
+    "name": "ai-engineering-from-scratch",
+    "full_name": "rohitg00/ai-engineering-from-scratch",
+    "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "description": "Learn it. Build it. Ship it for others.",
+    "language": "Python",
+    "total_stars": 50594,
+    "forks": 8778,
+    "stars_this_period": 703,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "nlp",
+        "python",
+        "reinforcement-learning",
+        "rust",
+        "swarm-intelligence",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 98,
+      "created_at": "2026-03-18T18:38:02Z",
+      "pushed_at": "2026-08-23T20:29:51Z",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "default_branch": "main",
+      "forks": 8778,
+      "watchers": 321,
+      "archived": false,
+      "size_kb": 31246
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/banner.svg\" alt=\"AI Engineering from Scratch — reference manual banner\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <b>Read in your language:</b>\n  <a href=\"i18n/es/README.md\">Español</a> ·\n  <a href=\"i18n/fr/README.md\">Français</a> ·\n  <a href=\"i18n/pt/README.md\">Português</a> ·\n  <a href=\"i18n/de/README.md\">Deutsch</a> ·\n  <a href=\"i18n/it/README.md\">Italiano</a> ·\n  <a href=\"i18n/zh/README.md\">简体中文</a> ·\n  <a href=\"i18n/ja/README.md\">日本語</a> ·\n  <a href=\"i18n/ko/README.md\">한국어</a> ·\n  <a href=\"i18n/hi/README.md\">हिन्दी</a> ·\n  <a href=\"i18n/ar/README.md\">العربية</a> ·\n  <a href=\"i18n/ru/README.md\">Русский</a> ·\n  <a href=\"i18n/tr/README.md\">Türkçe</a>\n  <br><sub>Translated landing pages, committed to the repo. English is canonical; lesson pages are machine-translated on the <code>translations</code> branch. See <a href=\"docs/i18n.md\">docs/i18n.md</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-511-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"511 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n## From the creator of [Agent Memory - #1 Persistent memory ⭐](https://github.com/rohitg00/agentmemory) <a href=\"https://github.com/rohitg00/agentmemory/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a> which naturally works with any agents or chat assistants.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n> **84% of students already use AI tools. Only 18% feel prepared to use them\n> professionally.** This curriculum closes that gap.\n>\n> 511 lessons. 20 phases. ~329 hours. Python, TypeScript, Rust, Julia. Every lesson ships\n> a reusable artifact: a prompt, a skill, an agent, an MCP server. Free, open source, MIT.\n>\n> You don't just learn AI. You build it. End-to-end. By hand.\n\n<!-- STATS:START (generated from site/stats.json by build.js — do not edit by hand) -->\n<p align=\"center\"><sub><b>150,639</b> readers &nbsp;·&nbsp; <b>241,669</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-06-07</sub></p>\n<!-- STATS:END -->\n\n## Start here: choose what you want to build\n\nYou do not need to scan 511 lessons before beginning. Pick one goal. Each link\nopens the same curriculum on GitHub or the website, and both versions use the\nsame lesson code.\n\n| Your goal | Learn on GitHub | Learn on the website |\n|---|---|---|\n| I am new and want the complete foundation | [Phase 0: Setup and Tooling](phases/00-setup-and-tooling/) | [Dev Environment](https://aiengineeringfromscratch.com/lesson.html?path=phases/00-setup-and-tooling/01-dev-environment) |\n| I know Python and want math plus ML foundations | [Phase 1: Math Foundations](phases/01-math-foundations/) | [Linear Algebra Intuition](https://aiengineeringfromscratch.com/lesson.html?path=phases/01-math-foundations/01-linear-algebra-intuition) |\n| I want to build production LLM applications | [Phase 11: LLM Engineering](phases/11-llm-engineering/) | [Prompt Engineering](https://aiengineeringfromscratch.com/lesson.html?path=phases/11-llm-engineering/01-prompt-engineering) |\n| I want to build agents | [Phase 14: Agent Engineering](phases/14-agent-engineering/) | [The Agent Loop](https://aiengineeringfromscratch.com/lesson.html?path=phases/14-agent-engineering/01-the-agent-loop) |\n| I want to build with Model Context Protocol (MCP) | [Model Context Protocol (MCP) route](phases/13-tools-and-protocols/README.md#model-context-protocol-mcp-path) | [Model Context Protocol (MCP) path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/06-mcp-fundamentals&learningPath=model-context-protocol) |\n| I want to write and ship Agent Skills | [Focused Agent Skills route](phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |\n| I want to prepare for a Claude certification | [Certification onboarding](certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |\n\nNot sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md)\nor the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).\n\n### Use every lesson the same way\n\n1. **Read** `docs/en.md` and explain the core idea in your own words.\n2. **Type and build** the important code instead of treating the code block as decoration.\n3. **Run** the lesson command from the repository root, the directory containing `README.md` and `phases/`.\n4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.\n5. **Continue** only when you can explain the output and make one small change without guessing.\n\nCommands in lesson pages are paths from the repository root unless the lesson\nexplicitly says to change directories. If a lesson offers several languages,\nrun the implementation for the language you are learning.\n\n### Clone it and produce your first evidence\n\n```bash\ngit clone https://github.com/rohitg00/ai-engineering-from-scratch.git\ncd ai-engineering-from-scratch\npython3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner\npython3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py\n```\n\nThe preflight separates requirements needed now from tools needed later. Every\nrequired failure includes the detected reason and a corrective command. The\nsecond command is a dependency-free lesson and ends by showing that a matrix\ntimes a vector is the operation inside a neural network layer. Save that\nterminal output as your first evidence.\n\n## Add the AI tutor in 30 seconds\n\nIf Node.js, `npx`, and a skill-capable coding agent are already installed,\nyour coding agent can become your tutor in two commands. A repository clone is\nnot needed to install or read the tutor. Runnable focused-path labs need\n`python3`. Agent Skills host labs also need a selected host and a writable\nuser or project skill scope.\n\nCheck the local requirements first:\n\n```bash\nnode --version\nnpx --version\npython3 --version\n```\n\nThen install the curriculum skills and choose the host and scope you intend to\nuse when the installer asks:\n\n```bash\nnpx skills add rohitg00/ai-engineering-from-scratch\n```\n\nInvocation syntax belongs to the host, not to the portable `SKILL.md` format:\n\n| Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |\n|---|---|---|---|---|\n| Codex | `start-learning`, or choose it from `/skills` | `learn-mcp`, or choose it from `/skills` | `learn-agent-skills`, or choose it from `/skills` | `check-understanding 13`, or choose it from `/skills` |\n| Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |\n| Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |\n\nA ten-question placement quiz maps what you already know to a starting phase and\nsaves a personalized study plan to `LEARNING.md`. From there, the `learn` skill\nteaches one lesson per session: concept, math, code, quiz. It streams lessons\nstraight from this repo, and the `course-guide` skill jumps you to the exact\nlesson that covers anything you are stuck on. In Codex, invoke these skills with\n`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;\nin other compatible hosts, ask to use the skill by name.\n\nOnly want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates\n`MCP-LEARNING.md` and follows one 17-lesson route through stateless\nrequests, transports, bidirectional work, security, reliability, registry\ngovernance, and conformance evidence. The exact order and checkpoints live in\nthe [Model Context Protocol (MCP) manifest](learning-paths/model-context-protocol.json).\n\nOnly want Agent Skills? Use the Agent Skills invocation for your host. It\ncreates `AGENT-SKILLS-LEARNING.md` and follows one coherent five-lesson route:\ncontract, discovery, invocation, sandbox boundaries, then release evals and\nreal-host portability. Start on the web with the\n[Agent Skills path](https://aiengineeringfromscratch.com/lesson.html?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills).\n\nThe installer lists the hosts it can configure and asks where to install. If\nyou do not have Node.js, `npx`, `python3`, a supported host, or a writable\nscope yet, use the website or read `docs/en.md` manually. That path teaches the\nconcepts, but real-host discovery, invocation, script, and uninstall evidence\nremains pending until the preflight is available. Read the lessons at\n[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com).\n\n## How this works\n\nMost AI material teaches in scattered pieces. A paper here, a fine-tuning post there, a\nflashy agent demo somewhere else. The pieces rarely line up. You ship a chatbot but can't\nexplain its loss curve. You hook a function to an agent but can't say what attention does\ninside the model that's calling it.\n\nThis curriculum is the spine. 20 phases, 511 lessons, four languages: Python, TypeScript,\nRust, Julia. Linear algebra at one end, autonomous swarms at the other. Every algorithm\ngets built from raw math first. Backprop. Tokenizer. Attention. Agent loop. By the time\nPyTorch shows up, you already know what it's doing under the hood.\n\nEach lesson runs the same loop: read the problem, derive the math, write the code, run\nthe test, keep the artifact. No five-minute videos, no copy-paste deploys, no hand-holding.\nFree, open source, and built to run on your own laptop.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n## The shape of the curriculum\n\nTwenty phases stack on top of each other. Math is the floor. Agents and production are the roof.\nSkip ahead if you already know the lower layers, but don't skip and then wonder why something at\nthe top is breaking.\n\n```mermaid\n%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fafaf5','primaryTextColor':'#1a1a1a','primaryBorderColor':'#3553ff','lineColor':'#3553ff','fontFamily':'JetBrains Mono','fontSize':'12px'}}}%%\nflowchart TB\n  P0[\"Phase 0 — Setup &amp; Tooling\"] --> P1[\"Phase 1 — Math Foundations\"]\n  P1 --> P2[\"Phase 2 — ML Fundamentals\"]\n  P2 --> P3[\"Phase 3 — Deep Learning Core\"]\n  P3 --> P4[\"Phase 4 — Vision\"]\n  P3 --> P5[\"Phase 5 — NLP\"]\n  P3 --> P6[\"Phase 6 — Speech &amp; Audio\"]\n  P3 --> P9[\"Phase 9 — RL\"]\n  P5 --> P7[\"Phase 7 — Transformers\"]\n  P7 --> P8[\"Phase 8 — GenAI\"]\n  P7 --> P10[\"Phase 10 — LLMs from Scratch\"]\n  P10 --> P11[\"Phase 11 — LLM Engineering\"]\n  P10 --> P12[\"Phase 12 — Multimodal\"]\n  P11 --> P13[\"Phase 13 — Tools &amp; Protocols\"]\n  P13 --> P14[\"Phase 14 — Agent Engineering\"]\n  P14 --> P15[\"Phase 15 — Autonomous Systems\"]\n  P15 --> P16[\"Phase 16 — Multi-Agent &amp; Swarms\"]\n  P14 --> P17[\"Phase 17 — Infrastructure &amp; Production\"]\n  P15 --> ",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "numpy>=1.24\nmatplotlib>=3.7\njupyter>=1.0\ntorch>=2.0\ntorchvision>=0.15\ntorchaudio>=2.0\ntransformers>=4.30\ndatasets>=2.14\ntokenizers>=0.13\naccelerate>=0.20\nscikit-learn>=1.3\npandas>=2.0\npillow>=10.0\nlibrosa>=0.10\nsoundfile>=0.12\ntiktoken>=0.5\nanthropic>=0.25\nopenai>=1.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "diegosouzapw",
+    "name": "OmniRoute",
+    "full_name": "diegosouzapw/OmniRoute",
+    "url": "https://github.com/diegosouzapw/OmniRoute",
+    "description": "Never stop coding. Free MIT AI gateway: one endpoint, 350 providers (90+ free), 1200+ models Kimi, Claude, GPT, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 450+ contributors",
+    "language": "TypeScript",
+    "total_stars": 57510,
+    "forks": 7915,
+    "stars_this_period": 655,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "a2a",
+        "ai-agents",
+        "ai-gateway",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "cline",
+        "codex",
+        "copilot",
+        "cursor",
+        "deepseek",
+        "free-ai",
+        "gemini",
+        "kimi",
+        "llm-gateway",
+        "mcp",
+        "openai",
+        "openai-proxy",
+        "qwen",
+        "token-saver"
+      ],
+      "license": "MIT",
+      "open_issues": 186,
+      "created_at": "2026-02-13T12:38:31Z",
+      "pushed_at": "2026-08-28T22:01:56Z",
+      "homepage": "https://omniroute.online",
+      "default_branch": "release/v3.8.51",
+      "forks": 7915,
+      "watchers": 342,
+      "archived": false,
+      "size_kb": 450268
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./docs/screenshots/MainOmniRoute.png\" alt=\"OmniRoute Dashboard\" width=\"820\"/>\n\n<br/>\n<br/>\n\n# 🚀 OmniRoute — The Free AI Gateway\n\n<img src=\"./docs/diagrams/readme-hero.svg\" width=\"100%\" alt=\"OmniRoute — Never stop coding. Every AI tool → 351 providers — 90+ free — through one endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity into FREE Claude / GPT / Gemini with auto-fallback. RTK + Caveman stacked compression saves 15–95% tokens (~89% avg) — never hit limits. 351 AI providers · 90+ free tiers · ~1.51B free tokens/mo · 19 routing strategies · $0 to start.\"/>\n\n</div>\n\n<div align=\"center\">\n\n## 💰 ~1.51B Free Tokens / Month\n\n</div>\n\n> Stacking free tiers by hand is painful — dozens of SDKs, dozens of rate limits, and no idea how much you actually have. OmniRoute catalogs **445 free-tier entries across 39 recurring pool keys** and computes the token headline from the **20 pools with a published positive monthly budget**, deduplicated by shared pool. The result stays visible on the dashboard (`/dashboard/free-tiers`).\n\n<img src=\"./docs/diagrams/free-tier-budget.svg\" width=\"100%\" alt=\"OmniRoute free-tier budget card: ~1.51B free tokens per month steady, up to ~2.13B in the first month with signup credits, from 39 documented recurring pool keys covering 445 cataloged free-tier entries behind one endpoint. Honest pool-deduped math — each shared pool counted once, including 20 recurring pools with a published positive monthly token budget; 13 providers are marked avoid in the terms-risk catalog so you decide. Budget bar includes Mistral 1B, LLM7 150M, Nara 150M, Gemini 60M and smaller pools, plus first-month signup credits and permanently-free no-token-cap providers surfaced separately so they never inflate the headline. Live used/remaining on /dashboard/free-tiers.\"/>\n\n> Animated summary of the live `/dashboard/free-tiers` page. Full methodology (pool dedupe, credit tiers, provider terms): **[docs/reference/FREE_TIERS.md](docs/reference/FREE_TIERS.md)**.\n>\n> <sub>These figures are re-audited every two weeks against the live catalog and **move both ways** — a provider ends a free tier and the number drops; a new one lands and it climbs. We publish what the catalog actually computes, never a rounded-up best case.</sub>\n\n<br/>\n\n<div align=\"center\">\n\n<h3>\n\n⭐ Star the repo if OMNIROUTE helped you save money and make your work easier.\n\n</h3>\n\n[![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=social)](https://github.com/diegosouzapw/OmniRoute)\n<a href=\"https://trendshift.io/repositories/23589\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/23589\" alt=\"diegosouzapw%2FOmniRoute | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n[![Star History Rank](https://api.star-history.com/badge?repo=diegosouzapw/OmniRoute&theme=dark)](https://www.star-history.com/diegosouzapw/omniroute)\n[![olud.ai](https://olud.ai/badge.php?tool=diegosouzapw-omniroute)](https://olud.ai/project/diegosouzapw-omniroute.html)\n\n### 💬 Join the community\n\n**👋 Follow the maintainer — get new providers, releases & tips first:**\n\n[![Follow Diego on LinkedIn](https://img.shields.io/badge/Follow_Diego_on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/diegosouzapw/)\n[![Follow @diegosouzapw on GitHub](https://img.shields.io/github/followers/diegosouzapw?style=for-the-badge&logo=github&logoColor=white&label=Follow%20on%20GitHub&color=181717)](https://github.com/diegosouzapw)\n\n[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/U47eFqAXCn)\n[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/omnirouteOficial)\n[![WhatsApp Global](https://img.shields.io/badge/WhatsApp_Global-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t)\n[![WhatsApp Brasil](https://img.shields.io/badge/WhatsApp_Brasil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)\n[![Website](https://img.shields.io/badge/Website-omniroute.online-blue?logo=google-chrome&logoColor=white)](https://omniroute.online)\n\n**Questions, provider tips, roadmap & support → [Discord](https://discord.gg/U47eFqAXCn) · [Telegram](https://t.me/omnirouteOficial) · WhatsApp [🌍 Global](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t) / [🇧🇷 Brasil](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)**\n\n<br/>\n\n## 📈 The Gateway Keeps Growing\n\n<div align=\"center\">\n\n|                           | v3.8.49 |        **v3.8.50**        | `v3.8.51+`  |\n| ------------------------- | :-----: | :-----------------------: | :---------: |\n| 🌐 Providers              |   290   |          **350**          | more queued |\n| 🧠 Unique chat model IDs  |  1185   |         **1312**          |      —      |\n| 🖼️ Modality Bridge        |    —    | 🆕 vision + audio + video |      —      |\n| 📡 Radar free catalog     |    —    |         🆕 opt-in         |      —      |\n| ⚖️ Quota-aware scheduling |    —    |      🆕 Quota-Share       |      —      |\n| 📊 Quota telemetry        |    —    |          🆕 live          |      —      |\n\n**→ [Roadmap](ROADMAP.md) — riding the rail to `v3.9.0 LTS`**\n\n</div>\n\n<br/>\n\n## 🧩 Available\n\n[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)\n![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)\n[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)\n![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)\n![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)\n\n<table>\n  <tr>\n    <td align=\"right\"><b>🚀 Start</b></td>\n    <td align=\"center\"><a href=\"#-quick-start\">🚀 Quick Start</a></td>\n    <td align=\"center\"><a href=\"#-more-install-methods--docker-source-pnpm-arch\">📦 Install</a></td>\n    <td align=\"center\"><a href=\"#-works-the-second-you-install-it--no-keys-no-config\">🆓 Zero-config</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>💡 Learn</b></td>\n    <td align=\"center\"><a href=\"#-the-promise\">💥 The Promise</a></td>\n    <td align=\"center\"><a href=\"#-why-omniroute\">🤔 Why OmniRoute</a></td>\n    <td align=\"center\"><a href=\"#-what-sets-omniroute-apart\">🏆 What Sets Apart</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>⚙️ Features</b></td>\n    <td align=\"center\"><a href=\"#-combos--the-flagship\">🎯 Combos</a></td>\n    <td align=\"center\"><a href=\"#-351-ai-providers--154-catalog-marked-free\">🌐 Providers</a></td>\n    <td align=\"center\"><a href=\"#-full-cli--a2a--mcp\">🔌 CLI &amp; MCP</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-save-1595-tokens--automatically\">🗜️ Compression</a></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-where-omniroute-runs--anywhere\">🖥️ Where It Runs</a></td>\n    <td align=\"center\"><a href=\"#-private--local-first\">🔒 Private</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>👀 See it</b></td>\n    <td align=\"center\"><a href=\"#-omniroute-in-action\">🎬 In Action</a></td>\n    <td align=\"center\"><a href=\"#-whats-new\">✨ What's New</a></td>\n    <td align=\"center\"><a href=\"#-compatible-clis--coding-agents\">🤖 Compatible CLIs</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>💚 Support</b></td>\n    <td align=\"center\"><a href=\"#-support-omniroute\">💚 Support / Donate</a></td>\n    <td align=\"center\"><a href=\"#-community--help\">💬 Community</a></td>\n    <td align=\"center\"><a href=\"#-sponsors\">💖 Sponsors</a></td>\n  </tr>\n  <tr>\n    <td align=\"right\"><b>📦 Project</b></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-tech-stack\">🛠️ Tech Stack</a></td>\n    <td align=\"center\"><a href=\"#-documentation\">📖 Docs</a></td>\n    <td align=\"center\"><a href=\"#-600-contributors\">👥 Contributors</a></td>\n  </tr>\n</table>\n\n</div>\n\n<div align=\"center\">\n  <b>🌐 In 43 languages</b>\n  <br/><br/>\n  <a href=\"README.md\"><img src=\"docs/assets/flags/us.svg\" width=\"30\" alt=\"English (en)\" title=\"English (en)\"></a>\n  <a href=\"docs/i18n/pt-BR/README.md\"><img src=\"docs/assets/flags/br.svg\" width=\"30\" alt=\"Português — Brasil (pt-BR)\" title=\"Português — Brasil (pt-BR)\"></a>\n  <a href=\"docs/i18n/pt/README.md\"><img src=\"docs/assets/flags/pt.svg\" width=\"30\" alt=\"Português (pt)\" title=\"Português (pt)\"></a>\n  <a href=\"docs/i18n/es/README.md\"><img src=\"docs/assets/flags/es.svg\" width=\"30\" alt=\"Español (es)\" title=\"Español (es)\"></a>\n  <a href=\"docs/i18n/fr/README.md\"><img src=\"docs/assets/flags/fr.svg\" width=\"30\" alt=\"Français (fr)\" title=\"Français (fr)\"></a>\n  <a href=\"docs/i18n/it/README.md\"><img src=\"docs/assets/flags/it.svg\" width=\"30\" alt=\"Italiano (it)\" title=\"Italiano (it)\"></a>\n  <a href=\"docs/i18n/de/README.md\"><img src=\"docs/assets/flags/de.svg\" width=\"30\" alt=\"Deutsch (de)\" title=\"Deutsch (de)\"></a>\n  <a href=\"docs/i18n/nl/README.md\"><img src=\"docs/assets/flags/nl.svg\" width=\"30\" alt=\"Nederlands (nl)\" title=\"Nederlands (nl)\"></a>\n  <a href=\"docs/i18n/ru/README.md\"><img src=\"docs/assets/flags/ru.svg\" width=\"30\" alt=\"Русский (ru)\" title=\"Русский (ru)\"></a>\n  <a href=\"docs/i18n/uk-UA/README.md\"><img src=\"docs/assets/flags/ua.svg\" width=\"30\" alt=\"Українська (uk-UA)\" title=\"Українська (uk-UA)\"></a>\n  <a href=\"docs/i18n/pl/README.md\"><img src=\"docs/assets/flags/pl.svg\" width=\"30\" alt=\"Polski (pl)\" title=\"Polski (pl)\"></a>\n  <a href=\"docs/i18n/cs/README.md\"><img src=\"docs/assets/flags/cz.svg\" width=\"30\" alt=\"Čeština (cs)\" title=\"Čeština (cs)\"></a>\n  <a href=\"docs/i18n/sk/README.md\"><img src=\"docs/assets/flags/sk.svg\" width=\"30\" alt=\"Slovenčina (sk)\" title=\"Slovenčina (sk)\"></a>\n  <a href=\"docs/i18n/ro/README.md\"><img src=\"docs/assets/flags/ro.svg\" width=\"30\" alt=\"Română (ro)\" title=\"Română (ro)\"></a>\n  <a href=\"docs/i18n/hu/README.md\"><img src=\"docs/assets/flags/hu.svg\" width=\"30\" alt=\"Magyar (hu)\" title=\"Magyar (hu)\"></a>\n  <a href=\"docs/i18n/bg/README.md\"><img src=\"docs/assets/flags/bg.svg\" width=\"30\" alt=\"Български (bg)\" title=\"Български (bg)\"></a>\n  <a href=\"docs/i18n/da/README.md\"><img src=\"docs/assets/flags/dk.svg\" width=\"30\" alt=\"Dansk (da)\" title=\"Dansk (da)\"></a>\n  <a href=\"docs/i18n/fi/README.md\"><img src=\"docs/assets/flags/fi.svg\" width=\"30\" alt=\"Suomi (fi)\" title=\"Suomi (fi)\"></a>\n  <a href=\"docs/i18n/no/README.md\"><img src=\"docs/assets/flags/no.svg\" width=\"30\" alt=\"Norsk (no)\" title=\"Norsk (no)\"></a>\n  <a href=\"docs/i18n/sv/README.md\"><img src=\"docs/assets/flags/se.svg\" width=\"30\" alt=\"Svenska (sv)\" title=\"Svenska (sv)\"></a>\n  <a href=\"docs/i18n/zh-CN/README.md\"><img src=\"docs/assets/flags/cn.svg\" width=\"30\" alt=\"中文 — 简体 (zh-CN)\" title=\"中文 — 简体 (zh-CN)\"></a>\n  <a href=\"docs/i18n/zh-TW/README.md\"><img src=\"docs/assets/flags/tw.svg\" width=\"30\" alt=\"中文 — 繁體 (zh-TW)\" title=\"中文 — 繁體 (zh-TW)\"></a>\n  <a href=\"docs/i18n/ja/README.md\"><img src=\"docs/assets/flags/jp.svg\" width=\"30\" alt=\"日本語 (ja)\" title=\"日本語 (ja)\"></a>\n  <a href=\"docs/i18n/ko/README.md\"><img src=\"docs/assets/flags/kr.svg\" width=\"30\" alt=\"한국어 (ko)\" title=\"한국어 (ko)\"></a>\n  <a href=\"docs/i18n/th/README.md\"><img src=\"docs/assets/flags/th.svg\" width=\"30\" alt=\"ไทย (th)\" title=\"ไทย (th)\"></a>\n  <a href=\"docs/i18n/vi/README.md\"><img src=\"docs/assets/flags/vn.svg\" width=\"30\" alt=\"Tiếng Việt (vi)\" title=\"Tiếng Việt (vi)\"></a>\n  <a href=\"docs/i18n/id/README.md\"><img src=\"docs/assets/flags/id.svg\" width=\"30\" alt=\"Bahasa Indonesia (id)\" title=\"Bahasa Indonesia (id)\"></a>\n  <a href=\"docs/i18n/ms/README.md\"><img src=\"docs/assets/flags/my.svg\" width=\"30\" alt=\"Bahasa Melayu (ms)\" title=\"Bahasa Melayu (ms)\"></a>\n  <a href=\"docs/i",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"omniroute\",\n  \"version\": \"3.8.51\",\n  \"description\": \"Unified AI router with 351 providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"omniroute\": \"bin/omniroute.mjs\",\n    \"omniroute-reset-password\": \"bin/reset-password.mjs\"\n  },\n  \"files\": [\n    \"bin/\",\n    \"dist/\",\n    \"@omniroute/\",\n    \"open-sse/\",\n    \"src/domain/\",\n    \"src/lib/\",\n    \"src/models/\",\n    \"src/mitm/\",\n    \"src/server/\",\n    \"src/shared/\",\n    \"src/sse/\",\n    \"src/types/\",\n    \".env.example\",\n    \"scripts/build/postinstall.mjs\",\n    \"scripts/build/fixTlsClientNodeBinary.mjs\",\n    \"scripts/build/fixPlaywrightAndroid.mjs\",\n    \"bin/cli/runtime/\",\n    \"scripts/postinstall.mjs\",\n    \"scripts/build/postinstallSupport.mjs\",\n    \"scripts/build/runtime-env.mjs\",\n    \"scripts/build/colocateOptionals.mjs\",\n    \"scripts/build/sync-env.mjs\",\n    \"scripts/dev/responses-ws-proxy.mjs\",\n    \"scripts/dev/tls-options.mjs\",\n    \"scripts/check/check-supported-node-runtime.ts\",\n    \"scripts/dev/sync-env.mjs\",\n    \"scripts/build/assembleStandalone.mjs\",\n    \"scripts/build/backendOnlyPages.mjs\",\n    \"scripts/build/build-tproxy-native.mjs\",\n    \"scripts/build/native-binary-compat.mjs\",\n    \"scripts/build/build-next-isolated.mjs\",\n    \"scripts/build/runtime-env.mjs\",\n    \"scripts/packs/optionalPackManifest.mjs\",\n    \"scripts/packs/optionalPackInstaller.mjs\",\n    \"README.md\",\n    \"LICENSE\",\n    \"!**/node_modules/**\",\n    \"THIRD_PARTY_NOTICES.md\",\n    \"!**/__tests__/**\",\n    \"!**/*.test.ts\",\n    \"!**/*.test.tsx\",\n    \"!**/*.test.js\",\n    \"!**/*.test.mjs\",\n    \"!**/*.spec.ts\",\n    \"!**/*.spec.tsx\",\n    \"!**/*.nft.json\"\n  ],\n  \"workspaces\": [\n    \"open-sse\",\n    \"packages/browser-pool\"\n  ],\n  \"engines\": {\n    \"node\": \">=22.22.2 <23 || >=24.0.0 <27\"\n  },\n  \"keywords\": [\n    \"ai\",\n    \"router\",\n    \"proxy\",\n    \"openai\",\n    \"claude\",\n    \"anthropic\",\n    \"gemini\",\n    \"fallback\",\n    \"cursor\",\n    \"cline\",\n    \"codex\",\n    \"llm\",\n    \"auto-fallback\"\n  ],\n  \"license\": \"MIT\",\n  \"author\": \"diegosouzapw\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/diegosouzapw/OmniRoute\"\n  },\n  \"homepage\": \"https://omniroute.online\",\n  \"scripts\": {\n    \"dev\": \"node --max-old-space-size=8192 scripts/dev/run-next.mjs dev\",\n    \"prebuild:docs\": \"node scripts/docs/gen-openapi-module.mjs\",\n    \"gen:provider-reference\": \"bun scripts/docs/gen-provider-reference.ts\",\n    \"bench:compression\": \"bun scripts/compression/benchmark.ts\",\n    \"bench:heap-body\": \"node --expose-gc --import tsx/esm scripts/perf/request-body-heap.ts\",\n    \"bench:routing-events\": \"node --import tsx/esm scripts/perf/routing-events-bench.ts\",\n    \"eval:compression\": \"node --import tsx scripts/compression-eval/index.ts\",\n    \"eval:router\": \"node --import tsx scripts/router-eval/index.ts\",\n    \"eval:router:compare\": \"node --import tsx scripts/router-eval/compare.ts\",\n    \"eval:router:patch-compare\": \"node --import tsx scripts/router-eval/patch-compare.ts\",\n    \"eval:router:search\": \"node --import tsx scripts/router-eval/search.ts\",\n    \"eval:router:trends\": \"node --import tsx scripts/router-eval/trends.ts\",\n    \"release:sync-changelog-i18n\": \"node scripts/release/sync-changelog-i18n.mjs\",\n    \"build\": \"node scripts/build/build-next-isolated.mjs\",\n    \"build:secure\": \"OMNIROUTE_BUILD_PROFILE=minimal node scripts/build/build-next-isolated.mjs\",\n    \"build:backend\": \"cross-env OMNIROUTE_BUILD_BACKEND_ONLY=1 node scripts/build/build-next-isolated.mjs\",\n    \"build:cli\": \"node --import tsx scripts/build/prepublish.ts\",\n    \"omniroute:verify\": \"node scripts/check/omniroute-verify.mjs\",\n    \"build:release\": \"rm -rf .build dist && OMNIROUTE_BUILD_SHA=$(git rev-parse --short HEAD) npm run build && npm run build:cli && node scripts/build/write-build-sha.mjs\",\n    \"build:native:tproxy\": \"cd src/mitm/tproxy/native && npx --yes node-gyp rebuild\",\n    \"start\": \"node scripts/dev/run-next.mjs start\",\n    \"homolog\": \"node scripts/homolog/run.mjs\",\n    \"lint\": \"eslint . --cache --cache-location .eslintcache --suppressions-location config/quality/eslint-suppressions.json\",\n    \"lint:json\": \"node scripts/quality/run-eslint-json.mjs\",\n    \"lint:md\": \"npx --yes markdownlint-cli2 \\\"docs/**/*.md\\\" \\\"*.md\\\" \\\"!docs/i18n\\\" \\\"!docs/research\\\"\",\n    \"lint:prose\": \"vale docs\",\n    \"electron:dev\": \"concurrently \\\"npm run dev\\\" \\\"wait-on http://localhost:20128 && cd electron && npm run dev\\\"\",\n    \"electron:build\": \"npm run build && cd electron && npm run build\",\n    \"electron:build:win\": \"npm run build && cd electron && npm run build:win\",\n    \"electron:build:mac\": \"npm run build && cd electron && npm run build:mac\",\n    \"electron:build:linux\": \"npm run build && cd electron && npm run build:linux\",\n    \"electron:smoke:packaged\": \"node scripts/dev/smoke-electron-packaged.mjs\",\n    \"test\": \"cross-env DISABLE_SQLITE_AUTO_BACKUP=true node --max-old-space-size=8192 --import tsx/esm --import ./open-sse/utils/setupPolyfill.ts --import ./tests/_s",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "llm"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "统一模型接口",
+      "免费额度聚合",
+      "自动降级"
+    ],
+    "brief_zh": {
+      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
+      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "tt-a1i",
+    "name": "archify",
+    "full_name": "tt-a1i/archify",
+    "url": "https://github.com/tt-a1i/archify",
+    "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+    "language": "JavaScript",
+    "total_stars": 27097,
+    "forks": 1716,
+    "stars_this_period": 4561,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "license": "MIT",
+      "open_issues": 61,
+      "created_at": "2026-04-15T05:27:37Z",
+      "pushed_at": "2026-08-28T18:45:36Z",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "default_branch": "main",
+      "forks": 1716,
+      "watchers": 108,
+      "archived": false,
+      "size_kb": 98373
+    },
+    "readme_content": "<p align=\"center\">\n  <strong>English</strong> · <a href=\"./README_ZH.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/31352?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-31352\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/31352\" alt=\"Archify on Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n![Archify product preview](docs/assets/archify-readme-hero.png)\n\n# Archify\n\n**Turn a codebase or system description into a polished, interactive system map — directly in chat.**\n\nArchify is a Node.js rendering and validation system for Cursor, Claude Code, Codex CLI, and OpenCode. Agents produce typed JSON IR; Archify deterministically compiles it into HTML/SVG.\n\n- **Open it and present** — five diagram types, four presets, dark/light themes, built-in brand marks, and finite motion\n- **Review architecture changes before merge** — compare two validated snapshots as Before / Delta / After, with exact added, removed, changed, moved, and rerouted facts\n- **Every interaction stays grounded** — search nodes, optionally open revision-verified source, trace upstream/downstream authored reach and exact routes, compare roles, and play guided stories without inventing topology\n- **One file, ready to trust and share** — typed JSON IR and deterministic checks produce self-contained HTML plus PNG, SVG, WebM, and 1200×630 share cards\n\n![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)\n![Agent Skill](https://img.shields.io/badge/Agent-Skill-7C3AED?style=flat-square)\n![Development Version](https://img.shields.io/badge/version-2.16.0--dev.0-0891b2?style=flat-square)\n\n**Current development version:** `v2.16.0-dev.0`. See [Changelog](CHANGELOG.md#unreleased).\n\n**[Project page](https://tt-a1i.github.io/archify/)** · **[Scenario guide](https://tt-a1i.github.io/archify/guide.html)** · **[Proof Lab](https://tt-a1i.github.io/archify/gallery.html)**\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nUsing Cursor? Open the [agent-aware quick start](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) for exact global and project commands.\n\nThen ask your agent: `Use archify to map this repository's runtime architecture.`\n\n## ❤️ Sponsors\n\n<table>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://apinebula.ai/ref/wywnaATT\"><img src=\"docs/assets/sponsors/apinebula-archify.jpg\" alt=\"APINEBULA\" width=\"200\" /></a><br/><strong><a href=\"https://apinebula.ai/ref/wywnaATT\">APINEBULA</a></strong></td><td>APINEBULA sponsors Archify with one API for Claude, GPT, Gemini, and more. <a href=\"https://apinebula.ai/ref/wywnaATT\">Register through Archify</a> and use <strong><code>Archify</code></strong> for <strong>10% off</strong>.</td></tr>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://github.com/EverMind-AI/Raven\"><img src=\"docs/assets/sponsors/evermind-archify-raven.png\" alt=\"Archify × Raven\" width=\"200\" /></a><br/><strong><a href=\"https://github.com/EverMind-AI\">EverMind</a> · <a href=\"https://github.com/EverMind-AI/Raven\">Raven</a></strong></td><td>EverMind sponsors Archify and builds memory infrastructure for agents. Its <a href=\"https://github.com/EverMind-AI/Raven\"><strong>Raven</strong></a> harness supports Archify as a Skill for verified, interactive system maps.</td></tr>\n</table>\n\n> Want to sponsor Archify? [Contact us by email.](mailto:2801884530@qq.com)\n\n## See Archify in action\n\nThese are generated Archify artifacts, not product mockups. Click a frame to open its live, shareable state.\n\n<p align=\"center\">\n  <a href=\"https://tt-a1i.github.io/archify/gallery.html\"><img src=\"docs/assets/archify-live-proof.gif\" alt=\"Three verified Archify artifacts moving through Signal Flow, Blueprint, and Classic presets\" width=\"960\"/></a>\n  <br/>\n  <sub><strong>Three real generated artifacts.</strong> Signal Flow · Blueprint · Classic · <a href=\"https://tt-a1i.github.io/archify/gallery.html\">open the interactive Proof Lab ↗</a></sub>\n</p>\n\n| Guided story | Route probe | Semantic lens |\n|---|---|---|\n| [![Agent workflow playing one authored chapter](docs/assets/archify-demo-story.png)](https://tt-a1i.github.io/archify/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1&play=1#view=happy-path) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://tt-a1i.github.io/archify/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://tt-a1i.github.io/archify/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |\n| Play one finite named chapter. | Inspect the shortest authored directed path. | Compare real traffic between semantic roles. |\n\nThe [Proof Lab](https://tt-a1i.github.io/archify/gallery.html) contains all 11 checked-in scenarios, their JSON sources, named views, and validation receipts.\n\n### A real repository, mapped from source\n\n[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)\n\nArchify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)** · [trace reach ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)\n\n## Preview\n\nSame diagram, two themes, one click to switch:\n\n| Dark | Light |\n|---|---|\n| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |\n\nThe Export menu copies PNG to the clipboard and downloads static or motion formats:\n\n![Export menu](docs/assets/archify-menu.png)\n\nUse **Copy Share Card** when you want a canonical 1200×630 image for a README, release, or social post.\n\nAfter tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.\n\n![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)\n\nAfter tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.\n\n![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)\n\nOpen [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.\n\n## Quick start\n\n### 1. Install\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nFor an explicit, non-interactive Cursor install:\n\n```bash\nnpx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes\n```\n\nTo try without installing:\n\n```bash\nnpx skills use tt-a1i/archify@archify --agent codex\n```\n\n[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@0.1.0`\n\nThe [agent switcher](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`. For Raven's manual ZIP install, extract [`archify.zip`](archify.zip) into `~/.raven/workspace/skills`; it yields `~/.raven/workspace/skills/archify`. Raven is not a switcher target.\n\n### 2. Ask for one bounded view\n\n```text\nAnalyze this repository, then use archify to create a high-level runtime architecture diagram.\nShow 8–12 core components, one primary path, external dependencies, and trust boundaries.\nPut supporting detail in cards instead of adding more edges.\n```\n\nFor a focused flow:\n\n```text\nUse archify to draw this login flow: Browser -> Web App -> API -> JWT validation ->\nRedis session lookup -> PostgreSQL fallback. Keep the cache-miss path secondary.\n```\n\n### 3. Refine in chat\n\nContinue with focused requests such as `add Redis`, `move auth to the left`, or `highlight the rollback path`. Archify keeps the typed source available for targeted iteration.\n\n## Choose the right diagram\n\n| Type | Best for | Include in your prompt |\n|---|---|---|\n| **Architecture** | Components, services, storage, boundaries | Scope, core components, primary path |\n| **Workflow** | CI/CD, approvals, tool calls, runbooks | Participants, order, branches, exceptions |\n| **Sequence** | API calls, cache fallback, auth, async traces | Callers, callees, returns, timing |\n| **Data Flow** | Pipelines, lineage, PII, consumers | Sources, transforms, stores, boundaries |\n| **Lifecycle** | States, retries, waits, terminal outcomes | States, events, retry and cancellation paths |\n\nFor a production deployment review, Architecture can optionally enable the\n`deployment-ownership` engineering profile. It fails closed when owners,\nsingle-region placement, private database scope, or named boundary crossings\nare missing. It is never enabled silently and validates authored facts—not live\ninfrastructure. See the [checked deployment proof](https://tt-a1i.github.io/archify/gallery.html#proof-deployment-ownership).\n\nFor design or PR review, Architecture Delta compares validated Before / Delta / After snapshots with a machine receipt. Select an exact authored change or play one finite Review—viewer-only, with no impact, risk, or merge-safety inference.\n\n`node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html --json`\n\n[![Architecture Delta showing added, removed, changed, and moved authored facts](docs/assets/architecture-delta-proof.jpg)](examples/checkout-platform-delta.html)\n\nNot sure which one fits? Use the [interactive scenario guide](https://tt-a1i.github.io/archify/guide.html), or ask the zero-dependency CLI:\n\n```bash\nnode archify/bin/archify.mjs guide \"Show an API request with Redis cache miss\"\nnode archify/bin/archify.mjs guide \"Map Kafka topics, consumer groups, replay, and DLQ\" --json\n```\n\nWorkflow keeps the happy path clear across lanes:\n\n![Workflow example](docs/assets/archify-workflow.png)\n\nSequence explains one interaction over time:\n\n![Sequence example](docs/assets/archify-sequence.png)\n\nData Flow makes movement and sensitivity boundaries explicit:\n\n![Data Flow example](docs/assets/archify-dataflow.png)\n\nLifecycle separates progress, waits, retries, and terminal outcomes:\n\n![Lifecycle example](docs/assets/archify-lifecycle.png)\n\nArchitecture examples: [`web-app`](examples/web-app.html) · [`Archify pipeline`](examples/archify-repo.html) · [`grid placement`](examples/archify-repo-grid.html) · [`desktop agent`](examples/maka-architecture.html)\n\n## Why Archify\n\n- **Layout judgment over generic auto-layout** — the agent chooses hierarchy, spacing, routes, and emphasis; shared automatic endpoints spread deterministically instead of piling arrows on one midpoint.\n- **Typed JSON IR** — every renderer-backed mode has a schema and reproducible source.\n- **Atomic validation before delivery** — schema, layout, HTML/SVG, route, and label-to-route clearance checks must all pass before a showcase artifact replaces the last known good output.\n- **Failures come with a repair receipt** — `validate --json` and `deliver --json` return stable rule codes, the exact subject, measured evidence, and only supported repair controls instead of a Node stack or an unstructured retry guess.\n- **Last-good live preview** — an optional desktop loop watches one JSON file, refreshes only after the latest candidate passes every gate, and keeps the previous verified diagram visible when a save is incomplete or invalid.\n- **Truthful interaction** — focus, upstream/downstream reach, exact routes, role comparison, and stories reuse authored nodes and relationships instead of inventing topology or claiming runtime i",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "runtime",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "架构制图",
+      "时序图",
+      "数据流图"
+    ],
+    "brief_zh": {
+      "summary": "一个把架构图、时序图、数据流和生命周期图封装为 Agent Skill 的可验证制图工具，输出自包含 HTML。",
+      "audience": "需要让 Agent 自动生成结构化系统图，并保留可核对输出结果的开发者与架构师",
+      "capabilities": "架构制图、时序图、数据流图、生命周期图、HTML 导出",
+      "risk": "图形表达是否可靠取决于输入约束和验证机制，复杂系统下仍需人工复核"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "freestylefly",
+    "name": "awesome-gpt-image-2",
+    "full_name": "freestylefly/awesome-gpt-image-2",
+    "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+    "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+    "language": "JavaScript",
+    "total_stars": 24203,
+    "forks": 2393,
+    "stars_this_period": 1687,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai-image-generation",
+        "chatgpt",
+        "dsh-plugin",
+        "gpt-image-2",
+        "image-prompts",
+        "prompt-as-code",
+        "prompt-engineering",
+        "skills",
+        "workflow-automation"
+      ],
+      "license": "MIT",
+      "open_issues": 17,
+      "created_at": "2026-04-25T09:19:13Z",
+      "pushed_at": "2026-08-28T10:25:04Z",
+      "homepage": "https://gpt-image2.canghe.ai",
+      "default_branch": "main",
+      "forks": 2393,
+      "watchers": 98,
+      "archived": false,
+      "size_kb": 199588
+    },
+    "readme_content": "<p align=\"center\"><img src=\"./data/images/banner.svg\" alt=\"GPT-Image2 Prompt System\" width=\"800\" /></p>\n\n<h3 align=\"center\">Prompt as Code | GPT-Image2 Industrial Prompt Engine & Template Library, 500+ Reverse-Engineered Cases, 20+ Industrial Templates</h3>\n\n<p align=\"center\">\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/stars/freestylefly/awesome-gpt-image-2?style=flat-square&color=rgb(25%2C%20121%2C%20255)\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/forks/freestylefly/awesome-gpt-image-2?style=flat-square&color=green\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/Cases-544-blueviolet?style=flat-square\" alt=\"Cases\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/100%25-Original_AI_Rewritten-green?style=flat-square\" alt=\"Original\"></a>\n  <a href=\"https://github.com/sponsors/freestylefly\"><img src=\"https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ff69b4?style=flat-square\" alt=\"Sponsor\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/28623?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-28623\">\n    <img src=\"https://trendshift.io/api/badge/repositories/28623\" alt=\"freestylefly/awesome-gpt-image-2 | Trendshift\" width=\"250\" height=\"55\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong> | <a href=\"./README.zh-CN.md\">简体中文</a> | <a href=\"./README.ja.md\">日本語</a>\n</p>\n\n## 🌐 Visual Website\n\nUse the live site at [gpt-image2.canghe.ai](https://gpt-image2.canghe.ai/) to browse the gallery as a product experience: open large previews, copy full prompts, filter by style or scenario, test generation after Google sign-in, and jump back to the source case on GitHub.\n\n<p align=\"center\">\n  <a href=\"https://gpt-image2.canghe.ai/\">\n    <img src=\"data/images/site-preview.png\" alt=\"GPT-Image2 Gallery website preview\" width=\"900\">\n  </a>\n</p>\n\n## Community 交流群\n\nJoin the GPT-Image2 discussion group to exchange prompts, workflows, and creative ideas with other users. Visit the [community page](https://gpt-image2.canghe.ai/community) to join.\n\nFollow the WeChat official account **苍何** or scan the QR code below to receive project updates, new cases, and practical tutorials.\n\n<p align=\"center\">\n  <img src=\"src/assets/canghe-official-account.png\" alt=\"苍何 WeChat official account QR code and search card\" width=\"760\">\n</p>\n\n## ❤️ Sponsors\n\n> [Want to appear here?](data/images/sponsors/wechat-personal.jpg) Support the project through GitHub Sponsors, or search 苍何 on WeChat and send your product name plus a short sponsorship note.\n\n| Sponsor | Description |\n| ------- | ----------- |\n| <a href=\"https://apimart.ai/register?aff=oQgzUQ\"><img src=\"data/images/sponsors/apimart.jpg\" alt=\"APIMart\" width=\"240\"></a> | Thanks to APIMart for sponsoring this project! APIMart is a low-cost API platform for AI image & video generation — GPT-Image-2 from `$0.006/image`, 160+ images per dollar. One async API covers both image and video: submit a task, get an ID, fetch results via polling or callback. Batch tens of thousands of images without timeouts, switch models without changing code. Pay-as-you-go with no monthly fee — [sign up here](https://apimart.ai/register?aff=oQgzUQ) to get started. |\n| <a href=\"https://www.hiapi.ai/zh/register?aff=DzuH\"><img src=\"data/images/sponsors/hiapi.jpg\" alt=\"hiapi\" width=\"240\"></a> | Thanks to hiapi for sponsoring this project! hiapi is an AI image & video generation API platform — GPT-Image-2 (text-to-image, image edit, 1K–4K) alongside video models like Seedance, Kling and Wan, all through one unified async API: submit a task, get a `task_id`, fetch results by polling or callback, batch without timeouts, switch models without code changes. Every result is stored on hiapi's own CDN with **persistent storage**, so your image/video URLs stay available long-term and can be fetched anytime — no rushing to download and back them up yourself. Native Remote MCP and Agent Skills plug straight into Claude Code & Cursor. Chinese UI & docs, WeChat Pay, pay-as-you-go with no monthly fee — new users get $1 free credit (~50 images). [Sign up here](https://www.hiapi.ai/en/register?aff=DzuH&utm_source=github&utm_medium=sponsor&utm_campaign=awesome-gpt-image-2). |\n| <a href=\"https://www.packyapi.ai/register?aff=CV0c\"><img src=\"data/images/sponsors/packycode.png\" alt=\"PackyCode\" width=\"240\"></a> | Thanks to PackyCode for sponsoring this project! PackyCode is a stable, high-performance API relay provider for Claude Code, Codex, Gemini, and more. Automatic failover, smart routing, and unlimited concurrency help turn AI coding into a reliable productivity tool. [Register here](https://www.packyapi.ai/register?aff=CV0c) to get started. |\n| <a href=\"https://pptoken.cc/\"><img src=\"data/images/sponsors/pptoken.png\" alt=\"PPToken\" width=\"240\"></a> | Project sponsor. PPToken provides API relay and key distribution for ChatGPT, Claude, Gemini, and other mainstream AI models, with low-latency access, high availability, pay-as-you-go billing, and flexible subscription plans. |\n\n<a name=\"section-vision\"></a>\n\n## ⚡️ Project Vision\n\nAfter GPT-Image2 became widely available, AI image generation moved from \"can it make an image?\" to \"can it make stable, controllable, reusable images?\" This project turns scattered community examples into Prompt-as-Code assets that are easier for agents and automation workflows to reuse.\n\nThe core goal is simple: compress prose-style prompts into structured protocols. When you need batch generation, template systems, or production workflows, this structure is more valuable than a pile of isolated examples.\n\n- 🧱 Atomic schema: split subjects, lighting, materials, layout, and visual details into composable parts\n- ⚙️ Workflow friendly: designed for agents, scripts, and automation systems\n- 🧬 Structured control: improve controllability for layout, copy, and information hierarchy\n\n## 📖 Quick Links\n\n- [Full case gallery](docs/gallery.md)\n- [Gallery Part 1: cases 1-165](docs/gallery-part-1.md)\n- [Gallery Part 2: cases 166-544](docs/gallery-part-2.md)\n- [Industrial prompt templates and pitfalls guide](docs/templates.md)\n- [Agent skill: GPT-Image2 Style Library](agents/skills/gpt-image-2-style-library/SKILL.md)\n- [MIT License](LICENSE)\n- [Full disclaimer](docs/disclaimer.md#section-disclaimer)\n\n## 🗂️ Category Overview\n\nStart with the case album to find a visual direction, then open the prompt template categories to turn that direction into reusable structure.\n\n### 🖼️ Case Album\n\n<table>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧩 UI & Interfaces</strong><br><sub>73 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-ui\"><img src=\"data/images/category-covers/ui.jpg\" alt=\"UI and interfaces\" width=\"220\"></a><br>\n      <sub>Apps, websites, dashboards, social screenshots, and product interfaces.</sub><br>\n      <a href=\"docs/gallery.md#cat-ui\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📊 Charts & Infographics</strong><br><sub>53 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-infographic\"><img src=\"data/images/category-covers/infographic.jpg\" alt=\"Charts and infographics\" width=\"220\"></a><br>\n      <sub>Infographics, knowledge maps, technical explainers, and structured diagrams.</sub><br>\n      <a href=\"docs/gallery.md#cat-infographic\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📰 Posters & Typography</strong><br><sub>90 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-poster\"><img src=\"data/images/category-covers/poster.jpg\" alt=\"Posters and typography\" width=\"220\"></a><br>\n      <sub>Event posters, covers, type-driven visuals, and strong layout compositions.</sub><br>\n      <a href=\"docs/gallery.md#cat-poster\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🛍️ Products & E-commerce</strong><br><sub>42 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-product\"><img src=\"data/images/category-covers/product.jpg\" alt=\"Products and e-commerce\" width=\"220\"></a><br>\n      <sub>Product shots, detail pages, packaging, selling points, and ads.</sub><br>\n      <a href=\"docs/gallery.md#cat-product\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏷️ Brand & Logos</strong><br><sub>27 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-brand\"><img src=\"data/images/category-covers/brand.jpg\" alt=\"Brand and logos\" width=\"220\"></a><br>\n      <sub>Logos, identity systems, brand touchpoints, and campaign visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-brand\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏛️ Architecture & Spaces</strong><br><sub>12 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-architecture\"><img src=\"data/images/category-covers/architecture.jpg\" alt=\"Architecture and spaces\" width=\"220\"></a><br>\n      <sub>Architecture renders, interiors, city maps, and spatial concepts.</sub><br>\n      <a href=\"docs/gallery.md#cat-architecture\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📷 Photography & Realism</strong><br><sub>78 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-photo\"><img src=\"data/images/category-covers/photo.jpg\" alt=\"Photography and realism\" width=\"220\"></a><br>\n      <sub>Portraits, phone photography, film texture, and commercial photography.</sub><br>\n      <a href=\"docs/gallery.md#cat-photo\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎨 Illustration & Art</strong><br><sub>59 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-illustration\"><img src=\"data/images/category-covers/illustration.jpg\" alt=\"Illustration and art\" width=\"220\"></a><br>\n      <sub>Illustration, art styles, material experiments, and decorative images.</sub><br>\n      <a href=\"docs/gallery.md#cat-illustration\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧍 Characters & People</strong><br><sub>31 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-character\"><img src=\"data/images/category-covers/character.jpg\" alt=\"Characters and people\" width=\"220\"></a><br>\n      <sub>Character design, pose references, cards, and 3D toys.</sub><br>\n      <a href=\"docs/gallery.md#cat-character\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎬 Scenes & Storytelling</strong><br><sub>21 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-scene\"><img src=\"data/images/category-covers/scene.jpg\" alt=\"Scenes and storytelling\" width=\"220\"></a><br>\n      <sub>Storyboards, narrative scenes, livestream frames, and worldbuilding.</sub><br>\n      <a href=\"docs/gallery.md#cat-scene\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏮 History & Classical Chinese Themes</strong><br><sub>16 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-history\"><img src=\"data/images/category-covers/history.jpg\" alt=\"History and classical Chinese themes\" width=\"220\"></a><br>\n      <sub>Classical scrolls, historical figures, traditional themes, and poetry visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-history\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📚 Documents & Publishing</strong><br><sub>11 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-document\"><img src=\"data/images/category-covers/document.jpg\" alt=\"Documents and publishing\" width=\"220\"></a><br>\n     ",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"awesome-gpt-image-2-site\",\n  \"private\": true,\n  \"version\": \"1.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"generate:site-data\": \"node scripts/generate-site-data.mjs\",\n    \"generate:style-skill\": \"node scripts/generate-style-skill.mjs\",\n    \"ga4:oauth\": \"node scripts/google-analytics-oauth.mjs\",\n    \"install:skill\": \"node scripts/install-style-skill.mjs\",\n    \"pack:skill\": \"npm pack ./agents/skills/gpt-image-2-style-library --dry-run\",\n    \"publish:skill:npm\": \"npm publish ./agents/skills/gpt-image-2-style-library --access public\",\n    \"predev\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"dev\": \"vite\",\n    \"dev:alipay-sandbox\": \"node scripts/alipay-webpay-sandbox-server.mjs\",\n    \"prebuild\": \"npm run generate:site-data && npm run generate:style-skill\",\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\",\n    \"test\": \"node --test api/_lib/*.test.js\"\n  },\n  \"dependencies\": {\n    \"@google-analytics/data\": \"^5.2.2\",\n    \"@supabase/supabase-js\": \"^2.105.4\",\n    \"@vitejs/plugin-react\": \"^5.1.1\",\n    \"alipay-sdk\": \"^4.14.0\",\n    \"google-auth-library\": \"^10.6.2\",\n    \"lucide-react\": \"^0.561.0\",\n    \"react\": \"^19.2.1\",\n    \"react-dom\": \"^19.2.1\",\n    \"stripe\": \"^22.1.1\",\n    \"vite\": \"^7.2.7\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "技能扩展",
+      "工作流",
+      "自动化"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "thedotmack",
+    "name": "claude-mem",
+    "full_name": "thedotmack/claude-mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "description": "Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+    "language": "JavaScript",
+    "total_stars": 92509,
+    "forks": 8129,
+    "stars_this_period": 474,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 262,
+      "created_at": "2025-08-31T20:50:03Z",
+      "pushed_at": "2026-08-26T22:04:47Z",
+      "homepage": "https://claude-mem.ai",
+      "default_branch": "main",
+      "forks": 8129,
+      "watchers": 291,
+      "archived": false,
+      "size_kb": 442329
+    },
+    "readme_content": "<h1 align=\"center\">\n  <br>\n  <a href=\"https://github.com/thedotmack/claude-mem\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/claude-mem-logo-for-dark-mode.webp\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/claude-mem-logo-for-light-mode.webp\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/claude-mem-logo-for-light-mode.webp\" alt=\"Claude-Mem\" width=\"400\">\n    </picture>\n  </a>\n  <br>\n  <a href=\"https://vercel.com/open-source-program\">\n    <img alt=\"Vercel OSS Program\" src=\"https://vercel.com/oss/program-badge-2026.svg\" />\n  </a>\n</h1>\n\n<p align=\"center\">\n  <a href=\"docs/i18n/README.zh.md\">🇨🇳 中文</a> •\n  <a href=\"docs/i18n/README.zh-tw.md\">🇹🇼 繁體中文</a> •\n  <a href=\"docs/i18n/README.ja.md\">🇯🇵 日本語</a> •\n  <a href=\"docs/i18n/README.pt.md\">🇵🇹 Português</a> •\n  <a href=\"docs/i18n/README.pt-br.md\">🇧🇷 Português</a> •\n  <a href=\"docs/i18n/README.ko.md\">🇰🇷 한국어</a> •\n  <a href=\"docs/i18n/README.es.md\">🇪🇸 Español</a> •\n  <a href=\"docs/i18n/README.de.md\">🇩🇪 Deutsch</a> •\n  <a href=\"docs/i18n/README.fr.md\">🇫🇷 Français</a> •\n  <a href=\"docs/i18n/README.he.md\">🇮🇱 עברית</a> •\n  <a href=\"docs/i18n/README.ar.md\">🇸🇦 العربية</a> •\n  <a href=\"docs/i18n/README.ru.md\">🇷🇺 Русский</a> •\n  <a href=\"docs/i18n/README.pl.md\">🇵🇱 Polski</a> •\n  <a href=\"docs/i18n/README.cs.md\">🇨🇿 Čeština</a> •\n  <a href=\"docs/i18n/README.nl.md\">🇳🇱 Nederlands</a> •\n  <a href=\"docs/i18n/README.tr.md\">🇹🇷 Türkçe</a> •\n  <a href=\"docs/i18n/README.uk.md\">🇺🇦 Українська</a> •\n  <a href=\"docs/i18n/README.vi.md\">🇻🇳 Tiếng Việt</a> •\n  <a href=\"docs/i18n/README.tl.md\">🇵🇭 Tagalog</a> •\n  <a href=\"docs/i18n/README.id.md\">🇮🇩 Indonesia</a> •\n  <a href=\"docs/i18n/README.th.md\">🇹🇭 ไทย</a> •\n  <a href=\"docs/i18n/README.hi.md\">🇮🇳 हिन्दी</a> •\n  <a href=\"docs/i18n/README.bn.md\">🇧🇩 বাংলা</a> •\n  <a href=\"docs/i18n/README.ur.md\">🇵🇰 اردو</a> •\n  <a href=\"docs/i18n/README.ro.md\">🇷🇴 Română</a> •\n  <a href=\"docs/i18n/README.sv.md\">🇸🇪 Svenska</a> •\n  <a href=\"docs/i18n/README.it.md\">🇮🇹 Italiano</a> •\n  <a href=\"docs/i18n/README.el.md\">🇬🇷 Ελληνικά</a> •\n  <a href=\"docs/i18n/README.hu.md\">🇭🇺 Magyar</a> •\n  <a href=\"docs/i18n/README.fi.md\">🇫🇮 Suomi</a> •\n  <a href=\"docs/i18n/README.da.md\">🇩🇰 Dansk</a> •\n  <a href=\"docs/i18n/README.no.md\">🇳🇴 Norsk</a>\n</p>\n\n<h4 align=\"center\">Persistent memory compression system built for <a href=\"https://claude.com/claude-code\" target=\"_blank\">Claude Code</a>.</h4>\n\n<p align=\"center\">\n  <a href=\"LICENSE\">\n    <img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/version-13.4.0-green.svg\" alt=\"Version\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg\" alt=\"Node\">\n  </a>\n  <a href=\"https://github.com/thedotmack/awesome-claude-code\">\n    <img src=\"https://awesome.re/mentioned-badge.svg\" alt=\"Mentioned in Awesome Claude Code\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15496\" target=\"_blank\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\" alt=\"thedotmack/claude-mem | Trendshift\" width=\"250\" height=\"55\"/>\n    </picture>\n  </a>\n</p>\n\n<br>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://github.com/thedotmack/claude-mem\">\n        <picture>\n          <img\n            src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/cm-preview.gif\"\n            alt=\"Claude-Mem Preview\"\n            width=\"500\"\n          >\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\">\n      <a href=\"https://www.star-history.com/#thedotmack/claude-mem&Date\">\n        <picture>\n          <source\n            media=\"(prefers-color-scheme: dark)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&theme=dark&legend=top-left\"\n          />\n          <source\n            media=\"(prefers-color-scheme: light)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n          />\n          <img\n            alt=\"Star History Chart\"\n            src=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n            width=\"500\"\n          />\n        </picture>\n      </a>\n    </td>\n  </tr>\n</table>\n\n<p align=\"center\">\n  <a href=\"#quick-start\">Quick Start</a> •\n  <a href=\"#how-it-works\">How It Works</a> •\n  <a href=\"#mcp-search-tools\">Search Tools</a> •\n  <a href=\"#documentation\">Documentation</a> •\n  <a href=\"#configuration\">Configuration</a> •\n  <a href=\"#troubleshooting\">Troubleshooting</a> •\n  <a href=\"#license\">License</a>\n</p>\n\n<p align=\"center\">\n  Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions. This enables Claude to maintain continuity of knowledge about projects even after sessions end or reconnect.\n</p>\n\n---\n\n## Quick Start\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nOr install for OpenCode:\n\n```bash\nnpx claude-mem install --ide opencode\n```\n\nOr install for Antigravity CLI ([setup guide](https://docs.claude-mem.ai/antigravity-cli/setup)):\n\n```bash\nnpx claude-mem install --ide antigravity\n```\n\nOr install from the plugin marketplace inside Claude Code:\n\n```bash\n/plugin marketplace add thedotmack/claude-mem\n\n/plugin install claude-mem\n```\n\nRestart Claude Code. Context from previous sessions will automatically appear in new sessions.\n\n> **Note:** Claude-Mem is also published on npm, but `npm install -g claude-mem` installs the **SDK/library only** — it does not register the plugin hooks or set up the worker service. Always install via `npx claude-mem install` or the `/plugin` commands above.\n\n### 🦞 OpenClaw Gateway\n\nInstall claude-mem as a persistent memory plugin on [OpenClaw](https://openclaw.ai) gateways with a single command:\n\n```bash\ncurl -fsSL https://install.cmem.ai/openclaw.sh | bash\n```\n\nThe installer handles dependencies, plugin setup, AI provider configuration, worker startup, and optional real-time observation feeds to Telegram, Discord, Slack, and more. See the [OpenClaw Integration Guide](https://docs.claude-mem.ai/openclaw-integration) for details.\n\n**Key Features:**\n\n- 🧠 **Persistent Memory** - Context survives across sessions\n- 📊 **Progressive Disclosure** - Layered memory retrieval with token cost visibility\n- 🔍 **Skill-Based Search** - Query your project history with mem-search skill\n- 🖥️ **Web Viewer UI** - Real-time memory stream at the worker URL printed on startup\n- 💻 **Claude Desktop Skill** - Search memory from Claude Desktop conversations\n- 🔒 **Privacy Control** - Use `<private>` tags to exclude sensitive content from storage\n- ⚙️ **Context Configuration** - Fine-grained control over what context gets injected\n- 🤖 **Automatic Operation** - No manual intervention required\n- 🔗 **Citations** - Reference past observations with IDs through the worker API or view all in the web viewer\n\n---\n\n## Documentation\n\n📚 **[View Full Documentation](https://docs.claude-mem.ai/)** - Browse on official website\n\n### Getting Started\n\n- **[Installation Guide](https://docs.claude-mem.ai/installation)** - Quick start & advanced installation\n- **[Usage Guide](https://docs.claude-mem.ai/usage/getting-started)** - How Claude-Mem works automatically\n- **[Search Tools](https://docs.claude-mem.ai/usage/search-tools)** - Query your project history with natural language\n- **[Cloud Sync](https://docs.claude-mem.ai/cloud-sync)** - Back up your memories to cmem.ai — no daemon, the worker syncs on write\n\n### Best Practices\n\n- **[Context Engineering](https://docs.claude-mem.ai/context-engineering)** - AI agent context optimization principles\n- **[Progressive Disclosure](https://docs.claude-mem.ai/progressive-disclosure)** - Philosophy behind Claude-Mem's context priming strategy\n\n### Architecture\n\n- **[Overview](https://docs.claude-mem.ai/architecture/overview)** - System components & data flow\n- **[Architecture Evolution](https://docs.claude-mem.ai/architecture-evolution)** - The journey from v3 to v5\n- **[Hooks Architecture](https://docs.claude-mem.ai/hooks-architecture)** - How Claude-Mem uses lifecycle hooks\n- **[Hooks Reference](https://docs.claude-mem.ai/architecture/hooks)** - 7 hook scripts explained\n- **[Worker Service](https://docs.claude-mem.ai/architecture/worker-service)** - HTTP API & Bun management\n- **[Database](https://docs.claude-mem.ai/architecture/database)** - SQLite schema & FTS5 search\n- **[Search Architecture](https://docs.claude-mem.ai/architecture/search-architecture)** - Hybrid search with Chroma vector database\n\n### Configuration & Development\n\n- **[Configuration](https://docs.claude-mem.ai/configuration)** - Environment variables & settings\n- **[Development](https://docs.claude-mem.ai/development)** - Building, testing, contributing\n- **[Release Branches](https://docs.claude-mem.ai/branches)** - Stable, core-dev, and community-edge branch flow\n- **[Troubleshooting](https://docs.claude-mem.ai/troubleshooting)** - Common issues & solutions\n\n---\n\n## How It Works\n\n**Core Components:**\n\n1. **5 Lifecycle Hooks** - SessionStart, UserPromptSubmit, PostToolUse, Stop, SessionEnd (6 hook scripts)\n2. **Smart Install** - Cached dependency checker (pre-hook script, not a lifecycle hook)\n3. **Worker Service** - Local HTTP API with web viewer UI and search endpoints, managed by Bun\n4. **SQLite Database** - Stores sessions, observations, summaries\n5. **mem-search Skill** - Natural language queries with progressive disclosure\n6. **Chroma Vector Database** - Hybrid semantic + keyword search for intelligent context retrieval\n\nSee [Architecture Overview](https://docs.claude-mem.ai/architecture/overview) for details.\n\n---\n\n## MCP Search Tools\n\nClaude-Mem provides intelligent memory search through **4 MCP tools** following a token-efficient **3-layer workflow pattern**:\n\n**The 3-Layer Workflow:**\n\n1. **`search`** - Get compact index with IDs (~50-100 tokens/result)\n2. **`timeline`** - Get chronological context around interesting results\n3. **`get_observations`** - Fetch full details ONLY for filtered IDs (~500-1,000 tokens/result)\n\n**How It Works:**\n- Claude uses MCP tools to search your memory\n- Start with `search` to get an index of results\n- Use `timeline` to see what was happening around specific observations\n- Use `get_observations` to fetch full details for relevant IDs\n- **~10x token savings** by filtering before fetching details\n\n**Available MCP Tools:**\n\n1. **`search`** - Search memory index with full-text queries, filters by type/date/project\n2. **`timeline`** - Get chronological context around a specific observation or query\n3. **`get_observations`** - Fetch full observation details by IDs (always batch multiple IDs)\n\n**Example Usage:**\n\n```typescript\n// Step 1: Search for index\nsearch(query=\"authentication bug\", type=\"bugfix\", limit=10)\n\n// Step 2: Review index, identify relevant IDs (e.g., #123, #456)\n\n// Step 3: Fetch full details\nget_observations(ids=[123, 456])\n```\n\nSee [Search Tools Guide](https://docs.claude-mem.ai/usage/search-tools) for detailed examples.\n\n---\n\n## Release Branches\n\nStable releases ship from `main` and are published to npm. `core-dev` and\n`community-edge` are source-run branches for early reliability fixes and\ncommunity integrations. See **[Release Branches](https://docs",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"claude-mem\",\n  \"version\": \"13.16.1\",\n  \"description\": \"Memory compression system for Claude Code - persist context across sessions\",\n  \"keywords\": [\n    \"claude\",\n    \"claude-code\",\n    \"claude-agent-sdk\",\n    \"mcp\",\n    \"plugin\",\n    \"memory\",\n    \"compression\",\n    \"knowledge-graph\",\n    \"transcript\",\n    \"typescript\",\n    \"nodejs\"\n  ],\n  \"author\": \"Alex Newman\",\n  \"license\": \"Apache-2.0\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/thedotmack/claude-mem.git\"\n  },\n  \"homepage\": \"https://github.com/thedotmack/claude-mem#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/thedotmack/claude-mem/issues\"\n  },\n  \"type\": \"module\",\n  \"bin\": {\n    \"claude-mem\": \"./dist/npx-cli/index.js\"\n  },\n  \"exports\": {\n    \"./modes/*\": \"./plugin/modes/*\"\n  },\n  \"files\": [\n    \"dist\",\n    \".agents/plugins/marketplace.json\",\n    \".codex-plugin\",\n    \"plugin/.claude-plugin\",\n    \"plugin/.codex-plugin\",\n    \"plugin/.mcp.json\",\n    \"plugin/package.json\",\n    \"plugin/bun.lock\",\n    \"plugin/hooks\",\n    \"plugin/modes\",\n    \"plugin/scripts/*.js\",\n    \"plugin/scripts/*.cjs\",\n    \"plugin/sqlite\",\n    \"plugin/skills\",\n    \"plugin/ui\",\n    \"openclaw\"\n  ],\n  \"engines\": {\n    \"node\": \">=20.12.0\",\n    \"bun\": \">=1.0.0\"\n  },\n  \"scripts\": {\n    \"dev\": \"npm run build-and-sync\",\n    \"build\": \"node scripts/sync-plugin-manifests.js && node scripts/build-hooks.js && node scripts/gen-plugin-lockfile.cjs\",\n    \"build-and-sync\": \"npm run build && npm run sync-marketplace && node scripts/restart-marketplace-worker.cjs\",\n    \"sync-marketplace\": \"node scripts/sync-marketplace.cjs\",\n    \"sync-marketplace:force\": \"node scripts/sync-marketplace.cjs --force\",\n    \"build:binaries\": \"node scripts/build-worker-binary.js\",\n    \"build:cli-binary\": \"bun build --compile --minify ./src/services/worker-service.ts --outfile plugin/scripts/claude-mem\",\n    \"worker:logs\": \"node scripts/worker-logs.cjs\",\n    \"worker:tail\": \"node scripts/worker-logs.cjs --follow\",\n    \"changelog:generate\": \"node scripts/generate-changelog.js\",\n    \"discord:notify\": \"node scripts/discord-release-notify.js\",\n    \"worker:start\": \"bun plugin/scripts/worker-service.cjs start\",\n    \"worker:stop\": \"bun plugin/scripts/worker-service.cjs stop\",\n    \"worker:restart\": \"bun plugin/scripts/worker-service.cjs restart\",\n    \"worker:status\": \"bun plugin/scripts/worker-service.cjs status\",\n    \"queue\": \"bun scripts/check-pending-queue.ts\",\n    \"queue:process\": \"bun scripts/check-pending-queue.ts --process\",\n    \"queue:clear:pending\": \"bun scripts/clear-pending-queue.ts --all --force\",\n    \"pr:status\": \"bun scripts/pr-babysit-status.ts\",\n    \"claude-md:regenerate\": \"bun scripts/regenerate-claude-md.ts\",\n    \"claude-md:dry-run\": \"bun scripts/regenerate-claude-md.ts --dry-run\",\n    \"strip-comments\": \"bun scripts/strip-comments.ts\",\n    \"strip-comments:check\": \"bun scripts/strip-comments.ts --check\",\n    \"strip-comments:dry-run\": \"bun scripts/strip-comments.ts --dry-run\",\n    \"translate-readme\": \"bun scripts/translate-readme/cli.ts -v -o docs/i18n README.md\",\n    \"translate:tier1\": \"npm run translate-readme -- zh zh-tw ja pt pt-br ko es de fr\",\n    \"translate:tier2\": \"npm run translate-readme -- he ar ru pl cs nl tr uk\",\n    \"translate:tier3\": \"npm run translate-readme -- vi tl id th hi bn ur ro sv\",\n    \"translate:tier4\": \"npm run translate-readme -- it el hu fi da no\",\n    \"translate:all\": \"npm run translate:tier1 & npm run translate:tier2 & npm run translate:tier3 & npm run translate:tier4 & wait\",\n    \"bug-report\": \"bun scripts/bug-report/cli.ts\",\n    \"cursor:install\": \"bun plugin/scripts/worker-service.cjs cursor install\",\n    \"cursor:uninstall\": \"bun plugin/scripts/worker-service.cjs cursor uninstall\",\n    \"cursor:status\": \"bun plugin/scripts/worker-service.cjs cursor status\",\n    \"cursor:setup\": \"bun plugin/scripts/worker-service.cjs cursor setup\",\n    \"lint:hook-io\": \"node scripts/check-hook-io-discipline.cjs\",\n    \"lint:spawn-env\": \"node scripts/check-spawn-env-discipline.cjs\",\n    \"typecheck\": \"tsc --noEmit && tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"typecheck:root\": \"tsc --noEmit\",\n    \"typecheck:viewer\": \"tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"test\": \"bun test tests\",\n    \"test:sqlite\": \"bun test tests/sqlite/\",\n    \"test:agents\": \"bun test tests/worker/agents/\",\n    \"test:search\": \"bun test tests/worker/search/\",\n    \"test:context\": \"bun test tests/context/\",\n    \"test:infra\": \"bun test tests/infrastructure/\",\n    \"test:server\": \"bun test tests/server/\",\n    \"e2e:server:docker\": \"bash scripts/e2e-server-docker.sh\",\n    \"e2e:sync-matrix\": \"bun scripts/sync-matrix-e2e.ts\",\n    \"check:postinstall-allowlist\": \"node scripts/check-postinstall-allowlist.js\",\n    \"smoke:clean-room\": \"node scripts/smoke-clean-room.cjs\",\n    \"prepublishOnly\": \"npm run build && node scripts/check-postinstall-allowlist.js\",\n    \"release\": \"np\",\n    \"release:patch\": \"np patch --no-cleanup\",\n    \"release:minor\": \"np minor --no-cleanup\",\n    \"release:major\": \"np major --n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "claude-plugins-official",
+    "full_name": "anthropics/claude-plugins-official",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+    "language": "Python",
+    "total_stars": 34997,
+    "forks": 3935,
+    "stars_this_period": 457,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1049,
+      "created_at": "2025-11-20T18:36:20Z",
+      "pushed_at": "2026-08-28T18:40:54Z",
+      "homepage": "https://code.claude.com/docs/en/plugins",
+      "default_branch": "main",
+      "forks": 3935,
+      "watchers": 220,
+      "archived": false,
+      "size_kb": 10261
+    },
+    "readme_content": "# Claude Code Plugins Directory\n\nA curated directory of high-quality plugins for Claude Code.\n\n> **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.\n\n## Structure\n\n- **`/plugins`** - Internal plugins developed and maintained by Anthropic\n- **`/external_plugins`** - Third-party plugins from partners and the community\n\n## Installation\n\nPlugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`\n\n## Contributing\n\n### Internal Plugins\n\nInternal plugins are developed by Anthropic team members. See `/plugins/example-plugin` for a reference implementation.\n\n### External Plugins\n\nThird-party partners can submit plugins for inclusion in the marketplace. External plugins must meet quality and security standards for approval. To submit a new plugin, use the [plugin directory submission form](https://clau.de/plugin-directory-submission).\n\n## Plugin Structure\n\nEach plugin follows a standard structure:\n\n```\nplugin-name/\n├── .claude-plugin/\n│   └── plugin.json      # Plugin metadata (required)\n├── .mcp.json            # MCP server configuration (optional)\n├── commands/            # Slash commands (optional)\n├── agents/              # Agent definitions (optional)\n├── skills/              # Skill definitions (optional)\n└── README.md            # Documentation\n```\n\n## Plugin names are immutable\n\nThe `name` field in a marketplace entry is an **immutable slug**. Once a plugin has been published, its `name` must not change — users have it installed under that slug, and renaming it breaks their install with a `plugin-not-found` error.\n\n- To change how a plugin is labeled in the UI, set or update `displayName` instead.\n- If a rename is genuinely unavoidable, add an entry to the top-level `renames` map in `.claude-plugin/marketplace.json` so existing installs auto-migrate:\n\n```json\n\"renames\": {\n  \"old-name\": \"new-name\"\n}\n```\n\nThe Claude Code plugin loader reads this map and transparently rewrites the old slug to the new one on the user's next sync.\n\n## Skill-bundle plugins\n\nWhen a plugin's source repository ships skills (`SKILL.md` files) without a `.claude-plugin/plugin.json` manifest, the marketplace entry can declare the skills directly using `strict: false` and an explicit `skills` array.\n\n```json\n{\n  \"name\": \"example-bundle\",\n  \"description\": \"Brief description of the bundled skills.\",\n  \"author\": { \"name\": \"Author Name\" },\n  \"category\": \"development\",\n  \"source\": {\n    \"source\": \"git-subdir\",\n    \"url\": \"https://github.com/example-org/sdk.git\",\n    \"path\": \"packages/agent-skills\",\n    \"ref\": \"main\",\n    \"sha\": \"<commit sha>\"\n  },\n  \"strict\": false,\n  \"skills\": [\n    \"./skill-a\",\n    \"./skill-b\",\n    \"./skill-c\"\n  ],\n  \"homepage\": \"https://github.com/example-org/sdk\"\n}\n```\n\nEach path in `skills` is relative to `source.path` and points at a directory containing a `SKILL.md`. Paths can reach deeper than a single level — for example, `[\"./libA/skill-1\", \"./libB/skill-2\"]` exposes a curated subset across multiple library subdirectories. Each skill is registered as `<plugin-name>:<skill-name>` in Claude Code.\n\nFor the underlying schema, see [Strict mode](https://code.claude.com/docs/en/plugin-marketplaces) in the marketplace documentation.\n\n## License\n\nPlease see each linked plugin for the relevant LICENSE file.\n\n## Documentation\n\nFor more information on developing Claude Code plugins, see the [official documentation](https://code.claude.com/docs/en/plugins).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "官方插件目录",
+      "Claude Code 生态",
+      "插件发现"
+    ],
+    "brief_zh": {
+      "summary": "Anthropic 官方维护的 Claude Code 插件目录，用来集中分发和管理高质量插件条目。",
+      "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
+      "capabilities": "官方插件目录、Claude Code 生态、插件发现、插件分发",
+      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "tinyhumansai",
+    "name": "openhuman",
+    "full_name": "tinyhumansai/openhuman",
+    "url": "https://github.com/tinyhumansai/openhuman",
+    "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+    "language": "Rust",
+    "total_stars": 38711,
+    "forks": 3799,
+    "stars_this_period": 206,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "GPL-3.0",
+      "open_issues": 324,
+      "created_at": "2026-02-18T20:01:27Z",
+      "pushed_at": "2026-08-27T22:59:17Z",
+      "homepage": "https://tinyhumans.ai/openhuman",
+      "default_branch": "main",
+      "forks": 3799,
+      "watchers": 197,
+      "archived": false,
+      "size_kb": 176455
+    },
+    "readme_content": "<h1 align=\"center\">OpenHuman</h1>\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/demo.png\" alt=\"The Tet\" />\n</p>\n\n<p align=\"center\" style=\"display: inline-block\">\n\t<a href=\"https://trendshift.io/repositories/23680\" target=\"_blank\" style=\"display: inline-block\">\n\t\t<img src=\"https://trendshift.io/api/badge/repositories/23680\" alt=\"tinyhumansai%2Fopenhuman | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n\t</a>\n\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823\">\n\t\t</a>\n\t\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565\">\n\t\t</a>\n</p>\n<p align=\"center\" style=\"display: inline-block\">\n <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756\">\n  </a>\n  <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n   <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756\">\n   </a>\n </p>\n\n<p align=\"center\">\n <strong>OpenHuman is your personal AI super intelligence: a brain that remembers everything, a fantastic orchestrator, a deep researcher. Local-first, simple, powerful.</strong>\n</p>\n\n<p align=\"center\">\n <a href=\"https://github.com/tinyhumansai/openhuman/discussions\">Discussions</a> •\n <a href=\"https://discord.tinyhumans.ai/\">Discord</a> •\n <a href=\"https://www.reddit.com/r/tinyhumansai/\">Reddit</a> •\n <a href=\"https://x.com/intent/follow?screen_name=tinyhumansai\">X/Twitter</a> •\n <a href=\"https://tinyhumans.gitbook.io/openhuman/\">Docs</a> •\n <a href=\"https://x.com/intent/follow?screen_name=senamakel\">Follow @senamakel (Creator)</a>\n</p>\n\n<p align=\"center\">\n  🇺🇸 <a href=\"./README.md\">English</a> | 🇨🇳 <a href=\"./docs/README.zh-CN.md\">简体中文</a> | 🇯🇵 <a href=\"./docs/README.ja-JP.md\">日本語</a> | 🇰🇷 <a href=\"./docs/README.ko.md\">한국어</a> | 🇩🇪 <a href=\"./docs/README.de.md\">Deutsch</a> | 🇵🇰 <a href=\"./docs/README.ur-pk.md\">اردو</a>\n</p>\n\n<p align=\"center\">\n <img src=\"https://img.shields.io/badge/status-early%20beta-orange\" alt=\"Early Beta\" />\n <a href=\"https://github.com/tinyhumansai/openhuman/releases/latest\"><img src=\"https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest\" alt=\"Latest Release\" /></a>\n <a href=\"https://github.com/tinyhumansai/openhuman/stargazers\"><img src=\"https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat\" alt=\"GitHub Stars\" /></a>\n <a href=\"./LICENSE\"><img src=\"https://img.shields.io/github/license/tinyhumansai/openhuman\" alt=\"License\" /></a>\n</p>\n\n> **Early Beta**: Under active development. Expect rough edges.\n\n> OpenHuman is not AGI. But it is a meaningful architectural step closer, with better memory, better orchestration, and better tooling.\n\n> 🎉 Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.\n\n# Install\n\nDownload installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.\n\nFor terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.\n\n# What is OpenHuman?\n\nOpenHuman is three things most assistants aren't: **a brain** that builds a persistent, local memory of your world; **a fantastic orchestrator** that runs fleets of agents on durable graphs; and **a deep researcher** that sweeps your data and the web before you finish asking. Every bullet links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).\n\n### 🧠 The brain\n\n- **[Memory Tree](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) + [Obsidian Wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki)**: your data compressed into scored Markdown trees in SQLite on your machine, mirrored as an [Obsidian vault](https://x.com/karpathy/status/2039805659525644595) you can open and edit. No vector-soup black box.\n- **[100+ OAuth integrations, 5,000+ MCP servers, 90,000+ Skills](https://tinyhumans.gitbook.io/openhuman/features/integrations)**: one click into Gmail, Notion, GitHub, Slack and the rest of your stack. [Auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/auto-fetch) feeds the brain every 20 minutes, so it has tomorrow's context this morning.\n- **[Goals & Todos](https://tinyhumans.gitbook.io/openhuman/features/goals-and-todos)**: long-term goals, durable per-thread goals, and a shared kanban board per conversation.\n- **[TokenJuice](https://tinyhumans.gitbook.io/openhuman/features/token-compression)**: tool output compressed before it hits the model: same information, up to 80% fewer tokens. A brain this big would be unaffordable without it.\n\n### 🕸️ The orchestrator\n\n- **[Workflows](https://tinyhumans.gitbook.io/openhuman/features/workflows)**: the agent proposes the automation; you review it on a canvas and save. Durable, trigger-driven, approval-gated runs on open-source [tinyflows](https://github.com/tinyhumansai/tinyflows).\n- **[A harness that finishes the job](https://tinyhumans.gitbook.io/openhuman/developing/architecture/agent-harness)**: checkpointed graph runs on open-source [tinyagents](https://github.com/tinyhumansai/tinyagents). Stuck agents get steered, halted ones return a root cause, and every run replays with real per-call costs.\n- **[A split brain, always on](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**: a fast reflex agent triages inbound traffic while a deep reasoning core delegates to worker fleets, steered by the subconscious.\n- **[An agent economy](https://tinyhumans.gitbook.io/openhuman/features/tinyplace)**: a `@handle` on [tiny.place](https://tiny.place), Signal-encrypted agent-to-agent orchestration, x402 USDC bounties and trading. Keys never touch disk.\n\n### 🔬 The deep researcher & doer\n\n- **Batteries included**: managed [web search](https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search), powered by [Exa](https://exa.ai), is included with your OpenHuman subscription and needs no API key; bring your own Exa key to search directly on your own Exa account and billing. Plus scraper, coder toolset, a real [browser](https://tinyhumans.gitbook.io/openhuman/features/native-tools/browser-and-computer), and [native voice](gitbooks/features/native-tools/voice.md) with in-process Whisper. [Model routing](https://tinyhumans.gitbook.io/openhuman/features/model-routing) picks the right LLM per workload on one subscription. That subscription is a default, not a lock-in: point any workload at [your own provider key or a fully local Ollama model](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-and-byok-models), and mix the three however you like.\n- **[Image & video generation](https://tinyhumans.gitbook.io/openhuman/features/native-tools)**: Seedream/SeedEdit images and Seedance/Veo video, straight into your workspace on the same subscription.\n- **[17 messaging channels](https://tinyhumans.gitbook.io/openhuman/features/channels)**: Telegram, Discord, Slack, WhatsApp, Signal, iMessage… plus **native email** (IMAP IDLE + SMTP). Your agent reaches you where you already are.\n\n### 🧍 Human, private, yours\n\n- **Simple, UI-first & Human**: install to working agent in a few clicks, with no config files and no terminal. And it has [a face](https://tinyhumans.gitbook.io/openhuman/features/mascot): a mascot that speaks, reacts, and remembers you.\n- **[Privacy & security](https://tinyhumans.gitbook.io/openhuman/features/privacy-and-security)**: on-device encrypted data, approval gate, OS-keyring secrets, and opt-in sandboxing. There is also **[Privacy Mode](https://tinyhumans.gitbook.io/openhuman/features/privacy-mode)**: flip one switch and no inference leaves your machine, enforced in the Rust core.\n- **[Themes & Theme Studio](https://tinyhumans.gitbook.io/openhuman/features/theming)**: five theme families plus a full visual editor, exportable as JSON.\n\n## Context in minutes, not weeks\n\nOpenHuman is the first agent harness that gets to know you in minutes. Inspired by [Karpathy's LLM Knowledgebase](https://x.com/karpathy/status/2039805659525644595). Most agents start cold. Hermes learns by watching you work; OpenClaw waits for plugins to ferry context in. Either way, you spend days or weeks before the agent knows enough about your stack to be genuinely useful.\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/memory.png\" alt=\"OpenHuman context-building diagram\">\n</p>\n\n> OpenHuman summarizes and compresses all your documents, emails & chats; and creates a memory graph that lets your agent remember everything about you.\n\nOpenHuman skips the wait. Connect your accounts, let [auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/integrations/auto-fetch) pull data locally on a 20-minute loop, and then have [Memory Trees](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) compress everything into Markdown files stored intelligently in a [Karpathy-style Obsidian wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki).\n\nIn just one sync pass, the agent has full (compressed) context of your inbox, your calendar, your repos, your docs, your messages. No training period. No \"give it a few weeks.\". It becomes you, controlled by you.\n\nAlready self-host [agentmemory](https://github.com/rohitg00/agentmemory) across other coding agents? OpenHuman ships an optional `Memory` backend that proxies to it. Set `memory.backend = \"agentmemory\"` in `config.toml` and the same durable store powers OpenHuman alongside Claude Code, Cursor, Codex, and OpenCode. See the [agentmemory backend](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/agentmemory-backend) page for setup.\n\n## An orchestrator, not a chatbot\n\nMost agent harnesses run one agent in one loop. OpenHuman is an **[orchestrator](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**:\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/orchestration.png\" alt=\"OpenHuman orchestration diagram\">\n</p>\n\n> Agent-to-agent messaging runs over Signal-protocol end-to-end encryption, so you can connect anything (Claude Code, Codex, OpenClaw, Hermes) and use OpenHuman to orchestrate all of your agents and tools.\n\n- **Graphs, not loops**: turns run as checkpointed graphs on [tinyagents](https://github.com/tinyhumansai/tinyagents). They pause for a human, survive a restart, and resume mid-run.\n- **Sub-agent fleets**: specialist",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"openhuman\"\nversion = \"0.63.18\"\nedition = \"2021\"\ndescription = \"OpenHuman core business logic and RPC server\"\n# The crate ships a verbatim GPLv3 `LICENSE` file but carried no `license` key,\n# which left the grant ambiguous to every tool that reads metadata rather than\n# the file (cargo-deny, crates.io, SBOM generators). Declared explicitly as\n# `only` — not `or-later` — to match `medulla-public` and the `GPL-3.0-only`\n# first-party crates in the closure (`tinyagents`).\nlicense = \"GPL-3.0-only\"\nautobins = false\n# build.rs globs tests/raw_coverage/*.rs into the single `raw_coverage_all`\n# integration target (see tests/raw_coverage_all.rs). Those files used to be ~76\n# individual `tests/*.rs` targets, each statically relinking the whole crate —\n# collapsing them into one target removes ~75 full-crate link steps per test run.\nbuild = \"build.rs\"\n\n# `cargo machete` reports a dependency as unused when no `use` names it. These\n# two have no `use` and are still load-bearing, so they are suppressed here\n# rather than deleted — an unsuppressed false positive is how a real finding\n# gets ignored next time.\n#\n# `tinymemory` (the facade) and `tinymemory-tinycortex` (the TinyCortex\n# adapter) exist for DRIVER ADMISSION: the memory subsystem resolves its\n# engine through `tinymemory`'s driver registry, and the adapter is what makes\n# TinyCortex admissible as that engine. Both must stay linked so a second host\n# embedding the `flows` kernel profile can still bind a memory engine — see\n# the 2026-08-10 entry in `scripts/kernel-floor.limits`, which ratchets them in\n# deliberately. Dropping either would compile clean and fail at runtime.\n#\n# `tinymemory-api` and `tinymemory-core` are NOT listed: they are named\n# directly by `src/openhuman/memory/`, so machete is already satisfied.\n[package.metadata.cargo-machete]\nignored = [\"tinymemory\", \"tinymemory-tinycortex\"]\n\n[[bin]]\nname = \"openhuman-core\"\npath = \"src/main.rs\"\n\n[[bin]]\nname = \"test-mcp-stub\"\npath = \"src/bin/test_mcp_stub.rs\"\n\n[[bin]]\nname = \"openhuman-fleet\"\npath = \"src/bin/fleet.rs\"\n# The fleet supervisor embeds the axum control-plane server, so it only builds\n# with the HTTP transport compiled in (#5048). Under `--no-default-features`\n# (no `http-server`) this target is skipped rather than failing to link.\nrequired-features = [\"http-server\", \"bin-tools\"]\n\n# Embedded-RSS benchmark harness (#5046). Gated behind the default-OFF\n# `rss-bench` feature so no benchmark code enters the shipped build. Build with\n# `cargo build --release --features rss-bench --bin rss-bench`.\n[[bin]]\nname = \"rss-bench\"\npath = \"src/bin/rss_bench.rs\"\nrequired-features = [\"rss-bench\"]\n\n# Stateful library profiling workloads (memory ingestion + real sub-agent\n# delegation under a hermetic mock provider). Local/dev only.\n[[bin]]\nname = \"library-profile\"\npath = \"src/bin/library_profile/main.rs\"\nrequired-features = [\"rss-bench\"]\n\n# ── Integration tests that need a PRODUCT gate ──────────────────────────────\n#\n# `[features] default` is the contributor set and no longer turns on `voice`,\n# `web3`, `crash-reporting` or `inference`. These four `tests/` targets name\n# symbols that only exist behind those gates, so without a `required-features`\n# line a bare `cargo test` fails to COMPILE — not skip, fail — and the failure\n# is in a file the contributor did not touch.\n#\n# `required-features` makes cargo skip the target instead, which is the honest\n# outcome: the test exercises a domain that build does not contain. The CI\n# product lanes pass `--features \"$(scripts/ci/product-features.sh)\"`, so every\n# one of these still runs there, against the code that ships.\n#\n# Autodiscovery stays on for the other ~59 `tests/*.rs` targets; declaring a\n# target explicitly only opts THAT file out of it.\n#\n# This replaces the per-symbol `#[cfg]` cleanup tracked in #5021 for these four\n# files. #5021 is still the right fix for symbols named in the middle of an\n# otherwise gate-free target — required-features is the blunt instrument, and\n# it costs the whole target when the gate is off.\n[[test]]\nname = \"observability_smoke\"\npath = \"tests/observability_smoke.rs\"\n# The `is_*_event` Sentry filters are all `#[cfg(feature = \"crash-reporting\")]`.\nrequired-features = [\"crash-reporting\"]\n\n[[test]]\nname = \"memory_artifacts_e2e\"\npath = \"tests/memory_artifacts_e2e.rs\"\n# Opens the wiki ledger with `tinycortex::git2::Repository::open` and asserts on\n# `content::wiki_git` artifacts — both of which exist only behind this gate.\nrequired-features = [\"memory-git\"]\n\n[[test]]\nname = \"x402_twit_sh_live\"\npath = \"tests/x402_twit_sh_live.rs\"\n# `x402::tools::X402RequestTool` — the x402 domain is part of the web3 family.\nrequired-features = [\"web3\"]\n\n[[test]]\nname = \"json_rpc_e2e\"\npath = \"tests/json_rpc_e2e.rs\"\n# `voice::reply_speech::{test_seam, TEST_SEAM_ENV}` — the reply-speech seam\n# only exists in the real voice module, not the stub.\nrequired-features = [\"voice\"]\n\n[[test]]\nname = \"raw_coverage_all\"\npath = \"tests/raw_coverage_all.rs\"",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "本地优先",
+      "Agent 编排"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+      "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+      "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+      "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "OpenCut-app",
+    "name": "OpenCut",
+    "full_name": "OpenCut-app/OpenCut",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "description": "The open-source CapCut alternative",
+    "language": "TypeScript",
+    "total_stars": 87759,
+    "forks": 8659,
+    "stars_this_period": 594,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "open_issues": 372,
+      "created_at": "2025-06-22T08:02:17Z",
+      "pushed_at": "2026-08-10T16:38:36Z",
+      "homepage": "https://opencut.app",
+      "default_branch": "main",
+      "forks": 8659,
+      "watchers": 394,
+      "archived": false,
+      "size_kb": 28268
+    },
+    "readme_content": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n**Linux, macOS, WSL:**\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\n**Windows (PowerShell):**\n\n```powershell\nirm https://moonrepo.dev/install/proto.ps1 | iex\n```\n\nIf shims fail to run, allow local scripts for your user:\n\n```powershell\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "视频编辑",
+      "开源创作工具",
+      "桌面工作流"
+    ],
+    "brief_zh": {
+      "summary": "一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。",
+      "capabilities": "视频编辑、开源创作工具、桌面工作流、内容生产"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "koala73",
+    "name": "worldmonitor",
+    "full_name": "koala73/worldmonitor",
+    "url": "https://github.com/koala73/worldmonitor",
+    "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+    "language": "TypeScript",
+    "total_stars": 84677,
+    "forks": 12712,
+    "stars_this_period": 165,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai",
+        "dashboard",
+        "geopolitics",
+        "mcp",
+        "mcp-server",
+        "monitoring",
+        "news",
+        "opensource",
+        "osint",
+        "palantir",
+        "situation"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 334,
+      "created_at": "2026-01-08T17:26:06Z",
+      "pushed_at": "2026-08-28T19:40:48Z",
+      "homepage": "https://worldmonitor.app",
+      "default_branch": "main",
+      "forks": 12712,
+      "watchers": 492,
+      "archived": false,
+      "size_kb": 195113
+    },
+    "readme_content": "# World Monitor\n\n[简体中文](README.zh-CN.md) | [日本語](README.ja-JP.md)\n\n**Real-time global intelligence dashboard** — AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface.\n\n[![GitHub stars](https://img.shields.io/github/stars/koala73/worldmonitor?style=social)](https://github.com/koala73/worldmonitor/stargazers)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/re63kWKxaz)\n[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)\n[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)\n[![Last commit](https://img.shields.io/github/last-commit/koala73/worldmonitor)](https://github.com/koala73/worldmonitor/commits/main)\n[![Latest release](https://img.shields.io/github/v/release/koala73/worldmonitor?style=flat)](https://github.com/koala73/worldmonitor/releases/latest)\n[![npm: worldmonitor](https://img.shields.io/npm/v/worldmonitor?logo=npm&label=npm)](https://www.npmjs.com/package/worldmonitor)\n[![smithery badge](https://smithery.ai/badge/worldmonitor/wm-mcp)](https://smithery.ai/servers/worldmonitor/wm-mcp)\n[![skills.sh](https://skills.sh/b/koala73/worldmonitor)](https://skills.sh/koala73/worldmonitor)\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Web_App-worldmonitor.app-blue?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Web App\"></a>&nbsp;\n  <a href=\"https://tech.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Tech_Variant-tech.worldmonitor.app-0891b2?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Tech Variant\"></a>&nbsp;\n  <a href=\"https://finance.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Finance_Variant-finance.worldmonitor.app-059669?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Finance Variant\"></a>&nbsp;\n  <a href=\"https://commodity.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Commodity_Variant-commodity.worldmonitor.app-b45309?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Commodity Variant\"></a>&nbsp;\n  <a href=\"https://happy.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Happy_Variant-happy.worldmonitor.app-f59e0b?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Happy Variant\"></a>&nbsp;\n  <a href=\"https://energy.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Energy_Variant-energy.worldmonitor.app-eab308?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Energy Variant\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/worldmonitor\"><img src=\"https://img.shields.io/npm/v/worldmonitor?style=for-the-badge&logo=npm&logoColor=white&label=npm%20i%20worldmonitor&color=CB3837\" alt=\"npm i worldmonitor\"></a>&nbsp;\n  <a href=\"https://www.npmjs.com/package/worldmonitor\"><img src=\"https://img.shields.io/badge/CLI-npx%20worldmonitor-CB3837?style=for-the-badge&logo=npm&logoColor=white\" alt=\"npx worldmonitor\"></a>&nbsp;\n  <a href=\"https://pypi.org/project/worldmonitor-sdk/\"><img src=\"https://img.shields.io/pypi/v/worldmonitor-sdk?style=for-the-badge&logo=pypi&logoColor=white&label=pip%20install%20worldmonitor-sdk&color=3775A9\" alt=\"pip install worldmonitor-sdk\"></a>&nbsp;\n  <a href=\"https://rubygems.org/gems/worldmonitor\"><img src=\"https://img.shields.io/gem/v/worldmonitor?style=for-the-badge&logo=rubygems&logoColor=white&label=gem%20install%20worldmonitor&color=E9573F\" alt=\"gem install worldmonitor\"></a>&nbsp;\n  <a href=\"https://pkg.go.dev/github.com/koala73/worldmonitor/sdk/go\"><img src=\"https://img.shields.io/badge/go%20get-sdk%2Fgo-00ADD8?style=for-the-badge&logo=go&logoColor=white\" alt=\"go get github.com/koala73/worldmonitor/sdk/go\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app/api/download?platform=windows-exe\"><img src=\"https://img.shields.io/badge/Download-Windows_(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white\" alt=\"Download Windows\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=macos-arm64\"><img src=\"https://img.shields.io/badge/Download-macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white\" alt=\"Download macOS ARM\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=macos-x64\"><img src=\"https://img.shields.io/badge/Download-macOS_Intel-555555?style=for-the-badge&logo=apple&logoColor=white\" alt=\"Download macOS Intel\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=linux-appimage\"><img src=\"https://img.shields.io/badge/Download-Linux_(.AppImage)-FCC624?style=for-the-badge&logo=linux&logoColor=black\" alt=\"Download Linux\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app/docs/documentation\"><strong>Documentation</strong></a> &nbsp;·&nbsp;\n  <a href=\"https://github.com/koala73/worldmonitor/releases/latest\"><strong>Releases</strong></a> &nbsp;·&nbsp;\n  <a href=\"https://www.worldmonitor.app/docs/contributing\"><strong>Contributing</strong></a>\n</p>\n\n![World Monitor Dashboard](docs/images/worldmonitor-7-mar-2026.jpg)\n\n---\n\n## What It Does\n\n- **Curated news feeds** across global and regional categories, AI-synthesized into briefs\n- **Dual map engine** — 3D globe (globe.gl) and WebGL flat map (deck.gl) with a shared map-layer catalog\n- **Panel inventory** — concrete panel implementations across specialized variants\n- **Cross-stream correlation** — military, economic, disaster, and escalation signal convergence\n- **Country Instability Index (CII)** — server-authoritative CII v8 stress scoring for the Tier-1 registry\n- **Finance radar** — stock exchanges, commodities, crypto, and a market composite\n- **Local AI** — run everything with Ollama, no API keys required\n- **Site variants** from a single codebase (world, tech, finance, commodity, happy, energy)\n- **Native desktop app** (Tauri 2) for macOS, Windows, and Linux\n- **Multilingual UI** with native-language feeds and RTL support\n\nFor the full feature list, architecture, data sources, and algorithms, see the **[documentation](https://www.worldmonitor.app/docs/documentation)**.\n\n---\n\n## Support Status\n\nAll site variants and desktop binaries are built from a single codebase and ship from the same release process. The table below clarifies maintenance status so you know which surfaces are safe to depend on.\n\n| Surface | Status | Notes |\n|---------|--------|-------|\n| `worldmonitor.app`, `tech.`, `finance.`, `commodity.`, `happy.`, `energy.` | Stable | Public deployments built from this repo, actively maintained |\n| Desktop binaries (Windows / macOS Apple Silicon / macOS Intel / Linux AppImage) | Stable | One Tauri binary for every variant — install World Monitor and switch to tech, finance, commodity, energy, or happy in-app. There is deliberately no per-variant download |\n\nIssues filed against any of the above are triaged from the same backlog — see the [issues board](https://github.com/koala73/worldmonitor/issues) for currently-open work.\n\n---\n\n## Quick Start\n\n```bash\ngit clone https://github.com/koala73/worldmonitor.git\ncd worldmonitor\nnpm install\nnpm run dev\n```\n\nOpen [localhost:3000](http://localhost:3000) (override the port with `DEV_PORT` in `.env.local`). The app runs with no environment variables.\n\nFeature-specific data sources may require credentials. See `.env.example` for the full list.\n\nFor variant-specific development:\n\n```bash\nnpm run dev:tech       # tech.worldmonitor.app\nnpm run dev:finance    # finance.worldmonitor.app\nnpm run dev:commodity  # commodity.worldmonitor.app\nnpm run dev:happy      # happy.worldmonitor.app\nnpm run dev:energy     # energy.worldmonitor.app\n```\n\nSee the **[self-hosting guide](https://www.worldmonitor.app/docs/getting-started)** for deployment options (Vercel, Docker, static).\n\n---\n\n## Tech Stack\n\n| Category | Technologies |\n|----------|-------------|\n| **Frontend** | Vanilla TypeScript, Vite, globe.gl + Three.js, deck.gl + MapLibre GL |\n| **Desktop** | Tauri 2 (Rust) with Node.js sidecar |\n| **AI/ML** | Ollama / Groq / OpenRouter, Transformers.js (browser-side) |\n| **API Contracts** | Protocol Buffers and sebuf HTTP annotations |\n| **Deployment** | Vercel Edge Functions, Railway relay, Tauri, PWA |\n| **Caching** | Redis (Upstash), 3-tier cache, CDN, service worker |\n\nFull stack details in the **[architecture docs](https://www.worldmonitor.app/docs/architecture)**.\n\n---\n\n## Programmatic Access\n\nWorld Monitor is built for agents and scripts as well as browsers:\n\n- **MCP server** — `https://worldmonitor.app/mcp` (Streamable HTTP). Public `tools/list`; `tools/call` authenticates with a `X-WorldMonitor-Key` header or OAuth.\n  The server also publishes its Agent Skills through the draft `io.modelcontextprotocol/skills` extension (`skills/list`, `skills/get`, and `skill://…` resource reads).\n- **REST API** — base `https://api.worldmonitor.app`, described by the [OpenAPI spec](https://worldmonitor.app/openapi.yaml).\n- **CLI** — the official [`worldmonitor`](https://www.npmjs.com/package/worldmonitor) npm package (source in [`cli/`](cli/)):\n\n  ```sh\n  npx worldmonitor tools          # run ad-hoc — list every MCP tool (no key needed)\n  npm install -g worldmonitor     # or install the `worldmonitor` (alias `wm`) command\n  worldmonitor risk IR --api-key wm_xxx\n  ```\n\n- **SDKs** — official zero-dependency client libraries mirroring the CLI: Python [`worldmonitor-sdk`](https://pypi.org/project/worldmonitor-sdk/) (source in [`sdk/python/`](sdk/python/)), Ruby [`worldmonitor`](https://rubygems.org/gems/worldmonitor) ([`sdk/ruby/`](sdk/ruby/)), Go [`github.com/koala73/worldmonitor/sdk/go`](https://pkg.go.dev/github.com/koala73/worldmonitor/sdk/go) ([`sdk/go/`](sdk/go/)). Guide: [worldmonitor.app/docs/sdks](https://www.worldmonitor.app/docs/sdks).\n\nAgent discovery files: [`llms.txt`](https://worldmonitor.app/llms.txt) · [agent-skills manifest](https://worldmonitor.app/.well-known/agent-skills/index.json) · [api-catalog](https://worldmonitor.app/.well-known/api-catalog). Get an API key at [worldmonitor.app/pro](https://www.worldmonitor.app/pro).\n\n---\n\n## Flight Data\n\nFlight data provided graciously by [Wingbits](https://wingbits.com?utm_source=worldmonitor&utm_medium=referral&utm_campaign=worldmonitor), the most advanced ADS-B flight data solution.\n\n---\n\n## Data Sources\n\nWorldMonitor aggregates attributed upstream sources across geopolitics, finance, energy, climate, aviation, cyber, military, infrastructure, and news intelligence. Curated feeds and freshness-tracked source groups are published in the full [data sources catalog](https://www.worldmonitor.app/docs/data-sources), with provider, feed-tier, license-posture, and collection-method details.\n\n---\n\n## Contributing\n\nContributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.\n\n```bash\nnpm run typecheck        # Type checking\nnpm run build:full       # Production build\n```\n\n---\n\n## License\n\n**AGPL-3.0-only** for the source code. Commercial use is permitted under the AGPL when you comply with its copyleft and source-availability terms.\n\n| Use Case | Allowed? |\n|----------|----------|\n| Personal / research / educational | Yes, under AGPL-3.0-only |\n| Self-hosted instance | Yes, under AGPL-3.0-only |\n| Fork and modify | Yes, share source under AGPL-3.0-only when required |\n| Commercial use / SaaS | Yes, under AGPL-3.0-only when you comply with AGPL obligations |\n| Private-source proprietary use or official branding rights | Separate commercial or trademark permission needed |\n\nSee [LICENSE](LICENSE) for the full code license and [docs/license.mdx](docs/license.mdx) for a plain-language summary. Commercial licensing is available as an alternative option for teams that need non-AGPL terms.\n\nCopyright (C) 2024-2026 Elie Habib. All rights reserved.\n\n---\n\n## Author\n\n**Elie Habib** — [GitHub](https://github.com/ko",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"world-monitor\",\n  \"private\": true,\n  \"version\": \"2.10.0\",\n  \"license\": \"AGPL-3.0-only\",\n  \"allowScripts\": {\n    \"@bufbuild/buf\": true,\n    \"@vaadin/vaadin-usage-statistics\": false,\n    \"browser-tabs-lock\": false,\n    \"bufferutil\": false,\n    \"core-js\": false,\n    \"es5-ext\": false,\n    \"esbuild\": true,\n    \"fsevents\": false,\n    \"protobufjs\": false,\n    \"sharp\": true,\n    \"utf-8-validate\": false\n  },\n  \"type\": \"module\",\n  \"scripts\": {\n    \"lint\": \"biome lint ./src ./server ./api ./tests ./e2e ./scripts ./middleware.ts && npm run lint:safe-html\",\n    \"lint:fix\": \"biome check ./src ./server ./api ./tests ./e2e ./scripts ./middleware.ts --fix\",\n    \"lint:boundaries\": \"node scripts/lint-boundaries.mjs\",\n    \"lint:api-contract\": \"node scripts/enforce-sebuf-api-contract.mjs\",\n    \"lint:safe-html\": \"node scripts/enforce-safe-html.mjs\",\n    \"lint:panel-content-writes\": \"node scripts/enforce-panel-content-writes.mjs\",\n    \"lint:rate-limit-policies\": \"tsx scripts/enforce-rate-limit-policies.mjs\",\n    \"lint:premium-fetch\": \"tsx scripts/enforce-premium-fetch.mjs\",\n    \"lint:mintlify-slugs\": \"node scripts/enforce-mintlify-reserved-slugs.mjs\",\n    \"lint:public-docs\": \"node scripts/check-public-doc-plan-references.mjs\",\n    \"lint:unicode\": \"node scripts/check-unicode-safety.mjs\",\n    \"lint:unicode:staged\": \"node scripts/check-unicode-safety.mjs --staged\",\n    \"security:local-env-dumps\": \"node scripts/check-local-secret-dumps.mjs\",\n    \"security:vite-env-secrets\": \"node scripts/check-vite-env-secrets.mjs\",\n    \"agent:preflight\": \"node scripts/agent-preflight.mjs\",\n    \"agent:pr-snapshot\": \"node scripts/agent-pr-snapshot.mjs\",\n    \"worktree:bootstrap\": \"node scripts/bootstrap-worktree.mjs\",\n    \"worktree:bootstrap:test-only\": \"node scripts/bootstrap-worktree.mjs --ignore-scripts\",\n    \"worktree:env\": \"node scripts/bootstrap-worktree.mjs --skip-install\",\n    \"lint:md\": \"markdownlint-cli2 '**/*.md' '!**/node_modules/**' '!.agent/**' '!.agents/**' '!.claude/**' '!.factory/**' '!.windsurf/**' '!skills/**' '!docs/internal/**' '!docs/Docs_To_Review/**' '!docs/archive/**' '!todos/**' '!docs/plans/**' '!docs/brainstorms/**' '!docs/ideation/**'\",\n    \"version:sync\": \"node scripts/sync-desktop-version.mjs\",\n    \"version:check\": \"node scripts/sync-desktop-version.mjs --check\",\n    \"check:prereqs\": \"node scripts/check-build-prereqs.mjs\",\n    \"check:prereqs:desktop\": \"node scripts/check-build-prereqs.mjs --scope desktop\",\n    \"check:prereqs:desktop:bundle\": \"node scripts/check-build-prereqs.mjs --scope desktop --bundle\",\n    \"desktop:check-env\": \"node scripts/check-desktop-build-env.mjs\",\n    \"desktop:check-rust-floors\": \"node scripts/check-rust-security-floors.mjs\",\n    \"sync:locales\": \"node scripts/sync-locale-keys.mjs\",\n    \"sync:locales:check\": \"node scripts/sync-locale-keys.mjs --check\",\n    \"locales:zh-tw\": \"python3 scripts/convert-zh-tw.py\",\n    \"locales:zh-tw:check\": \"python3 scripts/convert-zh-tw.py --check\",\n    \"sync:bootstrap-tier-keys\": \"node scripts/sync-bootstrap-tier-keys.mjs\",\n    \"sync:bootstrap-tier-keys:check\": \"node scripts/sync-bootstrap-tier-keys.mjs --check\",\n    \"bundle:budgets\": \"node scripts/bundle-budgets.mjs\",\n    \"bundle:check\": \"node scripts/bundle-budgets.mjs --check\",\n    \"bundle:budgets:pro\": \"node scripts/bundle-budgets.mjs --surface pro\",\n    \"bundle:check:pro\": \"node scripts/bundle-budgets.mjs --check --surface pro\",\n    \"bundle:budgets:embed\": \"node scripts/bundle-budgets.mjs --surface embed\",\n    \"bundle:check:embed\": \"node scripts/bundle-budgets.mjs --check --surface embed\",\n    \"sandbox:fixtures\": \"node scripts/generate-sandbox-fixtures.mjs\",\n    \"sandbox:fixtures:check\": \"node scripts/generate-sandbox-fixtures.mjs --check\",\n    \"product:facts\": \"node --import tsx scripts/generate-product-config.mjs && node --import tsx scripts/generate-public-product-facts.mjs && npm run inventory:facts\",\n    \"product:facts:check\": \"node --import tsx scripts/generate-public-product-facts.mjs --check && npm run inventory:facts:check\",\n    \"inventory:facts\": \"node scripts/generate-inventory-facts.mjs\",\n    \"inventory:facts:check\": \"node scripts/generate-inventory-facts.mjs --check\",\n    \"docs:stats\": \"npm run inventory:facts\",\n    \"docs:check\": \"node scripts/docs-stats.mjs --check\",\n    \"study:story-phase-fading\": \"node scripts/study-story-phase-fading.mjs\",\n    \"study:story-phase-fading:check\": \"node scripts/study-story-phase-fading.mjs --check\",\n    \"sources:generate\": \"node scripts/source-attribution.mjs --write\",\n    \"sources:check\": \"node scripts/source-attribution.mjs --check\",\n    \"dev\": \"vite\",\n    \"dev:tech\": \"cross-env VITE_VARIANT=tech vite\",\n    \"dev:finance\": \"cross-env VITE_VARIANT=finance vite\",\n    \"dev:happy\": \"cross-env VITE_VARIANT=happy vite\",\n    \"dev:commodity\": \"cross-env VITE_VARIANT=commodity vite\",\n    \"dev:energy\": \"cross-env VITE_VARIANT=energy vite\",\n    \"postinstall\": \"npm run inventory:facts && cross-env npm_config_allow_scripts= npm --prefix blog-site ci --prefer-offline",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "新闻聚合",
+      "地缘事件监控",
+      "基础设施追踪"
+    ],
+    "brief_zh": {
+      "summary": "一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。",
+      "audience": "研究国际事件、风险情报或全球运营状态的分析人员",
+      "capabilities": "新闻聚合、地缘事件监控、基础设施追踪、统一态势界面",
+      "risk": "判断质量高度依赖数据源覆盖、更新速度和事件去重能力"
+    },
+    "summary_source": "project_brief"
+  }
+]

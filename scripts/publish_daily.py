@@ -79,6 +79,7 @@ CAPABILITY_TRANSLATIONS = {
     "open-source-social-media-scheduling-tool": "开源社媒排程",
     "protocol": "开放协议",
     "rag": "RAG 检索",
+    "graphrag": "图谱检索",
     "runtime": "运行时",
     "sandbox": "安全约束",
     "search": "搜索",
@@ -86,6 +87,7 @@ CAPABILITY_TRANSLATIONS = {
     "security": "安全能力",
     "skill": "技能扩展",
     "skills": "技能扩展",
+    "aria2": "下载加速",
     "unified llm api": "统一模型接口",
     "voice": "语音能力",
     "workflow": "工作流",
@@ -249,6 +251,16 @@ def load_report_stats(period: str) -> dict:
     }
 
 
+def slice_health(data: list[dict]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for item in data:
+        slices = item.get("source_slices") or [item.get("source_slice") or "unknown"]
+        for slice_name in slices:
+            key = str(slice_name or "unknown")
+            counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 def upsert_report_entry(period: str, stats: dict) -> list[dict]:
     reports_path = ROOT / "reports.json"
     if reports_path.exists():
@@ -282,12 +294,131 @@ def upsert_report_entry(period: str, stats: dict) -> list[dict]:
     return reports
 
 
+def render_fallback_daily_report(period: str) -> str:
+    stats = load_report_stats(period)
+    top10 = stats["top10"]
+    data = stats["data"]
+    health = slice_health(data)
+    top_signal = top10[0]["full_name"] if top10 else "暂无信号"
+    project_rows = []
+    for rank, repo in enumerate(top10, start=1):
+        brief = repo.get("brief_zh") or {}
+        summary = choose_chinese_summary(brief.get("summary"), repo.get("description"))
+        tags = "".join(
+            f'<li>{escape(tag)}</li>'
+            for tag in (repo.get("capability_tags") or [])
+        )
+        source_label = " / ".join(repo.get("source_slices") or [repo.get("source_slice") or "unknown"])
+        project_rows.append(
+            f"""<article class="project-row">
+          <div class="project-rank mono">{rank:02d}</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="{escape(repo.get("url", "#"))}" target="_blank" rel="noopener noreferrer">{escape(repo.get("full_name", "未命名项目"))}</a></h3>
+              <a class="project-source mono" href="{escape(repo.get("url", "#"))}" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>{escape(summary)}</p>
+            <ul class="project-tags">{tags}</ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>{escape(repo.get("language") or "Unknown")}</dd></div>
+            <div><dt>周期增长</dt><dd>+{int(repo.get("stars_this_period") or 0)}</dd></div>
+            <div><dt>总星标</dt><dd>{int(repo.get("total_stars") or 0)}</dd></div>
+            <div><dt>切片</dt><dd>{escape(source_label)}</dd></div>
+          </dl>
+        </article>"""
+        )
+
+    health_rows = "".join(
+        f"<li><strong>{escape(name)}</strong><span class=\"mono\">{count}</span></li>"
+        for name, count in sorted(health.items())
+    )
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub 热榜情报日报 · {escape(period)} · ReelOS</title>
+  <meta name="description" content="GitHub 热榜情报日报 {escape(period)}，一眼看懂项目做什么。">
+  <style>
+    {shell_css()}
+    .report-shell{{max-width:980px;margin:0 auto;padding:32px 20px 88px}}
+    .hero{{padding:34px 0 22px;border-bottom:1px solid var(--line)}}
+    .hero h1{{margin:14px 0 12px;font-size:clamp(34px,6vw,58px);line-height:1.08}}
+    .hero h1 span{{color:var(--amber)}}
+    .hero p{{margin:0;color:var(--muted)}}
+    .hero-meta{{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}}
+    .hero-meta span{{padding:8px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}}
+    .section{{padding-top:28px}}
+    .section h2{{margin:0 0 14px;font-size:22px}}
+    .health-list,.project-tags{{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}}
+    .health-list li,.project-tags li{{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}}
+    .project-list{{display:grid;gap:16px}}
+    .project-row{{display:grid;grid-template-columns:56px minmax(0,1fr) 210px;gap:16px;padding:18px;border:1px solid var(--line);background:var(--surface);overflow:hidden}}
+    .project-rank{{font-size:24px;color:var(--amber)}}
+    .project-head{{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}}
+    .project-head h3{{margin:0;font-size:20px;line-height:1.25}}
+    .project-head p{{margin:0}}
+    .project-source{{flex:0 0 auto;color:var(--blue)}}
+    .project-main p{{margin:10px 0 12px;color:var(--soft)}}
+    .project-meta{{display:grid;grid-template-columns:1fr;gap:10px;margin:0}}
+    .project-meta div{{padding:10px 12px;border:1px solid var(--line);background:var(--surface-2)}}
+    .project-meta dt{{margin:0 0 4px;color:var(--muted);font-size:11px}}
+    .project-meta dd{{margin:0;font-size:14px}}
+    .note{{padding:16px 18px;border-left:3px solid var(--amber);background:var(--surface-3);color:var(--soft)}}
+    @media (max-width:800px){{
+      .project-row{{grid-template-columns:1fr}}
+      .project-head{{flex-direction:column}}
+      .project-rank{{font-size:20px}}
+    }}
+  </style>
+</head>
+<body>
+  <main class="report-shell">
+    <header class="topbar">
+      <div class="brand">{render_reelos_brand("/", "GitHub 热榜情报")}</div>
+      <nav class="nav" aria-label="站点导航">{nav_links("daily")}</nav>
+    </header>
+    <section class="hero">
+      <span class="mono">ReelOS · GitHub Signal</span>
+      <h1>GitHub <span>日报</span> 情报</h1>
+      <p>减少噪音，一眼看懂项目做什么。当前页为基于本地已验证 Top 10 与原始抓取数据补生成的历史日报页。</p>
+      <div class="hero-meta">
+        <span class="mono">日期 {escape(period)}</span>
+        <span class="mono">Top 10 {stats["top_count"]}</span>
+        <span class="mono">候选仓库 {stats["candidate_count"]}</span>
+        <span class="mono">README 覆盖 {stats["readme_coverage"]}</span>
+        <span class="mono">主信号 {escape(top_signal)}</span>
+      </div>
+    </section>
+    <section class="section">
+      <h2>当日抓取健康度</h2>
+      <ul class="health-list">{health_rows}</ul>
+    </section>
+    <section class="section">
+      <h2>Top 10 项目</h2>
+      <div class="project-list">{"".join(project_rows)}</div>
+    </section>
+    <section class="section">
+      <h2>说明</h2>
+      <p class="note">该页用于补齐缺失历史日报 HTML。项目说明优先取人工中文摘要，其次回退仓库原始 description；不补造 README、依赖或排行数据。</p>
+    </section>
+    {render_site_footer()}
+  </main>
+</body>
+</html>
+"""
+
+
 def sync_daily_report_dir(period: str) -> None:
     src = ROOT / f"github-trending-daily-{period.replace('-', '')}.html"
     dst = ROOT / "daily" / period / "index.html"
     dst.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(src, dst)
-    dst.write_text(restyle_report_html(dst.read_text(encoding="utf-8")), encoding="utf-8")
+    if src.exists():
+        shutil.copyfile(src, dst)
+        dst.write_text(restyle_report_html(dst.read_text(encoding="utf-8")), encoding="utf-8")
+        return
+    dst.write_text(render_fallback_daily_report(period), encoding="utf-8")
 
 
 def latest_report(reports: list[dict], report_type: str) -> dict | None:

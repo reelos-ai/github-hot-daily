@@ -74,7 +74,16 @@
       "risk_signal": 10,
       "total": 99
     },
-    "strategic_score": 99
+    "strategic_score": 99,
+    "capability_tags": [
+      "技能扩展",
+      "大模型应用",
+      "模型推理"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tinyhumansai",
@@ -132,7 +141,19 @@
       "risk_signal": 10,
       "total": 99
     },
-    "strategic_score": 99
+    "strategic_score": 99,
+    "capability_tags": [
+      "长期记忆",
+      "本地优先",
+      "Agent 编排"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+      "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+      "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+      "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rohitg00",
@@ -212,7 +233,17 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "chaitanyagiri",
@@ -275,7 +306,13 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "大模型应用",
+      "Claude Code 生态"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "can1357",
@@ -350,7 +387,16 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "MCP 集成",
+      "工作区",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "thedotmack",
@@ -430,7 +476,16 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "PostHog",
@@ -505,7 +560,16 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一套面向产品团队的开源数据平台，把分析、回放、实验、错误追踪和 AI 可观测性集中到一起。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Tencent",
@@ -589,7 +653,16 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tt-a1i",
@@ -665,7 +738,19 @@
       "risk_signal": 8,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "架构制图",
+      "时序图",
+      "数据流图"
+    ],
+    "brief_zh": {
+      "summary": "一个把架构图、时序图、数据流和生命周期图封装为 Agent Skill 的可验证制图工具，输出自包含 HTML。",
+      "audience": "需要让 Agent 自动生成结构化系统图，并保留可核对输出结果的开发者与架构师",
+      "capabilities": "架构制图、时序图、数据流图、生命周期图、HTML 导出",
+      "risk": "图形表达是否可靠取决于输入约束和验证机制，复杂系统下仍需人工复核"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "freestylefly",
@@ -734,6 +819,12 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "技能扩展",
+      "工作流",
+      "自动化"
+    ],
+    "summary_source": "original_description"
   }
 ]

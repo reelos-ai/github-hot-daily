@@ -76,12 +76,14 @@ KEYWORD_LABELS = {
     "open-source-social-media-scheduling-tool": "开源社媒排程",
     "protocol": "开放协议",
     "rag": "RAG 检索",
+    "graphrag": "图谱检索",
     "runtime": "运行时",
     "sandbox": "沙箱",
     "search": "搜索",
     "self-hosted": "自托管",
     "skill": "技能扩展",
     "skills": "技能扩展",
+    "aria2": "下载加速",
     "unified llm api": "统一模型接口",
     "vector": "向量检索",
     "workflow": "工作流",
@@ -951,6 +953,11 @@ def build_leaderboard(root: Path = ROOT) -> dict:
             "note": "Scores are rebased when the dataset changes. Stars represent attention, not adoption or production readiness.",
         },
         "source": metadata,
+        "ui": {
+            "default_page_size": 10,
+            "page_size_options": [10, 20, 50],
+            "default_sort": "score",
+        },
         "items": items,
     }
     write_text(root / "leaderboard" / "data.json", json.dumps(payload, ensure_ascii=False, indent=2) + "\n")

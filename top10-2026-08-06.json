@@ -135,11 +135,17 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "长期记忆",
-      "RAG 检索",
-      "大模型应用"
+      "网页抓取",
+      "结构化爬取",
+      "LLM 友好输出"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个面向大模型与 Agent 工作流的开源网页抓取与爬取框架，强调把网页内容转换成更适合 LLM 消费的结构化输入。",
+      "audience": "需要为 RAG、研究 Agent 或自动化采集流程抓取网页内容的开发者与平台团队",
+      "capabilities": "网页抓取、结构化爬取、LLM 友好输出、RAG 数据采集、Python 框架",
+      "risk": "抓取效果会受到目标站点反爬、动态页面兼容和数据合规要求影响，生产使用前需要验证稳定性与边界"
+    }
   },
   {
     "owner": "NousResearch",
