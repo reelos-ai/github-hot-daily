@@ -61,6 +61,8 @@ CAPABILITY_TRANSLATIONS = {
     "code-editor": "代码编辑器",
     "codegen": "代码生成",
     "container": "容器运行时",
+    "containers": "容器运行时",
+    "computer-use": "计算机操作",
     "context": "上下文工程",
     "database": "数据基础设施",
     "deployments": "部署流程",
@@ -484,8 +486,9 @@ def render_home_report_panel(
             f"""<article class="home-project-row">
           <span class="home-project-rank mono">{rank:02d}</span>
           <div class="home-project-main">
-            <h2>{escape(name)}</h2>
+            <h2><a href="{escape(repo.get('url') or 'https://github.com/' + name)}" target="_blank" rel="noopener noreferrer">{escape(name)}</a></h2>
             <p>{escape(summary)}</p>
+            <p class="mono">{escape(repo.get('language') or '未标注')} · {escape(' · '.join(repo.get('capability_tags') or derive_capability_tags(repo, briefs.get(name, {}))))}</p>
           </div>
           <div class="home-project-signal">
             <strong>{growth_label} +{growth}</strong>

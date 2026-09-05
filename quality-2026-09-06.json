@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-06",
+  "slice_counts": {
+    "all": 16,
+    "python": 14,
+    "typescript": 17,
+    "javascript": 15,
+    "go": 22,
+    "rust": 16
+  },
+  "candidates": 88,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 67,
+  "manifest_unavailable": 21,
+  "limitations": [
+    "首次沙箱 DNS 失败，获准联网重试后六切片成功。",
+    "21 个仓库未取得依赖清单；现有抓取器不能区分文件不存在、不支持的语言与网络失败，不推断依赖。",
+    "快照按实际存在日期统计，缺日不补造；Star 是关注度，非采用量。"
+  ],
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-06",
+    "snapshot_count": 60,
+    "repository_count": 164,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 91,
+      "original_description": 72,
+      "missing": 1
+    }
+  },
+  "browser_qa": "1440/390: default10, page2, Python, growth, search, invalid URL, pageSize20/50 passed; no overflow or console errors"
+}

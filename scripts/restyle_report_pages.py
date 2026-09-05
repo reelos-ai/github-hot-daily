@@ -1109,6 +1109,8 @@ TAG_TRANSLATIONS = {
 
 
 def project_capability_tags(project: dict, brief: dict) -> list[str]:
+    if project.get("capability_tags"):
+        return project["capability_tags"][:3]
     capabilities = brief.get("capabilities") or ""
     tags = [item.strip() for item in capabilities.split("、") if item.strip()]
     if not tags:
@@ -1154,7 +1156,7 @@ def render_project_overview(projects: list[dict], report_type: str) -> str:
             f"""<article class="project-row">
           <span class="project-rank mono">{rank:02d}</span>
           <div class="project-main">
-            <h3>{escape(project.get('full_name', ''))}</h3>
+            <h3><a href="{escape(project.get('url') or 'https://github.com/' + project.get('full_name', ''))}" target="_blank" rel="noopener noreferrer">{escape(project.get('full_name', ''))}</a></h3>
             <p>{escape(summary)}</p>
             <div class="project-actions">
               <div class="project-tags" aria-label="项目标签">{tags_html}</div>

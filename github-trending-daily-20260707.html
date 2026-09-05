@@ -280,7 +280,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -313,7 +313,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -322,7 +322,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1062,8 +1062,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1073,11 +1073,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1103,8 +1103,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1477,13 +1478,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-07-06/">← 07-06</a><a href="/daily/">全部日报</a><a href="/daily/2026-07-09/">07-09 →</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
     <div class="sub"><span class="mono">2026-07-07</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1492,10 +1493,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>alibaba/page-agent</h3>
+            <h3><a href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener noreferrer">alibaba/page-agent</a></h3>
             <p>一个运行在网页内部的 JavaScript GUI Agent，可用自然语言控制 Web 界面。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页 GUI Agent</span><span class="project-tag">自然语言交互</span><span class="project-tag">浏览器自动化</span><span class="project-tag">JavaScript</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页 GUI Agent</span><span class="project-tag">自然语言交互</span><span class="project-tag">浏览器自动化</span></div>
               <a class="source-link" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1506,10 +1507,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>karakeep-app/karakeep</h3>
-            <p>A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search</p>
+            <h3><a href="https://github.com/karakeep-app/karakeep" target="_blank" rel="noopener noreferrer">karakeep-app/karakeep</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">技能扩展</span><span class="project-tag">工作区</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">技能扩展</span><span class="project-tag">工作区</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/karakeep-app/karakeep" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1520,10 +1521,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>diegosouzapw/OmniRoute</h3>
+            <h3><a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">diegosouzapw/OmniRoute</a></h3>
             <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">免费额度聚合</span><span class="project-tag">自动降级</span><span class="project-tag">Token 压缩</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">免费额度聚合</span><span class="project-tag">自动降级</span></div>
               <a class="source-link" href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1534,10 +1535,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>alirezarezvani/claude-skills</h3>
-            <p>345 Claude Code skills &amp; agent skills &amp; plugins (30+ Agents, 70+ custom commands, 330+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial &amp; finance, and your daily productivity skills.</p>
+            <h3><a href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer">alirezarezvani/claude-skills</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1548,10 +1549,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>ruvnet/RuView</h3>
+            <h3><a href="https://github.com/ruvnet/RuView" target="_blank" rel="noopener noreferrer">ruvnet/RuView</a></h3>
             <p>利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Wi-Fi 感知</span><span class="project-tag">存在检测</span><span class="project-tag">动作识别</span><span class="project-tag">生命体征监测</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Wi-Fi 感知</span><span class="project-tag">存在检测</span><span class="project-tag">动作识别</span></div>
               <a class="source-link" href="https://github.com/ruvnet/RuView" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1562,10 +1563,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>mvanhorn/last30days-skill</h3>
+            <h3><a href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener noreferrer">mvanhorn/last30days-skill</a></h3>
             <p>一个面向 Agent 的近期研究 Skill，并行检索 Reddit、X、YouTube、HN、Polymarket 和网页，再按互动与来源证据合成近 30 天简报。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">近期研究</span><span class="project-tag">跨平台检索</span><span class="project-tag">信号排序</span><span class="project-tag">证据综合</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">近期研究</span><span class="project-tag">跨平台检索</span><span class="project-tag">信号排序</span></div>
               <a class="source-link" href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1576,10 +1577,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>firecrawl/firecrawl</h3>
+            <h3><a href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">firecrawl/firecrawl</a></h3>
             <p>一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页搜索</span><span class="project-tag">批量抓取</span><span class="project-tag">交互式采集</span><span class="project-tag">HTML 转 Markdown</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页搜索</span><span class="project-tag">批量抓取</span><span class="project-tag">交互式采集</span></div>
               <a class="source-link" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1590,10 +1591,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>hesreallyhim/awesome-claude-code</h3>
-            <p>A hand-picked collection of the finest of resources for the most awesome of agents, Claude Code, the undisputed champion of coding companions, from the unstoppable team at Anthropic PBC. A delectable showcase of top tier skills, ambidextrous agents, scintillating status lines, top notch developer tooling, and also we have plugins</p>
+            <h3><a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener noreferrer">hesreallyhim/awesome-claude-code</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1604,10 +1605,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>alibaba/zvec</h3>
-            <p>A lightweight, lightning-fast, in-process vector database</p>
+            <h3><a href="https://github.com/alibaba/zvec" target="_blank" rel="noopener noreferrer">alibaba/zvec</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">长期记忆</span><span class="project-tag">RAG</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/alibaba/zvec" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1618,10 +1619,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>gastownhall/gastown</h3>
-            <p>Gas Town - multi-agent workspace manager</p>
+            <h3><a href="https://github.com/gastownhall/gastown" target="_blank" rel="noopener noreferrer">gastownhall/gastown</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">RAG</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">RAG 检索</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/gastownhall/gastown" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

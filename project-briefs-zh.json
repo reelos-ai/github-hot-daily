@@ -80,7 +80,7 @@
   "affaan-m/ECC": {
     "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
     "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
-    "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+    "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
     "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
   },
   "cactus-compute/needle": {
@@ -204,7 +204,8 @@
     "summary": "一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。"
   },
   "can1357/oh-my-pi": {
-    "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。"
+    "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。",
+    "capabilities": "终端编码、精确编辑、代码语言服务"
   },
   "CopilotKit/CopilotKit": {
     "summary": "一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。"
@@ -479,5 +480,50 @@
     "audience": "需要处理复杂站点采集、逐步扩展抓取规模或为自动化流程提供网页数据的开发者",
     "capabilities": "自适应抓取、网页爬取框架、规模化采集、Python 库、现代网页兼容",
     "risk": "抓取框架的实际价值取决于反爬对抗、动态渲染支持和长期维护质量，复杂站点下仍需实测"
+  },
+  "debpalash/VoiceStudio": {
+    "summary": "在本机完成语音克隆、语音设计、视频配音、转录和有声书制作的开源语音工作台。",
+    "capabilities": "语音克隆、视频配音、语音转录",
+    "verified_at": "2026-09-06",
+    "evidence_sources": [
+      "https://github.com/debpalash/VoiceStudio"
+    ],
+    "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+  },
+  "magnitudedev/magnitude": {
+    "summary": "检测本机硬件并推荐、下载和运行适配的本地模型，通过推理服务接入现有编码 Agent。",
+    "capabilities": "本地推理、硬件适配、模型接入",
+    "verified_at": "2026-09-06",
+    "evidence_sources": [
+      "https://github.com/magnitudedev/magnitude"
+    ],
+    "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+  },
+  "openclaw/openclaw": {
+    "summary": "运行在自有设备上的 AI 助手，通过统一网关连接模型、工具和常用聊天渠道。",
+    "capabilities": "自托管助手、消息渠道、工具接入",
+    "verified_at": "2026-09-06",
+    "evidence_sources": [
+      "https://github.com/openclaw/openclaw"
+    ],
+    "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+  },
+  "NVIDIA/SkillSpector": {
+    "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
+    "capabilities": "技能扫描、提示注入检测、供应链检查",
+    "verified_at": "2026-09-06",
+    "evidence_sources": [
+      "https://github.com/NVIDIA/SkillSpector"
+    ],
+    "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+  },
+  "cathrynlavery/diagram-design": {
+    "summary": "为编码 Agent 提供编辑式图解技能，以独立 HTML 和 SVG 生成架构图、流程图等可视化。",
+    "capabilities": "图解生成、架构可视化、技能扩展",
+    "verified_at": "2026-09-06",
+    "evidence_sources": [
+      "https://github.com/cathrynlavery/diagram-design"
+    ],
+    "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
   }
 }

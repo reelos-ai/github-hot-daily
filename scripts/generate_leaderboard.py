@@ -58,6 +58,8 @@ KEYWORD_LABELS = {
     "code-editor": "代码编辑器",
     "codegen": "代码生成",
     "container": "容器运行时",
+    "containers": "容器运行时",
+    "computer-use": "计算机操作",
     "context": "上下文工程",
     "database": "数据基础设施",
     "deployments": "部署流程",
@@ -178,8 +180,6 @@ def project_capabilities(repo: dict, brief: dict) -> list[str]:
 def choose_summary(brief: dict, report_summary: str, description: str) -> tuple[str, str]:
     candidates = (
         ("project_brief", brief.get("summary", "")),
-        ("daily_report", report_summary),
-        ("repo_description", description),
     )
     for source, value in candidates:
         if (
@@ -189,7 +189,7 @@ def choose_summary(brief: dict, report_summary: str, description: str) -> tuple[
         ):
             return value, source
     if description:
-        return "暂无可靠中文说明；以下保留仓库原始 description 供核对。", "original_description"
+        return description, "original_description"
     return "暂无可靠项目说明，具体能力边界仍需核实。", "missing"
 
 
@@ -793,7 +793,7 @@ def render_page() -> str:
         const tags = (item.capabilities || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
         const confidence = ["high", "medium", "low"].includes(item.data_confidence) ? item.data_confidence : "medium";
         const originalDescription = item.summary_source === "original_description" && item.original_description
-          ? `<p class="original-description" lang="en"><span>Repo description</span>${escapeHtml(item.original_description)}</p>`
+          ? `<p class="original-description"><span>仓库原始 description · 尚无人工中文摘要</span></p>`
           : "";
         return `<article class="rank-row" style="animation-delay:${Math.min(index * 22, 220)}ms">
           <span class="rank-number mono"><span>综合榜</span><b>#${String(item.rank).padStart(3, "0")}</b></span>

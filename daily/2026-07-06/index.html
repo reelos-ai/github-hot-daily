@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub 热榜情报日报 - 2026-07-06</title>
-  
+
   <style>
 :root {
   color-scheme: light;
@@ -281,7 +281,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -314,7 +314,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -323,7 +323,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1063,8 +1063,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1074,11 +1074,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1104,8 +1104,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1479,13 +1480,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-07-05/">← 07-05</a><a href="/daily/">全部日报</a><a href="/daily/2026-07-07/">07-07 →</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
     <div class="sub"><span class="mono">2026-07-06</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1494,10 +1495,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>calesthio/OpenMontage</h3>
+            <h3><a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">calesthio/OpenMontage</a></h3>
             <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">RAG</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1508,10 +1509,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>usestrix/strix</h3>
+            <h3><a href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">usestrix/strix</a></h3>
             <p>一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">AI 安全测试</span><span class="project-tag">漏洞发现</span><span class="project-tag">渗透测试</span><span class="project-tag">修复建议</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">AI 安全测试</span><span class="project-tag">漏洞发现</span><span class="project-tag">渗透测试</span></div>
               <a class="source-link" href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1522,10 +1523,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>diegosouzapw/OmniRoute</h3>
+            <h3><a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">diegosouzapw/OmniRoute</a></h3>
             <p>把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">免费额度聚合</span><span class="project-tag">自动降级</span><span class="project-tag">Token 压缩</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">免费额度聚合</span><span class="project-tag">自动降级</span></div>
               <a class="source-link" href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1536,10 +1537,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>topoteretes/cognee</h3>
+            <h3><a href="https://github.com/topoteretes/cognee" target="_blank" rel="noopener noreferrer">topoteretes/cognee</a></h3>
             <p>一个面向 AI Agent 的开源记忆平台，用可自托管的知识图谱为跨会话任务提供持久长期记忆。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 长期记忆</span><span class="project-tag">知识图谱</span><span class="project-tag">自托管</span><span class="project-tag">跨会话上下文</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 长期记忆</span><span class="project-tag">知识图谱</span><span class="project-tag">自托管</span></div>
               <a class="source-link" href="https://github.com/topoteretes/cognee" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1550,10 +1551,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>jamiepine/voicebox</h3>
+            <h3><a href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">jamiepine/voicebox</a></h3>
             <p>一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">声音克隆</span><span class="project-tag">语音听写</span><span class="project-tag">音频创作</span><span class="project-tag">AI 语音工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">声音克隆</span><span class="project-tag">语音听写</span><span class="project-tag">音频创作</span></div>
               <a class="source-link" href="https://github.com/jamiepine/voicebox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1564,10 +1565,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>ChromeDevTools/chrome-devtools-mcp</h3>
+            <h3><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">ChromeDevTools/chrome-devtools-mcp</a></h3>
             <p>Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Chrome 控制</span><span class="project-tag">MCP 服务</span><span class="project-tag">网络调试</span><span class="project-tag">性能分析</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Chrome 控制</span><span class="project-tag">MCP 服务</span><span class="project-tag">网络调试</span></div>
               <a class="source-link" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1578,10 +1579,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>langflow-ai/langflow</h3>
-            <p>Langflow is a powerful tool for building and deploying AI-powered agents and workflows.</p>
+            <h3><a href="https://github.com/langflow-ai/langflow" target="_blank" rel="noopener noreferrer">langflow-ai/langflow</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">评测</span></div>
               <a class="source-link" href="https://github.com/langflow-ai/langflow" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1592,10 +1593,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>facebook/astryx</h3>
+            <h3><a href="https://github.com/facebook/astryx" target="_blank" rel="noopener noreferrer">facebook/astryx</a></h3>
             <p>一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计系统</span><span class="project-tag">组件定制</span><span class="project-tag">Agent 友好界面</span><span class="project-tag">前端基础设施</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计系统</span><span class="project-tag">组件定制</span><span class="project-tag">Agent 友好界面</span></div>
               <a class="source-link" href="https://github.com/facebook/astryx" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1606,10 +1607,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>logto-io/logto</h3>
-            <p>🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.</p>
+            <h3><a href="https://github.com/logto-io/logto" target="_blank" rel="noopener noreferrer">logto-io/logto</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">RAG</span><span class="project-tag">protocol</span><span class="project-tag">authentication</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">开放协议</span><span class="project-tag">身份认证</span></div>
               <a class="source-link" href="https://github.com/logto-io/logto" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1620,10 +1621,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>DeusData/codebase-memory-mcp</h3>
+            <h3><a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">DeusData/codebase-memory-mcp</a></h3>
             <p>一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG 检索</span></div>
               <a class="source-link" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

@@ -280,7 +280,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -313,7 +313,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -322,7 +322,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1062,8 +1062,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1073,11 +1073,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1103,8 +1103,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1477,13 +1478,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="月报日期导航"><a href="/monthly/">全部月报</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 本月项目</h1>
     <div class="sub"><span class="mono">2026-07</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1492,10 +1493,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>calesthio/OpenMontage</h3>
+            <h3><a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">calesthio/OpenMontage</a></h3>
             <p>一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">RAG</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1506,10 +1507,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>Egonex-AI/Understand-Anything</h3>
+            <h3><a href="https://github.com/Egonex-AI/Understand-Anything" target="_blank" rel="noopener noreferrer">Egonex-AI/Understand-Anything</a></h3>
             <p>把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/Egonex-AI/Understand-Anything" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1520,10 +1521,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>colbymchenry/codegraph</h3>
+            <h3><a href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">colbymchenry/codegraph</a></h3>
             <p>一个本地代码知识图谱，为编码 Agent 预先索引代码关系，并在代码变化时自动同步。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">Memory 组件</span><span class="project-tag">Agent 工具</span></div>
               <a class="source-link" href="https://github.com/colbymchenry/codegraph" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1534,10 +1535,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>can1357/oh-my-pi</h3>
+            <h3><a href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener noreferrer">can1357/oh-my-pi</a></h3>
             <p>一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">终端编码</span><span class="project-tag">精确编辑</span><span class="project-tag">代码语言服务</span></div>
               <a class="source-link" href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1548,10 +1549,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>CopilotKit/CopilotKit</h3>
+            <h3><a href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener noreferrer">CopilotKit/CopilotKit</a></h3>
             <p>一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1562,10 +1563,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>googleworkspace/cli</h3>
+            <h3><a href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">googleworkspace/cli</a></h3>
             <p>Google Workspace 官方命令行工具，用统一 CLI 操作 Drive、Gmail、日历、表格和文档，并支持 Agent Skills。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">运行时</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">技能扩展</span><span class="project-tag">工作区</span><span class="project-tag">大模型应用</span></div>
               <a class="source-link" href="https://github.com/googleworkspace/cli" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1576,10 +1577,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>kenn-io/agentsview</h3>
+            <h3><a href="https://github.com/kenn-io/agentsview" target="_blank" rel="noopener noreferrer">kenn-io/agentsview</a></h3>
             <p>一个本地优先的编码 Agent 使用分析工具，可搜索会话并统计调用、Token 和工作模式。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">工作区</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">工作区</span><span class="project-tag">开放协议</span></div>
               <a class="source-link" href="https://github.com/kenn-io/agentsview" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1590,10 +1591,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>Tencent/WeKnora</h3>
+            <h3><a href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">Tencent/WeKnora</a></h3>
             <p>腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1604,10 +1605,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>farion1231/cc-switch</h3>
+            <h3><a href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">farion1231/cc-switch</a></h3>
             <p>一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1618,10 +1619,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>DeusData/codebase-memory-mcp</h3>
+            <h3><a href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">DeusData/codebase-memory-mcp</a></h3>
             <p>一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG 检索</span></div>
               <a class="source-link" href="https://github.com/DeusData/codebase-memory-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

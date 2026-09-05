@@ -280,7 +280,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -313,7 +313,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -322,7 +322,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1062,8 +1062,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1073,11 +1073,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1103,8 +1103,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1477,13 +1478,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-07-26/">← 07-26</a><a href="/daily/">全部日报</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
     <div class="sub"><span class="mono">2026-07-28</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1492,10 +1493,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>alibaba/open-code-review</h3>
+            <h3><a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener noreferrer">alibaba/open-code-review</a></h3>
             <p>阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">增量代码审查</span><span class="project-tag">全仓扫描</span><span class="project-tag">行级评论</span><span class="project-tag">安全规则</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">增量代码审查</span><span class="project-tag">全仓扫描</span><span class="project-tag">行级评论</span></div>
               <a class="source-link" href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1506,10 +1507,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>affaan-m/ECC</h3>
+            <h3><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener noreferrer">affaan-m/ECC</a></h3>
             <p>一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent Skills</span><span class="project-tag">长期记忆</span><span class="project-tag">安全约束</span><span class="project-tag">研究优先流程</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 技能</span><span class="project-tag">长期记忆</span><span class="project-tag">安全约束</span></div>
               <a class="source-link" href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1520,10 +1521,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>ogulcancelik/herdr</h3>
+            <h3><a href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">ogulcancelik/herdr</a></h3>
             <p>一个运行在终端里的多 Agent 调度器，用于同时组织和切换多个编码 Agent。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">RAG</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span><span class="project-tag">工作区</span></div>
               <a class="source-link" href="https://github.com/ogulcancelik/herdr" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1534,10 +1535,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>volcengine/OpenViking</h3>
+            <h3><a href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener noreferrer">volcengine/OpenViking</a></h3>
             <p>一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">上下文数据库</span><span class="project-tag">知识 RAG</span><span class="project-tag">插件化技能</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">上下文数据库</span><span class="project-tag">知识 RAG</span></div>
               <a class="source-link" href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1548,10 +1549,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>vudovn/ag-kit</h3>
+            <h3><a href="https://github.com/vudovn/ag-kit" target="_blank" rel="noopener noreferrer">vudovn/ag-kit</a></h3>
             <p>一个为编码 Agent 准备的 TypeScript 工具套件，聚焦运行时、工作流、记忆和 MCP 级扩展能力。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具链</span><span class="project-tag">运行时封装</span><span class="project-tag">工作流编排</span><span class="project-tag">记忆接入</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具链</span><span class="project-tag">运行时封装</span><span class="project-tag">工作流编排</span></div>
               <a class="source-link" href="https://github.com/vudovn/ag-kit" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1562,10 +1563,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>firecrawl/firecrawl</h3>
+            <h3><a href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">firecrawl/firecrawl</a></h3>
             <p>一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页搜索</span><span class="project-tag">批量抓取</span><span class="project-tag">交互式采集</span><span class="project-tag">HTML 转 Markdown</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页搜索</span><span class="project-tag">批量抓取</span><span class="project-tag">交互式采集</span></div>
               <a class="source-link" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1576,10 +1577,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>agentscope-ai/QwenPaw</h3>
+            <h3><a href="https://github.com/agentscope-ai/QwenPaw" target="_blank" rel="noopener noreferrer">agentscope-ai/QwenPaw</a></h3>
             <p>一个可自托管的个人 AI 助手框架，支持多聊天渠道接入，并把能力扩展、部署和日常使用打包成一体。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">个人 AI 助手</span><span class="project-tag">多聊天应用接入</span><span class="project-tag">可扩展技能</span><span class="project-tag">自托管部署</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">个人 AI 助手</span><span class="project-tag">多聊天应用接入</span><span class="project-tag">可扩展技能</span></div>
               <a class="source-link" href="https://github.com/agentscope-ai/QwenPaw" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1590,10 +1591,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>andrewyng/aisuite</h3>
+            <h3><a href="https://github.com/andrewyng/aisuite" target="_blank" rel="noopener noreferrer">andrewyng/aisuite</a></h3>
             <p>一个统一多家生成式 AI 服务商接口的轻量封装，降低在不同模型供应商之间切换和测试的成本。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">多供应商接入</span><span class="project-tag">快速切换</span><span class="project-tag">评测与实验支撑</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一模型接口</span><span class="project-tag">多供应商接入</span><span class="project-tag">快速切换</span></div>
               <a class="source-link" href="https://github.com/andrewyng/aisuite" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1604,10 +1605,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>xbtlin/ai-berkshire</h3>
+            <h3><a href="https://github.com/xbtlin/ai-berkshire" target="_blank" rel="noopener noreferrer">xbtlin/ai-berkshire</a></h3>
             <p>一个把巴菲特、芒格等价值投资方法论改造成多 Agent 研究流程的投资分析框架，面向 Claude Code 和 Codex 使用。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">价值投资框架</span><span class="project-tag">多 Agent 研究</span><span class="project-tag">投资知识模板</span><span class="project-tag">MCP 接入</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">价值投资框架</span><span class="project-tag">多 Agent 研究</span><span class="project-tag">投资知识模板</span></div>
               <a class="source-link" href="https://github.com/xbtlin/ai-berkshire" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1618,10 +1619,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>pbakaus/impeccable</h3>
+            <h3><a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener noreferrer">pbakaus/impeccable</a></h3>
             <p>一套专门为 AI harness 准备的设计语言，目标是让 Agent 生成的界面更统一、更耐看，也更容易落地到产品。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计语言</span><span class="project-tag">界面规范</span><span class="project-tag">AI 生成 UI 约束</span><span class="project-tag">视觉一致性</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计语言</span><span class="project-tag">界面规范</span><span class="project-tag">AI 生成 UI 约束</span></div>
               <a class="source-link" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

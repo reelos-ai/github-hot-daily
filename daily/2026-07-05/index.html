@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub 热榜情报日报 - 2026-07-05</title>
-  
+
   <style>
 :root {
   color-scheme: light;
@@ -281,7 +281,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -314,7 +314,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -323,7 +323,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1063,8 +1063,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1074,11 +1074,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1104,8 +1104,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1479,13 +1480,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-07-04/">← 07-04</a><a href="/daily/">全部日报</a><a href="/daily/2026-07-06/">07-06 →</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
     <div class="sub"><span class="mono">2026-07-05</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1494,10 +1495,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>usestrix/strix</h3>
+            <h3><a href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">usestrix/strix</a></h3>
             <p>一个开源 AI 渗透测试工具，用于发现应用漏洞并辅助生成修复建议。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">AI 安全测试</span><span class="project-tag">漏洞发现</span><span class="project-tag">渗透测试</span><span class="project-tag">修复建议</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">AI 安全测试</span><span class="project-tag">漏洞发现</span><span class="project-tag">渗透测试</span></div>
               <a class="source-link" href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1508,10 +1509,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>facebook/astryx</h3>
+            <h3><a href="https://github.com/facebook/astryx" target="_blank" rel="noopener noreferrer">facebook/astryx</a></h3>
             <p>一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计系统</span><span class="project-tag">组件定制</span><span class="project-tag">Agent 友好界面</span><span class="project-tag">前端基础设施</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">设计系统</span><span class="project-tag">组件定制</span><span class="project-tag">Agent 友好界面</span></div>
               <a class="source-link" href="https://github.com/facebook/astryx" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1522,10 +1523,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>ChromeDevTools/chrome-devtools-mcp</h3>
+            <h3><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">ChromeDevTools/chrome-devtools-mcp</a></h3>
             <p>Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Chrome 控制</span><span class="project-tag">MCP 服务</span><span class="project-tag">网络调试</span><span class="project-tag">性能分析</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Chrome 控制</span><span class="project-tag">MCP 服务</span><span class="project-tag">网络调试</span></div>
               <a class="source-link" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1536,10 +1537,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>alibaba/page-agent</h3>
+            <h3><a href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener noreferrer">alibaba/page-agent</a></h3>
             <p>一个运行在网页内部的 JavaScript GUI Agent，可用自然语言控制 Web 界面。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页 GUI Agent</span><span class="project-tag">自然语言交互</span><span class="project-tag">浏览器自动化</span><span class="project-tag">JavaScript</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">网页 GUI Agent</span><span class="project-tag">自然语言交互</span><span class="project-tag">浏览器自动化</span></div>
               <a class="source-link" href="https://github.com/alibaba/page-agent" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1550,10 +1551,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>affaan-m/ECC</h3>
+            <h3><a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener noreferrer">affaan-m/ECC</a></h3>
             <p>一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent Skills</span><span class="project-tag">长期记忆</span><span class="project-tag">安全约束</span><span class="project-tag">研究优先流程</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 技能</span><span class="project-tag">长期记忆</span><span class="project-tag">安全约束</span></div>
               <a class="source-link" href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1564,10 +1565,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>agentskills/agentskills</h3>
-            <p>Specification and documentation for Agent Skills</p>
+            <h3><a href="https://github.com/agentskills/agentskills" target="_blank" rel="noopener noreferrer">agentskills/agentskills</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">技能扩展</span><span class="project-tag">工作流</span><span class="project-tag">Agent 技能包</span></div>
               <a class="source-link" href="https://github.com/agentskills/agentskills" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1578,10 +1579,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>alirezarezvani/claude-skills</h3>
-            <p>337 Claude Code skills &amp; agent skills &amp; plugins (30+ Agents, 70+ custom commands, 330+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial &amp; finance, and your daily productivity skills.</p>
+            <h3><a href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer">alirezarezvani/claude-skills</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">技能扩展</span><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1592,10 +1593,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>ruvnet/ruflo</h3>
-            <p>🌊 The leading agent meta-harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, RAG integration, and native Claude Code / Codex / Hermes and many more Integrated</p>
+            <h3><a href="https://github.com/ruvnet/ruflo" target="_blank" rel="noopener noreferrer">ruvnet/ruflo</a></h3>
+            <p>一个面向多 Agent swarm 的元调度框架，强调把自主工作流、记忆、RAG 和对话系统组合成可部署的协作网络。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">MCP 集成</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">多 Agent 协作</span><span class="project-tag">Agent 元调度</span><span class="project-tag">自适应记忆</span></div>
               <a class="source-link" href="https://github.com/ruvnet/ruflo" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1606,10 +1607,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>TencentCloud/CubeSandbox</h3>
-            <p>Instant, Concurrent, Secure &amp; Lightweight Sandbox for AI Agents.</p>
+            <h3><a href="https://github.com/TencentCloud/CubeSandbox" target="_blank" rel="noopener noreferrer">TencentCloud/CubeSandbox</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">长期记忆</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">长期记忆</span><span class="project-tag">容器运行时</span><span class="project-tag">安全约束</span></div>
               <a class="source-link" href="https://github.com/TencentCloud/CubeSandbox" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1620,10 +1621,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>crynta/terax-ai</h3>
-            <p>Lightweight (7MB) Terminal-first AI-native dev workspace</p>
+            <h3><a href="https://github.com/crynta/terax-ai" target="_blank" rel="noopener noreferrer">crynta/terax-ai</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">工作区</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">工作区</span><span class="project-tag">工作流</span><span class="project-tag">代码编辑器</span></div>
               <a class="source-link" href="https://github.com/crynta/terax-ai" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

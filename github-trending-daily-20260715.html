@@ -280,7 +280,7 @@ h1 {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.4vw, 68px);
   font-weight: 750;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -313,7 +313,7 @@ h2 {
   color: var(--ink);
   font-size: 27px;
   font-weight: 720;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -322,7 +322,7 @@ h3 {
   color: var(--ink);
   font-size: 21px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.35;
 }
 
@@ -1062,8 +1062,8 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-  margin-top: 12px;
+  gap: 8px 14px;
+  margin-top: 10px;
 }
 
 .project-tags {
@@ -1073,11 +1073,11 @@ blockquote {
 }
 
 .project-tag {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
   color: var(--muted);
-  background: var(--paper-soft);
-  font-size: 11px;
+  background: transparent;
+  font-size: 10px;
   line-height: 1.5;
 }
 
@@ -1103,8 +1103,9 @@ blockquote {
 }
 
 .project-signal strong {
-  color: var(--orange);
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -1477,13 +1478,13 @@ blockquote {
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
     </a></div><nav class="issue-nav" aria-label="日报日期导航"><a href="/daily/2026-07-14/">← 07-14</a><a href="/daily/">全部日报</a><a href="/daily/2026-07-16/">07-16 →</a></nav>
-      
+
     </div>
     <h1><span class="pixel-word">GitHub</span> 今日项目</h1>
     <div class="sub"><span class="mono">2026-07-15</span></div>
     <p class="hero-lede">只回答一个问题：这些项目是做什么的。</p>
-    
-    
+
+
   </header>
 
   <main class="timeline" id="main-content">
@@ -1492,10 +1493,10 @@ blockquote {
     <div class="project-list"><article class="project-row">
           <span class="project-rank mono">01</span>
           <div class="project-main">
-            <h3>OpenCut-app/OpenCut</h3>
+            <h3><a href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener noreferrer">OpenCut-app/OpenCut</a></h3>
             <p>一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">视频编辑</span><span class="project-tag">开源创作工具</span><span class="project-tag">桌面工作流</span><span class="project-tag">内容生产</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">视频编辑</span><span class="project-tag">开源创作工具</span><span class="project-tag">桌面工作流</span></div>
               <a class="source-link" href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1506,10 +1507,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">02</span>
           <div class="project-main">
-            <h3>HKUDS/Vibe-Trading</h3>
+            <h3><a href="https://github.com/HKUDS/Vibe-Trading" target="_blank" rel="noopener noreferrer">HKUDS/Vibe-Trading</a></h3>
             <p>一个面向个人投资研究的交易 Agent，可协助分析市场信息并形成交易判断。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">ai-agent</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">AI Agent 工具</span></div>
               <a class="source-link" href="https://github.com/HKUDS/Vibe-Trading" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1520,10 +1521,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">03</span>
           <div class="project-main">
-            <h3>earendil-works/pi</h3>
+            <h3><a href="https://github.com/earendil-works/pi" target="_blank" rel="noopener noreferrer">earendil-works/pi</a></h3>
             <p>一个构建 AI Agent 的开发工具包，提供统一模型接口、Agent 循环、终端 UI 和编码 Agent CLI。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一 LLM API</span><span class="project-tag">Agent Loop</span><span class="project-tag">终端界面</span><span class="project-tag">编码 Agent</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">统一 LLM API</span><span class="project-tag">Agent 循环</span><span class="project-tag">终端界面</span></div>
               <a class="source-link" href="https://github.com/earendil-works/pi" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1534,10 +1535,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">04</span>
           <div class="project-main">
-            <h3>openinterpreter/openinterpreter</h3>
-            <p>A coding agent for low-cost models</p>
+            <h3><a href="https://github.com/openinterpreter/openinterpreter" target="_blank" rel="noopener noreferrer">openinterpreter/openinterpreter</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">技能扩展</span><span class="project-tag">开放协议</span></div>
               <a class="source-link" href="https://github.com/openinterpreter/openinterpreter" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1548,10 +1549,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">05</span>
           <div class="project-main">
-            <h3>openclaw/openclaw</h3>
-            <p>Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞</p>
+            <h3><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer">openclaw/openclaw</a></h3>
+            <p>运行在自有设备上的 AI 助手，通过统一网关连接模型、工具和常用聊天渠道。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span><span class="project-tag">技能扩展</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">自托管助手</span><span class="project-tag">消息渠道</span><span class="project-tag">工具接入</span></div>
               <a class="source-link" href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1562,10 +1563,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">06</span>
           <div class="project-main">
-            <h3>multica-ai/multica</h3>
+            <h3><a href="https://github.com/multica-ai/multica" target="_blank" rel="noopener noreferrer">multica-ai/multica</a></h3>
             <p>一个开源的编码 Agent 管理平台，可像分配同事一样分派 Issue、跟踪进度与阻塞，并沉淀团队可复用 Skills。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 任务分派</span><span class="project-tag">进度跟踪</span><span class="project-tag">团队协作</span><span class="project-tag">Skills 沉淀</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 任务分派</span><span class="project-tag">进度跟踪</span><span class="project-tag">团队协作</span></div>
               <a class="source-link" href="https://github.com/multica-ai/multica" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1576,10 +1577,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">07</span>
           <div class="project-main">
-            <h3>esengine/DeepSeek-Reasonix</h3>
-            <p>DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.</p>
+            <h3><a href="https://github.com/esengine/DeepSeek-Reasonix" target="_blank" rel="noopener noreferrer">esengine/DeepSeek-Reasonix</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">工作流</span></div>
               <a class="source-link" href="https://github.com/esengine/DeepSeek-Reasonix" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1590,10 +1591,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">08</span>
           <div class="project-main">
-            <h3>heygen-com/hyperframes</h3>
-            <p>Write HTML. Render video. Built for agents.</p>
+            <h3><a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener noreferrer">heygen-com/hyperframes</a></h3>
+            <p>一个让 Agent 直接用 HTML 驱动视频生成的开源引擎，把时间轴、动画和渲染流程压缩成更轻量的可编排接口。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">运行时</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">HTML 渲染视频</span><span class="project-tag">Agent 视频工作流</span><span class="project-tag">模板化动画</span></div>
               <a class="source-link" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1604,10 +1605,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">09</span>
           <div class="project-main">
-            <h3>Tencent/WeKnora</h3>
+            <h3><a href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">Tencent/WeKnora</a></h3>
             <p>腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">RAG</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">RAG 检索</span><span class="project-tag">技能扩展</span></div>
               <a class="source-link" href="https://github.com/Tencent/WeKnora" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>
@@ -1618,10 +1619,10 @@ blockquote {
         </article><article class="project-row">
           <span class="project-rank mono">10</span>
           <div class="project-main">
-            <h3>browseros-ai/BrowserOS</h3>
-            <p>🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.</p>
+            <h3><a href="https://github.com/browseros-ai/BrowserOS" target="_blank" rel="noopener noreferrer">browseros-ai/BrowserOS</a></h3>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
             <div class="project-actions">
-              <div class="project-tags" aria-label="项目标签"><span class="project-tag">Agent 工具</span><span class="project-tag">多 Agent</span><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span></div>
+              <div class="project-tags" aria-label="项目标签"><span class="project-tag">MCP 集成</span><span class="project-tag">大模型应用</span><span class="project-tag">浏览器 Agent</span></div>
               <a class="source-link" href="https://github.com/browseros-ai/BrowserOS" target="_blank" rel="noopener noreferrer">原文 ↗</a>
             </div>
           </div>

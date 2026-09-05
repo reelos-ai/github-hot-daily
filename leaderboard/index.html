@@ -448,7 +448,7 @@
         const tags = (item.capabilities || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
         const confidence = ["high", "medium", "low"].includes(item.data_confidence) ? item.data_confidence : "medium";
         const originalDescription = item.summary_source === "original_description" && item.original_description
-          ? `<p class="original-description" lang="en"><span>Repo description</span>${escapeHtml(item.original_description)}</p>`
+          ? `<p class="original-description"><span>仓库原始 description · 尚无人工中文摘要</span></p>`
           : "";
         return `<article class="rank-row" style="animation-delay:${Math.min(index * 22, 220)}ms">
           <span class="rank-number mono"><span>综合榜</span><b>#${String(item.rank).padStart(3, "0")}</b></span>

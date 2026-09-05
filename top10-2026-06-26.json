@@ -153,14 +153,14 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "Agent 技能包",
+      "Agent 技能",
       "长期记忆",
       "安全约束"
     ],
     "brief_zh": {
       "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
       "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
-      "capabilities": "Agent Skills、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
       "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
     },
     "summary_source": "project_brief"
@@ -811,10 +811,19 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "长期记忆",
-      "MCP 集成",
-      "技能扩展"
+      "技能扫描",
+      "提示注入检测",
+      "供应链检查"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
+      "capabilities": "技能扫描、提示注入检测、供应链检查",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/SkillSpector"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    }
   }
 ]
