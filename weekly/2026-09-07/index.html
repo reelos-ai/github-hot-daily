@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>GitHub 周报｜2026-09-07｜ReelOS 战略情报</title>
+<style>
+    :root {
+      color-scheme:dark;
+      --bg:#05070a; --panel:rgba(255,250,241,0.026); --panel2:rgba(255,250,241,0.050); --line:rgba(255,250,241,0.075); --line2:rgba(255,250,241,0.14);
+      --text:#fffaf1; --muted:rgba(255,250,241,0.50); --soft:rgba(255,250,241,0.46);
+      --blue:#6f8aff; --orange:#f97316; --rail:rgba(111,138,255,0.24);
+      --grid:rgba(91,124,255,0.04); --node:#05070a; --glow:rgba(91,124,255,0.08);
+      --font-cn:"Noto Sans SC","Source Han Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      --font-body:Manrope,Inter,"HarmonyOS Sans SC","MiSans",var(--font-cn),ui-sans-serif,system-ui,sans-serif;
+      --font-display:"Space Grotesk",Manrope,Inter,var(--font-cn),ui-sans-serif,system-ui,sans-serif;
+      --font-mono:"Space Mono","JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      --font-pixel:"DotGothic16","Silkscreen","Courier New",var(--font-mono);
+    }
+    * { box-sizing:border-box; }
+    html { color-scheme:dark; }
+    body {
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--font-body);
+      font-weight:400; letter-spacing:0; font-synthesis-weight:none;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.78;
+      background-image:radial-gradient(circle at 50% -10%, var(--glow), transparent 55%),linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size:auto,64px 64px,64px 64px;
+    }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:var(--blue); }
+    .mono { font-family:var(--font-mono); }
+    .pixel-word { display:inline-block; font-family:var(--font-pixel); font-weight:400; letter-spacing:.055em; text-transform:uppercase; line-height:.96; color:#f7fbff; text-shadow:1px 0 0 rgba(111,138,255,.42),0 1px 0 rgba(249,115,22,.28),0 0 18px rgba(111,138,255,.18); transform:translateY(-.02em); }
+    .wrap { max-width:940px; margin:0 auto; padding:52px 24px 96px; }
+    header { position:relative; border-bottom:1px solid var(--line); padding:0 0 26px; margin-bottom:8px; }
+    header::before { content:""; position:absolute; inset:-18px -22px auto -22px; height:220px; pointer-events:none; background:radial-gradient(circle at 18% 18%,rgba(249,115,22,.12),transparent 32%),radial-gradient(circle at 72% 12%,rgba(111,138,255,.12),transparent 36%); opacity:.9; }
+    header > * { position:relative; }
+    .toprow { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:12px; color:var(--muted); font-family:var(--font-mono); font-size:13px; text-transform:uppercase; }
+    .dot { width:8px; height:8px; background:var(--orange); box-shadow:0 0 16px var(--orange); }
+    h1 { font-family:var(--font-display); font-size:clamp(35px,6vw,56px); font-weight:560; letter-spacing:0; line-height:1.08; margin:18px 0 6px; }
+    h1 .pixel-word { margin-right:.04em; }
+    h1 .ac { color:var(--orange); font-family:var(--font-cn); font-weight:620; }
+    h2 { margin:0; color:var(--text); font-size:15px; line-height:1.34; font-weight:590; letter-spacing:0; }
+    h3 { margin:0 0 6px; color:var(--text); font-size:21px; font-weight:560; line-height:1.52; letter-spacing:0; }
+    h4 { margin:20px 0 8px; color:var(--blue); font-size:12px; font-family:var(--font-mono); font-weight:560; letter-spacing:.06em; }
+    .sub { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:14px; color:var(--muted); font-size:14px; }
+    .chip { border:1px solid var(--line); padding:4px 10px; color:var(--text); font-size:11.5px; letter-spacing:0; }
+    .chip b { color:var(--orange); }
+    .hero-lede { max-width:680px; margin:14px 0 0; color:rgba(255,250,241,.74); font-size:15px; line-height:1.86; }
+    .briefing-strip { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:10px; margin-top:18px; }
+    .briefing-item { border:1px solid var(--line); background:linear-gradient(155deg,var(--panel2),rgba(255,250,241,.018)); border-radius:12px; padding:12px 13px; min-width:0; }
+    .briefing-item b { display:block; color:var(--blue); font-family:var(--font-mono); font-size:10.5px; font-weight:560; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; }
+    .briefing-item span { display:block; color:rgba(255,250,241,.82); font-size:13px; line-height:1.62; text-wrap:pretty; }
+    .section-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .section-link { display:flex; align-items:center; gap:8px; padding:5px 9px; border:1px solid var(--line); background:var(--panel); color:var(--muted); font-size:11.5px; transition:border-color .2s,color .2s,background .2s; }
+    .section-link:hover { border-color:var(--blue); color:var(--text); background:transparent; }
+    .section-link .nr { color:var(--blue); }
+    .timeline { position:relative; margin-top:18px; }
+    .timeline::before { content:""; position:absolute; left:20px; top:8px; bottom:26px; width:1px; background:linear-gradient(180deg,var(--rail),transparent); }
+    .signal-section { position:relative; }
+    .signal-section + .signal-section { margin-top:10px; }
+    .section-head { display:flex; gap:18px; align-items:flex-start; padding:17px 0 8px 66px; color:var(--muted); }
+    .section-head .range { min-width:48px; color:var(--blue); font-size:12px; padding-top:13px; }
+    .section-head > div { display:inline-block; max-width:560px; padding:9px 12px 8px; border:1px solid var(--line); background:linear-gradient(90deg,var(--panel),transparent); border-radius:2px; }
+    .section-head p { margin:4px 0 0; font-size:12.5px; line-height:1.5; }
+    .section-tools { margin:2px 0 10px 66px; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+    .tool-btn { appearance:none; border:1px solid var(--line2); border-radius:999px; background:var(--panel); color:var(--muted); font-family:var(--font-mono); font-size:11px; padding:6px 10px; cursor:pointer; transition:background .18s,border-color .18s,color .18s; }
+    .tool-btn:hover { color:var(--text); border-color:var(--blue); background:rgba(111,138,255,.16); }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-top:16px; }
+    .stat { border:1px solid var(--line); background:var(--panel); padding:8px 10px; }
+    .stat b { display:block; color:var(--orange); font-family:var(--font-mono); font-size:18px; font-weight:620; }
+    .stat span,.meta { color:var(--muted); font-family:var(--font-mono); font-size:12px; }
+    .table-wrap { margin-left:66px; overflow-x:auto; border:1px solid var(--line); background:var(--panel); border-radius:2px; }
+    table { width:100%; border-collapse:collapse; min-width:1060px; }
+    th,td { padding:10px 11px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:12.5px; line-height:1.55; }
+    th { color:var(--blue); font-family:var(--font-mono); font-size:11px; font-weight:560; text-transform:uppercase; }
+    td { color:rgba(255,250,241,.78); }
+    td:first-child,td:nth-child(4),td:nth-child(5),td:nth-child(8) { color:var(--orange); font-family:var(--font-mono); }
+    .cards { display:grid; grid-template-columns:1fr; }
+    .card { display:block; position:relative; margin-left:66px; padding:16px 0 19px; border-bottom:1px solid var(--line); background:transparent; }
+    .card[data-rank]::before { content:attr(data-rank); position:absolute; left:-66px; top:18px; width:41px; height:41px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--blue); font-family:var(--font-mono); font-size:14px; background:var(--node); border:1px solid var(--line); box-shadow:0 0 0 0 var(--glow); }
+    .card[data-rank]:hover::before { border-color:var(--blue); box-shadow:0 0 0 4px var(--glow); }
+    .card h3 a { color:var(--text); }
+    .card h3 a:hover { color:var(--blue); }
+    .card > p { margin:9px 0 0; color:rgba(255,250,241,.82); font-size:15.8px; line-height:1.92; }
+    .tag { display:inline-block; margin:2px 5px 2px 0; padding:1px 6px; border:1px solid var(--line); border-radius:2px; color:var(--muted); font-family:var(--font-mono); font-size:11px; white-space:nowrap; }
+    .tag:nth-child(1), .tag.primary { border-color:var(--rail); color:var(--blue); }
+    .tag:nth-child(2), .tag.value { border-color:rgba(249,115,22,0.24); color:rgba(249,115,22,0.86); }
+    .read-first { margin:14px 0 0; padding:12px 14px; border:1px solid var(--line); border-left:2px solid var(--orange); border-radius:0 8px 8px 0; background:linear-gradient(100deg,rgba(249,115,22,.10),transparent 70%); }
+    .read-label { color:var(--orange); font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; }
+    .read-first ol { margin-top:8px; }
+    .detail-stack { display:grid; gap:8px; margin:12px 0 0; }
+    .detail-fold { border:1px solid var(--line); border-radius:4px; background:var(--panel); overflow:hidden; transition:border-color .18s,background .18s; }
+    .detail-fold:hover { border-color:var(--line2); background:var(--panel2); }
+    .detail-fold summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 10px; color:var(--blue); font-family:var(--font-mono); font-size:11px; user-select:none; }
+    .detail-fold summary::-webkit-details-marker { display:none; }
+    .detail-fold summary::after { content:"展开"; color:var(--muted); font-size:10px; }
+    .detail-fold[open] summary { border-bottom:1px solid var(--line); }
+    .detail-fold[open] summary::after { content:"收起"; color:var(--orange); }
+    .detail-fold > ol,.detail-fold > .lenses { margin:8px 10px 10px; }
+    .detail-fold.risk-fold summary { color:var(--red); }
+    .mini-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; padding:9px; }
+    .mini-grid div { border:1px solid var(--line); background:rgba(255,250,241,0.018); border-radius:2px; padding:6px 8px; min-width:0; }
+    .mini-grid b { display:block; color:var(--blue); font-family:var(--font-mono); font-size:10px; }
+    .mini-grid span { color:var(--text); font-size:12.5px; overflow-wrap:anywhere; }
+    ol { margin:7px 0 0; padding-left:21px; }
+    li { margin:6px 0; color:rgba(255,250,241,.78); font-size:14.5px; line-height:1.86; }
+    li b { color:var(--text); font-weight:560; }
+    .lenses { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+    .lens { border:1px solid var(--line); background:var(--panel); border-radius:2px; padding:10px 11px; }
+    .lens b { color:var(--blue); font-family:var(--font-mono); font-size:12px; font-weight:560; }
+    .lens p { margin:4px 0 0; color:var(--soft); font-size:13px; line-height:1.72; }
+    .trend-cards { margin:14px 0 0 66px; display:grid; grid-template-columns:1fr; gap:10px; }
+    .trend-card { border:1px solid var(--line); border-left:2px solid var(--rail); border-radius:0 10px 10px 0; background:linear-gradient(100deg,var(--panel2),transparent 80%); padding:16px 18px; }
+    .trend-card h3 { margin:0 0 8px; font-size:17px; line-height:1.45; }
+    .trend-card p { margin:0; color:rgba(255,250,241,.78); font-size:14.7px; line-height:1.86; }
+    .trend-evidence { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 0; }
+    .trend-evidence span { border:1px solid var(--rail); background:rgba(91,124,255,0.08); color:var(--blue); border-radius:999px; padding:2px 8px; font-family:var(--font-mono); font-size:10.5px; }
+    .trend-action { margin-top:10px; color:var(--orange); font-size:13px; line-height:1.65; }
+    blockquote { margin:22px 0 0 66px; padding:4px 0 4px 18px; border:0; border-left:3px solid rgba(249,115,22,.32); color:var(--text); font-size:20px; font-weight:460; line-height:1.72; background:transparent; }
+    blockquote::before { content:""; display:block; width:3px; height:1.3em; margin-left:-21px; margin-bottom:-1.3em; border-radius:999px; background:var(--orange); }
+    .caveat { margin:12px 0 0; color:var(--muted); font-size:12px; }
+    @media (max-width:620px) {
+      .wrap { padding:30px 16px 60px; }
+      h1 { font-size:35px; }
+      .hero-lede { font-size:14px; line-height:1.78; }
+      .briefing-strip { grid-template-columns:1fr; gap:8px; }
+      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .timeline::before { left:18px; }
+      .section-head { padding-left:52px; gap:10px; }
+      .section-head .range { min-width:42px; }
+      .table-wrap,.card,.trend-cards,blockquote,.section-tools { margin-left:52px; }
+      .table-wrap { overflow:visible; border:0; background:transparent; border-radius:0; }
+      table,thead,tbody,tr,td { display:block; width:100%; min-width:0; }
+      table { min-width:0; }
+      thead { display:none; }
+      tbody { display:grid; gap:10px; }
+      tbody tr { border:1px solid var(--line); border-radius:12px; background:linear-gradient(155deg,var(--panel2),var(--panel)); padding:10px 11px; }
+      td { border:0; display:grid; grid-template-columns:86px minmax(0,1fr); gap:8px; align-items:start; padding:4px 0; font-size:12.5px; }
+      td::before { color:var(--muted); font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
+      td:nth-child(1)::before { content:"Rank"; }
+      td:nth-child(2)::before { content:"Repo"; }
+      td:nth-child(3)::before { content:"Lang"; }
+      td:nth-child(4)::before { content:"Period"; }
+      td:nth-child(5)::before { content:"Stars"; }
+      td:nth-child(6)::before { content:"Forks"; }
+      td:nth-child(7)::before { content:"Issues"; }
+      td:nth-child(8)::before { content:"Score"; }
+      td:nth-child(9)::before { content:"Confidence"; }
+      td:nth-child(10)::before { content:"Relation"; }
+      td:nth-child(11)::before { content:"Signals"; }
+      .card[data-rank]::before { left:-52px; width:38px; height:38px; }
+      .stats,.lenses,.mini-grid { grid-template-columns:1fr; }
+      .detail-fold summary { min-height:42px; }
+      .card > p { font-size:14.5px; line-height:1.86; }
+    }
+  </style>
+<style>pre{white-space:pre-wrap;overflow-wrap:anywhere} .table-wrap{overflow-x:auto} .card a,td{overflow-wrap:anywhere} @media(max-width:600px){.wrap{padding:20px 14px}h1{font-size:30px}.card{padding:16px}table{min-width:700px}}</style></head>
+<body>
+<div class="wrap">
+<header>
+<div class="toprow">
+<div class="brand"><span class="dot"></span> ReelOS · GitHub Signal</div>
+<div class="mono" style="color:var(--muted);font-size:12px;">collect · judge · build</div>
+</div>
+<h1><span class="pixel-word">GitHub</span> <span class="ac">热榜</span> 情报</h1>
+<div class="sub">
+<span class="mono">2026-09-07</span>
+<span class="chip">MODE / <b>AI-NATIVE</b></span>
+<span class="chip">PERIOD / <b>WEEKLY</b></span>
+<span class="chip">TOP <b>10</b></span>
+</div>
+<p class="hero-lede">面向中文 AI builder / founder / investor 的开源信号读物：先看趋势和判断，再按需展开技术证据。</p>
+<section aria-label="本期阅读提示" class="briefing-strip">
+<div class="briefing-item"><b>Reading Order</b><span>先扫 Top10 与趋势卡片，再进入 Top 项目的“先读判断”。</span></div>
+<div class="briefing-item"><b>Evidence</b><span>技术、数据、风险默认折叠，保留给需要核查的人。</span></div>
+<div class="briefing-item"><b>Mobile</b><span>手机端 Top10 自动卡片化，减少横向拖拽。</span></div>
+</section>
+<nav aria-label="报告分组导航" class="section-nav">
+<a class="section-link" href="#sec-top10"><span class="nr mono">01</span><span>Top 10</span></a>
+<a class="section-link" href="#sec-deep"><span class="nr mono">02</span><span>深度分析</span></a>
+<a class="section-link" href="#sec-trends"><span class="nr mono">03</span><span>趋势</span></a>
+<a class="section-link" href="#sec-lens"><span class="nr mono">04</span><span>启示</span></a>
+<a class="section-link" href="#sec-actions"><span class="nr mono">05</span><span>跟进</span></a>
+</nav>
+<section class="stats">
+<div class="stat"><b>60</b><span>候选项目</span></div>
+<div class="stat"><b>10</b><span>Top 项目</span></div>
+<div class="stat"><b>60</b><span>README 覆盖</span></div>
+<div class="stat"><b>0</b><span>API 失败</span></div>
+</section>
+<p class="caveat">抓取健康：all=21, python=19, typescript=17, javascript=15, go=24, rust=20。GitHub Trending 非官方 API，页面结构变化可能影响解析。</p>
+</header>
+<main class="timeline"><section id="sec-summary"><h2>执行摘要</h2><p>本周值得研究的变化，是开源项目开始围绕具体交付链条组合能力：VoiceStudio 把本地语音模型接进配音与长音频生产，ECC 把技能、钩子和配置组织成可安装的开发环境，SkillSpector 则把安装前审查变成独立工具。这里的机会判断来自 README 与依赖证据，尚不等于产品已经稳定。</p><p>周榜战略 Top 10 中，VoiceStudio 本周新增 6,761 Star，ECC 新增 5,445 Star；archify 的 19,480 Star 增长更高，但按相关性、可产品化迹象和研究价值综合排序位于第九。评分用于分配研究时间，不代表商业价值或技术性能。</p><p>历史精选榜中，ECC 出现 6 次、VoiceStudio 4 次、OpenClaude 3 次，SkillSpector 2 次。Hermes Agent 在历史快照出现 5 次却未进入本次富化候选，说明日榜精选与本次周榜采样存在差异，不能据此宣称其热度已经衰退。</p><p>建议先做两个小验证：用固定中文素材测试 VoiceStudio 的完整配音流程；从 ECC 挑一个技能和一组钩子，经 SkillSpector 审查后与原有配置比较。暂不全量迁移 Agent 环境，也不把本地部署自动等同于低成本。</p></section>
+<section class="signal-section" id="sec-top10">
+<div class="section-head"><span class="range mono">01</span><div><h2>Top 10 项目信号</h2><p>不是按 star 排序，而是数据、技术与战略相关度的加权判断。</p></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>Repository</th><th>语言</th><th>周期 Stars</th><th>总 Stars</th><th>Forks</th><th>Issues</th><th>评分</th><th>置信度</th><th>关系标签</th><th>战略关键词</th><th>主信号 / 入选原因</th></tr></thead>
+<tbody><tr><td>1</td><td><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></td><td>Python</td><td>6761</td><td>19788</td><td>2510</td><td>59</td><td>98</td><td>high</td><td>Workspace 组件</td><td><span class="tag">mcp</span><span class="tag">rag</span><span class="tag">workflow</span></td><td>把语音模型组织成可交付制作流程</td></tr><tr><td>2</td><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td><td>JavaScript</td><td>5445</td><td>251211</td><td>37766</td><td>170</td><td>97</td><td>high</td><td>Skill 来源</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">memory</span><span class="tag">mcp</span><span class="tag">skill</span></td><td>技能与钩子的安装和维护样本</td></tr><tr><td>3</td><td><a href="https://github.com/Gitlawb/openclaude">Gitlawb/openclaude</a></td><td>TypeScript</td><td>1839</td><td>32832</td><td>9061</td><td>81</td><td>97</td><td>high</td><td>开发者工具</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">mcp</span><span class="tag">llm</span><span class="tag">workflow</span></td><td>多后端编码入口与会话状态边界</td></tr><tr><td>4</td><td><a href="https://github.com/unclecode/crawl4ai">unclecode/crawl4ai</a></td><td>Python</td><td>1689</td><td>81815</td><td>8436</td><td>175</td><td>97</td><td>high</td><td>补充能力</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">memory</span><span class="tag">rag</span><span class="tag">llm</span></td><td>网页采集到结构化证据的转换层</td></tr><tr><td>5</td><td><a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></td><td>Python</td><td>1081</td><td>16403</td><td>1393</td><td>107</td><td>97</td><td>high</td><td>开发者工具</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">memory</span><span class="tag">mcp</span><span class="tag">skill</span></td><td>安装前技能审查与基线机制</td></tr><tr><td>6</td><td><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></td><td>TypeScript</td><td>958</td><td>51156</td><td>3589</td><td>99</td><td>97</td><td>high</td><td>开发者工具</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">mcp</span><span class="tag">automation</span><span class="tag">protocol</span></td><td>浏览器调试进入编码 Agent 工具面</td></tr><tr><td>7</td><td><a href="https://github.com/rtk-ai/rtk">rtk-ai/rtk</a></td><td>Rust</td><td>1302</td><td>79108</td><td>5008</td><td>1948</td><td>96</td><td>high</td><td>开发者工具</td><td><span class="tag">agent</span><span class="tag">llm</span><span class="tag">workflow</span></td><td>命令输出压缩的可验证收益</td></tr><tr><td>8</td><td><a href="https://github.com/Tencent/WeKnora">Tencent/WeKnora</a></td><td>Go</td><td>545</td><td>21545</td><td>3115</td><td>690</td><td>96</td><td>high</td><td>Memory 组件</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">memory</span><span class="tag">mcp</span><span class="tag">rag</span></td><td>知识平台的检索与维护工作流</td></tr><tr><td>9</td><td><a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></td><td>JavaScript</td><td>19480</td><td>50700</td><td>3300</td><td>123</td><td>95</td><td>high</td><td>Skill 来源</td><td><span class="tag">agent</span><span class="tag">agents</span><span class="tag">memory</span><span class="tag">skill</span><span class="tag">workflow</span></td><td>架构表达与源码可追溯性</td></tr><tr><td>10</td><td><a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></td><td>TypeScript</td><td>1396</td><td>3645</td><td>258</td><td>21</td><td>95</td><td>high</td><td>Runtime 参考</td><td><span class="tag">agent</span><span class="tag">memory</span><span class="tag">workspace</span><span class="tag">inference</span></td><td>本地推理服务与现有 Agent 适配</td></tr></tbody>
+</table>
+</div>
+</section>
+<section class="signal-section" id="sec-deep">
+<div class="section-head"><span class="range mono">02</span><div><h2>Top 3-5 深度分析</h2><p>把 repo 拆成可复用、可投资、可防守的决策情报。</p></div></div>
+<div aria-label="深度分析阅读控制" class="section-tools"><button class="tool-btn" data-action="expand-deep" type="button">展开全部证据</button><button class="tool-btn" data-action="collapse-deep" type="button">收起全部证据</button></div>
+<div class="cards"><article class="card" data-rank="01"><h3><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></h3><div class="meta">Workspace 组件 · Python · 评分 98 · 置信度 high</div><p>把语音克隆、转写、配音和长音频制作放进本地工作台，研究重点应是完整交付成功率。</p><div class="read-first"><p><b>Problem Signal：</b>语音生产通常跨转写、翻译、说话人处理和合成多个工具。README 列出视频配音、章节渲染、批量队列和有声书导出，把文件往返与模型切换集中到一个工作流，适合有重复制作任务的创作者。</p><p><b>Timing Signal：</b>本周新增 6,761 Star，历史精选榜出现 4 次，是持续关注迹象。为什么在此时传播，尚无发布事件或外部传播证据；本地隐私、可切换引擎和减少订阅依赖是可能的需求解释，不应写成已经证实的增长原因。</p><p><b>Novelty Signal：</b>半创新：主要是现有 TTS、ASR、分离与说话人组件的工作流集成。README 的语言目录不代表每种语言质量一致；更有价值的差异可能是模型管理、失败诊断与最终文件交付。</p></div><div class="detail-stack"><details class="detail-fold data-fold"><summary>基础数据</summary><div class="mini-grid"><div><b>周期 stars</b><span>6761</span></div><div><b>总 stars</b><span>19788</span></div><div><b>forks</b><span>2510</span></div><div><b>open issues</b><span>59</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>AGPL-3.0</span></div><div><b>创建时间</b><span>2026-04-09</span></div><div><b>最后 push</b><span>2026-09-06</span></div><div><b>topics</b><span>ai, audiobook, cuda, dubbing, elevenlabs-alternative, huggingface, local-first, mlx</span></div></div></details><details class="detail-fold tech-fold"><summary>技术原理与实现</summary><p><b>实现证据：</b>README 描述桌面入口、Python 环境自动配置、REST/SSE/WebSocket 与 MCP 接口，pyproject.toml 确认 Python 项目和依赖声明。多引擎注册与设备路由意味着它承担模型兼容层，而不仅是调用单个语音模型。</p><p><b>工程判断：</b>批量队列、设备检查与诊断包有助于把模型演示转为生产工具，但这些机制的异常恢复和资源回收仍需实测；本次没有运行软件，也没有复现项目链接的性能测试。</p></details><details class="detail-fold tech-fold"><summary>核心特性</summary><p>README 自述支持短参考音频克隆、文字描述设计音色与多说话人配音。</p><p>视频流程包含转写、翻译、说话人保留、合成与导出；有声书流程支持章节渲染和 m4b。</p><p>模型目录管理 TTS/ASR/LLM；本地 API 与 MCP 可作为自动化入口。</p></details><details class="detail-fold tech-fold"><summary>潜在应用方向</summary><p>中文短视频：比较同一段口播在不同引擎中的停顿和专名发音。</p><p>课程本地化：验证译文长度变化后的音画对齐。</p><p>有声书：检查多章节导出与断点恢复。</p><p>内部录音：在本地处理敏感会议音频并核查网络访问。</p><p>批量素材：用队列处理一组重复配音任务，记录失败率和显存占用。</p></details><details class="detail-fold tech-fold"><summary>系统设计拆解</summary><p>Agent orchestration：未发现自主多 Agent 编排证据。</p><p>Memory：本地声音与项目保存，不能视作通用 Agent 长期记忆。</p><p>Tool Use：REST、音频兼容 API 与 MCP，来自 README。</p><p>Workflow：转写、翻译、合成、导出与批量队列。</p><p>Storage：项目、设置、声音与输出默认本地，数据库细节未核查。</p><p>UI：桌面应用与浏览器入口，硬件兼容性依平台和引擎而异。</p></details><details class="detail-fold lens-fold"><summary>六视角解读</summary><p><b>AI Builder：</b>可先把本地合成接口接入现有脚本，不必迁移整套内容生产系统。</p><p><b>Investor：</b>可观察一体化本地工具的需求，但 Star 不能证明付费或留存。</p><p><b>Product：</b>用户购买的是可交付音频，指标应覆盖返工次数和任务完成率。</p><p><b>Architecture：</b>关注模型注册、设备选择和队列状态如何隔离。</p><p><b>Founder：</b>从特定语言或特定内容类型切入，比承诺覆盖所有语音需求更容易验证。</p><p><b>OPC ecosystem：</b>MCP 有利于成为其他 Agent 的语音工具，但权限与素材归属需要在集成时明确。</p></details><details class="detail-fold risk-fold"><summary>风险评估</summary><p><b>技术：</b>README 明示 active beta；多硬件与多引擎组合增加兼容验证成本。</p><p><b>市场：</b>本地算力、模型下载与维护负担可能抵消订阅节省，需要测算实际任务成本。</p><p><b>安全与许可：</b>应用标注 AGPL-3.0，下载模型另有上游条款；声音样本授权与输出用途需逐项核查。此处不作法律结论。</p><p><b>社区：</b>仓库近期 push 只能证明活动；尚未核查贡献者集中度、发布稳定性和问题关闭速度。</p></details></div><p><b>跟进判断：</b>A 类：以一段中文视频和一个有声书章节做端到端试用，产出音质、时长、显存、返工与许可核查表。</p><details><summary>证据与评分</summary><p>README 为项目自述；下述建议未经运行验证。</p><p>历史精选榜出现 4 次；此前观察等级 A；上次分析 None</p><pre>{
+  "heat": 20,
+  "relevance": 20,
+  "novelty": 15,
+  "productize": 14,
+  "adoption": 10,
+  "relation": 9,
+  "risk_signal": 10,
+  "total": 98
+}</pre><a href="https://github.com/debpalash/VoiceStudio/blob/main/README.md">README 原文</a><p>依赖清单：pyproject.toml。未进行独立性能复现。</p></details></article><article class="card" data-rank="02"><h3><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></h3><div class="meta">Skill 来源 · JavaScript · 评分 97 · 置信度 high</div><p>把开发习惯打包成可安装的技能、钩子与代理配置，值得学习的是可维护的分发方式。</p><div class="read-first"><p><b>Problem Signal：</b>同一团队在不同编码工具里反复配置规则、技能和工作流，容易漂移。README 提供统一安装路径，并说明原生插件包含 skills、agents、commands 与 hooks，直接对应配置分发和版本管理问题。</p><p><b>Timing Signal：</b>本周新增 5,445 Star，历史六份快照均有出现。持续精选支持研究优先级；不能从快照得出具体营销或版本变更驱动。跨工具支持与安全审查诉求是解释热度的假设。</p><p><b>Novelty Signal：</b>半创新：技能和钩子不是新概念，组合、安装边界和维护纪律可能构成实际价值。项目的性能优化定位需要用固定任务对照，不能从名称或收藏量推导质量提升。</p></div><div class="detail-stack"><details class="detail-fold data-fold"><summary>基础数据</summary><div class="mini-grid"><div><b>周期 stars</b><span>5445</span></div><div><b>总 stars</b><span>251211</span></div><div><b>forks</b><span>37766</span></div><div><b>open issues</b><span>170</span></div><div><b>主语言</b><span>JavaScript</span></div><div><b>license</b><span>MIT</span></div><div><b>创建时间</b><span>2026-01-18</span></div><div><b>最后 push</b><span>2026-09-05</span></div><div><b>topics</b><span>ai-agents, anthropic, claude, claude-code, developer-tools, llm, mcp, productivity</span></div></div></details><details class="detail-fold tech-fold"><summary>技术原理与实现</summary><p><b>实现证据：</b>README 给出 npm 引导安装与原生插件两条路径，明确不要叠加安装；package.json 是分发证据。安装工具记录 hook profile，表明部署范围与钩子选择也是产品的一部分。</p><p><b>工程判断：</b>应比较安装前后的有效配置差异、重复钩子和升级回滚行为。项目 description 提及 memory 与 instincts，但截断 README 不足以确认完整记忆存储架构。</p></details><details class="detail-fold tech-fold"><summary>核心特性</summary><p>面向多种编码 Agent 的技能、命令与代理配置集合。</p><p>引导式安装、升级与插件作用域迁移。</p><p>README 明确区分开放代码与托管 GitHub App 的定位，不据此推断实际收入。</p></details><details class="detail-fold tech-fold"><summary>潜在应用方向</summary><p>团队入职：制作最小开发配置包。</p><p>代码审查：选择一个研究优先流程测试结果质量。</p><p>配置升级：对比新旧 hook 的有效行为。</p><p>多工具团队：验证同一技能在两个工具中的差异。</p><p>安全基线：将插件安装前审查加入内部流程。</p></details><details class="detail-fold tech-fold"><summary>系统设计拆解</summary><p>Agent orchestration：存在 agents 配置入口，运行调度仍依赖宿主。</p><p>Memory：description 提及 memory/instincts，存储与隔离机制未核查。</p><p>Tool Use：插件管理的 hooks 和命令；具体权限取决于选用内容。</p><p>Workflow：安装、更新、研究优先开发等组织方式。</p><p>Storage：配置文件与插件作用域是已知入口，其他存储未知。</p><p>UI：CLI 安装与宿主插件入口，托管 App 属另一个服务面。</p></details><details class="detail-fold lens-fold"><summary>六视角解读</summary><p><b>AI Builder：</b>抽取一项可测量的流程，避免整包复制带来的配置冲突。</p><p><b>Investor：</b>关注模板分发能否转化为持续使用，不能只看仓库规模。</p><p><b>Product：</b>安装、作用域与回滚体验会决定配置包能否走出个人用户。</p><p><b>Architecture：</b>把提示文本、执行钩子和权限分开评估，分别定义版本。</p><p><b>Founder：</b>专业领域的高质量小包比通用配置数量更容易形成差异。</p><p><b>OPC ecosystem：</b>跨宿主分发有协议适配价值，但不能假设各种 Agent 的行为语义一致。</p></details><details class="detail-fold risk-fold"><summary>风险评估</summary><p><b>技术：</b>README 特别提醒避免多路径叠加安装，说明重复钩子与配置覆盖需要验证。</p><p><b>市场：</b>通用技能包容易被宿主原生功能或其他免费集合替代。</p><p><b>安全与许可：</b>MIT 为 API 标注；钩子可能执行命令，必须审查实际脚本与分发来源。</p><p><b>社区：</b>README 自述单维护者跨多个 harness 持续发布，存在维护集中度信号；尚未核查贡献图谱。</p></details></div><p><b>跟进判断：</b>A 类：选一个技能和一组 hooks，先审查再在固定编码任务上对照；交付配置差异与回滚说明。</p><details><summary>证据与评分</summary><p>README 为项目自述；下述建议未经运行验证。</p><p>历史精选榜出现 6 次；此前观察等级 A；上次分析 2026-09-01</p><pre>{
+  "heat": 20,
+  "relevance": 20,
+  "novelty": 15,
+  "productize": 14,
+  "adoption": 10,
+  "relation": 10,
+  "risk_signal": 8,
+  "total": 97
+}</pre><a href="https://github.com/affaan-m/ECC/blob/main/README.md">README 原文</a><p>依赖清单：package.json。未进行独立性能复现。</p></details></article><article class="card" data-rank="03"><h3><a href="https://github.com/Gitlawb/openclaude">Gitlawb/openclaude</a></h3><div class="meta">开发者工具 · TypeScript · 评分 97 · 置信度 high</div><p>统一云端与本地模型的终端编码入口，关键验证点是后端切换与会话边界。</p><div class="read-first"><p><b>Problem Signal：</b>不同模型供应商常要求不同配置和工具入口。README 描述一个 CLI 管理 provider profiles、文件工具、bash、任务与 MCP，并支持恢复或分叉会话，减少切换工具带来的工作流中断。</p><p><b>Timing Signal：</b>历史精选榜出现 3 次，属于需要继续验证的重复信号。模型后端选择增加可能推动统一入口需求，但本次未建立发布时间、用户增长与热榜之间的因果关系。</p><p><b>Novelty Signal：</b>半创新：主要价值是多后端适配与熟悉的终端交互组合。会话 fork 不创建文件系统隔离，后台任务不是远程托管执行；这些边界比产品名称更值得关注。</p></div><div class="detail-stack"><details class="detail-fold data-fold"><summary>基础数据</summary><div class="mini-grid"><div><b>周期 stars</b><span>1839</span></div><div><b>总 stars</b><span>32832</span></div><div><b>forks</b><span>9061</span></div><div><b>open issues</b><span>81</span></div><div><b>主语言</b><span>TypeScript</span></div><div><b>license</b><span>NOASSERTION</span></div><div><b>创建时间</b><span>2026-04-01</span></div><div><b>最后 push</b><span>2026-09-06</span></div><div><b>topics</b><span>ai, ai-agent, ai-tools, cli, coding</span></div></div></details><details class="detail-fold tech-fold"><summary>技术原理与实现</summary><p><b>实现证据：</b>README 说明 npm 运行需要 Node 22 以上，提供 provider 配置、恢复/分叉会话和本地子进程后台执行。后台日志和状态保存在配置目录，并区分 exited、failed、stale、killed。</p><p><b>工程判断：</b>状态机对不可观察终止保留 stale，是值得借鉴的保守处理；但终端重新附着尚未完整实现。多后端工具调用协议是否一致仍需真实任务验证。</p></details><details class="detail-fold tech-fold"><summary>核心特性</summary><p>云 API 与本地后端共用终端工作流。</p><p>provider 配置向导、会话恢复与对话分叉。</p><p>后台任务、日志查询和本地进程状态记录。</p></details><details class="detail-fold tech-fold"><summary>潜在应用方向</summary><p>同一代码任务对比本地和云端模型。</p><p>长测试修复任务观察后台退出状态。</p><p>教学环境配置统一终端入口。</p><p>受限项目评估本地推理兼容性。</p><p>会话分叉前建立独立 worktree，测试任务互不影响。</p></details><details class="detail-fold tech-fold"><summary>系统设计拆解</summary><p>Agent orchestration：CLI 中含 agents/tasks，后台由本地子进程运行。</p><p>Memory：会话恢复与分叉，不等于长期语义记忆。</p><p>Tool Use：bash、文件搜索、MCP 和 web 工具来自 README。</p><p>Workflow：终端交互与后台非交互任务。</p><p>Storage：provider 凭据与会话日志位于本地配置路径。</p><p>UI：终端为主，附 VS Code 启动集成。</p></details><details class="detail-fold lens-fold"><summary>六视角解读</summary><p><b>AI Builder：</b>适合测试统一入口能否降低后端切换成本。</p><p><b>Investor：</b>多后端兼容有需求迹象，护城河需要用维护能力与留存证明。</p><p><b>Product：</b>清晰显示任务状态和运行范围比提供更多模型名称更重要。</p><p><b>Architecture：</b>对话分叉与工作目录隔离必须由不同层承担。</p><p><b>Founder：</b>可围绕某种团队环境提供迁移和诊断服务，先验证使用频次。</p><p><b>OPC ecosystem：</b>MCP 提供工具接入面，兼容不应被误读为所有工具在每种后端都可靠。</p></details><details class="detail-fold risk-fold"><summary>风险评估</summary><p><b>技术：</b>本地后台任务无法抵御主机故障，且 full terminal reattach 尚未实现。</p><p><b>市场：</b>终端编码入口竞争密集，可能受主流工具的原生多模型能力挤压。</p><p><b>安全与许可：</b>API license 为 NOASSERTION，而 README 徽章写 MIT，存在证据冲突；应检查 LICENSE 原文。provider 凭据文件也需明确权限。</p><p><b>社区：</b>尚未分析 issue 年龄、PR 响应和贡献者结构，近期 push 不足以保证适配维护。</p></details></div><p><b>跟进判断：</b>B 类：先建立两个后端的最小兼容测试与凭据保存检查，再决定是否迁移；许可冲突未核实前不做商业集成。</p><details><summary>证据与评分</summary><p>README 为项目自述；下述建议未经运行验证。</p><p>历史精选榜出现 3 次；此前观察等级 A；上次分析 None</p><pre>{
+  "heat": 20,
+  "relevance": 20,
+  "novelty": 15,
+  "productize": 14,
+  "adoption": 10,
+  "relation": 10,
+  "risk_signal": 8,
+  "total": 97
+}</pre><a href="https://github.com/Gitlawb/openclaude/blob/main/README.md">README 原文</a><p>依赖清单：package.json。未进行独立性能复现。</p></details></article><article class="card" data-rank="04"><h3><a href="https://github.com/unclecode/crawl4ai">unclecode/crawl4ai</a></h3><div class="meta">补充能力 · Python · 评分 97 · 置信度 high</div><p>网页进入 LLM 之前仍需要可靠的数据整理层，评估重点应从抓到页面转向可追溯的结构化输出。</p><div class="read-first"><p><b>Problem Signal：</b>网页包含导航、广告、动态内容和不稳定布局，直接输入模型会浪费上下文。README 提供 Markdown 清洗、引用、CSS/XPath schema 提取与浏览器会话管理，覆盖采集到可用文本的转换。</p><p><b>Timing Signal：</b>历史窗口只在 08-31 精选榜出现，本周入选并不足以证明持续升温。网页驱动的研究与知识库任务是可能的需求基础，缺少外部采用统计，不能据此宣称使用量增长。</p><p><b>Novelty Signal：</b>偏工程组合：浏览器自动化、内容过滤和结构提取均有成熟先例；价值在统一 API 与输出质量。速度等描述属于项目自述，本次没有 benchmark 复现。</p></div><div class="detail-stack"><details class="detail-fold data-fold"><summary>基础数据</summary><div class="mini-grid"><div><b>周期 stars</b><span>1689</span></div><div><b>总 stars</b><span>81815</span></div><div><b>forks</b><span>8436</span></div><div><b>open issues</b><span>175</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2024-05-09</span></div><div><b>最后 push</b><span>2026-09-01</span></div><div><b>topics</b><span>-</span></div></div></details><details class="detail-fold tech-fold"><summary>技术原理与实现</summary><p><b>实现证据：</b>pyproject.toml 声明 Playwright、Patchright、aiohttp、aiosqlite、rank-bm25 与 LiteLLM 相关依赖。README 描述异步浏览器池、缓存、BM25 过滤和可选择的 LLM 提取，构成采集、清洗、抽取链条。</p><p><b>工程判断：</b>确定性选择器适合稳定页面，LLM 抽取适合结构变化但引入费用与不确定性；需分别保存原始页、提取结果和版本，才能审计答案来源。</p></details><details class="detail-fold tech-fold"><summary>核心特性</summary><p>生成带结构与引用的 Markdown。</p><p>通过 CSS/XPath 或 LLM 生成结构化数据。</p><p>管理浏览器配置、会话、cookies 与动态页面交互。</p></details><details class="detail-fold tech-fold"><summary>潜在应用方向</summary><p>文档知识库：保留来源与段落结构。</p><p>产品目录：以 schema 校验价格字段。</p><p>研究报告：保存页面快照与引用链。</p><p>内部网站：在授权范围内复用登录态。</p><p>网页回归：比较同一页面跨版本抽取差异。</p></details><details class="detail-fold tech-fold"><summary>系统设计拆解</summary><p>Agent orchestration：未发现完整自主 Agent 编排证据，主要为采集组件。</p><p>Memory：缓存或会话保持不等于 Agent 长期记忆。</p><p>Tool Use：浏览器、选择器与可选模型提取。</p><p>Workflow：异步抓取、过滤、抽取与格式输出。</p><p>Storage：依赖包含 aiosqlite；具体缓存策略需代码确认。</p><p>UI：Python API、CLI 和部署入口，不能据此推断完整工作台。</p></details><details class="detail-fold lens-fold"><summary>六视角解读</summary><p><b>AI Builder：</b>可作为研究 Agent 的数据入口，并保留证据链。</p><p><b>Investor：</b>采集基础设施价值取决于稳定性和重复任务成本，不取决于抓取演示。</p><p><b>Product：</b>优先展示失败原因、来源和字段置信度。</p><p><b>Architecture：</b>把网页获取与模型推理分离，便于缓存和重跑。</p><p><b>Founder：</b>从单一文档类型和稳定质量承诺切入。</p><p><b>OPC ecosystem：</b>可包装为受控工具接口，避免把登录态直接暴露给所有调用方。</p></details><details class="detail-fold risk-fold"><summary>风险评估</summary><p><b>技术：</b>浏览器与规避检测相关依赖较多，目标站变化容易导致抽取失效。</p><p><b>市场：</b>托管采集服务和轻量爬虫均可替代，需证明部署与维护成本优势。</p><p><b>安全与许可：</b>API 标注 Apache-2.0；使用 cookies、登录页和用户脚本会扩大数据暴露面，站点授权需逐项确认。</p><p><b>社区：</b>依赖维护与安全更新比单次 push 更重要，本次未审查漏洞清单和发布响应。</p></details></div><p><b>跟进判断：</b>B 类：对三个真实目标站建立固定字段回归集，记录失败率、来源保存和单位任务成本。</p><details><summary>证据与评分</summary><p>README 为项目自述；下述建议未经运行验证。</p><p>历史精选榜出现 1 次；此前观察等级 A；上次分析 None</p><pre>{
+  "heat": 20,
+  "relevance": 20,
+  "novelty": 15,
+  "productize": 14,
+  "adoption": 10,
+  "relation": 10,
+  "risk_signal": 8,
+  "total": 97
+}</pre><a href="https://github.com/unclecode/crawl4ai/blob/main/README.md">README 原文</a><p>依赖清单：pyproject.toml。未进行独立性能复现。</p></details></article><article class="card" data-rank="05"><h3><a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></h3><div class="meta">开发者工具 · Python · 评分 97 · 置信度 high</div><p>技能包安装前检查开始形成独立工具层，但扫描通过不能取代运行时权限控制。</p><div class="read-first"><p><b>Problem Signal：</b>技能文件会携带文本指令、脚本与依赖，用户可能在安装时直接赋予信任。README 描述静态检查加可选 LLM 语义分析，并输出 JSON/SARIF，适合嵌入发布或安装前流程。</p><p><b>Timing Signal：</b>历史精选榜出现 2 次，本周新增 1,081 Star。与 ECC 等技能分发项目同时出现，支持把安全审查作为研究主题；不足以证明行业已经形成统一标准。</p><p><b>Novelty Signal：</b>半创新：把静态规则、语义判断、漏洞查询与基线机制组合到 Agent skill 输入格式。真正需要验证的是恶意样本召回、误报和资源边界，而非规则数量。</p></div><div class="detail-stack"><details class="detail-fold data-fold"><summary>基础数据</summary><div class="mini-grid"><div><b>周期 stars</b><span>1081</span></div><div><b>总 stars</b><span>16403</span></div><div><b>forks</b><span>1393</span></div><div><b>open issues</b><span>107</span></div><div><b>主语言</b><span>Python</span></div><div><b>license</b><span>Apache-2.0</span></div><div><b>创建时间</b><span>2026-03-21</span></div><div><b>最后 push</b><span>2026-09-06</span></div><div><b>topics</b><span>agent-security, agent-skills, agentic-ai, ai-security, claude-code, mcp, prompt-injection, security-scanner</span></div></div></details><details class="detail-fold tech-fold"><summary>技术原理与实现</summary><p><b>实现证据：</b>README 描述多格式输入、两阶段分析、OSV 查询、SARIF 输出与 baseline suppression；pyproject.toml 标注 Python 版本区间和 Alpha 状态。远程输入与压缩包存在独立大小限制，超限关闭流程。</p><p><b>工程判断：</b>指纹基线随源码或扫描器版本变化重新激活问题，是值得研究的变更审查方式。LLM 分析会引入模型差异；应先固定静态结果，再单独统计语义阶段增益。</p></details><details class="detail-fold tech-fold"><summary>核心特性</summary><p>扫描目录、仓库、URL、压缩包或单文件。</p><p>静态分析与可选模型语义分析，输出可接入 CI 的报告。</p><p>误报基线与变化后重新审查，控制重复告警。</p></details><details class="detail-fold tech-fold"><summary>潜在应用方向</summary><p>安装前审查外部 Skill 包。</p><p>内部技能仓库 PR 扫描。</p><p>为技能市场生成审查记录。</p><p>将 SARIF 接入现有代码审查界面。</p><p>建立中文提示注入样本集验证误报漏报。</p></details><details class="detail-fold tech-fold"><summary>系统设计拆解</summary><p>Agent orchestration：扫描管线不是通用 Agent 编排系统。</p><p>Memory：baseline 用于历史告警比对，不是语义记忆。</p><p>Tool Use：静态分析器、OSV 与可选 LLM，另有 MCP extra。</p><p>Workflow：接收输入、扫描、评分、输出与基线复扫。</p><p>Storage：报告和基线文件；长期审计留存需调用方设计。</p><p>UI：CLI 和机器可读报告为主要入口。</p></details><details class="detail-fold lens-fold"><summary>六视角解读</summary><p><b>AI Builder：</b>适合把外部技能审查纳入安装流程。</p><p><b>Investor：</b>安全检查的需求可能随技能分发扩张，但尚无支付意愿或采用证据。</p><p><b>Product：</b>应该解释证据与修复位置，不能只显示单一分数。</p><p><b>Architecture：</b>安装扫描、运行沙箱和权限分配属于不同层，必须组合验证。</p><p><b>Founder：</b>可从组织技能库的版本审查切入，而非承诺所有 Agent 安全。</p><p><b>OPC ecosystem：</b>README 将其置于扫描、评估、签名链条，值得观察审查结果是否能跨分发平台复用。</p></details><details class="detail-fold risk-fold"><summary>风险评估</summary><p><b>技术：</b>规则与 LLM 均可能误报漏报，Alpha 标注要求以自有样本测试。</p><p><b>市场：</b>安全工具可能成为宿主平台内置能力，独立产品需靠工作流整合证明价值。</p><p><b>安全与许可：</b>API 为 Apache-2.0；云端语义分析可能发送技能内容，扫描结果也不能保证运行安全。</p><p><b>社区：</b>NVIDIA 命名空间不等于稳定性承诺，贡献维护结构和长期版本策略尚未核查。</p></details></div><p><b>跟进判断：</b>A 类：用已知安全、恶意与边界样本各一组测试，产出误报漏报表；先作为审查辅助，不作为唯一安装放行条件。</p><details><summary>证据与评分</summary><p>README 为项目自述；下述建议未经运行验证。</p><p>历史精选榜出现 2 次；此前观察等级 A；上次分析 None</p><pre>{
+  "heat": 20,
+  "relevance": 20,
+  "novelty": 15,
+  "productize": 14,
+  "adoption": 10,
+  "relation": 10,
+  "risk_signal": 8,
+  "total": 97
+}</pre><a href="https://github.com/NVIDIA/SkillSpector/blob/main/README.md">README 原文</a><p>依赖清单：pyproject.toml。未进行独立性能复现。</p></details></article></div>
+</section>
+<section class="signal-section" id="sec-trends"><h2>趋势观察：事实、推断与动作</h2><article class="trend-card"><h3>产品信号｜工作流封装比单一模型接口更值得研究</h3><p>VoiceStudio 在历史精选榜出现 4 次，Crawl4AI 仅 1 次，因此两者不能共同证明持续增长；本次 README 的共同结构，是把多个处理阶段组织成可调用流程。这提示产品价值可能集中在中间状态、失败恢复与输出质量。</p><p>证据：<a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a> / <a href="https://github.com/unclecode/crawl4ai">unclecode/crawl4ai</a></p><p>动作：各选择一个完整任务，记录从输入到可交付文件的失败点。</p></article><article class="trend-card"><h3>生态信号｜技能分发与安装前审查开始相邻出现</h3><p>ECC 在六份快照都有出现，SkillSpector 出现两次；前者分发 skills/hooks，后者提供扫描与基线。两者形成互补的研究样本，但尚无证据说明它们已经集成或建立合作。</p><p>证据：<a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a> / <a href="https://github.com/NVIDIA/SkillSpector">NVIDIA/SkillSpector</a></p><p>动作：对一份技能包保存版本、扫描证据和人工结论，测试升级后的差异。</p></article><article class="trend-card"><h3>架构信号｜多后端入口需要明确状态与隔离边界</h3><p>OpenClaude 在历史快照出现三次，Magnitude 两次；本次 description 分别强调统一编码入口与接入现有 Agent 的本地推理服务器。推断机会在兼容层，而不在多一个聊天界面。两者是否可稳定组合仍未测试。</p><p>证据：<a href="https://github.com/Gitlawb/openclaude">Gitlawb/openclaude</a> / <a href="https://github.com/magnitudedev/magnitude">magnitudedev/magnitude</a></p><p>动作：用相同工具调用任务对照两个后端，分别记录协议兼容和文件系统影响。</p></article><article class="trend-card"><h3>工具信号｜网页读取与浏览器调试各自需要证据链</h3><p>历史精选分别出现一次和两次；本次前者提供内容提取，后者定位为编码 Agent 的 Chrome DevTools。两种入口面向不同任务，不能把网页文本提取等同于页面行为验证。</p><p>证据：<a href="https://github.com/unclecode/crawl4ai">unclecode/crawl4ai</a> / <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">ChromeDevTools/chrome-devtools-mcp</a></p><p>动作：分别验证内容字段准确率和浏览器操作后的可观察结果。</p></article><article class="trend-card"><h3>开发者信号｜输出体积和可验证表达进入优化范围</h3><p>archify 在历史精选出现两次，rtk 未出现；当前 description 分别强调可验证架构图和开发命令输出压缩。它们提示研究范围可从模型能力扩展到输入输出的组织质量；rtk 的节省比例属于项目自述，本期不引用为已验证性能。</p><p>证据：<a href="https://github.com/rtk-ai/rtk">rtk-ai/rtk</a> / <a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a></p><p>动作：比较压缩前后错误信息完整性，以及生成架构图能否追溯到源码。</p></article></section><section id="sec-history"><h2>近七天精选榜对照</h2><p>历史窗口为 2026-08-31 至 2026-09-06；6 份快照，缺 09-03。09-01 可能混有月报采样，故仅统计已保存精选榜出现次数，不推断日榜连续天数、不累加不同周期 Star。未入精选榜不等于退出 GitHub Trending。</p><div class="table-wrap"><table><thead><tr><th>项目</th><th>出现次数</th><th>快照日期</th><th>原观察等级</th></tr></thead><tbody><tr><td>debpalash/VoiceStudio</td><td>4/6</td><td>20260902, 20260904, 20260905, 20260906</td><td>A</td></tr><tr><td>affaan-m/ECC</td><td>6/6</td><td>20260831, 20260901, 20260902, 20260904, 20260905, 20260906</td><td>A</td></tr><tr><td>Gitlawb/openclaude</td><td>3/6</td><td>20260902, 20260904, 20260905</td><td>A</td></tr><tr><td>unclecode/crawl4ai</td><td>1/6</td><td>20260831</td><td>A</td></tr><tr><td>NVIDIA/SkillSpector</td><td>2/6</td><td>20260905, 20260906</td><td>A</td></tr><tr><td>ChromeDevTools/chrome-devtools-mcp</td><td>2/6</td><td>20260902, 20260904</td><td>A</td></tr><tr><td>rtk-ai/rtk</td><td>0/6</td><td>未出现在已保存精选榜</td><td>未入池</td></tr><tr><td>Tencent/WeKnora</td><td>0/6</td><td>未出现在已保存精选榜</td><td>A</td></tr><tr><td>tt-a1i/archify</td><td>2/6</td><td>20260831, 20260902</td><td>A</td></tr><tr><td>magnitudedev/magnitude</td><td>2/6</td><td>20260905, 20260906</td><td>A</td></tr></tbody></table></div></section>
+<section class="signal-section" id="sec-lens"><h2>六视角战略启示</h2><p><b>AI Builder：</b>先把语音生产、采集、技能扫描分别接入现有流程，用任务结果比较，避免一次迁移全部开发环境。</p><p><b>Investor：</b>持续精选只是关注度信号。应补充安装后留存、重复使用和维护成本数据，再讨论市场规模或竞争优势。</p><p><b>Product：</b>本周样本共同提醒：配置、诊断、恢复和交付是产品功能。记录用户在哪一步退出，比继续增加支持模型数量更有用。</p><p><b>Architecture：</b>分清模型服务、Agent 入口、工具执行、技能分发与安全扫描的边界，逐层定义日志、权限和版本。</p><p><b>Founder：</b>从明确的小工作流切入：中文配音、技能升级审查或网页字段回归。先交付一张能复现的结果表，再承诺平台化。</p><p><b>OPC ecosystem：</b>可复用的不只有技能内容，还有扫描结果、版本指纹与运行证据。跨工具传播需要清楚的兼容边界，不能仅凭 MCP 标签推断互操作性。</p></section>
+<section class="signal-section" id="sec-actions"><h2>A/B/C 跟进建议</h2><p><b>A · debpalash/VoiceStudio</b> 一段中文视频和一章有声书端到端试用；输出质量、资源和失败清单。主要风险是 beta 稳定性与模型条款差异。</p><p><b>A · affaan-m/ECC</b> 只选一个技能与一组 hooks 做任务对照，交付可回滚配置包。主要风险是配置叠加与执行权限。</p><p><b>A · NVIDIA/SkillSpector</b> 建立已知样本集，比较静态与语义检查，交付误报漏报表。不要以扫描通过替代权限隔离。</p><p><b>B · Gitlawb/openclaude</b> 验证两种后端、会话恢复与凭据保存；优先澄清许可证证据冲突。</p><p><b>B · unclecode/crawl4ai</b> 三个目标站做字段回归与来源留存测试，决定是否进入知识库流水线。</p><p><b>B · ChromeDevTools/chrome-devtools-mcp</b> 测试一条浏览器调试任务的结果证据与会话权限。</p><p><b>B · rtk-ai/rtk</b> 对照命令原始输出和压缩输出，确认错误诊断信息是否丢失。</p><p><b>B · tt-a1i/archify</b> 用真实代码生成结构图，检查节点与关系能否回溯；高增长不替代正确性验证。</p><p><b>B · magnitudedev/magnitude</b> 验证本地硬件检测与现有 Agent 接入，记录内存占用和兼容问题。</p><p><b>C · Tencent/WeKnora</b> 保留观察，本周暂不安排集成；API 未识别许可且本次未深析，先补 LICENSE 与完整 RAG 工作流证据。</p></section>
+<blockquote>本周 GitHub 热榜值得投入的方向，是把能力接成可验证的交付流程，并给技能安装、工具执行和模型切换补上清楚的边界。</blockquote>
+<section><h2>数据限制与评分口径</h2><p>采集日期 2026-09-07（Asia/Shanghai），GitHub weekly 为站点滚动周期，不当作严格自然周累计。全站/Python/TypeScript/JavaScript/Go/Rust 分别解析 21/19/17/15/24/20 行，去重后按热度最多富化 60 个候选；metadata 60/60、README 60/60、依赖清单 48/60。README 截断至 12KB，未抓到清单不表示项目没有依赖。初次沙箱 DNS 失败，联网重试成功，最终无 API 限流或 README 失败。历史七天只有六份 Top 10 快照，09-03 缺失，09-01 可能为混合周期采样；不据此推导连续日榜或全市场趋势。Star 是关注度而非使用量，评分为启发式研究优先级；架构判断来自文档及依赖，未运行项目、审查完整代码或复现 benchmark。OpenClaude README 与 API 的许可信息不一致，API 的 NOASSERTION 优先标注为待核查。</p><details><summary>可复算 Top 10 评分</summary><p>heat 20 + relevance 20 + novelty 15 + productize 15 + adoption 10 + relation 10 + risk_signal 10。自动关键词启发式评分并非性能或投资评级；risk_signal 表示风险研究价值，高分并不意味着更安全。adoption 由仓库迹象代理，不代表真实使用量。同分沿用候选热度顺序。</p><pre>{
+  "debpalash/VoiceStudio": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 9,
+    "risk_signal": 10,
+    "total": 98
+  },
+  "affaan-m/ECC": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 97
+  },
+  "Gitlawb/openclaude": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 97
+  },
+  "unclecode/crawl4ai": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 97
+  },
+  "NVIDIA/SkillSpector": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 97
+  },
+  "ChromeDevTools/chrome-devtools-mcp": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 97
+  },
+  "rtk-ai/rtk": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 9,
+    "risk_signal": 8,
+    "total": 96
+  },
+  "Tencent/WeKnora": {
+    "heat": 19,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 96
+  },
+  "tt-a1i/archify": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 8,
+    "relation": 10,
+    "risk_signal": 8,
+    "total": 95
+  },
+  "magnitudedev/magnitude": {
+    "heat": 20,
+    "relevance": 20,
+    "novelty": 15,
+    "productize": 14,
+    "adoption": 10,
+    "relation": 10,
+    "risk_signal": 6,
+    "total": 95
+  }
+}</pre></details></section></main>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('[data-action="expand-deep"],[data-action="collapse-deep"]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('data-action')==='expand-deep';
+      document.querySelectorAll('#sec-deep details.detail-fold').forEach(function(detail){
+        detail.open=open;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
