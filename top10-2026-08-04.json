@@ -769,10 +769,19 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "大模型应用",
-      "工作流",
-      "Agent 编码"
+      "命令输出压缩",
+      "上下文精简",
+      "终端代理"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "在终端命令输出进入 Agent 上下文前进行过滤和压缩，减少模型需要读取的重复信息。",
+      "capabilities": "命令输出压缩、上下文精简、终端代理",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/rtk-ai/rtk"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    }
   }
 ]

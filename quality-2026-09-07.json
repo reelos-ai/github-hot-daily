@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-07",
+  "slice_counts": {
+    "all": 18,
+    "python": 21,
+    "typescript": 17,
+    "javascript": 11,
+    "go": 15,
+    "rust": 16
+  },
+  "candidates": 83,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 61,
+  "manifest_unavailable": 22,
+  "limitations": [
+    "沙箱 DNS 失败，经批准联网恢复。",
+    "XIU2/CloudflareSpeedTest 初次 API/README 失败，官方 API 与默认分支 README 重试成功。",
+    "22 个依赖清单未取得，无法区分文件不存在、不支持与请求失败；不补造依赖。",
+    "缺失快照日期不补造；Star 是关注度，非采用量。"
+  ],
+  "historical_daily_pages_checked": 60,
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-07",
+    "snapshot_count": 61,
+    "repository_count": 166,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 94,
+      "original_description": 71,
+      "missing": 1
+    }
+  },
+  "browser_qa": "1440/390: default10, page2 identity, Python filtering, growth order, search, invalid URL normalization, pageSize20/50 passed; no overflow or console errors"
+}
