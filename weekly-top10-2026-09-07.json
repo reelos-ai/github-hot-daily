@@ -131,7 +131,22 @@
       "action": "A 类：以一段中文视频和一个有声书章节做端到端试用，产出音质、时长、显存、返工与许可核查表。"
     },
     "heuristic_relationship_label": "Workspace 组件",
-    "selection_reason": "把语音模型组织成可交付制作流程"
+    "selection_reason": "把语音模型组织成可交付制作流程",
+    "capability_tags": [
+      "语音克隆",
+      "视频配音",
+      "语音转录"
+    ],
+    "brief_zh": {
+      "summary": "在本机完成语音克隆、语音设计、视频配音、转录和有声书制作的开源语音工作台。",
+      "capabilities": "语音克隆、视频配音、语音转录",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/debpalash/VoiceStudio"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -260,7 +275,19 @@
       "action": "A 类：选一个技能和一组 hooks，先审查再在固定编码任务上对照；交付配置差异与回滚说明。"
     },
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "技能与钩子的安装和维护样本"
+    "selection_reason": "技能与钩子的安装和维护样本",
+    "capability_tags": [
+      "Agent 技能",
+      "长期记忆",
+      "安全约束"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Gitlawb",
@@ -380,7 +407,13 @@
       "action": "B 类：先建立两个后端的最小兼容测试与凭据保存检查，再决定是否迁移；许可冲突未核实前不做商业集成。"
     },
     "heuristic_relationship_label": "Skill 来源",
-    "selection_reason": "多后端编码入口与会话状态边界"
+    "selection_reason": "多后端编码入口与会话状态边界",
+    "capability_tags": [
+      "MCP 集成",
+      "大模型应用",
+      "工作流"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "unclecode",
@@ -491,7 +524,19 @@
       "action": "B 类：对三个真实目标站建立固定字段回归集，记录失败率、来源保存和单位任务成本。"
     },
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "网页采集到结构化证据的转换层"
+    "selection_reason": "网页采集到结构化证据的转换层",
+    "capability_tags": [
+      "网页抓取",
+      "结构化爬取",
+      "LLM 友好输出"
+    ],
+    "brief_zh": {
+      "summary": "一个面向大模型与 Agent 工作流的开源网页抓取与爬取框架，强调把网页内容转换成更适合 LLM 消费的结构化输入。",
+      "audience": "需要为 RAG、研究 Agent 或自动化采集流程抓取网页内容的开发者与平台团队",
+      "capabilities": "网页抓取、结构化爬取、LLM 友好输出、RAG 数据采集、Python 框架",
+      "risk": "抓取效果会受到目标站点反爬、动态页面兼容和数据合规要求影响，生产使用前需要验证稳定性与边界"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "NVIDIA",
@@ -618,7 +663,22 @@
       "action": "A 类：用已知安全、恶意与边界样本各一组测试，产出误报漏报表；先作为审查辅助，不作为唯一安装放行条件。"
     },
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "安装前技能审查与基线机制"
+    "selection_reason": "安装前技能审查与基线机制",
+    "capability_tags": [
+      "技能扫描",
+      "提示注入检测",
+      "供应链检查"
+    ],
+    "brief_zh": {
+      "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
+      "capabilities": "技能扫描、提示注入检测、供应链检查",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/SkillSpector"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ChromeDevTools",
@@ -694,7 +754,19 @@
     "prior_analysis": "2026-08-01",
     "editorial": {},
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "浏览器调试进入编码 Agent 工具面"
+    "selection_reason": "浏览器调试进入编码 Agent 工具面",
+    "capability_tags": [
+      "Chrome 控制",
+      "MCP 服务",
+      "网络调试"
+    ],
+    "brief_zh": {
+      "summary": "Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。",
+      "audience": "需要让编码 Agent 自动复现、调试和验证 Web 应用的前端与测试团队",
+      "capabilities": "Chrome 控制、MCP 服务、网络调试、性能分析、浏览器自动化",
+      "risk": "MCP 客户端可以读取和修改浏览器内容，调试环境不应包含不希望暴露的账号或敏感数据"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rtk-ai",
@@ -769,7 +841,22 @@
     "prior_analysis": null,
     "editorial": {},
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "命令输出压缩的可验证收益"
+    "selection_reason": "命令输出压缩的可验证收益",
+    "capability_tags": [
+      "命令输出压缩",
+      "上下文精简",
+      "终端代理"
+    ],
+    "brief_zh": {
+      "summary": "在终端命令输出进入 Agent 上下文前进行过滤和压缩，减少模型需要读取的重复信息。",
+      "capabilities": "命令输出压缩、上下文精简、终端代理",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/rtk-ai/rtk"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Tencent",
@@ -860,7 +947,16 @@
     "prior_analysis": "2026-06-29",
     "editorial": {},
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "知识平台的检索与维护工作流"
+    "selection_reason": "知识平台的检索与维护工作流",
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "tt-a1i",
@@ -945,7 +1041,19 @@
     "prior_analysis": null,
     "editorial": {},
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "架构表达与源码可追溯性"
+    "selection_reason": "架构表达与源码可追溯性",
+    "capability_tags": [
+      "架构制图",
+      "时序图",
+      "数据流图"
+    ],
+    "brief_zh": {
+      "summary": "一个把架构图、时序图、数据流和生命周期图封装为 Agent Skill 的可验证制图工具，输出自包含 HTML。",
+      "audience": "需要让 Agent 自动生成结构化系统图，并保留可核对输出结果的开发者与架构师",
+      "capabilities": "架构制图、时序图、数据流图、生命周期图、HTML 导出",
+      "risk": "图形表达是否可靠取决于输入约束和验证机制，复杂系统下仍需人工复核"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "magnitudedev",
@@ -1011,6 +1119,21 @@
     "prior_analysis": null,
     "editorial": {},
     "heuristic_relationship_label": "Memory 组件",
-    "selection_reason": "本地推理服务与现有 Agent 适配"
+    "selection_reason": "本地推理服务与现有 Agent 适配",
+    "capability_tags": [
+      "本地推理",
+      "硬件适配",
+      "模型接入"
+    ],
+    "brief_zh": {
+      "summary": "检测本机硬件并推荐、下载和运行适配的本地模型，通过推理服务接入现有编码 Agent。",
+      "capabilities": "本地推理、硬件适配、模型接入",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/magnitudedev/magnitude"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
   }
 ]

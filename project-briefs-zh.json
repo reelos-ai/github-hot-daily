@@ -552,5 +552,32 @@
       "https://github.com/Stremio/stremio-web"
     ],
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "browser-use/browser-use": {
+    "summary": "让 AI Agent 操作浏览器，完成打开网页、点击、填表和结构化数据提取等任务。",
+    "capabilities": "浏览器自动化、表单填写、数据提取",
+    "verified_at": "2026-09-08",
+    "evidence_sources": [
+      "https://github.com/browser-use/browser-use"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "mksglu/context-mode": {
+    "summary": "通过沙箱处理工具输出，并用 SQLite 保存会话事件和检索相关上下文，帮助编码 Agent 延续任务。",
+    "capabilities": "工具输出隔离、会话记忆、上下文检索",
+    "verified_at": "2026-09-08",
+    "evidence_sources": [
+      "https://github.com/mksglu/context-mode"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "jo-inc/camofox-browser": {
+    "summary": "将 Camoufox 浏览器封装为面向 Agent 的 REST 服务，提供页面快照、元素引用、会话隔离和文件上传。",
+    "capabilities": "浏览器服务、页面快照、会话隔离",
+    "verified_at": "2026-09-08",
+    "evidence_sources": [
+      "https://github.com/jo-inc/camofox-browser"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   }
 }
