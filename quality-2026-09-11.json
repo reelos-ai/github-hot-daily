@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-11",
+  "slice_counts": {
+    "all": 16,
+    "python": 12,
+    "typescript": 18,
+    "javascript": 12,
+    "go": 19,
+    "rust": 15
+  },
+  "candidates": 81,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 61,
+  "manifest_unavailable": 20,
+  "limitations": [
+    "初次沙箱 DNS 失败，经批准联网后恢复。",
+    "六切片均成功，81 个候选的 metadata 与 README 均取得。",
+    "61 个仓库取得依赖清单；20 个未取得，无法区分文件不存在、不支持与请求失败，不据此推断依赖。",
+    "日报为高噪音早期信号；Star 不代表采用率，缺失日期不补造。"
+  ],
+  "historical_daily_pages_checked": 64,
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-11",
+    "snapshot_count": 65,
+    "repository_count": 174,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 104,
+      "missing": 1,
+      "original_description": 69
+    }
+  },
+  "browser_qa": {
+    "local": "passed",
+    "cases": 20,
+    "widths": [
+      1440,
+      390
+    ],
+    "checks": [
+      "default10",
+      "page2_identity",
+      "Python_filter",
+      "growth_sort",
+      "hermes_search",
+      "invalid_url_fallback",
+      "pageSize20",
+      "pageSize50",
+      "no_horizontal_overflow",
+      "no_js_console_errors"
+    ]
+  }
+}

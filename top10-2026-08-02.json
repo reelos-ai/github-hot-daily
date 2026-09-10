@@ -392,14 +392,19 @@
     "strategic_score": 90,
     "capability_tags": [
       "统一模型接口",
-      "免费额度聚合",
+      "额度路由",
       "自动降级"
     ],
     "brief_zh": {
-      "summary": "把 290 多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，主要用于降低 AI 编程工具的模型接入和调用成本。",
+      "summary": "把多家 AI 模型供应商统一成一个接口，并在额度不足时自动切换，供 AI 编程工具接入和管理模型调用。",
       "audience": "同时使用 Claude Code、Codex、Cursor 等 AI 编程工具的开发者和团队",
-      "capabilities": "统一模型接口、免费额度聚合、自动降级、Token 压缩、MCP/A2A 支持",
-      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证"
+      "capabilities": "统一模型接口、额度路由、自动降级",
+      "risk": "供应商数量很多，实际稳定性、服务条款和路由质量仍需逐一验证",
+      "verified_at": "2026-09-11",
+      "evidence_sources": [
+        "https://github.com/diegosouzapw/OmniRoute"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
     },
     "summary_source": "project_brief"
   },

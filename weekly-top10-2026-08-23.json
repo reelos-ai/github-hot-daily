@@ -794,10 +794,19 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "技能扩展",
-      "工作区",
-      "大模型应用"
+      "硬件检测",
+      "模型适配",
+      "性能测试"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "检测本机 CPU、内存与显卡，评估开源大模型的硬件适配、量化选项和运行性能，并支持本机基准测试。",
+      "capabilities": "硬件检测、模型适配、性能测试",
+      "verified_at": "2026-09-11",
+      "evidence_sources": [
+        "https://github.com/AlexsJones/llmfit"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    }
   }
 ]
