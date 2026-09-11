@@ -758,12 +758,18 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "长期记忆",
-      "MCP 集成",
-      "RAG 检索"
+      "知识库检索",
+      "推理问答",
+      "知识维护"
     ],
     "brief_zh": {
-      "summary": "腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。"
+      "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
+      "capabilities": "知识库检索、推理问答、知识维护",
+      "verified_at": "2026-09-12",
+      "evidence_sources": [
+        "https://github.com/Tencent/WeKnora"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
     },
     "summary_source": "project_brief"
   },

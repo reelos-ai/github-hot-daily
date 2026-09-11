@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-12",
+  "slice_counts": {
+    "all": 16,
+    "python": 15,
+    "typescript": 16,
+    "javascript": 12,
+    "go": 20,
+    "rust": 18
+  },
+  "candidates": 84,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 65,
+  "manifest_unavailable": 19,
+  "limitations": [
+    "初次沙箱 DNS 失败，经批准联网后恢复。",
+    "六切片均成功，84 个候选的 metadata 与 README 均取得；30-Days-Of-JavaScript 的 README 经官方接口恢复，文件名为 readMe.md。",
+    "65 个仓库取得依赖清单；19 个未取得，无法区分文件不存在、不支持与请求失败，不据此推断依赖。",
+    "日报为高噪音早期信号；Star 不代表采用率，缺失日期不补造。"
+  ],
+  "historical_daily_pages_checked": 65,
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-12",
+    "snapshot_count": 66,
+    "repository_count": 176,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 106,
+      "missing": 1,
+      "original_description": 69
+    }
+  },
+  "browser_qa": {
+    "local": "passed",
+    "cases": 20,
+    "widths": [
+      1440,
+      390
+    ],
+    "checks": [
+      "default10",
+      "page2_identity",
+      "Python_filter",
+      "growth_sort",
+      "hermes_search",
+      "invalid_url_fallback",
+      "pageSize20",
+      "pageSize50",
+      "no_horizontal_overflow",
+      "no_js_console_errors"
+    ]
+  }
+}

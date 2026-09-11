@@ -222,7 +222,13 @@
     "summary": "一个本地优先的编码 Agent 使用分析工具，可搜索会话并统计调用、Token 和工作模式。"
   },
   "Tencent/WeKnora": {
-    "summary": "腾讯开源的 LLM 知识平台，把原始文档转换成可检索 RAG、推理 Agent 和自动维护的 Wiki。"
+    "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
+    "capabilities": "知识库检索、推理问答、知识维护",
+    "verified_at": "2026-09-12",
+    "evidence_sources": [
+      "https://github.com/Tencent/WeKnora"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   },
   "farion1231/cc-switch": {
     "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。"
@@ -636,6 +642,24 @@
     "verified_at": "2026-09-11",
     "evidence_sources": [
       "https://github.com/Tencent/teamai-cli"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "nashsu/llm_wiki": {
+    "summary": "把导入文档整理成可持续更新、相互链接的个人 Wiki，支持来源追溯、知识图谱与语义检索。",
+    "capabilities": "文档整理、知识图谱、语义检索",
+    "verified_at": "2026-09-12",
+    "evidence_sources": [
+      "https://github.com/nashsu/llm_wiki"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "react/react": {
+    "summary": "用可组合组件构建交互界面的 JavaScript 库，根据状态变化更新页面，并支持服务端渲染和原生应用开发。",
+    "capabilities": "组件开发、声明式界面、服务端渲染",
+    "verified_at": "2026-09-12",
+    "evidence_sources": [
+      "https://github.com/react/react"
     ],
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   }
