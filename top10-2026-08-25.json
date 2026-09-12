@@ -740,15 +740,20 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "并行 Agent",
-      "Agent 开发环境",
-      "编码工作流"
+      "并行编码",
+      "独立工作树",
+      "跨端管理"
     ],
     "brief_zh": {
-      "summary": "一个面向并行编码 Agent 的 ADE，可在桌面、移动端和 VPS 上统一调度多条 Agent 工作流。",
+      "summary": "在独立 Git 工作树中并行运行多个编码 Agent，并通过桌面和手机管理任务、终端与代码审查。",
       "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
-      "capabilities": "并行 Agent、ADE、编码工作流、跨端使用、终端编排、worktree 协作",
-      "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性"
+      "capabilities": "并行编码、独立工作树、跨端管理",
+      "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性",
+      "verified_at": "2026-09-13",
+      "evidence_sources": [
+        "https://github.com/stablyai/orca"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
     },
     "summary_source": "project_brief"
   },

@@ -384,11 +384,20 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "长期记忆",
-      "RAG 检索",
-      "大模型应用"
+      "安全测试",
+      "工具编排",
+      "漏洞报告"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "在 Docker 环境中编排 AI Agent 与安全工具开展渗透测试，并保存过程记录、研究记忆和漏洞报告。",
+      "capabilities": "安全测试、工具编排、漏洞报告",
+      "verified_at": "2026-09-13",
+      "evidence_sources": [
+        "https://github.com/vxcontrol/pentagi"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    }
   },
   {
     "owner": "ChromeDevTools",

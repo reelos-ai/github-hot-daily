@@ -21,6 +21,6 @@ ReelOS GitHub 热榜情报站，发布 GitHub Trending 日报、周报、月报�
 
 ## Current Report
 
-- HTML: `/daily/2026-09-12/`
-- Top 10 data: `/top10-2026-09-12.json`
-- Raw trending data: `/trending-data-2026-09-12.json`
+- HTML: `/daily/2026-09-13/`
+- Top 10 data: `/top10-2026-09-13.json`
+- Raw trending data: `/trending-data-2026-09-13.json`

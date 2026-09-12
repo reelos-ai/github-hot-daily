@@ -197,10 +197,15 @@
     "risk": "图建模和本体治理成本较高，真正价值取决于数据接入质量和后续维护能力"
   },
   "stablyai/orca": {
-    "summary": "一个面向并行编码 Agent 的 ADE，可在桌面、移动端和 VPS 上统一调度多条 Agent 工作流。",
+    "summary": "在独立 Git 工作树中并行运行多个编码 Agent，并通过桌面和手机管理任务、终端与代码审查。",
     "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
-    "capabilities": "并行 Agent、ADE、编码工作流、跨端使用、终端编排、worktree 协作",
-    "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性"
+    "capabilities": "并行编码、独立工作树、跨端管理",
+    "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性",
+    "verified_at": "2026-09-13",
+    "evidence_sources": [
+      "https://github.com/stablyai/orca"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   },
   "Egonex-AI/Understand-Anything": {
     "summary": "把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。"
@@ -660,6 +665,42 @@
     "verified_at": "2026-09-12",
     "evidence_sources": [
       "https://github.com/react/react"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "melgarafael/DeskcommCRM": {
+    "summary": "可自托管的客户关系管理系统，将 WhatsApp 对话、销售流程与 AI 接待和客户筛选整合在一起。",
+    "capabilities": "客户管理、对话销售、智能接待",
+    "verified_at": "2026-09-13",
+    "evidence_sources": [
+      "https://github.com/melgarafael/DeskcommCRM"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "alsk1992/CloddsBot": {
+    "summary": "可自托管的 AI 交易终端，通过聊天连接预测市场和加密资产交易平台，提供策略执行、回测与风险管理功能。",
+    "capabilities": "对话式交易、策略回测、风险管理",
+    "verified_at": "2026-09-13",
+    "evidence_sources": [
+      "https://github.com/alsk1992/CloddsBot"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "vxcontrol/pentagi": {
+    "summary": "在 Docker 环境中编排 AI Agent 与安全工具开展渗透测试，并保存过程记录、研究记忆和漏洞报告。",
+    "capabilities": "安全测试、工具编排、漏洞报告",
+    "verified_at": "2026-09-13",
+    "evidence_sources": [
+      "https://github.com/vxcontrol/pentagi"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "multimodal-art-projection/YuE": {
+    "summary": "根据歌词和风格先生成可编辑的旋律与和弦计划，再合成歌曲；支持基于乐谱的翻唱与 Agent 辅助修改。",
+    "capabilities": "歌曲生成、乐谱编辑、风格翻唱",
+    "verified_at": "2026-09-13",
+    "evidence_sources": [
+      "https://github.com/multimodal-art-projection/YuE"
     ],
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   }
