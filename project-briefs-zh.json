@@ -188,7 +188,13 @@
     "summary": "一个本地持续记录屏幕和操作上下文的工具，让 Agent 能检索个人工作历史，同时保持数据私有。"
   },
   "calesthio/OpenMontage": {
-    "summary": "一个开源 Agent 视频生产系统，把脚本、素材、剪辑和生成工具组织成可自动执行的制作流水线。"
+    "summary": "把调研、脚本、素材生成、剪辑与合成组织成流水线，让编码 Agent 执行视频制作任务。",
+    "capabilities": "视频制作、素材生成、剪辑合成",
+    "verified_at": "2026-09-14",
+    "evidence_sources": [
+      "https://github.com/calesthio/OpenMontage"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   },
   "semantica-agi/semantica": {
     "summary": "一个图原生的上下文基础设施，把企业数据整理成 Context Graph 和知识图谱，供可审计的 AI 系统与 Agent 使用。",
@@ -701,6 +707,24 @@
     "verified_at": "2026-09-13",
     "evidence_sources": [
       "https://github.com/multimodal-art-projection/YuE"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "tech-leads-club/agent-skills": {
+    "summary": "为多种编码 Agent 提供可安装的技能目录，通过静态扫描、内容哈希和锁文件管理技能分发与完整性。",
+    "capabilities": "技能目录、技能安装、完整性校验",
+    "verified_at": "2026-09-14",
+    "evidence_sources": [
+      "https://github.com/tech-leads-club/agent-skills"
+    ],
+    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "jiji262/douyin-downloader": {
+    "summary": "下载抖音视频、图集、合集与音乐，支持主页批量下载、进度显示、重试和 SQLite 去重。",
+    "capabilities": "批量下载、任务重试、下载去重",
+    "verified_at": "2026-09-14",
+    "evidence_sources": [
+      "https://github.com/jiji262/douyin-downloader"
     ],
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   }
