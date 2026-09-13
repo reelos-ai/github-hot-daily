@@ -42,11 +42,11 @@
   {
     "name": "affaan-m/ECC",
     "added_date": "2026-06-26",
-    "reason": "Memory 组件 / score 96",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
+    "reason": "技能与钩子分发持续受关注，做最小配置对照",
+    "watch_metric": "最小 hook 配置的任务成功率和回滚差异",
     "priority": "A",
     "status": "observing",
-    "last_reviewed": "2026-09-07",
+    "last_reviewed": "2026-09-14",
     "weekly_action": "只选一个技能与一组 hooks 做任务对照，交付可回滚配置包。主要风险是配置叠加与执行权限。"
   },
   {
@@ -140,11 +140,11 @@
   {
     "name": "Tencent/WeKnora",
     "added_date": "2026-06-29",
-    "reason": "Skill 来源 / score 97",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
-    "priority": "C",
+    "reason": "知识库扩展到技能沙箱，关注权限与数据生命周期",
+    "watch_metric": "权限隔离、文档更新可见性、沙箱失败重试",
+    "priority": "A",
     "status": "observing",
-    "last_reviewed": "2026-09-07",
+    "last_reviewed": "2026-09-14",
     "weekly_action": "保留观察，本周暂不安排集成；API 未识别许可且本次未深析，先补 LICENSE 与完整 RAG 工作流证据。"
   },
   {
@@ -222,11 +222,11 @@
   {
     "name": "ChromeDevTools/chrome-devtools-mcp",
     "added_date": "2026-07-04",
-    "reason": "Memory 组件 / score 97",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
+    "reason": "浏览器诊断进入 Agent 工具链，检查数据暴露范围",
+    "watch_metric": "trace 可复现性、敏感数据与遥测配置",
     "priority": "B",
     "status": "observing",
-    "last_reviewed": "2026-09-07",
+    "last_reviewed": "2026-09-14",
     "weekly_action": "测试一条浏览器调试任务的结果证据与会话权限。"
   },
   {
@@ -400,10 +400,11 @@
   {
     "name": "rohitg00/ai-engineering-from-scratch",
     "added_date": "2026-07-18",
-    "reason": "Memory 组件 / score 96",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
+    "reason": "把课程变成可执行学习路径，产出证据比目录规模重要",
+    "watch_metric": "一节课的环境预检、运行证据与迁移应用",
     "priority": "A",
-    "status": "observing"
+    "status": "observing",
+    "last_reviewed": "2026-09-14"
   },
   {
     "name": "tirth8205/code-review-graph",
@@ -814,11 +815,11 @@
   {
     "name": "debpalash/VoiceStudio",
     "added_date": "2026-09-02",
-    "reason": "Workspace 组件 / score 96",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
-    "priority": "A",
+    "reason": "桌面端正在重写，先验证迁移和基本交付稳定性",
+    "watch_metric": "Electron 重写进度、桌面安装和旧项目打开",
+    "priority": "C",
     "status": "observing",
-    "last_reviewed": "2026-09-07",
+    "last_reviewed": "2026-09-14",
     "weekly_action": "一段中文视频和一章有声书端到端试用；输出质量、资源和失败清单。主要风险是 beta 稳定性与模型条款差异。"
   },
   {
@@ -844,18 +845,20 @@
   {
     "name": "ruvnet/ruflo",
     "added_date": "2026-09-06",
-    "reason": "Memory 组件 / score 94",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
-    "priority": "A",
-    "status": "observing"
+    "reason": "编排、记忆与插件集成，先检验故障恢复边界",
+    "watch_metric": "中断恢复、重复执行、总 token 与墙钟时间",
+    "priority": "B",
+    "status": "observing",
+    "last_reviewed": "2026-09-14"
   },
   {
     "name": "coreyhaines31/marketingskills",
     "added_date": "2026-09-07",
-    "reason": "Memory 组件 / score 95",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
-    "priority": "A",
-    "status": "observing"
+    "reason": "营销方法可打包成技能，效果仍由真实实验验证",
+    "watch_metric": "同素材对照质量、人工修改量、可归因实验结果",
+    "priority": "B",
+    "status": "observing",
+    "last_reviewed": "2026-09-14"
   },
   {
     "name": "heygen-com/hyperframes",
@@ -868,10 +871,11 @@
   {
     "name": "mksglu/context-mode",
     "added_date": "2026-09-09",
-    "reason": "Memory 组件 / score 97",
-    "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
+    "reason": "工具输出留在检索层，优先验证压缩后的信息召回",
+    "watch_metric": "关键事实召回、压缩后修复成功率、会话恢复",
     "priority": "A",
-    "status": "observing"
+    "status": "observing",
+    "last_reviewed": "2026-09-14"
   },
   {
     "name": "browser-use/browser-use",
@@ -928,5 +932,23 @@
     "watch_metric": "stars_this_period, consecutive_appearances, releases, issues",
     "priority": "A",
     "status": "observing"
+  },
+  {
+    "name": "langgenius/dify",
+    "added_date": "2026-09-14",
+    "priority": "B",
+    "status": "observing",
+    "reason": "可视化工作流与 RAG 的成熟参照样本",
+    "last_reviewed": "2026-09-14",
+    "watch_metric": "流程版本迁移与引用正确率"
+  },
+  {
+    "name": "rtk-ai/rtk",
+    "added_date": "2026-09-14",
+    "priority": "B",
+    "status": "observing",
+    "reason": "命令输出过滤可降低上下文负担，必须保留失败信息",
+    "last_reviewed": "2026-09-14",
+    "watch_metric": "错误行保留率、token 总量与端到端成功率"
   }
 ]
