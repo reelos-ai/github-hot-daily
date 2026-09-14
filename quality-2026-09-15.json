@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-15",
+  "slice_counts": {
+    "all": 20,
+    "python": 18,
+    "typescript": 18,
+    "javascript": 13,
+    "go": 19,
+    "rust": 23
+  },
+  "candidates": 94,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 72,
+  "manifest_unavailable": 22,
+  "limitations": [
+    "本次抓取无 Trending、metadata 或 README 失败。",
+    "六切片均成功，94 个候选的 metadata 与 README 均取得。",
+    "72 个仓库取得依赖清单；22 个未取得，无法区分文件不存在、不支持与请求失败，不据此推断依赖。",
+    "日报为高噪音早期信号；Star 不代表采用率，缺失日期不补造。"
+  ],
+  "historical_daily_pages_checked": 68,
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-15",
+    "snapshot_count": 69,
+    "repository_count": 183,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 115,
+      "missing": 1,
+      "original_description": 67
+    }
+  },
+  "browser_qa": {
+    "local": "passed",
+    "cases": 20,
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "checks": [
+      "default10",
+      "page2",
+      "Python filter",
+      "growth sort",
+      "search",
+      "invalid URL parameters",
+      "pageSize20",
+      "pageSize50",
+      "no horizontal overflow",
+      "no console errors"
+    ],
+    "evidence": "/private/tmp/gh-qa-0915-local.json"
+  }
+}

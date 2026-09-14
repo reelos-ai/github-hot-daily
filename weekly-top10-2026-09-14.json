@@ -75,7 +75,19 @@
       "2026-09-08",
       "2026-09-09",
       "2026-09-10"
-    ]
+    ],
+    "capability_tags": [
+      "Agent 技能",
+      "长期记忆",
+      "安全约束"
+    ],
+    "brief_zh": {
+      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rohitg00",
@@ -162,7 +174,17 @@
       "2026-09-10",
       "2026-09-11",
       "2026-09-12"
-    ]
+    ],
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "mksglu",
@@ -251,7 +273,22 @@
       "2026-09-10",
       "2026-09-11",
       "2026-09-12"
-    ]
+    ],
+    "capability_tags": [
+      "工具输出隔离",
+      "会话记忆",
+      "上下文检索"
+    ],
+    "brief_zh": {
+      "summary": "通过沙箱处理工具输出，并用 SQLite 保存会话事件和检索相关上下文，帮助编码 Agent 延续任务。",
+      "capabilities": "工具输出隔离、会话记忆、上下文检索",
+      "verified_at": "2026-09-08",
+      "evidence_sources": [
+        "https://github.com/mksglu/context-mode"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "ruvnet",
@@ -340,7 +377,19 @@
       "2026-09-07",
       "2026-09-08",
       "2026-09-09"
-    ]
+    ],
+    "capability_tags": [
+      "多 Agent 协作",
+      "Agent 元调度",
+      "自适应记忆"
+    ],
+    "brief_zh": {
+      "summary": "一个面向多 Agent swarm 的元调度框架，强调把自主工作流、记忆、RAG 和对话系统组合成可部署的协作网络。",
+      "audience": "想把多个 Agent 组织成持续协作工作流，而不是单次聊天机器人的开发者与实验团队",
+      "capabilities": "多 Agent 协作、Agent 元调度、自适应记忆、RAG 集成、对话式工作流",
+      "risk": "概念覆盖很广，真正的协作效果、稳定性和与现有 Agent 生态的差异仍需通过样例和代码验证"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Tencent",
@@ -433,7 +482,22 @@
       "2026-09-08",
       "2026-09-12",
       "2026-09-13"
-    ]
+    ],
+    "capability_tags": [
+      "知识库检索",
+      "推理问答",
+      "知识维护"
+    ],
+    "brief_zh": {
+      "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
+      "capabilities": "知识库检索、推理问答、知识维护",
+      "verified_at": "2026-09-12",
+      "evidence_sources": [
+        "https://github.com/Tencent/WeKnora"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "langgenius",
@@ -516,7 +580,13 @@
     "strategic_score": 97,
     "appeared_days_in_7d": 0,
     "history_scope": "2026-09-07/2026-09-13 daily selected Top10",
-    "history_dates": []
+    "history_dates": [],
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "技能扩展"
+    ],
+    "summary_source": "original_description"
   },
   {
     "owner": "ChromeDevTools",
@@ -586,7 +656,19 @@
     "strategic_score": 97,
     "appeared_days_in_7d": 0,
     "history_scope": "2026-09-07/2026-09-13 daily selected Top10",
-    "history_dates": []
+    "history_dates": [],
+    "capability_tags": [
+      "Chrome 控制",
+      "MCP 服务",
+      "网络调试"
+    ],
+    "brief_zh": {
+      "summary": "Chrome DevTools 官方 MCP 服务，让编码 Agent 控制真实 Chrome，并检查网络、控制台、截图和性能轨迹。",
+      "audience": "需要让编码 Agent 自动复现、调试和验证 Web 应用的前端与测试团队",
+      "capabilities": "Chrome 控制、MCP 服务、网络调试、性能分析、浏览器自动化",
+      "risk": "MCP 客户端可以读取和修改浏览器内容，调试环境不应包含不希望暴露的账号或敏感数据"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "debpalash",
@@ -665,7 +747,22 @@
     "strategic_score": 96,
     "appeared_days_in_7d": 0,
     "history_scope": "2026-09-07/2026-09-13 daily selected Top10",
-    "history_dates": []
+    "history_dates": [],
+    "capability_tags": [
+      "语音克隆",
+      "视频配音",
+      "语音转录"
+    ],
+    "brief_zh": {
+      "summary": "在本机完成语音克隆、语音设计、视频配音、转录和有声书制作的开源语音工作台。",
+      "capabilities": "语音克隆、视频配音、语音转录",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/debpalash/VoiceStudio"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rtk-ai",
@@ -739,7 +836,22 @@
     "history_scope": "2026-09-07/2026-09-13 daily selected Top10",
     "history_dates": [
       "2026-09-07"
-    ]
+    ],
+    "capability_tags": [
+      "命令输出压缩",
+      "上下文精简",
+      "终端代理"
+    ],
+    "brief_zh": {
+      "summary": "在终端命令输出进入 Agent 上下文前进行过滤和压缩，减少模型需要读取的重复信息。",
+      "capabilities": "命令输出压缩、上下文精简、终端代理",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/rtk-ai/rtk"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "coreyhaines31",
@@ -806,6 +918,21 @@
       "2026-09-08",
       "2026-09-09",
       "2026-09-10"
-    ]
+    ],
+    "capability_tags": [
+      "营销技能",
+      "转化优化",
+      "搜索优化"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 提供营销技能库，覆盖转化优化、文案、搜索优化、分析和增长工作流。",
+      "capabilities": "营销技能、转化优化、搜索优化",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/coreyhaines31/marketingskills"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   }
 ]
