@@ -222,15 +222,20 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "Agent 技能",
+      "编码技能",
       "长期记忆",
       "安全约束"
     ],
     "brief_zh": {
-      "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+      "summary": "为 Claude Code、Codex 等编码 Agent 提供技能、记忆和安全规则，组织更完整的开发工作流程。",
       "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
-      "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
-      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+      "capabilities": "编码技能、长期记忆、安全约束",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装",
+      "verified_at": "2026-09-23",
+      "evidence_sources": [
+        "https://github.com/affaan-m/ECC"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
     },
     "summary_source": "project_brief"
   },

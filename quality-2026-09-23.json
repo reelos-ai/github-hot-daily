@@ -1,0 +1,223 @@
+{
+  "date": "2026-09-23",
+  "slice_counts": {
+    "all": 8,
+    "go": 22,
+    "typescript": 13,
+    "javascript": 9,
+    "rust": 17,
+    "python": 9
+  },
+  "candidates": 70,
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "api_failures": 0,
+  "readme_failures": 0,
+  "manifest_hits": 54,
+  "manifest_unavailable": 16,
+  "historical_daily_pages_checked": 69,
+  "leaderboard": {
+    "first_snapshot": "2026-06-25",
+    "last_snapshot": "2026-09-23",
+    "snapshot_count": 70,
+    "repository_count": 190,
+    "languages": [
+      "C",
+      "C++",
+      "Go",
+      "HTML",
+      "JavaScript",
+      "Markdown",
+      "PowerShell",
+      "Python",
+      "Rust",
+      "Shell",
+      "TypeScript"
+    ],
+    "summary_sources": {
+      "project_brief": 122,
+      "missing": 1,
+      "original_description": 67
+    }
+  },
+  "limitations": [
+    "命令行直连连接失败，已使用系统代理恢复；浏览器复核六个切片均非空。",
+    "46 次 metadata 初次获取失败、4 个 README 初次缺失，均已通过已有 GitHub 登录和官方 README API 恢复；最终 metadata 与 README 覆盖均为 70/70。",
+    "54 个仓库取得依赖清单；16 个未取得，无法区分文件不存在、不支持与请求失败，不据此推断依赖。",
+    "缺失快照日期：2026-07-08、2026-07-10、2026-07-20、2026-07-23、2026-07-24、2026-07-25、2026-07-27、2026-07-30、2026-07-31、2026-08-07、2026-08-18、2026-08-19、2026-08-21、2026-09-03、2026-09-16、2026-09-17、2026-09-18、2026-09-19、2026-09-20、2026-09-21、2026-09-22。未补造历史数据，跨缺口比较不能视为连续每日趋势。",
+    "日报是高噪音早期信号；Star 表示关注度，不代表采用率或生产可用性。"
+  ],
+  "missing_snapshot_dates": [
+    "2026-07-08",
+    "2026-07-10",
+    "2026-07-20",
+    "2026-07-23",
+    "2026-07-24",
+    "2026-07-25",
+    "2026-07-27",
+    "2026-07-30",
+    "2026-07-31",
+    "2026-08-07",
+    "2026-08-18",
+    "2026-08-19",
+    "2026-08-21",
+    "2026-09-03",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-19",
+    "2026-09-20",
+    "2026-09-21",
+    "2026-09-22"
+  ],
+  "browser_qa": {
+    "local": "passed",
+    "cases": 20,
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "results": [
+      {
+        "width": 1440,
+        "suffix": "",
+        "count": 10,
+        "passed": true,
+        "url": ""
+      },
+      {
+        "width": 1440,
+        "suffix": "?page=2",
+        "count": 10,
+        "passed": true,
+        "url": "?page=2"
+      },
+      {
+        "width": 1440,
+        "suffix": "?language=Python",
+        "count": 10,
+        "passed": true,
+        "url": "?language=Python"
+      },
+      {
+        "width": 1440,
+        "suffix": "?sort=growth",
+        "count": 10,
+        "passed": true,
+        "url": "?sort=growth"
+      },
+      {
+        "width": 1440,
+        "suffix": "?q=google",
+        "count": 5,
+        "passed": true,
+        "url": "?q=google"
+      },
+      {
+        "width": 1440,
+        "suffix": "?page=-9&pageSize=9&sort=nope&language=nope",
+        "count": 10,
+        "passed": true,
+        "url": ""
+      },
+      {
+        "width": 1440,
+        "suffix": "?pageSize=20",
+        "count": 20,
+        "passed": true,
+        "url": "?pageSize=20"
+      },
+      {
+        "width": 1440,
+        "suffix": "?pageSize=50",
+        "count": 50,
+        "passed": true,
+        "url": "?pageSize=50"
+      },
+      {
+        "width": 1440,
+        "path": "/",
+        "overflow": false,
+        "errors": [],
+        "rows": 10
+      },
+      {
+        "width": 1440,
+        "path": "/daily/2026-09-23/",
+        "overflow": false,
+        "errors": [],
+        "rows": 10
+      },
+      {
+        "width": 390,
+        "suffix": "",
+        "count": 10,
+        "passed": true,
+        "url": ""
+      },
+      {
+        "width": 390,
+        "suffix": "?page=2",
+        "count": 10,
+        "passed": true,
+        "url": "?page=2"
+      },
+      {
+        "width": 390,
+        "suffix": "?language=Python",
+        "count": 10,
+        "passed": true,
+        "url": "?language=Python"
+      },
+      {
+        "width": 390,
+        "suffix": "?sort=growth",
+        "count": 10,
+        "passed": true,
+        "url": "?sort=growth"
+      },
+      {
+        "width": 390,
+        "suffix": "?q=google",
+        "count": 5,
+        "passed": true,
+        "url": "?q=google"
+      },
+      {
+        "width": 390,
+        "suffix": "?page=-9&pageSize=9&sort=nope&language=nope",
+        "count": 10,
+        "passed": true,
+        "url": ""
+      },
+      {
+        "width": 390,
+        "suffix": "?pageSize=20",
+        "count": 20,
+        "passed": true,
+        "url": "?pageSize=20"
+      },
+      {
+        "width": 390,
+        "suffix": "?pageSize=50",
+        "count": 50,
+        "passed": true,
+        "url": "?pageSize=50"
+      },
+      {
+        "width": 390,
+        "path": "/",
+        "overflow": false,
+        "errors": [],
+        "rows": 10
+      },
+      {
+        "width": 390,
+        "path": "/daily/2026-09-23/",
+        "overflow": false,
+        "errors": [],
+        "rows": 10
+      }
+    ]
+  }
+}

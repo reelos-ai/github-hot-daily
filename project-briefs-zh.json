@@ -83,10 +83,15 @@
     "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
   },
   "affaan-m/ECC": {
-    "summary": "一套面向 Claude Code、Codex、Cursor 等编码 Agent 的增强工具包，用 Skills、记忆、安全规则和工作方法改善 Agent 的执行效果。",
+    "summary": "为 Claude Code、Codex 等编码 Agent 提供技能、记忆和安全规则，组织更完整的开发工作流程。",
     "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
-    "capabilities": "Agent 技能、长期记忆、安全约束、研究优先流程、跨工具配置",
-    "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装"
+    "capabilities": "编码技能、长期记忆、安全约束",
+    "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/affaan-m/ECC"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "cactus-compute/needle": {
     "summary": "一个面向手机、可穿戴设备和机器人等小设备的超轻量基础模型，把工具调用、结构化抽取和低内存推理压缩进单个 14MB 二进制。",
@@ -203,15 +208,15 @@
     "risk": "图建模和本体治理成本较高，真正价值取决于数据接入质量和后续维护能力"
   },
   "stablyai/orca": {
-    "summary": "在独立 Git 工作树中并行运行多个编码 Agent，并通过桌面和手机管理任务、终端与代码审查。",
+    "summary": "在桌面、移动端或远程环境中管理多个并行编码 Agent，使用已有模型订阅推进开发任务。",
     "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
-    "capabilities": "并行编码、独立工作树、跨端管理",
+    "capabilities": "并行编码、任务管理、远程开发",
     "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性",
-    "verified_at": "2026-09-13",
+    "verified_at": "2026-09-23",
     "evidence_sources": [
       "https://github.com/stablyai/orca"
     ],
-    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "Egonex-AI/Understand-Anything": {
     "summary": "把代码库转换成可搜索、可提问的交互式知识图谱，帮助开发者快速理解项目结构和业务逻辑。"
@@ -444,10 +449,15 @@
     "risk": "实际价值取决于数据建模、查询复杂度和运维能力，需要用真实图规模验证性能优势"
   },
   "browser-use/video-use": {
-    "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+    "summary": "让编码 Agent 根据自然语言剪辑视频，处理停顿、调色、字幕和动画叠加并导出成片。",
     "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
-    "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
-    "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+    "capabilities": "视频剪辑、字幕制作、动画叠加",
+    "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/browser-use/video-use"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "TencentCloud/TencentDB-Agent-Memory": {
     "summary": "腾讯云开源的团队级 Agent 记忆中枢，把对话、文档和代码沉淀为可治理、共享并跨框架复用的记忆资产。",
@@ -754,5 +764,68 @@
       "https://github.com/ever-co/ever-gauzy"
     ],
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+  },
+  "BuilderIO/agent-native": {
+    "summary": "把同一套操作同时开放给 Agent 和界面，方便构建可由人查看、编辑和批准的智能应用。",
+    "capabilities": "智能应用框架、共享操作接口、人机协作",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/BuilderIO/agent-native"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "google/ax": {
+    "summary": "用声明式任务配置编排 Agent 工作负载，统一安排沙箱、工作区和网络边界。",
+    "capabilities": "任务编排、沙箱执行、工作区管理",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/google/ax"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "hydra-db/hydradb": {
+    "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
+    "capabilities": "图数据库、对象存储、图查询",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/hydra-db/hydradb"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "dream-num/univer": {
+    "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
+    "capabilities": "办公文档、电子表格、统一操作接口",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/dream-num/univer"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "superdesigndev/treg": {
+    "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
+    "capabilities": "工具目录、统一调用、凭据管理",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/superdesigndev/treg"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "QuantumNous/new-api": {
+    "summary": "把多个模型服务统一接入网关，转换接口格式并集中管理模型调用。",
+    "capabilities": "模型网关、接口转换、调用管理",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/QuantumNous/new-api"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "Nasiko-Labs/nasiko": {
+    "summary": "为支持 A2A 协议的 Agent 提供部署、路由、安全控制和运行观测的统一控制台。",
+    "capabilities": "智能体部署、请求路由、运行观测",
+    "verified_at": "2026-09-23",
+    "evidence_sources": [
+      "https://github.com/Nasiko-Labs/nasiko"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   }
 }

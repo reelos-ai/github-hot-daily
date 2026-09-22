@@ -532,15 +532,20 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "Agent 视频编辑",
-      "代码化剪辑",
-      "自动化工作流"
+      "视频剪辑",
+      "字幕制作",
+      "动画叠加"
     ],
     "brief_zh": {
-      "summary": "一个让编码 Agent 通过代码执行视频编辑任务的开源工具，把剪辑流程转成可自动化的 Agent 工作流。",
+      "summary": "让编码 Agent 根据自然语言剪辑视频，处理停顿、调色、字幕和动画叠加并导出成片。",
       "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
-      "capabilities": "Agent 视频编辑、代码化剪辑、自动化工作流、批量处理",
-      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力"
+      "capabilities": "视频剪辑、字幕制作、动画叠加",
+      "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力",
+      "verified_at": "2026-09-23",
+      "evidence_sources": [
+        "https://github.com/browser-use/video-use"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
     },
     "summary_source": "project_brief"
   },
