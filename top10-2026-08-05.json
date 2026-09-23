@@ -248,7 +248,12 @@
     ],
     "brief_zh": {
       "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。",
-      "capabilities": "终端编码、精确编辑、代码语言服务"
+      "capabilities": "终端编码、精确编辑、代码语言服务",
+      "verified_at": "2026-09-24",
+      "evidence_sources": [
+        "https://github.com/can1357/oh-my-pi"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
     },
     "summary_source": "project_brief"
   },
@@ -319,7 +324,7 @@
       "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
       "capabilities": "视频剪辑、字幕制作、动画叠加",
       "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-09-24",
       "evidence_sources": [
         "https://github.com/browser-use/video-use"
       ],

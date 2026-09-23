@@ -226,7 +226,12 @@
   },
   "can1357/oh-my-pi": {
     "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。",
-    "capabilities": "终端编码、精确编辑、代码语言服务"
+    "capabilities": "终端编码、精确编辑、代码语言服务",
+    "verified_at": "2026-09-24",
+    "evidence_sources": [
+      "https://github.com/can1357/oh-my-pi"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "CopilotKit/CopilotKit": {
     "summary": "一套构建 Agent 前端和生成式界面的开发框架，支持 React、Angular、移动端及 AG-UI 协议。"
@@ -453,7 +458,7 @@
     "audience": "希望用 Codex、Claude Code 等编码 Agent 自动完成视频剪辑和批处理的创作者与开发者",
     "capabilities": "视频剪辑、字幕制作、动画叠加",
     "risk": "公开能力描述仍较少，需重点验证格式兼容、渲染稳定性和复杂时间线处理能力",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/browser-use/video-use"
     ],
@@ -768,7 +773,7 @@
   "BuilderIO/agent-native": {
     "summary": "把同一套操作同时开放给 Agent 和界面，方便构建可由人查看、编辑和批准的智能应用。",
     "capabilities": "智能应用框架、共享操作接口、人机协作",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/BuilderIO/agent-native"
     ],
@@ -777,7 +782,7 @@
   "google/ax": {
     "summary": "用声明式任务配置编排 Agent 工作负载，统一安排沙箱、工作区和网络边界。",
     "capabilities": "任务编排、沙箱执行、工作区管理",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/google/ax"
     ],
@@ -786,7 +791,7 @@
   "hydra-db/hydradb": {
     "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
     "capabilities": "图数据库、对象存储、图查询",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/hydra-db/hydradb"
     ],
@@ -795,7 +800,7 @@
   "dream-num/univer": {
     "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
     "capabilities": "办公文档、电子表格、统一操作接口",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/dream-num/univer"
     ],
@@ -804,7 +809,7 @@
   "superdesigndev/treg": {
     "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
     "capabilities": "工具目录、统一调用、凭据管理",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/superdesigndev/treg"
     ],
@@ -822,9 +827,27 @@
   "Nasiko-Labs/nasiko": {
     "summary": "为支持 A2A 协议的 Agent 提供部署、路由、安全控制和运行观测的统一控制台。",
     "capabilities": "智能体部署、请求路由、运行观测",
-    "verified_at": "2026-09-23",
+    "verified_at": "2026-09-24",
     "evidence_sources": [
       "https://github.com/Nasiko-Labs/nasiko"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "agent-substrate/substrate": {
+    "summary": "在 Kubernetes 上调度有状态 Agent 沙箱，提供隔离执行、暂停恢复和请求路由。",
+    "capabilities": "沙箱隔离、状态恢复、运行调度",
+    "verified_at": "2026-09-24",
+    "evidence_sources": [
+      "https://github.com/agent-substrate/substrate"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "strands-agents/harness-sdk": {
+    "summary": "用 Python 或 TypeScript 构建和运行 Agent，统一管理模型、工具调用、会话记忆与执行限制。",
+    "capabilities": "智能体开发、工具调用、会话管理",
+    "verified_at": "2026-09-24",
+    "evidence_sources": [
+      "https://github.com/strands-agents/harness-sdk"
     ],
     "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   }
