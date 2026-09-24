@@ -1,0 +1,863 @@
+[
+  {
+    "owner": "vectorize-io",
+    "name": "hindsight",
+    "full_name": "vectorize-io/hindsight",
+    "url": "https://github.com/vectorize-io/hindsight",
+    "description": "Hindsight: Agent Memory That Learns",
+    "language": "Python",
+    "total_stars": 27710,
+    "forks": 2676,
+    "stars_this_period": 1607,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai-memory",
+        "memory"
+      ],
+      "license": "MIT",
+      "open_issues": 190,
+      "created_at": "2025-10-30T11:49:48Z",
+      "pushed_at": "2026-09-24T21:38:35Z",
+      "homepage": "https://hindsight.vectorize.io/",
+      "default_branch": "main",
+      "forks": 2676,
+      "watchers": 64,
+      "archived": false,
+      "size_kb": 758350
+    },
+    "readme_content": "<div align=\"center\">\n\n![Hindsight Banner](./hindsight-docs/static/img/hindsight-github-banner.png)\n\n[Documentation](https://hindsight.vectorize.io) • [Integrations](https://hindsight.vectorize.io/integrations) • [Cookbook](https://hindsight.vectorize.io/cookbook) • [Benchmarks](https://benchmarks.hindsight.vectorize.io/) • [Paper](https://arxiv.org/abs/2512.12818) • [Hindsight Cloud](https://ui.hindsight.vectorize.io/signup)\n\n[![Release](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml/badge.svg)](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml)\n[![Version](https://img.shields.io/pypi/v/hindsight-api?logo=python&logoColor=white&label=version&color=blue)](https://pypi.org/project/hindsight-api/)\n[![PyPI Downloads](https://img.shields.io/pypi/dm/hindsight-client?logo=pypi&logoColor=white&label=PyPI&color=blue)](https://pypi.org/project/hindsight-client/)\n[![NPM Downloads](https://img.shields.io/npm/dm/%40vectorize-io%2Fhindsight-client?logo=npm&logoColor=white&label=NPM&color=blue)](https://www.npmjs.com/package/@vectorize-io/hindsight-client)\n[![Slack Community](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://vectorize.io/slack)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n<br/>\n<p align=\"center\">\n <a href=\"https://www.star-history.com/vectorize-io/hindsight\"><img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=rank\" alt=\"Star History Rank\" /> <img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=trending\" alt=\"GitHub Trending Repository of the Day\" /></a>\n</p>\n\n</div>\n\n---\n\n## What is Hindsight?\n\nHindsight™ is an agent memory system built to create smarter agents that learn over time. Most agent memory systems focus on recalling conversation history. Hindsight is focused on making agents that learn, not just remember.\n\n<video src=\"https://github.com/user-attachments/assets/923b798d-3581-4897-bb62-9cfa5a931682\" controls></video>\n\nIt eliminates the shortcomings of alternative techniques such as RAG and knowledge graph and delivers state-of-the-art performance on long term memory tasks.\n\n**Contents**\n\n- [Memory Performance & Accuracy](#memory-performance--accuracy)\n- [Quick Start](#quick-start) — [server](#1-start-a-server) · [clients](#2-connect-a-client) · [platforms](#supported-platforms) · [embedded](#python-embedded-no-server-required)\n- [Adding Hindsight to Your Agent](#adding-hindsight-to-your-agent) — [LLM Wrapper](#llm-wrapper-2-lines-of-code) · [integrations](#integrations) · [coding agents](#coding-agents) · [MCP](#mcp-server)\n- [Core Concepts](#core-concepts) — [memory types](#memory-types) · [retain / recall / reflect](#the-three-operations) · [observations](#observations) · [mental models & knowledge pages](#mental-models--knowledge-pages) · [banks](#memory-banks)\n- [Use Cases](#use-cases)\n- [Running in Production](#running-in-production)\n- [Resources](#resources)\n\n---\n\n## Memory Performance & Accuracy\n\nHindsight is the most accurate agent memory system ever tested according to benchmark performance. It has achieved state-of-the-art performance on the LongMemEval benchmark, widely used to assess memory system performance across a variety of conversational AI scenarios. The current reported performance of Hindsight and other agent memory solutions as of January 2026 is shown here:\n\n![Overview](./hindsight-docs/static/img/hindsight-benchmarks.png)\n\n> Live, continuously updated results — including per-model accuracy, latency and cost — are published at [benchmarks.hindsight.vectorize.io](https://benchmarks.hindsight.vectorize.io/).\n\nThe benchmark performance data for Hindsight has been independently reproduced by research collaborators at the Virginia Tech [Sanghani Center for Artificial Intelligence and Data Analytics](https://sanghani.cs.vt.edu/) and The Washington Post. Other scores are self-reported by software vendors.\n\nHindsight is being used in production at Fortune 500 enterprises and by a growing number of AI startups.\n\n---\n\n> 🤖 **Using a coding agent?** Install the Hindsight documentation skill for instant access to docs while you code:\n> ```bash\n> npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs\n> ```\n> Works with Claude Code, Cursor, and other AI coding assistants.\n\n---\n\n## Quick Start\n\n### 1. Start a server\n\n#### Docker (recommended)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\n\ndocker run -it --pull always --name hindsight --restart unless-stopped -p 8888:8888 -p 9999:9999 \\\n  -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY \\\n  -v hindsight-data:/home/hindsight/.pg0 \\\n  ghcr.io/vectorize-io/hindsight:latest\n```\n\n>API: http://localhost:8888\n>UI: http://localhost:9999\n\nHindsight works with **25+ LLM providers** via `HINDSIGHT_API_LLM_PROVIDER` — hosted (`openai`, `anthropic`, `gemini`, `groq`, `bedrock`, `vertexai`, `minimax`, `deepseek`, `atlas`, `meta`, …), fully local (`ollama`, `lmstudio`, `llamacpp`), any OpenAI-compatible endpoint, and gateways (`litellm`, `litellmrouter`) that reach the rest. Existing subscriptions work too: `openai-codex` (ChatGPT Plus/Pro), `claude-code` (Claude Pro/Max), `cursor` (Cursor) and `github-copilot` (GitHub Copilot) need no API key. See [supported models](https://hindsight.vectorize.io/developer/models).\n\n#### Docker (external PostgreSQL)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\nexport HINDSIGHT_DB_PASSWORD=choose-a-password\ncd docker/docker-compose\ndocker compose up\n```\n\n> Oracle AI Database is also supported for enterprise deployments with full feature parity. See the [storage documentation](https://hindsight.vectorize.io/developer/storage) for details.\n\n#### Bare metal (pip)\n\n```bash\npip install hindsight-api\nexport HINDSIGHT_API_LLM_API_KEY=sk-xxx\n\nhindsight-api\n```\n\n#### Kubernetes (Helm)\n\n```bash\nhelm install hindsight oci://ghcr.io/vectorize-io/charts/hindsight \\\n  --set api.llm.provider=openai \\\n  --set api.llm.apiKey=sk-xxx \\\n  --set postgresql.enabled=true\n```\n\n#### Managed (no server)\n\n[Hindsight Cloud](https://vectorize.io/pricing) is the hosted option: managed infrastructure that scales automatically, plus a dashboard, backups, team collaboration and a 99.9% uptime SLA. Billing is usage-based with free credits to start — no fixed monthly or per-seat fee. Point any client at `https://api.hindsight.vectorize.io` with your API key and skip the deployment entirely.\n\n[Compare self-hosted, Cloud and Enterprise →](https://vectorize.io/pricing) · [Sign up →](https://ui.hindsight.vectorize.io/signup)\n\nAll options, including Windows and air-gapped setups, are covered in the [installation guide](https://hindsight.vectorize.io/developer/installation).\n\n### 2. Connect a client\n\n```bash\npip install hindsight-client -U                                  # Python\nnpm install @vectorize-io/hindsight-client                        # Node.js / TypeScript\ngo get github.com/vectorize-io/hindsight/hindsight-clients/go     # Go\ncurl -fsSL https://hindsight.vectorize.io/get-cli | bash          # CLI\n```\n\n#### Python\n\n```python\nfrom hindsight_client import Hindsight\n\nclient = Hindsight(base_url=\"http://localhost:8888\")\n\n# Retain: Store information\nclient.retain(bank_id=\"my-bank\", content=\"Alice works at Google as a software engineer\")\n\n# Recall: Search memories\nclient.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")\n\n# Reflect: Generate disposition-aware response\nclient.reflect(bank_id=\"my-bank\", query=\"Tell me about Alice\")\n```\n\n#### Node.js / TypeScript\n\n```javascript\nconst { HindsightClient } = require('@vectorize-io/hindsight-client');\n\nconst main = async () => {\n  const client = new HindsightClient({ baseUrl: 'http://localhost:8888' });\n\n  await client.retain('my-bank', 'Alice loves hiking in Yosemite');\n\n  const results = await client.recall('my-bank', 'What does Alice like?');\n  console.log(results);\n}\n\nmain();\n```\n\nFull reference: [Python](https://hindsight.vectorize.io/sdks/python) · [Node.js](https://hindsight.vectorize.io/sdks/nodejs) · [Go](https://hindsight.vectorize.io/sdks/go) · [CLI](https://hindsight.vectorize.io/sdks/cli) · [REST API](https://hindsight.vectorize.io/api-reference)\n\n### Supported Platforms\n\n| Platform | Docker | Bare Metal (pip) | Embedded DB (pg0) |\n|----------|--------|------------------|--------------------|\n| **Linux** (x86_64, ARM64) | ✅ | ✅ | ✅ |\n| **macOS** (Apple Silicon / arm64) | ✅ | ✅ | ✅ |\n| **macOS** (Intel / x86_64) | ✅ | ⚠️ | ✅ |\n| **Windows** (x86_64) | ✅ | ✅ | ✅ |\n\n⚠️ Intel Macs: use `hindsight-all-slim` — see the [installation guide](https://hindsight.vectorize.io/developer/installation#supported-platforms) for details.\n\n### Python Embedded (no server required)\n\n```bash\npip install hindsight-all -U\n```\n\nOn Intel (x86_64) Macs, install `hindsight-all-slim` instead — see [Supported Platforms](#supported-platforms).\n\n```python\nimport os\nfrom hindsight import HindsightServer, HindsightClient\n\nwith HindsightServer(\n    llm_provider=\"openai\",\n    llm_model=\"gpt-5-mini\",\n    llm_api_key=os.environ[\"OPENAI_API_KEY\"]\n) as server:\n    client = HindsightClient(base_url=server.url)\n    client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")\n    results = client.recall(bank_id=\"my-bank\", query=\"Where does Alice work?\")\n```\n\nA [Node.js equivalent](https://hindsight.vectorize.io/sdks/hindsight-all-npm) and a [daemon CLI](https://hindsight.vectorize.io/sdks/embed) are also available.\n\n---\n\n## Adding Hindsight to Your Agent\n\n### LLM Wrapper (2 lines of code)\n\nThe easiest way to add memory to an existing agent is the LLM Wrapper. Swap your LLM client for a wrapped one — memories are then stored and retrieved automatically on every call, with no other changes to your code.\n\n```bash\npip install hindsight-litellm\n```\n\n```python\nfrom openai import OpenAI\nfrom hindsight_litellm import wrap_openai\n\n# Wrap your existing LLM client and you're done.\n# Defaults to Hindsight Cloud; pass hindsight_api_url for a self-hosted server.\nclient = wrap_openai(\n    OpenAI(),\n    bank_id=\"user-123\",\n    hindsight_api_url=\"http://localhost:8888\",\n)\n\n# Hindsight recalls relevant memories before the call\n# and retains the conversation after it.\nresponse = client.chat.completions.create(\n    model=\"gpt-5-mini\",\n    messages=[{\"role\": \"user\", \"content\": \"What do you know about me?\"}],\n)\n```\n\n`wrap_anthropic()` does the same for the Anthropic SDK, and every setting — bank, recall budget, fact types, reflect instead of recall — can be overridden per call with `hindsight_*` kwargs. LiteLLM sits underneath, so the same integration covers **100+ models**. See the [LiteLLM integration](https://hindsight.vectorize.io/sdks/integrations/litellm).\n\nIf you need explicit control over *when* memories are stored and recalled, use the [SDKs or REST API](#2-connect-a-client) directly instead.\n\n### Integrations\n\n**60+ integrations** — most need no code changes.\n\n| | |\n|---|---|\n| **Coding agents** | [Claude Code](https://hindsight.vectorize.io/sdks/integrations/claude-code) · [Codex](https://hindsight.vectorize.io/sdks/integrations/codex) · [Cursor](https://hindsight.vectorize.io/sdks/integrations/cursor) · [GitHub Copilot](https://hindsight.vectorize.io/sdks/integrations/github-copilot) · [opencode](https://hindsight.vectorize.io/sdks/integrations/opencode) · [Cline](https://hindsight.vectorize.io/sdks/integrations/cline) · [Aider](https://hindsight.vectorize.io/sdks/integrations/aider) · [Zed](https://hindsight.vectorize.io/sdks/integrations/zed) · [Continue](https://hindsight.vectorize.io/sdks/integrations/continue) · [Roo Code](https://hindsight.vectorize.io/sdks/integrations/roo-code) · [OpenHands](https://hindsight.vectorize.io/sdks/integrations/openhands) |\n| **Agent frameworks** | [LangGraph / LangChain](https://hindsight.vectorize.io/sdks/integrations/langgraph) · [LlamaIndex](https://hindsight.vectorize.io/sdks/integrations/llamaindex) · [CrewAI](https://hindsight.vectorize.io/sdks/integrations/crewai) · [Pyd",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[tool.uv.workspace]\nmembers = [\"hindsight-all\", \"hindsight-api\", \"hindsight-api-slim\", \"hindsight-all-slim\", \"hindsight-dev\", \"hindsight-mcp-server\", \"hindsight-clients/python\", \"hindsight-embed\"]\n\n[tool.uv]\n# Allow uv to search all configured indexes for packages, not just the first one\n# This prevents dependency resolution failures when using pytorch index + PyPI\nindex-strategy = \"unsafe-best-match\"\ndev-dependencies = []\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "记忆检索",
+      "反思生成"
+    ],
+    "brief_zh": {
+      "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
+      "capabilities": "长期记忆、记忆检索、反思生成",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/vectorize-io/hindsight"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "hydra-db",
+    "name": "hydradb",
+    "full_name": "hydra-db/hydradb",
+    "url": "https://github.com/hydra-db/hydradb",
+    "description": "HydraDB - fast graph database on object storage",
+    "language": "Rust",
+    "total_stars": 5902,
+    "forks": 2076,
+    "stars_this_period": 1232,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "AGPL-3.0",
+      "open_issues": 143,
+      "created_at": "2026-07-03T05:34:15Z",
+      "pushed_at": "2026-08-19T00:23:48Z",
+      "homepage": "https://hydradb.com",
+      "default_branch": "main",
+      "forks": 2076,
+      "watchers": 8,
+      "archived": false,
+      "size_kb": 996
+    },
+    "readme_content": "# HydraDB\n\n[![Container image](https://github.com/hydra-db/hydradb/actions/workflows/container.yml/badge.svg)](https://github.com/hydra-db/hydradb/actions/workflows/container.yml)\n[![OpenCypher TCK](https://github.com/hydra-db/hydradb/actions/workflows/opencypher-tck.yml/badge.svg)](https://github.com/hydra-db/hydradb/actions/workflows/opencypher-tck.yml)\n[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)\n[![Rust 1.91+](https://img.shields.io/badge/rust-1.91%2B-orange.svg)](rust-toolchain.toml)\n[![Benchmarks](https://img.shields.io/badge/benchmarks-live-brightgreen.svg)](https://hydra-db.github.io/benchmark/)\n\nHydraDB is an object-store-native distributed graph database written in Rust.\nIt combines durable graph storage on SlateDB with snapshot-consistent\nOpenCypher queries, GraphBLAS traversal, Neo4j-compatible Bolt connectivity,\nand an HTTPS query API.\n\nStorage and compute are fully disaggregated. S3-compatible object storage is the\ndurable source of truth, and compute runs as two independent roles: **data\nnodes** (`graph-node`) serve queries and canonical mutations, while **indexers**\n(`graph-indexer`) build immutable traversal indexes in the background. Both keep\nonly disposable state in memory and on local SSD or NVMe, so they can be replaced\nor scaled without moving the graph itself.\n\n## Why HydraDB\n\n- **Object-store durability.** Graph records, WALs, manifests, and immutable\n  traversal indexes live in S3-compatible storage.\n- **Independent compute.** Data nodes and indexers scale separately and can\n  rebuild their local caches from durable state.\n- **Safe writer handoff.** Object-store CAS leases select the active writer for\n  each cell, while SlateDB writer epochs fence stale writers.\n- **Consistent reads.** Every query runs against one pinned SlateDB snapshot.\n  Indexed traversal combines a compiled CSC generation with its visible WAL\n  overlay.\n- **Graph-native execution.** The planner uses property indexes, reverse\n  adjacency, sparse traversal, and SuiteSparse GraphBLAS where appropriate.\n- **Familiar clients.** Applications can use Neo4j drivers over Bolt 5.x or the\n  typed JSON and streaming NDJSON HTTP API.\n- **Bounded operation.** Authentication, authorization, deadlines, result\n  limits, backpressure, cancellation, cache budgets, metrics, and traces are\n  part of the server runtime.\n\n## Architecture\n\n```mermaid\nflowchart TB\n    C[\"Applications<br/>Neo4j drivers or HTTPS\"]\n    SVC[\"Service or load balancer\"]\n\n    subgraph Q[\"Data tier — graph-node\"]\n        direction LR\n        subgraph N1[\"graph-node\"]\n            Q1[\"query + mutation engine\"]\n            S1[\"local SSD / NVMe cache\"]\n            Q1 <--> S1\n        end\n        subgraph N2[\"graph-node\"]\n            Q2[\"query + mutation engine\"]\n            S2[\"local SSD / NVMe cache\"]\n            Q2 <--> S2\n        end\n    end\n\n    subgraph I[\"Indexing tier — graph-indexer\"]\n        IX1[\"graph-indexer\"]\n        IXN[\"graph-indexer\"]\n    end\n\n    STORE[\"S3-compatible object storage<br/>WAL, SSTs, leases, CSC generations\"]\n\n    C --> SVC\n    SVC --> N1\n    SVC --> N2\n    N1 <--> STORE\n    N2 <--> STORE\n    IX1 <--> STORE\n    IXN <--> STORE\n```\n\nEach data node owns a private local SSD/NVMe cache; the object store is the shared\nlayer beneath the whole tier and the only durable copy of the graph.\n\nData nodes serve reads and canonical graph mutations. Indexer workers build\nimmutable CSC generations asynchronously and publish them through atomic\nobject-store pointers. Readers remain correct when an index is absent or behind\nbecause the visible WAL tail is applied to the indexed base.\n\nSee [architecture.md](architecture.md) for the storage model, query pipeline,\nwriter coordination, index lifecycle, and failure semantics.\n\n## Getting Started\n\nThere are two ways to bring up a single development node: the published **Docker\nimage**, or a **build from source**. Either way, once the node is listening, use\n[Verify a running node](#verify-a-running-node) to confirm it works — a listening\nport is not proof; a round-tripped write is. TLS is required by default in\ndeployed environments, so the local flows below enable plaintext explicitly.\n\n<details>\n<summary><strong>Run with Docker</strong> — fastest, no local toolchain</summary>\n\nRelease images are published to\n[`ghcr.io/hydra-db/hydradb`](https://github.com/hydra-db/hydradb/pkgs/container/hydradb).\nEach `v*` release is tagged with its full version, compatible minor and major\nversions, the commit SHA, and `latest` (for example `0.1.0`, `0.1`, `0`,\n`latest`, `sha-7bf77ac`):\n\n```bash\ndocker pull ghcr.io/hydra-db/hydradb:latest\n```\n\nImages are published for `linux/amd64` and `linux/arm64`, so Docker selects the\nright one for the host and Apple Silicon needs no extra flags. Releases up to\nand including `0.1.0` were `linux/amd64` only, and pulling one of those on an\nARM host fails with:\n\n```\nno matching manifest for linux/arm64/v8 in the manifest list entries\n```\n\nThat message means the tag predates multi-architecture publishing, not that the\npull is misconfigured. Move to a release after `0.1.0`, or run the older tag\nunder emulation with `--platform linux/amd64` — correct but slower, and it\nrequires Rosetta on Apple Silicon. To see which architectures a tag actually\ncarries before pulling it:\n\n```bash\ndocker buildx imagetools inspect ghcr.io/hydra-db/hydradb:latest\n```\n\nThis starts one plaintext node backed by a host directory mounted into the\ncontainer:\n\n```bash\nmkdir -p hydradb-data/store hydradb-data/cache\nprintf '%s\\n' 'local-development-token-32-bytes' > hydradb-data/auth-token\n\ndocker run --rm \\\n  --user \"$(id -u):$(id -g)\" \\\n  -p 7687:7687 -p 8443:8443 -p 9090:9090 \\\n  -v \"$PWD/hydradb-data:/data\" \\\n  -e CLOUD_PROVIDER=local \\\n  -e LOCAL_PATH=/data/store \\\n  -e GRAPH_NAMESPACE=default \\\n  -e GRAPH_ID=default \\\n  -e GRAPH_CELL_ID=cell-0 \\\n  -e GRAPH_CELLS=cell-0 \\\n  -e GRAPH_NODE_ID=node-0 \\\n  -e GRAPH_BOLT_NODE_ADDRESSES=node-0=127.0.0.1:7687 \\\n  -e GRAPH_ADVERTISED_BOLT_ADDR=127.0.0.1:7687 \\\n  -e GRAPH_DATA_CACHE_DIR=/data/cache \\\n  -e GRAPH_AUTH_TOKEN_FILE=/data/auth-token \\\n  -e GRAPH_ALLOW_PLAINTEXT=true \\\n  -e RUST_MIN_STACK=33554432 \\\n  ghcr.io/hydra-db/hydradb:latest\n```\n\nThe node runs in the foreground. `LOCAL_PATH` must point at a directory that\nalready exists, which is why `hydradb-data/store` is created before the mount.\n`--user \"$(id -u):$(id -g)\"` is required: the image runs as UID/GID `10001`,\nbut the bind-mounted `hydradb-data` is owned by the host user, so without it the\ncontainer cannot write its store or cache and fails on the first storage\noperation. Running as the host user makes the mounted directories writable and\nkeeps the created files host-owned. The image entrypoint is `graph-node`; it\nalso ships `graph-indexer`. For production, pin an image digest rather than\n`latest` — see the [Helm chart guide](charts/hydradb/README.md).\n\n</details>\n\n<details>\n<summary><strong>Build from source</strong> — for development and the full recipe surface</summary>\n\n#### Prerequisites\n\nHydraDB requires Rust 1.91 or newer, a C/C++ toolchain,\n`libcypher-parser`, and SuiteSparse GraphBLAS.\n\nUbuntu or WSL:\n\n```bash\nsudo apt-get update\nsudo apt-get install -y \\\n  build-essential clang libclang-dev cmake pkg-config \\\n  libcypher-parser-dev libgraphblas-dev \\\n  curl git python3 python3-venv\n```\n\nThe last line is not needed to build, but the steps below use it: `curl` for\nthe Rust installer and the readiness checks, `git` to clone, and `python3-venv`\nfor the Neo4j driver used by `scripts/runtime_smoke.sh`.\n\nmacOS with Homebrew:\n\n```bash\nxcode-select --install\nbrew install just cmake pkg-config llvm suite-sparse\nbrew install cleishm/neo4j/libcypher-parser\n\n# Rust, only if `rustup toolchain list` does not already show a stable toolchain:\ncurl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\n```\n\n`libcypher-parser` is not in homebrew-core; the fully-qualified\n`cleishm/neo4j/...` name adds the tap automatically. A plain\n`brew install libcypher-parser` fails with `No available formula`.\n\nRust comes from the official installer rather than Homebrew because the\n`rustup` formula is keg-only and no longer ships a `rustup-init` binary, so\n`brew install rustup` leaves nothing named `rustup` on `PATH`.\n`rust-toolchain.toml` pins `channel = \"stable\"`, so any rustup-managed stable\ntoolchain works.\n\nNo `PKG_CONFIG_PATH` export is needed: `libcypher-parser` is not keg-only, so\nHomebrew links `cypher-parser.pc` into the default `pkg-config` search path.\n\n[`just`](https://github.com/casey/just) is the supported command runner for the\nrepository. Install it with `cargo install just --locked` when your package\nmanager does not provide it. Docker is optional and is used only by MinIO,\nNeo4j comparison, image-build, and Kubernetes harnesses.\n\n#### Clone and verify\n\n```bash\ngit clone https://github.com/hydra-db/hydradb.git\ncd hydradb\n\njust native-check\njust smoke\n```\n\nThe smoke example creates a local graph, writes and deletes edges, runs a sparse\ntraversal, closes the database, reopens it, and verifies the durable result.\nThe recipe creates and removes an isolated local object-store directory. Use\n`just smoke-graphblas` to pin the traversal kernel to SuiteSparse GraphBLAS.\n\nTo exercise the same flow against an ephemeral MinIO instance:\n\n```bash\njust minio-smoke\n```\n\n#### Run a local server\n\nThe following starts a single plaintext development node backed by a local\ndirectory.\n\n```bash\nmkdir -p .hydradb/store .hydradb/cache\nprintf '%s\\n' 'local-development-token-32-bytes' > .hydradb/auth-token\n\nexport CLOUD_PROVIDER=local\nexport LOCAL_PATH=\"$PWD/.hydradb/store\"\nexport GRAPH_NAMESPACE=default\nexport GRAPH_ID=default\nexport GRAPH_CELL_ID=cell-0\nexport GRAPH_CELLS=cell-0\nexport GRAPH_NODE_ID=node-0\nexport GRAPH_BOLT_NODE_ADDRESSES=node-0=127.0.0.1:7687\nexport GRAPH_ADVERTISED_BOLT_ADDR=127.0.0.1:7687\nexport GRAPH_DATA_CACHE_DIR=\"$PWD/.hydradb/cache\"\nexport GRAPH_AUTH_TOKEN_FILE=\"$PWD/.hydradb/auth-token\"\nexport GRAPH_ALLOW_PLAINTEXT=true\n\n# graph-node's async query futures exceed the default thread stack. Without\n# this the node builds, serves /readyz, and then aborts on the first query.\nexport RUST_MIN_STACK=33554432\n\n# macOS: cargo is invoked directly here, so it does not inherit what the\n# justfile exports. Linux installs these on default search paths already.\nif command -v brew >/dev/null; then\n  export BINDGEN_EXTRA_CLANG_ARGS=\"-I$(brew --prefix)/include\"\n  export LIBRARY_PATH=\"$(brew --prefix)/lib\"\nfi\n\ncargo run --locked --features server-runtime --bin graph-node\n```\n\nThe node runs in the foreground and does not return; that is it working, not\nhanging. Confirm it from a second shell with\n[Verify a running node](#verify-a-running-node).\n\nFor a fully scripted Bolt and HTTP round trip against a source build, install the\nPython Neo4j driver and run. Homebrew's and Debian's Python both refuse a bare\n`pip install` under PEP 668, so use a virtualenv (`apt-get install -y\npython3-venv` on Debian/Ubuntu):\n\n```bash\npython3 -m venv /tmp/hydradb-venv && /tmp/hydradb-venv/bin/pip install neo4j\n\n# macOS: this script calls cargo directly, so it does not inherit what the\n# justfile exports. Without this it fails at bindgen with\n# `'cypher-parser.h' file not found`. Linux needs neither.\nif command -v brew >/dev/null; then\n  export BINDGEN_EXTRA_CLANG_ARGS=\"-I$(brew --prefix)/include\"\n  export LIBRARY_PATH=\"$(brew --prefix)/lib\"\nfi\n\nPYTHON=/tmp/hydradb-venv/bin/python bash scripts/runtime_smoke.sh\n```\n\nPrints `runtime-smoke-ok`. The node's log is at\n`/tmp/sgk-runtime-smoke/node.log`; read it first if the script fails.\n\n</details>\n\n### Verify a running node\n\nHowever you started it, the node listens on:\n\n| Endpoint | Address | Purpose |\n|---|---|---|\n| Bolt | `127.0.0.1:7687` | Neo4j-driver-compatible queries |\n| HTTP | `127.0.0.1:8443` | JSON and NDJSON query API |\n| Admin | `127.0.0.1:9090` | readiness and Prometheus metrics |\n\nIn another terminal, write and read ",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# The root stays the `slatedb-graph-kernel` package and merely gains a\n# `[workspace]` table, so every bare `cargo test --features …` in CI, the\n# justfile and scripts/ still resolves to the root package. A virtual manifest\n# would have broken all of them.\n#\n# `exclude` covers the vendored Quint/CosmWasm sample manifests under `docs/`,\n# which are gitignored but present in working trees.\n[workspace]\nmembers = [\"crates/placement\", \"crates/telemetry\"]\nexclude = [\"docs\"]\n\n# One place for every third-party version, so a member cannot drift from the\n# root. Members inherit with `{ workspace = true }`. Two rules worth knowing\n# before editing: `optional` is *not* inheritable and must be repeated at each\n# use site, and features listed here are a floor a member can add to but never\n# subtract from — so what is recorded below is the union across all use sites.\n[workspace.dependencies]\nasync-trait = \"0.1\"\naxum = \"0.8.9\"\naxum-server = { version = \"0.8.0\", default-features = false, features = [\"tls-rustls-no-provider\"] }\nbase64 = \"0.22\"\nboltr = \"0.2.0\"\nbytes = \"1\"\n# `serde` is declared rather than inherited. It does arrive anyway through\n# feature unification with `object_store`, but placement's heartbeat body\n# derives Serialize/Deserialize on a `DateTime<Utc>`, and a dependency that\n# compiles only because something else happens to turn a feature on breaks the\n# day that something else stops.\nchrono = { version = \"0.4\", default-features = false, features = [\"clock\", \"serde\"] }\nfutures = \"0.3\"\nlibcypher-parser-sys = \"0.6.1-1\"\n# The OpenTelemetry set is used only by `crates/telemetry`, behind its\n# off-by-default `otlp` feature, so nothing here reaches the kernel or a bare\n# `cargo test`. They live in this table anyway because the versions are paired,\n# not free: `tracing-opentelemetry` 0.33 is the release that targets\n# `opentelemetry` 0.32, and bumping one without the others silently stops the\n# `OpenTelemetrySpanExt` trait applying to the installed tracer. One table, one\n# bump. `optional` is not inheritable and stays at the use site.\nopentelemetry = \"0.32\"\nopentelemetry-appender-tracing = \"0.32\"\n# `reqwest-blocking-client`, not `reqwest-client`, and it is not a preference.\n# `opentelemetry_sdk`'s batch processors run on their own dedicated OS threads,\n# which are not tokio workers, so the async client panics there with \"there is\n# no reactor running\" and no span or log record ever reaches the collector. The\n# blocking client is what upstream enables by default for this exact reason;\n# the batching already keeps the export off the request path.\n#\n# `metrics` is in the list for the same reason `trace` and `logs` are: with\n# `default-features = false` nothing is on implicitly, and without it\n# `opentelemetry_otlp::MetricExporter` simply does not exist in this build —\n# a missing-type error that reads like a version mismatch and is not one.\n# `PeriodicReader` runs on its own OS thread too, so `reqwest-blocking-client`\n# is load-bearing for the metrics pipeline exactly as it is for the other two.\nopentelemetry-otlp = { version = \"0.32\", default-features = false, features = [\"trace\", \"logs\", \"metrics\", \"http-proto\", \"reqwest-blocking-client\"] }\nopentelemetry-semantic-conventions = \"0.32\"\nopentelemetry_sdk = { version = \"0.32\", features = [\"rt-tokio\"] }\nrcgen = \"0.13\"\nreqwest = { version = \"0.13\", default-features = false, features = [\"json\", \"query\", \"rustls\"] }\nrustls-pemfile = \"2\"\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\nserde_yaml = \"0.9\"\nsha2 = \"0.10\"\nslatedb = { git = \"https://github.com/usecortex/slatedb.git\", rev = \"c501471ea070498931f30611bfd1ad2773c3c367\", default-features = false, features = [\"aws\", \"foyer\"] }\nsubtle = \"2\"\ntempfile = \"3\"\nthiserror = \"2\"\ntokio = { version = \"1\", features = [\"macros\", \"rt-multi-thread\", \"signal\", \"sync\", \"time\"] }\ntokio-rustls = \"0.26\"\ntracing = \"0.1\"\ntracing-opentelemetry = \"0.33\"\ntracing-subscriber = { version = \"0.3\", features = [\"env-filter\", \"fmt\", \"json\"] }\nulid = \"1\"\n\n[package]\nname = \"slatedb-graph-kernel\"\nversion = \"0.1.0\"\nedition = \"2021\"\nrust-version = \"1.91\"\ndescription = \"A SlateDB-backed object-store graph kernel\"\nrepository = \"https://github.com/usecortex/slatedb-graph-kernel\"\nreadme = \"README.md\"\npublish = false\n\n[features]\ndefault = []\nopencypher = [\"dep:libcypher-parser-sys\"]\nchaos-harness = []\njson-properties = [\"dep:serde_json\"]\nquery-transport = [\"opencypher\", \"dep:base64\", \"dep:serde\", \"dep:subtle\", \"json-properties\", \"tokio/io-util\", \"tokio/net\"]\nquery-transport-tls = [\"query-transport\", \"dep:tokio-rustls\"]\nquery-service-discovery = [\"query-transport\", \"dep:reqwest\"]\nclient-api = [\"query-transport\"]\nbolt-server = [\"client-api\", \"query-transport-tls\", \"dep:boltr\"]\nhttp-api = [\"client-api\", \"query-transport-tls\", \"dep:axum\", \"dep:axum-server\"]\npublic-client-protocols = [\"bolt-server\", \"http-api\"]\nserver-runtime = [\n    \"public-client-protocols\",\n    \"query-service-discovery\",\n    \"dep:rustls-pemfile\",\n    \"dep:tracing-subscriber\",\n  ",
+    "strategic_keywords": [
+      "memory",
+      "rag",
+      "runtime",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "图数据库",
+      "对象存储",
+      "图查询"
+    ],
+    "brief_zh": {
+      "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
+      "capabilities": "图数据库、对象存储、图查询",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/hydra-db/hydradb"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "dream-num",
+    "name": "univer",
+    "full_name": "dream-num/univer",
+    "url": "https://github.com/dream-num/univer",
+    "description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+    "language": "TypeScript",
+    "total_stars": 17503,
+    "forks": 1514,
+    "stars_this_period": 1060,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "board",
+        "collaboration",
+        "data-table",
+        "doc",
+        "docx",
+        "excel",
+        "grid",
+        "pdf",
+        "ppt",
+        "pptx",
+        "presentation",
+        "sdk",
+        "sheet",
+        "slides",
+        "spreadsheet",
+        "table",
+        "word",
+        "wordprocessor",
+        "xlsx"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 141,
+      "created_at": "2022-09-29T12:09:14Z",
+      "pushed_at": "2026-09-24T14:02:42Z",
+      "homepage": "https://docs.univer.ai",
+      "default_branch": "dev",
+      "forks": 1514,
+      "watchers": 199,
+      "archived": false,
+      "size_kb": 174026
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./docs/img/banner.png\" alt=\"Univer SDK\" width=\"800\" />\n\n**The Office Harness for AI Agents**\n\nSpreadsheets · Documents · Presentations · Bases · Boards · PDFs (coming soon)\n\nHigh-performance, fully customizable Office SDK\n\nBuild embeddable productivity experiences with a plugin architecture, Canvas-based rendering,\na formula engine, and one Facade API that works in the browser and on Node.js.\n\nEnglish | [简体中文](./docs/readme/zh-CN.md) | [繁體中文](./docs/readme/zh-TW.md) | [日本語](./docs/readme/ja-JP.md) | [한국어](./docs/readme/ko-KR.md) | [Español](./docs/readme/es-ES.md)\n\n[🌐 Website](https://univer.ai/) | [📖 Documentation](https://docs.univer.ai) | [✨ Showcase](https://docs.univer.ai/showcase) | [📘 API Reference](https://docs.univer.ai/reference/classes/univer) | [📝 Blog](https://docs.univer.ai/blog)\n\n[![Release](https://img.shields.io/github/v/release/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/releases)\n[![License](https://img.shields.io/github/license/dream-num/univer?style=flat-square)](./LICENSE)\n[![Build](https://img.shields.io/github/actions/workflow/status/dream-num/univer/build-packages.yml?style=flat-square)](https://github.com/dream-num/univer/actions/workflows/build-packages.yml)\n[![CodeFactor](https://www.codefactor.io/repository/github/dream-num/univer/badge/dev?style=flat-square)](https://www.codefactor.io/repository/github/dream-num/univer/overview/dev)\n[![Codecov](https://img.shields.io/codecov/c/gh/dream-num/univer?token=aPfyW2pIMN&style=flat-square)](https://codecov.io/gh/dream-num/univer)\n\n[![Stars](https://img.shields.io/github/stars/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/stargazers)\n[![Contributors](https://img.shields.io/github/contributors/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/graphs/contributors)\n[![Issues](https://img.shields.io/github/issues/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/issues)\n[![Last Commit](https://img.shields.io/github/last-commit/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/commits/dev/)\n\n[![Discord](https://img.shields.io/discord/1136129819961217077?logo=discord&logoColor=FFFFFF&label=discord&color=5865F2&style=flat-square)](https://discord.gg/z3NKNT6D2f)\n[![Twitter](https://img.shields.io/twitter/follow/univerhq?style=flat-square&logo=x)](https://twitter.com/univerhq)\n[![Open Collective](https://img.shields.io/opencollective/all/univer?logo=opencollective&style=flat-square)](https://opencollective.com/univer)\n\n[![Trendshift](https://trendshift.io/api/badge/repositories/4376)](https://trendshift.io/repositories/4376)\n\n</div>\n\n## ✨ What is Univer?\n\nUniver is an open-source SDK for creating office applications inside your own product. It gives you the building blocks for spreadsheet, document, and presentation experiences without forcing you into a hosted app or a fixed UI.\n\nUse Univer when you need to:\n\n- Embed spreadsheet or document editing into a SaaS product, internal tool, BI workflow, or AI application.\n- Run workbook/document processing on the server with the same architecture used in the browser.\n- Compose only the features you need through plugins or start quickly with presets.\n- Extend behavior through custom plugins, commands, services, UI components, and Facade APIs.\n\nUniver is not a spreadsheet file viewer only. It is a framework for building your own productivity surface.\n\nAcross the [Univer product family](https://univer.ai/), Office tools share a runtime for storage and computation. Content can be composed and embedded across tools, with linked data and references updating together. People and AI agents can work in the same files. See the [capability matrix](https://univer.ai/capabilities) for product coverage and [Open Source and Pro](#-open-source-and-pro) for this repository's scope.\n\n### Build a collaborative tool with Univer Office SDK\n\n[![Build a collaborative tool with Univer Office SDK](https://i.ytimg.com/vi/1p-SMEiK6Kg/maxresdefault.jpg)](https://www.youtube.com/watch?v=1p-SMEiK6Kg)\n\n[Watch the demo](https://www.youtube.com/watch?v=1p-SMEiK6Kg)\n\n## Built with Univer Office SDK\n\n### Featured example: Univer Workspace\n\n[Univer Workspace](https://github.com/dream-num/univer-workspace) is an open-source, self-hostable workspace built on Univer Office SDK, where people and AI agents create, collaborate on, and review Office content. Developers can use the complete implementation as a reference, learn how to integrate the SDK, and build their own products.\n\n[![A Workspace mini-app beside its linked spreadsheet, with metrics, charts, and controls bound to cells](./docs/img/workspace-mini-app.png)](https://github.com/dream-num/univer-workspace)\n\n- Agents can generate spreadsheet-based mini-apps, such as decision-making dashboards, interactive reports, and business dashboards.\n- Metrics, charts, and controls on the web page are bound to cells, supporting data reads, writes, and collaborative updates.\n\n[Explore Univer Workspace](https://github.com/dream-num/univer-workspace)\n\n### Other examples\n\nThese open-source projects are built with Univer Office SDK:\n\n| Project | Description |\n| --- | --- |\n| [Univer Office for DeepSeek Harness](https://github.com/dream-num/dsh-univer-office) | An Office plugin for DeepSeek Harness with connected content, validation, and isolated worktrees for agent collaboration. |\n| [Univer CLI](https://github.com/dream-num/univer-cli) | A local command-line workspace for agents to create, edit, inspect, and deliver Office content. |\n| [Univer Office for WorkBuddy](https://github.com/dream-num/workbuddy-univer-office) | A local Office integration for WorkBuddy with MCP previews and draft review. Development preview. |\n| [Univer Office for OpenClaw](https://github.com/dream-num/openclaw-univer-office) | Tools for creating, reviewing, and delivering Office content in OpenClaw. |\n\nEach project documents its own setup and SDK licensing requirements.\n\n## 🌟 Highlights\n\n<table>\n  <tr>\n    <td align=\"center\" width=\"33%\">\n      ⚡<br />\n      <strong>Built for large surfaces</strong><br />\n      <sub>Canvas-based rendering and a dedicated formula engine keep complex workbooks responsive.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🧩<br />\n      <strong>Plugin-shaped by default</strong><br />\n      <sub>Compose, replace, lazy-load, or extend capabilities without taking the whole stack.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🤖<br />\n      <strong>Headless for AI infrastructure</strong><br />\n      <sub>Run workbook and document logic in Node.js to power agents, automation, and server-side workflows.</sub>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"33%\">\n      🛠️<br />\n      <strong>Product-ready SDK</strong><br />\n      <sub>Framework adapters, Facade APIs, presets, and headless runtime fit real integration paths.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🌗<br />\n      <strong>Dark-mode ready</strong><br />\n      <sub>UI components and the rendering engine both adapt to light and dark themes.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🔌<br />\n      <strong>Unified Facade API</strong><br />\n      <sub>One consistent API surface for workbooks, ranges, formulas, and documents across browser and Node.js.</sub>\n    </td>\n  </tr>\n</table>\n\n## 🚀 Why Univer?\n\n- **Isomorphic by design**: run UI apps in browsers and headless processing in Node.js.\n- **Plugin-first architecture**: every capability is delivered as a composable plugin, so features can be added, removed, replaced, or lazy-loaded.\n- **Preset mode for fast integration**: use the curated plugin collections in [`presets/`](./presets) when you want a working app quickly.\n- **Plugin mode for full control**: manually compose packages when you need custom loading, smaller bundles, or deep integration.\n- **Facade API**: work with workbooks, worksheets, ranges, documents, formulas, commands, and events through a higher-level API.\n- **Canvas rendering engine**: support large editable document surfaces with a rendering layer shared across document types.\n- **Extensible UI**: integrate with React, Vue, Web Components, and framework-specific application shells.\n\n## 🤖 Office Workflows for AI Agents\n\nUniver's AI and collaboration capabilities connect agent operations with interactive editing and human review:\n\n- **Programmatic editing**: agents inspect and modify Office content through structured APIs.\n- **Output verification**: agents check results through content inspection, rendered screenshots, and layout diagnostics.\n- **Worktree collaboration**: agents work in isolated drafts, then people review their changes and decide what to merge.\n\nSee the [AI SDK documentation](https://docs.univer.ai/ai) for integration details. Live editing, shared revisions, and Worktree workflows require the corresponding Web SDK and collaboration capabilities; package availability and licensing vary by feature.\n\n## ⚡ Quick Start\n\nUse **Plugin Mode** for complete product coverage and precise composition. For supported Sheets, Docs, and Node profiles, **Preset Mode** provides a shorter curated setup.\n\n<details open>\n<summary><strong>Plugin Mode</strong></summary>\n\nPlugin Mode gives you lower-level control over packages, style imports, locale merging, Facade API registration, and plugin configuration.\n\n```bash\npnpm add @univerjs/core @univerjs/design @univerjs/docs @univerjs/docs-ui @univerjs/engine-formula @univerjs/engine-render @univerjs/sheets @univerjs/sheets-formula @univerjs/sheets-formula-ui @univerjs/sheets-numfmt @univerjs/sheets-numfmt-ui @univerjs/sheets-ui @univerjs/ui\n```\n\n```ts\nimport { LocaleType, mergeLocales, Univer } from '@univerjs/core'\nimport { FUniver } from '@univerjs/core/facade'\nimport DesignEnUS from '@univerjs/design/locale/en-US'\nimport { UniverDocsPlugin } from '@univerjs/docs'\nimport { UniverDocsUIPlugin } from '@univerjs/docs-ui'\nimport DocsUIEnUS from '@univerjs/docs-ui/locale/en-US'\nimport { UniverFormulaEnginePlugin } from '@univerjs/engine-formula'\nimport { UniverRenderEnginePlugin } from '@univerjs/engine-render'\nimport { UniverSheetsPlugin } from '@univerjs/sheets'\nimport SheetsEnUS from '@univerjs/sheets/locale/en-US'\nimport { UniverSheetsFormulaPlugin } from '@univerjs/sheets-formula'\nimport SheetsFormulaEnUS from '@univerjs/sheets-formula/locale/en-US'\nimport { UniverSheetsFormulaUIPlugin } from '@univerjs/sheets-formula-ui'\nimport SheetsFormulaUIEnUS from '@univerjs/sheets-formula-ui/locale/en-US'\nimport { UniverSheetsNumfmtPlugin } from '@univerjs/sheets-numfmt'\nimport { UniverSheetsNumfmtUIPlugin } from '@univerjs/sheets-numfmt-ui'\nimport SheetsNumfmtUIEnUS from '@univerjs/sheets-numfmt-ui/locale/en-US'\nimport { UniverSheetsUIPlugin } from '@univerjs/sheets-ui'\nimport SheetsUIEnUS from '@univerjs/sheets-ui/locale/en-US'\nimport { UniverUIPlugin } from '@univerjs/ui'\nimport UIEnUS from '@univerjs/ui/locale/en-US'\n\nimport '@univerjs/design/lib/index.css'\nimport '@univerjs/ui/lib/index.css'\nimport '@univerjs/docs-ui/lib/index.css'\nimport '@univerjs/sheets-ui/lib/index.css'\nimport '@univerjs/sheets-formula-ui/lib/index.css'\nimport '@univerjs/sheets-numfmt-ui/lib/index.css'\n\nimport '@univerjs/engine-formula/facade'\nimport '@univerjs/ui/facade'\nimport '@univerjs/sheets/facade'\nimport '@univerjs/sheets-ui/facade'\nimport '@univerjs/sheets-formula/facade'\nimport '@univerjs/sheets-numfmt/facade'\n\nconst univer = new Univer({\n  locale: LocaleType.EN_US,\n  locales: {\n    [LocaleType.EN_US]: mergeLocales(\n      DesignEnUS,\n      UIEnUS,\n      DocsUIEnUS,\n      SheetsEnUS,\n      SheetsUIEnUS,\n      SheetsFormulaEnUS,\n      SheetsFormulaUIEnUS,\n      SheetsNumfmtUIEnUS,\n    ),\n  },\n})\n\nuniver.registerPlugin(UniverRenderEnginePlugin)\nuniver.registerPlugin(UniverFormulaEnginePlugin)\nuniver.registerPlugin(UniverUIPlugin, { container: 'app' })\nuniver.registerPlugin(UniverDocsPlugin)\nuniver.registerPlugin(Un",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n    \"name\": \"univer\",\n    \"type\": \"module\",\n    \"version\": \"1.0.2\",\n    \"private\": true,\n    \"packageManager\": \"pnpm@12.5.1\",\n    \"author\": \"DreamNum Co., Ltd. <developer@univer.ai>\",\n    \"license\": \"Apache-2.0\",\n    \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/univer\"\n    },\n    \"homepage\": \"https://univer.ai\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/dream-num/univer\"\n    },\n    \"bugs\": {\n        \"url\": \"https://github.com/dream-num/univer/issues\"\n    },\n    \"devEngines\": {\n        \"runtime\": {\n            \"name\": \"node\",\n            \"version\": \">=22.18\"\n        }\n    },\n    \"scripts\": {\n        \"prepare\": \"husky\",\n        \"pre-commit\": \"lint-staged\",\n        \"dev\": \"pnpm --filter univer-examples dev\",\n        \"dev:umd\": \"serve .\",\n        \"typecheck\": \"turbo typecheck\",\n        \"serve:umd\": \"serve .\",\n        \"test\": \"turbo test -- --passWithNoTests\",\n        \"coverage\": \"turbo --concurrency 50% coverage -- --passWithNoTests \",\n        \"analyze:build\": \"node --experimental-strip-types ./scripts/build-analysis.mts\",\n        \"build\": \"pnpm run build:plugins && pnpm run build:presets\",\n        \"build:ci\": \"pnpm run build\",\n        \"build:plugins\": \"turbo build --filter '!./common/*' --filter '!./presets/**'\",\n        \"build:presets\": \"turbo build --filter './presets/**...' --filter '!./presets/**' && turbo build --filter './presets/**'\",\n        \"lint\": \"eslint .\",\n        \"storybook:dev\": \"pnpm --filter @univerjs/storybook dev:storybook\",\n        \"storybook:build\": \"pnpm --filter @univerjs/storybook build:storybook\",\n        \"release\": \"verso\"\n    },\n    \"devDependencies\": {\n        \"@amamo/verso\": \"1.2.0\",\n        \"@antfu/eslint-config\": \"^9.2.0\",\n        \"@commitlint/cli\": \"^21.2.2\",\n        \"@commitlint/config-conventional\": \"^21.2.2\",\n        \"@eslint-react/eslint-plugin\": \"^5.18.1\",\n        \"@eslint/compat\": \"^2.1.0\",\n        \"@types/node\": \"^26.1.2\",\n        \"@types/react\": \"19.3.0\",\n        \"@types/react-dom\": \"19.3.0\",\n        \"@univerjs-infra/shared\": \"workspace:*\",\n        \"@univerjs/design\": \"workspace:*\",\n        \"eslint\": \"^10.8.0\",\n        \"eslint-plugin-format\": \"^2.0.1\",\n        \"eslint-plugin-react\": \"^7.37.5\",\n        \"eslint-plugin-react-hooks\": \"^7.1.1\",\n        \"eslint-plugin-react-refresh\": \"^0.5.3\",\n        \"husky\": \"^9.1.7\",\n        \"lint-staged\": \"^17.5.1\",\n        \"react\": \"19.3.0\",\n        \"react-dom\": \"19.3.0\",\n        \"serve\": \"^14.2.6\",\n        \"tailwindcss\": \"3.4.18\",\n        \"turbo\": \"^2.10.12\",\n        \"typescript\": \"^6.0.3\",\n        \"vitest\": \"^5.0.0\"\n    },\n    \"lint-staged\": {\n        \"*\": \"eslint --fix\"\n    }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "办公文档",
+      "电子表格",
+      "统一操作接口"
+    ],
+    "brief_zh": {
+      "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
+      "capabilities": "办公文档、电子表格、统一操作接口",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/dream-num/univer"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "strands-agents",
+    "name": "harness-sdk",
+    "full_name": "strands-agents/harness-sdk",
+    "url": "https://github.com/strands-agents/harness-sdk",
+    "description": "Build an agent harness and control it end-to-end. Open-source SDK for production AI agents in Python & TypeScript - any model, any cloud.",
+    "language": "Python",
+    "total_stars": 8220,
+    "forks": 1234,
+    "stars_this_period": 463,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-framework",
+        "agentic",
+        "agentic-ai",
+        "agents",
+        "ai",
+        "ai-agents",
+        "anthropic",
+        "autonomous-agents",
+        "bedrock",
+        "generative-ai",
+        "harness",
+        "llm",
+        "llm-agent",
+        "mcp",
+        "multi-agent-systems",
+        "openai",
+        "python",
+        "sdk",
+        "strands-agents",
+        "typescript"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 824,
+      "created_at": "2025-05-14T19:59:51Z",
+      "pushed_at": "2026-09-24T21:27:28Z",
+      "homepage": "http://strandsagents.com/",
+      "default_branch": "main",
+      "forks": 1234,
+      "watchers": 53,
+      "archived": false,
+      "size_kb": 212113
+    },
+    "readme_content": "<div align=\"center\">\n  <div>\n    <a href=\"https://strandsagents.com\">\n      <picture>\n        <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://strandsagents.com/latest/assets/wordmark-github-dark.svg\">\n        <img src=\"https://strandsagents.com/latest/assets/wordmark-github-light.svg\" alt=\"Strands\" width=\"320\">\n      </picture>\n    </a>\n  </div>\n\n  <h1>\n    Strands Agents\n  </h1>\n\n  <h2>\n    A model-driven approach to building AI agents in just a few lines of code.\n  </h2>\n\n  <div align=\"center\">\n    <a href=\"https://github.com/strands-agents/harness-sdk/graphs/commit-activity\"><img alt=\"GitHub commit activity\" src=\"https://img.shields.io/github/commit-activity/m/strands-agents/harness-sdk\"/></a>\n    <a href=\"https://github.com/strands-agents/harness-sdk/issues\"><img alt=\"GitHub open issues\" src=\"https://img.shields.io/github/issues/strands-agents/harness-sdk\"/></a>\n    <a href=\"https://github.com/strands-agents/harness-sdk/pulls\"><img alt=\"GitHub open pull requests\" src=\"https://img.shields.io/github/issues-pr/strands-agents/harness-sdk\"/></a>\n    <a href=\"https://github.com/strands-agents/harness-sdk/blob/main/LICENSE.APACHE\"><img alt=\"License\" src=\"https://img.shields.io/github/license/strands-agents/harness-sdk\"/></a>\n    <a href=\"https://pypi.org/project/strands-harness/\"><img alt=\"Python harness version\" src=\"https://img.shields.io/pypi/v/strands-harness?label=Python%20harness\"/></a>\n    <a href=\"https://www.npmjs.com/package/@strands-agents/harness\"><img alt=\"TypeScript harness version\" src=\"https://img.shields.io/npm/v/%40strands-agents%2Fharness?label=TypeScript%20harness\"/></a>\n    <a href=\"https://www.npmjs.com/package/@strands-agents/cli\"><img alt=\"CLI version\" src=\"https://img.shields.io/npm/v/%40strands-agents%2Fcli?label=CLI\"/></a>\n    <a href=\"https://pypi.org/project/strands-agents/\"><img alt=\"Python SDK version\" src=\"https://img.shields.io/pypi/v/strands-agents?label=Python%20SDK\"/></a>\n    <a href=\"https://www.npmjs.com/package/@strands-agents/sdk\"><img alt=\"TypeScript SDK version\" src=\"https://img.shields.io/npm/v/%40strands-agents%2Fsdk?label=TypeScript%20SDK\"/></a>\n  </div>\n  \n  <p>\n    <a href=\"https://strandsagents.com/\">Documentation</a>\n    ◆ <a href=\"https://github.com/strands-agents/samples\">Samples</a>\n    ◆ <a href=\"https://github.com/strands-agents/harness-sdk/tree/main/strands-mcp\">MCP Server</a>\n    ◆ <a href=\"https://discord.gg/strands\">Discord</a>\n  </p>\n</div>\n\nStrands Agents is an open-source SDK for building and running AI agents in Python and TypeScript. Choose Strands when you would otherwise write your own agent loop: it runs in your process with no hosted control plane, and it covers the jobs a hand-rolled loop grows into. In one SDK you get [lifecycle controls](https://strandsagents.com/docs/user-guide/concepts/agents/agent-loop/) (turn limits, token budgets, cancellation, stop reasons), [tools](https://strandsagents.com/docs/user-guide/concepts/tools/) and [structured output](https://strandsagents.com/docs/user-guide/concepts/agents/structured-output/), [MCP](https://strandsagents.com/docs/user-guide/concepts/tools/mcp-tools/), [multi-agent patterns](https://strandsagents.com/docs/user-guide/concepts/multi-agent/multi-agent-patterns/), [memory](https://strandsagents.com/docs/user-guide/concepts/memory/overview/) and [sessions](https://strandsagents.com/docs/user-guide/concepts/agents/session-management/), [model portability](https://strandsagents.com/docs/user-guide/concepts/model-providers/), [streaming](https://strandsagents.com/docs/user-guide/concepts/streaming/), [guardrails](https://strandsagents.com/docs/user-guide/safety-security/guardrails/), [tracing](https://strandsagents.com/docs/user-guide/observability-evaluation/observability/), and [evals](https://strandsagents.com/docs/user-guide/evals-sdk/quickstart/).\n\nThis monorepo contains Strands harness, the Python and TypeScript SDKs, the documentation site, and supporting packages:\n\n| Directory | Description |\n|-----------|-------------|\n| [`harness-py/`](harness-py/) | Python Strands harness: fully assembled agent via `create_harness()` ([PyPI](https://pypi.org/project/strands-harness/) · [docs](https://strandsagents.com/docs/user-guide/harness/)) |\n| [`harness-ts/`](harness-ts/) | TypeScript Strands harness: fully assembled agent via `createHarness()` ([npm](https://www.npmjs.com/package/@strands-agents/harness) · [docs](https://strandsagents.com/docs/user-guide/harness/)) |\n| [`strands-cli/`](strands-cli/) | `strands` CLI: prototype and chat with a harness agent from the terminal ([npm](https://www.npmjs.com/package/@strands-agents/cli)) |\n| `strands-py/` | Python SDK: agent loop, model providers, tools ([PyPI](https://pypi.org/project/strands-agents/) · [releases](https://github.com/strands-agents/harness-sdk/releases?q=python%2F&expanded=false)) |\n| `strands-ts/` | TypeScript SDK: agent loop, model providers, tools ([npm](https://www.npmjs.com/package/@strands-agents/sdk) · [releases](https://github.com/strands-agents/harness-sdk/releases?q=typescript%2F&expanded=false)) |\n| `site/` | Source for the [strandsagents.com](https://strandsagents.com) documentation site (Astro/Starlight) |\n| `team/` | Governance and cross-SDK process docs (tenets, decisions, PR & compatibility guidelines, and `designs/` proposals) |\n\n## Why Strands\n\nBuild an agent harness. Control it end-to-end.\n\n- **Build your way.** Any model, any cloud. Context management, execution limits, and observability built in before you write a line of config. Swap backends when you scale; your code stays the same.\n- **Model agnostic.** First-class support for Amazon Bedrock, Anthropic, OpenAI, and Gemini, plus [many more providers](https://strandsagents.com/docs/user-guide/concepts/model-providers/) and custom ones.\n- **Stay in control.** The agent loop traces every decision by default. Hooks let you intercept any step to log it, validate it, or redirect it.\n- **Deliver outcomes that work.** Guardrails catch mistakes before they run. Steering handlers let agents correct themselves instead of failing silently.\n\nMCP, streaming, multi-agent patterns, and structured output are all built in.\n\n## Quick Start\n\nThe easiest way to get started is with **[Strands harness](https://strandsagents.com/docs/user-guide/harness/)**, a fully assembled, state-of-the-art agent. A single `create_harness()` (Python) or `createHarness()` (TypeScript) call gives you an optimized agent with benchmarked defaults for the model, tools, memory, sessions, and context management — ready to take from idea to production. Follow the [harness quickstart](https://strandsagents.com/docs/user-guide/harness/quickstart/), or see the [Python Strands harness](harness-py/) and [TypeScript Strands harness](harness-ts/) packages to get started.\n\n### Python\n\n```bash\npip install strands-harness\n```\n\n```python\nfrom strands_harness import create_harness\n\nagent = create_harness()\nagent(\"Find the slowest test in this repo and explain why it's slow\")\n```\n\n### TypeScript\n\n```bash\nnpm install @strands-agents/harness\n```\n\n```typescript\nimport { createHarness } from '@strands-agents/harness'\n\nconst agent = await createHarness()\nawait agent.invoke(\"Find the slowest test in this repo and explain why it's slow\")\n```\n\nStart here to get a batteries-included agent, then drop down to the SDKs below when you want to own the agent loop and wire up tools, model providers, and memory yourself. The [harness configuration reference](https://strandsagents.com/docs/user-guide/harness/reference/configuration/) documents every default you can override.\n\nThe [Quickstart Guide](https://strandsagents.com/docs/user-guide/quickstart/overview/) covers configuring providers (Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama, and more).\n\n## Working with the SDK\n\nThe Strands Harness SDK lets you go deeper and control every part of the agent: the loop, tools, model providers, memory, sessions, and hooks. You can dive into the SDK after working with Strands harness or if you prefer building your own harness from the ground up when the assembled defaults aren't enough.\n\n### Python\n\nRequires Python 3.10+:\n\n```bash\npip install strands-agents strands-agents-tools\n```\n\n```python\nfrom strands import Agent\nfrom strands_tools import calculator\n\nagent = Agent(tools=[calculator])\nagent(\"What is the square root of 1764\")\n```\n\nThe [Python SDK README](strands-py/) covers tools, model providers, MCP, and bidirectional streaming.\n\n### TypeScript\n\nRequires Node.js 22+:\n\n```bash\nnpm install @strands-agents/sdk\n```\n\n```typescript\nimport { Agent } from '@strands-agents/sdk'\n\nconst agent = new Agent()\nconst result = await agent.invoke('What is the square root of 1764?')\nconsole.log(result)\n```\n\nMore in the [TypeScript SDK README](strands-ts/), including Zod-typed tools, structured output, and multi-agent patterns.\n\n## Documentation\n\nFor detailed guidance & examples, explore our documentation:\n\n- [User Guide](https://strandsagents.com/)\n- [Strands Harness Guide](https://strandsagents.com/docs/user-guide/harness/) ([quickstart](https://strandsagents.com/docs/user-guide/harness/quickstart/) · [configuration reference](https://strandsagents.com/docs/user-guide/harness/reference/configuration/))\n- [Quick Start Guide](https://strandsagents.com/docs/user-guide/quickstart/overview/)\n- [Agent Loop](https://strandsagents.com/docs/user-guide/concepts/agents/agent-loop/)\n- [Examples](https://strandsagents.com/docs/examples/)\n- API Reference: [Python](https://strandsagents.com/docs/api/python/strands.agent.agent/) · [TypeScript](https://strandsagents.com/docs/api/typescript/)\n- [Production & Deployment Guide](https://strandsagents.com/docs/user-guide/deploy/operating-agents-in-production/)\n\nThe docs themselves live in this monorepo under [`site/`](site/), and doc PRs are welcome alongside code changes.\n\n## Development\n\nGit operations (commits, branches, PRs) are done from the repo root. Each package has its own toolchain:\n\n**Python SDK** (`strands-py/`):\n```bash\ncd strands-py\npip install hatch\nhatch test        # run unit tests\nhatch fmt         # format & lint\n```\n\n**TypeScript SDK** (`strands-ts/`):\n```bash\nnpm ci            # install from repo root\nnpm run build     # build\nnpm test          # run unit tests\n```\n\n**Documentation site** (`site/`):\n```bash\ncd site\nnpm install\nnpm run dev       # local dev server at http://localhost:4321/\n```\n\n## Contributing ❤️\n\nWe welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for details on:\n- Reporting bugs & features\n- Development setup\n- Contributing via Pull Requests\n- Code of Conduct\n- Reporting of security issues\n\n## Stay in touch with the team\nCome meet the Strands team and other users on [**Discord**](https://discord.com/invite/strands)\n\n## License\n\nThis project is licensed under the Apache License 2.0 - see the [LICENSE.APACHE](LICENSE.APACHE) file for details.\n\n## Security\n\nSee [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.\n\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"strands-monorepo-tools\"\nversion = \"0.0.0\"\ndescription = \"Shared Python tooling for the Strands monorepo. Not published.\"\nrequires-python = \">=3.10\"\ndependencies = [\n    # Linter/formatter. Range matches strands-py and harness-py so the whole monorepo\n    # (and the pre-commit hook) resolves the same ruff.\n    \"ruff>=0.16.0,<0.17.0\",\n    # Type checker.\n    \"pyright>=1.1.400\",\n    # Test runner for the shared venv.\n    \"pytest>=9.0.3\",\n    \"pytest-asyncio>=1.3.0\",\n]\n\n[tool.setuptools]\n# We don't ship a distribution. Suppress the auto-discovery warning.\npackages = []\n\n[tool.pytest.ini_options]\nasyncio_mode = \"auto\"\ncache_dir = \".pytest_cache\"\n\n\n# Ruff config lives here because ruff walks up from the file it's linting\n# and the monorepo has a single style.\n[tool.ruff]\nline-length = 120\n\n[tool.ruff.lint]\nselect = [\n  \"B\",   # flake8-bugbear\n  \"E\",   # pycodestyle\n  \"F\",   # pyflakes\n  \"I\",   # isort\n  \"UP\",  # pyupgrade\n]\n\n\n# Pyright config lives here for the same reason as ruff: one rule for\n# the whole monorepo. Pyright walks up to find the nearest pyproject.\n# `exclude` is omitted so pyright inherits its built-in defaults\n# (**/node_modules, **/__pycache__, **/.*); setting it would replace\n# those, not merge.\n[tool.pyright]\npythonVersion = \"3.10\"\npythonPlatform = \"All\"\ntypeCheckingMode = \"standard\"\nreportMissingTypeStubs = false\nreportMissingImports = \"warning\"\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "llm",
+      "eval"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "智能体开发",
+      "工具调用",
+      "会话管理"
+    ],
+    "brief_zh": {
+      "summary": "用 Python 或 TypeScript 构建和运行 Agent，统一管理模型、工具调用、会话记忆与执行限制。",
+      "capabilities": "智能体开发、工具调用、会话管理",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/strands-agents/harness-sdk"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "google",
+    "name": "ax",
+    "full_name": "google/ax",
+    "url": "https://github.com/google/ax",
+    "description": "Google's open agentic orchestration runtime",
+    "language": "Go",
+    "total_stars": 10284,
+    "forks": 498,
+    "stars_this_period": 1376,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "go"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 39,
+      "created_at": "2026-03-30T17:55:01Z",
+      "pushed_at": "2026-09-24T15:04:15Z",
+      "homepage": "https://agentexecutor.io",
+      "default_branch": "main",
+      "forks": 498,
+      "watchers": 49,
+      "archived": false,
+      "size_kb": 44740
+    },
+    "readme_content": "<h1>\n  <img src=\"assets/axolotl.svg\" width=\"70\" align=\"absmiddle\" alt=\"AX axolotl\">\n  AX\n</h1>\n\n> [!WARNING]\n> We are still actively refining our core concepts, protocols,\n> and specifications. We will likely to introduce major breaking\n> changes prior to a stable release.\n\n**Declare an agentic task with workspaces and gateway specifications. AX sandboxes it, wires up its workspace, fences its network, and helps running it at scale.**\n\nAX is a high-throughput, declarative orchestrator to run billions of autonomous agent workloads in a cluster. It runs on top of [Agent Substrate](https://github.com/agent-substrate/substrate) for sandboxed execution and is built to run billions of tasks per cluster. If you have used Kubernetes, `ax` will feel similar.\n\n```yaml\n# task.yaml\napiVersion: ax.io/v1alpha1\nkind: Workspace\nmetadata:\n  name: golang\nspec:\n  git:\n    - repo: https://github.com/golang/go.git\n      branch: \"my-fix\"\n---\napiVersion: ax.io/v1alpha1\nkind: Task\nmetadata:\n  name: test\nspec:\n  workspaces:\n    - name: golang\n      goal: \"Ensure that Go tool chain is available and is built from source\"\n  debug: true   # lets you `ax ssh` into the sandbox\n```\n\nThen apply it, watch it come up, and look over the agent's shoulder:\n\n```bash\nax apply -f task.yaml\nax watch task test\nax ssh test -- ls -al /workspace\n```\n\n## Why?\n\nAgents are a new kind of workload. They are neither stateless microservices nor run-to-completion batch jobs. They accumulate state, need strict isolation, call out to model APIs and tool servers, and can burn money in a loop if nobody is watching. AX gives you four small primitives that handle all of that declaratively:\n\n| You want to... | AX gives you |\n|---|---|\n| Run untrusted agent code in an isolated sandbox with CPU/memory limits | **`Task`** |\n| Pre-wire Git repos, MCP servers, and skill packages so every agent starts warm | **`Workspace`** |\n| Lock outbound traffic down to an explicit host allowlist | **`Gateway`** |\n| Configure which LLM the platform itself uses, with credentials from a Kubernetes secret | **`Model`** |\n| Pause an idle agent and pick up exactly where it left off | `ax suspend` / `ax resume` |\n| Shell into a running agent to see what it is doing | `ax ssh` |\n\nEverything is expressed as `ax.io/v1alpha1` manifests and applied with a single command.\n\n## Quick start\n\n### 1. Install the CLI\n\n```bash\ngo install github.com/google/ax/cmd/ax@latest\n```\n\nThis puts the `ax` binary in `$(go env GOPATH)/bin`. Make sure that directory is on your `PATH`.\n\n### 2. Deploy the control plane\n\nYou need a Kubernetes cluster, [`ko`](https://ko.build/) (`brew install ko`), a container registry your cluster can pull from, and a reachable Agent Substrate Control API (in-cluster default: `api.ate-system.svc.cluster.local:443`).\n\n```bash\nmake deploy AX_IMAGE_REPO=<your-registry>\n```\n\nThis deploys Redis, then builds and deploys the control plane images with `ko`. Everything lands in the `ax-system` namespace.\n\n### 3. Run your first task\n\n```bash\nax apply -f examples/task.yaml       # Task + Workspace + Gateway + Model in one file\nax get tasks\n# NAME      ATESPACE   PHASE     ACTOR           WORKER-IP    AGE\n# task123   default    Running   task123         10.20.3.67   1m\n\nax watch task task123                # stream phase and condition changes live\nax ssh task123 -- ls -la /workspace  # poke around inside the sandbox\nax suspend task task123              # checkpoint and pause\nax resume task task123               # pick up where it left off\n```\n\nWant to see the whole lifecycle end to end? Run [`./demo.sh`](demo.sh). It applies a custom workspace, waits for readiness, runs commands over `ax ssh`, and suspends the task.\n\n## Documentation\n\n| Guide | Read it to... |\n|---|---|\n| [Concepts](docs/concepts.md) | Learn what a `Task`, `Workspace`, `Gateway`, and `Model` each do, and how a task moves through phases and conditions. |\n| [Manifests](docs/manifests.md) | Write your own YAML, with an annotated example of every kind. |\n| [Sandbox](docs/sandbox.md) | See what the runner does on boot and what your command can rely on: metadata server, guest services, environment. |\n| [Runners](docs/runner.md) | Understand the contract between the control plane and the task container, and build your own runner image to replace the default. |\n| [Networking](docs/networking.md) | Reach a running task through the atenet router from the cluster, your laptop, or a gRPC client. |\n| [Architecture](DESIGN.md) | Understand how the control plane fits together, plus the [API reference](DESIGN.md#api-reference). |\n| [Development](docs/development.md) | Build, test, and ship changes to AX itself. |\n| [Roadmap](docs/roadmap.md) | See planned milestones across core specs, actor architecture, agentic environments, and governance. |\n\n## CLI usage\n\n`ax` talks to the control plane over gRPC. It is deliberately `kubectl`-shaped: `apply`, `get`, `describe`, `watch`, `delete`, plus a few agent-specific verbs.\n\n### Everyday commands\n\n```bash\n# Apply anything (multi-document YAML, file or stdin)\nax apply -f examples/task.yaml\n\n# Tasks\nax get tasks                          # list\nax get tasks -a my-atespace           # list in another atespace\nax get task task123                   # full spec + live status as YAML\nax describe task task123              # human-readable detail\nax watch task task123                 # stream status and condition transitions\nax suspend task task123               # checkpoint actor state and pause\nax resume task task123                # resume a suspended task\nax delete task task123\n\n# Shell into the running sandbox\nax ssh task123                        # interactive shell (task needs spec.debug: true)\nax ssh task123 -- ls -la /workspace   # one-off command\nax ssh task123 -- python3 main.py\n\n# Gateways, workspaces, models follow the same pattern\nax get gateways\n# NAME              ATESPACE   LISTENERS             EGRESS-HOSTS\n# default-gateway   default    8494/gRPC,8080/HTTP   *\nax describe gateway default-gateway\nax delete gateway default-gateway\n\nax get workspaces\n# NAME                ATESPACE   GIT-REPOS   MCP-SERVERS\n# default-workspace   default    1           1\nax describe workspace default-workspace\nax delete workspace default-workspace\n\nax get models\n# NAME            ATESPACE   PROVIDER   MODEL\n# default-model   default    google     gemini-3.8-flash\nax describe model default-model\nax delete model default-model\n\n# Connection plumbing\nax ctx                                # active kube context and how ax is reaching the control plane\nax tunnel list                        # background tunnels (state lives in ~/.ax/tunnels)\nax tunnel stop\nax version\n```\n\n### Works with `kubectx`\n\n`ax` follows your active Kubernetes context. Switch clusters and `ax` resolves and tunnels to that cluster's control plane in the background.\n\n```bash\nkubectx staging-cluster\nax get tasks\n\nkubectx prod-cluster\nax get tasks\n\n# Or target a context without switching\nax --context=dev-cluster get tasks\n```\n\n### Global flags\n\n| Flag | Description | Default |\n|---|---|---|\n| `-a`, `--atespace` | Atespace scope for the command | `default` |\n| `-n`, `--namespace` | Kubernetes namespace where AX is installed | `ax-system` |\n| `--context` | Kubernetes context to target | active `kubectx` / `current-context` |\n| `--server` | Control plane address, bypassing auto-detection | derived from kube context, or `$AX_SERVER` |\n\n## License\n\nApache License 2.0. See [LICENSE](LICENSE) for details.\n",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/google/ax\n\ngo 1.27.1\n\nrequire (\n\tgithub.com/agent-substrate/env v0.0.11-0.20260912052224-4468a200b170\n\tgithub.com/agent-substrate/substrate v0.0.0-20260911232748-672533541dbf\n\tgithub.com/redis/go-redis/v9 v9.22.0\n\tgoogle.golang.org/grpc v1.83.2\n\tgoogle.golang.org/protobuf v1.36.12\n\tgopkg.in/yaml.v3 v3.0.1\n)\n\nrequire (\n\tgithub.com/cespare/xxhash/v2 v2.3.0 // indirect\n\tgithub.com/kr/pretty v0.3.1 // indirect\n\tgithub.com/rogpeppe/go-internal v1.14.1 // indirect\n\tgo.uber.org/atomic v1.11.0 // indirect\n\tgolang.org/x/net v0.58.0 // indirect\n\tgolang.org/x/sys v0.47.0 // indirect\n\tgolang.org/x/text v0.41.0 // indirect\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260720211330-0afa2a65878a // indirect\n\tgopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect\n)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "任务编排",
+      "沙箱执行",
+      "工作区管理"
+    ],
+    "brief_zh": {
+      "summary": "用声明式任务配置编排 Agent 工作负载，统一安排沙箱、工作区和网络边界。",
+      "capabilities": "任务编排、沙箱执行、工作区管理",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/google/ax"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "superdesigndev",
+    "name": "treg",
+    "full_name": "superdesigndev/treg",
+    "url": "https://github.com/superdesigndev/treg",
+    "description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
+    "language": "Python",
+    "total_stars": 3129,
+    "forks": 259,
+    "stars_this_period": 470,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "api-keys",
+        "cli",
+        "credentials",
+        "developer-tools",
+        "dsh-plugin",
+        "mcp",
+        "proxy",
+        "python",
+        "registry",
+        "secrets"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 81,
+      "created_at": "2026-07-15T13:38:07Z",
+      "pushed_at": "2026-09-24T20:43:05Z",
+      "homepage": "https://treg.to",
+      "default_branch": "main",
+      "forks": 259,
+      "watchers": 13,
+      "archived": false,
+      "size_kb": 90011
+    },
+    "readme_content": "# Treg (OpenRouter for Tools)\n\n![treg — the tool catalog for your agent](docs/assets/treg-hero.png)\n\n**OpenRouter, but for agent tools instead of models.** Point an agent at one base URL with one token\nand it can do the job: **3,000+ catalogued endpoints across 60+ providers** — SEO and backlinks,\nsocial and trends, people and company enrichment, ads, scraping, image and video generation —\n**priced per call, from a cent**,\nwith no provider signup. Plus your own team's keys, skills and CLIs, callable by every teammate's\nagent without the credential ever leaving the server.\n\n**Ask for the task, not the tool.** You do not need to know which vendor sells backlink data, or to\nhold an account with them. Search for what you want to do, read the price, call it.\n\nBuilt for the Superdesign team, live at [treg.to](https://treg.to) — anyone can self-host.\n\n## Why it exists\n\nThe tools an agent needs for real work sit behind subscriptions nobody buys for a single run —\nSemrush $139/mo, Moz $99/mo, Crunchbase $99/mo, Apollo $59/seat — behind signup walls, or behind no\npublic API at all (invite-only, partner-only, app-review-only). treg carries those accounts and\nbills fractions of a cent per call.\n\n## Two kinds of tool, one token\n\n- **The catalog** — external endpoints treg can serve with its own key or through a verified public\n  route that needs no provider key. Own-key calls use the team's prepaid balance; anonymous calls\n  are free. No account with the provider is needed. New verified accounts receive **$1.00 free**\n  once, when they create an eligible team.\n- **Your own tools** — anything a teammate registered: a paid API account, an OAuth connection, a\n  vendor CLI, a `SKILL.md`. **Your own key always wins over treg's, and those calls are never\n  metered.**\n\nThe vocabulary for the second half:\n\n- **tool** = something the registry calls for you with the org's credential. Two kinds:\n  - **endpoint** — an upstream `base_url` + credential **bindings** (each binding injects one\n  secret into the request; a request can carry several, e.g. an OAuth bearer *and* a\n  `developer-token` header).\n  - **CLI** — a vendor binary (`stripe`, `gh`, `vercel`, ...) run with the credential injected.\n- **skill / bundle** = a recipe (`SKILL.md`) + its secrets + its tool(s), registered together.\n\n**The one rule:** the proxy **relays, never models** the upstream, and **injects auth server-side**\n— so it survives upstream API changes and callers never hold keys.\n\n---\n\n# Part 1 · Using the registry\n\nVisit [**treg.to**](https://treg.to) (hosted on Render) — the dashboard,\nsign-in, and every URL below live there.\n\n## Quickstart\n\nSame flow as the dashboard's **Getting started** guide:\n\n```bash\n# 1. install the CLI — also points it at the registry\ncurl -fsSL https://treg.to/install.sh | sh\n\n# 2. sign in (GitHub default · --email for a one-time code · --token for agents/CI)\ntreg login\n\n# 3. do something useful immediately — no key, nothing registered\ntreg catalog search \"backlinks for a domain\"     # find a tool by what it DOES\ntreg call tikhub.tiktok.user.profile --query uniqueId=tiktok\ntreg balance                                     # exactly what that cost\n\n# (or `treg onboard` for the guided walkthrough)\n```\n\nFish Audio provides S2.1 Pro speech, public-voice discovery, and private voice cloning.\nSpeech is binary stdout, so redirect it to a file. A discovered voice's `_id` or a team voice id is\nthe TTS `reference_id`; voices created on treg's Fish account are durable team resources:\n\n```bash\ntreg call fishaudio.tts.s2-1-pro --method POST --header model=s2.1-pro \\\n  --data '{\"text\":\"Hello from treg\",\"format\":\"mp3\"}' > speech.mp3\ntreg call fishaudio.voices.discover --query self=false --query licensed=false --query language=en\ntreg resources list --provider fishaudio --kind voice\n```\n\nWith your own Fish key, requests remain an unrestricted, unmetered upstream relay and Fish owns the\naccount boundary.\n\nCatalog tool inputs are described by `treg catalog get <id>`. Tools marked `strict_query` reject undeclared or repeated query parameters, unsupported values and request bodies.\n\nYour token identifies you on every call (`X-Treg-Token` header) and is the same for all tools.\nDiscover what your team has shared: `treg tool ls` · check credential health: `treg health`.\n\n### Or install it as a Claude Code plugin\n\n```\n/plugin marketplace add superdesigndev/treg\n/plugin install treg@treg\n```\n\nInstalls with no token and no configuration. The skill loads as `treg:treg` and, on its first run,\nwalks your agent through the rest — the CLI, sign-in, then `treg mcp install` — so you end up with\nthe command line **and** treg's tools. Other agents: `npx skills add superdesigndev/treg -s treg`\n(the `-s` matters — without it you also get this repo's internal dev skills).\nSee [docs/CLAUDE-PLUGIN.md](docs/CLAUDE-PLUGIN.md). MiniMax Code / MiniMax Agent users: the same\nskill ships via the MiniMax Plugin Marketplace ([docs/MINIMAX-PLUGIN.md](docs/MINIMAX-PLUGIN.md)).\n\n### Claude.ai connector\n\nThe Claude Connectors Directory surface is `https://treg.to/mcp/v2/`. It exposes only curated\ncatalog endpoints and separates read calls from write calls so Claude receives accurate safety\nsignals. The existing `/mcp/` surface remains available for catalog endpoints, team-owned tools,\nand imported skills. See the [MCP and OAuth architecture](docs/context/architecture/mcp-oauth.md)\nfor the boundary and implementation, and the\n[submission runbook](docs/CLAUDE-CONNECTOR-SUBMISSION.md) for release gates.\n\n## Call a tool you don't have a key for\n\nThe catalog is grouped by what endpoints **do**: keyword and rank tracking, backlinks and authority,\nAI visibility, trending and discovery, publishing to socials, people and company enrichment, ads\nmanagement and creative, measurement.\n\n```bash\ntreg catalog                                    # every platform, busiest first\ntreg catalog search \"find a work email\"         # by the job, not the vendor\ntreg catalog get hunter.people.email.find       # params, PRICE, example response\ntreg call hunter.people.email.find --query domain=reddit.com --query full_name=\"Alexis Ohanian\"\n```\n\n**How a catalogued call is served** — the credential ladder, in order:\n\n1. your team registered its own tool for that provider → that tool, that key;\n2. your team stored a secret for the provider → injected through a virtual tool;\n3. neither, and the endpoint has a verified public route → **no provider key**, free;\n4. otherwise → **treg's own key**, billed to the team's prepaid balance.\n\nThe anonymous price assumes the caller does not send a provider credential header. The faithful\nrelay preserves caller headers, so a caller-supplied provider key can use that key's credits.\nYour own credential always beats treg's, so connecting a key you already pay for makes those calls\nfree of the balance rather than duplicating them. An endpoint treg has no published price for is\n**refused**, not served free — you are told to connect your own key instead. Where several providers\nserve one capability, `treg catalog search` shows them side by side with prices; **choosing is\nyours** — treg does not silently pick or fail over between providers for you. (When treg's own\naccount for a provider is out it may serve the *same* endpoint through a treg-owned relay account,\ndisclosed on the response; a team can opt out.) The exception you opt into: `treg.<capability>` routed endpoints, where treg picks the provider for you and names it.\n\n```bash\ntreg balance          # credit left, calls in flight, recent spend\ntreg topup            # add funds, or set up automatic top-ups\n```\n\nOut of balance is an HTTP **402** carrying `balance_micro`, `estimated_cost_micro` and a `topup_url`,\nso an agent can act on it without reading prose.\n\n**Enrich Arena** lives at `/enrich-arena`, outside the dashboard. Compare enrichment answers with each vendor’s cost and speed,\nvote for the best answer in one click, or watch a sequential waterfall. Capability-compatible\nasync providers participate too; Arena handles submit and polling internally. Browsing is\npublic; submitting requires login, and billable attempts use your team's credits. See the\n[Arena guide](docs/context/interface/enrich-arena.md).\n\n## Share & use your own tools\n\nThe zero-thought path — point treg at a project and it figures out what's shareable:\n\n```bash\ntreg scan     # read-only preview: the keys, skills & CLIs upload would register\ntreg upload   # register them (encrypted server-side); idempotent, --replace to update\n```\n\n`treg upload` scans the `.env` (matching keys against ~80 known providers), every skill\nsubdirectory, and installed catalog CLIs. Three kinds of things go into the registry — here's how\nto share and use each:\n\n### 1. Endpoints (HTTP APIs)\n\n**Share** — one upstream URL callable with a stored key, or bulk from a `.env`:\n\n```bash\ntreg secret add STRIPE_KEY --value sk_live_123\ntreg add stripe --base-url https://api.stripe.com --secret STRIPE_KEY\n\ntreg upload env --select openai,stripe,resend     # or straight from the .env\n```\n\n**Use** — the agent-native way: build the **real** upstream request and prefix it with the proxy.\ntreg resolves the tool by host, injects the credential, and relays everything else faithfully\n(your `X-Treg-Token` is stripped before the upstream sees it):\n\n```\nReal request:   GET https://api.intercom.io/conversations?per_page=5\nThrough treg:   GET https://treg.to/call/https://api.intercom.io/conversations?per_page=5\n                    header:  X-Treg-Token: <your token>\n```\n\nOr the CLI shorthand — and `treg calls` for the audit log:\n\n```bash\ntreg call intercom conversations --query per_page=5\ntreg call stripe v1/balance\n```\n\n### 2. CLIs\n\n**Share** — automatic: `treg upload` detects installed catalog CLIs (`stripe`, `gh`, `vercel`, …)\nand registers them; a recipe-only catalog CLI skill (e.g. `stripe-cli`) auto-becomes runnable too.\n\n**Use** — `treg run` executes the vendor CLI **with the org's credential injected**, so you never\nhold the key or log in:\n\n```bash\ntreg run stripe -- get /v1/balance\ntreg run gh -- pr list\ntreg run --server agentmail-cli inboxes list   # runs on the registry server: the key never reaches you\n```\n\n`--local` (default) runs on your machine; `--server` runs on the registry and streams output back.\nFor a whole session, `treg shell start` opens a subshell where every registered CLI injects\nautomatically — just use `stripe`, `gh`, … normally; `exit` reverts. `treg runs` is the audit log.\n\n### 3. Skills\n\n**Share** — a skill is a whole capability (`SKILL.md` recipe + its secrets + its tool(s)),\nregistered together so the whole team runs the same skill, maintained in one place:\n\n```bash\ntreg upload skills --dir ~/.claude/skills --all   # register a folder of skills in one pass\n```\n\n**Use** — pull any shared skill into your agent; its API calls go through treg with your token,\nso the key stays on the server, never in the skill:\n\n```bash\ntreg skill install seo-blog-writer      # writes into ./.claude/skills/  (--all for the library)\n```\n\n### Manual registration — when the heuristics can't figure a tool out\n\n```bash\n# multi-credential tool (e.g. google-ads: OAuth bearer + a developer-token header)\ntreg tool add google-ads --base-url https://googleads.googleapis.com \\\n  --bind \"secret=<oauth-id>,injector=oauth\" \\\n  --bind \"secret=<dev-id>,name=developer-token,format={secret}\"\n\n# one skill, step by step\ntreg skill init --dir ./my-skill          # drafts treg.json (guesses base_url, finds secrets)\ntreg skill add  --dir ./my-skill          # registers recipe + secrets + tool, atomically\n\n# OAuth via the browser (mints the first token, treg holds it and auto-refreshes)\ntreg oauth connect gsc --client-secret client_secret.json \\\n  --scopes https://www.googleapis.com/auth/webmasters.readonly\n```\n\nFull options for every command: [`USAGE.md`](USAGE.md).\n\nThe CLI sends anonymous command usage to PostHog when using treg.to (no arguments or credentials).\nDisable with `TREG_TEL",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"tools-registry\"\nversion = \"0.21.3\"\ndescription = \"A remote registry that turns team skills into shareable, callable tools via a credential-injecting proxy.\"\nreadme = \"README.md\"\nlicense = { file = \"LICENSE\" }\nrequires-python = \">=3.12,<3.14\"  # keep in sync with PYREQ in src/treg/web/install.sh\nauthors = [\n    { name = \"Unclecode\", email = \"unclecode@superdesign.dev\" },\n    { name = \"SuperDesign\" },\n]\nmaintainers = [{ name = \"Unclecode\", email = \"unclecode@superdesign.dev\" }]\nkeywords = [\"registry\", \"cli\", \"proxy\", \"credentials\", \"secrets\", \"api\", \"tools\", \"agents\"]\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Environment :: Console\",\n    \"Intended Audience :: Developers\",\n    \"License :: Other/Proprietary License\",\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Topic :: Software Development\",\n    \"Topic :: Utilities\",\n]\n# Base install = just the CLI. Light + pure-Python, so `pip install tools-registry` (and Homebrew) are\n# fast. Everything needed to RUN a registry server lives in the `[server]` extra below.\ndependencies = [\n    \"httpx>=0.27\",\n    \"posthog>=7.47.3\",\n    \"questionary>=2.0\",\n]\n\n[project.optional-dependencies]\n# The registry SERVER — host your own. The FastAPI app, the DB drivers, and encryption. Not needed to\n# USE the CLI against a hosted registry, only to RUN one. Install with: pip install \"tools-registry[server]\"\nserver = [\n    \"alembic>=1.16.5\",\n    \"fastapi>=0.115\",\n    \"uvicorn[standard]>=0.32\",\n    \"sqlmodel>=0.0.22,<0.0.45\",\n    \"sqlalchemy[asyncio]>=2.0.42\",\n    \"aiosqlite>=0.20\",\n    \"asyncpg>=0.30\",\n    \"cryptography>=43\",\n    \"pydantic-settings>=2.5\",\n    \"pyyaml>=6\",   # the endpoint catalog's data files (src/treg/catalog/*.yaml) — server-side only\n    \"stripe>=12\",  # balance top-ups (src/treg/infra/stripe.py) — the payment rail, server-side only\n    \"mcp>=2\",      # the MCP front door (src/treg/mcp.py) — server-side only; pulls httpx2 ALONGSIDE\n    # httpx (they coexist), so the light CLI's dependency set is untouched\n    \"redis>=5\",    # the shared key-value store (src/treg/infra/kv.py) — server-side only\n    \"obstore>=0.11,<0.12\",\n]\n# The LOCAL PROXY (`treg shell` catching the agent's own outgoing calls). It needs to generate a\n# certificate authority on the machine, and `cryptography` is a compiled package — putting it in the\n# base install would end the light, pure-Python CLI. Install with: pip install \"tools-registry[proxy]\"\n# A self-hoster already has it through [server]. Everything else the proxy uses is asyncio + ssl from\n# the standard library plus httpx, which is already a base dependency.\nproxy = [\n    \"cryptography>=43\",\n]\n\n[project.scripts]\ntreg = \"treg.cli:main\"\n# Scheduled maintainer commands (worker profile) — needs the [server] extra; Render cron calls this.\ntreg-worker = \"treg.worker:main\"\n\n[project.urls]\nHomepage = \"https://treg.to\"\nRepository = \"https://github.com/superdesigndev/treg\"\nIssues = \"https://github.com/superdesigndev/treg/issues\"\n\n[dependency-groups]\ndev = [\n    \"import-linter>=2.13\",\n    \"pytest>=8.3\",\n    \"pytest-asyncio>=0.24\",\n    \"tools-registry[server]\",   # the test suite imports the server (api, models, …), so dev pulls it in\n]\ntest = [\n    \"playwright>=1.62.0\",\n]\n\n[tool.uv]\n# uv.lock is `revision = 3`; uv < 0.8.4 silently rewrites it to revision 2 (a ~650-line diff\n# that changes no versions). Refuse to run on an old uv rather than teach everyone to avoid `uv lock`.\nrequired-version = \">=0.12\"\n\n[tool.importlinter]\nroot_package = \"treg\"\ninclude_external_packages = true\nexclude_type_checking_imports = true\n\n[[tool.importlinter.contracts]]\nname = \"Lightweight CLI modules do not import server dependencies\"\ntype = \"forbidden\"\nsource_modules = [\n    \"treg.cli\",\n    \"treg.convert\",\n    \"treg.skills\",\n    \"treg.providers\",\n    \"treg.localrun\",\n    \"treg.shell\",\n    \"treg.agents\",\n    \"treg.egress\",\n    \"treg.fsjail\",\n]\nforbidden_modules = [\n    \"obstore\",\n    \"aiosqlite\",\n    \"alembic\",\n    \"asyncpg\",\n    \"cryptography\",\n    \"fastapi\",\n    \"mcp\",\n    \"pydantic\",\n    \"pydantic_core\",\n    \"pydantic_settings\",\n    \"redis\",\n    \"sqlalchemy\",\n    \"sqlmodel\",\n    \"starlette\",\n    \"stripe\",\n    \"uvicorn\",\n    \"yaml\",\n]\nignore_imports = [\n    # ensure_proxy_dependency imports this only after the user invokes the optional proxy feature.\n    \"treg.cli -> cryptography\",\n    # render_grant is a server-only path and imports SQLModel only when the server calls it.\n    \"treg.localrun -> sqlmodel\",\n]\nallow_indirect_imports = true\nunmatched_ignore_imports_alerting = \"error\"\nas_packages = false\n\n[[tool.importlinter.contracts]]\nname = \"Money domain does not depend on best-effort audit\"\ntype = \"forbidden\"\nsource_modules = [\"treg.domain.money\"]\nforbidden_modules = [\"treg.audit\"]\nas_packages = true\n\n[[tool.importlinter.contracts]]\nname = \"Routers do not depend on the legacy API module\"\ntype = \"forbidden\"\nsource_modules = [\"treg.routers\"]\nforbidde",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "工具目录",
+      "统一调用",
+      "凭据管理"
+    ],
+    "brief_zh": {
+      "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
+      "capabilities": "工具目录、统一调用、凭据管理",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/superdesigndev/treg"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "farion1231",
+    "name": "cc-switch",
+    "full_name": "farion1231/cc-switch",
+    "url": "https://github.com/farion1231/cc-switch",
+    "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+    "language": "Rust",
+    "total_stars": 136449,
+    "forks": 9315,
+    "stars_this_period": 957,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "codex",
+        "desktop-app",
+        "grok",
+        "grokbuild",
+        "hermes",
+        "hermes-agent",
+        "mcp",
+        "open-source",
+        "openclaw",
+        "openclaw-ui",
+        "opencode",
+        "pi",
+        "provider-management",
+        "rust",
+        "skills",
+        "skills-management",
+        "tauri",
+        "wsl-support"
+      ],
+      "license": "MIT",
+      "open_issues": 2884,
+      "created_at": "2025-08-04T14:16:16Z",
+      "pushed_at": "2026-09-24T18:37:28Z",
+      "homepage": "https://ccswitch.io",
+      "default_branch": "main",
+      "forks": 9315,
+      "watchers": 256,
+      "archived": false,
+      "size_kb": 77182
+    },
+    "readme_content": "<div align=\"center\">\n\n# CC Switch\n\n### The All-in-One Manager for Claude Code, Claude Desktop, Codex, Gemini CLI, Grok Build, OpenCode, OpenClaw, Hermes Agent, MiniMax Code\n\n[![Version](https://img.shields.io/github/v/release/farion1231/cc-switch?color=blue&label=version)](https://github.com/farion1231/cc-switch/releases)\n[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/farion1231/cc-switch/releases)\n[![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%202-orange.svg)](https://tauri.app/)\n[![Downloads](https://img.shields.io/github/downloads/farion1231/cc-switch/total)](https://github.com/farion1231/cc-switch/releases/latest)\n\n<a href=\"https://trendshift.io/repositories/15372\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/15372\" alt=\"farion1231%2Fcc-switch | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n<a href=\"https://www.star-history.com/#farion1231/cc-switch&Date\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=farion1231/cc-switch&theme=dark\" /><img alt=\"Star History Rank\" src=\"https://api.star-history.com/badge?repo=farion1231/cc-switch\" width=\"196\" height=\"55\" /></picture></a>\n\n### 🌐 The Only Official Website: **[ccswitch.io](https://ccswitch.io)**\n\nEnglish | [中文](README_ZH.md) | [日本語](README_JA.md) | [Deutsch](README_DE.md) | [Changelog](CHANGELOG.md)\n\n</div>\n\n## ❤️Sponsor\n\n> [Want to appear here?](mailto:farion1231@gmail.com)\n\n<details open>\n<summary>Click to collapse</summary>\n\n[![Kimi K2.7 Code](https://gcdn.moonshot.cn/growth-cdn/sponsor/kimi-en.png)](https://platform.kimi.ai?track_id=track-20d65732f0aa45dcb1df9691a15610af&aff=cc-switch)\n\nKimi K3 is Moonshot AI's most capable model and the world's first open 3T-class model. With 2.8 trillion parameters, native vision, and a 1-million-token context window, K3 delivers frontier performance across long-horizon coding, knowledge work, and reasoning. CC Switch makes it easy to configure and switch to Kimi across agentic tools.\n\nTry a **Kimi Code plan** ([中文站](https://www.kimi.com/code?aff=cc-switch) | [Global](https://www.kimi.ai/code?aff=cc-switch)), or use the **API** through the Kimi Open Platform ([中文站](https://platform.kimi.com?track_id=track-6840233b42274ab4bcfd283e2bdd2aee&aff=cc-switch) | [Global](https://platform.kimi.ai?track_id=track-20d65732f0aa45dcb1df9691a15610af&aff=cc-switch)).\n\n**New user top-up bonus**: register and complete your first top-up via the API links above to receive 10% of the amount as bonus API credit, up to CNY ¥1,000.\n\n---\n\n<table>\n<tr>\n<td width=\"180\"><a href=\"https://www.packyapi.ai/register?aff=cc-switch\"><img src=\"assets/partners/logos/packycode.png\" alt=\"PackyCode\" width=\"150\"></a></td>\n<td>Thanks to PackyCode for sponsoring this project! PackyCode is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more. PackyCode provides special discounts for our software users: register using <a href=\"https://www.packyapi.ai/register?aff=cc-switch\">this link</a> and enter the \"cc-switch\" promo code during first recharge to get 10% off.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://zetaapi.ai/go/u117\"><img src=\"assets/partners/logos/zetaapi-banner.png\" alt=\"ZetaAPI\" width=\"150\"></a></td>\n<td>Thanks to ZetaAPI for sponsoring this project! ZetaAPI focuses on real model fidelity, no watered-down responses, no quality degradation, and pricing as low as 35% of official rates. The platform does not mix traffic, secretly replace models with lower-quality alternatives, or use fake model routing. It supports Claude Code, Codex, Gemini, ChatGPT, and other mainstream AI models, helping users significantly reduce API costs while maintaining reliable model quality. At the same time, ZetaAPI provides enterprise-grade SLA-backed stability, standard API compatibility, one API key for multiple models, fast integration, and pay-as-you-go billing, making it suitable for AI products, coding agents, internal business tools, customer service systems, content generation, and automation workflows. If any model is verified to be inconsistent with its stated quality, ZetaAPI backs it with a 10x compensation guarantee, giving users a more stable, transparent, and trustworthy experience. Register via <a href=\"https://zetaapi.ai/go/u117\">this link</a> and use the promo code CC-SWITCH during your first recharge to enjoy an exclusive 10% discount on your first top-up, just for CC Switch users!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://apinebula.ai/VjM74M\"><img src=\"assets/partners/logos/apinebula_banner.png\" alt=\"APINebula\" width=\"150\"></a></td>\n<td>Thanks to APINEBULA for sponsoring this project! APINEBULA, an enterprise-grade AI aggregation platform under Galaxy Video Bureau, leverages extensive platform resources to provide developers, teams, and enterprises with stable, cost-effective access to large language model APIs. The platform integrates leading, full-powered models like Claude, GPT, and Gemini, allowing you to connect to the world's top AI models through a single API, with prices starting as low as 10% of the original cost. Designed for AI programming, Agent development, and business system integration, APINEBULA supports enterprise-grade high concurrency, formal contracts, corporate bank transfers, and invoicing services. APINEBULA provides special discounts for our software users: register using <a href=\"https://apinebula.ai/VjM74M\">this link</a> and enter the <strong>\"ccswitch\"</strong> promo code during your first recharge to get <strong>10% off</strong>.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://www.aicodemirror.ai/register?invitecode=9915W3\"><img src=\"assets/partners/logos/aicodemirror.jpg\" alt=\"AICodeMirror\" width=\"150\"></a></td>\n<td>Thanks to AICodeMirror for sponsoring this project! AICodeMirror provides official high-stability relay services for Claude Code / Codex / Gemini CLI, with enterprise-grade concurrency, fast invoicing, and 24/7 dedicated technical support.\nClaude Code / Codex / Gemini official channels at 38% / 2% / 9% of original price, with extra discounts on top-ups! AICodeMirror offers special benefits for CC Switch users: register via <a href=\"https://www.aicodemirror.ai/register?invitecode=9915W3\">this link</a> to enjoy 20% off your first top-up, and enterprise customers can get up to 25% off!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://pateway.ai/?ch=etzpm8&aff=WB6M6F67#/\"><img src=\"assets/partners/logos/pateway.png\" alt=\"PatewayAI\" width=\"150\"></a></td>\n<td>Thanks to PatewayAI for sponsoring this project! PatewayAI is an API relay service provider built for heavy AI developers, focused on directly relaying official high-quality model APIs. It offers the full Claude lineup and the Codex series, 100% sourced from official channels — no dilution, no fakes, verification welcome. Billing is transparent and every token-level invoice can be audited line by line.\nIt also supports enterprise-grade concurrency and provides a dedicated management platform for enterprise customers — formal contracts and invoicing are available; visit the official website for contact details.\nRegister now via <a href=\"https://pateway.ai/?ch=etzpm8&aff=WB6M6F67#/\">this link</a> to receive $3 in trial credit. Top-ups go as low as 60% of the original price, with a two-way referral bonus of up to $150!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://api.fenno.ai/register?redirect=/purchase?tab=subscription%26group=16&aff=P9MR3D3PLCNL\"><img src=\"assets/partners/logos/fenno-banner.png\" alt=\"Fenno.ai\" width=\"150\"></a></td>\n<td>Thanks to Fenno.ai for sponsoring this project! Fenno.ai is a stable and efficient API relay service provider, currently focused on Codex relay. It is compatible with the OpenAI and Anthropic protocols and can be flexibly used from Codex, Claude Code, OpenCode, and other mainstream coding tools. It reliably supports enterprise-grade workloads of hundreds of billions of tokens per day, with corporate (B2B) settlement and invoicing for both domestic and overseas entities. Fenno.ai offers an exclusive benefit for CC Switch users: subscribe via <a href=\"https://api.fenno.ai/register?redirect=/purchase?tab=subscription%26group=16&aff=P9MR3D3PLCNL\">this link</a> to the $1.99 Trial Plan worth $50 in credits (valid for 7 days), and earn up to 20% in referral rewards — invite more, earn more!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://runapi.host/register?aff=iOKB\"><img src=\"assets/partners/logos/runapi.jpg\" alt=\"RunAPI\" width=\"150\"></a></td>\n<td>Thanks to RunAPI for sponsoring this project! RunAPI is a high-performance and reliable AI model API gateway — one API key gives you access to 150+ mainstream models including OpenAI, Claude, Gemini, DeepSeek, and Grok, with prices as low as 10% of the official rate and excellent stability. It works seamlessly with Claude Code, OpenClaw, and other tools. Exclusive benefit for CC Switch users: register via <a href=\"https://runapi.host/register?aff=iOKB\">this link</a> and enjoy a 10% discount on your first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://www.shengsuanyun.com/?from=CH_4HHXMRYF\"><img src=\"assets/partners/logos/shengsuanyun.png\" alt=\"Shengsuanyun\" width=\"150\"></a></td>\n<td>Thanks to Shengsuanyun for sponsoring this project! Shengsuanyun is a super factory serving AI Native Teams — an industrial-grade AI task parallel execution platform. Its model marketplace aggregates Claude, ChatGPT, Gemini, and other domestic and international LLM and multimedia model capabilities with direct supply. Absolutely no reverse engineering or dilution — platform-wide model SLA availability reaches 99.7%, with <a href=\"https://watch.shengsuanyun.com/status/shengsuanyun\">monitoring dashboards</a> showing green across the board. It also offers enterprise-grade custom gateways for fine-grained team cost and permission management, smart routing, security protection, and BYOK (Bring Your Own Key) hosting. The platform charges on a pay-per-use and tokens plan (coming soon) basis, with invoicing available. Register via <a href=\"https://www.shengsuanyun.com/?from=CH_4HHXMRYF\">this link</a> as a new user to receive ¥10 in credits plus a 10% bonus on your first top-up.</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://aigocode.app/invite/CC-SWITCH\"><img src=\"assets/partners/logos/aigocode.png\" alt=\"AIGoCode\" width=\"150\"></a></td>\n<td>Thanks to AIGoCode for sponsoring this project! AIGoCode is an all-in-one platform that integrates Claude Code, Codex, and the latest Gemini models, providing you with stable, efficient, and highly cost-effective AI coding services. The platform offers flexible subscription plans, zero risk of account suspension, direct access with no VPN required, and lightning-fast responses. AIGoCode has prepared a special benefit for CC Switch users: if you register via <a href=\"https://aigocode.app/invite/CC-SWITCH\">this link</a>, you'll receive an extra 10% bonus credit on your first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://aicoding.inc/i/CCSWITCH\"><img src=\"assets/partners/logos/aicoding.jpg\" alt=\"AICoding\" width=\"150\"></a></td>\n<td>Thanks to AICoding for sponsoring this project! AICoding — Global AI Model API Relay Service at Unbeatable Prices! Claude Code at 19% of original price, GPT at just 1%! Trusted by hundreds of enterprises for cost-effective AI services. Supports Claude Code, GPT, Gemini and major domestic models, with enterprise-grade high concurrency, fast invoicing, and 24/7 dedicated technical support. CC Switch users who register via <a href=\"https://aicoding.inc/i/CCSWITCH\">this link</a> get 10% off their first top-up!</td>\n</tr>\n\n<tr>\n<td width=\"180\"><a href=\"https://subrouter.ai/register?aff=l3ri\"><img src=\"assets/partners/logos/subrouter-banner.png\" alt=\"SubRouter\" width=\"150\"></a></td>\n<td>Thanks to SubRouter for sponsori",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "MCP 集成",
+      "技能扩展",
+      "AI 工具链"
+    ],
+    "brief_zh": {
+      "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/farion1231/cc-switch"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rohitg00",
+    "name": "ai-engineering-from-scratch",
+    "full_name": "rohitg00/ai-engineering-from-scratch",
+    "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "description": "Learn it. Build it. Ship it for others.",
+    "language": "Python",
+    "total_stars": 56463,
+    "forks": 9921,
+    "stars_this_period": 310,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "nlp",
+        "python",
+        "reinforcement-learning",
+        "rust",
+        "swarm-intelligence",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 43,
+      "created_at": "2026-03-18T18:38:02Z",
+      "pushed_at": "2026-09-24T19:37:55Z",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "default_branch": "main",
+      "forks": 9921,
+      "watchers": 356,
+      "archived": false,
+      "size_kb": 44467
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/banner.svg\" alt=\"AI Engineering from Scratch — reference manual banner\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <b>Read in your language:</b>\n  <a href=\"i18n/es/README.md\">Español</a> ·\n  <a href=\"i18n/fr/README.md\">Français</a> ·\n  <a href=\"i18n/pt/README.md\">Português</a> ·\n  <a href=\"i18n/de/README.md\">Deutsch</a> ·\n  <a href=\"i18n/it/README.md\">Italiano</a> ·\n  <a href=\"i18n/zh/README.md\">简体中文</a> ·\n  <a href=\"i18n/ja/README.md\">日本語</a> ·\n  <a href=\"i18n/ko/README.md\">한국어</a> ·\n  <a href=\"i18n/hi/README.md\">हिन्दी</a> ·\n  <a href=\"i18n/ar/README.md\">العربية</a> ·\n  <a href=\"i18n/ru/README.md\">Русский</a> ·\n  <a href=\"i18n/tr/README.md\">Türkçe</a>\n  <br><sub>Translated landing pages, committed to the repo. English is canonical; lesson pages are machine-translated on the <code>translations</code> branch. See <a href=\"docs/i18n.md\">docs/i18n.md</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-523-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"523 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n## From the creator of [Agent Memory - #1 Persistent memory ⭐](https://github.com/rohitg00/agentmemory) <a href=\"https://github.com/rohitg00/agentmemory/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a> which naturally works with any agents or chat assistants.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n> **84% of students already use AI tools. Only 18% feel prepared to use them\n> professionally.** This curriculum closes that gap.\n>\n> 523 lessons. 20 phases. ~342 hours. Python, TypeScript, Rust, Julia. Every lesson ships\n> a reusable artifact: a prompt, a skill, an agent, an MCP server. Free, open source, MIT.\n>\n> You don't just learn AI. You build it. End-to-end. By hand.\n\n<!-- STATS:START (generated from site/stats.json by build.js — do not edit by hand) -->\n<p align=\"center\"><sub><b>114,584</b> readers &nbsp;·&nbsp; <b>181,995</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-08-29</sub></p>\n<!-- STATS:END -->\n\n## Start here: choose what you want to build\n\nYou do not need to scan 523 lessons before beginning. Pick one goal. Each link\nopens the same curriculum on GitHub or the website, and both versions use the\nsame lesson code.\n\n| Your goal | Learn on GitHub | Learn on the website |\n|---|---|---|\n| I am new and want the complete foundation | [Phase 0: Setup and Tooling](phases/00-setup-and-tooling/) | [Dev Environment](https://aiengineeringfromscratch.com/lesson?path=phases/00-setup-and-tooling/01-dev-environment) |\n| I know Python and want math plus ML foundations | [Phase 1: Math Foundations](phases/01-math-foundations/) | [Linear Algebra Intuition](https://aiengineeringfromscratch.com/lesson?path=phases/01-math-foundations/01-linear-algebra-intuition) |\n| I want to build production LLM applications | [Phase 11: LLM Engineering](phases/11-llm-engineering/) | [Prompt Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/11-llm-engineering/01-prompt-engineering) |\n| I want to build agents | [Phase 14: Agent Engineering](phases/14-agent-engineering/) | [The Agent Loop](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/01-the-agent-loop) |\n| I want to use coding agents on real repositories | [Agent-Assisted Engineering path](learning-paths/using-coding-agents.json) | [Agent-Assisted Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/31-agent-workbench-why-models-fail&learningPath=using-coding-agents) |\n| I want to shape the right build before implementation | [Product Judgment and Delivery path](learning-paths/shaping-the-build.json) | [Product Judgment and Delivery](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/47-outcomes-before-output&learningPath=shaping-the-build) |\n| I want to build with Model Context Protocol (MCP) | [Model Context Protocol (MCP) route](phases/13-tools-and-protocols/README.md#model-context-protocol-mcp-path) | [Model Context Protocol (MCP) path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/06-mcp-fundamentals&learningPath=model-context-protocol) |\n| I want to write and ship Agent Skills | [Focused Agent Skills route](phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |\n| I want to prepare for a Claude certification | [Certification onboarding](certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |\n\nNot sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md)\nor the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).\n\nCompare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).\n\n### Sponsors\n\n<a href=\"https://serpapi.com/ai-engineering-from-scratch\">\n  <img align=\"left\" src=\"assets/sponsors/serpapi-banner.png\" alt=\"SerpApi. Web Search API for your AI apps. Available in Markdown and JSON for any integration.\" width=\"600\">\n</a>\n\n<p><br><b>Thank you to our sponsors.</b></p>\n<p>Your support keeps every lesson free and open source.</p>\n<p>\n  <a href=\"#supporters\">See all supporters</a><br>\n  <a href=\"SPONSORS.md\">Become a sponsor</a>\n  <br clear=\"all\">\n</p>\n\n### Use every lesson the same way\n\n1. **Read** `docs/en.md` and explain the core idea in your own words.\n2. **Type and build** the important code instead of treating the code block as decoration.\n3. **Run** the lesson command from the repository root, the directory containing `README.md` and `phases/`.\n4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.\n5. **Continue** only when you can explain the output and make one small change without guessing.\n\nCommands in lesson pages are paths from the repository root unless the lesson\nexplicitly says to change directories. If a lesson offers several languages,\nrun the implementation for the language you are learning.\n\n### Clone it and produce your first evidence\n\n```bash\ngit clone https://github.com/rohitg00/ai-engineering-from-scratch.git\ncd ai-engineering-from-scratch\npython3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner\npython3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py\n```\n\nThe preflight separates requirements needed now from tools needed later. Every\nrequired failure includes the detected reason and a corrective command. The\nsecond command is a dependency-free lesson and ends by showing that a matrix\ntimes a vector is the operation inside a neural network layer. Save that\nterminal output as your first evidence.\n\n## Add the AI tutor in 30 seconds\n\nIf Node.js, `npx`, and a skill-capable coding agent are already installed,\nyour coding agent can become your tutor in two commands. A repository clone is\nnot needed to install or read the tutor. Runnable focused-path labs need\n`python3`. Agent Skills host labs also need a selected host and a writable\nuser or project skill scope.\n\nCheck the local requirements first:\n\n```bash\nnode --version\nnpx --version\npython3 --version\n```\n\nThen install the curriculum skills and choose the host and scope you intend to\nuse when the installer asks:\n\n```bash\nnpx skills add rohitg00/ai-engineering-from-scratch\n```\n\nInvocation syntax belongs to the host, not to the portable `SKILL.md` format:\n\n| Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |\n|---|---|---|---|---|\n| Codex | `start-learning`, or choose it from `/skills` | `learn-mcp`, or choose it from `/skills` | `learn-agent-skills`, or choose it from `/skills` | `check-understanding 13`, or choose it from `/skills` |\n| Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |\n| Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |\n\nA ten-question placement quiz maps what you already know to a starting phase and\nsaves a personalized study plan to `LEARNING.md`. From there, the `learn` skill\nteaches one lesson per session: concept, math, code, quiz. It streams lessons\nstraight from this repo, and the `course-guide` skill jumps you to the exact\nlesson that covers anything you are stuck on. In Codex, invoke these skills with\n`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;\nin other compatible hosts, ask to use the skill by name.\n\nOnly want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates\n`MCP-LEARNING.md` and follows one 17-lesson route through stateless\nrequests, transports, bidirectional work, security, reliability, registry\ngovernance, and conformance evidence. The exact order and checkpoints live in\nthe [Model Context Protocol (MCP) manifest](learning-paths/model-context-protocol.json).\n\nOnly want Agent Skills? Use the Agent Skills invocation for your host. It\ncreates `AGENT-SKILLS-LEARNING.md` and follows one coherent five-lesson route:\ncontract, discovery, invocation, sandbox boundaries, then release evals and\nreal-host portability. Start on the web with the\n[Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills).\n\nThe installer lists the hosts it can configure and asks where to install. If\nyou do not have Node.js, `npx`, `python3`, a supported host, or a writable\nscope yet, use the website or read `docs/en.md` manually. That path teaches the\nconcepts, but real-host discovery, invocation, script, and uninstall evidence\nremains pending until the preflight is available. Read the lessons at\n[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com).\n\n## How this works\n\nMost AI material teaches in scattered pieces. A paper here, a fine-tuning post there, a\nflashy agent demo somewhere else. The pieces rarely line up. You ship a chatbot but can't\nexplain its loss curve. You hook a function to an agent but can't say what attention does\ninside the model that's calling it.\n\nThis curriculum is the spine. 20 phases, 523 lessons, four languages: Python, TypeScript,\nRust, Julia. Linear algebra at one end, autonomous swarms at the other. Every algorithm\ngets built from raw math first. Backprop. Tokenizer. Attention. Agent loop. By the time\nPyTorch shows up, you already know what it's doing under the hood.\n\nEach lesson runs the same loop: read the problem, derive the math, write the code, run\nthe test, keep the artifact. No five-minute videos, no copy-paste deploys, no hand-holding.\nFree, open source, and built to run on your own laptop.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n## The shape of the cur",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "numpy>=1.24\nmatplotlib>=3.7\njupyter>=1.0\ntorch>=2.0\ntorchvision>=0.15\ntorchaudio>=2.0\ntransformers>=4.30\ndatasets>=2.14\ntokenizers>=0.13\naccelerate>=0.20\nscikit-learn>=1.3\npandas>=2.0\npillow>=10.0\nlibrosa>=0.10\nsoundfile>=0.12\ntiktoken>=0.5\nanthropic>=0.25\nopenai>=1.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/rohitg00/ai-engineering-from-scratch"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "Nasiko-Labs",
+    "name": "nasiko",
+    "full_name": "Nasiko-Labs/nasiko",
+    "url": "https://github.com/Nasiko-Labs/nasiko",
+    "description": "Developer Control Plane for your AI Agents",
+    "language": "Rust",
+    "total_stars": 8872,
+    "forks": 1938,
+    "stars_this_period": 1038,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-security",
+        "ai",
+        "ai-agents",
+        "cli",
+        "hacktoberfest",
+        "llms",
+        "mcp-gateway",
+        "multi-agent",
+        "rust",
+        "tokenomics",
+        "tokenops"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 58,
+      "created_at": "2026-02-12T10:45:29Z",
+      "pushed_at": "2026-09-14T11:39:37Z",
+      "homepage": "https://www.nasiko.com",
+      "default_branch": "main",
+      "forks": 1938,
+      "watchers": 17,
+      "archived": false,
+      "size_kb": 9249
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"docs/assets/nasiko-banner.png\" alt=\"Nasiko\" width=\"100%\" />\n</p>\n\n<p align=\"center\">\n  <strong>Deploy, route, secure, and observe any <a href=\"https://github.com/a2aproject/a2a-spec\">A2A</a>-speaking agent\n  with a single command</strong> — no gateway, no sidecar, no glue code.\n</p>\n\n<p align=\"center\">\n  <a href=\"https://docs.nasiko.com\"><b>📚 Documentation</b></a>\n  &nbsp;•&nbsp;\n  <a href=\"https://discord.com/invite/HmnfkTfjFv\"><b>💬 Discord</b></a>\n  &nbsp;•&nbsp;\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/issues\"><b>🐛 Report a bug</b></a>\n</p>\n\n<!-- Shieldcn badges: badge groups + colored single badges, tuned for both GitHub color schemes -->\n<p align=\"center\">\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/stargazers\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/stars/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=amber&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/stars/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=amber&font=geist-mono\" alt=\"GitHub stars\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/network/members\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/forks/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=blue&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/forks/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=blue&font=geist-mono\" alt=\"GitHub forks\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/releases\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/release/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=violet&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/release/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=violet&font=geist-mono\" alt=\"Latest release\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/blob/main/LICENSE\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/badge/License-Apache_2.0-red.svg?mode=dark&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/badge/License-Apache_2.0-red.svg?mode=light&font=geist-mono\" alt=\"License: Apache-2.0\" />\n    </picture>\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://github.com/Nasiko-Labs/nasiko\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/badge/Language-Rust-orange.svg?logo=rust&mode=dark&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/badge/Language-Rust-orange.svg?logo=rust&mode=light&font=geist-mono\" alt=\"Built with Rust\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/issues\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/issues/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=cyan&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/issues/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=cyan&font=geist-mono\" alt=\"Open issues\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/pulls\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/prs/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=green&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/prs/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=green&font=geist-mono\" alt=\"Pull requests\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/github/ci/Nasiko-Labs/nasiko.svg?variant=secondary&mode=dark&theme=purple&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/github/ci/Nasiko-Labs/nasiko.svg?variant=secondary&mode=light&theme=purple&font=geist-mono\" alt=\"CI\" />\n    </picture>\n  </a>\n  <a href=\"https://github.com/Nasiko-Labs/nasiko/pulls\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://shieldcn.dev/badge/PRs-Welcome-pink.svg?mode=dark&font=geist-mono\" />\n      <img src=\"https://shieldcn.dev/badge/PRs-Welcome-pink.svg?mode=light&font=geist-mono\" alt=\"PRs Welcome\" />\n    </picture>\n  </a>\n</p>\n\n## Table of Contents\n\n- [What is Nasiko?](#what-is-nasiko)\n- [Features](#features)\n- [Architecture](#architecture)\n- [Requirements](#requirements)\n- [Quick Start — Docker only (no Rust needed)](#quick-start--docker-only-no-rust-needed)\n- [Setup guides by operating system](#setup-guides-by-operating-system)\n- [CLI — install & use](#cli--install--use)\n- [Coding Agents & LLM Router](#coding-agents--llm-router)\n- [Environment Variables](#environment-variables)\n- [Project Structure](#project-structure)\n- [Troubleshooting](#troubleshooting)\n- [Project Activity](#project-activity)\n- [Documentation & Links](#documentation--links)\n- [Support](#support)\n- [Contributing](#contributing)\n- [License](#license)\n\n## What is Nasiko?\n\nRunning more than a couple of agents quickly turns into an operations problem: *who calls whom*,\n*which key does each agent hold*, *what did that call cost*, *why did it fail?*\n\nNasiko is a **single control-plane process** that sits in front of every agent and answers all of that.\nIt terminates TLS, authenticates every request, and proxies all agent-to-agent traffic itself, so agents\nare **never publicly reachable** — every hop is a checkpoint for rate limits, ACLs, and tracing.\n\n**Different language, same A2A protocol** — bring your own agents in Python, Rust, Go, or TypeScript.\nNo proprietary agent format, no lock-in.\n\n<p align=\"center\">\n  <img src=\"docs/assets/ui-dashboard.png\" alt=\"Nasiko Dashboard\" width=\"900\" />\n  <br />\n  <sub><b>Nasiko Dashboard</b> — deploy agents, route traffic, manage tools, and watch traces.</sub>\n</p>\n\n## Features\n\n| Feature | What it does |\n|---|---|\n| **Deploy anything that speaks A2A** | `nasiko deploy` builds, pushes to the embedded registry, and runs it. No external registry required. |\n| **Intelligent routing engine** | 3-stage pipeline — shortlist by embedding similarity, rerank on conversation context, then LLM final pick. Callers don't need to know your fleet. |\n| **Single ingress, always proxied** | Agents are never publicly reachable; every agent-to-agent call is proxied through the server. |\n| **MCP Gateway** | One permanent URL gives every agent a merged, permission-filtered view of Composio toolkits and custom MCP servers — without the agent holding the credentials. |\n| **LLM Router** | Agents get an `OPENAI_BASE_URL` + a short-lived identity token instead of a real key. The router resolves provider/model/key server-side. No agent or log ever sees a real API key. |\n| **Full observability** | Every dispatch and proxy hop emits a real OTel span -> one end-to-end trace. Token usage & cost are auto-collected from `gen_ai.*` attributes. |\n| **Flow guards** | Redis-backed cascade limits (depth, fan-out, token budget, timeout, cycle detection) stop runaway agent loops. |\n| **Encrypted secrets** | Per-agent secrets are AES-256-GCM encrypted at rest, injected only at deploy time. |\n| **Access control** | User to-agent ownership/grants and an agent-to-agent allowlist gate every proxy call, independently. |\n| **Embedded OCI registry** | Self-hosted, S3-backed registry with layer dedup — `nasiko push` / `nasiko deploy` need nothing external. |\n| **CLI-first, no lock-in** | `nasiko new`, `run`, `chat`, `deploy`. Bring your own LLM provider. |\n## Architecture\n\nNasiko is a **single process** — there is no separate gateway. Every inter-agent call is proxied back\nthrough the server, the single chokepoint where flow limits, ACLs, and observability are enforced.\nDurable state lives in **Postgres**, **Redis**, and **S3** (RustFS), with optional observability via\n**Tempo / Loki / the OTel Collector**.\n\n```mermaid\nflowchart LR\n    subgraph Clients[\"Clients\"]\n        UI[\"Web Dashboard (embedded)\"]\n        CLI[\"nasiko CLI\"]\n    end\n\n    subgraph CP[\"nasiko-server (single control-plane process)\"]\n        direction TB\n        API[\"REST API (agents, builds, uploads)\"]\n        AUTH[\"Auth (session JWT, TLS, rate-limit, ACLs)\"]\n        OIDC[\"OIDC client (SSO)\"]\n        ROUTE[\"Routing engine (shortlist, rerank, select)\"]\n        PROXY[\"A2A Proxy (generic agent reverse-proxy)\"]\n        MCP[\"MCP Gateway (tools/list, tools/call, OAuth)\"]\n        LLM[\"LLM Router (OpenAI-compatible egress)\"]\n        OCI[\"Embedded OCI registry (/v2/*)\"]\n        FLOW[\"Flow guards (depth, fan-out, token budget, cycles)\"]\n        SECRETS[\"Secrets engine (AES-256-GCM)\"]\n        GITHUB[\"GitHub App integration\"]\n    end\n\n    subgraph Infra[\"Backing services (Docker)\"]\n        PG[(Postgres)]\n        RD[(Redis)]\n        S3[(RustFS S3)]\n        OTEL[\"OTel Collector\"]\n        TEMPO[\"Tempo\"]\n        LOKI[\"Loki\"]\n    end\n\n    subgraph Agents[\"Agent containers (Docker runtime)\"]\n        A1[\"Agent A\"]\n        A2[\"Agent B\"]\n        A3[\"Agent C\"]\n    end\n\n    UI --> API\n    CLI --> API\n    CLI -. \"push / pull images\" .-> OCI\n\n    API --> ROUTE\n    API --> GITHUB\n    ROUTE --> FLOW\n    OIDC --> AUTH\n    SECRETS --> API\n\n    AUTH -. gates .-> API\n    AUTH -. gates .-> MCP\n    AUTH -. gates .-> OCI\n    AUTH -. gates .-> PROXY\n\n    ROUTE -- \"selected agent, direct call\" --> Agents\n    PROXY -. \"proxied A2A calls (bypasses routing)\" .-> A1\n    PROXY -. \"proxied A2A calls (bypasses routing)\" .-> A2\n    PROXY -. \"proxied A2A calls (bypasses routing)\" .-> A3\n    OCI -- \"image pull at deploy\" --> Agents\n    Agents -- \"OPENAI_BASE_URL\" --> LLM\n    Agents -- \"tools/list, tools/call\" --> MCP\n\n    OCI --> S3\n    FLOW --> RD\n    SECRETS --> PG\n    AUTH --> PG\n    CP --> OTEL --> TEMPO\n    OTEL --> LOKI\n```\n\n> Every request to an agent is either dispatched by the routing engine or proxied generically — both\n> paths originate **inside** the server. Agents never receive a direct, public request, and both call\n> back out into the LLM Router and MCP Gateway rather than holding real API keys or tool credentials.\n\n---\n\n## Requirements\n\n| Component | Minimum version | Why |\n|---|---|---|\n| **Docker Engine + Compose V2** | Compose V2 plugin (the `docker compose` command — not the legacy standalone `docker-compose` v1 binary) | `docker-compose.yml` uses the extended `depends_on: condition: service_healthy` syntax; the Docker-only path needs nothing else. |\n| **Rust** | 1.85+ (stable) | The workspace targets `edition = \"2024\"` (see [`Cargo.toml`](Cargo.toml)), stabilized in Rust 1.85 — only needed for the CLI / Path B developer setup, not the Docker-only path. |\n| **A2A protocol** | Spec **v1.0** exactly (latest upstream release: v1.0.1, Linux Foundation) | Nasiko requires and hardcodes the `A2A-Version: 1.0` header on every request; agents on older/pre-1.0 spec versions (e.g. 0.2.x, 0.3.0) are rejected with `-32009 VersionNotSupported` (see [`docs/A2A_PROTOCOL.md`](docs/A2A_PROTOCOL.md)). Any agent speaking v1.0 works, regardless of its implementation language. |\n\n---\n\n## Quick Start — Docker only (no Rust needed)\n\nThe fastest way to run Nasiko requires **only [Docker](https://docs.docker.com/get-docker/)** (with Compose).\nThe server builds itself from source inside Docker.\n\n### 1. Clone and configure\n\n```sh\ngit clone https://github.com/Nasiko-Labs/nasiko.git\ncd nasiko\ncp .env.example .env\n```\n\nEdit `.env` and set at minimum:\n\n- `OPENAI_API_KEY` — your OpenAI key (used by the routing engine and injected into agents)\n- `ADMIN_PASSWORD` — password for the bootstrap admin account\n\n### 2. Start the platform\n\n```sh\ndocker compose up -d\n```\n\nThis builds the server image and starts the full stack:\n**Postgres · Redis · RustFS (S3) · OTel Collector · Tempo · Loki · nasiko-server**.\n\n- First build takes a few minutes (compiles Rust inside Docker) — subsequent builds are fast.\n- Open **http://localhost:8080** for the dashboard and log in with ",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\nresolver = \"3\"\nmembers = [\n    # ─── OSS crates ─────────────────────────────────────────────────────────\n    \"auth\",\n    \"config\",\n    \"secrets\",\n    \"observability\",\n    \"runtime\",\n    \"react-agent\",\n    \"orchestrator\",\n    \"types\",\n    \"utils\",\n    \"server\",\n    \"oci\",\n    \"flow\",\n    \"hitl\",\n    \"agent-proxy\",\n    \"llm-router\",\n    \"mcp-gateway\",\n    \"cli\",\n    \"github\",\n    \"oidc\",\n    \"bench\",\n    \"bench-support\",\n]\n\n[workspace.package]\nedition = \"2024\"\nversion = \"0.1.0\"\n\n[workspace.dependencies]\n# ─── Internal OSS crates ────────────────────────────────────────────────────\nnasiko-auth = { path = \"auth\" }\nnasiko-config = { path = \"config\" }\nnasiko-flow = { path = \"flow\" }\nnasiko-agent-proxy = { path = \"agent-proxy\" }\nnasiko-mcp-gateway = { path = \"mcp-gateway\" }\nnasiko-github = { path = \"github\" }\nnasiko-oidc = { path = \"oidc\" }\nnasiko-secrets = { path = \"secrets\" }\nnasiko-observability = { path = \"observability\" }\nnasiko-runtime = { path = \"runtime\", default-features = false }\nnasiko-react-agent = { path = \"react-agent\" }\nnasiko-orchestrator = { path = \"orchestrator\" }\nnasiko-types = { path = \"types\" }\nnasiko-utils = { path = \"utils\" }\nnasiko-server = { path = \"server\" }\nnasiko-oci = { path = \"oci\" }\nnasiko-llm-router = { path = \"llm-router\" }\nnasiko-bench-support = { path = \"bench-support\" }\n\n# ─── Testing ────────────────────────────────────────────────────────────────\nserial_test = \"3\"\n\n# ─── Async runtime & web ────────────────────────────────────────────────────\ntokio = { version = \"1\", features = [\"full\"] }\naxum = { version = \"0.8\", features = [\"json\", \"query\", \"multipart\"] }\ntower = \"0.5\"\ntower-http = { version = \"0.6\", features = [\"cors\", \"trace\"] }\n\n# ─── OpenAPI docs ───────────────────────────────────────────────────────────\nutoipa = { version = \"5\", features = [\"axum_extras\", \"uuid\", \"chrono\"] }\nutoipa-swagger-ui = { version = \"9\", features = [\"axum\"] }\n\n# ─── Serialization ──────────────────────────────────────────────────────────\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\n\n# ─── Text / patterns ────────────────────────────────────────────────────────\nregex = \"1\"\n\n# ─── Database & state ───────────────────────────────────────────────────────\nsqlx = { version = \"0.8\", features = [\"runtime-tokio\", \"postgres\", \"chrono\", \"uuid\", \"rust_decimal\", \"migrate\", \"json\"] }\nredis = { version = \"0.27\", features = [\"tokio-comp\", \"aio\"] }\nrust_decimal = { version = \"1.36\", features = [\"serde\", \"db-postgres\"] }\n\n# ─── Auth ───────────────────────────────────────────────────────────────────\njsonwebtoken = \"9\"\nbcrypt = \"0.15\"\n\n# ─── HTTP client ────────────────────────────────────────────────────────────\nreqwest = { version = \"0.12\", default-features = false, features = [\"json\", \"rustls-tls\", \"stream\"] }\n\n# ─── CLI ────────────────────────────────────────────────────────────────────\nclap = { version = \"4\", features = [\"derive\"] }\nureq = { version = \"3\", features = [\"json\"] }\ndialoguer = \"0.11\"\nindicatif = \"0.17\"\ndirs = \"6\"\ntar = \"0.4\"\nflate2 = \"1\"\nwhich = \"7\"\ninclude_dir = \"0.7\"\ntoml_edit = \"0.25\"\nratatui = \"0.29\"\ncrossterm = \"0.29\"\ntabled = \"0.21\"\n\n# ─── Observability ──────────────────────────────────────────────────────────\ntracing = \"0.1\"\ntracing-subscriber = { version = \"0.3\", features = [\"env-filter\"] }\n\n# ─── AWS ────────────────────────────────────────────────────────────────────\naws-sdk-s3 = \"1\"\naws-config = \"1\"\n\n# ─── Crypto ─────────────────────────────────────────────────────────────────\nsha2 = \"0.10\"\nhkdf = \"0.12\"\nhmac = \"0.12\"\nhex = \"0.4\"\nrand = \"0.9\"\nrand_distr = \"0.5\"\n\n# ─── Temp filesystem ────────────────────────────────────────────────────────\ntempfile = \"3\"\n\n# ─── Archive ────────────────────────────────────────────────────────────────\nzip = { version = \"2\", default-features = false, features = [\"deflate\"] }\n\n# ─── Versioning ─────────────────────────────────────────────────────────────\nsemver = \"1\"\n\n# ─── Concurrency ───────────────────────────────────────────────────────────\ndashmap = \"6\"\nbytes = \"1\"\n\n# ─── Async traits ───────────────────────────────────────────────────────────\nasync-trait = \"0.1\"\n\n# ─── Streaming ──────────────────────────────────────────────────────────────\nfutures = \"0.3\"\nasync-stream = \"0.3\"\n\n# ─── Common utilities ───────────────────────────────────────────────────────\nchrono = { version = \"0.4\", features = [\"serde\"] }\nuuid = { version = \"1\", features = [\"v4\", \"v5\", \"serde\"] }\nthiserror = \"2\"\nanyhow = \"1\"\nbase64 = \"0.22\"\ndotenvy = \"0.15\"\n\n# ─── Embedding / registry ──────────────────────────────────────────────────\nrust-embed = { version = \"8\", features = [\"mime-guess\", \"include-exclude\"] }\nmime_guess = \"2\"\n\nmockito = \"1\"\n\n# ─── Benchmarking ───────────────────────────────────────────────────────────\ncriterion = { version = \"0.5\", features = [\"async_tokio\"] }\n\n[profile.release]\nstrip = true\n# codegen-units = 1\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "workspace",
+      "llm"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "智能体部署",
+      "请求路由",
+      "运行观测"
+    ],
+    "brief_zh": {
+      "summary": "为支持 A2A 协议的 Agent 提供部署、路由、安全控制和运行观测的统一控制台。",
+      "capabilities": "智能体部署、请求路由、运行观测",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/Nasiko-Labs/nasiko"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "can1357",
+    "name": "oh-my-pi",
+    "full_name": "can1357/oh-my-pi",
+    "url": "https://github.com/can1357/oh-my-pi",
+    "description": "⌥ Coding agent with the IDE wired in. Built by Stencil Labs.",
+    "language": "TypeScript",
+    "total_stars": 33181,
+    "forks": 3527,
+    "stars_this_period": 210,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agent",
+        "ai-coding-agent",
+        "anthropic",
+        "bun",
+        "claude",
+        "cli",
+        "coding-assistant",
+        "llm",
+        "mcp",
+        "multi-provider",
+        "openai",
+        "rust",
+        "terminal",
+        "tui",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 3162,
+      "created_at": "2025-12-31T14:01:28Z",
+      "pushed_at": "2026-09-24T21:52:52Z",
+      "homepage": "https://omp.sh",
+      "default_branch": "main",
+      "forks": 3527,
+      "watchers": 94,
+      "archived": false,
+      "size_kb": 643594
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://github.com/can1357/oh-my-pi/blob/main/assets/hero.png?raw=true\" alt=\"omp\">\n</p>\n\n<p align=\"center\">\n  <strong>A coding agent with the IDE wired in.</strong>\n  <strong><a href=\"https://omp.sh\">omp.sh</a></strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/@oh-my-pi/pi-coding-agent\"><img src=\"https://img.shields.io/npm/v/@oh-my-pi/pi-coding-agent?style=flat&colorA=222222&colorB=CB3837\" alt=\"npm version\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/CHANGELOG.md\"><img src=\"https://img.shields.io/badge/changelog-keep-E05735?style=flat&colorA=222222\" alt=\"Changelog\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/can1357/oh-my-pi/ci.yml?style=flat&colorA=222222&colorB=3FB950\" alt=\"CI\"></a>\n  <a href=\"https://github.com/can1357/oh-my-pi/blob/main/LICENSE\"><img src=\"https://img.shields.io/github/license/can1357/oh-my-pi?style=flat&colorA=222222&colorB=58A6FF\" alt=\"License\"></a>\n  <a href=\"https://www.typescriptlang.org\"><img src=\"https://img.shields.io/badge/TypeScript-3178C6?style=flat&colorA=222222&logo=typescript&logoColor=white\" alt=\"TypeScript\"></a>\n  <a href=\"https://www.rust-lang.org\"><img src=\"https://img.shields.io/badge/Rust-DEA584?style=flat&colorA=222222&logo=rust&logoColor=white\" alt=\"Rust\"></a>\n  <a href=\"https://bun.sh\"><img src=\"https://img.shields.io/badge/runtime-Bun-f472b6?style=flat&colorA=222222\" alt=\"Bun\"></a>\n  <a href=\"https://discord.gg/4NMW9cdXZa\"><img src=\"https://img.shields.io/badge/Discord-5865F2?style=flat&colorA=222222&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\">\n  Built by <a href=\"https://stencil.so\">Stencil Labs</a> · Fork of <a href=\"https://github.com/badlogic/pi-mono\">Pi</a> by <a href=\"https://github.com/mariozechner\">@mariozechner</a>\n</p>\n\nThe most capable agent surface that ships. Continuously tuned by real-world use — complete out of the box, open all the way down.\n\n**60+** providers · **31** built-in tools · **14** lsp ops · **28** dap ops · **~80k** lines of Rust core.\n\n> [!NOTE]\n> Pull requests are **temporarily open to everyone** as a trial. We previously\n> required a vouch before accepting PRs; that requirement is lifted for now\n> while we evaluate how open contributions go. Depending on the results, the\n> vouch system may return.\n\n## Install\n\n**macOS · Linux**\n\n```sh\ncurl -fsSL https://omp.sh/install | sh\n```\n\n> **Alpine / musl:** the prebuilt musl binary links `libstdc++`/`libgcc` dynamically, which stock Alpine does not ship. Install them first: `apk add libstdc++ libgcc`.\n\n**Homebrew**\n\n```sh\nbrew install can1357/tap/omp\n```\n\n**Bun (recommended)**\n\n```sh\nbun install -g @oh-my-pi/pi-coding-agent\n```\n\n**Nix**\n\n```sh\n# Run without installing\nnix run github:can1357/oh-my-pi\n\n# Or install into the active profile\nnix profile install github:can1357/oh-my-pi\n```\n\nFlake consumers can use `packages.<system>.omp`, `overlays.default`, `nixosModules.default`, or `homeManagerModules.default`. A Home Manager configuration can install OMP and own its settings declaratively:\n\n```nix\n{\n  inputs.omp.url = \"github:can1357/oh-my-pi\";\n\n  # In your Home Manager module:\n  imports = [ inputs.omp.homeManagerModules.default ];\n  programs.omp = {\n    enable = true;\n    settings.startup.quiet = true;\n  };\n}\n```\n\n**Windows (PowerShell)**\n\n```powershell\nirm https://omp.sh/install.ps1 | iex\n```\n\n**Pinned versions (mise)**\n\n```sh\nmise use -g github:can1357/oh-my-pi\n```\n\nmacOS · Linux · Windows · bun ≥ 1.3.14\n\n### Shell completions\n\n`omp` generates its own completion scripts for **bash**, **zsh**, and **fish** from the live command/flag metadata, so they never drift from the actual CLI. Subcommands, flags, and enum values complete statically; model names (`--model`, `--smol`, `--slow`, `--plan`) resolve against the bundled model catalog and `--resume` against your on-disk sessions.\n\n```sh\n# zsh — add to ~/.zshrc (or write the output into a file on your $fpath)\neval \"$(omp completions zsh)\"\n\n# bash — add to ~/.bashrc\neval \"$(omp completions bash)\"\n\n# fish\nomp completions fish > ~/.config/fish/completions/omp.fish\n```\n\n## Every tool, _benchmaxxed_.\n\nEdits that land on the first attempt. Reads that summarize files instead of dumping their content. Searches that return instantly. Pick any model — omp will get it right.\n\n| model            | metric       | what                                                                  |\n| ---------------- | ------------ | --------------------------------------------------------------------- |\n| Grok Code Fast 1 | 6.7% → 68.3% | Tenfold lift the moment the edit format stops eating the model alive. |\n| Gemini 3 Flash   | +5 pp        | Over str_replace — beats Google's own best attempt at the format.     |\n| Grok 4 Fast      | −61% tokens  | Output collapses once the retry loop on bad diffs disappears.         |\n| MiniMax          | 2.1×         | Pass rate more than doubles. Same weights, same prompt.               |\n\n- `read` : summarized snippets · ideal defaults · selector hit rate\n- `grep` : fastest in the west\n- `lsp` : everything your IDE knows, the agent knows\n- `prompts` : adjusted relentlessly for each model\n\n[Read the full post ↗](https://blog.can.ac/2026/02/12/the-harness-problem/)\n\n## The Pi _you love_, with **batteries included**.\n\nOriginally built on [Mario Zechner](https://github.com/mariozechner)'s wonderful [Pi](https://github.com/badlogic/pi-mono), omp adds everything you're missing.\n\n### 01 · Code execution w/ tool-calling\n\nMost harnesses give the agent a Python sandbox and call it done. Ours runs persistent Python and a Bun worker, and either kernel can call back into the agent's own tools — read, search, task — over a loopback bridge. The agent loads a CSV with tool.read from inside Python, charts it from JavaScript, and never leaves the cell.\n\n![omp TUI running Python code and rendering a chart.](assets/python.webp)\n\n### 02 · LSP wired into every write\n\nAsk for a rename and you get a rename. The call goes through workspace/willRenameFiles, so re-exports, barrel files, and aliased imports update before the file moves. Everything your IDE knows, the agent knows.\n\n![omp TUI with TypeScript and Biome language servers active.](assets/lspv.webp)\n\n_[Read the LSP config docs](docs/lsp-config.md)_\n\n### 03 · Drives a real debugger\n\nA C binary segfaults: the agent attaches lldb, steps to the bad pointer, reads the frame. A Go service hangs: it attaches dlv and walks the goroutines. A Python process is wedged: debugpy, pause, inspect, evaluate. Most agents are still sprinkling print statements.\n\n![omp TUI: a live lldb-dap session against a native binary at /tmp/omp-native/demo. Adapter=lldb-dap, Status=stopped, Frame=xorshift32, Instruction pointer 0x10000055C, Location demo.c:6:10. Debug scopes and Debug variables cards show locals (x = 57351) and the agent confirms the math: x went from 7 → 57351 (= 7 ^ (7<<13)).](https://omp.sh/clips/dap-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/dap.mp4)_\n\n### 04 · Time-traveling stream rules\n\nYour rules sit dormant until the model goes off-script. A regex match aborts the stream mid-token, injects the rule as a system reminder, and retries from the same point. You get course-correction without paying context tax on every turn. Injections survive compaction, so the fix sticks.\n\n![omp TUI: agent reading src.rs and about to write Box::leak when the request aborts (red `Error: Request was aborted`), an amber `⚠ Injecting rule: box-leak` card injects the rule body `Don't reach for Box::leak in production code paths`, and the agent then course-corrects by proposing `Arc<str>` and asking the user to confirm.](https://omp.sh/clips/ttsr-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/ttsr.mp4)_\n\n### 05 · First-class subagents\n\nSplit a job across workers and get typed results back. task fans out into isolated worktrees, each worker runs its own tool surface, and the final yield is a schema-validated object the parent reads directly. No prose to parse, no merge conflicts between siblings, no orphaned edits.\n\n![omp TUI showing `task` spawning two subagents `ComponentsExports` and `RoutesExports`, the constraints block requiring an IRC DM between peers, the per-subagent status cards with cost and duration, and a final Findings section listing both exports plus an honest 'IRC coordination note' about a one-sided handshake.](https://omp.sh/clips/irc-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/irc.mp4)_\n\nWatch the fan-out while it runs: `Alt+A` opens [Agent Hub](docs/agent-hub.md), where the roster shows current activity and usage for every subagent. Open one to read its live transcript, type a steering message, revive a parked worker, or kill a stuck one without aborting the parent session.\n\n### 06 · A second model, watching every turn.\n\nPair a reviewer model to the 'advisor' role and it reads every turn the main agent takes, injecting notes inline — a quiet aside, a concern, or a hard blocker. It runs on its own context and its own model, so it catches what the doer rushed past. The main agent sees the note and course-corrects, or tells you why it won't.\n\n![omp TUI: /advisor status shows the advisor running on openai-codex/gpt-5.5; after the main agent scopes a catch to ENOENT instead of swallowing every error, an amber 'Advisor 1 note (concern)' card warns the fix no longer matches the user's literal acceptance criterion.](https://omp.sh/clips/advisor-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/advisor.mp4)_\n\n### 07 · Hand someone the link, they're in.\n\n/collab puts your live session on a relay and hands back a link — and a QR. A teammate joins from another terminal with omp join, or just opens it in a browser. Share read-write to pair on the same agent, or /collab view for a read-only link anyone can watch but no one can steer. Frames are sealed client-side; the relay never sees your keys.\n\n![omp TUI: /collab view prints 'Collab session started!' with an omp join command, a my.omp.sh browser link, the note 'Anyone with this link can watch the session but cannot prompt the agent', and a large scannable QR code.](https://omp.sh/clips/collab-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/collab.mp4)_\n\n### 08 · Read a pdf on arxiv, why not?\n\nweb_search chains twenty-three ranked providers and hands whatever URLs it finds straight to read. Arxiv PDFs, GitHub pages, Stack Overflow threads come back as structured markdown with anchors intact — the same tool surface you use on local files. Cite, follow, quote, never lose where you came from.\n\n![omp TUI: web_search returns 10 ranked Perplexity sources for inference-time compute scaling, the agent picks an arxiv paper, calls read https://arxiv.org/pdf/2604.10739v1, and summarizes the paper's headline result with real numbers.](https://omp.sh/clips/web-poster.webp)\n\n_[Watch the capture ↗](https://omp.sh/clips/web.mp4)_\n\n### 09 · Unapologetically native. Even on Windows.\n\nOther agents shell out to rg, grep, find, and bash. On many machines those binaries don't exist, and on the ones where they do, every call costs a fork-exec round-trip. omp links the real implementations into the process. ripgrep, glob, find: in-process. brush is the bash — with sessions that survive across calls, and 58 command-line utilities (ls, sed, sort, xargs, even jq) ported into the builtins crate and run in-process, zero fork/exec. The same omp binary runs on macOS, Linux, and Windows — no WSL bridge.\n\n### 10 · Code review with priorities and a verdict\n\nGet a clear verdict on whether the change ships, with every issue ranked P0 through P3 and scored for confidence. /review spawns dedicated reviewer subagents that sweep branches, single commits, or uncommitted work in parallel. You tackle what blocks release first; nothing important hides in a wall of prose.\n\nWant to steer the review yourself? `/annotate code-",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n\t\"name\": \"omp\",\n\t\"private\": true,\n\t\"homepage\": \"https://omp.sh\",\n\t\"license\": \"MIT\",\n\t\"author\": { \"name\": \"Stencil Labs, Inc.\", \"url\": \"https://stencil.so\" },\n\t\"workspaces\": {\n\t\t\"packages\": [\n\t\t\t\"packages/*\",\n\t\t\t\"python/robomp/web\"\n\t\t],\n\t\t\"catalog\": {\n\t\t\t\"@babel/generator\": \"^7.29.7\",\n\t\t\t\"@babel/parser\": \"^7.29.7\",\n\t\t\t\"@babel/traverse\": \"^7.29.7\",\n\t\t\t\"@babel/types\": \"^7.29.7\",\n\t\t\t\"@huggingface/transformers\": \"^4.2.0\",\n\t\t\t\"@napi-rs/cli\": \"3.7.2\",\n\t\t\t\"@oh-my-pi/omp-stats\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/omptype\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-agent-core\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-ai\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-catalog\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-coding-agent\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-mnemopi\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-natives\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-tui\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-utils\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/pi-wire\": \"18.3.0\",\n\t\t\t\"@oh-my-pi/snapcompact\": \"18.3.0\",\n\t\t\t\"@opentelemetry/api\": \"^1.9.1\",\n\t\t\t\"@opentelemetry/api-logs\": \"^0.220.0\",\n\t\t\t\"@opentelemetry/context-async-hooks\": \"^2.9.0\",\n\t\t\t\"@opentelemetry/exporter-logs-otlp-proto\": \"^0.220.0\",\n\t\t\t\"@opentelemetry/exporter-metrics-otlp-proto\": \"^0.220.0\",\n\t\t\t\"@opentelemetry/exporter-trace-otlp-proto\": \"^0.220.0\",\n\t\t\t\"@opentelemetry/resources\": \"^2.9.0\",\n\t\t\t\"@opentelemetry/sdk-logs\": \"^0.220.0\",\n\t\t\t\"@opentelemetry/sdk-metrics\": \"^2.9.0\",\n\t\t\t\"@opentelemetry/sdk-trace-base\": \"^2.9.0\",\n\t\t\t\"@opentelemetry/sdk-trace-node\": \"^2.9.0\",\n\t\t\t\"@tailwindcss/node\": \"^4.3.2\",\n\t\t\t\"@tailwindcss/vite\": \"^4.3.2\",\n\t\t\t\"@types/babel__generator\": \"^7.27.0\",\n\t\t\t\"@types/babel__traverse\": \"^7.28.0\",\n\t\t\t\"@types/bun\": \"^1.3.14\",\n\t\t\t\"@types/react\": \"^19.2.17\",\n\t\t\t\"@types/react-dom\": \"^19.2.3\",\n\t\t\t\"@typescript/native-preview\": \"7.0.0-dev.20260707.2\",\n\t\t\t\"chart.js\": \"^4.5.1\",\n\t\t\t\"diff\": \"^9.0.0\",\n\t\t\t\"fastembed\": \"2.1.0\",\n\t\t\t\"katex\": \"^0.18.4\",\n\t\t\t\"kitty-vt-wasm\": \"^0.2.0\",\n\t\t\t\"lint-staged\": \"^17.0.8\",\n\t\t\t\"lucide-react\": \"^1.24.0\",\n\t\t\t\"onnxruntime-node\": \"1.26.0\",\n\t\t\t\"oxfmt\": \"^0.65.0\",\n\t\t\t\"oxlint\": \"^1.80.0\",\n\t\t\t\"postcss\": \"^8.5.16\",\n\t\t\t\"prettier\": \"^3.9.5\",\n\t\t\t\"puppeteer-core\": \"25.3.0\",\n\t\t\t\"react\": \"19.2.7\",\n\t\t\t\"react-chartjs-2\": \"^5.3.1\",\n\t\t\t\"react-dom\": \"19.2.7\",\n\t\t\t\"regexp-tree\": \"^0.1.27\",\n\t\t\t\"solid-js\": \"^1.9.14\",\n\t\t\t\"tailwindcss\": \"^4.3.2\",\n\t\t\t\"ts-morph\": \"^28.0.0\",\n\t\t\t\"typescript\": \"^7.0.2\",\n\t\t\t\"vite\": \"^8.1.4\",\n\t\t\t\"vite-plugin-solid\": \"^2.11.12\"\n\t\t}\n\t},\n\t\"type\": \"module\",\n\t\"scripts\": {\n\t\t\"setup\": \"bun scripts/setup.ts\",\n\t\t\"dev\": \"bun --cwd=packages/coding-agent src/cli.ts\",\n\t\t\"dev:timing\": \"PI_TIMING=x bun --cwd=packages/coding-agent --preload ../utils/src/module-timer.ts src/cli.ts\",\n\t\t\"stats\": \"bun --cwd=packages/coding-agent src/cli.ts stats\",\n\t\t\"collab:web:dev\": \"bun --cwd=packages/collab-web run dev\",\n\t\t\"collab:relay\": \"bun --cwd=packages/collab-web run relay\",\n\t\t\"collab:mock-host\": \"bun --cwd=packages/collab-web run mock-host\",\n\t\t\"collab:web:build\": \"bun --cwd=packages/collab-web run build\",\n\t\t\"meta\": \"bun --cwd=packages/metaharness run dev\",\n\t\t\"claude:trace\": \"bun scripts/claude-trace.ts\",\n\t\t\"build\": \"bun run --workspaces --if-present build\",\n\t\t\"build:native\": \"bun --cwd=packages/natives run build\",\n\t\t\"test\": \"bun scripts/ci-test-ts.ts local\",\n\t\t\"test:ts\": \"bun scripts/ci-test-ts.ts local-ts\",\n\t\t\"test:scripts\": \"bun test scripts/ci-test-ts.test.ts scripts/ci-release-build-binaries.test.ts scripts/musl-release.test.ts scripts/ci-release-publish.test.ts scripts/release.test.ts\",\n\t\t\"test:rs\": \"bun scripts/run-rs-task.ts test:rs\",\n\t\t\"check\": \"bun run --parallel check:ts check:rs\",\n\t\t\"check:ts\": \"bun run check:tools && bun run --filter './packages/*' --sequential --if-present check:types\",\n\t\t\"check:tools\": \"oxlint . && oxfmt --check 'packages/*/src/**/*.{ts,tsx}' 'packages/*/{test,bench,examples,scripts}/**/*.ts' 'packages/*/*.ts' 'scripts/**/*.ts'\",\n\t\t\"check:rs\": \"bun scripts/run-rs-task.ts check:rs\",\n\t\t\"lint\": \"bun run --parallel lint:ts lint:rs\",\n\t\t\"lint:ts\": \"bun run --parallel lint:tools && bun run --workspaces --if-present lint\",\n\t\t\"lint:tools\": \"oxlint .\",\n\t\t\"lint:rs\": \"bun scripts/run-rs-task.ts lint:rs\",\n\t\t\"fmt\": \"bun run --parallel fmt:ts fmt:rs\",\n\t\t\"fmt:ts\": \"bun run fmt:tools && bun run --workspaces --if-present fmt\",\n\t\t\"fmt:tools\": \"oxfmt 'packages/*/src/**/*.{ts,tsx}' 'packages/*/{test,bench,examples,scripts}/**/*.ts' 'packages/*/*.ts' 'scripts/**/*.ts'\",\n\t\t\"fmt:rs\": \"bun scripts/run-rs-task.ts fmt:rs\",\n\t\t\"fix\": \"bun run --parallel fix:ts fix:rs\",\n\t\t\"fix:all\": \"bun run --parallel fix:ts:all fix:rs fix:changelogs\",\n\t\t\"fix:ts\": \"bun run fix:tools && bun run --workspaces --if-present fix\",\n\t\t\"fix:ts:all\": \"bun run fix:tools:all && bun run --workspaces --if-present fix\",\n\t\t\"fix:tools\": \"oxlint --fix --fix-suggestions . && bun run fmt:tools\",\n\t\t\"fix:tools:all\": \"oxlint --fix --fix-suggestions . && bun run fmt:tools\",\n\t\t\"fix:changelogs\": \"bun scripts/fix-changelogs.ts\",\n\t\t\"fix:rs\": \"bun scripts/run-rs-task.ts fix:rs\",\n\t\t\"ci:check:full\": \"bun run check:ts\",\n\t\t\"ci:test:full\": \"bun run ci:test:ts && bun run test:rs\",\n\t\t\"ci:test:ts\": \"bun scripts/ci-test-ts.ts al",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "runtime",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "终端编码",
+      "精确编辑",
+      "代码语言服务"
+    ],
+    "brief_zh": {
+      "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。",
+      "capabilities": "终端编码、精确编辑、代码语言服务",
+      "verified_at": "2026-09-25",
+      "evidence_sources": [
+        "https://github.com/can1357/oh-my-pi"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  }
+]

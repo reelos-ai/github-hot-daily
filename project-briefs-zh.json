@@ -227,7 +227,7 @@
   "can1357/oh-my-pi": {
     "summary": "一个运行在终端中的 AI 编码 Agent，集成精确编辑、LSP、浏览器和子 Agent 调度能力。",
     "capabilities": "终端编码、精确编辑、代码语言服务",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/can1357/oh-my-pi"
     ],
@@ -252,7 +252,12 @@
     "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
   },
   "farion1231/cc-switch": {
-    "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。"
+    "summary": "一个跨平台桌面管理器，用于集中切换 Claude Code、Codex、OpenCode 等编码助手的配置。",
+    "verified_at": "2026-09-25",
+    "evidence_sources": [
+      "https://github.com/farion1231/cc-switch"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "DeusData/codebase-memory-mcp": {
     "summary": "一个高性能代码智能 MCP 服务，把代码库索引成持久知识图谱，供 Agent 低延迟、低 Token 查询。"
@@ -371,7 +376,12 @@
   },
   "rohitg00/ai-engineering-from-scratch": {
     "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
-    "capabilities": "AI 工程学习、项目实践、开发教程、交付参考"
+    "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
+    "verified_at": "2026-09-25",
+    "evidence_sources": [
+      "https://github.com/rohitg00/ai-engineering-from-scratch"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "facebook/astryx": {
     "summary": "一个可完整定制、并面向 Agent 使用场景设计的开源设计系统。",
@@ -782,7 +792,7 @@
   "google/ax": {
     "summary": "用声明式任务配置编排 Agent 工作负载，统一安排沙箱、工作区和网络边界。",
     "capabilities": "任务编排、沙箱执行、工作区管理",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/google/ax"
     ],
@@ -791,7 +801,7 @@
   "hydra-db/hydradb": {
     "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
     "capabilities": "图数据库、对象存储、图查询",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/hydra-db/hydradb"
     ],
@@ -800,7 +810,7 @@
   "dream-num/univer": {
     "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
     "capabilities": "办公文档、电子表格、统一操作接口",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/dream-num/univer"
     ],
@@ -809,7 +819,7 @@
   "superdesigndev/treg": {
     "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
     "capabilities": "工具目录、统一调用、凭据管理",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/superdesigndev/treg"
     ],
@@ -827,7 +837,7 @@
   "Nasiko-Labs/nasiko": {
     "summary": "为支持 A2A 协议的 Agent 提供部署、路由、安全控制和运行观测的统一控制台。",
     "capabilities": "智能体部署、请求路由、运行观测",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/Nasiko-Labs/nasiko"
     ],
@@ -845,9 +855,18 @@
   "strands-agents/harness-sdk": {
     "summary": "用 Python 或 TypeScript 构建和运行 Agent，统一管理模型、工具调用、会话记忆与执行限制。",
     "capabilities": "智能体开发、工具调用、会话管理",
-    "verified_at": "2026-09-24",
+    "verified_at": "2026-09-25",
     "evidence_sources": [
       "https://github.com/strands-agents/harness-sdk"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "vectorize-io/hindsight": {
+    "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
+    "capabilities": "长期记忆、记忆检索、反思生成",
+    "verified_at": "2026-09-25",
+    "evidence_sources": [
+      "https://github.com/vectorize-io/hindsight"
     ],
     "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   }
