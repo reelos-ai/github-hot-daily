@@ -46,15 +46,20 @@
     },
     "strategic_score": 91,
     "capability_tags": [
-      "群体通信",
-      "共享上下文",
-      "协作消息"
+      "协作工作区",
+      "事件记录",
+      "代码评审"
     ],
     "brief_zh": {
-      "summary": "一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。",
+      "summary": "让人与 Agent 在自托管工作区共享频道、代码评审和工作流，并以签名事件记录协作过程。",
       "audience": "研究多 Agent 通信、群体协作或去中心化消息系统的开发者",
-      "capabilities": "群体通信、共享上下文、协作消息、Rust 服务端",
-      "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证"
+      "capabilities": "协作工作区、事件记录、代码评审",
+      "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/block/buzz"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
     },
     "summary_source": "project_brief"
   },

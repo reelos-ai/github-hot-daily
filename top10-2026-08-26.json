@@ -251,7 +251,7 @@
     "brief_zh": {
       "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
       "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
-      "verified_at": "2026-09-26",
+      "verified_at": "2026-09-27",
       "evidence_sources": [
         "https://github.com/rohitg00/ai-engineering-from-scratch"
       ],
@@ -558,16 +558,21 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "官方插件目录",
-      "Claude Code 生态",
-      "插件发现"
+      "插件目录",
+      "插件发现",
+      "插件安装"
     ],
     "summary_source": "project_brief",
     "brief_zh": {
-      "summary": "Anthropic 官方维护的 Claude Code 插件目录，用来集中分发和管理高质量插件条目。",
+      "summary": "集中提供 Anthropic 自有和第三方 Claude Code 插件，支持发现与安装。",
       "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
-      "capabilities": "官方插件目录、Claude Code 生态、插件发现、插件分发",
-      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证"
+      "capabilities": "插件目录、插件发现、插件安装",
+      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/anthropics/claude-plugins-official"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
     }
   },
   {

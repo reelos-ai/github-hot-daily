@@ -1,0 +1,810 @@
+[
+  {
+    "owner": "vectorize-io",
+    "name": "hindsight",
+    "full_name": "vectorize-io/hindsight",
+    "url": "https://github.com/vectorize-io/hindsight",
+    "description": "Hindsight: Agent Memory That Learns",
+    "language": "Python",
+    "total_stars": 32048,
+    "forks": 3563,
+    "stars_this_period": 2152,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai-memory",
+        "memory"
+      ],
+      "license": "MIT",
+      "open_issues": 148,
+      "created_at": "2025-10-30T11:49:48Z",
+      "pushed_at": "2026-09-26T14:14:46Z",
+      "homepage": "https://hindsight.vectorize.io/",
+      "default_branch": "main",
+      "forks": 3563,
+      "watchers": 72,
+      "archived": false,
+      "size_kb": 758333
+    },
+    "readme_content": "<div align=\"center\">\n\n![Hindsight Banner](./hindsight-docs/static/img/hindsight-github-banner.png)\n\n[Documentation](https://hindsight.vectorize.io) • [Integrations](https://hindsight.vectorize.io/integrations) • [Cookbook](https://hindsight.vectorize.io/cookbook) • [Benchmarks](https://benchmarks.hindsight.vectorize.io/) • [Paper](https://arxiv.org/abs/2512.12818) • [Hindsight Cloud](https://ui.hindsight.vectorize.io/signup)\n\n[![Release](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml/badge.svg)](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml)\n[![Version](https://img.shields.io/pypi/v/hindsight-api?logo=python&logoColor=white&label=version&color=blue)](https://pypi.org/project/hindsight-api/)\n[![PyPI Downloads](https://img.shields.io/pypi/dm/hindsight-client?logo=pypi&logoColor=white&label=PyPI&color=blue)](https://pypi.org/project/hindsight-client/)\n[![NPM Downloads](https://img.shields.io/npm/dm/%40vectorize-io%2Fhindsight-client?logo=npm&logoColor=white&label=NPM&color=blue)](https://www.npmjs.com/package/@vectorize-io/hindsight-client)\n[![Slack Community](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://vectorize.io/slack)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n<br/>\n<p align=\"center\">\n <a href=\"https://www.star-history.com/vectorize-io/hindsight\"><img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=rank\" alt=\"Star History Rank\" /> <img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=trending\" alt=\"GitHub Trending Repository of the Day\" /></a>\n</p>\n\n</div>\n\n---\n\n## What is Hindsight?\n\nHindsight™ is an agent memory system built to create smarter agents that learn over time. Most agent memory systems focus on recalling conversation history. Hindsight is focused on making agents that learn, not just remember.\n\n<video src=\"https://github.com/user-attachments/assets/923b798d-3581-4897-bb62-9cfa5a931682\" controls></video>\n\nIt eliminates the shortcomings of alternative techniques such as RAG and knowledge graph and delivers state-of-the-art performance on long term memory tasks.\n\n**Contents**\n\n- [Memory Performance & Accuracy](#memory-performance--accuracy)\n- [Quick Start](#quick-start) — [server](#1-start-a-server) · [clients](#2-connect-a-client) · [platforms](#supported-platforms) · [embedded](#python-embedded-no-server-required)\n- [Adding Hindsight to Your Agent](#adding-hindsight-to-your-agent) — [LLM Wrapper](#llm-wrapper-2-lines-of-code) · [integrations](#integrations) · [coding agents](#coding-agents) · [MCP](#mcp-server)\n- [Core Concepts](#core-concepts) — [memory types](#memory-types) · [retain / recall / reflect](#the-three-operations) · [observations](#observations) · [mental models & knowledge pages](#mental-models--knowledge-pages) · [banks](#memory-banks)\n- [Use Cases](#use-cases)\n- [Running in Production](#running-in-production)\n- [Resources](#resources)\n\n---\n\n## Memory Performance & Accuracy\n\nHindsight is the most accurate agent memory system ever tested according to benchmark performance. It has achieved state-of-the-art performance on the LongMemEval benchmark, widely used to assess memory system performance across a variety of conversational AI scenarios. The current reported performance of Hindsight and other agent memory solutions as of January 2026 is shown here:\n\n![Overview](./hindsight-docs/static/img/hindsight-benchmarks.png)\n\n> Live, continuously updated results — including per-model accuracy, latency and cost — are published at [benchmarks.hindsight.vectorize.io](https://benchmarks.hindsight.vectorize.io/).\n\nThe benchmark performance data for Hindsight has been independently reproduced by research collaborators at the Virginia Tech [Sanghani Center for Artificial Intelligence and Data Analytics](https://sanghani.cs.vt.edu/) and The Washington Post. Other scores are self-reported by software vendors.\n\nHindsight is being used in production at Fortune 500 enterprises and by a growing number of AI startups.\n\n---\n\n> 🤖 **Using a coding agent?** Install the Hindsight documentation skill for instant access to docs while you code:\n> ```bash\n> npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs\n> ```\n> Works with Claude Code, Cursor, and other AI coding assistants.\n\n---\n\n## Quick Start\n\n### 1. Start a server\n\n#### Docker (recommended)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\n\ndocker run -it --pull always --name hindsight --restart unless-stopped -p 8888:8888 -p 9999:9999 \\\n  -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY \\\n  -v hindsight-data:/home/hindsight/.pg0 \\\n  ghcr.io/vectorize-io/hindsight:latest\n```\n\n>API: http://localhost:8888\n>UI: http://localhost:9999\n\nHindsight works with **25+ LLM providers** via `HINDSIGHT_API_LLM_PROVIDER` — hosted (`openai`, `anthropic`, `gemini`, `groq`, `bedrock`, `vertexai`, `minimax`, `deepseek`, `atlas`, `meta`, …), fully local (`ollama`, `lmstudio`, `llamacpp`), any OpenAI-compatible endpoint, and gateways (`litellm`, `litellmrouter`) that reach the rest. Existing subscriptions work too: `openai-codex` (ChatGPT Plus/Pro), `claude-code` (Claude Pro/Max), `cursor` (Cursor) and `github-copilot` (GitHub Copilot) need no API key. See [supported models](https://hindsight.vectorize.io/developer/models).\n\n#### Docker (external PostgreSQL)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\nexport HINDSIGHT_DB_PASSWORD=choose-a-password\ncd docker/docker-compose\ndocker compose up\n```\n\n> Oracle AI Database is also supported for enterprise deployments with full feature parity. See the [storage documentation](https://hindsight.vectorize.io/developer/storage) for details.\n\n#### Bare metal (pip)\n\n```bash\npip install hindsight-api\nexport HINDSIGHT_API_LLM_API_KEY=sk-xxx\n\nhindsight-api\n```\n\n#### Kubernetes (Helm)\n\n```bash\nhelm install hindsight oci://ghcr.io/vectorize-io/charts/hindsight \\\n  --set api.llm.provider=openai \\\n  --set api.llm.apiKey=sk-xxx \\\n  --set postgresql.enabled=true\n```\n\n#### Managed (no server)\n\n[Hindsight Cloud](https://vectorize.io/pricing) is the hosted option: managed infrastructure that scales automatically, plus a dashboard, backups, team collaboration and a 99.9% uptime SLA. Billing is usage-based with free credits to start — no fixed monthly or per-seat fee. Point any client at `https://api.hindsight.vectorize.io` with your API key and skip the deployment entirely.\n\n[Compare self-hosted, Cloud and Enterprise →](https://vectorize.io/pricing) · [Sign up →](https://ui.hindsight.vectorize.io/signup)\n\nAll options, including Windows and air-gapped setups, are covered in the [installation guide](https://hindsight.vectorize.io/developer/installation).\n\n### 2. Connect a client\n\n```bash\npip install hindsight-client -U                                  # Python\nnpm install @vectorize-io/hindsight-client                        # Node.js / TypeScript\ngo get github.com/vectorize-io/hindsight/hindsight-clients/go     # Go\ncurl -fsSL https://hindsight.vectorize.io/get-cli | bash          # CLI\n```\n\n#### Python\n\n```python\nfrom hindsight_client import Hindsight\n\nclient = Hindsight(base_url=\"http://localhost:8888\")\n\n# Retain: Store information\nclient.retain(bank_id=\"my-bank\", content=\"Alice works at Google as a software engineer\")\n\n# Recall: Search memories\nclient.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")\n\n# Reflect: Generate disposition-aware response\nclient.reflect(bank_id=\"my-bank\", query=\"Tell me about Alice\")\n```\n\n#### Node.js / TypeScript\n\n```javascript\nconst { HindsightClient } = require('@vectorize-io/hindsight-client');\n\nconst main = async () => {\n  const client = new HindsightClient({ baseUrl: 'http://localhost:8888' });\n\n  await client.retain('my-bank', 'Alice loves hiking in Yosemite');\n\n  const results = await client.recall('my-bank', 'What does Alice like?');\n  console.log(results);\n}\n\nmain();\n```\n\nFull reference: [Python](https://hindsight.vectorize.io/sdks/python) · [Node.js](https://hindsight.vectorize.io/sdks/nodejs) · [Go](https://hindsight.vectorize.io/sdks/go) · [CLI](https://hindsight.vectorize.io/sdks/cli) · [REST API](https://hindsight.vectorize.io/api-reference)\n\n### Supported Platforms\n\n| Platform | Docker | Bare Metal (pip) | Embedded DB (pg0) |\n|----------|--------|------------------|--------------------|\n| **Linux** (x86_64, ARM64) | ✅ | ✅ | ✅ |\n| **macOS** (Apple Silicon / arm64) | ✅ | ✅ | ✅ |\n| **macOS** (Intel / x86_64) | ✅ | ⚠️ | ✅ |\n| **Windows** (x86_64) | ✅ | ✅ | ✅ |\n\n⚠️ Intel Macs: use `hindsight-all-slim` — see the [installation guide](https://hindsight.vectorize.io/developer/installation#supported-platforms) for details.\n\n### Python Embedded (no server required)\n\n```bash\npip install hindsight-all -U\n```\n\nOn Intel (x86_64) Macs, install `hindsight-all-slim` instead — see [Supported Platforms](#supported-platforms).\n\n```python\nimport os\nfrom hindsight import HindsightServer, HindsightClient\n\nwith HindsightServer(\n    llm_provider=\"openai\",\n    llm_model=\"gpt-5-mini\",\n    llm_api_key=os.environ[\"OPENAI_API_KEY\"]\n) as server:\n    client = HindsightClient(base_url=server.url)\n    client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")\n    results = client.recall(bank_id=\"my-bank\", query=\"Where does Alice work?\")\n```\n\nA [Node.js equivalent](https://hindsight.vectorize.io/sdks/hindsight-all-npm) and a [daemon CLI](https://hindsight.vectorize.io/sdks/embed) are also available.\n\n---\n\n## Adding Hindsight to Your Agent\n\n### LLM Wrapper (2 lines of code)\n\nThe easiest way to add memory to an existing agent is the LLM Wrapper. Swap your LLM client for a wrapped one — memories are then stored and retrieved automatically on every call, with no other changes to your code.\n\n```bash\npip install hindsight-litellm\n```\n\n```python\nfrom openai import OpenAI\nfrom hindsight_litellm import wrap_openai\n\n# Wrap your existing LLM client and you're done.\n# Defaults to Hindsight Cloud; pass hindsight_api_url for a self-hosted server.\nclient = wrap_openai(\n    OpenAI(),\n    bank_id=\"user-123\",\n    hindsight_api_url=\"http://localhost:8888\",\n)\n\n# Hindsight recalls relevant memories before the call\n# and retains the conversation after it.\nresponse = client.chat.completions.create(\n    model=\"gpt-5-mini\",\n    messages=[{\"role\": \"user\", \"content\": \"What do you know about me?\"}],\n)\n```\n\n`wrap_anthropic()` does the same for the Anthropic SDK, and every setting — bank, recall budget, fact types, reflect instead of recall — can be overridden per call with `hindsight_*` kwargs. LiteLLM sits underneath, so the same integration covers **100+ models**. See the [LiteLLM integration](https://hindsight.vectorize.io/sdks/integrations/litellm).\n\nIf you need explicit control over *when* memories are stored and recalled, use the [SDKs or REST API](#2-connect-a-client) directly instead.\n\n### Integrations\n\n**60+ integrations** — most need no code changes.\n\n| | |\n|---|---|\n| **Coding agents** | [Claude Code](https://hindsight.vectorize.io/sdks/integrations/claude-code) · [Codex](https://hindsight.vectorize.io/sdks/integrations/codex) · [Cursor](https://hindsight.vectorize.io/sdks/integrations/cursor) · [GitHub Copilot](https://hindsight.vectorize.io/sdks/integrations/github-copilot) · [opencode](https://hindsight.vectorize.io/sdks/integrations/opencode) · [Cline](https://hindsight.vectorize.io/sdks/integrations/cline) · [Aider](https://hindsight.vectorize.io/sdks/integrations/aider) · [Zed](https://hindsight.vectorize.io/sdks/integrations/zed) · [Continue](https://hindsight.vectorize.io/sdks/integrations/continue) · [Roo Code](https://hindsight.vectorize.io/sdks/integrations/roo-code) · [OpenHands](https://hindsight.vectorize.io/sdks/integrations/openhands) |\n| **Agent frameworks** | [LangGraph / LangChain](https://hindsight.vectorize.io/sdks/integrations/langgraph) · [LlamaIndex](https://hindsight.vectorize.io/sdks/integrations/llamaindex) · [CrewAI](https://hindsight.vectorize.io/sdks/integrations/crewai) · [Pyd",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[tool.uv.workspace]\nmembers = [\"hindsight-all\", \"hindsight-api\", \"hindsight-api-slim\", \"hindsight-all-slim\", \"hindsight-dev\", \"hindsight-mcp-server\", \"hindsight-clients/python\", \"hindsight-embed\"]\n\n[tool.uv]\n# Allow uv to search all configured indexes for packages, not just the first one\n# This prevents dependency resolution failures when using pytorch index + PyPI\nindex-strategy = \"unsafe-best-match\"\ndev-dependencies = []\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "记忆检索",
+      "反思生成"
+    ],
+    "brief_zh": {
+      "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
+      "capabilities": "长期记忆、记忆检索、反思生成",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/vectorize-io/hindsight"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "hydra-db",
+    "name": "hydradb",
+    "full_name": "hydra-db/hydradb",
+    "url": "https://github.com/hydra-db/hydradb",
+    "description": "HydraDB - fast graph database on object storage",
+    "language": "Rust",
+    "total_stars": 7982,
+    "forks": 3130,
+    "stars_this_period": 892,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "AGPL-3.0",
+      "open_issues": 144,
+      "created_at": "2026-07-03T05:34:15Z",
+      "pushed_at": "2026-08-19T00:23:48Z",
+      "homepage": "https://hydradb.com",
+      "default_branch": "main",
+      "forks": 3130,
+      "watchers": 8,
+      "archived": false,
+      "size_kb": 996
+    },
+    "readme_content": "# HydraDB\n\n[![Container image](https://github.com/hydra-db/hydradb/actions/workflows/container.yml/badge.svg)](https://github.com/hydra-db/hydradb/actions/workflows/container.yml)\n[![OpenCypher TCK](https://github.com/hydra-db/hydradb/actions/workflows/opencypher-tck.yml/badge.svg)](https://github.com/hydra-db/hydradb/actions/workflows/opencypher-tck.yml)\n[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)\n[![Rust 1.91+](https://img.shields.io/badge/rust-1.91%2B-orange.svg)](rust-toolchain.toml)\n[![Benchmarks](https://img.shields.io/badge/benchmarks-live-brightgreen.svg)](https://hydra-db.github.io/benchmark/)\n\nHydraDB is an object-store-native distributed graph database written in Rust.\nIt combines durable graph storage on SlateDB with snapshot-consistent\nOpenCypher queries, GraphBLAS traversal, Neo4j-compatible Bolt connectivity,\nand an HTTPS query API.\n\nStorage and compute are fully disaggregated. S3-compatible object storage is the\ndurable source of truth, and compute runs as two independent roles: **data\nnodes** (`graph-node`) serve queries and canonical mutations, while **indexers**\n(`graph-indexer`) build immutable traversal indexes in the background. Both keep\nonly disposable state in memory and on local SSD or NVMe, so they can be replaced\nor scaled without moving the graph itself.\n\n## Why HydraDB\n\n- **Object-store durability.** Graph records, WALs, manifests, and immutable\n  traversal indexes live in S3-compatible storage.\n- **Independent compute.** Data nodes and indexers scale separately and can\n  rebuild their local caches from durable state.\n- **Safe writer handoff.** Object-store CAS leases select the active writer for\n  each cell, while SlateDB writer epochs fence stale writers.\n- **Consistent reads.** Every query runs against one pinned SlateDB snapshot.\n  Indexed traversal combines a compiled CSC generation with its visible WAL\n  overlay.\n- **Graph-native execution.** The planner uses property indexes, reverse\n  adjacency, sparse traversal, and SuiteSparse GraphBLAS where appropriate.\n- **Familiar clients.** Applications can use Neo4j drivers over Bolt 5.x or the\n  typed JSON and streaming NDJSON HTTP API.\n- **Bounded operation.** Authentication, authorization, deadlines, result\n  limits, backpressure, cancellation, cache budgets, metrics, and traces are\n  part of the server runtime.\n\n## Architecture\n\n```mermaid\nflowchart TB\n    C[\"Applications<br/>Neo4j drivers or HTTPS\"]\n    SVC[\"Service or load balancer\"]\n\n    subgraph Q[\"Data tier — graph-node\"]\n        direction LR\n        subgraph N1[\"graph-node\"]\n            Q1[\"query + mutation engine\"]\n            S1[\"local SSD / NVMe cache\"]\n            Q1 <--> S1\n        end\n        subgraph N2[\"graph-node\"]\n            Q2[\"query + mutation engine\"]\n            S2[\"local SSD / NVMe cache\"]\n            Q2 <--> S2\n        end\n    end\n\n    subgraph I[\"Indexing tier — graph-indexer\"]\n        IX1[\"graph-indexer\"]\n        IXN[\"graph-indexer\"]\n    end\n\n    STORE[\"S3-compatible object storage<br/>WAL, SSTs, leases, CSC generations\"]\n\n    C --> SVC\n    SVC --> N1\n    SVC --> N2\n    N1 <--> STORE\n    N2 <--> STORE\n    IX1 <--> STORE\n    IXN <--> STORE\n```\n\nEach data node owns a private local SSD/NVMe cache; the object store is the shared\nlayer beneath the whole tier and the only durable copy of the graph.\n\nData nodes serve reads and canonical graph mutations. Indexer workers build\nimmutable CSC generations asynchronously and publish them through atomic\nobject-store pointers. Readers remain correct when an index is absent or behind\nbecause the visible WAL tail is applied to the indexed base.\n\nSee [architecture.md](architecture.md) for the storage model, query pipeline,\nwriter coordination, index lifecycle, and failure semantics.\n\n## Getting Started\n\nThere are two ways to bring up a single development node: the published **Docker\nimage**, or a **build from source**. Either way, once the node is listening, use\n[Verify a running node](#verify-a-running-node) to confirm it works — a listening\nport is not proof; a round-tripped write is. TLS is required by default in\ndeployed environments, so the local flows below enable plaintext explicitly.\n\n<details>\n<summary><strong>Run with Docker</strong> — fastest, no local toolchain</summary>\n\nRelease images are published to\n[`ghcr.io/hydra-db/hydradb`](https://github.com/hydra-db/hydradb/pkgs/container/hydradb).\nEach `v*` release is tagged with its full version, compatible minor and major\nversions, the commit SHA, and `latest` (for example `0.1.0`, `0.1`, `0`,\n`latest`, `sha-7bf77ac`):\n\n```bash\ndocker pull ghcr.io/hydra-db/hydradb:latest\n```\n\nImages are published for `linux/amd64` and `linux/arm64`, so Docker selects the\nright one for the host and Apple Silicon needs no extra flags. Releases up to\nand including `0.1.0` were `linux/amd64` only, and pulling one of those on an\nARM host fails with:\n\n```\nno matching manifest for linux/arm64/v8 in the manifest list entries\n```\n\nThat message means the tag predates multi-architecture publishing, not that the\npull is misconfigured. Move to a release after `0.1.0`, or run the older tag\nunder emulation with `--platform linux/amd64` — correct but slower, and it\nrequires Rosetta on Apple Silicon. To see which architectures a tag actually\ncarries before pulling it:\n\n```bash\ndocker buildx imagetools inspect ghcr.io/hydra-db/hydradb:latest\n```\n\nThis starts one plaintext node backed by a host directory mounted into the\ncontainer:\n\n```bash\nmkdir -p hydradb-data/store hydradb-data/cache\nprintf '%s\\n' 'local-development-token-32-bytes' > hydradb-data/auth-token\n\ndocker run --rm \\\n  --user \"$(id -u):$(id -g)\" \\\n  -p 7687:7687 -p 8443:8443 -p 9090:9090 \\\n  -v \"$PWD/hydradb-data:/data\" \\\n  -e CLOUD_PROVIDER=local \\\n  -e LOCAL_PATH=/data/store \\\n  -e GRAPH_NAMESPACE=default \\\n  -e GRAPH_ID=default \\\n  -e GRAPH_CELL_ID=cell-0 \\\n  -e GRAPH_CELLS=cell-0 \\\n  -e GRAPH_NODE_ID=node-0 \\\n  -e GRAPH_BOLT_NODE_ADDRESSES=node-0=127.0.0.1:7687 \\\n  -e GRAPH_ADVERTISED_BOLT_ADDR=127.0.0.1:7687 \\\n  -e GRAPH_DATA_CACHE_DIR=/data/cache \\\n  -e GRAPH_AUTH_TOKEN_FILE=/data/auth-token \\\n  -e GRAPH_ALLOW_PLAINTEXT=true \\\n  -e RUST_MIN_STACK=33554432 \\\n  ghcr.io/hydra-db/hydradb:latest\n```\n\nThe node runs in the foreground. `LOCAL_PATH` must point at a directory that\nalready exists, which is why `hydradb-data/store` is created before the mount.\n`--user \"$(id -u):$(id -g)\"` is required: the image runs as UID/GID `10001`,\nbut the bind-mounted `hydradb-data` is owned by the host user, so without it the\ncontainer cannot write its store or cache and fails on the first storage\noperation. Running as the host user makes the mounted directories writable and\nkeeps the created files host-owned. The image entrypoint is `graph-node`; it\nalso ships `graph-indexer`. For production, pin an image digest rather than\n`latest` — see the [Helm chart guide](charts/hydradb/README.md).\n\n</details>\n\n<details>\n<summary><strong>Build from source</strong> — for development and the full recipe surface</summary>\n\n#### Prerequisites\n\nHydraDB requires Rust 1.91 or newer, a C/C++ toolchain,\n`libcypher-parser`, and SuiteSparse GraphBLAS.\n\nUbuntu or WSL:\n\n```bash\nsudo apt-get update\nsudo apt-get install -y \\\n  build-essential clang libclang-dev cmake pkg-config \\\n  libcypher-parser-dev libgraphblas-dev \\\n  curl git python3 python3-venv\n```\n\nThe last line is not needed to build, but the steps below use it: `curl` for\nthe Rust installer and the readiness checks, `git` to clone, and `python3-venv`\nfor the Neo4j driver used by `scripts/runtime_smoke.sh`.\n\nmacOS with Homebrew:\n\n```bash\nxcode-select --install\nbrew install just cmake pkg-config llvm suite-sparse\nbrew install cleishm/neo4j/libcypher-parser\n\n# Rust, only if `rustup toolchain list` does not already show a stable toolchain:\ncurl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\n```\n\n`libcypher-parser` is not in homebrew-core; the fully-qualified\n`cleishm/neo4j/...` name adds the tap automatically. A plain\n`brew install libcypher-parser` fails with `No available formula`.\n\nRust comes from the official installer rather than Homebrew because the\n`rustup` formula is keg-only and no longer ships a `rustup-init` binary, so\n`brew install rustup` leaves nothing named `rustup` on `PATH`.\n`rust-toolchain.toml` pins `channel = \"stable\"`, so any rustup-managed stable\ntoolchain works.\n\nNo `PKG_CONFIG_PATH` export is needed: `libcypher-parser` is not keg-only, so\nHomebrew links `cypher-parser.pc` into the default `pkg-config` search path.\n\n[`just`](https://github.com/casey/just) is the supported command runner for the\nrepository. Install it with `cargo install just --locked` when your package\nmanager does not provide it. Docker is optional and is used only by MinIO,\nNeo4j comparison, image-build, and Kubernetes harnesses.\n\n#### Clone and verify\n\n```bash\ngit clone https://github.com/hydra-db/hydradb.git\ncd hydradb\n\njust native-check\njust smoke\n```\n\nThe smoke example creates a local graph, writes and deletes edges, runs a sparse\ntraversal, closes the database, reopens it, and verifies the durable result.\nThe recipe creates and removes an isolated local object-store directory. Use\n`just smoke-graphblas` to pin the traversal kernel to SuiteSparse GraphBLAS.\n\nTo exercise the same flow against an ephemeral MinIO instance:\n\n```bash\njust minio-smoke\n```\n\n#### Run a local server\n\nThe following starts a single plaintext development node backed by a local\ndirectory.\n\n```bash\nmkdir -p .hydradb/store .hydradb/cache\nprintf '%s\\n' 'local-development-token-32-bytes' > .hydradb/auth-token\n\nexport CLOUD_PROVIDER=local\nexport LOCAL_PATH=\"$PWD/.hydradb/store\"\nexport GRAPH_NAMESPACE=default\nexport GRAPH_ID=default\nexport GRAPH_CELL_ID=cell-0\nexport GRAPH_CELLS=cell-0\nexport GRAPH_NODE_ID=node-0\nexport GRAPH_BOLT_NODE_ADDRESSES=node-0=127.0.0.1:7687\nexport GRAPH_ADVERTISED_BOLT_ADDR=127.0.0.1:7687\nexport GRAPH_DATA_CACHE_DIR=\"$PWD/.hydradb/cache\"\nexport GRAPH_AUTH_TOKEN_FILE=\"$PWD/.hydradb/auth-token\"\nexport GRAPH_ALLOW_PLAINTEXT=true\n\n# graph-node's async query futures exceed the default thread stack. Without\n# this the node builds, serves /readyz, and then aborts on the first query.\nexport RUST_MIN_STACK=33554432\n\n# macOS: cargo is invoked directly here, so it does not inherit what the\n# justfile exports. Linux installs these on default search paths already.\nif command -v brew >/dev/null; then\n  export BINDGEN_EXTRA_CLANG_ARGS=\"-I$(brew --prefix)/include\"\n  export LIBRARY_PATH=\"$(brew --prefix)/lib\"\nfi\n\ncargo run --locked --features server-runtime --bin graph-node\n```\n\nThe node runs in the foreground and does not return; that is it working, not\nhanging. Confirm it from a second shell with\n[Verify a running node](#verify-a-running-node).\n\nFor a fully scripted Bolt and HTTP round trip against a source build, install the\nPython Neo4j driver and run. Homebrew's and Debian's Python both refuse a bare\n`pip install` under PEP 668, so use a virtualenv (`apt-get install -y\npython3-venv` on Debian/Ubuntu):\n\n```bash\npython3 -m venv /tmp/hydradb-venv && /tmp/hydradb-venv/bin/pip install neo4j\n\n# macOS: this script calls cargo directly, so it does not inherit what the\n# justfile exports. Without this it fails at bindgen with\n# `'cypher-parser.h' file not found`. Linux needs neither.\nif command -v brew >/dev/null; then\n  export BINDGEN_EXTRA_CLANG_ARGS=\"-I$(brew --prefix)/include\"\n  export LIBRARY_PATH=\"$(brew --prefix)/lib\"\nfi\n\nPYTHON=/tmp/hydradb-venv/bin/python bash scripts/runtime_smoke.sh\n```\n\nPrints `runtime-smoke-ok`. The node's log is at\n`/tmp/sgk-runtime-smoke/node.log`; read it first if the script fails.\n\n</details>\n\n### Verify a running node\n\nHowever you started it, the node listens on:\n\n| Endpoint | Address | Purpose |\n|---|---|---|\n| Bolt | `127.0.0.1:7687` | Neo4j-driver-compatible queries |\n| HTTP | `127.0.0.1:8443` | JSON and NDJSON query API |\n| Admin | `127.0.0.1:9090` | readiness and Prometheus metrics |\n\nIn another terminal, write and read ",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# The root stays the `slatedb-graph-kernel` package and merely gains a\n# `[workspace]` table, so every bare `cargo test --features …` in CI, the\n# justfile and scripts/ still resolves to the root package. A virtual manifest\n# would have broken all of them.\n#\n# `exclude` covers the vendored Quint/CosmWasm sample manifests under `docs/`,\n# which are gitignored but present in working trees.\n[workspace]\nmembers = [\"crates/placement\", \"crates/telemetry\"]\nexclude = [\"docs\"]\n\n# One place for every third-party version, so a member cannot drift from the\n# root. Members inherit with `{ workspace = true }`. Two rules worth knowing\n# before editing: `optional` is *not* inheritable and must be repeated at each\n# use site, and features listed here are a floor a member can add to but never\n# subtract from — so what is recorded below is the union across all use sites.\n[workspace.dependencies]\nasync-trait = \"0.1\"\naxum = \"0.8.9\"\naxum-server = { version = \"0.8.0\", default-features = false, features = [\"tls-rustls-no-provider\"] }\nbase64 = \"0.22\"\nboltr = \"0.2.0\"\nbytes = \"1\"\n# `serde` is declared rather than inherited. It does arrive anyway through\n# feature unification with `object_store`, but placement's heartbeat body\n# derives Serialize/Deserialize on a `DateTime<Utc>`, and a dependency that\n# compiles only because something else happens to turn a feature on breaks the\n# day that something else stops.\nchrono = { version = \"0.4\", default-features = false, features = [\"clock\", \"serde\"] }\nfutures = \"0.3\"\nlibcypher-parser-sys = \"0.6.1-1\"\n# The OpenTelemetry set is used only by `crates/telemetry`, behind its\n# off-by-default `otlp` feature, so nothing here reaches the kernel or a bare\n# `cargo test`. They live in this table anyway because the versions are paired,\n# not free: `tracing-opentelemetry` 0.33 is the release that targets\n# `opentelemetry` 0.32, and bumping one without the others silently stops the\n# `OpenTelemetrySpanExt` trait applying to the installed tracer. One table, one\n# bump. `optional` is not inheritable and stays at the use site.\nopentelemetry = \"0.32\"\nopentelemetry-appender-tracing = \"0.32\"\n# `reqwest-blocking-client`, not `reqwest-client`, and it is not a preference.\n# `opentelemetry_sdk`'s batch processors run on their own dedicated OS threads,\n# which are not tokio workers, so the async client panics there with \"there is\n# no reactor running\" and no span or log record ever reaches the collector. The\n# blocking client is what upstream enables by default for this exact reason;\n# the batching already keeps the export off the request path.\n#\n# `metrics` is in the list for the same reason `trace` and `logs` are: with\n# `default-features = false` nothing is on implicitly, and without it\n# `opentelemetry_otlp::MetricExporter` simply does not exist in this build —\n# a missing-type error that reads like a version mismatch and is not one.\n# `PeriodicReader` runs on its own OS thread too, so `reqwest-blocking-client`\n# is load-bearing for the metrics pipeline exactly as it is for the other two.\nopentelemetry-otlp = { version = \"0.32\", default-features = false, features = [\"trace\", \"logs\", \"metrics\", \"http-proto\", \"reqwest-blocking-client\"] }\nopentelemetry-semantic-conventions = \"0.32\"\nopentelemetry_sdk = { version = \"0.32\", features = [\"rt-tokio\"] }\nrcgen = \"0.13\"\nreqwest = { version = \"0.13\", default-features = false, features = [\"json\", \"query\", \"rustls\"] }\nrustls-pemfile = \"2\"\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\nserde_yaml = \"0.9\"\nsha2 = \"0.10\"\nslatedb = { git = \"https://github.com/usecortex/slatedb.git\", rev = \"c501471ea070498931f30611bfd1ad2773c3c367\", default-features = false, features = [\"aws\", \"foyer\"] }\nsubtle = \"2\"\ntempfile = \"3\"\nthiserror = \"2\"\ntokio = { version = \"1\", features = [\"macros\", \"rt-multi-thread\", \"signal\", \"sync\", \"time\"] }\ntokio-rustls = \"0.26\"\ntracing = \"0.1\"\ntracing-opentelemetry = \"0.33\"\ntracing-subscriber = { version = \"0.3\", features = [\"env-filter\", \"fmt\", \"json\"] }\nulid = \"1\"\n\n[package]\nname = \"slatedb-graph-kernel\"\nversion = \"0.1.0\"\nedition = \"2021\"\nrust-version = \"1.91\"\ndescription = \"A SlateDB-backed object-store graph kernel\"\nrepository = \"https://github.com/usecortex/slatedb-graph-kernel\"\nreadme = \"README.md\"\npublish = false\n\n[features]\ndefault = []\nopencypher = [\"dep:libcypher-parser-sys\"]\nchaos-harness = []\njson-properties = [\"dep:serde_json\"]\nquery-transport = [\"opencypher\", \"dep:base64\", \"dep:serde\", \"dep:subtle\", \"json-properties\", \"tokio/io-util\", \"tokio/net\"]\nquery-transport-tls = [\"query-transport\", \"dep:tokio-rustls\"]\nquery-service-discovery = [\"query-transport\", \"dep:reqwest\"]\nclient-api = [\"query-transport\"]\nbolt-server = [\"client-api\", \"query-transport-tls\", \"dep:boltr\"]\nhttp-api = [\"client-api\", \"query-transport-tls\", \"dep:axum\", \"dep:axum-server\"]\npublic-client-protocols = [\"bolt-server\", \"http-api\"]\nserver-runtime = [\n    \"public-client-protocols\",\n    \"query-service-discovery\",\n    \"dep:rustls-pemfile\",\n    \"dep:tracing-subscriber\",\n  ",
+    "strategic_keywords": [
+      "memory",
+      "rag",
+      "runtime",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "图数据库",
+      "对象存储",
+      "图查询"
+    ],
+    "brief_zh": {
+      "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
+      "capabilities": "图数据库、对象存储、图查询",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/hydra-db/hydradb"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "dream-num",
+    "name": "univer",
+    "full_name": "dream-num/univer",
+    "url": "https://github.com/dream-num/univer",
+    "description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+    "language": "TypeScript",
+    "total_stars": 19162,
+    "forks": 1632,
+    "stars_this_period": 845,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "board",
+        "collaboration",
+        "data-table",
+        "doc",
+        "docx",
+        "excel",
+        "grid",
+        "pdf",
+        "ppt",
+        "pptx",
+        "presentation",
+        "sdk",
+        "sheet",
+        "slides",
+        "spreadsheet",
+        "table",
+        "word",
+        "wordprocessor",
+        "xlsx"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 148,
+      "created_at": "2022-09-29T12:09:14Z",
+      "pushed_at": "2026-09-24T14:02:42Z",
+      "homepage": "https://docs.univer.ai",
+      "default_branch": "dev",
+      "forks": 1632,
+      "watchers": 270,
+      "archived": false,
+      "size_kb": 174026
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./docs/img/banner.png\" alt=\"Univer SDK\" width=\"800\" />\n\n**The Office Harness for AI Agents**\n\nSpreadsheets · Documents · Presentations · Bases · Boards · PDFs (coming soon)\n\nHigh-performance, fully customizable Office SDK\n\nBuild embeddable productivity experiences with a plugin architecture, Canvas-based rendering,\na formula engine, and one Facade API that works in the browser and on Node.js.\n\nEnglish | [简体中文](./docs/readme/zh-CN.md) | [繁體中文](./docs/readme/zh-TW.md) | [日本語](./docs/readme/ja-JP.md) | [한국어](./docs/readme/ko-KR.md) | [Español](./docs/readme/es-ES.md)\n\n[🌐 Website](https://univer.ai/) | [📖 Documentation](https://docs.univer.ai) | [✨ Showcase](https://docs.univer.ai/showcase) | [📘 API Reference](https://docs.univer.ai/reference/classes/univer) | [📝 Blog](https://docs.univer.ai/blog)\n\n[![Release](https://img.shields.io/github/v/release/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/releases)\n[![License](https://img.shields.io/github/license/dream-num/univer?style=flat-square)](./LICENSE)\n[![Build](https://img.shields.io/github/actions/workflow/status/dream-num/univer/build-packages.yml?style=flat-square)](https://github.com/dream-num/univer/actions/workflows/build-packages.yml)\n[![CodeFactor](https://www.codefactor.io/repository/github/dream-num/univer/badge/dev?style=flat-square)](https://www.codefactor.io/repository/github/dream-num/univer/overview/dev)\n[![Codecov](https://img.shields.io/codecov/c/gh/dream-num/univer?token=aPfyW2pIMN&style=flat-square)](https://codecov.io/gh/dream-num/univer)\n\n[![Stars](https://img.shields.io/github/stars/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/stargazers)\n[![Contributors](https://img.shields.io/github/contributors/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/graphs/contributors)\n[![Issues](https://img.shields.io/github/issues/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/issues)\n[![Last Commit](https://img.shields.io/github/last-commit/dream-num/univer?style=flat-square)](https://github.com/dream-num/univer/commits/dev/)\n\n[![Discord](https://img.shields.io/discord/1136129819961217077?logo=discord&logoColor=FFFFFF&label=discord&color=5865F2&style=flat-square)](https://discord.gg/z3NKNT6D2f)\n[![Twitter](https://img.shields.io/twitter/follow/univerhq?style=flat-square&logo=x)](https://twitter.com/univerhq)\n[![Open Collective](https://img.shields.io/opencollective/all/univer?logo=opencollective&style=flat-square)](https://opencollective.com/univer)\n\n[![Trendshift](https://trendshift.io/api/badge/repositories/4376)](https://trendshift.io/repositories/4376)\n\n</div>\n\n## ✨ What is Univer?\n\nUniver is an open-source SDK for creating office applications inside your own product. It gives you the building blocks for spreadsheet, document, and presentation experiences without forcing you into a hosted app or a fixed UI.\n\nUse Univer when you need to:\n\n- Embed spreadsheet or document editing into a SaaS product, internal tool, BI workflow, or AI application.\n- Run workbook/document processing on the server with the same architecture used in the browser.\n- Compose only the features you need through plugins or start quickly with presets.\n- Extend behavior through custom plugins, commands, services, UI components, and Facade APIs.\n\nUniver is not a spreadsheet file viewer only. It is a framework for building your own productivity surface.\n\nAcross the [Univer product family](https://univer.ai/), Office tools share a runtime for storage and computation. Content can be composed and embedded across tools, with linked data and references updating together. People and AI agents can work in the same files. See the [capability matrix](https://univer.ai/capabilities) for product coverage and [Open Source and Pro](#-open-source-and-pro) for this repository's scope.\n\n### Build a collaborative tool with Univer Office SDK\n\n[![Build a collaborative tool with Univer Office SDK](https://i.ytimg.com/vi/1p-SMEiK6Kg/maxresdefault.jpg)](https://www.youtube.com/watch?v=1p-SMEiK6Kg)\n\n[Watch the demo](https://www.youtube.com/watch?v=1p-SMEiK6Kg)\n\n## Built with Univer Office SDK\n\n### Featured example: Univer Workspace\n\n[Univer Workspace](https://github.com/dream-num/univer-workspace) is an open-source, self-hostable workspace built on Univer Office SDK, where people and AI agents create, collaborate on, and review Office content. Developers can use the complete implementation as a reference, learn how to integrate the SDK, and build their own products.\n\n[![A Workspace mini-app beside its linked spreadsheet, with metrics, charts, and controls bound to cells](./docs/img/workspace-mini-app.png)](https://github.com/dream-num/univer-workspace)\n\n- Agents can generate spreadsheet-based mini-apps, such as decision-making dashboards, interactive reports, and business dashboards.\n- Metrics, charts, and controls on the web page are bound to cells, supporting data reads, writes, and collaborative updates.\n\n[Explore Univer Workspace](https://github.com/dream-num/univer-workspace)\n\n### Other examples\n\nThese open-source projects are built with Univer Office SDK:\n\n| Project | Description |\n| --- | --- |\n| [Univer Office for DeepSeek Harness](https://github.com/dream-num/dsh-univer-office) | An Office plugin for DeepSeek Harness with connected content, validation, and isolated worktrees for agent collaboration. |\n| [Univer CLI](https://github.com/dream-num/univer-cli) | A local command-line workspace for agents to create, edit, inspect, and deliver Office content. |\n| [Univer Office for WorkBuddy](https://github.com/dream-num/workbuddy-univer-office) | A local Office integration for WorkBuddy with MCP previews and draft review. Development preview. |\n| [Univer Office for OpenClaw](https://github.com/dream-num/openclaw-univer-office) | Tools for creating, reviewing, and delivering Office content in OpenClaw. |\n\nEach project documents its own setup and SDK licensing requirements.\n\n## 🌟 Highlights\n\n<table>\n  <tr>\n    <td align=\"center\" width=\"33%\">\n      ⚡<br />\n      <strong>Built for large surfaces</strong><br />\n      <sub>Canvas-based rendering and a dedicated formula engine keep complex workbooks responsive.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🧩<br />\n      <strong>Plugin-shaped by default</strong><br />\n      <sub>Compose, replace, lazy-load, or extend capabilities without taking the whole stack.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🤖<br />\n      <strong>Headless for AI infrastructure</strong><br />\n      <sub>Run workbook and document logic in Node.js to power agents, automation, and server-side workflows.</sub>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"33%\">\n      🛠️<br />\n      <strong>Product-ready SDK</strong><br />\n      <sub>Framework adapters, Facade APIs, presets, and headless runtime fit real integration paths.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🌗<br />\n      <strong>Dark-mode ready</strong><br />\n      <sub>UI components and the rendering engine both adapt to light and dark themes.</sub>\n    </td>\n    <td align=\"center\" width=\"33%\">\n      🔌<br />\n      <strong>Unified Facade API</strong><br />\n      <sub>One consistent API surface for workbooks, ranges, formulas, and documents across browser and Node.js.</sub>\n    </td>\n  </tr>\n</table>\n\n## 🚀 Why Univer?\n\n- **Isomorphic by design**: run UI apps in browsers and headless processing in Node.js.\n- **Plugin-first architecture**: every capability is delivered as a composable plugin, so features can be added, removed, replaced, or lazy-loaded.\n- **Preset mode for fast integration**: use the curated plugin collections in [`presets/`](./presets) when you want a working app quickly.\n- **Plugin mode for full control**: manually compose packages when you need custom loading, smaller bundles, or deep integration.\n- **Facade API**: work with workbooks, worksheets, ranges, documents, formulas, commands, and events through a higher-level API.\n- **Canvas rendering engine**: support large editable document surfaces with a rendering layer shared across document types.\n- **Extensible UI**: integrate with React, Vue, Web Components, and framework-specific application shells.\n\n## 🤖 Office Workflows for AI Agents\n\nUniver's AI and collaboration capabilities connect agent operations with interactive editing and human review:\n\n- **Programmatic editing**: agents inspect and modify Office content through structured APIs.\n- **Output verification**: agents check results through content inspection, rendered screenshots, and layout diagnostics.\n- **Worktree collaboration**: agents work in isolated drafts, then people review their changes and decide what to merge.\n\nSee the [AI SDK documentation](https://docs.univer.ai/ai) for integration details. Live editing, shared revisions, and Worktree workflows require the corresponding Web SDK and collaboration capabilities; package availability and licensing vary by feature.\n\n## ⚡ Quick Start\n\nUse **Plugin Mode** for complete product coverage and precise composition. For supported Sheets, Docs, and Node profiles, **Preset Mode** provides a shorter curated setup.\n\n<details open>\n<summary><strong>Plugin Mode</strong></summary>\n\nPlugin Mode gives you lower-level control over packages, style imports, locale merging, Facade API registration, and plugin configuration.\n\n```bash\npnpm add @univerjs/core @univerjs/design @univerjs/docs @univerjs/docs-ui @univerjs/engine-formula @univerjs/engine-render @univerjs/sheets @univerjs/sheets-formula @univerjs/sheets-formula-ui @univerjs/sheets-numfmt @univerjs/sheets-numfmt-ui @univerjs/sheets-ui @univerjs/ui\n```\n\n```ts\nimport { LocaleType, mergeLocales, Univer } from '@univerjs/core'\nimport { FUniver } from '@univerjs/core/facade'\nimport DesignEnUS from '@univerjs/design/locale/en-US'\nimport { UniverDocsPlugin } from '@univerjs/docs'\nimport { UniverDocsUIPlugin } from '@univerjs/docs-ui'\nimport DocsUIEnUS from '@univerjs/docs-ui/locale/en-US'\nimport { UniverFormulaEnginePlugin } from '@univerjs/engine-formula'\nimport { UniverRenderEnginePlugin } from '@univerjs/engine-render'\nimport { UniverSheetsPlugin } from '@univerjs/sheets'\nimport SheetsEnUS from '@univerjs/sheets/locale/en-US'\nimport { UniverSheetsFormulaPlugin } from '@univerjs/sheets-formula'\nimport SheetsFormulaEnUS from '@univerjs/sheets-formula/locale/en-US'\nimport { UniverSheetsFormulaUIPlugin } from '@univerjs/sheets-formula-ui'\nimport SheetsFormulaUIEnUS from '@univerjs/sheets-formula-ui/locale/en-US'\nimport { UniverSheetsNumfmtPlugin } from '@univerjs/sheets-numfmt'\nimport { UniverSheetsNumfmtUIPlugin } from '@univerjs/sheets-numfmt-ui'\nimport SheetsNumfmtUIEnUS from '@univerjs/sheets-numfmt-ui/locale/en-US'\nimport { UniverSheetsUIPlugin } from '@univerjs/sheets-ui'\nimport SheetsUIEnUS from '@univerjs/sheets-ui/locale/en-US'\nimport { UniverUIPlugin } from '@univerjs/ui'\nimport UIEnUS from '@univerjs/ui/locale/en-US'\n\nimport '@univerjs/design/lib/index.css'\nimport '@univerjs/ui/lib/index.css'\nimport '@univerjs/docs-ui/lib/index.css'\nimport '@univerjs/sheets-ui/lib/index.css'\nimport '@univerjs/sheets-formula-ui/lib/index.css'\nimport '@univerjs/sheets-numfmt-ui/lib/index.css'\n\nimport '@univerjs/engine-formula/facade'\nimport '@univerjs/ui/facade'\nimport '@univerjs/sheets/facade'\nimport '@univerjs/sheets-ui/facade'\nimport '@univerjs/sheets-formula/facade'\nimport '@univerjs/sheets-numfmt/facade'\n\nconst univer = new Univer({\n  locale: LocaleType.EN_US,\n  locales: {\n    [LocaleType.EN_US]: mergeLocales(\n      DesignEnUS,\n      UIEnUS,\n      DocsUIEnUS,\n      SheetsEnUS,\n      SheetsUIEnUS,\n      SheetsFormulaEnUS,\n      SheetsFormulaUIEnUS,\n      SheetsNumfmtUIEnUS,\n    ),\n  },\n})\n\nuniver.registerPlugin(UniverRenderEnginePlugin)\nuniver.registerPlugin(UniverFormulaEnginePlugin)\nuniver.registerPlugin(UniverUIPlugin, { container: 'app' })\nuniver.registerPlugin(UniverDocsPlugin)\nuniver.registerPlugin(Un",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n    \"name\": \"univer\",\n    \"type\": \"module\",\n    \"version\": \"1.0.2\",\n    \"private\": true,\n    \"packageManager\": \"pnpm@12.5.1\",\n    \"author\": \"DreamNum Co., Ltd. <developer@univer.ai>\",\n    \"license\": \"Apache-2.0\",\n    \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/univer\"\n    },\n    \"homepage\": \"https://univer.ai\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/dream-num/univer\"\n    },\n    \"bugs\": {\n        \"url\": \"https://github.com/dream-num/univer/issues\"\n    },\n    \"devEngines\": {\n        \"runtime\": {\n            \"name\": \"node\",\n            \"version\": \">=22.18\"\n        }\n    },\n    \"scripts\": {\n        \"prepare\": \"husky\",\n        \"pre-commit\": \"lint-staged\",\n        \"dev\": \"pnpm --filter univer-examples dev\",\n        \"dev:umd\": \"serve .\",\n        \"typecheck\": \"turbo typecheck\",\n        \"serve:umd\": \"serve .\",\n        \"test\": \"turbo test -- --passWithNoTests\",\n        \"coverage\": \"turbo --concurrency 50% coverage -- --passWithNoTests \",\n        \"analyze:build\": \"node --experimental-strip-types ./scripts/build-analysis.mts\",\n        \"build\": \"pnpm run build:plugins && pnpm run build:presets\",\n        \"build:ci\": \"pnpm run build\",\n        \"build:plugins\": \"turbo build --filter '!./common/*' --filter '!./presets/**'\",\n        \"build:presets\": \"turbo build --filter './presets/**...' --filter '!./presets/**' && turbo build --filter './presets/**'\",\n        \"lint\": \"eslint .\",\n        \"storybook:dev\": \"pnpm --filter @univerjs/storybook dev:storybook\",\n        \"storybook:build\": \"pnpm --filter @univerjs/storybook build:storybook\",\n        \"release\": \"verso\"\n    },\n    \"devDependencies\": {\n        \"@amamo/verso\": \"1.2.0\",\n        \"@antfu/eslint-config\": \"^9.2.0\",\n        \"@commitlint/cli\": \"^21.2.2\",\n        \"@commitlint/config-conventional\": \"^21.2.2\",\n        \"@eslint-react/eslint-plugin\": \"^5.18.1\",\n        \"@eslint/compat\": \"^2.1.0\",\n        \"@types/node\": \"^26.1.2\",\n        \"@types/react\": \"19.3.0\",\n        \"@types/react-dom\": \"19.3.0\",\n        \"@univerjs-infra/shared\": \"workspace:*\",\n        \"@univerjs/design\": \"workspace:*\",\n        \"eslint\": \"^10.8.0\",\n        \"eslint-plugin-format\": \"^2.0.1\",\n        \"eslint-plugin-react\": \"^7.37.5\",\n        \"eslint-plugin-react-hooks\": \"^7.1.1\",\n        \"eslint-plugin-react-refresh\": \"^0.5.3\",\n        \"husky\": \"^9.1.7\",\n        \"lint-staged\": \"^17.5.1\",\n        \"react\": \"19.3.0\",\n        \"react-dom\": \"19.3.0\",\n        \"serve\": \"^14.2.6\",\n        \"tailwindcss\": \"3.4.18\",\n        \"turbo\": \"^2.10.12\",\n        \"typescript\": \"^6.0.3\",\n        \"vitest\": \"^5.0.0\"\n    },\n    \"lint-staged\": {\n        \"*\": \"eslint --fix\"\n    }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "办公文档",
+      "电子表格",
+      "统一操作接口"
+    ],
+    "brief_zh": {
+      "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
+      "capabilities": "办公文档、电子表格、统一操作接口",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/dream-num/univer"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rohitg00",
+    "name": "ai-engineering-from-scratch",
+    "full_name": "rohitg00/ai-engineering-from-scratch",
+    "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "description": "Learn it. Build it. Ship it for others.",
+    "language": "Python",
+    "total_stars": 58309,
+    "forks": 10113,
+    "stars_this_period": 828,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "nlp",
+        "python",
+        "reinforcement-learning",
+        "rust",
+        "swarm-intelligence",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 47,
+      "created_at": "2026-03-18T18:38:02Z",
+      "pushed_at": "2026-09-26T08:12:38Z",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "default_branch": "main",
+      "forks": 10113,
+      "watchers": 370,
+      "archived": false,
+      "size_kb": 44381
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/banner.svg\" alt=\"AI Engineering from Scratch — reference manual banner\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <b>Read in your language:</b>\n  <a href=\"i18n/es/README.md\">Español</a> ·\n  <a href=\"i18n/fr/README.md\">Français</a> ·\n  <a href=\"i18n/pt/README.md\">Português</a> ·\n  <a href=\"i18n/de/README.md\">Deutsch</a> ·\n  <a href=\"i18n/it/README.md\">Italiano</a> ·\n  <a href=\"i18n/zh/README.md\">简体中文</a> ·\n  <a href=\"i18n/ja/README.md\">日本語</a> ·\n  <a href=\"i18n/ko/README.md\">한국어</a> ·\n  <a href=\"i18n/hi/README.md\">हिन्दी</a> ·\n  <a href=\"i18n/ar/README.md\">العربية</a> ·\n  <a href=\"i18n/ru/README.md\">Русский</a> ·\n  <a href=\"i18n/tr/README.md\">Türkçe</a>\n  <br><sub>Translated landing pages, committed to the repo. English is canonical; lesson pages are machine-translated on the <code>translations</code> branch. See <a href=\"docs/i18n.md\">docs/i18n.md</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-523-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"523 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n## From the creator of [Agent Memory - #1 Persistent memory ⭐](https://github.com/rohitg00/agentmemory) <a href=\"https://github.com/rohitg00/agentmemory/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a> which naturally works with any agents or chat assistants.\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n> **84% of students already use AI tools. Only 18% feel prepared to use them\n> professionally.** This curriculum closes that gap.\n>\n> 523 lessons. 20 phases. ~342 hours. Python, TypeScript, Rust, Julia. Every lesson ships\n> a reusable artifact: a prompt, a skill, an agent, an MCP server. Free, open source, MIT.\n>\n> You don't just learn AI. You build it. End-to-end. By hand.\n\n<!-- STATS:START (generated from site/stats.json by build.js — do not edit by hand) -->\n<p align=\"center\"><sub><b>114,584</b> readers &nbsp;·&nbsp; <b>181,995</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-08-29</sub></p>\n<!-- STATS:END -->\n\n## Start here: choose what you want to build\n\nYou do not need to scan 523 lessons before beginning. Pick one goal. Each link\nopens the same curriculum on GitHub or the website, and both versions use the\nsame lesson code.\n\n| Your goal | Learn on GitHub | Learn on the website |\n|---|---|---|\n| I am new and want the complete foundation | [Phase 0: Setup and Tooling](phases/00-setup-and-tooling/) | [Dev Environment](https://aiengineeringfromscratch.com/lesson?path=phases/00-setup-and-tooling/01-dev-environment) |\n| I know Python and want math plus ML foundations | [Phase 1: Math Foundations](phases/01-math-foundations/) | [Linear Algebra Intuition](https://aiengineeringfromscratch.com/lesson?path=phases/01-math-foundations/01-linear-algebra-intuition) |\n| I want to build production LLM applications | [Phase 11: LLM Engineering](phases/11-llm-engineering/) | [Prompt Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/11-llm-engineering/01-prompt-engineering) |\n| I want to build agents | [Phase 14: Agent Engineering](phases/14-agent-engineering/) | [The Agent Loop](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/01-the-agent-loop) |\n| I want to use coding agents on real repositories | [Agent-Assisted Engineering path](learning-paths/using-coding-agents.json) | [Agent-Assisted Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/31-agent-workbench-why-models-fail&learningPath=using-coding-agents) |\n| I want to shape the right build before implementation | [Product Judgment and Delivery path](learning-paths/shaping-the-build.json) | [Product Judgment and Delivery](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/47-outcomes-before-output&learningPath=shaping-the-build) |\n| I want to build with Model Context Protocol (MCP) | [Model Context Protocol (MCP) route](phases/13-tools-and-protocols/README.md#model-context-protocol-mcp-path) | [Model Context Protocol (MCP) path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/06-mcp-fundamentals&learningPath=model-context-protocol) |\n| I want to write and ship Agent Skills | [Focused Agent Skills route](phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |\n| I want to prepare for a Claude certification | [Certification onboarding](certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |\n| I want to prepare for the MCP Associate (MCPA) | [MCPA onboarding](certifications/mcpa/GETTING_STARTED.md) | [MCPA track](https://aiengineeringfromscratch.com/certification?id=mcpa-f) |\n\nNot sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md)\nor the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).\n\nCompare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).\n\n### Sponsors\n\n<a href=\"https://serpapi.com/ai-engineering-from-scratch\">\n  <img align=\"left\" src=\"assets/sponsors/serpapi-banner.png\" alt=\"SerpApi. Web Search API for your AI apps. Available in Markdown and JSON for any integration.\" width=\"600\">\n</a>\n\n<p><br><b>Thank you to our sponsors.</b></p>\n<p>Your support keeps every lesson free and open source.</p>\n<p>\n  <a href=\"#supporters\">See all supporters</a><br>\n  <a href=\"SPONSORS.md\">Become a sponsor</a>\n  <br clear=\"all\">\n</p>\n\n### Use every lesson the same way\n\n1. **Read** `docs/en.md` and explain the core idea in your own words.\n2. **Type and build** the important code instead of treating the code block as decoration.\n3. **Run** the lesson command from the repository root, the directory containing `README.md` and `phases/`.\n4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.\n5. **Continue** only when you can explain the output and make one small change without guessing.\n\nCommands in lesson pages are paths from the repository root unless the lesson\nexplicitly says to change directories. If a lesson offers several languages,\nrun the implementation for the language you are learning.\n\n### Clone it and produce your first evidence\n\n```bash\ngit clone https://github.com/rohitg00/ai-engineering-from-scratch.git\ncd ai-engineering-from-scratch\npython3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner\npython3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py\n```\n\nThe preflight separates requirements needed now from tools needed later. Every\nrequired failure includes the detected reason and a corrective command. The\nsecond command is a dependency-free lesson and ends by showing that a matrix\ntimes a vector is the operation inside a neural network layer. Save that\nterminal output as your first evidence.\n\n## Add the AI tutor in 30 seconds\n\nIf Node.js, `npx`, and a skill-capable coding agent are already installed,\nyour coding agent can become your tutor in two commands. A repository clone is\nnot needed to install or read the tutor. Runnable focused-path labs need\n`python3`. Agent Skills host labs also need a selected host and a writable\nuser or project skill scope.\n\nCheck the local requirements first:\n\n```bash\nnode --version\nnpx --version\npython3 --version\n```\n\nThen install the curriculum skills and choose the host and scope you intend to\nuse when the installer asks:\n\n```bash\nnpx skills add rohitg00/ai-engineering-from-scratch\n```\n\nInvocation syntax belongs to the host, not to the portable `SKILL.md` format:\n\n| Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |\n|---|---|---|---|---|\n| Codex | `start-learning`, or choose it from `/skills` | `learn-mcp`, or choose it from `/skills` | `learn-agent-skills`, or choose it from `/skills` | `check-understanding 13`, or choose it from `/skills` |\n| Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |\n| Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |\n\nA ten-question placement quiz maps what you already know to a starting phase and\nsaves a personalized study plan to `LEARNING.md`. From there, the `learn` skill\nteaches one lesson per session: concept, math, code, quiz. It streams lessons\nstraight from this repo, and the `course-guide` skill jumps you to the exact\nlesson that covers anything you are stuck on. In Codex, invoke these skills with\n`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;\nin other compatible hosts, ask to use the skill by name.\n\nOnly want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates\n`MCP-LEARNING.md` and follows one 17-lesson route through stateless\nrequests, transports, bidirectional work, security, reliability, registry\ngovernance, and conformance evidence. The exact order and checkpoints live in\nthe [Model Context Protocol (MCP) manifest](learning-paths/model-context-protocol.json).\n\nOnly want Agent Skills? Use the Agent Skills invocation for your host. It\ncreates `AGENT-SKILLS-LEARNING.md` and follows one coherent five-lesson route:\ncontract, discovery, invocation, sandbox boundaries, then release evals and\nreal-host portability. Start on the web with the\n[Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills).\n\nThe installer lists the hosts it can configure and asks where to install. If\nyou do not have Node.js, `npx`, `python3`, a supported host, or a writable\nscope yet, use the website or read `docs/en.md` manually. That path teaches the\nconcepts, but real-host discovery, invocation, script, and uninstall evidence\nremains pending until the preflight is available. Read the lessons at\n[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com).\n\n## How this works\n\nMost AI material teaches in scattered pieces. A paper here, a fine-tuning post there, a\nflashy agent demo somewhere else. The pieces rarely line up. You ship a chatbot but can't\nexplain its loss curve. You hook a function to an agent but can't say what attention does\ninside the model that's calling it.\n\nThis curriculum is the spine. 20 phases, 523 lessons, four languages: Python, TypeScript,\nRust, Julia. Linear algebra at one end, autonomous swarms at the other. Every algorithm\ngets built from raw math first. Backprop. Tokenizer. Attention. Agent loop. By the time\nPyTorch shows up, you already know what it's doing under the hood.\n\nEach lesson runs the same loop: read the problem, derive the math, write the code, run\nthe test, keep the artifact. No five-minute videos, no copy-paste deploys, no hand-holdi",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "numpy>=1.24\nmatplotlib>=3.7\njupyter>=1.0\ntorch>=2.0\ntorchvision>=0.15\ntorchaudio>=2.0\ntransformers>=4.30\ndatasets>=2.14\ntokenizers>=0.13\naccelerate>=0.20\nscikit-learn>=1.3\npandas>=2.0\npillow>=10.0\nlibrosa>=0.10\nsoundfile>=0.12\ntiktoken>=0.5\nanthropic>=0.25\nopenai>=1.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/rohitg00/ai-engineering-from-scratch"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "block",
+    "name": "buzz",
+    "full_name": "block/buzz",
+    "url": "https://github.com/block/buzz",
+    "description": "A hive mind communication platform",
+    "language": "Rust",
+    "total_stars": 34807,
+    "forks": 4595,
+    "stars_this_period": 367,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 3662,
+      "created_at": "2026-03-06T21:00:56Z",
+      "pushed_at": "2026-09-26T16:10:35Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 4595,
+      "watchers": 157,
+      "archived": false,
+      "size_kb": 582937
+    },
+    "readme_content": "<h1 align=\"center\">Buzz 🐝</h1>\n\n<p align=\"center\">\n  <strong>A workspace where humans and agents build together, on a relay you own.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"VISION.md\">Vision</a> ·\n  <a href=\"VISION_SOVEREIGN.md\">Sovereign</a> ·\n  <a href=\"VISION_PROJECTS.md\">Forge</a> ·\n  <a href=\"VISION_AGENT.md\">Agents</a> ·\n  <a href=\"ARCHITECTURE.md\">Architecture</a> ·\n  <a href=\"RELEASING.md\">Releasing</a> ·\n  <a href=\"LICENSE\">Apache 2.0</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/assets/screenshots/channel-thread.png\" alt=\"A Buzz project channel where people and an agent coordinate on a release plan\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <sub><em>People and agents building together in the same room.</em></sub>\n</p>\n\n---\n\n## What is this, really?\n\nBuzz is a self-hostable workspace where humans and AI agents share the same rooms.\n\nA Buzz **community** is the workspace a user reaches by URL. In the single-relay\nsetup that ships today, the relay URL selects exactly one community. A hosted\noperator can serve many communities behind many domains or subdomains, but the\nclient-facing rule stays the same: the URL is authoritative for the workspace,\nand all tenant-observable state under that URL is community-local.\n\nIt's a Nostr relay: every message, reaction, workflow step, review approval, and git event is a signed event in one log. Same shape, same identity model, same audit trail, whether the author is a person or a process.\n\nIn practice it feels like a team workspace. Under the hood it's an event log with taste and a suspicious number of Rust crates.\n\nYes, it's another AI-adjacent developer tool. We're sorry. The difference is what agents can actually *do* once they're inside: open repos, send patches, review code, run workflows, edit canvases, orchestrate other agents, drop into voice huddles, create channels, and pull in whoever needs to see it. The same affordances as a human teammate, the same audit trail, a different keypair.\n\n---\n\n## Stuff you do in Buzz\n\n- **Ask the project a question and get an answer with receipts.** Agents search six months of history and post the threads, not vibes.\n- **Let an agent triage a bug without giving it the keys to the kingdom.** Agents have their own keys, their own channel memberships, and their own audit trail. Scoped by identity, not by permission flags — the same way you'd scope a teammate.\n- **Turn a feature branch into a room** where patches, CI, review, and the merge decision live together — so the channel becomes the record of why the code exists.\n- **Search the conversation, the patch, the workflow run, and the approval in one place** — because they're all the same kind of event.\n- **Let an agent run the workspace, not just talk in it.** Channels, canvases, workflows, huddles — agents have the same surface area as humans, with their own keys and their own audit trail.\n\n---\n\n## A look inside\n\n<table>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/channel-agents.png\" alt=\"People and agents collaborating in a Buzz engineering channel and reacting with emoji\" width=\"100%\"><br>\n      <sub><strong>Agents are members, not bots.</strong> Add an agent to a channel the same way you add a person.</sub>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/create-channel.png\" alt=\"The Add a channel dialog with search, filters, and channels to join or create\" width=\"100%\"><br>\n      <sub><strong>Spin up a room in seconds.</strong> Name it, describe it, make it private.</sub>\n    </td>\n  </tr>\n  <tr>\n    <td colspan=\"2\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/media-comments.png\" alt=\"A video playing in Buzz with frame-anchored comments in a side panel\" width=\"100%\"><br>\n      <sub><strong>Media you can talk about.</strong> Leave comments pinned to specific frames.</sub>\n    </td>\n  </tr>\n</table>\n\n---\n\n## Why Buzz is better\n\nOne community. One identity model. One event log. Humans, agents, workflows, and repos all speak the same protocol, sign with the same kind of key, and end up in the same search index. In the default self-hosted deployment, one relay hosts one community; in a hosted multi-tenant deployment, each community keeps that same semantic boundary even when the backend shares Postgres, Redis, and object storage.\n\nThe bet is that one community can do what teams currently fake with chat, forges, bots, CI dashboards, release tools, search indexes, and a pile of glue code. Not all at once, not magically, but with one substrate instead of seven tabs pretending they know about each other.\n\nAgents are part of the room, not haunted cron jobs.\n\n---\n\n## Three little stories\n\n**Incident memory.** It's 2am. You type *\"have we seen this error before?\"* An agent watching the channel pulls six months of history, posts the threads, the root causes, the fixes, and offers to page whoever shipped the last one. The whole exchange — question, answer, evidence — stays in the channel.\n\n**Branch as room.** You open a feature branch. A channel appears. Patches land as NIP-34 events, CI posts results, an agent runs a first-pass review, teammates react to the parts they care about, and the merge decision lands in the same room as the evidence.\n\n**A release that writes itself.** A workflow fires on a tag. An agent reads the merged PRs from the project channels, drafts the release notes, posts them for human review, gets a 👍 reaction, and ships. Every step signed. Every step searchable.\n\n---\n\n## Works today · Being wired up · Strong opinions, pending code\n\n| ✅ Works today | 🚧 Being wired up | 💭 Strong opinions, pending code |\n|---|---|---|\n| Relay, channels, threads, DMs, canvases, media, search, audit log | Mobile clients (iOS + Android, Flutter) | Web-of-trust reputation across relays |\n| Desktop app (Tauri + React) | Workflow approval gates (infra exists, glue still drying) | Push notifications |\n| `buzz-cli` (agent-first, JSON in / JSON out) + ACP harness (Goose, Codex, Claude Code) | Huddle lifecycle events | Culture features |\n| YAML workflows: message / reaction / schedule / webhook triggers | | |\n| Git events (NIP-34: patches, repo announcements, status) | | |\n| Git hosting backend | | |\n\n<sub>Please do not plan your compliance program around the 💭 column yet. The <a href=\"VISION.md\">VISION docs</a> are the long version of what we think this becomes.</sub>\n\n---\n\n## Getting started\n\nNew to Buzz? Pick the path that matches you.\n\n### I just want to try the app\n\nGrab a packaged build from the [latest release](https://github.com/block/buzz/releases/latest):\n\n| Platform | File |\n|---|---|\n| macOS (Apple Silicon) | `Buzz_<version>_aarch64.dmg` |\n| macOS (Intel) | `Buzz_<version>_x64.dmg` |\n| Linux (x86_64) | `Buzz_<version>_amd64.AppImage` or `Buzz_<version>_amd64.deb` |\n| Windows (x64) | `Buzz_<version>_x64-setup_alpha-unsigned.exe` |\n\nOn a Mac, check the Apple menu > About This Mac: \"Chip: Apple …\" means Apple Silicon; \"Processor: Intel …\" means Intel.\n\nThe Windows build is not code-signed, so SmartScreen may show \"Windows protected your PC\" on first launch. If available, click **More info**, then **Run anyway**.\n\n\nBy default the app connects to `ws://localhost:3000`. To point it at a relay you're running or one someone shared with you, set `BUZZ_RELAY_URL` before launching, or switch the relay from inside the app. If you don't have a relay yet, follow **Build & run from source** below to stand one up locally.\n\n### I want my own hosted relay\n\nTo run a relay for your team without managing servers, you can deploy one to Railway in a click:\n\n[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/buzz-relay-block)\n\nSee [here](https://engineering.block.xyz/blog/run-your-own-buzz-relay) for details.\n\n### I work at Block\n\nDon't build from source, and don't use the OSS release — use the internal build. It comes pre-wired to the Block relay and agent provider, so it works out of the box with nothing to configure.\n\nDownload the latest build from [`squareup/buzz-releases` releases](https://github.com/squareup/buzz-releases/releases/latest) and install it.\n\n### I want to build & run from source\n\nSee **Quick start** below — this is the developer / self-host path.\n\n---\n\n## Quick start\n\nYou'll need [Docker](https://docs.docker.com/get-docker/) and [Hermit](https://cashapp.github.io/hermit/) (or Rust 1.88+, Node 24+, pnpm 10+, `just`).\n\n**Once:**\n```bash\ngit clone https://github.com/block/buzz.git && cd buzz\n. ./bin/activate-hermit   # pinned toolchain (tools auto-download on first use)\njust setup && just build\n```\n\n`just setup` runs `just bootstrap` automatically — it copies `.env.example` to `.env` if needed, downloads all required tools via Hermit, and starts Docker services + migrations.\n\n**Every day:**\n```bash\n. ./bin/activate-hermit\njust dev   # starts the relay + desktop app together\n```\n\nRelay on `ws://localhost:3000`. Desktop app pops up. You're in.\n\nFor a split-terminal workflow (relay logs separate from Vite output), use `just relay` in one terminal and `just desktop-dev` in another.\n\nWant a single-node / VPS relay instead of the local-dev stack? Use the production Compose bundle in [`deploy/compose/`](deploy/compose/README.md) (`docker compose` + Postgres, Redis, MinIO, optional Caddy/TLS). The root [`docker-compose.yml`](docker-compose.yml) is for day-to-day development only.\n\nFor agents, set `BUZZ_PRIVATE_KEY` and use [`buzz-cli`](crates/buzz-cli) — JSON in, JSON out, designed for LLM tool calls.\n\n---\n\n## Windows prerequisites\n\nThe agent shell tool runs commands under bash. On macOS and Linux that's already there; on Windows you need to bring it.\n\nInstall [Git for Windows](https://git-scm.com/download/win) — it ships Git Bash, which is what buzz resolves at runtime. Once it's installed, everything works the same as on other platforms.\n\nIf you'd rather point buzz at a different bash-compatible shell, set `BUZZ_SHELL` to its path (e.g. `BUZZ_SHELL=C:\\path\\to\\bash.exe`). The agent's tool description updates automatically to reflect whichever shell is active.\n\n---\n\n## Architecture\n\n```\n┌─────────────────────────────────────────────────────────────────────────┐\n│                             Clients                                     │\n│  Human client         AI agent              CLI / scripts               │\n│  (Buzz desktop)       (Goose, Codex, ...)   (buzz-cli, agents)          │\n│       │               ┌──────────────┐               │                  │\n│       │               │  buzz-acp  │                 │                  │\n│       │               │  (ACP ↔ MCP) │               │                  │\n│       │               └──────┬───────┘               │                  │\n│       │                      │                       │                  │\n└───────┼──────────────────────┼───────────────────────┼──────────────────┘\n        │ WebSocket            │ WS + REST             │ WS + REST\n        ▼                      ▼                       ▼\n┌─────────────────────────────────────────────────────────────────────────┐\n│                          buzz-relay                                     │\n│  NIP-01 · NIP-42 auth · channel/DM/media/workflow/git REST · audit log  │\n└───┬──────────────────────────┬──────────────────────────┬───────────────┘\n    │                          │                          │\n ┌──▼───────────┐       ┌──────▼──────┐           ┌───────▼─────┐\n │   Postgres   │       │    Redis    │           │   S3/MinIO  │\n │ (events +    │       │  (pub/sub)  │           │  (Blossom)  │\n │  FTS search) │       └─────────────┘           └─────────────┘\n └──────────────┘\n```\n\nA Rust workspace of focused crates. Single source of truth: the relay. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full breakdown.\n\n<details>\n<summary><strong>Crate map</strong></summary>\n\n**Core protocol** — `buzz-core` (zero-I/O types, NIP-01 filters, Schnorr verify) · `buzz-relay` (Axum WS + REST)\n\n**Services** — `buzz-db` (Postgres) · `buzz-auth` (",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\nmembers = [\n    \"crates/buzz-relay\",\n    \"crates/buzz-core\",\n    \"crates/ifc-core\",\n    \"crates/buzz-conformance\",\n    \"crates/buzz-push-gateway\",\n    \"crates/buzz-db\",\n    \"crates/buzz-pubsub\",\n    \"crates/buzz-auth\",\n    \"crates/buzz-search\",\n    \"crates/buzz-audit\",\n    \"crates/buzz-acp\",\n    \"crates/buzz-agent\",\n    \"crates/sprig\",\n    \"crates/buzz-test-client\",\n    \"crates/buzz-ws-client\",\n    \"crates/buzz-admin\",\n    \"crates/buzz-deletion\",\n    \"crates/buzz-feature-flags\",\n    \"crates/buzz-workflow\",\n    \"crates/buzz-media\",\n    \"crates/buzz-cli\",\n    \"crates/buzz-pairing-cli\",\n    \"crates/buzz-sdk\",\n    \"crates/buzz-persona\",\n    \"crates/git-credential-nostr\",\n    \"crates/git-sign-nostr\",\n    \"crates/buzz-pair-relay\",\n    \"crates/buzz-relay-mesh\",\n    \"crates/buzz-mesh-smoke\",\n    \"crates/buzz-dev-mcp\",\n    \"crates/buzz-voice\",\n    \"crates/buzz-backend-kubernetes\",\n    \"crates/buzz-datastore-tracing\",\n    \"examples/countdown-bot\",\n]\nexclude = [\"desktop/src-tauri\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0\"\nedition = \"2021\"\nrust-version = \"1.88.0\"\nlicense = \"Apache-2.0\"\nrepository = \"https://github.com/block/sprout\"\n\n[workspace.dependencies]\n# Runtime\ntokio       = { version = \"1\", features = [\"rt-multi-thread\", \"macros\", \"net\", \"time\", \"sync\", \"io-util\", \"signal\", \"process\"] }\ntokio-util  = { version = \"0.7\", features = [\"rt\", \"codec\"] }\n\n# HTTP + WebSocket\naxum        = { version = \"0.8\", features = [\"ws\", \"macros\"] }\ntower       = { version = \"0.5\", features = [\"timeout\", \"util\", \"limit\"] }\ntower-http  = { version = \"0.6\", features = [\"trace\", \"cors\", \"compression-gzip\", \"limit\", \"timeout\", \"fs\"] }\n\n# Database\nsqlx = { version = \"0.9\", features = [\n    \"runtime-tokio\", \"tls-rustls\", \"postgres\", \"uuid\", \"chrono\", \"json\"\n] }\n\n# Redis\nredis        = { version = \"1.0\", features = [\"tokio-comp\", \"connection-manager\", \"tokio-rustls-comp\"] }\ndeadpool-redis = { version = \"0.23\", features = [\"rt_tokio_1\"] }\n\n# Kubernetes (buzz-backend-kubernetes provider). No `ring` feature here: the\n# process-level CryptoProvider is installed explicitly at startup, matching\n# buzz-cli/buzz-acp/buzz-admin/buzz-relay/buzz-dev-mcp — see the comment on the\n# crate's own rustls dependency.\nkube = { version = \"2.0\", default-features = false, features = [\"client\", \"rustls-tls\"] }\nk8s-openapi = { version = \"0.26\", features = [\"v1_31\"] }\n\n# Nostr\nnostr = { version = \"0.44\", features = [\"nip44\", \"nip98\"] }\n\n# Serialization\nserde       = { version = \"1\", features = [\"derive\"] }\npostcard    = { version = \"1\", default-features = false, features = [\"use-std\"] }\n\n# Inter-relay mesh transport (buzz-relay-mesh)\niroh = { version = \"1.0.0-rc.0\", default-features = false, features = [\"tls-ring\"] }\nserde_json  = { version = \"1\", features = [\"raw_value\"] }\nserde_yaml  = \"0.9\"\nevalexpr    = \"11\"\ncron        = \"0.16\"\n# Observability\ntracing                     = \"0.1\"\ntracing-subscriber          = { version = \"0.3\", features = [\"env-filter\", \"json\"] }\ntracing-opentelemetry       = { version = \"0.33\" }\nopentelemetry               = { version = \"0.32\", features = [\"trace\"] }\nopentelemetry_sdk           = { version = \"0.32\", features = [\"trace\", \"rt-tokio\"] }\nopentelemetry-otlp          = { version = \"0.32\", default-features = false, features = [\"trace\", \"grpc-tonic\", \"tls-ring\"] }\nmetrics             = \"0.24\"\nmetrics-exporter-prometheus = \"0.18\"\nmetrics-util        = \"0.20\"\n\n# Error handling\nthiserror = \"2\"\nanyhow    = \"1\"\n\n# Utilities\nuuid    = { version = \"1\", features = [\"v4\", \"serde\"] }\nchrono  = { version = \"0.4\", features = [\"serde\"] }\n\n# JWT / JWS verification (NIP-FI federated identity assertions)\njsonwebtoken = { version = \"10.4.0\", default-features = false, features = [\"aws_lc_rs\"] }\n\n# HTTP client (webhook delivery)\nreqwest = { version = \"0.13\", features = [\"json\", \"rustls\", \"stream\"], default-features = false }\n\n# Cryptography\nsha2      = \"0.11\"\nhex       = \"0.4\"\nhmac      = \"0.13\"\nbase64    = \"0.22\"\n\n# Randomness\nrand = \"0.10\"\nsubtle = \"2.6\"\nzeroize = \"1.8\"\n\n# Concurrent data structures\ndashmap = \"6\"\nmoka    = { version = \"0.12\", features = [\"sync\"] }\n\n# Async stream utilities\nfutures-util = \"0.3\"\n\n# WebSocket client (test client)\ntokio-tungstenite = { version = \"0.29\", features = [\"rustls-tls-webpki-roots\"] }\nurl = \"2\"\n\n# Property-based testing (dev-only)\nproptest = \"1\"\n\n# MCP SDK (used by buzz-dev-mcp and buzz-agent)\nrmcp = { version = \"1.1.0\", features = [\"server\", \"transport-io\", \"macros\"] }\nschemars = { version = \"1\", default-features = false }\n\n# Internal crates\nbuzz-core = { path = \"crates/buzz-core\" }\nbuzz-conformance = { path = \"crates/buzz-conformance\" }\nbuzz-db = { path = \"crates/buzz-db\" }\nbuzz-deletion = { path = \"crates/buzz-deletion\" }\nbuzz-feature-flags = { path = \"crates/buzz-feature-flags\" }\nbuzz-auth = { path = \"crates/buzz-auth\" }\nbuzz-pubsub = { path = \"crates/buzz-pubsub\" }\nbuzz-search = { path = \"crates/buzz-search\" }\nbuzz-audit = { path = \"crates/buzz-audit\" }\nbuzz-workflow = { path = \"cra",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "workspace",
+      "workflow",
+      "developer tool"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "协作工作区",
+      "事件记录",
+      "代码评审"
+    ],
+    "brief_zh": {
+      "summary": "让人与 Agent 在自托管工作区共享频道、代码评审和工作流，并以签名事件记录协作过程。",
+      "audience": "研究多 Agent 通信、群体协作或去中心化消息系统的开发者",
+      "capabilities": "协作工作区、事件记录、代码评审",
+      "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/block/buzz"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "666ghj",
+    "name": "MiroFish",
+    "full_name": "666ghj/MiroFish",
+    "url": "https://github.com/666ghj/MiroFish",
+    "description": "A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
+    "language": "Python",
+    "total_stars": 74861,
+    "forks": 11511,
+    "stars_this_period": 226,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-memory",
+        "financial-forecasting",
+        "future-prediction",
+        "knowledge-graph",
+        "llms",
+        "multi-agent-simulation",
+        "public-opinion-analysis",
+        "python3",
+        "social-prediction",
+        "swarm-intelligence"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 147,
+      "created_at": "2025-11-26T04:23:02Z",
+      "pushed_at": "2026-09-16T03:31:58Z",
+      "homepage": "https://mirofish.ai",
+      "default_branch": "main",
+      "forks": 11511,
+      "watchers": 456,
+      "archived": false,
+      "size_kb": 16802
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"./static/image/MiroFish_logo_compressed.jpeg\" alt=\"MiroFish Logo\" width=\"75%\"/>\n\n<a href=\"https://trendshift.io/repositories/16144\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/16144\" alt=\"666ghj%2FMiroFish | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n简洁通用的群体智能引擎，预测万物\n</br>\n<em>A Simple and Universal Swarm Intelligence Engine, Predicting Anything</em>\n\n<a href=\"https://www.shanda.com/\" target=\"_blank\"><img src=\"./static/image/shanda_logo.png\" alt=\"666ghj%2FMiroFish | Shanda\" height=\"40\"/></a>\n\n[![GitHub Stars](https://img.shields.io/github/stars/666ghj/MiroFish?style=flat-square&color=DAA520)](https://github.com/666ghj/MiroFish/stargazers)\n[![GitHub Watchers](https://img.shields.io/github/watchers/666ghj/MiroFish?style=flat-square)](https://github.com/666ghj/MiroFish/watchers)\n[![GitHub Forks](https://img.shields.io/github/forks/666ghj/MiroFish?style=flat-square)](https://github.com/666ghj/MiroFish/network)\n[![Docker](https://img.shields.io/badge/Docker-Build-2496ED?style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/666ghj/MiroFish)\n\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](http://discord.gg/ePf5aPaHnA)\n[![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/mirofish_ai)\n[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/mirofish_ai/)\n\n[English](./README.md) | [中文文档](./README-ZH.md)\n\n</div>\n\n## ⚡ Overview\n\n**MiroFish** is a next-generation AI prediction engine powered by multi-agent technology. By extracting seed information from the real world (such as breaking news, policy drafts, or financial signals), it automatically constructs a high-fidelity parallel digital world. Within this space, thousands of intelligent agents with independent personalities, long-term memory, and behavioral logic freely interact and undergo social evolution. You can inject variables dynamically from a \"God's-eye view\" to precisely deduce future trajectories — **rehearse the future in a digital sandbox, and win decisions after countless simulations**.\n\n> You only need to: Upload seed materials (data analysis reports or interesting novel stories) and describe your prediction requirements in natural language</br>\n> MiroFish will return: A detailed prediction report and a deeply interactive high-fidelity digital world\n\n### Our Vision\n\nMiroFish is dedicated to creating a swarm intelligence mirror that maps reality. By capturing the collective emergence triggered by individual interactions, we break through the limitations of traditional prediction:\n\n- **At the Macro Level**: We are a rehearsal laboratory for decision-makers, allowing policies and public relations to be tested at zero risk\n- **At the Micro Level**: We are a creative sandbox for individual users — whether deducing novel endings or exploring imaginative scenarios, everything can be fun, playful, and accessible\n\nFrom serious predictions to playful simulations, we let every \"what if\" see its outcome, making it possible to predict anything.\n\n## 🌐 Live Demo\n\nWelcome to visit our online demo environment and experience a prediction simulation on trending public opinion events we've prepared for you: [mirofish-live-demo](https://666ghj.github.io/mirofish-demo/)\n\n## 📸 Screenshots\n\n<div align=\"center\">\n<table>\n<tr>\n<td><img src=\"./static/image/Screenshot/运行截图1.png\" alt=\"Screenshot 1\" width=\"100%\"/></td>\n<td><img src=\"./static/image/Screenshot/运行截图2.png\" alt=\"Screenshot 2\" width=\"100%\"/></td>\n</tr>\n<tr>\n<td><img src=\"./static/image/Screenshot/运行截图3.png\" alt=\"Screenshot 3\" width=\"100%\"/></td>\n<td><img src=\"./static/image/Screenshot/运行截图4.png\" alt=\"Screenshot 4\" width=\"100%\"/></td>\n</tr>\n<tr>\n<td><img src=\"./static/image/Screenshot/运行截图5.png\" alt=\"Screenshot 5\" width=\"100%\"/></td>\n<td><img src=\"./static/image/Screenshot/运行截图6.png\" alt=\"Screenshot 6\" width=\"100%\"/></td>\n</tr>\n</table>\n</div>\n\n## 🎬 Demo Videos\n\n### 1. Wuhan University Public Opinion Simulation + MiroFish Project Introduction\n\n<div align=\"center\">\n<a href=\"https://www.bilibili.com/video/BV1VYBsBHEMY/\" target=\"_blank\"><img src=\"./static/image/武大模拟演示封面.png\" alt=\"MiroFish Demo Video\" width=\"75%\"/></a>\n\nClick the image to watch the complete demo video for prediction using BettaFish-generated \"Wuhan University Public Opinion Report\"\n</div>\n\n### 2. Dream of the Red Chamber Lost Ending Simulation\n\n<div align=\"center\">\n<a href=\"https://www.bilibili.com/video/BV1cPk3BBExq\" target=\"_blank\"><img src=\"./static/image/红楼梦模拟推演封面.jpg\" alt=\"MiroFish Demo Video\" width=\"75%\"/></a>\n\nClick the image to watch MiroFish's deep prediction of the lost ending based on hundreds of thousands of words from the first 80 chapters of \"Dream of the Red Chamber\"\n</div>\n\n> **Financial Prediction**, **Political News Prediction** and more examples coming soon...\n\n## 🔄 Workflow\n\n1. **Graph Building**: Seed extraction & Individual/collective memory injection & GraphRAG construction\n2. **Environment Setup**: Entity relationship extraction & Persona generation & Agent configuration injection\n3. **Simulation**: Dual-platform parallel simulation & Auto-parse prediction requirements & Dynamic temporal memory updates\n4. **Report Generation**: ReportAgent with rich toolset for deep interaction with post-simulation environment\n5. **Deep Interaction**: Chat with any agent in the simulated world & Interact with ReportAgent\n\n## 🚀 Quick Start\n\n### Option 1: Source Code Deployment (Recommended)\n\n#### Prerequisites\n\n| Tool | Version | Description | Check Installation |\n|------|---------|-------------|-------------------|\n| **Node.js** | 18+ | Frontend runtime, includes npm | `node -v` |\n| **Python** | ≥3.11, ≤3.12 | Backend runtime | `python --version` |\n| **uv** | Latest | Python package manager | `uv --version` |\n\n#### 1. Configure Environment Variables\n\n```bash\n# Copy the example configuration file\ncp .env.example .env\n\n# Edit the .env file and fill in the required API keys\n```\n\n**Required Environment Variables:**\n\n```env\n# LLM API Configuration (supports any LLM API with OpenAI SDK format)\n# Recommended: Alibaba Qwen-plus model via Bailian Platform: https://bailian.console.aliyun.com/\n# High consumption, try simulations with fewer than 40 rounds first\nLLM_API_KEY=your_api_key\nLLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1\nLLM_MODEL_NAME=qwen-plus\n\n# Zep Cloud Configuration\n# Free monthly quota is sufficient for simple usage: https://app.getzep.com/\nZEP_API_KEY=your_zep_api_key\n```\n\n#### 2. Install Dependencies\n\n```bash\n# One-click installation of all dependencies (root + frontend + backend)\nnpm run setup:all\n```\n\nOr install step by step:\n\n```bash\n# Install Node dependencies (root + frontend)\nnpm run setup\n\n# Install Python dependencies (backend, auto-creates virtual environment)\nnpm run setup:backend\n```\n\n#### 3. Start Services\n\n```bash\n# Start both frontend and backend (run from project root)\nnpm run dev\n```\n\n**Service URLs:**\n- Frontend: `http://localhost:3000`\n- Backend API: `http://localhost:5001`\n\n**Start Individually:**\n\n```bash\nnpm run backend   # Start backend only\nnpm run frontend  # Start frontend only\n```\n\n### Option 2: Docker Deployment\n\n```bash\n# 1. Configure environment variables (same as source deployment)\ncp .env.example .env\n\n# 2. Pull image and start\ndocker compose up -d\n```\n\nReads `.env` from root directory by default, maps ports `3000 (frontend) / 5001 (backend)`\n\n> Mirror address for faster pulling is provided as comments in `docker-compose.yml`, replace if needed.\n\n## 📬 Join the Conversation\n\n<div align=\"center\">\n<img src=\"./static/image/QQ群.png\" alt=\"QQ Group\" width=\"60%\"/>\n</div>\n\n&nbsp;\n\nThe MiroFish team is recruiting full-time/internship positions. If you're interested in multi-agent simulation and LLM applications, feel free to send your resume to: **mirofish@shanda.com**\n\n## 📄 Acknowledgments\n\n**MiroFish has received strategic support and incubation from Shanda Group!**\n\nMiroFish's simulation engine is powered by **[OASIS (Open Agent Social Interaction Simulations)](https://github.com/camel-ai/oasis)**, We sincerely thank the CAMEL-AI team for their open-source contributions!\n\n## 📈 Project Statistics\n\n<a href=\"https://github.com/666ghj/MiroFish\">\n <picture>\n   <source media=\"(prefers-color-scheme: dark)\" srcset=\"static/image/star-history-dark.svg\" />\n   <source media=\"(prefers-color-scheme: light)\" srcset=\"static/image/star-history-light.svg\" />\n   <img alt=\"666ghj/MiroFish Star History Chart\" src=\"static/image/star-history-light.svg\" />\n </picture>\n</a>\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "情景模拟",
+      "变量调整",
+      "分析报告"
+    ],
+    "brief_zh": {
+      "summary": "将输入材料和问题转成多 Agent 交互模拟，供用户调整变量、观察情景并生成分析报告。",
+      "capabilities": "情景模拟、变量调整、分析报告",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/666ghj/MiroFish"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "NVIDIA",
+    "name": "Model-Optimizer",
+    "full_name": "NVIDIA/Model-Optimizer",
+    "url": "https://github.com/NVIDIA/Model-Optimizer",
+    "description": "A unified library of SOTA model optimization techniques like quantization, distillation, pruning, neural architecture search, speculative decoding, etc. It compresses deep learning models for downstream deployment frameworks like TensorRT-LLM, TensorRT, vLLM, etc. to optimize inference speed.",
+    "language": "Python",
+    "total_stars": 4719,
+    "forks": 666,
+    "stars_this_period": 354,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 421,
+      "created_at": "2024-04-23T19:00:54Z",
+      "pushed_at": "2026-09-26T18:29:27Z",
+      "homepage": "https://nvidia.github.io/Model-Optimizer/",
+      "default_branch": "main",
+      "forks": 666,
+      "watchers": 38,
+      "archived": false,
+      "size_kb": 146173
+    },
+    "readme_content": "<div align=\"center\">\n\n![Banner image](docs/source/assets/model-optimizer-banner.png)\n\n# NVIDIA Model Optimizer\n\n[![Documentation](https://img.shields.io/badge/Documentation-latest-brightgreen.svg?style=flat)](https://nvidia.github.io/Model-Optimizer)\n[![version](https://img.shields.io/pypi/v/nvidia-modelopt?label=Release)](https://pypi.org/project/nvidia-modelopt/)\n[![license](https://img.shields.io/badge/License-Apache%202.0-blue)](./LICENSE)\n\n[Documentation](https://nvidia.github.io/Model-Optimizer) |\n[Roadmap](https://github.com/NVIDIA/Model-Optimizer/issues/1699) |\n[Announcement Blogs](https://nvidia.github.io/Model-Optimizer/#announcements)\n\n</div>\n\n______________________________________________________________________\n\n**NVIDIA Model Optimizer** (referred to as **Model Optimizer**, or **ModelOpt**) is a library comprising state-of-the-art model optimization [techniques](#techniques) including quantization, pruning, Neural Architecture Search (NAS), distillation, speculative decoding and sparsity to accelerate models.\n\n**[Input]** Model Optimizer currently supports inputs of a [Hugging Face](https://huggingface.co/), [PyTorch](https://github.com/pytorch/pytorch) or [ONNX](https://github.com/onnx/onnx) model.\n\n**[Optimize]** Model Optimizer provides Python APIs for users to easily compose the above model optimization techniques and export an optimized quantized checkpoint.\nModel Optimizer is also integrated with [NVIDIA Megatron-Bridge](https://github.com/NVIDIA-NeMo/Megatron-Bridge), [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) and [Hugging Face Accelerate](https://github.com/huggingface/accelerate) for training required inference optimization techniques.\n\n**[Export for deployment]** Seamlessly integrated within the NVIDIA AI software ecosystem, the quantized checkpoint generated from Model Optimizer is ready for deployment in downstream inference frameworks like [SGLang](https://github.com/sgl-project/sglang), [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM/tree/main/examples/quantization), [TensorRT](https://github.com/NVIDIA/TensorRT), or [vLLM](https://github.com/vllm-project/vllm). The unified Hugging Face export API now supports both transformers and diffusers models.\n\n## Latest News\n\n- [2026/09/16] [**End-to-end W4A4 NVFP4 + QAD tutorial for Qwen3.6-35B-A3B**](./examples/megatron_bridge/tutorials/Qwen3.6-35B-A3B): NVFP4 W4A4 PTQ plus quantization-aware distillation, reaching up to 1.30x vLLM throughput over BF16 and 3.1x smaller checkpoints while recovering the accuracy W4A4 costs.\n- [2026/09/09] [BLOG: Improving NVFP4 Accuracy with Local-Hessian Weight Scales](https://nvidia.github.io/Model-Optimizer/announcements/local-hessian.html)\n- [2026/08/24] [BLOG: AutoQuantize: A Fast Automatic Mixed-Precision Assignment](https://nvidia.github.io/Model-Optimizer/announcements/autoquantize.html)\n- [2026/08/17] [BLOG: Developing Nemotron 3.5 Lightning NVFP4 with QAD Using NVIDIA Model Optimizer](https://developer.nvidia.com/blog/developing-nemotron-3-5-lightning-nvfp4-with-qad-using-nvidia-model-optimizer/): Learn how quantization-aware distillation recovers accuracy from aggressive NVFP4 quantization while reducing model size and increasing throughput.\n- [2026/06/26] [BLOG: Creating the NVIDIA Nemotron 3 Ultra NVFP4 Checkpoint with NVIDIA Model Optimizer](https://developer.nvidia.com/blog/creating-the-nvidia-nemotron-3-ultra-nvfp4-checkpoint-with-nvidia-model-optimizer/): How we quantized Nemotron 3 Ultra (550B) to NVFP4 with Model Optimizer — up to 5.9× higher decode-heavy inference throughput than GLM-5.1 754B FP4 while matching BF16 accuracy. [NVFP4 Checkpoint](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4) on Hugging Face.\n- [2026/05/27] [**End-to-end Optimization tutorial for Nemotron-3-Nano-30B-A3B**](./examples/megatron_bridge/tutorials/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16): Pruning + two-phase distillation + FP8 quantization achieving 2.6× vLLM throughput and 2.6× memory reduction.\n- [2026/05/13] [**Puzzletron**](./examples/puzzletron): A new algorithm for heterogeneous pruning & NAS of LLM and VLM models.\n- [2026/04/15] Customer story: [Domyn compresses Colosseum-355B → 260B using ModelOpt's Minitron pruning + distillation](https://www.domyn.com/blog/domyn-large-the-journey-of-a-european-sovereign-ai-model-for-regulated-industries)\n- [2026/03/17] Customer story: [Bielik.AI builds Bielik Minitron 7B (33% smaller, 50% faster, 90% quality retained) using ModelOpt's Minitron pruning + distillation](https://bielik.ai/en/nvidia-gtc-bielik-minitron-premiere/)\n- [2026/03/11] Model Optimizer quantized Nemotron-3-Super checkpoints are available on Hugging Face for download: [FP8](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8), [NVFP4](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4). Learn more in the [Nemotron 3 Super release blog](https://blogs.nvidia.com/blog/nemotron-3-super-agentic-ai/). Check out how to quantize Nemotron 3 models for deployment acceleration [here](./examples/hf_ptq/README.md)\n- [2026/03/11] [NeMo Megatron Bridge](https://github.com/NVIDIA-NeMo/Megatron-Bridge) now supports Nemotron-3-Super quantization (PTQ and QAT) and export workflows using the Model Optimizer library. See the [Quantization (PTQ and QAT) guide](https://github.com/NVIDIA-NeMo/Megatron-Bridge/blob/super-v3/docs/models/llm/nemotron3-super.md#quantization-ptq-and-qat) for FP8/NVFP4 quantization and HF export instructions.\n- [2025/12/11] [BLOG: Top 5 AI Model Optimization Techniques for Faster, Smarter Inference](https://developer.nvidia.com/blog/top-5-ai-model-optimization-techniques-for-faster-smarter-inference/)\n- [2025/12/08] NVIDIA TensorRT Model Optimizer is now officially rebranded as NVIDIA Model Optimizer.\n- [2025/10/07] [BLOG: Pruning and Distilling LLMs Using NVIDIA Model Optimizer](https://developer.nvidia.com/blog/pruning-and-distilling-llms-using-nvidia-tensorrt-model-optimizer/)\n- [2025/09/17] [BLOG: An Introduction to Speculative Decoding for Reducing Latency in AI Inference](https://developer.nvidia.com/blog/an-introduction-to-speculative-decoding-for-reducing-latency-in-ai-inference/)\n- [2025/09/11] [BLOG: How Quantization Aware Training Enables Low-Precision Accuracy Recovery](https://developer.nvidia.com/blog/how-quantization-aware-training-enables-low-precision-accuracy-recovery/)\n- [2025/08/29] [BLOG: Fine-Tuning gpt-oss for Accuracy and Performance with Quantization Aware Training](https://developer.nvidia.com/blog/fine-tuning-gpt-oss-for-accuracy-and-performance-with-quantization-aware-training/)\n- [2025/08/01] [BLOG: Optimizing LLMs for Performance and Accuracy with Post-Training Quantization](https://developer.nvidia.com/blog/optimizing-llms-for-performance-and-accuracy-with-post-training-quantization/)\n- [2025/06/24] [BLOG: Introducing NVFP4 for Efficient and Accurate Low-Precision Inference](https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/)\n- [2025/05/14] [NVIDIA TensorRT Unlocks FP4 Image Generation for NVIDIA Blackwell GeForce RTX 50 Series GPUs](https://developer.nvidia.com/blog/nvidia-tensorrt-unlocks-fp4-image-generation-for-nvidia-blackwell-geforce-rtx-50-series-gpus/)\n- [2025/04/21] [Adobe optimized deployment using Model-Optimizer + TensorRT leading to a 60% reduction in diffusion latency, a 40% reduction in total cost of ownership](https://developer.nvidia.com/blog/optimizing-transformer-based-diffusion-models-for-video-generation-with-nvidia-tensorrt/)\n- [2025/04/05] [NVIDIA Accelerates Inference on Meta Llama 4 Scout and Maverick](https://developer.nvidia.com/blog/nvidia-accelerates-inference-on-meta-llama-4-scout-and-maverick/). Check out how to quantize Llama4 for deployment acceleration [here](./examples/hf_ptq/README.md#support-matrix)\n- [2025/03/18] [World's Fastest DeepSeek-R1 Inference with Blackwell FP4 & Increasing Image Generation Efficiency on Blackwell](https://developer.nvidia.com/blog/nvidia-blackwell-delivers-world-record-deepseek-r1-inference-performance/)\n- [2025/02/25] Model Optimizer quantized NVFP4 models available on Hugging Face for download: [DeepSeek-R1-FP4](https://huggingface.co/nvidia/DeepSeek-R1-FP4), [Llama-3.3-70B-Instruct-FP4](https://huggingface.co/nvidia/Llama-3.3-70B-Instruct-FP4), [Llama-3.1-405B-Instruct-FP4](https://huggingface.co/nvidia/Llama-3.1-405B-Instruct-FP4)\n- [2025/01/28] Model Optimizer has added support for NVFP4. Check out an example of NVFP4 PTQ [here](./examples/hf_ptq/README.md#getting-started).\n- [2025/01/28] Model Optimizer is now open source!\n\n<details close>\n<summary>Previous News</summary>\n\n- [2024/10/23] Model Optimizer quantized FP8 Llama-3.1 Instruct models available on Hugging Face for download: [8B](https://huggingface.co/nvidia/Llama-3.1-8B-Instruct-FP8), [70B](https://huggingface.co/nvidia/Llama-3.1-70B-Instruct-FP8), [405B](https://huggingface.co/nvidia/Llama-3.1-405B-Instruct-FP8).\n- [2024/09/10] [Post-Training Quantization of LLMs with NVIDIA NeMo and Model Optimizer](https://developer.nvidia.com/blog/post-training-quantization-of-llms-with-nvidia-nemo-and-nvidia-tensorrt-model-optimizer/).\n- [2024/08/28] [Boosting Llama 3.1 405B Performance up to 44% with Model Optimizer on NVIDIA H200 GPUs](https://developer.nvidia.com/blog/boosting-llama-3-1-405b-performance-by-up-to-44-with-nvidia-tensorrt-model-optimizer-on-nvidia-h200-gpus/)\n- [2024/08/28] [Up to 1.9X Higher Llama 3.1 Performance with Medusa](https://developer.nvidia.com/blog/low-latency-inference-chapter-1-up-to-1-9x-higher-llama-3-1-performance-with-medusa-on-nvidia-hgx-h200-with-nvlink-switch/)\n- [2024/08/15] New features in recent releases: [Cache Diffusion](./examples/diffusers/cache_diffusion), [QLoRA workflow with NVIDIA NeMo](https://docs.nvidia.com/nemo-framework/user-guide/24.09/sft_peft/qlora.html), and more. Check out [our blog](https://developer.nvidia.com/blog/nvidia-tensorrt-model-optimizer-v0-15-boosts-inference-performance-and-expands-model-support/) for details.\n- [2024/06/03] Model Optimizer now has an experimental feature to deploy to vLLM as part of our effort to support popular deployment frameworks. Check out the workflow [here](./examples/hf_ptq/README.md#vllm)\n- [2024/05/08] [Announcement: Model Optimizer Now Formally Available to Further Accelerate GenAI Inference Performance](https://developer.nvidia.com/blog/accelerate-generative-ai-inference-performance-with-nvidia-tensorrt-model-optimizer-now-publicly-available/)\n- [2024/03/27] [Model Optimizer supercharges TensorRT-LLM to set MLPerf LLM inference records](https://developer.nvidia.com/blog/nvidia-h200-tensor-core-gpus-and-nvidia-tensorrt-llm-set-mlperf-llm-inference-records/)\n- [2024/03/18] [GTC Session: Optimize Generative AI Inference with Quantization in TensorRT-LLM and TensorRT](https://www.nvidia.com/en-us/on-demand/session/gtc24-s63213/)\n- [2024/03/07] [Model Optimizer's 8-bit Post-Training Quantization enables TensorRT to accelerate Stable Diffusion to nearly 2x faster](https://developer.nvidia.com/blog/tensorrt-accelerates-stable-diffusion-nearly-2x-faster-with-8-bit-post-training-quantization/)\n- [2024/02/01] [Speed up inference with Model Optimizer quantization techniques in TRT-LLM](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/blogs/quantization-in-TRT-LLM.md)\n\n</details>\n\n## Install\n\nTo install stable release packages for Model Optimizer with `pip` from [PyPI](https://pypi.org/project/nvidia-modelopt/):\n\n```bash\npip install -U nvidia-modelopt[all]\n```\n\nModel Optimizer will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.\n\nTo install from source in editable mode with all development dependencies or to use the latest features, run:\n\n```bash\n# Clone the Model Optimizer repository\ngit clone git@github.com:NVIDIA/Model-Optimizer.git\ncd Model-Optimizer\n\npip install -e .[dev]\n```\n\nYou can also di",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "####################################################################################################\n###############################  BUILD CONFIGURATION  ##############################################\n####################################################################################################\n[build-system]\nrequires = [\"setuptools>=80\", \"setuptools-scm>=8,<10\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[tool.setuptools_scm]\nfallback_version = \"0.0.0\"\n\n\n####################################################################################################\n###############################  PROJECT METADATA  #################################################\n####################################################################################################\n[project]\nname = \"nvidia-modelopt\"\ndynamic = [\"version\"]\ndescription = \"Nvidia Model Optimizer: A unified library of SOTA model optimization techniques like quantization, pruning, Neural Architecture Search (NAS), distillation, speculative decoding, etc. It compresses deep learning models for downstream deployment frameworks like TensorRT-LLM, TensorRT, vLLM, etc. to optimize inference speed.\"\nreadme = { text = \"Checkout https://github.com/nvidia/Model-Optimizer for more information.\", content-type = \"text/markdown\" }\nlicense = \"Apache-2.0\"\nlicense-files = [\"LICENSE_HEADER\"]\nrequires-python = \">=3.10,<3.15\"\nauthors = [{ name = \"NVIDIA Corporation\" }]\nclassifiers = [\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Intended Audience :: Developers\",\n    \"Intended Audience :: Science/Research\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n]\ndependencies = [\n    # Common\n    \"ninja\",            # for faster building of C++ / CUDA extensions\n    \"numpy\",\n    \"nvidia-ml-py>=12\",\n    \"packaging\",\n    \"setuptools>=80\",   # torch.utils.cpp_extension imports setuptools at load time\n    \"torch>=2.8\",\n    \"tqdm\",\n    # modelopt.torch\n    \"PyYAML>=6.0\",\n    \"omegaconf>=2.3.0\",\n    \"pulp<4.0\",         # breaking changes in upcoming 4.0 release\n    \"pydantic>=2.0\",\n    \"regex\",\n    \"rich\",\n    \"safetensors\",\n    \"scipy\",\n]\n\n[project.optional-dependencies]\nonnx = [\n    \"cppimport\",\n    \"cupy-cuda12x; platform_machine != 'aarch64' and platform_machine != 'ARM64' and platform_system != 'Darwin'\",\n    \"lief\",\n    \"ml_dtypes\",\n    \"onnx-graphsurgeon>=0.6.1\",\n    \"onnx~=1.21.0\",\n    \"onnxconverter-common~=1.16.0\",\n    # Python 3.10 support for ModelOpt ONNX is deprecated and will be removed in a future release.\n    # Native Windows ARM64 does not support ModelOpt ONNX on Python 3.10.\n    # ORT for Windows x64\n    \"onnxruntime-gpu==1.22.0; platform_system == 'Windows' and platform_machine == 'AMD64'\",\n    # ORT host and standalone TensorRT-RTX ABI EP for native Windows ARM64.\n    \"onnxruntime~=1.24.2; python_version > '3.10' and platform_system == 'Windows' and platform_machine == 'ARM64'\",\n    \"onnxruntime-ep-nv-tensorrt-rtx-cu13==0.4.0; python_version > '3.10' and platform_system == 'Windows' and platform_machine == 'ARM64'\",\n    # ORT with Python <= 3.10 on supported platforms\n    \"onnxruntime~=1.22.0; python_version <= '3.10' and (platform_machine == 'aarch64' or platform_system == 'Darwin')\",\n    \"onnxruntime-gpu~=1.22.0; python_version <= '3.10' and platform_machine != 'aarch64' and platform_system != 'Darwin' and platform_system != 'Windows'\",\n    # ORT with Python > 3.10\n    \"onnxruntime~=1.24.2; python_version > '3.10' and (platform_machine == 'aarch64' or platform_system == 'Darwin')\",\n    \"onnxruntime-gpu~=1.24.2; python_version > '3.10' and platform_machine != 'aarch64' and platform_system != 'Darwin' and platform_system != 'Windows'\",\n    \"onnxscript\",\n    \"onnxslim>=0.1.76\",\n    \"polygraphy>=0.53.4\",\n]\nhf = [\n    \"accelerate>=1.0.0\",\n    \"datasets>=3.0.0\",\n    \"deepspeed>=0.9.6; platform_system != 'Darwin' and platform_system != 'Windows'\",\n    \"diffusers>=0.32.2\",\n    \"httpx>=0.23.0,<1\",\n    \"huggingface_hub>=0.24.0\",\n    \"nltk\",\n    \"peft>=0.17.0\",\n    \"sentencepiece>=0.2.1\",                                                           # Also implicitly used in test_unified_export_megatron, test_vllm_fakequant_megatron_export\n    \"tiktoken\",\n    \"transformers>=4.57,<5.15\",                                                       # Should match modelopt/torch/__init__.py and noxfile.py\n    \"wonderwords\",\n]\n\npuzzletron = [ # Dependedencies for modelopt.torch.puzzletron subpackage\n    \"fire\",\n    \"hydra-core~=1.3.4\",\n    \"immutabledict\",\n    \"lru-dict\",\n    \"pandas\",\n    \"typeguard\",\n]\ndev-lint = [\n    \"bandit[toml]==1.7.9\", # security/compliance checks\n    \"mypy==2.1.0\",\n    \"pre-commit==4.6.0\",\n    \"ruff==0.15.20\",\n]\n# Docs are only built on Python >=3.12 (sphinx 9.x requires it); markers keep `uv lock` from resolving these for 3.10/3.11, which we don't care about fo",
+    "strategic_keywords": [
+      "memory",
+      "llm",
+      "inference"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "模型量化",
+      "模型剪枝",
+      "模型蒸馏"
+    ],
+    "brief_zh": {
+      "summary": "通过量化、剪枝和蒸馏等方法压缩模型，并导出到推理框架部署。",
+      "capabilities": "模型量化、模型剪枝、模型蒸馏",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/Model-Optimizer"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "claude-plugins-official",
+    "full_name": "anthropics/claude-plugins-official",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+    "language": "Python",
+    "total_stars": 37053,
+    "forks": 4162,
+    "stars_this_period": 283,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1036,
+      "created_at": "2025-11-20T18:36:20Z",
+      "pushed_at": "2026-09-25T23:12:23Z",
+      "homepage": "https://code.claude.com/docs/en/plugins",
+      "default_branch": "main",
+      "forks": 4162,
+      "watchers": 230,
+      "archived": false,
+      "size_kb": 16152
+    },
+    "readme_content": "# Claude Code Plugins Directory\n\nA curated directory of high-quality plugins for Claude Code.\n\n> **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.\n\n## Structure\n\n- **`/plugins`** - Internal plugins developed and maintained by Anthropic\n- **`/external_plugins`** - Third-party plugins from partners and the community\n\n## Installation\n\nPlugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`\n\n## Contributing\n\n### Internal Plugins\n\nInternal plugins are developed by Anthropic team members. See `/plugins/example-plugin` for a reference implementation.\n\n### External Plugins\n\nThird-party partners can submit plugins for inclusion in the marketplace. External plugins must meet quality and security standards for approval. To submit a new plugin, use the [plugin directory submission form](https://clau.de/plugin-directory-submission).\n\n## Plugin Structure\n\nEach plugin follows a standard structure:\n\n```\nplugin-name/\n├── .claude-plugin/\n│   └── plugin.json      # Plugin metadata (required)\n├── .mcp.json            # MCP server configuration (optional)\n├── commands/            # Slash commands (optional)\n├── agents/              # Agent definitions (optional)\n├── skills/              # Skill definitions (optional)\n└── README.md            # Documentation\n```\n\n## Plugin names are immutable\n\nThe `name` field in a marketplace entry is an **immutable slug**. Once a plugin has been published, its `name` must not change — users have it installed under that slug, and renaming it breaks their install with a `plugin-not-found` error.\n\n- To change how a plugin is labeled in the UI, set or update `displayName` instead.\n- If a rename is genuinely unavoidable, add an entry to the top-level `renames` map in `.claude-plugin/marketplace.json` so existing installs auto-migrate:\n\n```json\n\"renames\": {\n  \"old-name\": \"new-name\"\n}\n```\n\nThe Claude Code plugin loader reads this map and transparently rewrites the old slug to the new one on the user's next sync.\n\n## Skill-bundle plugins\n\nWhen a plugin's source repository ships skills (`SKILL.md` files) without a `.claude-plugin/plugin.json` manifest, the marketplace entry can declare the skills directly using `strict: false` and an explicit `skills` array.\n\n```json\n{\n  \"name\": \"example-bundle\",\n  \"description\": \"Brief description of the bundled skills.\",\n  \"author\": { \"name\": \"Author Name\" },\n  \"category\": \"development\",\n  \"source\": {\n    \"source\": \"git-subdir\",\n    \"url\": \"https://github.com/example-org/sdk.git\",\n    \"path\": \"packages/agent-skills\",\n    \"ref\": \"main\",\n    \"sha\": \"<commit sha>\"\n  },\n  \"strict\": false,\n  \"skills\": [\n    \"./skill-a\",\n    \"./skill-b\",\n    \"./skill-c\"\n  ],\n  \"homepage\": \"https://github.com/example-org/sdk\"\n}\n```\n\nEach path in `skills` is relative to `source.path` and points at a directory containing a `SKILL.md`. Paths can reach deeper than a single level — for example, `[\"./libA/skill-1\", \"./libB/skill-2\"]` exposes a curated subset across multiple library subdirectories. Each skill is registered as `<plugin-name>:<skill-name>` in Claude Code.\n\nFor the underlying schema, see [Strict mode](https://code.claude.com/docs/en/plugin-marketplaces) in the marketplace documentation.\n\n## License\n\nPlease see each linked plugin for the relevant LICENSE file.\n\n## Documentation\n\nFor more information on developing Claude Code plugins, see the [official documentation](https://code.claude.com/docs/en/plugins).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "插件目录",
+      "插件发现",
+      "插件安装"
+    ],
+    "brief_zh": {
+      "summary": "集中提供 Anthropic 自有和第三方 Claude Code 插件，支持发现与安装。",
+      "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
+      "capabilities": "插件目录、插件发现、插件安装",
+      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/anthropics/claude-plugins-official"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "mobile-next",
+    "name": "mobile-mcp",
+    "full_name": "mobile-next/mobile-mcp",
+    "url": "https://github.com/mobile-next/mobile-mcp",
+    "description": "Model Context Protocol Server for Mobile Automation and Scraping (iOS, Android, Emulators, Simulators and Real Devices)",
+    "language": "TypeScript",
+    "total_stars": 7292,
+    "forks": 640,
+    "stars_this_period": 143,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "android",
+        "emulator",
+        "ios",
+        "mcp",
+        "mobile",
+        "physical",
+        "real",
+        "simulator"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 43,
+      "created_at": "2025-03-28T16:21:06Z",
+      "pushed_at": "2026-09-23T15:38:57Z",
+      "homepage": "https://mobilenext.ai",
+      "default_branch": "main",
+      "forks": 640,
+      "watchers": 46,
+      "archived": false,
+      "size_kb": 2990
+    },
+    "readme_content": "# Mobile Next - MCP server for Mobile Development and Automation | iOS, Android, Simulator, Emulator, and Real Devices\n\n**English** | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)\n\nThis is an MCP Server that enables scalable mobile automation, development through a platform-agnostic interface, eliminating the need for distinct iOS or Android knowledge. You can run it on emulators, simulators, and real devices (iOS and Android).\n\nThis server allows Agents and LLMs to interact with native iOS/Android applications and devices through structured accessibility snapshots or coordinate-based taps based on screenshots.\n\n**Works with Claude Code, Codex, Gemini, GitHub Copilot, Antigravity** — or any MCP-compatible client.\n\nRun it against devices on your own machine, or against real iOS and Android devices in the cloud with **[Mobile Next Cloud](https://mobilenext.ai/cloud?utm_source=github&utm_medium=readme&utm_campaign=mobile-mcp&utm_content=intro)** — same tools, no local setup.\n\n<h4 align=\"center\">\n  <a href=\"https://github.com/mobile-next/mobile-mcp\">\n    <img src=\"https://img.shields.io/github/stars/mobile-next/mobile-mcp\" alt=\"Mobile Next Stars\" />\n  </a>\n  <a href=\"https://www.npmjs.com/package/@mobilenext/mobile-mcp\">\n    <img src=\"https://img.shields.io/npm/dm/@mobilenext/mobile-mcp?logo=npm&style=flat&color=red\" alt=\"npm\" />\n  </a>\n  <a href=\"https://github.com/mobile-next/mobile-mcp/releases\">\n    <img src=\"https://img.shields.io/github/release/mobile-next/mobile-mcp\" />\n  </a>\n  <a href=\"https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22mobile-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40mobilenext%2Fmobile-mcp%40latest%22%5D%7D\">\n    <img src=\"https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Server&color=0098FF\" alt=\"Install in VS Code\" />\n  </a>\n  <a href=\"https://github.com/mobile-next/mobile-mcp/wiki\">\n    <img src=\"https://img.shields.io/badge/documentation-wiki-blue\" alt=\"wiki\" />\n  </a>\n  <a href=\"https://mobilenext.ai/join-slack?utm_source=github&utm_medium=readme&utm_campaign=mobile-mcp&utm_content=badge\">\n    <img src=\"https://img.shields.io/badge/join-Slack-blueviolet?logo=slack&style=flat\" alt=\"join on Slack\" />\n  </a>\n</h4>\n\n\nhttps://github.com/user-attachments/assets/bb084777-beb3-4930-ae6f-8d3fe694ddde\n\n\n<p align=\"center\">\n    <a href=\"https://github.com/mobile-next/\">\n        <img alt=\"mobile-mcp\" src=\"https://raw.githubusercontent.com/mobile-next/mobile-next-assets/refs/heads/main/mobile-mcp-banner.png\" width=\"600\" />\n    </a>\n</p>\n\n### Main use cases\n\nHow we help to scale mobile automation:\n\n- 📲 Native app automation (iOS and Android) for testing or data-entry scenarios.\n- 📝 Scripted flows and form interactions without manually controlling simulators/emulators or real devices (iPhone, Samsung, Google Pixel etc)\n- 🧭 Automating multi-step user journeys driven by an LLM\n- 👆 General-purpose mobile application interaction for agent-based frameworks\n- 🤖 Enables agent-to-agent communication for mobile automation usecases, data extraction\n\n## Main Features\n\n- 🚀 **Accessibility-first — fast and cheap**: drives apps from the native accessibility tree (no vision model, no image tokens), falling back to screenshots + coordinates only when needed.\n- 📱 **One API, every target**: the same tools work across iOS and Android — simulators, emulators, and real devices.\n- 🧠 **No platform expertise required**: no XCUITest, no Espresso, no per-platform glue — describe the goal and the agent does it.\n- 🧰 **Full device control**: taps, swipes, and gestures; app install/launch/terminate; screen recording; hardware buttons; deep links; orientation.\n- 📊 **Structured, deterministic output**: reads real UI elements and extracts structured data, cutting the ambiguity of screenshot-only approaches.\n\n### 🎯 Platform Support\n\n| Target | Supported | Setup |\n|---|:---:|---|\n| iOS Simulator | ✅ | Xcode + a booted simulator (`xcrun simctl`) |\n| iOS Real Device | ✅ | Device connected over USB and trusted |\n| Android Emulator | ✅ | Android SDK + running emulator (`adb`) |\n| Android Real Device | ✅ | `adb` + USB debugging enabled & authorized |\n\n## 🔧 Available MCP Tools\n\n### Device Management\n- **`mobile_list_available_devices`** - List all available devices (simulators, emulators, and real devices)\n- **`mobile_get_screen_size`** - Get the screen size of the mobile device in pixels\n- **`mobile_get_orientation`** - Get the current screen orientation of the device\n- **`mobile_set_orientation`** - Change the screen orientation (portrait/landscape)\n- **`mobile_set_location`** - Override the GPS location reported by the device, or clear the override\n- **`mobile_clipboard`** - Read or replace the device clipboard\n\n### Remote Devices (Mobile Next Cloud)\n- **`mobile_login_to_cloud_provider`** - Authenticate this machine with the cloud device provider (browser-based device-code login)\n- **`mobile_list_remote_devices`** - List device models available to reserve from the cloud fleet\n- **`mobile_allocate_remote_device`** - Reserve a physical cloud device for exclusive use\n- **`mobile_release_remote_device`** - Release a reserved cloud device back to the fleet\n\n### App Management\n- **`mobile_list_apps`** - List all installed apps on the device\n- **`mobile_get_foreground_app`** - Get the app currently in the foreground\n- **`mobile_launch_app`** - Launch an app using its package name\n- **`mobile_terminate_app`** - Stop and terminate a running app\n- **`mobile_install_app`** - Install an app from file (.apk, .ipa, .app, .zip)\n- **`mobile_uninstall_app`** - Uninstall an app using bundle ID or package name\n\n### Screen Interaction\n- **`mobile_take_screenshot`** - Take a screenshot to understand what's on screen\n- **`mobile_save_screenshot`** - Save a screenshot to a file\n- **`mobile_list_elements_on_screen`** - List UI elements with their coordinates and properties\n- **`mobile_click_on_screen_at_coordinates`** - Click at specific x,y coordinates\n- **`mobile_double_tap_on_screen`** - Double-tap at specific coordinates\n- **`mobile_long_press_on_screen_at_coordinates`** - Long press at specific coordinates\n- **`mobile_swipe_on_screen`** - Swipe in any direction (up, down, left, right)\n- **`mobile_start_screen_recording`** - Start recording the device screen to a video file\n- **`mobile_stop_screen_recording`** - Stop the active screen recording and save the video\n\n### Input & Navigation\n- **`mobile_type_keys`** - Type text into focused elements with optional submit\n- **`mobile_press_button`** - Press device buttons (HOME, BACK, VOLUME_UP/DOWN, ENTER, etc.)\n- **`mobile_open_url`** - Open URLs in the device browser\n\n### Logs & Crash Reports\n- **`mobile_get_device_logs`** - Collect live device logs (logcat on Android, unified log on iOS), optionally saved to a file\n- **`mobile_list_crashes`** - List crash reports available on the device\n- **`mobile_get_crash`** - Get the full content of a crash report by its ID\n- **`mobile_batch_commands`** - Run multiple tools in sequence in a single call (e.g. click, type, click), optionally listing screen elements at the end\n\n## 🏗️ Mobile MCP Architecture\n\n<p align=\"center\">\n    <a href=\"https://raw.githubusercontent.com/mobile-next/mobile-next-assets/refs/heads/main/mobile-mcp-arch-1.png\">\n        <img alt=\"mobile-mcp\" src=\"https://raw.githubusercontent.com/mobile-next/mobile-next-assets/refs/heads/main/mobile-mcp-arch-1.png\" width=\"600\">\n    </a>\n</p>\n\n\n## 📚 Wiki page\n\nMore details in our [wiki page](https://github.com/mobile-next/mobile-mcp/wiki) for setup, configuration and debugging related questions.\n\n\n## Prerequisites\n\nWhat you will need to connect MCP with your agent and mobile devices:\n\n- [Xcode command line tools](https://developer.apple.com/xcode/resources/)\n- [Android Platform Tools](https://developer.android.com/tools/releases/platform-tools)\n- [node.js](https://nodejs.org/en/download/) v20+\n- [MCP](https://modelcontextprotocol.io/introduction) supported foundational models or agents, like [Claude MCP](https://modelcontextprotocol.io/quickstart/server), [OpenAI Agent SDK](https://openai.github.io/openai-agents-python/mcp/), [Copilot Studio](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/introducing-model-context-protocol-mcp-in-copilot-studio-simplified-integration-with-ai-apps-and-agents/)\n\n## Installation and configuration\n\n**Standard config** works in most of the tools:\n\n```json\n{\n  \"mcpServers\": {\n    \"mobile-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@mobilenext/mobile-mcp@latest\"]\n    }\n  }\n}\n```\n\n<details>\n<summary>Amp</summary>\n\nAdd via the Amp VS Code extension settings screen or by updating your `settings.json` file:\n\n```json\n\"amp.mcpServers\": {\n  \"mobile-mcp\": {\n    \"command\": \"npx\",\n    \"args\": [\n      \"@mobilenext/mobile-mcp@latest\"\n    ]\n  }\n}\n```\n\n**Amp CLI:**\n\nRun the following command in your terminal:\n\n```bash\namp mcp add mobile-mcp -- npx @mobilenext/mobile-mcp@latest\n```\n\n</details>\n\n<details>\n<summary>Antigravity 2</summary>\n\nAntigravity doesn't have a CLI command to add MCP servers, so add it manually. Edit `~/.gemini/config/mcp_config.json` and add:\n\n```json\n{\n  \"mcpServers\": {\n    \"mobile-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@mobilenext/mobile-mcp@latest\"]\n    }\n  }\n}\n```\n\n</details>\n\n<details>\n<summary>Cline</summary>\n\nTo setup Cline, just add the json above to your MCP settings file.\n\n[More in our wiki](https://github.com/mobile-next/mobile-mcp/wiki/Cline)\n\n</details>\n\n<details>\n<summary>Claude Code</summary>\n\nUse the Claude Code CLI to add the Mobile MCP server:\n\n```bash\nclaude mcp add mobile-mcp -- npx -y @mobilenext/mobile-mcp@latest\n```\n</details>\n\n<details>\n<summary>Claude Desktop</summary>\n\nFollow the [MCP install guide](https://modelcontextprotocol.io/quickstart/user), use json configuration above.\n\n</details>\n\n<details>\n<summary>Codex</summary>\n\nUse the Codex CLI to add the Mobile MCP server:\n\n```bash\ncodex mcp add mobile-mcp npx \"@mobilenext/mobile-mcp@latest\"\n```\n\nAlternatively, create or edit the configuration file `~/.codex/config.toml` and add:\n\n```toml\n[mcp_servers.mobile-mcp]\ncommand = \"npx\"\nargs = [\"@mobilenext/mobile-mcp@latest\"]\n```\n\nFor more information, see the Codex MCP documentation.\n\n</details>\n\n<details>\n<summary>Copilot</summary>\n\nUse the Copilot CLI to interactively add the Mobile MCP server:\n\n```text\n/mcp add\n```\n\nYou can edit the configuration file `~/.copilot/mcp-config.json` and add:\n\n```json\n{\n  \"mcpServers\": {\n    \"mobile-mcp\": {\n      \"type\": \"local\",\n      \"command\": \"npx\",\n      \"tools\": [\n        \"*\"\n      ],\n      \"args\": [\n        \"@mobilenext/mobile-mcp@latest\"\n      ]\n    }\n  }\n}\n```\n\nFor more information, see the Copilot CLI documentation.\n\n</details>\n\n<details>\n<summary>Cursor</summary>\n\n#### Click the button to install:\n\n[<img src=\"https://cursor.com/deeplink/mcp-install-dark.svg\" alt=\"Install in Cursor\">](https://cursor.com/en/install-mcp?name=Mobile%20MCP&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBtb2JpbGVuZXh0L21vYmlsZS1tY3BAbGF0ZXN0Il19)\n\n#### Or install manually:\n\nGo to `Cursor Settings` -> `MCP` -> `Add new MCP Server`. Name to your liking, use `command` type with the command `npx -y @mobilenext/mobile-mcp@latest`. You can also verify config or add command like arguments via clicking `Edit`.\n\n</details>\n\n<details>\n<summary>Gemini CLI</summary>\n\nUse the Gemini CLI to add the Mobile MCP server:\n\n```bash\ngemini mcp add mobile-mcp npx -y @mobilenext/mobile-mcp@latest\n```\n\n</details>\n\n<details>\n<summary>Goose</summary>\n\n#### Click the button to install:\n\n[![Install in Goose](https://goose-docs.ai/img/extension-install-dark.svg)](https://goose-docs.ai/extension?cmd=npx&arg=-y&arg=%40mobilenext%2Fmobile-mcp%40latest&id=mobile-mcp&name=Mobile%20MCP&description=Mobile%20automation%20and%20development%20for%20iOS%2C%20Android%2C%20simulators%2C%20emulators%2C%20and%20real%20devices)\n\n#### Or install manually:\n\nGo to `Advanced settings` -> `Extensions` -> `Add",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@mobilenext/mobile-mcp\",\n  \"mcpName\": \"io.github.mobile-next/mobile-mcp\",\n  \"version\": \"0.0.1\",\n  \"description\": \"Mobile MCP\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/mobile-next/mobile-mcp.git\"\n  },\n  \"engines\": {\n    \"node\": \">=20\"\n  },\n  \"license\": \"Apache-2.0\",\n  \"scripts\": {\n    \"build\": \"tsc && chmod +x lib/index.js\",\n    \"start\": \"node lib/index.js\",\n    \"lint\": \"eslint .\",\n    \"fixlint\": \"eslint . --fix\",\n    \"test\": \"c8 playwright test\",\n    \"watch\": \"tsc --watch\",\n    \"clean\": \"rm -rf lib\",\n    \"prepare\": \"husky\"\n  },\n  \"files\": [\n    \"lib\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/express\": \"2.0.0\",\n    \"@modelcontextprotocol/node\": \"2.0.0\",\n    \"@modelcontextprotocol/server\": \"2.0.0\",\n    \"ajv\": \"^8.18.0\",\n    \"commander\": \"14.0.0\",\n    \"express\": \"5.1.0\",\n    \"fast-xml-parser\": \"5.8.0\",\n    \"mobilewright\": \"0.0.60\",\n    \"qs\": \"^6.15.0\",\n    \"zod\": \"^4.2.0\",\n    \"zod-to-json-schema\": \"3.25.0\"\n  },\n  \"devDependencies\": {\n    \"@eslint/eslintrc\": \"^3.2.0\",\n    \"@eslint/js\": \"^9.19.0\",\n    \"@modelcontextprotocol/client\": \"2.0.0\",\n    \"@playwright/test\": \"^1.49.0\",\n    \"@stylistic/eslint-plugin\": \"^3.0.1\",\n    \"@types/commander\": \"^2.12.0\",\n    \"@types/express\": \"^5.0.3\",\n    \"@types/node\": \"^22.13.10\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.28.0\",\n    \"@typescript-eslint/parser\": \"^8.26.1\",\n    \"@typescript-eslint/utils\": \"^8.26.1\",\n    \"c8\": \"^10.1.3\",\n    \"eslint\": \"^9.19.0\",\n    \"eslint-plugin\": \"^1.0.1\",\n    \"eslint-plugin-import\": \"^2.31.0\",\n    \"eslint-plugin-notice\": \"^1.0.0\",\n    \"husky\": \"^9.1.7\",\n    \"typescript\": \"5.8.2\"\n  },\n  \"main\": \"index.js\",\n  \"bin\": {\n    \"mcp-server-mobile\": \"lib/index.js\"\n  },\n  \"directories\": {\n    \"lib\": \"lib\"\n  },\n  \"author\": \"\",\n  \"bugs\": {\n    \"url\": \"https://github.com/mobile-next/mobile-mcp/issues\"\n  },\n  \"homepage\": \"https://github.com/mobile-next/mobile-mcp#readme\"\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "llm",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "移动端自动化",
+      "界面读取",
+      "设备控制"
+    ],
+    "brief_zh": {
+      "summary": "通过 MCP 让 Agent 读取界面、点击和滑动，自动操作 iOS 与 Android 模拟器或真实设备。",
+      "capabilities": "移动端自动化、界面读取、设备控制",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/mobile-next/mobile-mcp"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "openclaw",
+    "name": "openclaw",
+    "full_name": "openclaw/openclaw",
+    "url": "https://github.com/openclaw/openclaw",
+    "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
+    "language": "TypeScript",
+    "total_stars": 390582,
+    "forks": 82157,
+    "stars_this_period": 134,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "assistant",
+        "crustacean",
+        "molty",
+        "openclaw",
+        "own-your-data",
+        "personal"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 8708,
+      "created_at": "2025-11-24T10:16:47Z",
+      "pushed_at": "2026-09-26T22:03:06Z",
+      "homepage": "https://openclaw.ai",
+      "default_branch": "main",
+      "forks": 82157,
+      "watchers": 1731,
+      "archived": false,
+      "size_kb": 6575282
+    },
+    "readme_content": "# OpenClaw 🦞 — Your assistant, on your devices, in your chats\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-light.png\">\n    <img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-dark.png\" alt=\"OpenClaw — EXFOLIATE! EXFOLIATE! Your AI assistant, running on your own devices.\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/openclaw/openclaw/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=flat-square&label=ci\" alt=\"CI status\"></a>\n  <a href=\"https://www.npmjs.com/package/openclaw\"><img src=\"https://img.shields.io/npm/v/openclaw?style=flat-square&label=npm\" alt=\"npm version\"></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/node/v/openclaw?style=flat-square\" alt=\"Node.js version\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-green?style=flat-square\" alt=\"License: MIT\"></a>\n  <a href=\"https://discord.gg/clawd\"><img src=\"https://img.shields.io/discord/1456350064065904867?label=discord&logo=discord&logoColor=white&color=5865F2&style=flat-square\" alt=\"Discord\"></a>\n</p>\n\nOpenClaw is an open-source AI assistant that runs on your own computer and meets you in the channels you already use: Discord, iMessage, Slack, Teams, Telegram, WhatsApp, and 20+ more, plus native apps for macOS, iOS, Android, Windows, and Linux. One Gateway runs it as a personal assistant on a laptop or as a shared [team deployment](https://docs.openclaw.ai/start/teams); configuration is the only difference.\n\n**Yours, with no catch.** State, memory, and credentials live on your hardware. Models and agent harnesses (Claude, Codex, local models) are plugins you can swap without changing anything else. Your prompts go to the model provider and chat platforms you configure, plus any diagnostics export you enable yourself; by default OpenClaw itself phones home for nothing but a daily version check, anonymous feature statistics are opt-in, and `update.checkOnStart: false` disables both ([what OpenClaw sends](https://docs.openclaw.ai/gateway/telemetry)). OpenClaw is stewarded by the [OpenClaw Foundation](https://openclaw.org), an independent 501(c)(3), and has no paid tier, hosted service, or token. The architecture case — trusted gateway, untrusted execution, deterministic policy — is in [Why OpenClaw](https://docs.openclaw.ai/start/why-openclaw).\n\n[Website](https://openclaw.ai) · [Docs](https://docs.openclaw.ai) · [Getting started](https://docs.openclaw.ai/start/getting-started) · [Why OpenClaw](https://docs.openclaw.ai/start/why-openclaw) · [FAQ](https://docs.openclaw.ai/help/faq) · [Vision](VISION.md) · [DeepWiki](https://deepwiki.com/openclaw/openclaw)\n\n## Install\n\nThe installer supports macOS, Linux, and Windows. It provisions a supported Node.js runtime when needed.\n\n```bash\n# macOS / Linux / WSL2\ncurl -fsSL https://openclaw.ai/install.sh | bash\n```\n\n```powershell\n# Windows PowerShell\niwr -useb https://openclaw.ai/install.ps1 | iex\n```\n\nAlready manage Node.js? Install the published package instead (Node 24.16+ or 26.1+; Node 26 recommended):\n\n```bash\nnpm install -g openclaw@latest --allow-scripts=openclaw\n```\n\nThat command is for npm 12 or npm 11.16+. On npm 11.15 and earlier, omit\n`--allow-scripts=openclaw`. See the\n[installation guide](https://docs.openclaw.ai/install) for the lifecycle script\ncontract, Docker, Nix, and other deployment paths.\n\n## Quick start\n\nOn a fresh install, the installer scripts start onboarding automatically.\nComplete the wizard they open. If you installed the package directly with npm,\npnpm, or Bun, run:\n\n```bash\nopenclaw onboard --install-daemon\n```\n\nAfter onboarding:\n\n```bash\nopenclaw gateway status\nopenclaw dashboard\n```\n\nOnboarding verifies model access, creates the workspace, and configures the Gateway. The last command opens the Control UI; send a message there to confirm the assistant is working. See the [getting started guide](https://docs.openclaw.ai/start/getting-started) for channel setup and troubleshooting.\n\n## How it fits together\n\n- The [Gateway](https://docs.openclaw.ai/gateway) is the local control plane for sessions, tools, events, and channel connections.\n- The [Control UI](https://docs.openclaw.ai/web/control-ui), CLI, and [TUI](https://docs.openclaw.ai/web/tui) connect to the Gateway.\n- [Channels](https://docs.openclaw.ai/channels) bring the assistant to WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, and other messaging services.\n- [Companion apps and nodes](https://docs.openclaw.ai/platforms) add voice, Canvas, camera, screen, and device-local actions on supported platforms.\n\nOpenClaw works with hosted and local [model providers](https://docs.openclaw.ai/concepts/model-providers). Its [tools](https://docs.openclaw.ai/tools), [skills](https://docs.openclaw.ai/tools/skills), and [plugins](https://docs.openclaw.ai/plugins) extend what an assistant can do.\n\n## Security\n\nTreat inbound messages as untrusted input. DM-capable channels pair unknown senders by default; approve a pairing request with `openclaw pairing approve <channel> <code>`.\n\nTools run on the host for the main session unless you configure sandboxing. Read the [security guide](https://docs.openclaw.ai/gateway/security), [exposure runbook](https://docs.openclaw.ai/gateway/security/exposure-runbook), and [sandboxing guide](https://docs.openclaw.ai/gateway/sandboxing) before connecting other users or exposing the Gateway remotely.\n\n## Documentation\n\n| Goal                             | Start here                                                                                                                                                                                                                                                           |\n| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Configure models and auth        | [Models](https://docs.openclaw.ai/concepts/models) · [Model providers](https://docs.openclaw.ai/concepts/model-providers)                                                                                                                                            |\n| Connect a messaging service      | [Channels](https://docs.openclaw.ai/channels)                                                                                                                                                                                                                        |\n| Add tools, skills, and plugins   | [Tools](https://docs.openclaw.ai/tools) · [Skills](https://docs.openclaw.ai/tools/skills) · [Plugins](https://docs.openclaw.ai/plugins) · [ClawHub](https://clawhub.ai)                                                                                              |\n| Run apps and device nodes        | [Platforms](https://docs.openclaw.ai/platforms) · [Nodes](https://docs.openclaw.ai/nodes)                                                                                                                                                                            |\n| Use the CLI and chat commands    | [CLI reference](https://docs.openclaw.ai/cli) · [Slash commands](https://docs.openclaw.ai/tools/slash-commands)                                                                                                                                                      |\n| Configure or operate the Gateway | [Configuration](https://docs.openclaw.ai/gateway/configuration) · [Architecture](https://docs.openclaw.ai/concepts/architecture) · [Updating](https://docs.openclaw.ai/install/updating) · [Release channels](https://docs.openclaw.ai/install/development-channels) |\n\n## Development\n\nThe repository is a pnpm workspace. Plain `npm install` at the repository root is not supported.\n\n```bash\ngit clone https://github.com/openclaw/openclaw.git\ncd openclaw\npnpm install\npnpm build\npnpm ui:build\n```\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow and the [source setup guide](https://docs.openclaw.ai/start/setup) for the development loop.\n\n## Governance\n\nOpenClaw is developed in the open by the [OpenClaw Foundation](https://openclaw.org), an independent 501(c)(3). The Foundation employs the core team and signs releases. Donors and infrastructure sponsors support the Foundation; none of them own or direct the project. OpenAI is a donor, not an owner.\n\n## Community\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for maintainers and contribution guidelines; AI-assisted PRs are welcome.\n\nUse the [issue chooser](https://github.com/openclaw/openclaw/issues/new/choose) for bugs and feature requests, ask setup questions in [Discord](https://discord.gg/clawd), and report vulnerabilities through [SECURITY.md](SECURITY.md). New capabilities usually belong in plugins built on the [plugin SDK](https://docs.openclaw.ai/plugins/building-plugins) and shared through [ClawHub](https://clawhub.ai).\n\nOpenClaw was built for **Molty**, a space lobster AI assistant, by Peter Steinberger and the community. Explore the [project lore](https://docs.openclaw.ai/start/lore), [soul.md](https://soul.md), [Peter's site](https://steipete.me), [Star History](https://www.star-history.com/#openclaw/openclaw&type=date&legend=top-left), and [@openclaw](https://x.com/openclaw).\n\nSpecial thanks to [Mario Zechner](https://mariozechner.at/) for his support and for [pi](https://github.com/earendil-works/pi), and to Adam Doppelt for the lobster.bot domain.\n\n## Donors and sponsors\n\nThe Foundation is funded by donors including Amazon, Lobster Computer Company, Offline Holdings, OpenAI, Red Hat, and the University of Michigan, with infrastructure support from Blacksmith, Convex, GitHub, NVIDIA, and Vercel.\n\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://blacksmith.sh/\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/blacksmith-light.svg\"><img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/blacksmith.svg\" alt=\"Blacksmith\" height=\"28\"></picture></a></td>\n    <td align=\"center\"><a href=\"https://www.convex.dev/\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/convex-light.svg\"><img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/convex.svg\" alt=\"Convex\" height=\"24\"></picture></a></td>\n    <td align=\"center\"><a href=\"https://github.com/\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/github-light.svg\"><img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/github.svg\" alt=\"GitHub\" height=\"28\"></picture></a></td>\n    <td align=\"center\"><a href=\"https://www.nvidia.com/\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/nvidia.svg\"><img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/nvidia-dark.svg\" alt=\"NVIDIA\" height=\"28\"></picture></a></td>\n    <td align=\"center\"><a href=\"https://github.com/openai\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/openai-light.svg\"><img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/sponsors/openai.svg\" alt=\"OpenAI\" height=\"28\"></picture></a></td>\n    <td align=\"center\"><a href=\"https://www.redhat.com/\"><picture><source m",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"openclaw\",\n  \"version\": \"2026.9.6\",\n  \"openclaw\": {\n    \"updateAdmissionProtocol\": 1,\n    \"schemaVersions\": {\n      \"state\": 19,\n      \"agent\": 23\n    }\n  },\n  \"description\": \"Multi-channel AI gateway with extensible messaging integrations\",\n  \"keywords\": [],\n  \"homepage\": \"https://github.com/openclaw/openclaw#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/openclaw/openclaw/issues\"\n  },\n  \"license\": \"MIT\",\n  \"author\": \"OpenClaw Foundation (https://openclaw.org)\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/openclaw/openclaw.git\"\n  },\n  \"bin\": {\n    \"openclaw\": \"openclaw.mjs\"\n  },\n  \"publishConfig\": {\n    \"executableFiles\": [\n      \"dist/crabbox-wrapper.js\",\n      \"dist/entry.js\",\n      \"dist/index.js\",\n      \"dist/mac-node-worker.js\",\n      \"dist/native-hook-relay/entry.js\"\n    ]\n  },\n  \"directories\": {\n    \"doc\": \"docs\",\n    \"test\": \"test\"\n  },\n  \"files\": [\n    \"CHANGELOG.md\",\n    \"LICENSE\",\n    \"cli-root-options.mjs\",\n    \"gateway-run-argv.mjs\",\n    \"gateway-shutdown-budget.mjs\",\n    \"node-sqlite.mjs\",\n    \"node-version.mjs\",\n    \"node-runtime-update.mjs\",\n    \"node-runtime-recovery.mjs\",\n    \"node-host-launcher.mjs\",\n    \"node-compile-cache.mjs\",\n    \"openclaw.mjs\",\n    \"pnpm-workspace.yaml\",\n    \"README.md\",\n    \"THIRD_PARTY_NOTICES.md\",\n    \"dist/\",\n    \".openclaw-lifecycle-pending\",\n    \"!dist/.buildstamp\",\n    \"!dist/.runtime-postbuildstamp\",\n    \"!dist/**/*.app\",\n    \"!dist/**/*.map\",\n    \"!dist/plugin-sdk/.tsbuildinfo\",\n    \"!dist/plugin-sdk/access-groups.d.ts\",\n    \"!dist/plugin-sdk/account-resolution-runtime.d.ts\",\n    \"!dist/plugin-sdk/acp-binding-resolve-runtime.d.ts\",\n    \"!dist/plugin-sdk/acp-binding-runtime.d.ts\",\n    \"!dist/plugin-sdk/acp-runtime.d.ts\",\n    \"!dist/plugin-sdk/acp-runtime-backend.d.ts\",\n    \"!dist/plugin-sdk/agent-core.d.ts\",\n    \"!dist/plugin-sdk/agent-harness-exec-review-runtime.d.ts\",\n    \"!dist/plugin-sdk/agent-harness-task-runtime.d.ts\",\n    \"!dist/plugin-sdk/agent-harness-tool-runtime.d.ts\",\n    \"!dist/plugin-sdk/agent-runtime-test-contracts.js\",\n    \"!dist/plugin-sdk/agent-runtime-test-contracts.d.ts\",\n    \"!dist/plugin-sdk/agent-sessions.d.ts\",\n    \"!dist/plugin-sdk/approval-reaction-runtime.d.ts\",\n    \"!dist/plugin-sdk/approval-reference-runtime.d.ts\",\n    \"!dist/plugin-sdk/async-lock-runtime.d.ts\",\n    \"!dist/plugin-sdk/browser-cdp.d.ts\",\n    \"!dist/plugin-sdk/browser-config.d.ts\",\n    \"!dist/plugin-sdk/bundled-channel-config-schema.d.ts\",\n    \"!dist/plugin-sdk/channel-activity-runtime.d.ts\",\n    \"!dist/plugin-sdk/channel-config-ui-hints.d.ts\",\n    \"!dist/plugin-sdk/channel-config-writes.d.ts\",\n    \"!dist/plugin-sdk/channel-contract-testing.js\",\n    \"!dist/plugin-sdk/channel-contract-testing.d.ts\",\n    \"!dist/plugin-sdk/channel-ingress-test-runtime.js\",\n    \"!dist/plugin-sdk/channel-ingress-test-runtime.d.ts\",\n    \"!dist/plugin-sdk/channel-join-intro-runtime.d.ts\",\n    \"!dist/plugin-sdk/channel-mention-gating.d.ts\",\n    \"!dist/plugin-sdk/channel-route.d.ts\",\n    \"!dist/plugin-sdk/channel-secret-owner-runtime.d.ts\",\n    \"!dist/plugin-sdk/channel-secret-tts-runtime.d.ts\",\n    \"!dist/plugin-sdk/channel-target-testing.js\",\n    \"!dist/plugin-sdk/channel-target-testing.d.ts\",\n    \"!dist/plugin-sdk/channel-targets.d.ts\",\n    \"!dist/plugin-sdk/channel-test-helpers.js\",\n    \"!dist/plugin-sdk/channel-test-helpers.d.ts\",\n    \"!dist/plugin-sdk/chat-channel-ids.d.ts\",\n    \"!dist/plugin-sdk/cli-backend.d.ts\",\n    \"!dist/plugin-sdk/claude-model-runtime.d.ts\",\n    \"!dist/plugin-sdk/cli-runtime.d.ts\",\n    \"!dist/plugin-sdk/codex-mcp-projection.d.ts\",\n    \"!dist/plugin-sdk/codex-session-transcript-runtime.d.ts\",\n    \"!dist/plugin-sdk/command-status-runtime.d.ts\",\n    \"!dist/plugin-sdk/command-surface.d.ts\",\n    \"!dist/plugin-sdk/concurrency-runtime.d.ts\",\n    \"!dist/plugin-sdk/context-visibility-runtime.d.ts\",\n    \"!dist/plugin-sdk/conversation-binding-runtime.d.ts\",\n    \"!dist/plugin-sdk/cron-store-runtime.d.ts\",\n    \"!dist/plugin-sdk/dangerous-name-runtime.d.ts\",\n    \"!dist/plugin-sdk/delivery-queue-runtime.d.ts\",\n    \"!dist/plugin-sdk/direct-dm-guard-policy.d.ts\",\n    \"!dist/plugin-sdk/directory-config-runtime.d.ts\",\n    \"!dist/plugin-sdk/document-extractor.d.ts\",\n    \"!dist/plugin-sdk/embedding-providers.d.ts\",\n    \"!dist/plugin-sdk/exec-approvals-runtime.d.ts\",\n    \"!dist/plugin-sdk/expect-runtime.d.ts\",\n    \"!dist/plugin-sdk/fetch-runtime.d.ts\",\n    \"!dist/plugin-sdk/file-access-runtime.d.ts\",\n    \"!dist/plugin-sdk/file-lock.d.ts\",\n    \"!dist/plugin-sdk/gateway-config-runtime.d.ts\",\n    \"!dist/plugin-sdk/global-singleton.d.ts\",\n    \"!dist/plugin-sdk/group-activation.d.ts\",\n    \"!dist/plugin-sdk/heartbeat-runtime.d.ts\",\n    \"!dist/plugin-sdk/host-runtime.d.ts\",\n    \"!dist/plugin-sdk/html-entity-runtime.d.ts\",\n    \"!dist/plugin-sdk/image-generation.d.ts\",\n    \"!dist/plugin-sdk/image-generation-core.d.ts\",\n    \"!dist/plugin-sdk/image-generation-runtime.d.ts\",\n    \"!dist/plugin-sdk/inline-image-data-url-runtime.d.ts\",\n    \"!dist/plugin-",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "runtime",
+      "workspace",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "自托管助手",
+      "消息渠道",
+      "工具接入"
+    ],
+    "brief_zh": {
+      "summary": "运行在自有设备上的 AI 助手，通过统一网关连接模型、工具和常用聊天渠道。",
+      "capabilities": "自托管助手、消息渠道、工具接入",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/openclaw/openclaw"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  }
+]

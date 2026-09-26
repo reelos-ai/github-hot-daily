@@ -130,10 +130,15 @@
     "risk": "生成质量依赖显卡能力和模型适配，复杂几何与真实生产精度仍需进一步验证"
   },
   "block/buzz": {
-    "summary": "一个用 Rust 构建的群体通信平台，目标是让多个参与者或 Agent 以“蜂群”方式共享信息和协同。",
+    "summary": "让人与 Agent 在自托管工作区共享频道、代码评审和工作流，并以签名事件记录协作过程。",
     "audience": "研究多 Agent 通信、群体协作或去中心化消息系统的开发者",
-    "capabilities": "群体通信、共享上下文、协作消息、Rust 服务端",
-    "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证"
+    "capabilities": "协作工作区、事件记录、代码评审",
+    "risk": "公开描述较少，实际使用场景和成熟度还需要进一步验证",
+    "verified_at": "2026-09-27",
+    "evidence_sources": [
+      "https://github.com/block/buzz"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "ruvnet/RuView": {
     "summary": "利用普通 Wi-Fi 信号感知人员存在、动作和生命体征，不需要摄像头即可进行空间监测。",
@@ -377,7 +382,7 @@
   "rohitg00/ai-engineering-from-scratch": {
     "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
     "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/rohitg00/ai-engineering-from-scratch"
     ],
@@ -487,10 +492,15 @@
     "risk": "长期自动执行需要严格控制额度、唤醒条件和完成判定，避免任务循环与资源失控"
   },
   "anthropics/claude-plugins-official": {
-    "summary": "Anthropic 官方维护的 Claude Code 插件目录，用来集中分发和管理高质量插件条目。",
+    "summary": "集中提供 Anthropic 自有和第三方 Claude Code 插件，支持发现与安装。",
     "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
-    "capabilities": "官方插件目录、Claude Code 生态、插件发现、插件分发",
-    "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证"
+    "capabilities": "插件目录、插件发现、插件安装",
+    "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证",
+    "verified_at": "2026-09-27",
+    "evidence_sources": [
+      "https://github.com/anthropics/claude-plugins-official"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "DietrichGebert/ponytail": {
     "summary": "一个试图把“少写代码”原则固化给 AI Agent 的提示与工作流项目，强调先复用、再改动、最后才新增实现。",
@@ -549,7 +559,7 @@
   "openclaw/openclaw": {
     "summary": "运行在自有设备上的 AI 助手，通过统一网关连接模型、工具和常用聊天渠道。",
     "capabilities": "自托管助手、消息渠道、工具接入",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/openclaw/openclaw"
     ],
@@ -756,11 +766,11 @@
   "666ghj/MiroFish": {
     "summary": "将输入材料和问题转成多 Agent 交互模拟，供用户调整变量、观察情景并生成分析报告。",
     "capabilities": "情景模拟、变量调整、分析报告",
-    "verified_at": "2026-09-15",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/666ghj/MiroFish"
     ],
-    "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   },
   "danny-avila/LibreChat": {
     "summary": "可自行部署的多模型聊天与 Agent 工作台，支持文件检索、代码执行以及 MCP 工具和技能接入。",
@@ -801,7 +811,7 @@
   "hydra-db/hydradb": {
     "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
     "capabilities": "图数据库、对象存储、图查询",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/hydra-db/hydradb"
     ],
@@ -810,7 +820,7 @@
   "dream-num/univer": {
     "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
     "capabilities": "办公文档、电子表格、统一操作接口",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/dream-num/univer"
     ],
@@ -864,7 +874,7 @@
   "vectorize-io/hindsight": {
     "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
     "capabilities": "长期记忆、记忆检索、反思生成",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/vectorize-io/hindsight"
     ],
@@ -873,9 +883,18 @@
   "NVIDIA/Model-Optimizer": {
     "summary": "通过量化、剪枝和蒸馏等方法压缩模型，并导出到推理框架部署。",
     "capabilities": "模型量化、模型剪枝、模型蒸馏",
-    "verified_at": "2026-09-26",
+    "verified_at": "2026-09-27",
     "evidence_sources": [
       "https://github.com/NVIDIA/Model-Optimizer"
+    ],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+  },
+  "mobile-next/mobile-mcp": {
+    "summary": "通过 MCP 让 Agent 读取界面、点击和滑动，自动操作 iOS 与 Android 模拟器或真实设备。",
+    "capabilities": "移动端自动化、界面读取、设备控制",
+    "verified_at": "2026-09-27",
+    "evidence_sources": [
+      "https://github.com/mobile-next/mobile-mcp"
     ],
     "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
   }
