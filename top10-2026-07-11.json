@@ -602,11 +602,22 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "技能扩展",
-      "工作区",
-      "Runtime 参考"
+      "Agent 沙箱",
+      "策略执行",
+      "内核级隔离"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "NVIDIA 开源的 AI Agent 安全运行时：通过策略声明、内核级隔离与变更前验证，限制 Agent 对文件、网络、凭据和系统调用的访问范围。",
+      "audience": "需要在本地或基础设施中运行自主 Agent、并希望控制权限边界的开发者和平台团队",
+      "capabilities": "Agent 沙箱、策略执行、内核级隔离、权限验证",
+      "risk": "README 的安全能力依赖底层运行环境与策略配置；实际隔离强度和部署适配仍需在目标系统中验证",
+      "verified_at": "2026-10-01",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/OpenShell"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未做运行验证。"
+    }
   },
   {
     "owner": "agentscope-ai",

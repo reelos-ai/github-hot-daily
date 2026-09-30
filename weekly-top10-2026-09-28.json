@@ -65,7 +65,22 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "记忆检索",
+      "反思生成"
+    ],
+    "brief_zh": {
+      "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
+      "capabilities": "长期记忆、记忆检索、反思生成",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/vectorize-io/hindsight"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "affaan-m",
@@ -135,7 +150,24 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "编码技能",
+      "长期记忆",
+      "安全约束"
+    ],
+    "brief_zh": {
+      "summary": "为 Claude Code、Codex 等编码 Agent 提供技能、记忆和安全规则，组织更完整的开发工作流程。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "编码技能、长期记忆、安全约束",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装",
+      "verified_at": "2026-09-23",
+      "evidence_sources": [
+        "https://github.com/affaan-m/ECC"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "dream-num",
@@ -212,7 +244,22 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "办公文档",
+      "电子表格",
+      "统一操作接口"
+    ],
+    "brief_zh": {
+      "summary": "为应用嵌入电子表格、文档和演示文稿等办公界面，并通过统一接口供程序或 Agent 操作。",
+      "capabilities": "办公文档、电子表格、统一操作接口",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/dream-num/univer"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "hydra-db",
@@ -269,7 +316,22 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "图数据库",
+      "对象存储",
+      "图查询"
+    ],
+    "brief_zh": {
+      "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
+      "capabilities": "图数据库、对象存储、图查询",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/hydra-db/hydradb"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "alibaba",
@@ -335,7 +397,19 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "增量代码审查",
+      "全仓扫描",
+      "行级评论"
+    ],
+    "brief_zh": {
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "audience": "希望在本地或 CI 中自动审查 Pull Request 的研发团队",
+      "capabilities": "增量代码审查、全仓扫描、行级评论、安全规则、OpenAI 与 Anthropic 模型兼容",
+      "risk": "更强调审查精度而不是召回率，不能替代高风险变更的人工审查"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "Tencent",
@@ -418,7 +492,22 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "知识库检索",
+      "推理问答",
+      "知识维护"
+    ],
+    "brief_zh": {
+      "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
+      "capabilities": "知识库检索、推理问答、知识维护",
+      "verified_at": "2026-09-12",
+      "evidence_sources": [
+        "https://github.com/Tencent/WeKnora"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "strands-agents",
@@ -497,7 +586,22 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "智能体开发",
+      "工具调用",
+      "会话管理"
+    ],
+    "brief_zh": {
+      "summary": "用 Python 或 TypeScript 构建和运行 Agent，统一管理模型、工具调用、会话记忆与执行限制。",
+      "capabilities": "智能体开发、工具调用、会话管理",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/strands-agents/harness-sdk"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "TencentCloud",
@@ -565,7 +669,24 @@
       "risk_signal": 8,
       "total": 97
     },
-    "strategic_score": 97
+    "strategic_score": 97,
+    "capability_tags": [
+      "自托管助手",
+      "多用户协作",
+      "长期记忆"
+    ],
+    "brief_zh": {
+      "summary": "面向自托管场景的多用户、多 Agent AI 助手，README 标注支持本地优先与长期记忆相关能力。",
+      "audience": "希望在自有环境中部署多人协作 AI 助手的个人与团队",
+      "capabilities": "自托管助手、多用户协作、多 Agent、长期记忆",
+      "risk": "长期记忆和多 Agent 的实际边界、数据隔离与运维成本仍需结合代码、配置和部署文档验证",
+      "verified_at": "2026-10-01",
+      "evidence_sources": [
+        "https://github.com/TencentCloud/Octop"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "superdesigndev",
@@ -633,7 +754,22 @@
       "risk_signal": 8,
       "total": 96
     },
-    "strategic_score": 96
+    "strategic_score": 96,
+    "capability_tags": [
+      "工具目录",
+      "统一调用",
+      "凭据管理"
+    ],
+    "brief_zh": {
+      "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
+      "capabilities": "工具目录、统一调用、凭据管理",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/superdesigndev/treg"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   },
   {
     "owner": "rohitg00",
@@ -713,6 +849,21 @@
       "risk_signal": 6,
       "total": 95
     },
-    "strategic_score": 95
+    "strategic_score": 95,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/rohitg00/ai-engineering-from-scratch"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
   }
 ]

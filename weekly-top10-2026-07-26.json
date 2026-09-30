@@ -716,11 +716,22 @@
     },
     "strategic_score": 96,
     "capability_tags": [
-      "工作区",
-      "部署流程",
-      "自托管"
+      "自托管部署",
+      "内置 CI",
+      "CD"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "可自托管的开源部署平台：连接代码仓库后完成构建、发布、路由和 TLS 终止，并提供桌面端、Web 控制台和 CLI 操作入口。",
+      "audience": "希望自行托管应用部署流程、并减少基础设施操作步骤的开发者",
+      "capabilities": "自托管部署、内置 CI/CD、应用路由、TLS 管理",
+      "risk": "部署平台的可靠性与安全性高度依赖凭据管理、构建隔离和生产环境配置，需在目标基础设施中评估",
+      "verified_at": "2026-10-01",
+      "evidence_sources": [
+        "https://github.com/oblien/openship"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做生产部署验证。"
+    }
   },
   {
     "owner": "CoreBunch",
