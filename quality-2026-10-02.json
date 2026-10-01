@@ -1,0 +1,45 @@
+{
+  "period": "2026-10-02",
+  "checked_at": "2026-10-02T06:09:00+08:00",
+  "daily": {
+    "top10_count": 10,
+    "chinese_capability_tags": 30,
+    "slice_health": {
+      "all": 15,
+      "python": 19,
+      "typescript": 16,
+      "javascript": 15,
+      "go": 22,
+      "rust": 18
+    },
+    "api_failures": 0,
+    "readme_failures": 0,
+    "dependency_manifests": 71,
+    "dependency_unavailable": 22,
+    "historical_daily_reports": 76,
+    "historical_top10_failures": 0
+  },
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 200,
+    "snapshot_count": 77,
+    "deduplicated": true,
+    "continuous_ranks": true,
+    "model_version": "leaderboard-v2",
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "summary_sources": {
+      "project_brief": 134,
+      "original_description": 66
+    }
+  },
+  "browser_qa": {
+    "local_default_10": "pass",
+    "local_second_page": "pass",
+    "local_python_filter": "pass",
+    "local_growth_sort": "pass",
+    "local_page_size_20": "pass",
+    "local_invalid_url_fallback": "pass",
+    "local_mobile_390_no_horizontal_overflow": "pass"
+  }
+}
