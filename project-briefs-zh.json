@@ -969,5 +969,23 @@
     "verified_at": "2026-10-03",
     "evidence_sources": ["https://github.com/Effect-TS/effect"],
     "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做运行验证。"
+  },
+  "cloudflare/cloudflare-os": {
+    "summary": "Cloudflare 开源的企业 AI 生产力工作区：提供带公司上下文的 Agent 对话、可沙箱运行并可共享的小型应用，以及用 Gatekeepers 管理外部服务访问与人工审批的安全层。",
+    "audience": "需要把 Agent、公司知识和内部应用放进同一可控工作区的企业团队",
+    "capabilities": "Agent 工作区、沙箱应用、企业上下文、权限治理、人工审批",
+    "risk": "README 明确标注为 early access；权限模型、部署边界与生产稳定性仍需在目标组织环境中验证。",
+    "verified_at": "2026-10-05",
+    "evidence_sources": ["https://github.com/cloudflare/cloudflare-os"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未做部署或安全审计。"
+  },
+  "zerx-lab/FluxDown": {
+    "summary": "一个由 Rust + Tokio 引擎驱动的多协议下载管理器，覆盖 HTTP、FTP、BitTorrent、HLS 与 DASH，并提供浏览器扩展、RSS/队列自动化和 MCP 控制入口。",
+    "audience": "需要统一管理下载、流媒体抓取或由 Agent 调度下载任务的个人与团队",
+    "capabilities": "多协议下载、动态分段加速、浏览器集成、队列自动化、MCP 控制",
+    "risk": "协议覆盖与浏览器拦截范围较广；下载来源合规、凭据与远程管理安全需结合实际配置审查。",
+    "verified_at": "2026-10-05",
+    "evidence_sources": ["https://github.com/zerx-lab/FluxDown"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未做性能或安全验证。"
   }
 }

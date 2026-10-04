@@ -1,0 +1,815 @@
+[
+  {
+    "owner": "calesthio",
+    "name": "OpenMontage",
+    "full_name": "calesthio/OpenMontage",
+    "url": "https://github.com/calesthio/OpenMontage",
+    "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+    "language": "Python",
+    "total_stars": 63147,
+    "forks": 8053,
+    "stars_this_period": 361,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "ai",
+        "claude",
+        "copilot",
+        "cursor",
+        "elevenlabs",
+        "ffmpeg",
+        "flux",
+        "image-generation",
+        "open-source",
+        "openai",
+        "python",
+        "remotion",
+        "stable-diffusion",
+        "text-to-speech",
+        "text-to-video",
+        "video-generation",
+        "video-production"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 341,
+      "created_at": "2026-03-29T15:23:22Z",
+      "pushed_at": "2026-10-03T16:28:55Z",
+      "homepage": "https://www.openmontage.video/",
+      "default_branch": "main",
+      "forks": 8053,
+      "watchers": 348,
+      "archived": false,
+      "size_kb": 77018
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/monty-dark.svg\">\n    <img src=\"assets/monty-light.svg\" alt=\"Monty the Clapper — the official mascot of OpenMontage\" width=\"200\">\n  </picture>\n</p>\n\n<p align=\"center\"><sub><em>Monty the Clapper — the official mascot of OpenMontage</em></sub></p>\n\n<h1 align=\"center\">OpenMontage</h1>\n\n<p align=\"center\"><strong>The first open-source, agentic video production system.</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://openmontage.video\"><img src=\"https://img.shields.io/badge/Website-openmontage.video-d14a28?style=for-the-badge\" alt=\"openmontage.video\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#start-from-a-video-you-already-love\">Paste A Video</a> &nbsp;·&nbsp;\n  <a href=\"#quick-start\">Quick Start</a> &nbsp;·&nbsp;\n  <a href=\"#try-these-prompts\">Try These Prompts</a> &nbsp;·&nbsp;\n  <a href=\"#pipelines\">Pipelines</a> &nbsp;·&nbsp;\n  <a href=\"#how-it-works\">How It Works</a> &nbsp;·&nbsp;\n  <a href=\"#sponsors\">Sponsors</a> &nbsp;·&nbsp;\n  <a href=\"docs/PROVIDERS.md\">Providers</a> &nbsp;·&nbsp;\n  <a href=\"docs/PR_REVIEW_GUIDE.md\">Review Guide</a> &nbsp;·&nbsp;\n  <a href=\"AGENT_GUIDE.md\">Agent Guide</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPLv3-blue.svg\" alt=\"License\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/trending\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\".github/assets/repo-of-the-day-dark.svg\">\n      <img alt=\"🏆 #1 Repository of the Day on GitHub Trending\" src=\".github/assets/repo-of-the-day-light.svg\" height=\"60\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\"><strong>Follow The Build</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage\"><img src=\"https://img.shields.io/badge/YouTube-%40OpenMontage-FF0000?style=for-the-badge&logo=youtube&logoColor=white\" alt=\"YouTube\"></a>\n  <a href=\"https://x.com/calesthioailabs\"><img src=\"https://img.shields.io/badge/X-%40calesthioailabs-111111?style=for-the-badge&logo=x&logoColor=white\" alt=\"X\"></a>\n  <a href=\"https://github.com/calesthio/OpenMontage/discussions\"><img src=\"https://img.shields.io/badge/Community-GitHub%20Discussions-0b1220?style=for-the-badge&logo=github&logoColor=white\" alt=\"GitHub Discussions\"></a>\n</p>\n\n## Sponsors\n\n> Want to support OpenMontage? [Sponsor the project](https://github.com/sponsors/calesthio).\n\n<details open>\n<summary>Click to collapse</summary>\n\n<table>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\"><img src=\"assets/sponsors/bloome.png\" alt=\"Bloome\" width=\"150\"></a></td>\n<td><strong>Bloome</strong> lets multiple AI agents (Claude, ChatGPT, DeepSeek, and more) collaborate in one conversation for agentic video pipelines. It has zero setup, runs in the cloud, works on web and mobile, and lets you share a configured agent with your whole team. <strong><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\">Try Bloome</a></strong>.</td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.atlascloud.ai/coding-plan\"><img src=\"assets/sponsors/atlas-cloud.png\" alt=\"Atlas Cloud\" width=\"150\"></a></td>\n<td><strong>Atlas Cloud</strong> is a full-modal AI inference platform that gives developers a single AI API for video generation, image generation, and LLM APIs. Instead of managing multiple vendor integrations, you connect once and get unified access to 300+ curated models across all modalities. Check out Atlas Cloud's new <a href=\"https://www.atlascloud.ai/coding-plan\">coding plan</a> promotion for more budget-friendly API access.</td>\n</tr>\n</table>\n\n</details>\n\n---\n\nTurn your AI coding assistant into a full video production studio. Describe what you want in plain language — your agent handles research, scripting, asset generation, editing, and final composition.\n\n**Important distinction:** OpenMontage can make image-based videos, but it can also make a real **video video** for free/open-source workflows: the agent builds a corpus from free stock footage and open archives, retrieves actual motion clips, edits them into a timeline, and renders a finished piece. That is not the usual \"animate a handful of stills and call it video\" trick.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/f77ce7a4-68b8-4f94-a287-e94bf50a32e1\" width=\"100%\" controls></video>\n</div>\n\n> **\"SIGNAL FROM TOMORROW\"** — a cinematic sci-fi trailer fully produced through OpenMontage: concept, script, scene plan, Veo-generated motion clips, soundtrack, and Remotion composition.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/8daca07f-cdf8-4bec-89c3-9dc2176363fa\" width=\"100%\" controls></video>\n</div>\n\n> **\"THE LAST BANANA\"** — a 60-second Pixar-style animated short about a lonely banana who finds friendship with a kiwi. 6 Kling v3-generated motion clips (via fal.ai), Google Chirp3-HD narration, royalty-free piano music, TikTok-style word-level captions, and Remotion composition. Total cost: **$1.33**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/0a71333b-9b05-40b5-8800-a0a679e9b433\" width=\"100%\" controls></video>\n</div>\n\n> **\"OBJECTS IN OVERDRIVE\"** — a 54-second, music-driven 3D showcase featuring ten objects with distinct choreography: gravity-shifting furniture, frozen car drifts, cloth impacts, refractive lenses, moving gears, an acrobatic robot, and more. Custom Blender animation and physics, kinetic typography, and a phonk soundtrack. Rendered with Blender Eevee/Cycles and assembled with FFmpeg. No narration.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/88962725-97a0-4aac-a08e-34aaa9d8bb92\" width=\"100%\" controls></video>\n</div>\n\n> **\"Reimagine Your Universe\"** — a 50-second vertical transformation film in which one visual idea moves across objects, eras, materials, and scale. Five generated motion scenes, sparse Google Chirp narration, a Pixabay score, and a bespoke HyperFrames composition turn separate clips into one authored cinematic journey. Total cost: **about $4**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/c947070c-95ee-4d73-8d76-0bd3dc4826eb\" width=\"100%\" controls></video>\n</div>\n\n> **\"Products Come to Life\"** — a 60-second product film built from approved hero stills. Five hard-surface products separate into their own engineering and reassemble, with each still pinned as the first and last frame so the model invents motion without losing product identity. Image-to-video generation, bespoke sound, narration, and a custom composition complete the film.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/6815c2d2-17a3-4057-b9a0-893fc9c05bef\" width=\"100%\" controls></video>\n</div>\n\n> **\"Imagine the Possibilities with OpenMontage\"** — seven generated worlds collected into one music-only showcase. Three image models supply campaign, fashion, and miniature-world artwork; four video models expand the journey through architecture, material transformation, a living greenhouse, and a creature encounter. OpenMontage animates the stills, edits the motion, unifies the soundtrack, and closes with Monty the Clapper. Source generation cost: **about $5**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/a524f02a-2d18-42ca-a2c4-d3dc09503546\" width=\"100%\" controls></video>\n</div>\n\n> **\"How Salt Made History\"** — a 100-second cinematic documentary about the mineral that funded empires, shaped trade routes, sparked revolutions, and gave us the word “salary.” Real-world footage is woven together with original narration and hand-authored motion graphics for its etched title, etymology reveal, animated maps, historical timeline, and closing thesis.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/61919fb8-9dd1-446c-b833-dca82f6a3af8\" width=\"100%\" controls></video>\n</div>\n\n> **\"One Prompt Built This Complete 3D World\"** — a continuous 60-second journey through one coherent, editable fantasy world. Distinct terrain regions, an inhabited village, waterways, ruins, dense vegetation, and a late hero-landmark reveal are assembled from textured 3D assets, then brought together with cinematic lighting, atmospheric music, and a planned camera path.\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage?sub_confirmation=1\"><strong>Subscribe to @OpenMontage on YouTube</strong></a> to see new videos as they ship — every video includes the full prompt, pipeline, tools used, and cost so you can reproduce it yourself.\n</p>\n\n---\n\n## Start From A Video You Already Love\n\nStarting from a reference video is often faster than starting from a blank prompt.\n\nOpenMontage can start from a **YouTube video, Short, Reel, TikTok, or local clip** and turn it into a grounded production plan:\n\n1. **Paste a reference video**\n2. **The agent analyzes transcript, pacing, scenes, keyframes, and style**\n3. **You get 2-3 differentiated concepts, an honest tool path, cost estimates, and a sample before full production**\n\n```text\n\"Here's a YouTube Short I love. Make me something like this, but about quantum computing.\"\n```\n\nWhat you get back is not \"best guess prompt spaghetti.\" You get:\n\n- **What it keeps** from the reference: pacing, hook style, structure, tone\n- **What it changes**: topic, visual treatment, angle, narration approach\n- **What it will cost** at your target duration, before asset generation starts\n- **What it will actually look like** with your currently available tools\n\nWorks with **Claude Code, Cursor, Copilot, Windsurf, Codex** — any AI coding assistant that can read files and run code.\n\n---\n\n## Watch It Happen — The Backlot Living Storyboard\n\nChat tells you what the agent *said*. **Backlot shows you what the production is actually doing** — a local board that fills itself in as the pipeline runs. Stages light up, the script lands as a screenplay page, scene cards shimmer while assets generate, and every provider decision and dollar spent is on the wall.\n\nWhen a production starts, the agent opens it for you automatically. No setup, no reporting — the board derives everything from the project files the pipeline already writes.\n\n<p align=\"center\"><img src=\"docs/images/backlot/board-live.png\" alt=\"Backlot live board — assets generating\" width=\"920\"></p>\n\n**The storyboard is now a real approval gate.** Asset generation pauses on a scene-by-scene contact sheet — takes, prompts, per-asset cost, quality scores — so you approve the visuals *before* the render, not after it's too late:\n\n<p align=\"center\"><img src=\"docs/images/backlot/storyboard.png\" alt=\"Backlot storyboard — filmstrip with takes and renders\" width=\"920\"></p>\n\nCreative gates hold until you answer. The board shows what's waiting and why; you reply in chat:\n\n<p align=\"center\"><img src=\"docs/images/backlot/script-gate.png\" alt=\"Backlot script gate — awaiting approval\" width=\"920\"></p>\n\nEvery production on your machine, live-first, in the library:\n\n<p align=\"center\"><img src=\"docs/images/backlot/library.png\" alt=\"Backlot library\" width=\"920\"></p>\n\n```bash\npython -m backlot open                  # the library — every project on disk\npython -m backlot open <project-id>     # one production's live board\npython scripts/backlot_simulate_run.py  # no production yet? watch a simulated one live\n```\n\nAnd when a run is done, hit **▶ REPLAY RUN** — the whole production replays from its timestamps, scrubbable end to end. See [`backlot/README.md`](backlot/README.md) for how it works.\n\n---\n\n## Quick Start\n\n### Prerequisites\n\n- **Python 3.10+** — [python.org](https://www.python.org/downloads/)\n- **FFmpeg** — `brew install ffmpeg` / `sudo apt install ffmpeg` / [ffmpeg.org](https://ffmpeg.org/download.html)\n- **Node.js 18+** — [nodejs.org](https://nodejs.org/)\n- **An AI coding assistant** — Claude ",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "# OpenMontage - Core Dependencies\npyyaml>=6.0\npydantic>=2.0\njsonschema>=4.20\npython-dotenv>=1.0\nPillow>=10.0\nnumpy>=1.24\nrequests>=2.31\ngoogle-auth>=2.0       # service-account auth for Google TTS + Imagen (Vertex AI)\ngoogle-genai>=1.0.0    # Gemini Developer API clients for Lyria, Veo, and Gemini Omni\nopenai>=2.44.0         # Videos API support for Sora 2\n\n# Backlot - the living storyboard (local board server)\nfastapi>=0.110\nuvicorn>=0.29\nwatchfiles>=0.21\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "llm",
+      "inference"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 99
+    },
+    "strategic_score": 99,
+    "capability_tags": [
+      "视频制作",
+      "素材生成",
+      "剪辑合成"
+    ],
+    "brief_zh": {
+      "summary": "把调研、脚本、素材生成、剪辑与合成组织成流水线，让编码 Agent 执行视频制作任务。",
+      "capabilities": "视频制作、素材生成、剪辑合成",
+      "verified_at": "2026-09-14",
+      "evidence_sources": [
+        "https://github.com/calesthio/OpenMontage"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "affaan-m",
+    "name": "ECC",
+    "full_name": "affaan-m/ECC",
+    "url": "https://github.com/affaan-m/ECC",
+    "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+    "language": "JavaScript",
+    "total_stars": 272901,
+    "forks": 40737,
+    "stars_this_period": 889,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "productivity"
+      ],
+      "license": "MIT",
+      "open_issues": 344,
+      "created_at": "2026-01-18T00:51:51Z",
+      "pushed_at": "2026-10-02T02:01:14Z",
+      "homepage": "https://ecc.tools",
+      "default_branch": "main",
+      "forks": 40737,
+      "watchers": 1370,
+      "archived": false,
+      "size_kb": 54908
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/hero.png\" alt=\"ECC - the agent harness operating system\" width=\"100%\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=trending&theme=dark\" />\n      <img src=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=trending\" alt=\"GitHub Trending Repository of the Day\" height=\"46\" />\n    </picture>\n  </a>\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=rank&theme=dark\" />\n      <img src=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=rank\" alt=\"Star History Global Rank\" height=\"46\" />\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>Language:</strong>\n  <a href=\"README.md\">English</a> |\n  <a href=\"docs/pt-BR/README.md\">Português (Brasil)</a> |\n  <a href=\"README.zh-CN.md\">简体中文</a> |\n  <a href=\"docs/zh-TW/README.md\">繁體中文</a> |\n  <a href=\"docs/ja-JP/README.md\">日本語</a> |\n  <a href=\"docs/ko-KR/README.md\">한국어</a> |\n  <a href=\"docs/tr/README.md\">Türkçe</a> |\n  <a href=\"docs/ru/README.md\">Русский</a> |\n  <a href=\"docs/vi-VN/README.md\">Tiếng Việt</a> |\n  <a href=\"docs/th/README.md\">ไทย</a> |\n  <a href=\"docs/de-DE/README.md\">Deutsch</a> |\n  <a href=\"docs/es/README.md\">Español</a> |\n  <a href=\"docs/uk-UA/README.md\">Українська</a> |\n  <a href=\"docs/pl/README.md\">Polski</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\"><img src=\"https://img.shields.io/discord/1496644400590094540?logo=discord&logoColor=white&label=Discord&color=5865F2\" alt=\"Discord\" /></a>\n  <a href=\"https://ecc.tools\"><img src=\"https://img.shields.io/badge/Website-ecc.tools-E07856?logo=googlechrome&logoColor=white\" alt=\"Website\" /></a>\n  <a href=\"https://github.com/apps/ecc-tools\"><img src=\"https://img.shields.io/badge/GitHub%20App-ECC%20Tools-181717?logo=github&logoColor=white\" alt=\"GitHub App\" /></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-blue.svg\" alt=\"MIT license\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/affaan-m/ECC\"><img src=\"https://img.shields.io/github/stars/affaan-m/ECC?style=flat\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/affaan-m/ECC/forks\"><img src=\"https://img.shields.io/github/forks/affaan-m/ECC?style=flat\" alt=\"GitHub forks\" /></a>\n  <a href=\"https://github.com/affaan-m/ECC/graphs/contributors\"><img src=\"https://img.shields.io/github/contributors/affaan-m/ECC?style=flat\" alt=\"Contributors\" /></a>\n  <a href=\"https://github.com/marketplace/ecc-tools\"><img src=\"https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.ecc.tools%2Fbadge%2Finstalls&logo=github\" alt=\"GitHub App installs\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/ecc-universal\"><img src=\"https://img.shields.io/npm/dw/ecc-universal?label=ecc-universal&logo=npm\" alt=\"ecc-universal npm downloads\" /></a>\n  <a href=\"https://www.npmjs.com/package/ecc-agentshield\"><img src=\"https://img.shields.io/npm/dw/ecc-agentshield?label=ecc-agentshield&logo=npm\" alt=\"ecc-agentshield npm downloads\" /></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white\" alt=\"Shell\" />\n  <img src=\"https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white\" alt=\"TypeScript\" />\n  <img src=\"https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white\" alt=\"Python\" />\n  <img src=\"https://img.shields.io/badge/-Go-00ADD8?logo=go&logoColor=white\" alt=\"Go\" />\n  <img src=\"https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white\" alt=\"Java\" />\n  <img src=\"https://img.shields.io/badge/-Perl-39457E?logo=perl&logoColor=white\" alt=\"Perl\" />\n  <img src=\"https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white\" alt=\"Markdown\" />\n</p>\n\n> [!WARNING]\n> **Official sources only.** Install ECC only from verified channels: the GitHub repository [github.com/affaan-m/ECC](https://github.com/affaan-m/ECC), the npm packages [`ecc-universal`](https://www.npmjs.com/package/ecc-universal) and [`ecc-agentshield`](https://www.npmjs.com/package/ecc-agentshield), the [GitHub App](https://github.com/apps/ecc-tools), the plugin slug `ecc@ecc`, and the project website [ecc.tools](https://ecc.tools). Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware.\n\n## Install with Claude Code\n\nUse the [guided setup](#install-ecc) or [native plugin commands](#claude-code-details). Both install the same `ecc@ecc` plugin. Choose one and do not stack a full manual Claude install on top.\n\n<div align=\"center\">\n\n<table aria-label=\"ECC primary links\">\n<tr>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://ecc.tools/pricing\">\n    <img src=\"assets/images/community/ecc-tools-mark.svg\" height=\"42\" alt=\"ECC Tools\" /><br />\n    <strong>ECC Pro + GitHub App</strong>\n  </a><br />\n  <sub><a href=\"https://github.com/apps/ecc-tools\">Install free</a> · <a href=\"https://ecc.tools/pricing\">Private repos from $19/seat/mo</a></sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://github.com/sponsors/affaan-m\">\n    <img src=\"assets/images/community/heart.svg\" height=\"42\" alt=\"\" /><br />\n    <strong>Sponsor ECC</strong>\n  </a><br />\n  <sub>Fund the open-source project</sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\">\n    <img src=\"assets/images/community/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n</div>\n\n<sub>**OSS stays free.** This repo is MIT-licensed forever. ECC Pro is the hosted GitHub App for private repos. <a href=\"https://github.com/sponsors/affaan-m\">Sponsors</a> and <a href=\"https://ecc.tools/pricing\">Pro subscribers</a> fund the work. That's why a single maintainer ships weekly across 7 harnesses.</sub>\n\n<div align=\"center\">\n\n<sub><strong>Partners &amp; sponsors</strong></sub>\n\n<p align=\"center\" aria-label=\"Partners and sponsors\">\n  <a href=\"https://www.coderabbit.ai\" title=\"CodeRabbit\"><img src=\"assets/images/sponsors/coderabbit.png\" height=\"54\" alt=\"CodeRabbit\" /></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://www.greptile.com/go/ecc\" title=\"Greptile\"><img src=\"assets/images/sponsors/greptile.png\" height=\"54\" alt=\"Greptile\" /></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://platform.kimi.ai?aff=ecc\" title=\"Moonshot AI - Kimi\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/images/sponsors/moonshot-dark.png\" /><img src=\"assets/images/sponsors/moonshot.png\" width=\"132\" alt=\"Moonshot AI - Kimi\" /></picture></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://compute.itomarkets.com\" title=\"Itô Markets\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"assets/images/sponsors/ito-transparent-light.png\" /><img src=\"assets/images/sponsors/ito-transparent.png\" width=\"96\" alt=\"Itô Markets\" /></picture></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://serpapi.com/github-ecc\" title=\"SerpApi: Web Search API\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/images/sponsors/serpapi-logo-dark-mode.svg\" /><img src=\"assets/images/sponsors/serpapi-logo-light-mode.svg\" width=\"200\" alt=\"SerpApi: Web Search API\" /></picture></a>\n</p>\n\n<sub><strong>Past sponsors:</strong> <a href=\"https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=link&amp;utm_campaign=ECC\">Atlas Cloud</a> · <a href=\"https://github.com/mikejmorgan-ai\">Mike Morgan (inactive)</a></sub>\n\n<sub><strong>Community sponsors:</strong> <a href=\"https://github.com/jasonwu513\">@jasonwu513</a> · <a href=\"https://github.com/1anter\">@1anter</a> · <a href=\"https://github.com/massimotodaro\">@massimotodaro</a> · <a href=\"https://github.com/meadmccabe\">@meadmccabe</a></sub>\n\n<sub><a href=\"https://github.com/sponsors/affaan-m\"><strong>Become a Sponsor</strong></a> · <a href=\"SPONSORS.md\">Sponsor Tiers</a> · <a href=\"SPONSORING.md\">Sponsorship Program</a></sub>\n\n</div>\n\n<p align=\"center\"><a href=\"#install-ecc\">Jump to install ↓</a></p>\n\n# ECC\n\nYour agent can write code, but ECC gives it a coordinated engineering system and toolbox: it plans before it builds, verifies changes with tests, reviews its own work from a fresh context, remembers what matters, and turns repeated wins into reusable skills and workflows.\n\n```text\nplan -> test -> implement -> review -> verify -> remember -> improve\n```\n\nInstead of rebuilding that process in every prompt, you install it once and make it part of how your agent works.\n\n> Optimize the context window. Persist everything else.\n\nECC is MIT-licensed open source. It works best with Claude Code today, has a supported Codex sync path, and provides capability-limited adapters for Cursor, OpenCode, Gemini, Zed, GitHub Copilot, Antigravity, Qwen, and other harnesses. See the [support status matrix](#platform-support) before assuming feature parity.\n\nAccess to 68 agents, 293 skills, and 94 legacy command shims, plus hooks, rules, memory, continuous learning, and AgentShield security scanning. The agents are specialized for planning, review, build repair, security, architecture, and domain work.\n\n| Included         |       Count | What it gives you                                                                    |\n| ---------------- | ----------: | ------------------------------------------------------------------------------------ |\n| Agents           |   68 agents | Planning, review, build repair, security, architecture, and domain work              |\n| Skills           |  293 skills | TDD, research, security, docs, frontend, data, ML, operations, and more              |\n| Commands         | 94 commands | Convenient entry points while ECC moves to a skills-first surface                    |\n| Hooks and memory |     Runtime | Enforcement, session summaries, continuous learning, instincts, and context controls |\n| Rules            |   Selective | Always-loaded standards you choose by language or project                            |\n| AgentShield      |    Included | Scanning for prompts, hooks, MCP config, permissions, secrets, and agent files       |\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/svg?repos=affaan-m/ECC&type=Date&theme=dark\" />\n      <img src=\"https://api.star-history.com/svg?repos=affaan-m/ECC&type=Date\" alt=\"Live star history chart for affaan-m/ECC\" width=\"100%\" />\n    </picture>\n  </a>\n</p>\n\n## Install ECC\n\n> [!IMPORTANT]\n> ECC 2.2 includes guided package setup for Claude Code, Codex, and Kimi Code.\n> The universal package requires Node.js 18 or newer. Claude plugin setup also\n> requires Git and Claude Code 2.1 or newer on `PATH`.\n\n### Recommended: universal guided setup\n\nFor Claude Code plugin setup, updates, scope changes, and hook-profile changes:\n\n```bash\nnpx ecc-universal@2.2.3 setup\n```\n\n#### Windows first-time walkthrough\n\nIf you are new to command-line tools, use this copy-and-paste path:\n\n1. Install Node.js 18 or newer, Git, and Claude Code.\n2. Open **PowerShell** from the Windows Start menu.\n3. Confirm that each prerequisite is available:\n\n   ```powershell\n   node --version\n   git --version\n   claude --version\n   ```\n\n4. Run the guided installer:\n\n   ```powershell\n   npx ecc-universal@2.2.3 setup\n   ```\n\n5. For a typical personal setup, choose **Global user**, choose **Standard** hooks, and confirm.\n6. Start a new Claude Code session and run `/plugin list` to verify that `ecc@ecc` is enabled.\n\nThis path does not require cloning the repository. If any prerequisite command is not found, install or repair that prerequisite before rerunning ECC setup.\n\nIf npm reports a version or cache error, confirm the registry version before retrying:\n\n```bash\nnpm view ecc-universal version\n```\n\nECC 2.2 s",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"ecc-universal\",\n  \"version\": \"2.2.3\",\n  \"description\": \"Harness-native agent operating system for Codex, OpenCode, Cursor, Gemini, Claude Code, and terminal workflows - skills, hooks, rules, MCP conventions, and operator control-plane patterns\",\n  \"main\": \".opencode/dist/index.js\",\n  \"types\": \".opencode/dist/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./.opencode/dist/index.d.ts\",\n      \"import\": \"./.opencode/dist/index.js\",\n      \"default\": \"./.opencode/dist/index.js\"\n    },\n    \"./package.json\": \"./package.json\",\n    \"./*\": \"./*\"\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"keywords\": [\n    \"ai\",\n    \"agents\",\n    \"skills\",\n    \"hooks\",\n    \"mcp\",\n    \"rules\",\n    \"harness\",\n    \"agent-harness\",\n    \"tdd\",\n    \"code-review\",\n    \"security\",\n    \"automation\",\n    \"best-practices\",\n    \"cursor\",\n    \"cursor-ide\",\n    \"opencode\",\n    \"codex\",\n    \"presentations\",\n    \"slides\"\n  ],\n  \"author\": {\n    \"name\": \"Affaan Mustafa\",\n    \"url\": \"https://x.com/affaan\"\n  },\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/affaan-m/ECC.git\"\n  },\n  \"homepage\": \"https://github.com/affaan-m/ECC#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/affaan-m/ECC/issues\"\n  },\n  \"files\": [\n    \".adal/\",\n    \".agents/\",\n    \".claude-plugin/\",\n    \".codex/\",\n    \".codex-plugin/\",\n    \".cursor/\",\n    \".gemini/\",\n    \".github/PULL_REQUEST_TEMPLATE.md\",\n    \".hermes/\",\n    \".kimi/\",\n    \".opencode/\",\n    \".opencode/dist/\",\n    \".pi/\",\n    \".openclaw/\",\n    \".qwen/\",\n    \".zed/\",\n    \".mcp.json\",\n    \"AGENTS.md\",\n    \"COMMANDS-QUICK-REF.md\",\n    \"CONTRIBUTING.md\",\n    \"VERSION\",\n    \"agent.yaml\",\n    \"assets/ecc-icon.svg\",\n    \"assets/hero.png\",\n    \"assets/images/community/\",\n    \"assets/images/sponsors/\",\n    \"agents/\",\n    \"commands/\",\n    \"docs/de-DE/\",\n    \"docs/CODEX-NAVIGATION-GUIDE.md\",\n    \"docs/COMMAND-AGENT-MAP.md\",\n    \"docs/ROADMAP.md\",\n    \"docs/design/ecc-memory-vault.md\",\n    \"docs/design/context-profiles.md\",\n    \"docs/design/context-carriers.md\",\n    \"docs/design/context-profile-delivery.md\",\n    \"docs/ja-JP/\",\n    \"docs/ko-KR/\",\n    \"docs/pt-BR/\",\n    \"docs/pl/\",\n    \"docs/ru/\",\n    \"docs/tr/\",\n    \"docs/uk-UA/\",\n    \"docs/vi-VN/\",\n    \"docs/zh-CN/\",\n    \"docs/zh-TW/\",\n    \"examples/eval-harness/\",\n    \"hooks/\",\n    \"install.ps1\",\n    \"install.sh\",\n    \"manifests/\",\n    \"mcp-configs/\",\n    \"plugins/ecc/\",\n    \"rules/\",\n    \"schemas/\",\n    \"scripts/catalog.js\",\n    \"scripts/ci/scan-supply-chain-iocs.js\",\n    \"scripts/ci/supply-chain-advisory-sources.js\",\n    \"scripts/consult.js\",\n    \"scripts/profile.js\",\n    \"scripts/auto-update.js\",\n    \"scripts/claw.js\",\n    \"scripts/control-pane.js\",\n    \"scripts/codex/check-plugin-cache.js\",\n    \"scripts/codex/merge-codex-config.js\",\n    \"scripts/codex/merge-mcp-config.js\",\n    \"scripts/discussion-audit.js\",\n    \"scripts/doctor.js\",\n    \"scripts/ecc.js\",\n    \"scripts/feedback.js\",\n    \"scripts/memory.js\",\n    \"scripts/memory-mcp.mjs\",\n    \"scripts/gemini-adapt-agents.js\",\n    \"scripts/harness-adapter-compliance.js\",\n    \"scripts/harness-audit.js\",\n    \"scripts/eval-harness.js\",\n    \"scripts/observability-readiness.js\",\n    \"scripts/operator-readiness-dashboard.js\",\n    \"scripts/platform-audit.js\",\n    \"scripts/preview-pack-smoke.js\",\n    \"scripts/release-approval-gate.js\",\n    \"scripts/release-video-suite.js\",\n    \"scripts/dashboard-web.js\",\n    \"scripts/skills-health.js\",\n    \"scripts/hooks/\",\n    \"scripts/install-apply.js\",\n    \"scripts/install-guided.js\",\n    \"scripts/install-plan.js\",\n    \"scripts/ito.js\",\n    \"scripts/nasiko.js\",\n    \"scripts/lib/\",\n    \"scripts/list-installed.js\",\n    \"scripts/loop-status.js\",\n    \"scripts/plan-canvas.js\",\n    \"scripts/orchestration-status.js\",\n    \"scripts/orchestrate-codex-worker.sh\",\n    \"scripts/orchestrate-worktrees.js\",\n    \"scripts/repair.js\",\n    \"scripts/setup.js\",\n    \"scripts/welcome.js\",\n    \"scripts/session-inspect.js\",\n    \"scripts/sessions-cli.js\",\n    \"scripts/setup-package-manager.js\",\n    \"scripts/skill-create-output.js\",\n    \"scripts/status.js\",\n    \"scripts/sync-ecc-to-codex.sh\",\n    \"scripts/codex/legacy-sync-state.js\",\n    \"scripts/codex/install-global-git-hooks.sh\",\n    \"scripts/codex/check-codex-global-state.sh\",\n    \"scripts/codex-git-hooks/\",\n    \"scripts/work-items.js\",\n    \"scripts/uninstall.js\",\n    \"skills/agent-architecture-audit/\",\n    \"skills/agent-harness-construction/\",\n    \"skills/agent-introspection-debugging/\",\n    \"skills/agent-sort/\",\n    \"skills/agentic-engineering/\",\n    \"skills/agentic-os/\",\n    \"skills/ai-first-engineering/\",\n    \"skills/ai-regression-testing/\",\n    \"skills/android-clean-architecture/\",\n    \"skills/angular-developer/\",\n    \"skills/api-connector-builder/\",\n    \"skills/api-design/\",\n    \"skills/article-writing/\",\n    \"skills/automation-audit-ops/\",\n    \"skills/autonomous-loops/\",\n    \"skills/backend-patterns/\",\n    \"skills/blender-motion-state-inspection/\",\n    \"skills/blueprint/\",\n    \"skills/brand-voice",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "编码技能",
+      "长期记忆",
+      "安全约束"
+    ],
+    "brief_zh": {
+      "summary": "为 Claude Code、Codex 等编码 Agent 提供技能、记忆和安全规则，组织更完整的开发工作流程。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "编码技能、长期记忆、安全约束",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装",
+      "verified_at": "2026-09-23",
+      "evidence_sources": [
+        "https://github.com/affaan-m/ECC"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "thedotmack",
+    "name": "claude-mem",
+    "full_name": "thedotmack/claude-mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "description": "Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+    "language": "TypeScript",
+    "total_stars": 96089,
+    "forks": 8486,
+    "stars_this_period": 627,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 122,
+      "created_at": "2025-08-31T20:50:03Z",
+      "pushed_at": "2026-10-04T09:15:15Z",
+      "homepage": "https://claude-mem.ai",
+      "default_branch": "main",
+      "forks": 8486,
+      "watchers": 305,
+      "archived": false,
+      "size_kb": 522757
+    },
+    "readme_content": "<h1 align=\"center\">\n  <br>\n  <a href=\"https://github.com/thedotmack/claude-mem\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/public/claude-mem-logo-for-dark-mode.webp\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/public/claude-mem-logo-for-light-mode.webp\">\n      <img src=\"docs/public/claude-mem-logo-for-light-mode.webp\" alt=\"Claude-Mem\" width=\"400\">\n    </picture>\n  </a>\n</h1>\n\n<p align=\"center\">\n  <img alt=\"Vercel OSS Program\" src=\"https://vercel.com/oss/program-badge-2026.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"Greptile\" src=\"docs/public/greptile-wordmark-green.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"SerpApi\" src=\"docs/public/serpapi-logo-with-wordmark-gradient.svg\" height=\"24\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/i18n/README.zh.md\">🇨🇳 中文</a> •\n  <a href=\"docs/i18n/README.zh-tw.md\">🇹🇼 繁體中文</a> •\n  <a href=\"docs/i18n/README.ja.md\">🇯🇵 日本語</a> •\n  <a href=\"docs/i18n/README.pt.md\">🇵🇹 Português</a> •\n  <a href=\"docs/i18n/README.pt-br.md\">🇧🇷 Português</a> •\n  <a href=\"docs/i18n/README.ko.md\">🇰🇷 한국어</a> •\n  <a href=\"docs/i18n/README.es.md\">🇪🇸 Español</a> •\n  <a href=\"docs/i18n/README.de.md\">🇩🇪 Deutsch</a> •\n  <a href=\"docs/i18n/README.fr.md\">🇫🇷 Français</a> •\n  <a href=\"docs/i18n/README.he.md\">🇮🇱 עברית</a> •\n  <a href=\"docs/i18n/README.ar.md\">🇸🇦 العربية</a> •\n  <a href=\"docs/i18n/README.ru.md\">🇷🇺 Русский</a> •\n  <a href=\"docs/i18n/README.pl.md\">🇵🇱 Polski</a> •\n  <a href=\"docs/i18n/README.cs.md\">🇨🇿 Čeština</a> •\n  <a href=\"docs/i18n/README.nl.md\">🇳🇱 Nederlands</a> •\n  <a href=\"docs/i18n/README.tr.md\">🇹🇷 Türkçe</a> •\n  <a href=\"docs/i18n/README.uk.md\">🇺🇦 Українська</a> •\n  <a href=\"docs/i18n/README.vi.md\">🇻🇳 Tiếng Việt</a> •\n  <a href=\"docs/i18n/README.tl.md\">🇵🇭 Tagalog</a> •\n  <a href=\"docs/i18n/README.id.md\">🇮🇩 Indonesia</a> •\n  <a href=\"docs/i18n/README.th.md\">🇹🇭 ไทย</a> •\n  <a href=\"docs/i18n/README.hi.md\">🇮🇳 हिन्दी</a> •\n  <a href=\"docs/i18n/README.bn.md\">🇧🇩 বাংলা</a> •\n  <a href=\"docs/i18n/README.ur.md\">🇵🇰 اردو</a> •\n  <a href=\"docs/i18n/README.ro.md\">🇷🇴 Română</a> •\n  <a href=\"docs/i18n/README.sv.md\">🇸🇪 Svenska</a> •\n  <a href=\"docs/i18n/README.it.md\">🇮🇹 Italiano</a> •\n  <a href=\"docs/i18n/README.el.md\">🇬🇷 Ελληνικά</a> •\n  <a href=\"docs/i18n/README.hu.md\">🇭🇺 Magyar</a> •\n  <a href=\"docs/i18n/README.fi.md\">🇫🇮 Suomi</a> •\n  <a href=\"docs/i18n/README.da.md\">🇩🇰 Dansk</a> •\n  <a href=\"docs/i18n/README.no.md\">🇳🇴 Norsk</a>\n</p>\n\n<h4 align=\"center\">Persistent memory compression system built for <a href=\"https://claude.com/claude-code\" target=\"_blank\">Claude Code</a>.</h4>\n\n<p align=\"center\">\n  <a href=\"LICENSE\">\n    <img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/version-13.29.0-green.svg\" alt=\"Version\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg\" alt=\"Node\">\n  </a>\n  <a href=\"https://github.com/thedotmack/awesome-claude-code\">\n    <img src=\"https://awesome.re/mentioned-badge.svg\" alt=\"Mentioned in Awesome Claude Code\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15496\" target=\"_blank\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\" alt=\"thedotmack/claude-mem | Trendshift\" width=\"250\" height=\"55\"/>\n    </picture>\n  </a>\n</p>\n\n<br>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://github.com/thedotmack/claude-mem\">\n        <picture>\n          <img\n            src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/cm-preview.gif\"\n            alt=\"Claude-Mem Preview\"\n            width=\"500\"\n          >\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\">\n      <a href=\"https://www.star-history.com/#thedotmack/claude-mem&Date\">\n        <picture>\n          <source\n            media=\"(prefers-color-scheme: dark)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&theme=dark&legend=top-left\"\n          />\n          <source\n            media=\"(prefers-color-scheme: light)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n          />\n          <img\n            alt=\"Star History Chart\"\n            src=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n            width=\"500\"\n          />\n        </picture>\n      </a>\n    </td>\n  </tr>\n</table>\n\n<p align=\"center\">\n  <a href=\"#quick-start\">Quick Start</a> •\n  <a href=\"#how-it-works\">How It Works</a> •\n  <a href=\"#mcp-search-tools\">Search Tools</a> •\n  <a href=\"#documentation\">Documentation</a> •\n  <a href=\"#configuration\">Configuration</a> •\n  <a href=\"#troubleshooting\">Troubleshooting</a> •\n  <a href=\"#license\">License</a>\n</p>\n\n<p align=\"center\">\n  Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions. This enables Claude to maintain continuity of knowledge about projects even after sessions end or reconnect.\n</p>\n\n---\n\n## Quick Start\n\nInstall claude-mem for Grok Bot:\n\n```bash\nnpx claude-mem install --ide grok-bot\n```\n\nGrok Bot has no host hooks, so we watch the chat log files. Default is CMEM Pro, the hosted memory. Local observer is opt-in: `--provider host`. Installing this plugin does not install Cursor.\n\n**Awareness push pilot (LFG + Orifice):** needle observations (`decision`, `bugfix`, `security_alert`, `sensitive`) are appended as dated `- YYYY-MM-DD [awareness] …` lines into that bot's `memory/log/YYYY-MM.md`. Grok Bot already re-reads the log from disk. This does not write `profile.md`, user-memory, or project memory. Disable with `CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false`.\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nThe installer sets everything up first, then asks you to sign in to claude-mem in your browser (email magic link — no card required). Signing in provisions a memory key for your account and unlocks the **claude-mem observer**: memory that runs off-plan, free for up to 14 days, so you get up to 100% more usage from your plan. When the free trial ends, memory automatically falls back to your Anthropic plan unless you subscribe. After sign-in you pick your memory provider — the claude-mem observer, your own OpenRouter or Gemini key, or your Anthropic plan.\n\nPrefer to skip the sign-in? Pass an explicit `--provider` flag, set `CLAUDE_MEM_ONLINE_OPTIN=false`, or run in CI/non-interactive shells — the installer completes without any account interaction.\n\nOr install for OpenCode:\n\n```bash\nnpx claude-mem install --ide opencode\n```\n\nOr install for Antigravity CLI ([setup guide](https://docs.claude-mem.ai/antigravity-cli/setup)):\n\n```bash\nnpx claude-mem install --ide antigravity\n```\n\nOr install for OMP (Oh My Pi):\n\n```bash\nnpx claude-mem install --ide omp\n```\n\nOr install from the plugin marketplace inside Claude Code:\n\n```bash\n/plugin marketplace add thedotmack/claude-mem\n\n/plugin install claude-mem\n```\n\nRestart Claude Code. Context from previous sessions will automatically appear in new sessions.\n\n> **Note:** Claude-Mem is also published on npm, but `npm install -g claude-mem` installs the **SDK/library only** — it does not register the plugin hooks or set up the worker service. Always install via `npx claude-mem install` or the `/plugin` commands above.\n\n### 🦞 OpenClaw Gateway\n\nInstall claude-mem as a persistent memory plugin on [OpenClaw](https://openclaw.ai) gateways with a single command:\n\n```bash\ncurl -fsSL https://install.cmem.ai/openclaw.sh | bash\n```\n\nThe installer handles dependencies, plugin setup, AI provider configuration, worker startup, and optional real-time observation feeds to Telegram, Discord, Slack, and more. See the [OpenClaw Integration Guide](https://docs.claude-mem.ai/openclaw-integration) for details.\n\n**Key Features:**\n\n- 🧠 **Persistent Memory** - Context survives across sessions\n- 📊 **Progressive Disclosure** - Layered memory retrieval with token cost visibility\n- 🔍 **Skill-Based Search** - Query your project history with mem-search skill\n- 🖥️ **Web Viewer UI** - Real-time memory stream at the worker URL printed on startup\n- 💻 **Claude Desktop Skill** - Search memory from Claude Desktop conversations\n- 🔒 **Privacy Control** - Use `<private>` tags to exclude sensitive content from storage\n- ⚙️ **Context Configuration** - Fine-grained control over what context gets injected\n- 🤖 **Automatic Operation** - No manual intervention required\n- 🔗 **Citations** - Reference past observations with IDs through the worker API or view all in the web viewer\n\n---\n\n## Documentation\n\n📚 **[View Full Documentation](https://docs.claude-mem.ai/)** - Browse on official website\n\n### Getting Started\n\n- **[Installation Guide](https://docs.claude-mem.ai/installation)** - Quick start & advanced installation\n- **[Usage Guide](https://docs.claude-mem.ai/usage/getting-started)** - How Claude-Mem works automatically\n- **[Search Tools](https://docs.claude-mem.ai/usage/search-tools)** - Query your project history with natural language\n- **[Cloud Sync](https://docs.claude-mem.ai/cloud-sync)** - Back up your memories to cmem.ai — no daemon, the worker syncs on write\n\n### Best Practices\n\n- **[Context Engineering](https://docs.claude-mem.ai/context-engineering)** - AI agent context optimization principles\n- **[Progressive Disclosure](https://docs.claude-mem.ai/progressive-disclosure)** - Philosophy behind Claude-Mem's context priming strategy\n\n### Architecture\n\n- **[Overview](https://docs.claude-mem.ai/architecture/overview)** - System components & data flow\n- **[Architecture Evolution](https://docs.claude-mem.ai/architecture-evolution)** - The journey from v3 to v5\n- **[Hooks Architecture](https://docs.claude-mem.ai/hooks-architecture)** - How Claude-Mem uses lifecycle hooks\n- **[Hooks Reference](https://docs.claude-mem.ai/architecture/hooks)** - 7 hook scripts explained\n- **[Worker Service](https://docs.claude-mem.ai/architecture/worker-service)** - HTTP API & Bun management\n- **[Database](https://docs.claude-mem.ai/architecture/database)** - SQLite schema & FTS5 search\n- **[Search Architecture](https://docs.claude-mem.ai/architecture/search-architecture)** - Hybrid search with Chroma vector database\n\n### Configuration & Development\n\n- **[Configuration](https://docs.claude-mem.ai/configuration)** - Environment variables & settings\n- **[Development](https://docs.claude-mem.ai/development)** - Building, testing, contributing\n- **[Release Branches](https://docs.claude-mem.ai/branches)** - Stable, core-dev, and community-edge branch flow\n- **[Troubleshooting](https://docs.claude-mem.ai/troubleshooting)** - Common issues & solutions\n\n---\n\n## How It Works\n\n**Core Components:**\n\n1. **5 Lifecycle Hooks** - SessionStart, UserPromptSubmit, PostToolUse, Stop, SessionEnd (6 hook scripts)\n2. **Smart Install** - Cached dependency checker (pre-hook script, not a lifecycle hook)\n3. **Worker Service** - Local HTTP API with web viewer UI and search endpoints, managed by Bun\n4. **SQLite Database** - Stores sessions, observations, summaries\n5. **mem-search Skill** - Natural language queries with progressive disclosure\n6. **Chroma Vector Database** - Hybrid semantic + keyword search for intelligent context retrieval\n\nSee [Architecture Overview](https://docs.claude-mem.ai/architecture/overview) for details.\n\n---\n\n## MCP Search Tools\n\nClaude-Mem provides intelligent memory search through **4 MCP tools** following a tok",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"claude-mem\",\n  \"version\": \"13.29.0\",\n  \"description\": \"Memory compression system for Claude Code - persist context across sessions\",\n  \"keywords\": [\n    \"claude\",\n    \"claude-code\",\n    \"claude-agent-sdk\",\n    \"mcp\",\n    \"plugin\",\n    \"memory\",\n    \"compression\",\n    \"knowledge-graph\",\n    \"transcript\",\n    \"typescript\",\n    \"nodejs\"\n  ],\n  \"author\": \"Alex Newman\",\n  \"license\": \"Apache-2.0\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/thedotmack/claude-mem.git\"\n  },\n  \"homepage\": \"https://github.com/thedotmack/claude-mem#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/thedotmack/claude-mem/issues\"\n  },\n  \"type\": \"module\",\n  \"bin\": {\n    \"claude-mem\": \"./dist/npx-cli/index.js\"\n  },\n  \"exports\": {\n    \"./modes/*\": \"./plugin/modes/*\"\n  },\n  \"files\": [\n    \"dist\",\n    \".agents/plugins/marketplace.json\",\n    \".claude-plugin\",\n    \".codex-plugin\",\n    \"plugin/.claude-plugin\",\n    \"plugin/.codex-plugin\",\n    \"plugin/.mcp.json\",\n    \"plugin/package.json\",\n    \"plugin/bun.lock\",\n    \"plugin/hooks\",\n    \"plugin/modes\",\n    \"plugin/scripts/*.js\",\n    \"plugin/scripts/*.cjs\",\n    \"plugin/scripts/*.map\",\n    \"plugin/sqlite\",\n    \"plugin/skills\",\n    \"plugin/ui\",\n    \"openclaw\",\n    \"omp\"\n  ],\n  \"engines\": {\n    \"node\": \">=20.12.0\",\n    \"bun\": \">=1.1.31\"\n  },\n  \"scripts\": {\n    \"dev\": \"npm run build-and-sync\",\n    \"build\": \"node scripts/sync-plugin-manifests.js && node scripts/build-hooks.js && node scripts/gen-plugin-lockfile.cjs\",\n    \"build-and-sync\": \"npm run build && npm run sync-marketplace && node scripts/restart-marketplace-worker.cjs\",\n    \"sync-marketplace\": \"node scripts/sync-marketplace.cjs\",\n    \"sync-marketplace:force\": \"node scripts/sync-marketplace.cjs --force\",\n    \"build:binaries\": \"node scripts/build-worker-binary.js\",\n    \"build:cli-binary\": \"bun build --compile --minify ./src/services/worker-service.ts --outfile plugin/scripts/claude-mem\",\n    \"worker:logs\": \"node scripts/worker-logs.cjs\",\n    \"worker:tail\": \"node scripts/worker-logs.cjs --follow\",\n    \"changelog:generate\": \"node scripts/generate-changelog.js\",\n    \"discord:notify\": \"node scripts/discord-release-notify.js\",\n    \"worker:start\": \"bun plugin/scripts/worker-service.cjs start\",\n    \"worker:stop\": \"bun plugin/scripts/worker-service.cjs stop\",\n    \"worker:restart\": \"bun plugin/scripts/worker-service.cjs restart\",\n    \"worker:status\": \"bun plugin/scripts/worker-service.cjs status\",\n    \"queue\": \"bun scripts/check-pending-queue.ts\",\n    \"queue:process\": \"bun scripts/check-pending-queue.ts --process\",\n    \"queue:clear:pending\": \"bun scripts/clear-pending-queue.ts --all --force\",\n    \"pr:status\": \"bun scripts/pr-babysit-status.ts\",\n    \"claude-md:regenerate\": \"bun scripts/regenerate-claude-md.ts\",\n    \"claude-md:dry-run\": \"bun scripts/regenerate-claude-md.ts --dry-run\",\n    \"strip-comments\": \"bun scripts/strip-comments.ts\",\n    \"strip-comments:check\": \"bun scripts/strip-comments.ts --check\",\n    \"strip-comments:dry-run\": \"bun scripts/strip-comments.ts --dry-run\",\n    \"translate-readme\": \"bun scripts/translate-readme/cli.ts -v -o docs/i18n README.md\",\n    \"translate:tier1\": \"npm run translate-readme -- zh zh-tw ja pt pt-br ko es de fr\",\n    \"translate:tier2\": \"npm run translate-readme -- he ar ru pl cs nl tr uk\",\n    \"translate:tier3\": \"npm run translate-readme -- vi tl id th hi bn ur ro sv\",\n    \"translate:tier4\": \"npm run translate-readme -- it el hu fi da no\",\n    \"translate:all\": \"npm run translate:tier1 & npm run translate:tier2 & npm run translate:tier3 & npm run translate:tier4 & wait\",\n    \"bug-report\": \"node dist/bug-report/index.js\",\n    \"cursor:install\": \"bun plugin/scripts/worker-service.cjs cursor install\",\n    \"cursor:uninstall\": \"bun plugin/scripts/worker-service.cjs cursor uninstall\",\n    \"cursor:status\": \"bun plugin/scripts/worker-service.cjs cursor status\",\n    \"cursor:setup\": \"bun plugin/scripts/worker-service.cjs cursor setup\",\n    \"lint:hook-io\": \"node scripts/check-hook-io-discipline.cjs\",\n    \"lint:spawn-env\": \"node scripts/check-spawn-env-discipline.cjs\",\n    \"typecheck\": \"tsc --noEmit && tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"typecheck:root\": \"tsc --noEmit\",\n    \"typecheck:viewer\": \"tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"test\": \"bun test tests\",\n    \"test:sqlite\": \"bun test tests/sqlite/\",\n    \"test:agents\": \"bun test tests/worker/agents/\",\n    \"test:search\": \"bun test tests/worker/search/\",\n    \"test:context\": \"bun test tests/context/\",\n    \"test:infra\": \"bun test tests/infrastructure/\",\n    \"test:server\": \"bun test tests/server/\",\n    \"e2e:server:docker\": \"bash scripts/e2e-server-docker.sh\",\n    \"e2e:sync-matrix\": \"bun scripts/sync-matrix-e2e.ts\",\n    \"check:postinstall-allowlist\": \"node scripts/check-postinstall-allowlist.js\",\n    \"smoke:clean-room\": \"node scripts/smoke-clean-room.cjs\",\n    \"prepublishOnly\": \"npm run build && node scripts/check-postinstall-allowlist.js\",\n    \"release\": \"np\",\n    \"release:patch\": \"np patch --no-cleanup\",\n    \"release:minor",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "OpenCut-app",
+    "name": "OpenCut",
+    "full_name": "OpenCut-app/OpenCut",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "description": "The open-source CapCut alternative",
+    "language": "TypeScript",
+    "total_stars": 92100,
+    "forks": 9082,
+    "stars_this_period": 512,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "open_issues": 374,
+      "created_at": "2025-06-22T08:02:17Z",
+      "pushed_at": "2026-09-24T09:24:44Z",
+      "homepage": "https://opencut.app",
+      "default_branch": "main",
+      "forks": 9082,
+      "watchers": 432,
+      "archived": false,
+      "size_kb": 28243
+    },
+    "readme_content": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n**Linux, macOS, WSL:**\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\n**Windows (PowerShell):**\n\n```powershell\nirm https://moonrepo.dev/install/proto.ps1 | iex\n```\n\nIf shims fail to run, allow local scripts for your user:\n\n```powershell\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "视频编辑",
+      "开源创作工具",
+      "桌面工作流"
+    ],
+    "brief_zh": {
+      "summary": "一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。",
+      "capabilities": "视频编辑、开源创作工具、桌面工作流、内容生产"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cloudflare",
+    "name": "cloudflare-os",
+    "full_name": "cloudflare/cloudflare-os",
+    "url": "https://github.com/cloudflare/cloudflare-os",
+    "description": "Agent workspace built on Cloudflare Workers for creating documents, building apps, and running agents with your company’s context and systems.",
+    "language": "TypeScript",
+    "total_stars": 10771,
+    "forks": 1296,
+    "stars_this_period": 336,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 131,
+      "created_at": "2026-04-15T22:22:53Z",
+      "pushed_at": "2026-10-04T21:42:37Z",
+      "homepage": "https://os.cloudflare.app",
+      "default_branch": "main",
+      "forks": 1296,
+      "watchers": 43,
+      "archived": false,
+      "size_kb": 22177
+    },
+    "readme_content": "# Cloudflare OS: An AI productivity environment\n\nCloudflare OS is an \"operating system\" for AI productivity originally developed for use inside Cloudflare. A large portion of Cloudflare's workforce -- from engineering to sales and everything in between -- uses Cloudflare OS every day to help them do their jobs.\n\n![A Q3 planning workspace in Cloudflare OS, with an AI-generated slide deck](docs/images/q3-planning-workspace.png)\n\nThis is not a traditional computer operating system. We use the term \"operating system\" in two senses:\n\n* An operating system for *the company* to be productive with AI, in a way that is safe, so that the security team can sleep at night.\n* An operating system for AI workloads, analogous to the sense in which a traditional operating system manages compute workloads.\n\nCloudflare OS provides three things in particular:\n\n1. An agent chat UI where you can ask agents to do tasks, preloaded with knowledge about how your company operates.\n2. Sandboxed application development, so that you can ask agents to build \"gadgets\" (small personal apps) and safely share what you've built with others.\n3. A security framework, called Gatekeepers, that applies guardrails to both agents and apps such that non-technical users can safely \"go nuts\" and nothing bad will happen.\n\nWe are making Cloudflare OS open source so that others can copy it and customize it for their own company. The idea is not that your company uses Cloudflare OS, but rather that you make it \"*Your Company* OS\".\n\n## Quick Start\n\nTo quickly run Cloudflare OS locally, [install pnpm](https://pnpm.io/), then do:\n\n    pnpm run-local\n\nThen visit: http://localhost:8787\n\nThis runs the whole stack locally on wrangler and workerd. This is not meant for production use, but is a quick way to see what the product does.\n\nAlternatively, you can [deploy to your Cloudflare account](https://os.cloudflare.app/deploy).\n\n(More options at the end of this readme.)\n\n### What to try\n\nTry prompts like:\n\n* \"Make slides for my upcoming meeting with a customer.\" (This will use the built-in slides blueprint.)\n* \"Make a collaborative whiteboard app.\" (This will create a new app from scratch.)\n* \"Make a tic tac toe game.\" followed by \"I'll be X and you be O. I've made my first move. Your turn.\"\n* \"Make an issue dashboard for this GitHub repo.\" (Attach a repo; requires that the GitHub integration is configured.)\n* \"Fix the typos in this Google Doc.\" (Attach a doc; requires that the Google integration is configured.)\n\n### WARNING: Early access\n\nCloudflare OS is in a state of heavy development. This repository is actually version 2, a complete rewrite taking what we learned from version 1 and putting it on a new foundation.\n\nAs of the August 2026 release, Cloudflare OS v2 is very capable, but still has many rough edges. We know, and we're working on it. For now, consider this an \"early access\" release.\n\n## Overview: What is Cloudflare OS really?\n\n### Gadgets: A new way of thinking about software\n\nCloudflare OS is more than just another chatbox with connectors. The system revolves around a new approach to software, where every user runs their own copy of the productivity apps they use.\n\nWhen you create a slide deck in Cloudflare OS, you are not calling out to some SaaS software running in the cloud. The system creates a *private instance* of the slide deck software *just for you*. We call this a \"gadget\". This instance runs in a separate sandbox from everyone else's slide decks.\n\nThis has two profound effects:\n1. It's impossible for the slide deck app to have a security bug that leaks your slides to an attacker. The Cloudflare OS sandbox controls all access to your private instance of the app.\n2. If you want, you can freely modify the code. If the slide deck app is missing a feature you need, you can just ask your agent to add it. And because of point 1, it's totally safe to do so.\n\nThis is a big departure from the last 25 years of cloud architecture and \"Software as a Service\", but we think AI has changed the equation. When any user is capable of prompting an agent to add the features they need, the centralized model of software stops making sense.\n\n### Gatekeepers: A capability-based security layer\n\nGatekeepers are like supercharged MCP servers.\n\nWhen you introduce an agent or Gadget to an external resource, a Gatekeeper is created to manage that access. The Gatekeeper is a piece of software specific to each external service which moderates a Gadget's connection to that service. It:\n* Provides a clean Cap'n Web API to the service (wrapping whatever API the service provides natively).\n* Handles authorization (e.g. via OAuth).\n* Enforces narrow access to only the specific resource the user intended.\n* Logs every action the Gadget (or agent) performs, for your review.\n* For any action which has side effects, provides the human user an opportunity to approve or deny the action (\"human in the loop\").\n\nOn the last point, Gatekeepers implement a significant advancement in the state of the art. Traditionally, human-in-the-loop setups require the human to approve actions *synchronously*. When the agent wants to do something, it has to *stop* and wait for said approval before it can continue. This is annoying: you give your agent a task, then walk away and get a coffee, only to come back and find the agent got stuck on an approval on the first step and has made no progress. As a result, people often give in and set their agents to \"auto-approve\", or `--dangerously-skip-permissions`, which is, obviously, unsafe.\n\nGatekeepers provide a better way: When the agent (or Gadget) performs an action that requires approval, the Gatekeeper will *simulate* the outcome locally, allowing the agent to proceed and queue up more actions. The Gatekeeper tells the agent that the action completed, and if the agent tries to read back the results, the Gatekeeper gives it simulated results. Once the agent is done, the user may approve or reject the actions in bulk, or one-by-one, but either way, they can do it later, when it is convenient.\n\nLogistically, each Gatekeeper is implemented as a separate Worker. In the future, we envision Gatekeeper services being deployed and maintained independently from OS instances, but the details have yet to be worked out. For now, we have provided a few interesting Gatekeepers in this repository which you can deploy together with your own OS instance.\n\n### Think of an office suite\n\nThe basic user experience of Cloudflare OS is something like an online office suite, like Google Docs or MS Office. But, imagine that instead of a fixed set of file types (document, spreadsheet, slide deck), each file -- or \"Gadget\" -- is potentially its own custom application, written by AI to serve exactly your needs.\n\nJust like office docs, each gadget is private by default, but can be shared -- securely -- in order to collaborate with your team or your friends.\n\nJust like office docs, you can have thousands of them. You can create them on a whim.\n\nJust like office docs, you can start from \"templates\" -- called \"Blueprints\". But where an office template is just some content, a Blueprint specifies a whole application.\n\nLike office docs, you can create new templates (blueprints) from your own docs (Gadgets) and share them with others. But when you do so, you are sharing the code for a whole app.\n\n### It kind of is an Operating System\n\nThe OS terminology isn't *entirely* marketing. Cloudflare OS is actually analogous to an operating system on a technical level.\n\n| Normal OS      | Cloudflare OS              |\n|----------------|----------------------------|\n| kernel         | packages/workshop-backend  |\n| device drivers | packages/gatekeeper-*      |\n| shell          | packages/workshop-frontend |\n| processes      | gadgets                    |\n| executables    | blueprints                 |\n| users          | users                      |\n| ACLs           | shared permissions         |\n| ???            | agents                     |\n\nOur \"kernel\" is in the workshop-backend package. The backend legitimately does a lot of things similar to real OS kernels: it connects users to programs and devices (Gadgets and Gatekeepers, as we call them) while implementing security by sandboxing applications and enforcing access control.\n\nIn this analogy, Gatekeepers -- which connect users and agents to external services -- are like drivers -- which connect users and programs to external devices.\n\nThere is one thing that traditional OSes don't really manage today, but Cloudflare OS does: AI agents. If you think about it, this is really a missing feature in traditional OSes. We believe that AI agents cannot simply be treated as users. They must be accountable to a human user, while at the same time having their own restricted permissions. Agents do work by writing snippets of code and executing them on the fly. The ideal security model for all of this is capability-based security, not access control lists. See what I mean? Perhaps traditional OSes ought to give AI agents special treatment, too.\n\n### Built on Workers, by the Workers team\n\nCloudflare OS is built on [Cloudflare Workers](https://workers.cloudflare.com), making heavy use of [Durable Objects](https://developers.cloudflare.com/durable-objects/), [Dynamic Workers](https://blog.cloudflare.com/dynamic-workers/), and [Facets](https://blog.cloudflare.com/durable-object-facets-dynamic-workers/) in particular. Every workspace is its own Durable Object, every Gadget runs in a Dynamic Worker Facet, and Gatekeepers also install facets into each workspace to manage access to remote services.\n\nCloudflare OS is, in fact, built by the very people who built Workers itself. It uses cutting-edge features of the Workers Runtime -- in fact, Dynamic Workers, Facets, and several other features were added to the runtime specifically to support Cloudflare OS, with more to come. Studying the Cloudflare OS source code is a great way to understand how the Workers Runtime team thinks Workers should be used.\n\nBeing built on Workers does not mean that Cloudflare OS can only run on Cloudflare. In fact, [`workerd`, the Cloudflare Workers Runtime, is itself open source](https://github.com/cloudflare/workerd), and Cloudflare OS can run entirely on top of it on your own servers.\n\n## Features\n\n### General multi-purpose agent\n\nThe Cloudflare OS coding agent is actually a fully multi-purpose agent that can perform arbitrary tasks; like other popular coding agents, you don't have to code with it. You can use it to build Gadgets, but you can also skip the Gadget and just have the agent perform tasks directly. The Cloudflare OS agent is a [Code Mode](https://blog.cloudflare.com/code-mode/) agent -- it performs tasks by writing and immediately executing snippets of code. It can be connected to external resources using Gatekeepers (like MCP -- see below).\n\n### Build apps with AI\n\nWhile you can code a Gadget by hand if you want, the expectation is that AI writes the code for you. Cloudflare OS features a built-in coding agent that will build whatever you ask it, test it for you, and debug errors.\n\nYou can choose your LLM. Cloudflare OS works with many major AI model providers and self-hosted models, with more providers being added all the time.\n\nBecause of the tightly-integrated and simplified nature of the platform, even when using the same underlying AI models, the Cloudflare OS coding agent often performs better and faster with fewer tokens than a general-purpose coding agent would.\n\n### Collaborate with AI\n\nEvery app built with Cloudflare OS automatically has an agent-friendly API. That means, after you've asked AI to build the app, you can also ask AI to collaborate with you *inside* the app. No need to build an MCP server nor integrate a custom agent loop. It's just there by default.\n\nThis works because the client and server portions of a Gadget are required to communicate via [Cap'n Web RPC](https://github.com/cloudflare/capnweb). This is a win-wi",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"cloudflare-os\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72\",\n  \"scripts\": {\n    \"build\": \"node scripts/vp/run.ts --filter=!cloudflare-os --cache build\",\n    \"run-local\": \"node scripts/run-local.ts\",\n    \"test\": \"node scripts/vp/run.ts --filter=!cloudflare-os --cache test\",\n    \"evals\": \"pnpm --filter @gadgets/workshop-evals evals\",\n    \"evals:ui\": \"pnpm --filter @gadgets/workshop-evals evals:ui\",\n    \"preview:config\": \"node scripts/preview/preview.ts config\",\n    \"preview:deploy\": \"node scripts/preview/preview.ts deploy\",\n    \"preview:delete\": \"node scripts/preview/preview.ts delete\",\n    \"preview:sweep\": \"node scripts/preview/preview.ts sweep\",\n    \"dev-client\": \"cd packages/workshop-frontend && pnpm run dev\",\n    \"dev-server\": \"node scripts/run-dev-server.ts\",\n    \"clean\": \"node scripts/vp/run.ts --filter=!cloudflare-os clean\",\n    \"lint:check\": \"vp lint\",\n    \"lint:fix\": \"vp lint --fix\",\n    \"types:check\": \"pnpm run build\",\n    \"types:scripts\": \"tsc -p scripts/tsconfig.json\",\n    \"lint\": \"pnpm run lint:check && pnpm run types:scripts && pnpm run configs:check && pnpm run types:check\",\n    \"configs:generate\": \"node scripts/generate-worker-configs.ts\",\n    \"configs:check\": \"node scripts/generate-worker-configs.ts --check\",\n    \"types:generate\": \"node scripts/generate-worker-configs.ts && node scripts/generate-worker-types.ts\"\n  },\n  \"devDependencies\": {\n    \"@gadgets/scripts\": \"workspace:*\",\n    \"@types/node\": \"26.1.0\",\n    \"typescript\": \"catalog:\",\n    \"vite\": \"catalog:\",\n    \"vite-plus\": \"catalog:\",\n    \"wrangler\": \"catalog:\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "workspace",
+      "eval"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 工作区",
+      "沙箱应用",
+      "企业上下文"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "Cloudflare 开源的企业 AI 生产力工作区：提供带公司上下文的 Agent 对话、可沙箱运行并可共享的小型应用，以及用 Gatekeepers 管理外部服务访问与人工审批的安全层。",
+      "audience": "需要把 Agent、公司知识和内部应用放进同一可控工作区的企业团队",
+      "capabilities": "Agent 工作区、沙箱应用、企业上下文、权限治理、人工审批",
+      "risk": "README 明确标注为 early access；权限模型、部署边界与生产稳定性仍需在目标组织环境中验证。",
+      "verified_at": "2026-10-05",
+      "evidence_sources": [
+        "https://github.com/cloudflare/cloudflare-os"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未做部署或安全审计。"
+    }
+  },
+  {
+    "owner": "zerx-lab",
+    "name": "FluxDown",
+    "full_name": "zerx-lab/FluxDown",
+    "url": "https://github.com/zerx-lab/FluxDown",
+    "description": "Rust 驱动的多协议下载管理器，支持 HTTP/FTP/BitTorrent 磁力链接及 HLS/DASH 流媒体，智能多线程加速与浏览器无缝集成。精美界面，极致性能，永久免费，零广告。",
+    "language": "Rust",
+    "total_stars": 3804,
+    "forks": 225,
+    "stars_this_period": 334,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "AGPL-3.0",
+      "open_issues": 416,
+      "created_at": "2026-07-03T01:00:17Z",
+      "pushed_at": "2026-10-04T14:11:59Z",
+      "homepage": "https://fluxdown.zerx.dev",
+      "default_branch": "main",
+      "forks": 225,
+      "watchers": 14,
+      "archived": false,
+      "size_kb": 77251
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"assets/logo/fluxdown_logo.png\" alt=\"FluxDown Logo\" width=\"128\" />\n\n# FluxDown\n\n### Downloads, Supercharged.\n\n*A blazing fast, multi-protocol download manager — the free & open-source IDM alternative.*\n\n[![Latest Release](https://img.shields.io/github/v/release/zerx-lab/FluxDown?style=flat-square&color=06b6d4&label=release)](https://github.com/zerx-lab/FluxDown/releases/latest)\n[![Downloads](https://img.shields.io/github/downloads/zerx-lab/FluxDown/total?style=flat-square&color=22c55e)](https://github.com/zerx-lab/FluxDown/releases)\n[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)\n[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux%20%7C%20NAS%20%7C%20Android-8b5cf6?style=flat-square)](#installation)\n[![Rust](https://img.shields.io/badge/engine-Rust-f74c00?style=flat-square&logo=rust)](native/engine)\n[![GPUI](https://img.shields.io/badge/desktop-GPUI-f74c00?style=flat-square&logo=rust)](crates/app)\n[![Flutter](https://img.shields.io/badge/mobile-Flutter-02569B?style=flat-square&logo=flutter)](lib)\n[![MCP Server](https://glama.ai/mcp/servers/zerx-lab/FluxDown/badges/score.svg)](https://glama.ai/mcp/servers/zerx-lab/FluxDown)\n\n[![Awesome Rust](https://img.shields.io/badge/Awesome-Rust-orange?logo=rust&style=flat-square)](https://github.com/rust-unofficial/awesome-rust#utilities)\n[![Awesome Windows](https://img.shields.io/badge/Awesome-Windows-0078D4?style=flat-square)](https://github.com/thechampagne/awesome-windows#utilities)\n[![Awesome Free Apps](https://img.shields.io/badge/Awesome-Free%20Apps-22c55e?style=flat-square)](https://github.com/Axorax/awesome-free-apps#download-managers)\n[![Android FOSS](https://img.shields.io/badge/Android-FOSS-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/offa/android-foss#-downloader--manager)\n[![Open Source Android](https://img.shields.io/badge/Open%20Source-Android%20Apps-3DDC84?style=flat-square&logo=android&logoColor=white)](https://github.com/pcqpcq/open-source-android-apps/blob/master/categories/tools.md)\n[![Portainer](https://img.shields.io/badge/Portainer-Template-13BEF9?style=flat-square&logo=portainer&logoColor=white)](https://portainer-templates.as93.net/fluxdown)\n[![Unraid CA](https://img.shields.io/badge/Unraid-CA-F15A2C?style=flat-square)](https://github.com/selfhosters/unRAID-CA-templates/blob/master/templates/fluxdown.xml)\n[![Chinese Indie Dev](https://img.shields.io/badge/Chinese%20Indie-Dev-ef4444?style=flat-square)](https://github.com/1c7/chinese-independent-developer)\n\n[**Website**](https://fluxdown.zerx.dev) · [**Download**](https://fluxdown.zerx.dev/#download) · [**Changelog**](https://fluxdown.zerx.dev/changelog) · [**FAQ**](https://fluxdown.zerx.dev/faq) · [**Feedback**](https://fluxdown.zerx.dev/feedback)\n\n**English** | [简体中文](README.zh-CN.md)\n\n</div>\n\n---\n\n## Highlights\n\n- **Dynamic download acceleration** — Rust + Tokio engine with adaptive segmentation and slow-segment rescue\n- **Multi-protocol** — HTTP/HTTPS, FTP, BitTorrent, eD2K, HLS & DASH streaming\n- **One engine, multiple clients** — native GPUI desktop, Flutter Android app, React Web UI and CLI\n- **Browser integration** — Chrome / Edge / Firefox extension with a 3-layer interception engine, plus a userscript\n- **AI-agent ready** — built-in MCP (Model Context Protocol) server: let Claude, Cursor & other AI clients manage your downloads\n- **Automation & remote management** — RSS subscriptions, scheduled queues, webhooks, plugins and optional FluxCloud device collaboration\n- **Local-first** — free and open source, no ads, no account required for local downloads; resumable state stored locally by default\n\n## Features\n\n| Feature | Description |\n|---|---|\n| **Rust-Powered Engine** | Shared Rust + Tokio engine, independent of UI and FFI, used by desktop, mobile, server and standalone CLI hosts |\n| **Smart Segmentation** | Segments split dynamically at runtime; idle workers take over slow segments |\n| **Multi-Protocol** | Dedicated engines for HTTP/HTTPS, FTP, BitTorrent (DHT/UPnP/magnet), eD2K (server + Kad DHT source finding, MD4 verification), HLS (AES-decrypt) and DASH |\n| **Queues & Speed Control** | Named queues, scheduling and token-bucket global rate limiting |\n| **Persistence & Resume** | SQLite with WAL by default; server deployments can use PostgreSQL; recover downloads from persisted state |\n| **Browser Integration** | Download interception, streaming media sniffing, Alt+Click bypass, right-click send and connection diagnostics |\n| **Desktop & Web UI** | GPUI desktop and React Web management, light/dark themes, custom themes, task details and segment visualization; desktop tray keeps the service available after the UI closes |\n| **RSS & Automation** | Feed filters, unattended downloads, JavaScript plugins, managed FFmpeg/yt-dlp components and task-event webhooks |\n| **Remote Devices** | Optional FluxCloud account, settings sync and remote task management, plus LAN device pairing and direct connections |\n| **APIs & CLI** | REST/OpenAPI, aria2-compatible JSON-RPC, MCP with 12 tools, and a CLI for scripts or standalone downloads |\n\n**Privacy:** local downloads do not require a FluxCloud account. Cloud features are optional. Anonymous installation and daily-active statistics are controlled by `analytics_enabled` and can be disabled; they do not collect download/task information. This is not a zero-telemetry application.\n\n## FluxDown vs. IDM\n\n| | FluxDown | IDM |\n|---|:---:|:---:|\n| Price | **Free & open source** | $24.95 + renewals |\n| Open source | Yes (AGPL-3.0) | No |\n| Platforms | Windows / macOS / Linux / NAS / Android | Windows only |\n| BitTorrent & magnet | Yes | No |\n| eD2K / eMule links | Yes | No |\n| HLS / DASH streaming | Yes | Partial |\n| Dynamic segmentation | Yes | Yes |\n| Browser extension | Chrome / Edge / Firefox | Yes |\n| Ads | **None** | — |\n\n## Installation\n\nGrab the latest build from [**GitHub Releases**](https://github.com/zerx-lab/FluxDown/releases/latest) or [**fluxdown.zerx.dev**](https://fluxdown.zerx.dev/#download):\n\n| Platform | Packages |\n|---|---|\n| **Windows** (x64 / ARM64) | `setup.exe` installer · portable `.zip` |\n| **macOS** (Intel / Apple Silicon) | `.dmg` · portable `.tar.gz` |\n| **Linux** (x64) | `.AppImage` · `.deb` · Arch `.pkg.tar.zst` · portable `.tar.gz` |\n| **Android** (arm64-v8a / armeabi-v7a / x86_64) | per-ABI `.apk` · universal `.apk` |\n| **NAS / Server** (headless, x64 / ARM64) | [Docker](https://ghcr.io/zerx-lab/fluxdown-server) · Synology DSM 6/7 `.spk` · QNAP `.qpkg` · OpenWrt `.ipk` · Unraid CA template · CasaOS / ZimaOS app store |\n\n### Browser Extension\n\nInstall the extension so FluxDown takes over browser downloads automatically:\n\n[<img src=\"https://img.shields.io/badge/Chrome-Web%20Store-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Chrome Web Store\" />](https://chromewebstore.google.com/detail/fluxdown/meleenglfggcmcajknpeeeiobnpfmahc)\n[<img src=\"https://img.shields.io/badge/Edge-Add--ons-0078D4?style=for-the-badge&logo=microsoftedge&logoColor=white\" alt=\"Edge Add-ons\" />](https://microsoftedge.microsoft.com/addons/detail/fluxdown/nglkkjbogjghekbhhcnccnpfedjbdhhd)\n[<img src=\"https://img.shields.io/badge/Firefox-Add--ons-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white\" alt=\"Firefox Add-ons\" />](https://addons.mozilla.org/firefox/addon/fluxdown)\n\nThe extension connects to the desktop agent through Native Messaging. A [Tampermonkey userscript](userscript/) is also available.\n\n### NAS / Server\n\nThe current headless service is **`fluxdown-agent --server` + `fluxdownd`**, with an embedded Web UI. The Docker image retains the name `ghcr.io/zerx-lab/fluxdown-server`.\n\nFrom a checkout, use the supplied [Compose configuration](docker/docker-compose.yml):\n\n```shell\ndocker compose -f docker/docker-compose.yml up -d\n```\n\nOpen `http://<server>:17800/` and set an access key in the first-run wizard. The key must contain 8–128 visible ASCII characters, including both a letter and a digit. Set it up on a trusted network before exposing the service; use an HTTPS reverse proxy for remote access.\n\n- Server mode listens on `0.0.0.0:17800` by default; override it with `FLUXDOWN_BIND`.\n- For unattended setup, supply `FLUXDOWN_TOKEN` through your deployment environment or secret manager, not a committed file. It initializes the key only if one has not already been set.\n- Persist `/data` for the database, logs and access key, and `/root/Downloads` for downloads. The supplied Compose file uses a named data volume and `docker/downloads/` on the host.\n- Prefer SSD/cache storage for `/data` if download disks need to sleep.\n- Native deployments must keep `fluxdown-agent` and `fluxdownd` in the same directory. The old `native/server` crate is frozen and is not the deployment entry point.\n\n## CLI & HTTP APIs\n\nThe `fluxdown` CLI connects to the running desktop or server HTTP API by default. On desktop, enable the management API in Settings → API Service first. Supply the access key via `FLUXDOWN_TOKEN`; use `FLUXDOWN_URL` or `--url` to select a remote server.\n\n```shell\nfluxdown ping\nfluxdown add \"https://example.com/file.zip\"\nfluxdown --json list\n\n# Standalone mode: embed the engine instead of connecting to a service\nfluxdown add --local \"https://example.com/file.zip\"\n```\n\nStandalone mode cannot share a data directory with a running engine: stop the service using that directory first.\n\n| Interface | Endpoint | Purpose |\n|---|---|---|\n| REST management API | `/api/v1/*` | Tasks, queues, RSS and other management operations |\n| OpenAPI | `/api/v1/openapi.json` | Machine-readable API schema |\n| aria2-compatible JSON-RPC | `/jsonrpc` (HTTP / WebSocket) | Integration with aria2-compatible clients |\n| MCP | `/mcp` | AI-agent tools |\n| Official UI protocol | `/rpc` (WebSocket) | GPUI/Web gateway; distinct from the aria2 API |\n\nDesktop defaults to `127.0.0.1:17800`, with management API and MCP disabled until enabled. Server mode enables both by default and requires an access key. See the [OpenAPI specification](website-v2/public/openapi.json) for the REST contract.\n\n## MCP Server (Model Context Protocol)\n\nFluxDown ships a built-in **MCP server** so AI agents (Claude Desktop, Cursor, Cline, …) can manage downloads via the [Model Context Protocol](https://modelcontextprotocol.io). It implements a stateless **Streamable HTTP** subset (JSON-RPC 2.0 over `POST /mcp`) on the same API port — no separate MCP process needed.\n\n- **Endpoint**: `http://127.0.0.1:17800/mcp` for the default desktop configuration; use your server address for headless deployments\n- **Auth**: Bearer token (`Authorization: Bearer <token>` or `X-FluxDown-Token`), shared with the management API\n- **Enable**: Settings → API Service → toggle *MCP endpoint* (a token is generated automatically); the headless server enables it by default\n\n### Tools (12)\n\n| Tool | Description |\n|---|---|\n| `download_add` | Create a download task (HTTP/HTTPS, FTP, magnet, BitTorrent) |\n| `download_list` | List tasks with progress/speed/status, optional status filter |\n| `download_get` | Get a single task by ID |\n| `download_pause` / `download_resume` | Pause / resume one task |\n| `download_pause_all` / `download_resume_all` | Pause / resume all tasks |\n| `download_remove` | Remove a task, optionally deleting downloaded files |\n| `queue_list` | List named queues and their configuration |\n| `rss_list` | List RSS subscriptions with their configuration and runtime state |\n| `rss_add` | Subscribe to an RSS feed and start polling it on a schedule |\n| `rss_remove` | Delete an RSS subscription and the items it collected |\n\n### Client configuration\n\n```json\n{\n  \"mcpServers\": {\n    \"fluxdown\": {\n      \"url\": \"http://127.0.0.1:17800/mcp\",\n      \"headers\": { \"Authorization\": \"Bearer <your-token>\" }\n    }\n  }\n}\n```\n\nThe MCP layer is implemented in [`native/api/src/mcp.rs`](native/api/src/mcp.rs) on top of the same `ApiHost` trait ",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# This file is used for telling Rust-related tools\n# where various Rust crates are.\n# This also unifies `target` output folder and\n# various Rust configurations.\n\n[workspace]\nresolver = \"3\"\nmembers = [\"native/*\", \"crates/*\", \"scripts/desktop-dev\"]\n\n[workspace.package]\nedition = \"2024\"\n\n[workspace.dependencies]\n# GPUI 走 gpui-kit 发布时精确锁定的 `gpui-pre` 快照；升级 gpui-kit 时必须同步到它\n# `Cargo.toml` 里的同一 `=` 版本，否则 gpui-component 可能与 GPUI API 不匹配。\ngpui = { package = \"gpui-pre\", version = \"=0.3.7\" }\ngpui_platform = { package = \"gpui-pre-platform\", version = \"=0.3.7\", features = [\"font-kit\", \"x11\", \"wayland\", \"runtime_shaders\"] }\ngpui-base = \"0.7.0\"\ngpui-component = \"0.7.0\"\ngpui-component-assets = { package = \"gpui-kit-assets\", version = \"0.7.0\" }\nserde = { version = \"1.0.219\", features = [\"derive\"] }\nserde_json = \"1\"\nthiserror = \"2.0\"\nwinresource = \"0.1.31\"\n\n[workspace.lints.rust]\nunused_must_use = \"deny\"\nunsafe_op_in_unsafe_fn = \"deny\"\n\n[workspace.lints.clippy]\nexpect_used = \"deny\"\nlet_underscore_future = \"deny\"\nlet_underscore_must_use = \"deny\"\ntodo = \"deny\"\nunimplemented = \"deny\"\nundocumented_unsafe_blocks = \"deny\"\nunused_result_ok = \"deny\"\nunwrap_used = \"deny\"\nwildcard_imports = \"deny\"\n\n[patch.crates-io]\n# zerx-lab/rqbit = lingdiansr/rqbit (MSE) + Android HTTPS 修复（bundled webpki 根替代需 JNI 初始化的\n# rustls-platform-verifier，否则 Android 上任何 https tracker 都会 panic 掉磁力解析）+ tracker panic 隔离。\nlibrqbit = { git = \"https://github.com/zerx-lab/rqbit\", rev = \"d9e79c939f223679612cd0b06bd00ed49bd2eff8\" }\n\n[profile.dev]\ncodegen-units = 16\ndebug = \"limited\"\nsplit-debuginfo = \"unpacked\"\n\n[profile.dev.package.gpui-pre]\nopt-level = 3\n\n[profile.dev.package.gpui-pre-platform]\nopt-level = 3\n\n# BT 数据面（逐字节 RC4、逐消息解析、MSE DH 大数运算）在 opt-level 0 下慢一个数量级：\n# 本地 loopback 实测 dev 基线 36.5 CPU·s/GB、吞吐封顶 165 MB/s；仅下面 5 个 crate\n# 开 O3 后 4.8 CPU·s/GB、854 MB/s。开发期跑 fluxdownd 下 BT 不再吃满多核。\n[profile.dev.package.librqbit]\nopt-level = 3\n\n[profile.release]\n# 全部 release 产物（GPUI 桌面端、agent、fluxdownd、CLI、hub cdylib、nmh、\n# Docker/NAS 包）共用本 profile，统一按运行期性能优先：opt-level=3 + fat LTO +\n# 单 codegen 单元，换取最佳吞吐/延迟，代价是产物体积和编译时间。\n# 不再用 \"z\"：它关闭循环向量化、压低内联阈值，BT 数据面（DH768 2.46 vs 1.60 ms）、\n# 哈希/校验、GPUI 布局等热路径都会明显变慢；体积收益对下载器不划算。\nopt-level = 3\n# Full LTO：跨 crate 内联 + 死代码消除最彻底，同时利于速度与体积\nlto = \"fat\"\n# 单一 codegen 单元：给 LLVM 完整优化视野（牺牲并行编译速度）\ncodegen-units = 1\n# 移除全部符号：不影响运行期性能，只减小分发体积\nstrip = true\n# 注意：不设 panic = \"abort\" —— engine 的 download_manager 依赖 catch_unwind\n# 恢复 task panic（见 AGENTS.md），abort 会让 panic 直接终止进程。\n",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "runtime",
+      "workspace",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "多协议下载",
+      "动态分段加速",
+      "浏览器集成"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个由 Rust + Tokio 引擎驱动的多协议下载管理器，覆盖 HTTP、FTP、BitTorrent、HLS 与 DASH，并提供浏览器扩展、RSS/队列自动化和 MCP 控制入口。",
+      "audience": "需要统一管理下载、流媒体抓取或由 Agent 调度下载任务的个人与团队",
+      "capabilities": "多协议下载、动态分段加速、浏览器集成、队列自动化、MCP 控制",
+      "risk": "协议覆盖与浏览器拦截范围较广；下载来源合规、凭据与远程管理安全需结合实际配置审查。",
+      "verified_at": "2026-10-05",
+      "evidence_sources": [
+        "https://github.com/zerx-lab/FluxDown"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未做性能或安全验证。"
+    }
+  },
+  {
+    "owner": "coreyhaines31",
+    "name": "marketingskills",
+    "full_name": "coreyhaines31/marketingskills",
+    "url": "https://github.com/coreyhaines31/marketingskills",
+    "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+    "language": "JavaScript",
+    "total_stars": 53021,
+    "forks": 7915,
+    "stars_this_period": 270,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "claude",
+        "codex",
+        "marketing"
+      ],
+      "license": "MIT",
+      "open_issues": 107,
+      "created_at": "2026-01-15T19:45:23Z",
+      "pushed_at": "2026-10-03T01:51:50Z",
+      "homepage": "https://marketing-skills.com",
+      "default_branch": "main",
+      "forks": 7915,
+      "watchers": 408,
+      "archived": false,
+      "size_kb": 4621
+    },
+    "readme_content": "# Marketing Skills for AI Agents\n\nA collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want AI coding agents to help with conversion optimization, copywriting, SEO, analytics, and growth engineering. Works with Claude Code, OpenAI Codex, Cursor, Windsurf, and any agent that supports the [Agent Skills spec](https://agentskills.io).\n\nBuilt by [Corey Haines](https://corey.co?ref=marketingskills). Need hands-on help? Check out [Conversion Factory](https://conversionfactory.co?ref=marketingskills) — Corey's agency for conversion optimization, landing pages, and growth strategy. Want to learn more about marketing? Subscribe to [Swipe Files](https://swipefiles.com?ref=marketingskills). Want to get dangerously good at using AI for marketing? Check out [AI Marketing Training](https://conversionfactory.co/offers/ai-marketing-training?ref=marketingskills). Want an autonomous AI agent that uses these skills to be your CMO? Try [Magister](https://magistermarketing.com?ref=marketingskills).\n\nNew to the terminal and coding agents? Check out the companion guide [Coding for Marketers](https://codingformarketers.com?ref=marketingskills).\n\n**Contributions welcome!** Found a way to improve a skill or have a new one to add? [Open a PR](#contributing).\n\nRun into a problem or have a question? [Open an issue](https://github.com/coreyhaines31/marketingskills/issues) — we're happy to help.\n\n## Partners\n\nThe library is free and MIT-licensed. [Verified Partners](tools/REGISTRY.md#verified-partners) fund the work — vetted, disclosed tool integrations, listed alongside the neutral options and never influencing what the core skills recommend. The full rules and boundaries are in [tools/PARTNERS.md](tools/PARTNERS.md). [Become a partner →](https://marketing-skills.com/sponsorship)\n\n<!-- PARTNERS:START -->\n> ◆ **[Converly](https://converly.io?ref=marketingskills)** — *Conversion tracking / attribution.* Server-side conversion tracking that fires when someone submits a form, books a meeting, or starts a chat — passing click IDs and identifiers for Enhanced Conversions (Google) and high EMQ match rates (Meta), across 100+ tools. CLI + MCP so your agent sets it up in minutes. → [Integration guide](tools/integrations/converly.md)\n\n> ◆ **[Ploy](https://ploy.ai?ref=marketingskills)** — *AI website & growth platform.* AI marketing platform built around a Webflow-grade website builder — site optimization, SEO/AEO, visitor identification, and ad creative in one, with WebMCP to expose site actions to AI assistants. → [Integration guide](tools/integrations/ploy.md)\n<!-- PARTNERS:END -->\n\n<!-- The Partners block above is generated from partners.json — run `node scripts/sync-partners.mjs` after editing it. -->\n\n## What are Skills?\n\nSkills are markdown files that give AI agents specialized knowledge and workflows for specific tasks. When you add these to your project, your agent can recognize when you're working on a marketing task and apply the right frameworks and best practices.\n\n## How Skills Work Together\n\nSkills reference each other and build on shared context. The `product-marketing` skill is the foundation — every other skill checks it first to understand your product, audience, and positioning before doing anything.\n\n```\n                            ┌──────────────────────────────────────┐\n                            │          product-marketing           │\n                            │    (read by all other skills first)  │\n                            └──────────────────┬───────────────────┘\n                                               │\n    ┌──────────────┬─────────────┬─────────────┼─────────────┬──────────────┬──────────────┐\n    ▼              ▼             ▼             ▼             ▼              ▼              ▼\n┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ ┌──────────┐ ┌─────────────┐ ┌───────────┐\n│  SEO &   │ │   CRO    │ │Content & │ │  Paid &    │ │ Growth & │ │  Sales &    │ │ Strategy  │\n│ Content  │ │          │ │   Copy   │ │Measurement │ │Retention │ │    GTM      │ │           │\n├──────────┤ ├──────────┤ ├──────────┤ ├────────────┤ ├──────────┤ ├─────────────┤ ├───────────┤\n│seo-audit │ │cro       │ │copywritin│ │ads         │ │referrals │ │revops       │ │mktg-ideas │\n│ai-seo    │ │signup    │ │copy-edit │ │ad-creative │ │free-tools│ │sales-enable │ │mktg-psych │\n│site-arch │ │onboarding│ │cold-email│ │ab-testing  │ │churn-    │ │launch       │ │customer-  │\n│programm  │ │popups    │ │emails    │ │analytics   │ │ prevent  │ │pricing      │ │ research  │\n│schema    │ │paywalls  │ │social    │ │            │ │community │ │competitors  │ │           │\n│content   │ │          │ │video     │ │            │ │lead-magnt│ │comp-profile │ │           │\n│aso       │ │          │ │image     │ │            │ │co-mktg   │ │directory    │ │           │\n│          │ │          │ │sms       │ │            │ │          │ │prospecting  │ │           │\n└────┬─────┘ └────┬─────┘ └────┬─────┘ └─────┬──────┘ └────┬─────┘ └──────┬──────┘ └─────┬─────┘\n     │            │            │              │             │              │              │\n     └────────────┴─────┬──────┴──────────────┴─────────────┴──────────────┴──────────────┘\n                        │\n         Skills cross-reference each other:\n           copywriting ↔ cro ↔ ab-testing\n           revops ↔ sales-enablement ↔ cold-email\n           seo-audit ↔ schema ↔ ai-seo\n           customer-research → copywriting, cro, competitors\n```\n\nSee each skill's **Related Skills** section for the full dependency map.\n\n## Available Skills\n\n<!-- SKILLS:START -->\n| Skill | Description |\n|-------|-------------|\n| [ab-testing](skills/ab-testing/) | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program.... |\n| [ad-creative](skills/ad-creative/) | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad... |\n| [ads](skills/ads/) | When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X,... |\n| [ai-seo](skills/ai-seo/) | When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers.... |\n| [analytics](skills/analytics/) | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions... |\n| [aso](skills/aso/) | When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO... |\n| [attribution](skills/attribution/) | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an... |\n| [churn-prevention](skills/churn-prevention/) | When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or... |\n| [co-marketing](skills/co-marketing/) | When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use... |\n| [cold-email](skills/cold-email/) | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails,... |\n| [community-marketing](skills/community-marketing/) | Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a... |\n| [competitor-profiling](skills/competitor-profiling/) | When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions... |\n| [competitors](skills/competitors/) | When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when... |\n| [content-strategy](skills/content-strategy/) | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also... |\n| [copy-editing](skills/copy-editing/) | When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the... |\n| [copywriting](skills/copywriting/) | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages,... |\n| [cro](skills/cro/) | When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage,... |\n| [customer-research](skills/customer-research/) | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions \"customer... |\n| [directory-submissions](skills/directory-submissions/) | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for... |\n| [emails](skills/emails/) | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email... |\n| [events](skills/events/) | When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows,... |\n| [free-tools](skills/free-tools/) | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or... |\n| [image](skills/image/) | When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product... |\n| [influencer-marketing](skills/influencer-marketing/) | When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and... |\n| [launch](skills/launch/) | When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user... |\n| [lead-magnets](skills/lead-magnets/) | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the... |\n| [marketing-council](skills/marketing-council/) | When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by... |\n| [marketing-ideas](skills/marketing-ideas/) | When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the... |\n| [marketing-loops](skills/marketing-loops/) | When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a... |\n| [marketing-plan](skills/marketing-plan/) | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use... |\n| [marketing-psychology](skills/marketing-psychology/) | When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when... |\n| [offers](skills/offers/) | When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing,... |\n| [onboarding](skills/onboarding/) | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also... |\n| [paywalls](skills/paywalls/) | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use... |\n| [popups](skills/popups/) | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also... |\n| [pricing](skills/pricing/) | When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions... |\n| [product-marketing](skills/product-marketing/) | When the user wants to create or update their product marketing context document. Also use when the user mentions... |\n| [programmatic-seo](skills/programmatic-seo/) | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions... |\n| [prospecting](skills/prospecting/) | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or... |\n| [",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "营销技能",
+      "转化优化",
+      "搜索优化"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 提供营销技能库，覆盖转化优化、文案、搜索优化、分析和增长工作流。",
+      "capabilities": "营销技能、转化优化、搜索优化",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/coreyhaines31/marketingskills"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "Effect-TS",
+    "name": "effect",
+    "full_name": "Effect-TS/effect",
+    "url": "https://github.com/Effect-TS/effect",
+    "description": "Build production-ready applications in TypeScript",
+    "language": "TypeScript",
+    "total_stars": 16959,
+    "forks": 818,
+    "stars_this_period": 243,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "cli",
+        "clustering",
+        "concurrency",
+        "dependency-injection",
+        "effect",
+        "error-handling",
+        "javascript",
+        "observability",
+        "opentelemetry",
+        "platform",
+        "schema",
+        "typescript",
+        "workflows"
+      ],
+      "license": "MIT",
+      "open_issues": 298,
+      "created_at": "2019-11-13T12:49:21Z",
+      "pushed_at": "2026-10-04T21:51:01Z",
+      "homepage": "https://effect.website",
+      "default_branch": "main",
+      "forks": 818,
+      "watchers": 41,
+      "archived": false,
+      "size_kb": 138006
+    },
+    "readme_content": "<!-- Use a static Shields badge because pkg.pr.new's dynamic badge times out while counting this repository's releases. -->\n\n[![pkg.pr.new](https://img.shields.io/badge/pkg.pr.new-Effect--TS%2Feffect-black)](https://pkg.pr.new/~/Effect-TS/effect)\n\n# Effect\n\nEffect is a library for building robust, maintainable, type-safe, and production grade applications in TypeScript. It helps you handle the hard problems at scale: typed errors, dependency injection, structured concurrency, scheduling, tracing, and unified schema validation.\n\n> **Effect 4.x is a long-term support (LTS) release.** If you are upgrading from Effect 3.x, follow the [migration guide](MIGRATION.md).\n\n## Installation\n\n```sh\nnpm install effect\n```\n\n## Requirements\n\n- **TypeScript 5.9 or newer.** TypeScript 7 is recommended for the best performance and compatibility with [Effect's TypeScript tooling](https://github.com/Effect-TS/tsgo#installation).\n- **Node.js 18 or newer** is the general minimum for running Effect on Node.js. Some integration packages require newer runtimes; for example, `@effect/sql-sqlite-node` requires Node.js 22.16 or newer.\n- **Strict type-checking:** the `strict` flag must be enabled in your `tsconfig.json`.\n\n## Links\n\n- [Website](https://effect.website): documentation, guides, and news\n- [Discord](https://discord.gg/effect-ts): ask questions, share what you're building, and talk to the core team\n- [Community](https://effect.website/community-hub): meetups and events, or bring Effect to your own\n- [Issues](https://github.com/Effect-TS/effect/issues): bug reports and feature requests\n- [Jobs](https://effect.website/effect-jobs): companies hiring Effect developers\n- Follow us on [X](https://x.com/EffectTS_), [Bluesky](https://bsky.app/profile/effect-ts.bsky.social), and [LinkedIn](https://www.linkedin.com/company/effect-ts)\n\n## Let's talk\n\nWhether your team is considering Effect, rolling it out, or already running it in production, we'd love to hear from you: what you're building, what works, and what you need from Effect next.\n\n- **Talk to the maintainers.** Introduce your team on [Discord](https://discord.gg/effect-ts) or email [contact@effectful.co](mailto:contact@effectful.co). We're happy to connect privately on Slack or Discord for feedback and help with adoption.\n- **Production support.** We're exploring how to better support teams running Effect in production. If your organization has specific support needs, let's discuss them.\n- **Adoption help.** Our [adoption partners](https://effect.website/adoption-partners) offer implementation, consulting, team extension, training, and commercial support.\n\nFeedback from teams using and evaluating Effect directly shapes what we stabilize and build next.\n\n## Long-term support\n\nTeams depend on Effect for systems they expect to run for years. Effect 4.x is a long-term support (LTS) release with the following guarantees:\n\n- At least three years of support, including bug and security fixes.\n- Bug fixes for one year after the next major version is released.\n- Security fixes for two years after the next major version is released.\n\nStable APIs reserve breaking changes for major releases. APIs marked unstable may change in minor releases, and experimental APIs may change in patch releases.\n\n## Effect v3\n\nThe Effect v3 source code is available on the [`v3`](https://github.com/Effect-TS/effect/tree/v3) branch, which is also where issues and pull requests meant for Effect v3 should be targeted. To upgrade, see the [migration guide](MIGRATION.md).\n\n## Packages\n\nThis monorepo contains the core `effect` package alongside integration packages that extend it. All packages listed below are released together with synchronized versions.\n\n| Package                                                               | Description                                              | API Reference                                                      |\n| --------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ |\n| [`effect`](packages/effect)                                           | The core package                                         | [docs](https://effect.website/docs/v4/api/effect)                  |\n| [`@effect/platform-browser`](packages/platform/browser)               | Platform services for the browser                        | [docs](https://effect.website/docs/v4/api/platform-browser)        |\n| [`@effect/platform-bun`](packages/platform/bun)                       | Platform services for [Bun](https://bun.sh)              | [docs](https://effect.website/docs/v4/api/platform-bun)            |\n| [`@effect/platform-deno`](packages/platform/deno)                     | Platform services for [Deno](https://deno.com)           | [docs](https://effect.website/docs/v4/api/platform-deno)           |\n| [`@effect/platform-node`](packages/platform/node)                     | Platform services for [Node.js](https://nodejs.org)      | [docs](https://effect.website/docs/v4/api/platform-node)           |\n| [`@effect/platform-node-shared`](packages/platform/node-shared)       | Shared services for Node.js-compatible runtimes          | [docs](https://effect.website/docs/v4/api/platform-node-shared)    |\n| [`@effect/sql-clickhouse`](packages/sql/clickhouse)                   | SQL client for [ClickHouse](https://clickhouse.com)      | [docs](https://effect.website/docs/v4/api/sql-clickhouse)          |\n| [`@effect/sql-d1`](packages/sql/d1)                                   | SQL client for Cloudflare D1                             | [docs](https://effect.website/docs/v4/api/sql-d1)                  |\n| [`@effect/sql-libsql`](packages/sql/libsql)                           | SQL client for libSQL                                    | [docs](https://effect.website/docs/v4/api/sql-libsql)              |\n| [`@effect/sql-mssql`](packages/sql/mssql)                             | SQL client for Microsoft SQL Server                      | [docs](https://effect.website/docs/v4/api/sql-mssql)               |\n| [`@effect/sql-mysql2`](packages/sql/mysql2)                           | SQL client for MySQL                                     | [docs](https://effect.website/docs/v4/api/sql-mysql2)              |\n| [`@effect/sql-pg`](packages/sql/pg)                                   | SQL client for PostgreSQL                                | [docs](https://effect.website/docs/v4/api/sql-pg)                  |\n| [`@effect/sql-pglite`](packages/sql/pglite)                           | SQL client for [PGlite](https://pglite.dev)              | [docs](https://effect.website/docs/v4/api/sql-pglite)              |\n| [`@effect/sql-sqlite-bun`](packages/sql/sqlite-bun)                   | SQL client for SQLite via `bun:sqlite`                   | [docs](https://effect.website/docs/v4/api/sql-sqlite-bun)          |\n| [`@effect/sql-sqlite-do`](packages/sql/sqlite-do)                     | SQL client for Cloudflare Durable Objects SQLite         | [docs](https://effect.website/docs/v4/api/sql-sqlite-do)           |\n| [`@effect/sql-sqlite-node`](packages/sql/sqlite-node)                 | SQL client for SQLite via `node:sqlite`                  | [docs](https://effect.website/docs/v4/api/sql-sqlite-node)         |\n| [`@effect/sql-sqlite-react-native`](packages/sql/sqlite-react-native) | SQL client for SQLite in React Native                    | [docs](https://effect.website/docs/v4/api/sql-sqlite-react-native) |\n| [`@effect/sql-sqlite-wasm`](packages/sql/sqlite-wasm)                 | SQL client for SQLite compiled to WebAssembly            | [docs](https://effect.website/docs/v4/api/sql-sqlite-wasm)         |\n| [`@effect/ai-anthropic`](packages/ai/anthropic)                       | Anthropic provider for the Effect AI modules             | [docs](https://effect.website/docs/v4/api/ai-anthropic)            |\n| [`@effect/ai-openai`](packages/ai/openai)                             | OpenAI provider for the Effect AI modules                | [docs](https://effect.website/docs/v4/api/ai-openai)               |\n| [`@effect/ai-cloudflare`](packages/ai/cloudflare)                     | Cloudflare decision provider for the Effect AI modules   | [docs](https://effect.website/docs/v4/api/ai-cloudflare)           |\n| [`@effect/ai-typesafe`](packages/ai/typesafe)                         | TypeSafe decision provider for the Effect AI modules     | [docs](https://effect.website/docs/v4/api/ai-typesafe)             |\n| [`@effect/ai-openai-compat`](packages/ai/openai-compat)               | OpenAI-compatible API provider for the Effect AI modules | [docs](https://effect.website/docs/v4/api/ai-openai-compat)        |\n| [`@effect/ai-openrouter`](packages/ai/openrouter)                     | OpenRouter provider for the Effect AI modules            | [docs](https://effect.website/docs/v4/api/ai-openrouter)           |\n| [`@effect/atom-react`](packages/atom/react)                           | React bindings for Effect Atom                           | [docs](https://effect.website/docs/v4/api/atom-react)              |\n| [`@effect/atom-solid`](packages/atom/solid)                           | SolidJS bindings for Effect Atom                         | [docs](https://effect.website/docs/v4/api/atom-solid)              |\n| [`@effect/atom-vue`](packages/atom/vue)                               | Vue bindings for Effect Atom                             | [docs](https://effect.website/docs/v4/api/atom-vue)                |\n| [`@effect/opentelemetry`](packages/opentelemetry)                     | [OpenTelemetry](https://opentelemetry.io) integration    | [docs](https://effect.website/docs/v4/api/opentelemetry)           |\n| [`@effect/vitest`](packages/vitest)                                   | Helpers for testing with [Vitest](https://vitest.dev)    | [docs](https://effect.website/docs/v4/api/vitest)                  |\n| [`@effect/docgen`](packages/tools/docgen)                             | Documentation generator for Effect projects              | [docs](https://effect.website/docs/v4/api/docgen)                  |\n| [`@effect/doctest`](packages/tools/doctest)                           | Runs JSDoc examples as Vitest tests                      | [docs](https://effect.website/docs/v4/api/doctest)                 |\n| [`@effect/openapi-generator`](packages/tools/openapi-generator)       | Generate Effect code from OpenAPI specifications         | [docs](https://effect.website/docs/v4/api/openapi-generator)       |\n\n## License\n\nMIT\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"private\": true,\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.20.0\",\n  \"scripts\": {\n    \"prepare\": \"node scripts/setup-agents.mjs && effect-tsgo patch\",\n    \"clean\": \"node scripts/clean.mjs\",\n    \"codegen\": \"pnpm --recursive --parallel --filter \\\"./packages/**/*\\\" run codegen\",\n    \"codemod\": \"node scripts/codemod.mjs\",\n    \"build\": \"tsc -b tsconfig.packages.json && pnpm --recursive --parallel --filter \\\"./packages/**/*\\\" run build && node scripts/copy-ai-docs.mjs\",\n    \"bundle-analyze\": \"bash scripts/bundle-analyze.sh\",\n    \"bundle-compare\": \"bash scripts/bundle-compare.sh\",\n    \"bundle-compare-selected\": \"bash scripts/bundle-compare-selected.sh\",\n    \"circular\": \"node scripts/circular.mjs\",\n    \"test\": \"vitest\",\n    \"test-cluster\": \"vitest run --project cluster-integration\",\n    \"doctest\": \"vitest --config vitest.docs.ts\",\n    \"coverage\": \"vitest --coverage\",\n    \"check\": \"tsc -b tsconfig.json\",\n    \"typeperf\": \"pnpm --dir packages/effect exec node typeperf/run.mjs\",\n    \"typeperf-compare\": \"pnpm --dir packages/effect exec node typeperf/compare.mjs\",\n    \"runtimeperf\": \"pnpm --dir packages/effect exec node runtimeperf/run.mts\",\n    \"runtimeperf-compare\": \"pnpm --dir packages/effect exec node runtimeperf/compare.mts\",\n    \"check-recursive\": \"pnpm --recursive --filter \\\"./packages/**/*\\\" exec tsc -b tsconfig.json\",\n    \"check-dist-types\": \"node scripts/check-dist-types.mjs\",\n    \"jsdocs\": \"effect-jsdocs\",\n    \"lint\": \"oxlint -f unix && dprint check\",\n    \"lint-fix\": \"oxlint --fix && dprint fmt\",\n    \"ai-docgen\": \"effect-ai-docgen ai-docs/src -o LLMS.md\",\n    \"ai-docgen:watch\": \"pnpm ai-docgen --watch\",\n    \"api-diff\": \"pnpm --dir packages/tools/api-diff exec node src/bin.ts\",\n    \"test-types\": \"tstyche --target '>=5.9'\",\n    \"changeset-version\": \"changeset version\",\n    \"changeset-publish\": \"node scripts/set-strip-internal.mjs && pnpm codemod && pnpm build && changeset publish\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^8.0.6\",\n    \"@babel/core\": \"^8.0.6\",\n    \"@babel/plugin-transform-export-namespace-from\": \"^8.0.1\",\n    \"@babel/plugin-transform-modules-commonjs\": \"^8.0.1\",\n    \"@changesets/changelog-github\": \"1.0.1\",\n    \"@changesets/cli\": \"3.0.3\",\n    \"@effect/ai-docgen\": \"workspace:^\",\n    \"@effect/bundle\": \"workspace:^\",\n    \"@effect/docgen\": \"workspace:^\",\n    \"@effect/doctest\": \"workspace:^\",\n    \"@effect/jsdocs\": \"workspace:^\",\n    \"@effect/oxc\": \"workspace:^\",\n    \"@effect/tsgo\": \"^0.46.1\",\n    \"@effect/utils\": \"workspace:^\",\n    \"@effect/vitest\": \"workspace:^\",\n    \"@faker-js/faker\": \"^10.6.0\",\n    \"@rollup/plugin-node-resolve\": \"^16.0.3\",\n    \"@rollup/plugin-replace\": \"^6.0.3\",\n    \"@rollup/plugin-terser\": \"^1.0.0\",\n    \"@types/jscodeshift\": \"^17.3.0\",\n    \"@types/node\": \"^26.6.3\",\n    \"@vitest/coverage-v8\": \"^5.0.2\",\n    \"@vitest/web-worker\": \"^5.0.2\",\n    \"ast-types\": \"^0.16.3\",\n    \"babel-plugin-annotate-pure-calls\": \"^0.5.0\",\n    \"dprint\": \"^0.57.4\",\n    \"fast-check\": \"^4.10.2\",\n    \"glob\": \"^13.0.6\",\n    \"happy-dom\": \"^20.14.5\",\n    \"jscodeshift\": \"^17.4.0\",\n    \"lalph\": \"^0.3.139\",\n    \"madge\": \"^8.0.0\",\n    \"oxlint\": \"^1.85.0\",\n    \"pkg-pr-new\": \"0.0.88\",\n    \"playwright\": \"^1.63.0\",\n    \"rollup\": \"^4.63.5\",\n    \"rollup-plugin-bundle-stats\": \"^4.22.3\",\n    \"rollup-plugin-esbuild\": \"^6.2.1\",\n    \"rollup-plugin-visualizer\": \"^7.1.1\",\n    \"terser\": \"^5.51.2\",\n    \"tstyche\": \"^7.2.5\",\n    \"typescript\": \"^7.0.2\",\n    \"vite\": \"^8.3.1\",\n    \"vitest\": \"^5.0.2\",\n    \"vitest-websocket-mock\": \"^0.8.0\",\n    \"zod\": \"^4.6.5\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "eval",
+      "workflow",
+      "codegen"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "类型安全错误处理",
+      "依赖注入",
+      "结构化并发"
+    ],
+    "brief_zh": {
+      "summary": "一个用于构建健壮、可维护且类型安全 TypeScript 应用的函数式工具库，聚焦可控错误、依赖注入、结构化并发、调度、追踪与统一 Schema 校验。",
+      "audience": "需要提升 TypeScript 服务端、工具链或复杂工作流可维护性的开发者与工程团队",
+      "capabilities": "类型安全错误处理、依赖注入、结构化并发、任务调度、可观测性、Schema 校验",
+      "risk": "抽象和类型系统学习成本较高；迁移现有 TypeScript 项目的收益与复杂度需结合具体代码库评估。",
+      "verified_at": "2026-10-03",
+      "evidence_sources": [
+        "https://github.com/Effect-TS/effect"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "tinyhumansai",
+    "name": "openhuman",
+    "full_name": "tinyhumansai/openhuman",
+    "url": "https://github.com/tinyhumansai/openhuman",
+    "description": "OpenHuman is the fastest, cheapest, most efficient open-source agent harness. Written in Rust",
+    "language": "Rust",
+    "total_stars": 40629,
+    "forks": 4026,
+    "stars_this_period": 102,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-orchestration",
+        "ai-agents",
+        "ai-assistant",
+        "desktop",
+        "llm",
+        "local-first",
+        "mcp",
+        "personal-ai",
+        "privacy",
+        "rust",
+        "second-brain",
+        "tauri"
+      ],
+      "license": "GPL-3.0",
+      "open_issues": 269,
+      "created_at": "2026-02-18T20:01:27Z",
+      "pushed_at": "2026-10-04T18:44:09Z",
+      "homepage": "https://tinyhumans.ai/openhuman",
+      "default_branch": "main",
+      "forks": 4026,
+      "watchers": 200,
+      "archived": false,
+      "size_kb": 303038
+    },
+    "readme_content": "<h1 align=\"center\">OpenHuman</h1>\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/demo.png\" alt=\"The Tet\" />\n</p>\n\n<p align=\"center\" style=\"display: inline-block\">\n\t<a href=\"https://trendshift.io/repositories/23680\" target=\"_blank\" style=\"display: inline-block\">\n\t\t<img src=\"https://trendshift.io/api/badge/repositories/23680\" alt=\"tinyhumansai%2Fopenhuman | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n\t</a>\n\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823\">\n\t\t</a>\n\t\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565\">\n\t\t</a>\n</p>\n<p align=\"center\" style=\"display: inline-block\">\n <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756\">\n  </a>\n  <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n   <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756\">\n   </a>\n </p>\n\n<p align=\"center\">\n <strong>An open-source agent harness with a Rust core: lightweight, modular, and pluggable into whatever LLM, memory, or search engine you already run.</strong>\n</p>\n\n<p align=\"center\">\n <a href=\"https://github.com/tinyhumansai/openhuman/discussions\">Discussions</a> •\n <a href=\"https://guild.tinyhumans.ai/\">Discord</a> •\n <a href=\"https://www.reddit.com/r/tinyhumansai/\">Reddit</a> •\n <a href=\"https://x.com/intent/follow?screen_name=tinyhumansai\">X/Twitter</a> •\n <a href=\"https://tinyhumans.gitbook.io/openhuman/\">Docs</a> •\n <a href=\"https://x.com/intent/follow?screen_name=senamakel\">Follow @senamakel (Creator)</a>\n</p>\n\n<p align=\"center\">\n  🇺🇸 <a href=\"./README.md\">English</a> | 🇨🇳 <a href=\"./docs/README.zh-CN.md\">简体中文</a> | 🇯🇵 <a href=\"./docs/README.ja-JP.md\">日本語</a> | 🇰🇷 <a href=\"./docs/README.ko.md\">한국어</a> | 🇩🇪 <a href=\"./docs/README.de.md\">Deutsch</a> | 🇵🇰 <a href=\"./docs/README.ur-pk.md\">اردو</a>\n</p>\n\n<p align=\"center\">\n <img src=\"https://img.shields.io/badge/status-early%20beta-orange\" alt=\"Early Beta\" />\n <a href=\"https://github.com/tinyhumansai/openhuman/releases/latest\"><img src=\"https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest\" alt=\"Latest Release\" /></a>\n <a href=\"https://github.com/tinyhumansai/openhuman/stargazers\"><img src=\"https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat\" alt=\"GitHub Stars\" /></a>\n <a href=\"./LICENSE\"><img src=\"https://img.shields.io/github/license/tinyhumansai/openhuman\" alt=\"License\" /></a>\n</p>\n\n> **Early Beta**: Under active development. Expect rough edges.\n\n> Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.\n\n# Install\n\nDownload installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.\n\nFor terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.\n\n# What is OpenHuman?\n\nOpenHuman is a Rust core with a desktop app, a browser UI, a terminal client, and a Rust library wrapped around it. The same core runs all four. Every section below links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).\n\n## Lightweight and fast\n\nThe core runs in-process, not as a separate daemon the UI talks to over a socket. A [fleet sweep](./gitbooks/developing/performance.md) of 50, 100, and 500 live agents in one process measured a marginal cost of 1,985, 1,866, and 1,770 KiB per additional agent, settling at 223 MiB, 356 MiB, and 1,393 MiB total. The same workload run as 500 separate processes instead of 500 agents in one costs about 48 MiB per instance, so sharing one process is roughly 25 times denser. Thousands of agents on one box is the direction this is heading, not a number we've hit yet.\n\nA cold agent turn takes 102 ms; the full nine-phase bootstrap (config load, registry init, agent build, memory construction, first turn) takes 476 ms. A slim build settles at about 42 MiB RSS, of which roughly 15.2 MiB is private heap and the rest is paged-in executable text and allocator overhead. [Token compression](./gitbooks/features/token-compression.md) (tinyjuice) also cuts what actually reaches the model, so a large context costs less than its raw size suggests.\n\nFull methodology and numbers: [`docs/library-benchmarking.md`](./docs/library-benchmarking.md), [`docs/harness-comparison-2026-07-22.md`](./docs/harness-comparison-2026-07-22.md), and [performance](./gitbooks/developing/performance.md).\n\n## Modular\n\nCargo feature gates control what compiles in. The contributor default is nine gates (`media`, `skills`, `flows`, `mcp`, `channels`, `http-server`, `scheduler-gate`, `file-logging`, `modules`); the shipped desktop product turns on a wider set listed in `scripts/ci/product-features.txt`. Dropping everything gets a pure-slim build at 51 MiB stripped; adding back `skills` and `flows`, the recommended recipe for embedding, lands at about 60 MiB stripped; turning on every gate produces a 116 MiB unstripped binary. `scripts/kernel-floor.sh` keeps a down-only ratchet on the dependency count so the floor doesn't creep back up.\n\nPast compile time, capability comes from loadable native modules: `tinydocs`, `tinyvoice`, `tinyjuice`, `tinyruntime`, `tinywallet`, `tinymcp`, `tinychannels`, and `tinyconnectors`, each with a small `*-bus` contract crate that defines its interface and wire types. See [`docs/library-minimal-recipe.md`](./docs/library-minimal-recipe.md) for the measured trade-offs of each gate.\n\n## Pluggable engines\n\nEvery engine OpenHuman calls out to is chosen by config, not hardcoded:\n\n- LLM: the managed TinyHumans route, Ollama, LM Studio, MLX, any local OpenAI-compatible server, Claude Code or the Claude Agent SDK, and 26 bring-your-own-key providers including OpenRouter, OpenAI, Anthropic, Google, Groq, Mistral, DeepSeek, Together, and Fireworks. See [local models and BYOK](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-and-byok-models).\n- Embeddings: the managed Voyage-backed route, or your own Voyage, OpenAI, Cohere, Ollama, or OpenAI-compatible endpoint.\n- Memory: [Memory v2](https://tinyhumans.gitbook.io/openhuman/features/memory) is Recall, Fetch and Store over a pluggable engine: TinyHumans (hosted CortexDB, signed in with your account) or your own CortexDB (endpoint and key). It keeps a shared brain of documents (folders, files, links, GitHub, RSS, connected apps), each agent's conversations and shared learnings, recalls what matters before every turn, and answers questions with citations. With neither engine, memory is off. Everything is switched under Connections > Memory.\n- Web search: managed search included with a subscription, or your own key for Parallel, Brave, Querit, Exa, Tavily, or a self-hosted SearXNG instance.\n\nEngine details: [engines](./gitbooks/developing/engines.md).\n\n## Jev decides fast\n\nNot every decision needs the model to generate text. [Jev](./gitbooks/developing/jev.md) is a small decision model, run through the TinyHumans System One proxy, that takes a question and a fixed set of options and returns a calibrated probability for each: pick one of these (Choice), score this (Score), or yes/no (Noul). It never writes prose.\n\nThe clearest use is [tool search](./docs/plans/jev-tool-search-baseline.md): with 215 core tools plus 1,000 Composio actions on the table and 160 test requests, plain BM25 retrieval got the right tool in its top pick 22.5% of the time and made 26 needless tool calls out of 31 tool-less requests. Retrieving the top 20 candidates by embedding and letting Jev choose among them got the right tool 62.0% of the time (66.7% in its top 3) and made 1 needless call, at a p50 of 1.5 seconds against BM25's 28 milliseconds. Letting Jev pick the Composio app family first and then the action within it pushes Composio-only accuracy to 80.3% top-1. It falls back to BM25 automatically when no TinyHumans credential is present.\n\nJev also drives step-by-step decisions inside the [browser tool](./crates/openhuman-core/src/modules/browser_task.rs), where a consequential action (a purchase, a send, a delete) returns `NeedsConfirmation` instead of executing.\n\n## Workflows\n\n[Workflows](./gitbooks/features/workflows.md) are saved, typed automation graphs, built on the open-source [tinyflows](https://github.com/tinyhumansai/tinyflows) engine. The catalog has 22 node kinds (agent calls, HTTP requests, code, conditions, loops, sub-workflows, approvals, and more), and a graph can trigger on a schedule, an app event, or manually, and can resume mid-run after a pause.\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/workflows.png\" alt=\"OpenHuman workflow canvas\">\n</p>\n\n> The agent proposes the workflow; you review it on a canvas and save it.\n\nThe difference from n8n or Zapier: you describe what you want, the agent drafts the graph, and you review and save it rather than wiring nodes by hand.\n\n## Desktop, browser, and terminal\n\nThe same core ships three ways: a Tauri v2 and Wry desktop app for Windows, macOS, and Linux; the identical SPA running in any browser (`pnpm dev:app:web`); and a `ratatui`-based terminal client (`crates/openhuman-tui`).\n\n## A Rust library\n\n`openhuman-embed` is the typed facade for embedding the core directly in another Rust process: one `Runtime` per process, then any number of independent `Agent`s on it, each with its own provider, access tier, working directory, MCP servers, skills, prompt, and sandbox. This is the exact code from [`crates/openhuman-embed/README.md`](./crates/openhuman-embed/README.md):\n\n```rust\nuse openhuman_embed::{Access, AgentSpec, McpServer, Provider, Runtime, Workspace};\n\nlet runtime = Runtime::builder()\n    .workspace(Workspace::dir(\"/var/lib/my-product/openhuman\"))\n    .api_key(\"th_live_…\")                     // the only credential in library mode\n    .build()\n    .await?;\n\nlet reviewer = runtime.agent(\n    AgentSpec::new(\"reviewer\")\n        .system_prompt(\"You review pull requests and never edit files.\")\n        .access(Access::readonly())\n        .skills_dir(\"./skills/review\")        // copied into this agent's own skills root\n        .action_dir(\"/srv/checkouts/pr-42\"),\n)?;\n\nlet fixer = runtime.agent(\n    AgentSpec::new(\"fixer\")\n        .provider(Provider::openai_compatible(\"https://api.example/v1\", \"sk-…\").model(\"gpt-5\"))\n        .access(Access::full())\n ",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# Virtual workspace root. Members: `crates/openhuman-core` (package `openhuman`,\n# the core library), `crates/openhuman-embed` (library facade),\n# `crates/openhuman-rpc` (JSON-RPC envelopes, client and server, above the core), `crates/openhuman-tinyhumans`\n# (SDK-backed backend transport + login/session ownership for hosts),\n# `crates/openhuman-cli` (the `openhuman-core` binary, developer bins and the\n# root integration tests), and `crates/openhuman-tui` (terminal client). `crates/openhuman-app` is deliberately excluded: it is its\n# own Cargo world with its own lockfile and target directory so that root-only\n# Cargo commands don't resolve GTK/WebKit/Tauri, and it must mirror this file's\n# `[patch]` tables rather than inherit them. Vendored module workspaces are also\n# excluded so their workspace-inherited keys continue to resolve against their\n# own roots.\n[workspace]\nresolver = \"2\"\nmembers = [\n    \"crates/openhuman-cli\",\n    \"crates/openhuman-core\",\n    \"crates/openhuman-embed\",\n    \"crates/openhuman-rpc\",\n    \"crates/openhuman-tinyhumans\",\n    \"crates/openhuman-tui\",\n]\nexclude = [\n    \"vendor\",\n    \"worktrees\",\n    \"crates/openhuman-app\",\n    \"app/src-tauri-mobile\",\n    \"packages/tauri-plugin-ptt\",\n]\n\n[workspace.package]\nversion = \"0.64.10\"\nedition = \"2021\"\nlicense = \"GPL-3.0-only\"\nrepository = \"https://github.com/tinyhumansai/openhuman\"\n\n[workspace.dependencies]\nopenhuman-core = { path = \"crates/openhuman-core\", package = \"openhuman\" }\nopenhuman-rpc = { path = \"crates/openhuman-rpc\", default-features = false }\nopenhuman-embed = { path = \"crates/openhuman-embed\", default-features = false }\nopenhuman-tinyhumans = { path = \"crates/openhuman-tinyhumans\", default-features = false }\n\n# Patches are workspace-root settings; Cargo ignores them in member manifests.\n[patch.\"https://github.com/tinyhumansai/tinytools\"]\n# tinymcp's `tools` feature names tinytools by git rev so it can be built on its\n# own. Redirect it to the copy tinyagents vendors — the one the harness and\n# every host tool link — so there is exactly one `tinytools` package and one\n# `Tool` trait. Without this, MCP tools would not satisfy the harness's trait.\ntinytools = { path = \"vendor/tinyagents/vendor/tinytools/crates/tinytools\" }\ntinytools-agent = { path = \"vendor/tinyagents/vendor/tinytools/crates/tinytools-agent\" }\n\n[patch.\"https://github.com/tinyhumansai/tinyinference\"]\ntinyinference-core = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-core\" }\ntinyinference-embeddings = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-embeddings\" }\ntinyinference-llm = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-llm\" }\ntinyinference-local = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-local\" }\ntinyinference-providers = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-providers\" }\ntinyinference-voice = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-voice\" }\n\n[patch.crates-io]\ntinyinference-core = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-core\" }\ntinyinference-embeddings = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-embeddings\" }\ntinyinference-llm = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-llm\" }\ntinyinference-local = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-local\" }\ntinyinference-providers = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-providers\" }\ntinyinference-voice = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-voice\" }\ntinyflows = { path = \"vendor/tinyflows/crates/tinyflows\" }\ntinychannels = { path = \"vendor/tinychannels\" }\n\n# Emit enough release DWARF for server-side Sentry symbolication while keeping\n# shipped binaries small. The CI profile deliberately disables LTO/debug info.\n[profile.release]\ndebug = \"line-tables-only\"\nsplit-debuginfo = \"packed\"\nlto = \"thin\"\ncodegen-units = 16\nstrip = \"symbols\"\n\n[profile.ci]\ninherits = \"release\"\nopt-level = 1\ncodegen-units = 16\nlto = false\nincremental = false\nstrip = true\ndebug = false\n\n[profile.dev.package.\"*\"]\ndebug = false\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "workspace",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "长期记忆",
+      "本地优先",
+      "Agent 编排"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+      "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+      "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+      "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "DietrichGebert",
+    "name": "ponytail",
+    "full_name": "DietrichGebert/ponytail",
+    "url": "https://github.com/DietrichGebert/ponytail",
+    "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+    "language": "JavaScript",
+    "total_stars": 154772,
+    "forks": 8318,
+    "stars_this_period": 1894,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "cursor-rules",
+        "developer-tools",
+        "llm",
+        "prompt-engineering",
+        "yagni"
+      ],
+      "license": "MIT",
+      "open_issues": 226,
+      "created_at": "2026-06-12T00:52:37Z",
+      "pushed_at": "2026-10-04T21:58:08Z",
+      "homepage": "https://ponytail.dev",
+      "default_branch": "main",
+      "forks": 8318,
+      "watchers": 364,
+      "archived": false,
+      "size_kb": 2712
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/logo-dark.png\">\n    <img src=\"assets/logo.png\" width=\"220\" alt=\"Ponytail, the lazy senior dev\">\n  </picture>\n</p>\n\n<h1 align=\"center\">Ponytail</h1>\n\n<p align=\"center\">\n  <em>He says nothing. He writes one line. It works.</em>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/50668?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/50668\" alt=\"DietrichGebert%2Fponytail | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/github/stars/DietrichGebert/ponytail?style=flat-square&color=111111&label=stars\" alt=\"Stars\">\n  <img src=\"https://img.shields.io/github/v/release/DietrichGebert/ponytail?style=flat-square&color=111111&label=release\" alt=\"Release\">\n  <img src=\"https://img.shields.io/npm/v/@dietrichgebert/ponytail?style=flat-square&color=111111&label=npm\" alt=\"npm\">\n  <img src=\"https://img.shields.io/badge/works%20with-20%20agents-111111?style=flat-square\" alt=\"Works with 20 agents\">\n  <img src=\"https://img.shields.io/badge/license-MIT-111111?style=flat-square\" alt=\"MIT license\">\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/50668/daily\" alt=\"DietrichGebert/ponytail | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/50668/weekly\" alt=\"DietrichGebert/ponytail | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/50668?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-50668\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/50668/monthly?language=JavaScript\" alt=\"DietrichGebert%2Fponytail | Trendshift monthly ranking\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <strong>~54% less code (up to 94%) &middot; ~20% cheaper &middot; ~27% faster &middot; 100% safe</strong><br>\n  <sub>Measured on real Claude Code sessions editing a real open-source repo (FastAPI + React), against the same agent with no skill. ~54% is the mean across 12 feature tasks (Haiku 4.5, n=4); it reaches 94% where an agent over-builds (a date picker) and is near zero where the code is already minimal. ponytail keeps every safety guard while a bare \"write one-liners\" prompt drops one. (The earlier single-shot benchmark reported 80-94% as a flat figure; against a fair agentic baseline that is the per-task ceiling, not the average.) <a href=\"benchmarks/results/2026-06-18-agentic.md\">Full writeup</a> &middot; <a href=\"benchmarks/\">reproduce it</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <sub><a href=\"README.es.md\">Español</a> &middot; <a href=\"README.ko.md\">한국어</a></sub>\n</p>\n\n---\n\n<p align=\"center\">\n  <a href=\"https://ponytail.dev/soon\"><img src=\"assets/waitlist-banner.png\" alt=\"Something's coming, join the waitlist\" width=\"760\"></a>\n</p>\n\n## Already built with Ponytail\n\n<a href=\"https://theretriever.app\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/retriever-logo-dark.svg\">\n    <img src=\"assets/retriever-logo-light.svg\" height=\"128\" alt=\"Retriever\">\n  </picture>\n</a>\n\n---\n\nYou know him. Long ponytail. Oval glasses. Has been at the company longer than the version control. You show him fifty lines; he looks at them, says nothing, and replaces them with one.\n\nPonytail puts him inside your AI agent.\n\n## Before / after\n\nYou ask for a date picker. Your agent installs flatpickr, writes a wrapper component, adds a stylesheet, and starts a discussion about timezones.\n\nWith ponytail:\n\n```html\n<!-- ponytail: browser has one -->\n<input type=\"date\">\n```\n\nMore survivors in [examples/](examples/).\n\n## Numbers\n\nThe honest measurement is a real agent doing real work: a headless Claude Code session editing [tiangolo's full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) (a real FastAPI + React repo), scored on the `git diff` it leaves behind. Twelve feature tickets, the same agent with and without the skill, n=4, Haiku 4.5.\n\n<p align=\"center\">\n  <img src=\"assets/benchmark-agentic.svg\" width=\"860\" alt=\"Each arm as a percent of the no-skill baseline across LOC, tokens, cost and time (Haiku 4.5). ponytail is lowest on every metric (LOC 46%, tokens 78%, cost 80%, time 73%); caveman rises above 100% on tokens, cost and time; yagni-oneliner LOC 67%. Safety, separate adversarial tier: baseline, caveman and ponytail 100%, yagni-oneliner 95%.\">\n</p>\n\n| vs no-skill baseline | LOC | tokens | cost | time | safe |\n|---|--:|--:|--:|--:|--:|\n| **ponytail** | **-54%** | **-22%** | **-20%** | **-27%** | **100%** |\n| caveman (terse-prose control) | -20% | +7% | +3% | +2% | 100% |\n| \"YAGNI + one-liners\" prompt | -33% | -14% | -21% | -30% | 95% |\n\nponytail is the only arm that cuts every metric, and the only one that stays fully safe while doing it. The cut is biggest where there is a real over-build trap (date picker 404 to 23 lines, color picker 287 to 23, because it reaches for a native `<input>` instead of a component) and near zero on code that is already minimal. Full method, per-task tables, and limitations: [benchmarks/results/2026-06-18-agentic.md](benchmarks/results/2026-06-18-agentic.md).\n\n<details>\n<summary><strong>Older single-shot numbers (isolated generation)</strong></summary>\n\nFive everyday tasks, three models, three arms (no skill, [caveman](https://github.com/JuliusBrussee/caveman), ponytail), ten runs, median reported. One prompt, one completion, counting lines of the answer:\n\n<p align=\"center\">\n  <img src=\"assets/benchmark-3model.svg\" width=\"860\" alt=\"Median lines of code per arm across Haiku, Sonnet and Opus\">\n</p>\n\nThis showed **80-94% less code**. [#126](https://github.com/DietrichGebert/ponytail/issues/126) fairly pointed out that the bare-model baseline pads its answer with prose and options, so that gap is partly a conversational-baseline artifact. The agentic numbers above are the corrected, defensible version. Reproduce the single-shot run with `npx promptfoo eval -c benchmarks/promptfooconfig.yaml`.\n\n</details>\n\n**The rule was never \"fewest tokens.\"** It is: write only what the task needs, and never cut validation, error handling, security, or accessibility. The code ends up small because it is necessary, not golfed. Lower cost and latency are a side effect on the models that follow the ladder; a terse reasoning model that spends thinking tokens deliberating the rungs can go the other way (on GPT-5.5 it does).\n\n## How it works\n\nBefore writing code, the agent stops at the first rung that holds:\n\n```\n1. Does this need to exist?   → no: skip it (YAGNI)\n2. Already in this codebase?  → reuse it, don't rewrite\n3. Stdlib does it?            → use it\n4. Native platform feature?   → use it\n5. Installed dependency?      → use it\n6. One line?                  → one line\n7. Only then: the minimum that works\n```\n\nThe ladder runs *after* it understands the problem, not instead of it: it reads the code the change touches and traces the real flow before picking a rung. Lazy about the solution, never about reading.\n\nLazy, not negligent: trust-boundary validation, data-loss handling, security, and accessibility are never on the chopping block.\n\n## Install\n\nThe most effort ponytail will ever ask of you:\n\nThe Claude Code and Codex plugins (and the Cursor hooks) run two tiny Node.js lifecycle hooks, so `node` needs to be on your PATH (note for Nix/nvm users: it must be on the non-interactive shell's PATH). If it isn't, the skills still work, but every hook call shows a harmless `node: command not found` error; installing Node (or putting it on that PATH) makes it go away.\n\n### Claude Code\n\n```\n/plugin marketplace add DietrichGebert/ponytail\n```\n```\n/plugin install ponytail@ponytail\n```\n(You have to send two separate prompts for the install to work) \n\nSame steps in the Claude Code Desktop app's Code tab: type the two `/plugin` commands above into the prompt box, or click the **+** button next to it, choose **Plugins** → **Add plugin** to browse your configured marketplaces, and manage marketplaces from **Customize** in the sidebar.\n\n### Codex\n\n```bash\ncodex plugin marketplace add DietrichGebert/ponytail\ncodex plugin add ponytail@ponytail\n```\n\nRun `codex` and open `/hooks`, review and trust its two lifecycle hooks, and start a new thread.\n\nThis same install also covers the Codex desktop app: restart the app after installing and it picks up the plugin.\n\n### GitHub Copilot CLI\n\n```bash\ncopilot plugin marketplace add DietrichGebert/ponytail\ncopilot plugin install ponytail@ponytail\n```\n\nIn an interactive Copilot CLI session, use the slash equivalents:\n\n```\n/plugin marketplace add DietrichGebert/ponytail\n/plugin install ponytail@ponytail\n```\n\nCopilot CLI namespaces plugin commands by plugin name. For example:\n\n```text\n/ponytail:ponytail ultra\n/ponytail:ponytail-review\n```\n\n### Pi agent harness\n\n```\npi install git:github.com/DietrichGebert/ponytail\n```\n\n### OpenCode\n\nAdd to `opencode.json`:\n\n```json\n{ \"plugins\": [\"@dietrichgebert/ponytail\"] }\n```\n\nRun from a checkout instead (the plugin reuses `hooks/` and `skills/`):\n\n```json\n{ \"plugins\": [\"./.opencode/plugins\"] }\n```\n\nInjects the ruleset every turn at the active level; adds the `/ponytail` commands (see [Commands](#commands)). OpenCode also auto-loads this repo's `AGENTS.md`, so the rules hold even without the plugin. The plugin adds the `lite/full/ultra/off` levels.\n\nOpenCode 2 only. The `./` path resolves against your project's `opencode.json`; to share one checkout across projects, point it at the absolute path of the checkout's `.opencode/plugins` directory. A `plugins` entry must name a **directory**, not a file: OpenCode 2 rejects a path to `ponytail.mjs` with `configured plugin path must be a directory`. Opening this repo in OpenCode 2 needs no entry at all: it loads `.opencode/plugins/index.js` on its own.\n\nKilo Code is built on OpenCode and runs the same plugin through its `plugin` key: add `{ \"plugin\": [\"@dietrichgebert/ponytail\"] }` to `kilo.jsonc` (or `~/.config/kilo/kilo.jsonc` for every project).\n\nOpenCode 1 uses the older `plugin` key: `{ \"plugin\": [\"@dietrichgebert/ponytail\"] }`, or from a checkout the file path: `{ \"plugin\": [\"./.opencode/plugins/ponytail.mjs\"] }`.\n\n### Gemini CLI\n\n```bash\ngemini extensions install https://github.com/DietrichGebert/ponytail\n```\n\nLoads the ruleset as always-on context every session and registers the `/ponytail` commands; the `skills/` ship too, activated when a task needs them.\nThe Gemini adapter intentionally does not ship a root `hooks/hooks.json`: Gemini auto-loads that path, while Ponytail's lifecycle hooks use Claude/Codex event names.\n\n### Qoder\n\nQoder auto-loads `AGENTS.md` from the repo root as always-on context, so running ponytail from a checkout works with zero setup. For per-project rules, copy [`.qoder/rules/ponytail.md`](.qoder/rules/ponytail.md) into your project's `.qoder/rules/`. The six ponytail skills (`/ponytail`, `/ponytail-review`, `/ponytail-audit`, `/ponytail-debt`, `/ponytail-gain`, `/ponytail-help`) are available via Qoder's Skill system; the plugin manifest at [`.qoder-plugin/plugin.json`](.qoder-plugin/plugin.json) points at the `skills/` directory.\n\nFor full plugin-tier support (automatic mode activation + ruleset injection on every prompt), add the hooks from [`hooks/qoder-hooks.json`](hooks/qoder-hooks.json) to your `.qoder/settings.json`. Replace `PONYTAIL_DIR` with the path to your ponytail checkout. Qoder's `UserPromptSubmit` hook activates the default mode on first prompt and injects the ruleset every turn; `PreToolUse` with `task|Ta",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@dietrichgebert/ponytail\",\n  \"version\": \"4.10.3\",\n  \"description\": \"Lazy senior dev mode for AI agents. The best code is the code you never wrote.\",\n  \"keywords\": [\"opencode-plugin\", \"opencode\", \"ponytail\", \"pi-package\", \"pi\", \"skills\", \"qoder\"],\n  \"license\": \"MIT\",\n  \"author\": {\n    \"name\": \"Dietrich Gebert\",\n    \"url\": \"https://github.com/DietrichGebert\"\n  },\n  \"homepage\": \"https://github.com/DietrichGebert/ponytail\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/DietrichGebert/ponytail.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/DietrichGebert/ponytail/issues\"\n  },\n  \"main\": \"./.opencode/plugins/ponytail.mjs\",\n  \"exports\": {\n    \".\": \"./.opencode/plugins/ponytail.mjs\",\n    \"./plugin\": \"./.opencode/plugins/ponytail.mjs\"\n  },\n  \"files\": [\n    \"AGENTS.md\",\n    \"hooks/\",\n    \"skills/\",\n    \".opencode/\",\n    \".qoder/\",\n    \".qoder-plugin/\",\n    \"pi-extension/\",\n    \"scripts/uninstall.js\",\n    \"scripts/cursor-hooks.js\",\n    \"assets/\",\n    \"LICENSE\"\n  ],\n  \"scripts\": {\n    \"test\": \"node --test tests/*.test.js && npm test --prefix pi-extension && npm test --prefix ponytail-mcp\"\n  },\n  \"pi\": {\n    \"extensions\": [\"./pi-extension/index.js\"],\n    \"skills\": [\"./skills\"]\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  }\n}\n\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 提示策略",
+      "编码约束",
+      "复用优先"
+    ],
+    "brief_zh": {
+      "summary": "一个试图把“少写代码”原则固化给 AI Agent 的提示与工作流项目，强调先复用、再改动、最后才新增实现。",
+      "audience": "希望约束编码 Agent 决策方式、减少无效实现和重复造轮子的开发者",
+      "capabilities": "Agent 提示策略、编码约束、复用优先、工作流规范",
+      "risk": "如果缺少配套评测和边界规则，理念型约束很容易停留在口号层，效果需要实测验证"
+    },
+    "summary_source": "project_brief"
+  }
+]
