@@ -423,6 +423,24 @@ def sync_daily_report_dir(period: str) -> None:
     dst.write_text(render_fallback_daily_report(period), encoding="utf-8")
 
 
+def rebuild_daily_history() -> int:
+    """Re-render published daily pages from verified Top 10 payloads.
+
+    This keeps older pages on the same concise, Chinese-tagged list contract
+    without inventing analysis that was absent from their original reports.
+    """
+    rebuilt = 0
+    for top10_path in sorted(ROOT.glob("top10-20??-??-??.json")):
+        period = top10_path.stem.removeprefix("top10-")
+        data_path = ROOT / f"trending-data-{period}.json"
+        if not data_path.exists():
+            continue
+        destination = ROOT / "daily" / period / "index.html"
+        write_text(destination, render_fallback_daily_report(period))
+        rebuilt += 1
+    return rebuilt
+
+
 def latest_report(reports: list[dict], report_type: str) -> dict | None:
     for item in reports:
         if item.get("type") == report_type:
@@ -2180,6 +2198,7 @@ def resolve_daily_period(default_period: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Publish daily GitHub trending report pages.")
     parser.add_argument("--period", default=None, help="Daily report period in YYYY-MM-DD.")
+    parser.add_argument("--rebuild-history", action="store_true", help="Re-render all verified daily pages as concise Chinese-tagged lists.")
     args = parser.parse_args()
     period = resolve_daily_period(args.period or reference_today().strftime("%Y-%m-%d"))
     backfill_top10_payloads()
@@ -2189,6 +2208,9 @@ def main() -> None:
     write_text(ROOT / "daily" / "index.html", render_daily_index(period, stats, reports))
     write_text(ROOT / "archive" / "index.html", render_archive(reports))
     write_text(ROOT / "index.html", render_home(period, stats, reports))
+    if args.rebuild_history:
+        rebuilt = rebuild_daily_history()
+        print(f"rebuilt {rebuilt} historical daily page(s)")
     build_leaderboard(ROOT)
     update_readme(period, reports)
 

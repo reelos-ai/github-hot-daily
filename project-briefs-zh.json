@@ -987,5 +987,23 @@
     "verified_at": "2026-10-05",
     "evidence_sources": ["https://github.com/zerx-lab/FluxDown"],
     "evidence_note": "依据本日抓取的 README 与仓库 description；未做性能或安全验证。"
+  },
+  "DuarteSantos8/openGym": {
+    "summary": "一个可自托管的健身与体重追踪 PWA：支持训练计划、引导训练、组数记录、进度图表和跨设备同步，数据可由用户自行掌控。",
+    "audience": "希望摆脱订阅式健身应用、并自行部署和管理训练数据的个人用户",
+    "capabilities": "自托管训练记录、训练计划、离线 PWA、通行密钥登录、跨设备同步、数据导入导出",
+    "risk": "采用 AGPL-3.0；自托管的同步、备份与账号安全需要用户自行负责，健康与训练建议也不应替代专业意见。",
+    "verified_at": "2026-10-06",
+    "evidence_sources": ["https://github.com/DuarteSantos8/openGym"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做部署或健康效果验证。"
+  },
+  "tester-army/e2e": {
+    "summary": "一个面向 Web 与移动端的端到端测试框架：可用自然语言让 Agent 操作应用，再用定位器和断言验证结果；已验证的 Agent 操作可在后续运行中重放以减少模型调用。",
+    "audience": "需要把自然语言交互测试接入 Web、iOS 或 Android 工程的测试与开发团队",
+    "capabilities": "自然语言测试、Agent 操作重放、Web 测试、移动端测试、Playwright 集成、CLI 与 GitHub 报告",
+    "risk": "项目仍在迈向 1.0，API 与配置可能变化；涉及真实应用的 Agent 操作、模型调用成本和遥测设置都需要在 CI 中明确控制。",
+    "verified_at": "2026-10-06",
+    "evidence_sources": ["https://github.com/tester-army/e2e"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做测试运行或 CI 集成验证。"
   }
 }
