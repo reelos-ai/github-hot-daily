@@ -1005,5 +1005,23 @@
     "verified_at": "2026-10-06",
     "evidence_sources": ["https://github.com/tester-army/e2e"],
     "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做测试运行或 CI 集成验证。"
+  },
+  "morluto/rea": {
+    "summary": "一个面向 Agent 的逆向工程 MCP 与 CLI：可在本地检查原生二进制、JavaScript/Electron 应用、.NET 程序和网站，并把证据、限制与分析结果一并返回。",
+    "audience": "需要让编码 Agent 在无源码或复杂遗留应用中理解实现细节的开发者、安全研究者与工程团队",
+    "capabilities": "逆向工程 MCP、二进制分析、静态 JavaScript 分析、Ghidra/Hopper 集成、证据化结论、CLI 工作流",
+    "risk": "原生分析依赖本机工具和目标平台；逆向行为还需遵守软件许可、服务条款与所在地法律边界。",
+    "verified_at": "2026-10-07",
+    "evidence_sources": ["https://github.com/morluto/rea"],
+    "evidence_note": "依据本日抓取的 README、package.json 与仓库 topics；未对目标程序执行逆向验证。"
+  },
+  "earthtojake/text-to-cad": {
+    "summary": "一个把自然语言 Agent 工作流接入本地 CAD 的技能与插件：可生成 STEP、GLB、STL、3MF 模型，支持可制造性检查、工程图，并连接 3D 打印、钣金和 CNC 服务。",
+    "audience": "希望让 Claude Code、Codex 等 Agent 参与三维建模、原型设计或制造准备的设计与工程团队",
+    "capabilities": "文本生成 CAD、STEP/STL/GLB/3MF 导出、可制造性检查、工程图、MCP 本地服务、制造服务连接",
+    "risk": "几何和制造约束必须由专业人员复核；首次启动依赖本地运行时下载，输出模型也需在真实工艺与安全要求下验证。",
+    "verified_at": "2026-10-07",
+    "evidence_sources": ["https://github.com/earthtojake/text-to-cad"],
+    "evidence_note": "依据本日抓取的 README 与仓库 topics；未生成模型或验证制造结果。"
   }
 }
