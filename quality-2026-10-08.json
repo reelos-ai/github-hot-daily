@@ -1,0 +1,32 @@
+{
+  "period": "2026-10-08",
+  "checked_at": "2026-10-08T06:00:00+08:00",
+  "daily": {
+    "top10_count": 10,
+    "chinese_capability_tags": 30,
+    "slice_health": {"all": 13, "python": 12, "typescript": 13, "javascript": 20, "go": 20, "rust": 13},
+    "api_failures": 0,
+    "readme_failures": 0,
+    "dependency_manifests": 56,
+    "dependency_unavailable": 27,
+    "historical_daily_reports": 83,
+    "historical_top10_failures": 0
+  },
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 209,
+    "snapshot_count": 83,
+    "deduplicated": true,
+    "continuous_ranks": true,
+    "model_version": "leaderboard-v2",
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "summary_sources": {"project_brief": 143, "original_description": 66, "missing": 0}
+  },
+  "browser_qa": {
+    "homepage_current_report": "pass",
+    "mobile_390_no_horizontal_overflow": "pass",
+    "leaderboard_control_semantics": "pass",
+    "note": "Local interaction selectors were verified against rendered rank rows; production interaction checks run after deployment."
+  }
+}

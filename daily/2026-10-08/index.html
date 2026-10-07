@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>报告归档 · GitHub 热榜情报 · ReelOS</title>
-  <meta name="description" content="按日报、周报、月报分类查看 ReelOS GitHub 热榜情报报告。">
+  <title>GitHub 热榜情报日报 · 2026-10-08 · ReelOS</title>
+  <meta name="description" content="GitHub 热榜情报日报 2026-10-08，一眼看懂项目做什么。">
   <style>
+    
     :root{
       color-scheme:light;
       --bg:#fcfaf6;
@@ -1155,239 +1156,235 @@
         padding:44px 20px 52px;
       }
     }
-    .reelos-lockup{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      width:max-content;
-      color:var(--text,#111722);
-      font-family:"Space Grotesk","IBM Plex Sans","PingFang SC","Microsoft YaHei",ui-sans-serif,system-ui,sans-serif;
-      text-decoration:none;
-      text-transform:none;
-      letter-spacing:0;
+    
+    .report-shell{max-width:980px;margin:0 auto;padding:32px 20px 88px}
+    .hero{padding:34px 0 22px;border-bottom:1px solid var(--line)}
+    .hero h1{margin:14px 0 12px;font-size:clamp(34px,6vw,58px);line-height:1.08}
+    .hero h1 span{color:var(--amber)}
+    .hero p{margin:0;color:var(--muted)}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .hero-meta span{padding:8px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}
+    .section{padding-top:28px}
+    .section h2{margin:0 0 14px;font-size:22px}
+    .health-list,.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+    .health-list li,.project-tags li{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}
+    .project-list{display:grid;gap:16px}
+    .project-row{display:grid;grid-template-columns:56px minmax(0,1fr) 210px;gap:16px;padding:18px;border:1px solid var(--line);background:var(--surface);overflow:hidden}
+    .project-rank{font-size:24px;color:var(--amber)}
+    .project-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .project-head h3{margin:0;font-size:20px;line-height:1.25}
+    .project-head p{margin:0}
+    .project-source{flex:0 0 auto;color:var(--blue)}
+    .project-main p{margin:10px 0 12px;color:var(--soft)}
+    .project-meta{display:grid;grid-template-columns:1fr;gap:10px;margin:0}
+    .project-meta div{padding:10px 12px;border:1px solid var(--line);background:var(--surface-2)}
+    .project-meta dt{margin:0 0 4px;color:var(--muted);font-size:11px}
+    .project-meta dd{margin:0;font-size:14px}
+    .note{padding:16px 18px;border-left:3px solid var(--amber);background:var(--surface-3);color:var(--soft)}
+    @media (max-width:800px){
+      .project-row{grid-template-columns:1fr}
+      .project-head{flex-direction:column}
+      .project-rank{font-size:20px}
     }
-    .reelos-mark{
-      position:relative;
-      display:grid;
-      flex:0 0 auto;
-      width:30px;
-      height:30px;
-      place-items:center;
-      border-radius:50%;
-      background:#111722;
-    }
-    .reelos-mark::before,
-    .reelos-mark::after,
-    .reelos-mark > span{
-      content:"";
-      position:absolute;
-      border:1.5px solid #fff7ed;
-      border-radius:50%;
-    }
-    .reelos-mark::before{
-      width:18px;
-      height:18px;
-    }
-    .reelos-mark::after{
-      width:8px;
-      height:8px;
-      border-color:#f97316;
-    }
-    .reelos-mark > span{
-      width:24px;
-      height:24px;
-      border-top-color:transparent;
-      transform:rotate(-25deg);
-      transition:transform .62s cubic-bezier(.2,.8,.2,1);
-    }
-    .reelos-lockup:hover .reelos-mark > span{
-      transform:rotate(295deg);
-    }
-    .reelos-lockup-copy{
-      display:grid;
-      gap:2px;
-      min-width:0;
-    }
-    .reelos-wordmark{
-      color:var(--text,#111722);
-      font-size:16px;
-      font-weight:650;
-      line-height:1.2;
-      letter-spacing:0;
-      white-space:nowrap;
-    }
-    .reelos-logo-os{
-      color:#f97316;
-    }
-    .reelos-lockup-subtitle{
-      color:var(--muted,#6c788d);
-      font-size:10px;
-      font-weight:500;
-      line-height:1.3;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-    .reelos-lockup:focus-visible{
-      border-radius:3px;
-      outline:2px solid #f97316;
-      outline-offset:4px;
-    }
-    @media (max-width:680px){
-      .reelos-mark{
-        width:26px;
-        height:26px;
-      }
-      .reelos-mark::before{
-        width:16px;
-        height:16px;
-      }
-      .reelos-mark > span{
-        width:21px;
-        height:21px;
-      }
-      .reelos-wordmark{
-        font-size:14px;
-      }
-    }
-    @media (prefers-reduced-motion:reduce){
-      .reelos-mark > span{
-        transition:none;
-      }
-    }</style>
+  </style>
 </head>
-<body class="home-page">
-  <a class="skip-link" href="#archive-list">跳至报告列表</a>
-  <div class="wrap">
-    <header class="home-masthead period-masthead">
-      <div class="home-masthead-top">
-        <a class="reelos-lockup home-masthead-brand" href="/" aria-label="ReelOS.ai">
+<body>
+  <main class="report-shell">
+    <header class="topbar">
+      <div class="brand"><a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
       <span class="reelos-mark" aria-hidden="true"><span></span></span>
       <span class="reelos-lockup-copy">
         <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
         <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
       </span>
-    </a>
-        <span class="home-masthead-edition mono">Daily · Weekly · Monthly</span>
-      </div>
-      <div class="home-masthead-body">
-        <div>
-          <span class="home-masthead-kicker mono">Report Archive</span>
-          <h1>报告归档</h1>
-        </div>
-        <p class="home-masthead-copy">按周期查看当前有效报告，旧信息不占用阅读窗口。</p>
-      </div>
+    </a></div>
+      <nav class="nav" aria-label="站点导航"><a class="" href="/">首页</a><a class="active" href="/daily/">日报</a><a class="" href="/weekly/">周报</a><a class="" href="/monthly/">月报</a><a class="" href="/leaderboard/">总榜</a><a class="" href="/archive/">归档</a></nav>
     </header>
-
-    <main class="archive-main" id="archive-list">
-      <nav class="home-report-tabs" aria-label="报告类别" role="tablist">
-        <button class="home-report-tab" id="archive-tab-daily" role="tab" type="button" data-archive-tab="daily" aria-controls="archive-daily" aria-selected="true">日报 <span class="home-report-tab-meta">14 · 15天</span></button>
-        <button class="home-report-tab" id="archive-tab-weekly" role="tab" type="button" data-archive-tab="weekly" aria-controls="archive-weekly" aria-selected="false" tabindex="-1">周报 <span class="home-report-tab-meta">3 · 30天</span></button>
-        <button class="home-report-tab" id="archive-tab-monthly" role="tab" type="button" data-archive-tab="monthly" aria-controls="archive-monthly" aria-selected="false" tabindex="-1">月报 <span class="home-report-tab-meta">1 · 50天</span></button>
-      </nav>
-      <section class="home-report-panel" id="archive-daily" data-archive-panel="daily" role="tabpanel" aria-labelledby="archive-tab-daily" tabindex="0">
-      <header class="home-report-head">
-        <div>
-          <span class="mono">有效期 ≤ 15 天</span>
-          <h1>最近日报</h1>
-          <p>14 份可见报告</p>
-        </div>
-      </header>
-      <div class="archive-report-list"><a class="archive-report-row" href="/daily/2026-10-08/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-08</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-07/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-07</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-06/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-06</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-05/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-05</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-04/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-04</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-03/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-03</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-02/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-02</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-10-01/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-10-01</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-28/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-28</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-27/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-27</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-26/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-26</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-25/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-25</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-24/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-24</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/daily/2026-09-23/">
-          <span class="archive-report-category">日报</span>
-          <span class="archive-report-title">GitHub 热榜情报日报 · 2026-09-23</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a></div>
-    </section><section class="home-report-panel" id="archive-weekly" data-archive-panel="weekly" role="tabpanel" aria-labelledby="archive-tab-weekly" tabindex="0" hidden>
-      <header class="home-report-head">
-        <div>
-          <span class="mono">有效期 ≤ 30 天</span>
-          <h1>最近周报</h1>
-          <p>3 份可见报告</p>
-        </div>
-      </header>
-      <div class="archive-report-list"><a class="archive-report-row" href="/weekly/2026-10-05/">
-          <span class="archive-report-category">周报</span>
-          <span class="archive-report-title">GitHub 热榜情报周报 · 2026-10-05</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/weekly/2026-09-28/">
-          <span class="archive-report-category">周报</span>
-          <span class="archive-report-title">GitHub 热榜情报周报 · 2026-09-28</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a><a class="archive-report-row" href="/weekly/2026-09-14/">
-          <span class="archive-report-category">周报</span>
-          <span class="archive-report-title">GitHub 热榜情报周报 · 2026-09-14</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a></div>
-    </section><section class="home-report-panel" id="archive-monthly" data-archive-panel="monthly" role="tabpanel" aria-labelledby="archive-tab-monthly" tabindex="0" hidden>
-      <header class="home-report-head">
-        <div>
-          <span class="mono">有效期 ≤ 50 天</span>
-          <h1>最近月报</h1>
-          <p>1 份可见报告</p>
-        </div>
-      </header>
-      <div class="archive-report-list"><a class="archive-report-row" href="/monthly/2026-09/">
-          <span class="archive-report-category">月报</span>
-          <span class="archive-report-title">GitHub 热榜情报月报 · 2026-09</span>
-          <span class="archive-report-meta mono">Top 10</span>
-        </a></div>
+    <section class="hero">
+      <span class="mono">ReelOS · GitHub Signal</span>
+      <h1>GitHub <span>日报</span> 情报</h1>
+      <p>减少噪音，一眼看懂项目做什么。当前页为基于本地已验证 Top 10 与原始抓取数据补生成的历史日报页。</p>
+      <div class="hero-meta">
+        <span class="mono">日期 2026-10-08</span>
+        <span class="mono">Top 10 10</span>
+        <span class="mono">候选仓库 83</span>
+        <span class="mono">README 覆盖 83</span>
+        <span class="mono">主信号 morluto/rea</span>
+      </div>
     </section>
-    </main>
-  </div>
-  <footer class="site-footer">
+    <section class="section">
+      <h2>当日抓取健康度</h2>
+      <ul class="health-list"><li><strong>all</strong><span class="mono">13</span></li><li><strong>go</strong><span class="mono">20</span></li><li><strong>javascript</strong><span class="mono">20</span></li><li><strong>python</strong><span class="mono">12</span></li><li><strong>rust</strong><span class="mono">13</span></li><li><strong>typescript</strong><span class="mono">13</span></li></ul>
+    </section>
+    <section class="section">
+      <h2>Top 10 项目</h2>
+      <div class="project-list"><article class="project-row">
+          <div class="project-rank mono">01</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer">morluto/rea</a></h3>
+              <a class="project-source mono" href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个面向 Agent 的逆向工程 MCP 与 CLI：可在本地检查原生二进制、JavaScript/Electron 应用、.NET 程序和网站，并把证据、限制与分析结果一并返回。</p>
+            <ul class="project-tags"><li>逆向工程 MCP</li><li>二进制分析</li><li>静态 JavaScript 分析</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+4666</dd></div>
+            <div><dt>总星标</dt><dd>14518</dd></div>
+            <div><dt>切片</dt><dd>all / typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">02</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer">thedotmack/claude-mem</a></h3>
+              <a class="project-source mono" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。</p>
+            <ul class="project-tags"><li>长期记忆</li><li>MCP 集成</li><li>RAG 检索</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+578</dd></div>
+            <div><dt>总星标</dt><dd>97657</dd></div>
+            <div><dt>切片</dt><dd>all / typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">03</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/tinyhumansai/openhuman" target="_blank" rel="noopener noreferrer">tinyhumansai/openhuman</a></h3>
+              <a class="project-source mono" href="https://github.com/tinyhumansai/openhuman" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。</p>
+            <ul class="project-tags"><li>长期记忆</li><li>本地优先</li><li>Agent 编排</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Rust</dd></div>
+            <div><dt>周期增长</dt><dd>+495</dd></div>
+            <div><dt>总星标</dt><dd>41571</dd></div>
+            <div><dt>切片</dt><dd>rust</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">04</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">calesthio/OpenMontage</a></h3>
+              <a class="project-source mono" href="https://github.com/calesthio/OpenMontage" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>把调研、脚本、素材生成、剪辑与合成组织成流水线，让编码 Agent 执行视频制作任务。</p>
+            <ul class="project-tags"><li>视频制作</li><li>素材生成</li><li>剪辑合成</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Python</dd></div>
+            <div><dt>周期增长</dt><dd>+375</dd></div>
+            <div><dt>总星标</dt><dd>64992</dd></div>
+            <div><dt>切片</dt><dd>python</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">05</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/tester-army/e2e" target="_blank" rel="noopener noreferrer">tester-army/e2e</a></h3>
+              <a class="project-source mono" href="https://github.com/tester-army/e2e" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个面向 Web 与移动端的端到端测试框架：可用自然语言让 Agent 操作应用，再用定位器和断言验证结果；已验证的 Agent 操作可在后续运行中重放以减少模型调用。</p>
+            <ul class="project-tags"><li>自然语言测试</li><li>Agent 操作重放</li><li>Web 测试</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+1391</dd></div>
+            <div><dt>总星标</dt><dd>7333</dd></div>
+            <div><dt>切片</dt><dd>all / typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">06</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/DuarteSantos8/openGym" target="_blank" rel="noopener noreferrer">DuarteSantos8/openGym</a></h3>
+              <a class="project-source mono" href="https://github.com/DuarteSantos8/openGym" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个可自托管的健身与体重追踪 PWA：支持训练计划、引导训练、组数记录、进度图表和跨设备同步，数据可由用户自行掌控。</p>
+            <ul class="project-tags"><li>自托管训练记录</li><li>训练计划</li><li>离线 PWA</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>JavaScript</dd></div>
+            <div><dt>周期增长</dt><dd>+1494</dd></div>
+            <div><dt>总星标</dt><dd>6792</dd></div>
+            <div><dt>切片</dt><dd>all / javascript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">07</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener noreferrer">cathrynlavery/diagram-design</a></h3>
+              <a class="project-source mono" href="https://github.com/cathrynlavery/diagram-design" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>为编码 Agent 提供编辑式图解技能，以独立 HTML 和 SVG 生成架构图、流程图等可视化。</p>
+            <ul class="project-tags"><li>图解生成</li><li>架构可视化</li><li>技能扩展</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>HTML</dd></div>
+            <div><dt>周期增长</dt><dd>+828</dd></div>
+            <div><dt>总星标</dt><dd>44890</dd></div>
+            <div><dt>切片</dt><dd>all</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">08</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/trycua/cua" target="_blank" rel="noopener noreferrer">trycua/cua</a></h3>
+              <a class="project-source mono" href="https://github.com/trycua/cua" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一套面向 AI Agent 的计算机操作开源组件：README 列出跨 macOS、Windows、Linux 的桌面驱动、本地虚拟机、专用决策模型，以及用于任务创建、评测和轨迹导出的基准工具。</p>
+            <ul class="project-tags"><li>跨系统桌面自动化</li><li>本地虚拟机</li><li>Agent 计算机操作</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Rust</dd></div>
+            <div><dt>周期增长</dt><dd>+229</dd></div>
+            <div><dt>总星标</dt><dd>28708</dd></div>
+            <div><dt>切片</dt><dd>all / rust</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">09</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/superdesigndev/treg" target="_blank" rel="noopener noreferrer">superdesigndev/treg</a></h3>
+              <a class="project-source mono" href="https://github.com/superdesigndev/treg" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。</p>
+            <ul class="project-tags"><li>工具目录</li><li>统一调用</li><li>凭据管理</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Python</dd></div>
+            <div><dt>周期增长</dt><dd>+407</dd></div>
+            <div><dt>总星标</dt><dd>4737</dd></div>
+            <div><dt>切片</dt><dd>python</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">10</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/pingdotgg/t3code" target="_blank" rel="noopener noreferrer">pingdotgg/t3code</a></h3>
+              <a class="project-source mono" href="https://github.com/pingdotgg/t3code" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个用于控制本机编码 Agent 的开源控制界面：README 标注提供移动端、Web 与 Electron 桌面端，可连接已在本机配置的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity。</p>
+            <ul class="project-tags"><li>Agent 控制界面</li><li>移动端远程访问</li><li>Web 与桌面端</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+241</dd></div>
+            <div><dt>总星标</dt><dd>26137</dd></div>
+            <div><dt>切片</dt><dd>typescript</dd></div>
+          </dl>
+        </article></div>
+    </section>
+    <section class="section">
+      <h2>说明</h2>
+      <p class="note">该页用于补齐缺失历史日报 HTML。项目说明优先取人工中文摘要，其次回退仓库原始 description；不补造 README、依赖或排行数据。</p>
+    </section>
+    <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="https://www.reelos.ai/">ReelOS.ai</a>
@@ -1417,32 +1414,6 @@
       </nav>
     </div>
   </footer>
-  <script>
-    (() => {
-      const tabs = [...document.querySelectorAll("[data-archive-tab]")];
-      const panels = [...document.querySelectorAll("[data-archive-panel]")];
-      const show = (type, updateHash = true) => {
-        if (!panels.some((panel) => panel.dataset.archivePanel === type)) return;
-        tabs.forEach((tab) => {
-          const active = tab.dataset.archiveTab === type;
-          tab.setAttribute("aria-selected", String(active));
-          tab.tabIndex = active ? 0 : -1;
-        });
-        panels.forEach((panel) => { panel.hidden = panel.dataset.archivePanel !== type; });
-        if (updateHash) history.replaceState(null, "", `#${type}`);
-      };
-      tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.archiveTab)));
-      tabs.forEach((tab, index) => tab.addEventListener("keydown", (event) => {
-        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-        event.preventDefault();
-        const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-        tabs[nextIndex].focus();
-        show(tabs[nextIndex].dataset.archiveTab);
-      }));
-      window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
-      const initial = location.hash.slice(1);
-      if (["daily", "weekly", "monthly"].includes(initial)) show(initial, false);
-    })();
-  </script>
+  </main>
 </body>
 </html>

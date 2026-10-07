@@ -1023,5 +1023,23 @@
     "verified_at": "2026-10-07",
     "evidence_sources": ["https://github.com/earthtojake/text-to-cad"],
     "evidence_note": "依据本日抓取的 README 与仓库 topics；未生成模型或验证制造结果。"
+  },
+  "trycua/cua": {
+    "summary": "一套面向 AI Agent 的计算机操作开源组件：README 列出跨 macOS、Windows、Linux 的桌面驱动、本地虚拟机、专用决策模型，以及用于任务创建、评测和轨迹导出的基准工具。",
+    "audience": "需要为 Agent 配置可控桌面环境、跨系统操作能力或计算机操作评测流程的开发者与研究团队",
+    "capabilities": "跨系统桌面自动化、本地虚拟机、Agent 计算机操作、任务评测、轨迹导出、SDK 与 CLI",
+    "risk": "执行端可接触桌面与本地虚拟机；权限、凭据、隔离边界和真实操作的安全后果必须在部署环境中单独审查。",
+    "verified_at": "2026-10-08",
+    "evidence_sources": ["https://github.com/trycua/cua"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未运行驱动、虚拟机或评测。"
+  },
+  "pingdotgg/t3code": {
+    "summary": "一个用于控制本机编码 Agent 的开源控制界面：README 标注提供移动端、Web 与 Electron 桌面端，可连接已在本机配置的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity。",
+    "audience": "需要从电脑、网页或移动端统一查看和控制本机多个编码 Agent 的开发者",
+    "capabilities": "Agent 控制界面、移动端远程访问、Web 与桌面端、多个编码 Agent 连接、后台服务、MCP 连接",
+    "risk": "项目 README 明确仍处于早期阶段；远程访问、本机 Agent 权限和多提供商账号凭据需按实际部署方式审查。",
+    "verified_at": "2026-10-08",
+    "evidence_sources": ["https://github.com/pingdotgg/t3code"],
+    "evidence_note": "依据本日抓取的 README；未安装客户端、配置远程访问或连接任一 Agent 提供商。"
   }
 }

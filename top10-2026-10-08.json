@@ -1,0 +1,859 @@
+[
+  {
+    "owner": "morluto",
+    "name": "rea",
+    "full_name": "morluto/rea",
+    "url": "https://github.com/morluto/rea",
+    "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+    "language": "TypeScript",
+    "total_stars": 14518,
+    "forks": 1527,
+    "stars_this_period": 4666,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "ai-agent-tools",
+        "ai-agents",
+        "binary-analysis",
+        "cli",
+        "coding-agents",
+        "cordis",
+        "ctf",
+        "decompiler",
+        "disassembler",
+        "dsh",
+        "dsh-plugin",
+        "ghidra",
+        "hopper",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "reverse-engineering",
+        "reverse-engineering-tools",
+        "static-analysis"
+      ],
+      "license": "MIT",
+      "open_issues": 89,
+      "created_at": "2026-04-14T00:51:32Z",
+      "pushed_at": "2026-10-07T21:54:49Z",
+      "homepage": "https://morluto.github.io/rea/",
+      "default_branch": "main",
+      "forks": 1527,
+      "watchers": 41,
+      "archived": false,
+      "size_kb": 33173
+    },
+    "readme_content": "<div align=\"center\">\n\n**English** · [简体中文](README_zh.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [العربية](README_ar.md)\n\n# REA: Reverse Engineer Anything\n\n### One MCP for reverse engineering across binaries, applications, and runtime behavior.\n\n**See a feature you like. Understand how it works, down to the binary level.**\n\n[![npm version](https://img.shields.io/npm/v/rea-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/rea-agents)\n[![CI](https://img.shields.io/github/actions/workflow/status/morluto/rea/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/morluto/rea/actions/workflows/ci.yml)\n[![MCP tool catalog](https://img.shields.io/badge/MCP-tool_catalog-5c4ee5?style=flat-square)](#tool-catalog-for-investigation)\n[![Node.js 22+](https://img.shields.io/badge/Node.js-22.19%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/)\n[![MIT license](https://img.shields.io/badge/license-MIT-f4c430?style=flat-square)](LICENSE)\n[![Discord](https://img.shields.io/discord/1556595354999332884?logo=discord&logoColor=white&label=Discord&color=5865F2)](https://discord.gg/GkcryMnJDM)\n\n<a href=\"https://trendshift.io/repositories/82054?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-82054\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/82054\" alt=\"morluto%2Frea | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n**[Website](https://morluto.github.io/rea/) · [Guides](https://morluto.github.io/rea/guides/) · [Showcases](https://morluto.github.io/rea/showcase/)**\n\n[Quick start](#quick-start) · [Current status](#current-status) · [Investigation model](#the-investigation-model) · [Tool catalog](#tool-catalog-for-investigation) · [Roadmap](#roadmap) · [How it works](#how-it-works)\n\n<code>npx rea-agents setup</code>\n\n<br />\n\n<img src=\"docs/assets/rea-hopper-analysis.png\" alt=\"REA launching its analysis bridge inside Hopper while inspecting a native binary\" width=\"1200\" />\n\n<br />\n\n<table aria-label=\"REA community\">\n<tr>\n<td align=\"center\" width=\"360\">\n  <a href=\"https://discord.gg/GkcryMnJDM\">\n    <img src=\"docs/assets/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Join the Reverse Engineering Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n<br />\n\n</div>\n\n---\n\nSee a feature in an app that you want in your own product? Ask your agent to investigate it with REA. It can inspect the app without its source code, explain how the feature works, show the evidence, and build a version for your project.\n\nREA connects your agent to tools for inspecting native binaries, JavaScript and Electron apps, .NET assemblies, and websites. You can also use the same tools from your terminal. Analysis runs locally, and results include the evidence and limitations behind each conclusion.\n\nSetup registers REA with your agent and installs matching workflow instructions. Native analysis can use an existing Hopper or Ghidra installation; setup can optionally install Hopper with approval. Static JavaScript analysis needs neither engine.\n\n## Quick start\n\n### Run setup (recommended)\n\nSet up REA with your agent:\n\n```bash\nnpx rea-agents setup\n```\n\nChoose which supported agents should use REA, then review the exact paths and changes before approving. Existing REA registrations are selected by default; newly detected agents are available to select, but detection alone does not select them. Setup adds MCP access and REA's guided workflow for selected agents. Hopper is a separate optional choice with its own consent. Setup can also record an existing Ghidra installation.\n\nSetup shows its changes before applying them and backs up existing configuration. See [Installation and setup](docs/installation.md) for requirements and setup options.\n\n### AI Coding Assistants (optional)\n\nAdd the skill to your AI coding assistant for richer context:\n\n```bash\nnpx skills add morluto/rea --skill reverse-engineer-anything\n```\n\nThe skill provides REA's investigation workflow. Run setup above to connect REA to your agent and configure analysis tools. Setup already installs a version-matched skill by default; this command installs the repository version.\n\n### With an agent (recommended)\n\nAfter setup, restart your agent and [describe the app or feature](#just-ask-your-agent) you want to understand. Hopper can run in demo mode; if it shows a first-run prompt, choose the demo or enter an existing license.\n\nREA supports Claude Code, Claude Desktop, Codex, Cursor, Gemini CLI, Windsurf, Devin, OpenCode, Antigravity, GitHub Copilot CLI, Command Code, and VS Code. Existing REA registrations are selected by default during setup; other detected agents remain unselected until chosen. Other agents can use the [manual MCP configuration](#manual-mcp-configuration).\n\n### First result from the terminal\n\nFor your extracted JavaScript/Electron application tree or ASAR, run:\n\n```bash\nnpx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json\n```\n\nReplace the path with your target (for example, `\"D:/apps/example\"` on Windows).\nThis returns inline Evidence, recovered graph, limitations, and unknowns without\nMCP setup, Hopper, Ghidra, or executing the application. For a native app, configure\nits engine first, then use `analyze` with that app's path. Run `doctor` when you\nneed diagnosis; it is not a prerequisite for each analysis.\n\n### Check readiness for the task at hand\n\n`rea doctor` without options is an audit of the whole integration. It checks\nevery detected agent registration, the installed skill, and every optional\nanalysis engine, so it can report `healthy: false` while your current task works.\nChoose a readiness scope for the work you are doing:\n\n| Task                                | Readiness check                                                                              |\n| ----------------------------------- | -------------------------------------------------------------------------------------------- |\n| Static JavaScript/Electron analysis | None. Run `analyze-javascript-application` directly.                                         |\n| Troubleshoot one analysis engine    | `rea doctor --provider ghidra --json` (or `hopper`, `ida`)                                   |\n| Check one agent's MCP registration  | `rea doctor --client codex --json` (see [client IDs](docs/installation.md#supported-agents)) |\n| Check the installed skill           | `rea doctor --skill --json`                                                                  |\n\nA scoped report has `scope.mode: \"explicit\"`. Only `scope_checks` determine\n`healthy` and the exit status. Everything else is listed in\n`informational_checks`; you don't need to fix it for this task. For example, a\nmissing engine you are not using needs no repair. `environment_healthy` still\nsummarizes the full audit. `--target` adds a target check, but without a scope\noption the report remains audit-wide.\n\nWhen more than one installed engine supports a native target, REA does not pick\none: opening the target fails with `code: \"capability_unavailable\"`,\n`details.selection_reason: \"ambiguous\"`, and the providers in\n`details.candidate_ids`. Choose one once: pass `--provider` on\nthe CLI or `provider_id` on `open_binary`, or set `REA_ANALYSIS_PROVIDER` as a\nstanding preference. An explicit selector overrides the environment variable.\nThe session keeps that choice and never falls back to another engine.\nRecovery depends on `details.selection_reason`. For `ambiguous`, choose one of\nthe candidates. For `provider_unavailable`, the engine you selected needs repair,\nso run `rea doctor --provider <id> --json` and follow its remediation. Neither\nreason means you have to install every engine. See\n[Choosing a deep-analysis provider](#choosing-a-deep-analysis-provider).\n\n### Install the rea command\n\nInstall the command-line interface:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/morluto/rea/main/install.sh | bash\n```\n\nThe installer adds `rea` to your system and starts setup when run in a terminal. It requires Node.js and npm to be installed already.\n\nAlternatively, install with npm, then run setup:\n\n```bash\nnpm install --global rea-agents\nrea setup\n```\n\nUpdate either installation with `rea update`.\n\n### Requirements\n\nStatic JavaScript inspection requires the Node/npm runtime only. Host and\nexternal-tool prerequisites depend on the selected workflow; the native\nprovider guides describe their supported platforms.\n\n- macOS 12 or newer\n- Ubuntu 24.04+, Fedora 41+, 64-bit Arch Linux, or CachyOS\n- Node.js 22.x (>=22.19), 24.x (>=24.11), or 26+\n- npm; REA does not require or install a particular npm version\n\nDeep native binary analysis requires [Hopper](https://www.hopperapp.com/), [Ghidra](#ghidra-analysis-provider), or [IDA Pro](#ida-pro-analysis-provider). Hopper is separate software with its own license; its demo supports analysis with vendor-defined limits. Ghidra and IDA are bring-your-own providers.\n\nFirmware region inspection and explicit extraction use caller-supplied Binwalk and Unblob on Linux. See [Firmware analysis](docs/firmware-analysis.md) for setup, provenance, resource limits and native handoff.\n\nStatic APK analysis uses a separately supplied headless JADX JAR and a full JDK, with no emulator or APK execution. See [Android analysis](docs/android-analysis.md) for setup, CLI/MCP operations, coverage and public test fixtures. Authenticated IPA and macOS `.app`, ZIP, or DMG inventory Evidence can be projected into bundle anatomy, such as XPC services, app extensions, login items, privileged helpers, and launchd plists, with [Apple application analysis](docs/apple-application-analysis.md).\n\nRepository main includes experimental Windows x64 Ghidra support for native x86 and x86-64 PE applications on local NTFS, with bundled Job Object, private-DACL, and path-admission controls. Native x86 support requires the main implementation until its next npm release; published versions through 5.0.0 admit x86-64 targets. Check the [release boundary](docs/installation.md#released-package-and-main) before choosing a package version. See [Windows Ghidra P0](docs/windows-ghidra-p0.md) for prerequisites and verified scope.\n\nIf something is not working, run:\n\n```bash\nnpx -y rea-agents@latest doctor\n```\n\n`doctor` checks your host, dependencies, analysis tools, and agent configuration without changing them. Use `--json` for structured diagnostics.\n\n### Linux installation and troubleshooting\n\nOn macOS, setup can install Hopper in `~/Applications` after approval. It verifies the official download and does not need Homebrew or administrator privileges.\n\nOn supported Linux distributions, setup can install Hopper and its demo-session dependencies through your system package manager. You may see a system authorization prompt. Demo sessions use a private virtual display, leaving your desktop alone. See [Hopper installation](docs/installation.md#hopper) for download verification and platform details.\n\nREA prefers an executable `/opt/hopper/bin/Hopper` on Linux. If it is unavailable, REA automatically checks `~/.local/share/rea/hopper/bin/Hopper`. If Hopper was installed elsewhere:\n\n```bash\nexport HOPPER_LAUNCHER_PATH=/absolute/path/to/Hopper\nrea doctor --json\n```\n\nIf doctor reports a missing analysis engine even though the file exists, inspect shared-library resolution with:\n\n```bash\nldd /absolute/path/to/Hopper | grep 'not found'\n```\n\nInstall the missing packages and rerun `rea setup`. The Linux demo needs Xvfb, Python 3, X11, and XTEST; approved setup installs these dependencies. If you use the curl installer, add `~/.local/bin` to your shell `PATH` when needed.\n\nREA uses `/Applications/Hopper Disassembler.app/Contents/MacOS/hopper` by default on macOS. On Linux it prefers executable `/opt/hopper/bin/Hopper`, then executable `~/.local/share/rea/hopper/bin/Hopper`, and keeps `/opt/hopper/bin/Hopper` as the diagnostic fa",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"rea-agents\",\n  \"mcpName\": \"io.github.morluto/rea\",\n  \"version\": \"5.0.0\",\n  \"description\": \"Reverse engineer anything from your terminal or agent with one CLI and MCP server.\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/morluto/rea.git\"\n  },\n  \"homepage\": \"https://github.com/morluto/rea#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/morluto/rea/issues\"\n  },\n  \"keywords\": [\n    \"reverse-engineering\",\n    \"binary-analysis\",\n    \"agents\",\n    \"agent-skills\",\n    \"cli\",\n    \"mcp-server\",\n    \"model-context-protocol\",\n    \"static-analysis\",\n    \"disassembler\",\n    \"decompiler\",\n    \"mcp\",\n    \"hopper\"\n  ],\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"type\": \"module\",\n  \"bin\": {\n    \"rea\": \"scripts/rea.mjs\",\n    \"rea-agents\": \"scripts/rea.mjs\"\n  },\n  \"engines\": {\n    \"node\": \"^22.19.0 || ^24.11.0 || >=26.0.0\"\n  },\n  \"packageManager\": \"npm@11.16.0\",\n  \"files\": [\n    \"dist\",\n    \"install.sh\",\n    \"bridge/hopper_bridge.py\",\n    \"bridge/native/NativeUIChildren.swift\",\n    \"bridge/native/ReaNativeUI.swift\",\n    \"bridge/process/ProcessRunTokenReader.swift\",\n    \"bridge/process/ProcessRunTokenReaderMain.swift\",\n    \"bridge/ghidra/ReaGhidraBridge.java\",\n    \"bridge/ghidra/ReaGhidraExtensions.java\",\n    \"bridge/ghidra/ReaGhidraPrepareCom.java\",\n    \"bridge/android/ReaJadxBridge.java\",\n    \"scripts/rea.mjs\",\n    \"scripts/electron-active-hook.cjs\",\n    \"scripts/electron-active-hook-boundaries.cjs\",\n    \"scripts/hopper-demo-x11.py\",\n    \"scripts/prepack.mjs\",\n    \"scripts/prepare.mjs\",\n    \"skills\",\n    \"README.md\",\n    \"LICENSE\",\n    \"native/windows/build/manifest.json\",\n    \"native/windows/build/rea-windows-x64.node\",\n    \"scripts/verify-windows-native-artifact.mjs\"\n  ],\n  \"scripts\": {\n    \"deps:check\": \"node scripts/check-dependency-install.mjs\",\n    \"metadata:generate\": \"node scripts/generate-package-metadata.mjs\",\n    \"metadata:check\": \"node scripts/generate-package-metadata.mjs --check\",\n    \"mcp-registry:check\": \"node scripts/verify-mcp-registry-metadata.mjs\",\n    \"mcp-catalog:generate\": \"npm run build:cached\",\n    \"mcp-catalog:check\": \"node scripts/generate-mcp-tool-catalog.mjs --check\",\n    \"prebuild\": \"npm run deps:check && npm run metadata:check\",\n    \"build\": \"node scripts/run-exclusive.mjs build npm run build:unlocked\",\n    \"build:unlocked\": \"node scripts/clean-build-output.mjs && tsc -p tsconfig.build.json && node scripts/generate-mcp-tool-catalog.mjs\",\n    \"precheck\": \"npm run deps:check\",\n    \"check\": \"turbo run typecheck lint format:check knip metadata:check\",\n    \"precheck:fast\": \"npm run deps:check\",\n    \"check:fast\": \"turbo run typecheck lint --output-logs=errors-only\",\n    \"precheck:changed\": \"npm run deps:check\",\n    \"check:changed\": \"npm run check:fast && npm run test:changed\",\n    \"precheck:test\": \"npm run deps:check\",\n    \"check:test\": \"turbo run typecheck lint format:check knip metadata:check test:run\",\n    \"precheck:pr\": \"npm run deps:check\",\n    \"check:pr\": \"turbo run typecheck lint format:check knip metadata:check test:run && npm run docs:check && npm run jscpd && npm run scan:todos\",\n    \"precheck:ci\": \"npm run deps:check\",\n    \"check:ci\": \"turbo run typecheck lint format:check knip metadata:check jscpd scan:todos\",\n    \"build:cached\": \"node scripts/check-dependency-install.mjs && turbo run build\",\n    \"format\": \"oxfmt .\",\n    \"format:check\": \"oxfmt --check .\",\n    \"lint\": \"oxlint && npm run verify:module-boundaries\",\n    \"lint:fix\": \"oxlint --fix && npm run verify:module-boundaries\",\n    \"knip\": \"knip\",\n    \"jscpd\": \"jscpd src/ tests/\",\n    \"scan:todos\": \"node scripts/scan-todos.mjs\",\n    \"start\": \"node scripts/rea.mjs mcp\",\n    \"test\": \"npm run test:with-build\",\n    \"test:with-build\": \"npm run build:cached && vitest run\",\n    \"test:run\": \"vitest run\",\n    \"test:local\": \"node scripts/run-development-tests.mjs local\",\n    \"test:fast\": \"vitest run --project domain --project services --project adapters --project composition --project conformance --project evaluation\",\n    \"pretest:boundary\": \"npm run build:cached\",\n    \"test:boundary\": \"vitest run --project boundary --project process-boundary --project mcp-boundary --project process-global\",\n    \"pretest:mcp\": \"npm run build:cached\",\n    \"test:mcp\": \"vitest run --project mcp-boundary\",\n    \"pretest:acceptance\": \"npm run build:cached\",\n    \"test:acceptance\": \"vitest run --project acceptance\",\n    \"test:changed\": \"node scripts/run-development-tests.mjs changed\",\n    \"pretest:integration\": \"npm run build:cached\",\n    \"test:integration\": \"vitest run --project boundary --project process-boundary --project mcp-boundary --project process-global --project acceptance\",\n    \"pretest:coverage\": \"npm run build:cached\",\n    \"test:coverage\": \"vitest run --coverage.enabled --coverage.provider=v8\",\n    \"test:ci\": \"npm run test:coverage -- --reporter=default --reporter=junit --outputFile.junit=test-results.xml\",\n    \"pretest:ci:shard\": \"npm run build:cached\",\n    \"test:ci:shard\": \"npm run tes",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "skill",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "逆向工程 MCP",
+      "二进制分析",
+      "静态 JavaScript 分析"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Agent 的逆向工程 MCP 与 CLI：可在本地检查原生二进制、JavaScript/Electron 应用、.NET 程序和网站，并把证据、限制与分析结果一并返回。",
+      "audience": "需要让编码 Agent 在无源码或复杂遗留应用中理解实现细节的开发者、安全研究者与工程团队",
+      "capabilities": "逆向工程 MCP、二进制分析、静态 JavaScript 分析、Ghidra/Hopper 集成、证据化结论、CLI 工作流",
+      "risk": "原生分析依赖本机工具和目标平台；逆向行为还需遵守软件许可、服务条款与所在地法律边界。",
+      "verified_at": "2026-10-07",
+      "evidence_sources": [
+        "https://github.com/morluto/rea"
+      ],
+      "evidence_note": "依据本日抓取的 README、package.json 与仓库 topics；未对目标程序执行逆向验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "thedotmack",
+    "name": "claude-mem",
+    "full_name": "thedotmack/claude-mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "description": "Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+    "language": "TypeScript",
+    "total_stars": 97657,
+    "forks": 8598,
+    "stars_this_period": 578,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 114,
+      "created_at": "2025-08-31T20:50:03Z",
+      "pushed_at": "2026-10-07T00:57:45Z",
+      "homepage": "https://claude-mem.ai",
+      "default_branch": "main",
+      "forks": 8598,
+      "watchers": 313,
+      "archived": false,
+      "size_kb": 540004
+    },
+    "readme_content": "<h1 align=\"center\">\n  <br>\n  <a href=\"https://github.com/thedotmack/claude-mem\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/public/claude-mem-logo-for-dark-mode.webp\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/public/claude-mem-logo-for-light-mode.webp\">\n      <img src=\"docs/public/claude-mem-logo-for-light-mode.webp\" alt=\"Claude-Mem\" width=\"400\">\n    </picture>\n  </a>\n</h1>\n\n<p align=\"center\">\n  <img alt=\"Vercel OSS Program\" src=\"https://vercel.com/oss/program-badge-2026.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"Greptile\" src=\"docs/public/greptile-wordmark-green.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"SerpApi\" src=\"docs/public/serpapi-logo-with-wordmark-gradient.svg\" height=\"24\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/i18n/README.zh.md\">🇨🇳 中文</a> •\n  <a href=\"docs/i18n/README.zh-tw.md\">🇹🇼 繁體中文</a> •\n  <a href=\"docs/i18n/README.ja.md\">🇯🇵 日本語</a> •\n  <a href=\"docs/i18n/README.pt.md\">🇵🇹 Português</a> •\n  <a href=\"docs/i18n/README.pt-br.md\">🇧🇷 Português</a> •\n  <a href=\"docs/i18n/README.ko.md\">🇰🇷 한국어</a> •\n  <a href=\"docs/i18n/README.es.md\">🇪🇸 Español</a> •\n  <a href=\"docs/i18n/README.de.md\">🇩🇪 Deutsch</a> •\n  <a href=\"docs/i18n/README.fr.md\">🇫🇷 Français</a> •\n  <a href=\"docs/i18n/README.he.md\">🇮🇱 עברית</a> •\n  <a href=\"docs/i18n/README.ar.md\">🇸🇦 العربية</a> •\n  <a href=\"docs/i18n/README.ru.md\">🇷🇺 Русский</a> •\n  <a href=\"docs/i18n/README.pl.md\">🇵🇱 Polski</a> •\n  <a href=\"docs/i18n/README.cs.md\">🇨🇿 Čeština</a> •\n  <a href=\"docs/i18n/README.nl.md\">🇳🇱 Nederlands</a> •\n  <a href=\"docs/i18n/README.tr.md\">🇹🇷 Türkçe</a> •\n  <a href=\"docs/i18n/README.uk.md\">🇺🇦 Українська</a> •\n  <a href=\"docs/i18n/README.vi.md\">🇻🇳 Tiếng Việt</a> •\n  <a href=\"docs/i18n/README.tl.md\">🇵🇭 Tagalog</a> •\n  <a href=\"docs/i18n/README.id.md\">🇮🇩 Indonesia</a> •\n  <a href=\"docs/i18n/README.th.md\">🇹🇭 ไทย</a> •\n  <a href=\"docs/i18n/README.hi.md\">🇮🇳 हिन्दी</a> •\n  <a href=\"docs/i18n/README.bn.md\">🇧🇩 বাংলা</a> •\n  <a href=\"docs/i18n/README.ur.md\">🇵🇰 اردو</a> •\n  <a href=\"docs/i18n/README.ro.md\">🇷🇴 Română</a> •\n  <a href=\"docs/i18n/README.sv.md\">🇸🇪 Svenska</a> •\n  <a href=\"docs/i18n/README.it.md\">🇮🇹 Italiano</a> •\n  <a href=\"docs/i18n/README.el.md\">🇬🇷 Ελληνικά</a> •\n  <a href=\"docs/i18n/README.hu.md\">🇭🇺 Magyar</a> •\n  <a href=\"docs/i18n/README.fi.md\">🇫🇮 Suomi</a> •\n  <a href=\"docs/i18n/README.da.md\">🇩🇰 Dansk</a> •\n  <a href=\"docs/i18n/README.no.md\">🇳🇴 Norsk</a>\n</p>\n\n<h4 align=\"center\">Persistent memory compression system built for <a href=\"https://claude.com/claude-code\" target=\"_blank\">Claude Code</a>.</h4>\n\n<p align=\"center\">\n  <a href=\"LICENSE\">\n    <img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/version-13.34.2-green.svg\" alt=\"Version\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg\" alt=\"Node\">\n  </a>\n  <a href=\"https://github.com/thedotmack/awesome-claude-code\">\n    <img src=\"https://awesome.re/mentioned-badge.svg\" alt=\"Mentioned in Awesome Claude Code\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15496\" target=\"_blank\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\" alt=\"thedotmack/claude-mem | Trendshift\" width=\"250\" height=\"55\"/>\n    </picture>\n  </a>\n</p>\n\n<br>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://github.com/thedotmack/claude-mem\">\n        <picture>\n          <img\n            src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/cm-preview.gif\"\n            alt=\"Claude-Mem Preview\"\n            width=\"500\"\n          >\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\">\n      <a href=\"https://www.star-history.com/#thedotmack/claude-mem&Date\">\n        <picture>\n          <source\n            media=\"(prefers-color-scheme: dark)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&theme=dark&legend=top-left\"\n          />\n          <source\n            media=\"(prefers-color-scheme: light)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n          />\n          <img\n            alt=\"Star History Chart\"\n            src=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n            width=\"500\"\n          />\n        </picture>\n      </a>\n    </td>\n  </tr>\n</table>\n\n<p align=\"center\">\n  <a href=\"#quick-start\">Quick Start</a> •\n  <a href=\"#how-it-works\">How It Works</a> •\n  <a href=\"#mcp-search-tools\">Search Tools</a> •\n  <a href=\"#documentation\">Documentation</a> •\n  <a href=\"#configuration\">Configuration</a> •\n  <a href=\"#troubleshooting\">Troubleshooting</a> •\n  <a href=\"#license\">License</a>\n</p>\n\n<p align=\"center\">\n  Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions. This enables Claude to maintain continuity of knowledge about projects even after sessions end or reconnect.\n</p>\n\n---\n\n## Quick Start\n\nInstall claude-mem for Grok Bot:\n\n```bash\nnpx claude-mem install --ide grok-bot\n```\n\nGrok Bot has no host hooks, so we watch the chat log files. Default is CMEM Pro, the hosted memory. Local observer is opt-in: `--provider host`. Installing this plugin does not install Cursor.\n\n**Awareness push pilot (LFG + Orifice):** needle observations (`decision`, `bugfix`, `security_alert`, `sensitive`) are appended as dated `- YYYY-MM-DD [awareness] …` lines into that bot's `memory/log/YYYY-MM.md`. Grok Bot already re-reads the log from disk. This does not write `profile.md`, user-memory, or project memory. Disable with `CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false`.\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nThe installer sets everything up first, then asks you to sign in to claude-mem in your browser (email magic link — no card required). Signing in provisions a memory key for your account and unlocks the **claude-mem observer** with a **30 Day Free Trial**: memory runs off-plan, so you get up to 100% more usage from your plan. When the free trial ends, memory automatically falls back to your Anthropic plan unless you subscribe. After sign-in you pick your memory provider — the claude-mem observer, your own OpenRouter or Gemini key, or your Anthropic plan.\n\nPrefer to skip the sign-in? Pass an explicit `--provider` flag, set `CLAUDE_MEM_ONLINE_OPTIN=false`, or run in CI/non-interactive shells — the installer completes without any account interaction.\n\nOr install for OpenCode:\n\n```bash\nnpx claude-mem install --ide opencode\n```\n\nOr install for **T3 Code** (Codex and Claude Code providers):\n\n```bash\nnpx claude-mem install --ide t3code\n```\n\nThe installer discovers T3 Code's enabled providers, registers native Claude-Mem plugins in their configured homes, and supports T3-managed Codex. Restart T3 Code, trust the provider's hooks when prompted, and start a new thread. See the [T3 Code integration guide](https://docs.claude-mem.ai/t3code-integration) for custom server settings, status, and removal.\n\nOr install for Antigravity CLI ([setup guide](https://docs.claude-mem.ai/antigravity-cli/setup)):\n\n```bash\nnpx claude-mem install --ide antigravity\n```\n\nOr install for OMP (Oh My Pi):\n\n```bash\nnpx claude-mem install --ide omp\n```\n\nOr install the native Pi extension or DeepSeek Harness plugin:\n\n```bash\nnpx claude-mem install --ide pi\nnpx claude-mem install --ide dsh --dsh-profile tui\n```\n\nPi and DeepSeek Harness use the worker runtime. See [native harness setup](docs/native-harness-integrations.md) for capture, recall, and troubleshooting.\n\nOr install from the plugin marketplace inside Claude Code:\n\n```bash\n/plugin marketplace add thedotmack/claude-mem\n\n/plugin install claude-mem\n```\n\nRestart Claude Code. Context from previous sessions will automatically appear in new sessions.\n\n> **Note:** Claude-Mem is also published on npm, but `npm install -g claude-mem` installs the **SDK/library only** — it does not register the plugin hooks or set up the worker service. Always install via `npx claude-mem install` or the `/plugin` commands above.\n\n### 🦞 OpenClaw Gateway\n\nInstall claude-mem as a persistent memory plugin on [OpenClaw](https://openclaw.ai) gateways with a single command:\n\n```bash\ncurl -fsSL https://install.cmem.ai/openclaw.sh | bash\n```\n\nThe installer handles dependencies, plugin setup, AI provider configuration, worker startup, and optional real-time observation feeds to Telegram, Discord, Slack, and more. See the [OpenClaw Integration Guide](https://docs.claude-mem.ai/openclaw-integration) for details.\n\n**Key Features:**\n\n- 🧠 **Persistent Memory** - Context survives across sessions\n- 📊 **Progressive Disclosure** - Layered memory retrieval with token cost visibility\n- 🔍 **Skill-Based Search** - Query your project history with mem-search skill\n- 🖥️ **Web Viewer UI** - Real-time memory stream at the worker URL printed on startup\n- 💻 **Claude Desktop Skill** - Search memory from Claude Desktop conversations\n- 🔒 **Privacy Control** - Use `<private>` tags to exclude sensitive content from storage\n- ⚙️ **Context Configuration** - Fine-grained control over what context gets injected\n- 🤖 **Automatic Operation** - No manual intervention required\n- 🔗 **Citations** - Reference past observations with IDs through the worker API or view all in the web viewer\n\n---\n\n## Documentation\n\n📚 **[View Full Documentation](https://docs.claude-mem.ai/)** - Browse on official website\n\n### Getting Started\n\n- **[Installation Guide](https://docs.claude-mem.ai/installation)** - Quick start & advanced installation\n- **[Usage Guide](https://docs.claude-mem.ai/usage/getting-started)** - How Claude-Mem works automatically\n- **[Search Tools](https://docs.claude-mem.ai/usage/search-tools)** - Query your project history with natural language\n- **[Cloud Sync](https://docs.claude-mem.ai/cloud-sync)** - Back up your memories to cmem.ai — no daemon, the worker syncs on write\n\n### Best Practices\n\n- **[Context Engineering](https://docs.claude-mem.ai/context-engineering)** - AI agent context optimization principles\n- **[Progressive Disclosure](https://docs.claude-mem.ai/progressive-disclosure)** - Philosophy behind Claude-Mem's context priming strategy\n\n### Architecture\n\n- **[Overview](https://docs.claude-mem.ai/architecture/overview)** - System components & data flow\n- **[Architecture Evolution](https://docs.claude-mem.ai/architecture-evolution)** - The journey from v3 to v5\n- **[Hooks Architecture](https://docs.claude-mem.ai/hooks-architecture)** - How Claude-Mem uses lifecycle hooks\n- **[Hooks Reference](https://docs.claude-mem.ai/architecture/hooks)** - 7 hook scripts explained\n- **[Worker Service](https://docs.claude-mem.ai/architecture/worker-service)** - HTTP API & Bun management\n- **[Database](https://docs.claude-mem.ai/architecture/database)** - SQLite schema & FTS5 search\n- **[Search Architecture](https://docs.claude-mem.ai/architecture/search-architecture)** - Hybrid search with Chroma vector database\n\n### Configuration & Development\n\n- **[Configuration](https://docs.claude-mem.ai/configuration)** - Environment variables & settings\n- **[Development](https://docs.claude-mem.ai/development)** - Building, testing, contributing\n- **[Release Branches](https://docs.claude-mem.ai/branches)** - Stable, core-dev, and community-edge branch flow\n- **[Troubleshooting](https://docs.claude-mem.ai/troubleshooting)** - Common issues & sol",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"claude-mem\",\n  \"version\": \"13.34.2\",\n  \"description\": \"Memory compression system for Claude Code - persist context across sessions\",\n  \"keywords\": [\n    \"claude\",\n    \"claude-code\",\n    \"claude-agent-sdk\",\n    \"mcp\",\n    \"plugin\",\n    \"memory\",\n    \"compression\",\n    \"knowledge-graph\",\n    \"transcript\",\n    \"typescript\",\n    \"nodejs\"\n  ],\n  \"author\": \"Alex Newman\",\n  \"license\": \"Apache-2.0\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/thedotmack/claude-mem.git\"\n  },\n  \"homepage\": \"https://github.com/thedotmack/claude-mem#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/thedotmack/claude-mem/issues\"\n  },\n  \"type\": \"module\",\n  \"bin\": {\n    \"claude-mem\": \"./dist/npx-cli/index.js\"\n  },\n  \"exports\": {\n    \"./modes/*\": \"./plugin/modes/*\"\n  },\n  \"files\": [\n    \"dist\",\n    \".agents/plugins/marketplace.json\",\n    \".claude-plugin\",\n    \".codex-plugin\",\n    \"plugin/.claude-plugin\",\n    \"plugin/.codex-plugin\",\n    \"plugin/.mcp.json\",\n    \"plugin/package.json\",\n    \"plugin/bun.lock\",\n    \"plugin/hooks\",\n    \"plugin/modes\",\n    \"plugin/scripts/*.js\",\n    \"plugin/scripts/*.cjs\",\n    \"plugin/scripts/*.map\",\n    \"plugin/sqlite\",\n    \"plugin/skills\",\n    \"plugin/ui\",\n    \"openclaw\",\n    \"omp\",\n    \"pi\",\n    \"dsh\",\n    \"NOTICE\"\n  ],\n  \"engines\": {\n    \"node\": \">=20.12.0\",\n    \"bun\": \">=1.1.31\"\n  },\n  \"scripts\": {\n    \"dev\": \"npm run build-and-sync\",\n    \"build\": \"node scripts/sync-plugin-manifests.js && node scripts/build-hooks.js && node scripts/gen-plugin-lockfile.cjs\",\n    \"build-and-sync\": \"npm run build && npm run sync-marketplace && node scripts/restart-marketplace-worker.cjs\",\n    \"sync-marketplace\": \"node scripts/sync-marketplace.cjs\",\n    \"sync-marketplace:force\": \"node scripts/sync-marketplace.cjs --force\",\n    \"build:binaries\": \"node scripts/build-worker-binary.js\",\n    \"build:cli-binary\": \"bun build --compile --minify ./src/services/worker-service.ts --outfile plugin/scripts/claude-mem\",\n    \"worker:logs\": \"node scripts/worker-logs.cjs\",\n    \"worker:tail\": \"node scripts/worker-logs.cjs --follow\",\n    \"changelog:generate\": \"node scripts/generate-changelog.js\",\n    \"discord:notify\": \"node scripts/discord-release-notify.js\",\n    \"worker:start\": \"bun plugin/scripts/worker-service.cjs start\",\n    \"worker:stop\": \"bun plugin/scripts/worker-service.cjs stop\",\n    \"worker:restart\": \"bun plugin/scripts/worker-service.cjs restart\",\n    \"worker:status\": \"bun plugin/scripts/worker-service.cjs status\",\n    \"queue\": \"bun scripts/check-pending-queue.ts\",\n    \"queue:process\": \"bun scripts/check-pending-queue.ts --process\",\n    \"queue:clear:pending\": \"bun scripts/clear-pending-queue.ts --all --force\",\n    \"pr:status\": \"bun scripts/pr-babysit-status.ts\",\n    \"claude-md:regenerate\": \"bun scripts/regenerate-claude-md.ts\",\n    \"claude-md:dry-run\": \"bun scripts/regenerate-claude-md.ts --dry-run\",\n    \"strip-comments\": \"bun scripts/strip-comments.ts\",\n    \"strip-comments:check\": \"bun scripts/strip-comments.ts --check\",\n    \"strip-comments:dry-run\": \"bun scripts/strip-comments.ts --dry-run\",\n    \"translate-readme\": \"bun scripts/translate-readme/cli.ts -v -o docs/i18n README.md\",\n    \"translate:tier1\": \"npm run translate-readme -- zh zh-tw ja pt pt-br ko es de fr\",\n    \"translate:tier2\": \"npm run translate-readme -- he ar ru pl cs nl tr uk\",\n    \"translate:tier3\": \"npm run translate-readme -- vi tl id th hi bn ur ro sv\",\n    \"translate:tier4\": \"npm run translate-readme -- it el hu fi da no\",\n    \"translate:all\": \"npm run translate:tier1 & npm run translate:tier2 & npm run translate:tier3 & npm run translate:tier4 & wait\",\n    \"bug-report\": \"node dist/bug-report/index.js\",\n    \"cursor:install\": \"bun plugin/scripts/worker-service.cjs cursor install\",\n    \"cursor:uninstall\": \"bun plugin/scripts/worker-service.cjs cursor uninstall\",\n    \"cursor:status\": \"bun plugin/scripts/worker-service.cjs cursor status\",\n    \"cursor:setup\": \"bun plugin/scripts/worker-service.cjs cursor setup\",\n    \"lint:hook-io\": \"node scripts/check-hook-io-discipline.cjs\",\n    \"lint:spawn-env\": \"node scripts/check-spawn-env-discipline.cjs\",\n    \"typecheck\": \"tsc --noEmit && tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"typecheck:root\": \"tsc --noEmit\",\n    \"typecheck:viewer\": \"tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"test\": \"bun test tests\",\n    \"test:sqlite\": \"bun test tests/sqlite/\",\n    \"test:agents\": \"bun test tests/worker/agents/\",\n    \"test:search\": \"bun test tests/worker/search/\",\n    \"test:context\": \"bun test tests/context/\",\n    \"test:infra\": \"bun test tests/infrastructure/\",\n    \"test:server\": \"bun test tests/server/\",\n    \"e2e:server:docker\": \"bash scripts/e2e-server-docker.sh\",\n    \"e2e:sync-matrix\": \"bun scripts/sync-matrix-e2e.ts\",\n    \"eval:read-gate\": \"bun scripts/eval-read-gate.ts\",\n    \"check:postinstall-allowlist\": \"node scripts/check-postinstall-allowlist.js\",\n    \"smoke:clean-room\": \"node scripts/smoke-clean-room.cjs\",\n    \"prepublishOnly\": \"npm run build && node scripts/check-postinstall-allowlist.",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "tinyhumansai",
+    "name": "openhuman",
+    "full_name": "tinyhumansai/openhuman",
+    "url": "https://github.com/tinyhumansai/openhuman",
+    "description": "OpenHuman is the fastest, cheapest, most efficient open-source agent harness. Written in Rust",
+    "language": "Rust",
+    "total_stars": 41571,
+    "forks": 4094,
+    "stars_this_period": 495,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-orchestration",
+        "ai-agents",
+        "ai-assistant",
+        "desktop",
+        "llm",
+        "local-first",
+        "mcp",
+        "personal-ai",
+        "privacy",
+        "rust",
+        "second-brain",
+        "tauri"
+      ],
+      "license": "GPL-3.0",
+      "open_issues": 297,
+      "created_at": "2026-02-18T20:01:27Z",
+      "pushed_at": "2026-10-07T21:23:01Z",
+      "homepage": "https://tinyhumans.ai/openhuman",
+      "default_branch": "main",
+      "forks": 4094,
+      "watchers": 201,
+      "archived": false,
+      "size_kb": 300938
+    },
+    "readme_content": "<h1 align=\"center\">OpenHuman</h1>\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/demo.png\" alt=\"The Tet\" />\n</p>\n\n<p align=\"center\" style=\"display: inline-block\">\n\t<a href=\"https://trendshift.io/repositories/23680\" target=\"_blank\" style=\"display: inline-block\">\n\t\t<img src=\"https://trendshift.io/api/badge/repositories/23680\" alt=\"tinyhumansai%2Fopenhuman | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/>\n\t</a>\n\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823\">\n\t\t</a>\n\t\t<a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n\t\t\t<img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565\">\n\t\t</a>\n</p>\n<p align=\"center\" style=\"display: inline-block\">\n <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756\">\n  </a>\n  <a href=\"https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman\" target=\"_blank\" rel=\"noopener noreferrer\">\n   <img alt=\"OpenHuman - An open source AI harness built with the human in mind | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756\">\n   </a>\n </p>\n\n<p align=\"center\">\n <strong>An open-source agent harness with a Rust core: lightweight, modular, and pluggable into whatever LLM, memory, or search engine you already run.</strong>\n</p>\n\n<p align=\"center\">\n <a href=\"https://github.com/tinyhumansai/openhuman/discussions\">Discussions</a> •\n <a href=\"https://guild.tinyhumans.ai/\">Discord</a> •\n <a href=\"https://www.reddit.com/r/tinyhumansai/\">Reddit</a> •\n <a href=\"https://x.com/intent/follow?screen_name=tinyhumansai\">X/Twitter</a> •\n <a href=\"https://tinyhumans.gitbook.io/openhuman/\">Docs</a> •\n <a href=\"https://x.com/intent/follow?screen_name=senamakel\">Follow @senamakel (Creator)</a>\n</p>\n\n<p align=\"center\">\n  🇺🇸 <a href=\"./README.md\">English</a> | 🇸🇦 <a href=\"./docs/README.ar.md\">العربية</a> | 🇨🇳 <a href=\"./docs/README.zh-CN.md\">简体中文</a> | 🇯🇵 <a href=\"./docs/README.ja-JP.md\">日本語</a> | 🇰🇷 <a href=\"./docs/README.ko.md\">한국어</a> | 🇩🇪 <a href=\"./docs/README.de.md\">Deutsch</a> | 🇹🇷 <a href=\"./docs/README.tr.md\">Türkçe</a> | 🇵🇰 <a href=\"./docs/README.ur-pk.md\">اردو</a>\n</p>\n\n<p align=\"center\">\n <img src=\"https://img.shields.io/badge/status-early%20beta-orange\" alt=\"Early Beta\" />\n <a href=\"https://github.com/tinyhumansai/openhuman/releases/latest\"><img src=\"https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest\" alt=\"Latest Release\" /></a>\n <a href=\"https://github.com/tinyhumansai/openhuman/stargazers\"><img src=\"https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat\" alt=\"GitHub Stars\" /></a>\n <a href=\"./LICENSE\"><img src=\"https://img.shields.io/github/license/tinyhumansai/openhuman\" alt=\"License\" /></a>\n</p>\n\n> **Early Beta**: Under active development. Expect rough edges.\n\n> Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.\n\n# Install\n\nDownload installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.\n\nFor terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.\n\n# What is OpenHuman?\n\nOpenHuman is a Rust core with a desktop app, a browser UI, a terminal client, and a Rust library wrapped around it. The same core runs all four. Every section below links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).\n\n## Lightweight and fast\n\nThe core runs in-process, not as a separate daemon the UI talks to over a socket. A [fleet sweep](./gitbooks/developing/performance.md) of 50, 100, and 500 live agents in one process measured a marginal cost of 1,985, 1,866, and 1,770 KiB per additional agent, settling at 223 MiB, 356 MiB, and 1,393 MiB total. The same workload run as 500 separate processes instead of 500 agents in one costs about 48 MiB per instance, so sharing one process is roughly 25 times denser. Thousands of agents on one box is the direction this is heading, not a number we've hit yet.\n\nA cold agent turn takes 102 ms; the full nine-phase bootstrap (config load, registry init, agent build, memory construction, first turn) takes 476 ms. A slim build settles at about 42 MiB RSS, of which roughly 15.2 MiB is private heap and the rest is paged-in executable text and allocator overhead. [Token compression](./gitbooks/features/token-compression.md) (tinyjuice) also cuts what actually reaches the model, so a large context costs less than its raw size suggests.\n\nFull methodology and numbers: [`docs/library-benchmarking.md`](./docs/library-benchmarking.md), [`docs/harness-comparison-2026-07-22.md`](./docs/harness-comparison-2026-07-22.md), and [performance](./gitbooks/developing/performance.md). Task-level results against other harnesses live in their own repository, [tinyhumansai/openhuman-benchmarks](https://github.com/tinyhumansai/openhuman-benchmarks), published at [tinyhumansai.github.io/openhuman-benchmarks](https://tinyhumansai.github.io/openhuman-benchmarks/).\n\n## Modular\n\nCargo feature gates control what compiles in. The contributor default is nine gates (`media`, `skills`, `flows`, `mcp`, `channels`, `http-server`, `scheduler-gate`, `file-logging`, `modules`); the shipped desktop product turns on sixteen, listed in `scripts/ci/product-features.txt`. Dropping everything gets a pure-slim build at 51 MiB stripped; adding back `skills` and `flows`, the recommended recipe for embedding, lands at about 60 MiB stripped; turning on every gate produces a 116 MiB unstripped binary. `scripts/kernel-floor.sh` keeps a down-only ratchet on the dependency count so the floor doesn't creep back up.\n\nPast compile time, capability comes from loadable native modules. The compiled registry (`crates/openhuman-core/src/modules/registry/`) pins fourteen of them: `tinycomputer`, `tinysearch`, `tinydocs`, `tinywallet`, `tinyjuice`, `tinyvoice`, `tinyruntime` and its Node and Python providers, `tinymcp`, `tinyconnectors`, `tinybox`, `tinychannels` and `tinyhosts`. Each has a small `*-bus` contract crate that defines its interface and wire types, and each is pinned to a published release by SHA-256 across eleven platform builds. Loading is lazy, so a user who never asks for a document never pays for the download, the `dlopen` or the resident cost of the document writer. See [`docs/library-minimal-recipe.md`](./docs/library-minimal-recipe.md) for the measured trade-offs of each gate.\n\n## Pluggable engines\n\nEvery engine OpenHuman calls out to is chosen by config, not hardcoded:\n\n- LLM: the managed TinyHumans route, Ollama, LM Studio, MLX, any local OpenAI-compatible server, Claude Code or the Claude Agent SDK, and 26 bring-your-own-key providers including OpenRouter, OpenAI, Anthropic, Google, Groq, Mistral, DeepSeek, Together, and Fireworks. See [local models and BYOK](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-and-byok-models).\n- Embeddings: the managed Voyage-backed route, or your own Voyage, OpenAI, Cohere, Ollama, or OpenAI-compatible endpoint.\n- Memory: [Memory v2](https://tinyhumans.gitbook.io/openhuman/features/memory) is Recall, Fetch and Store over a pluggable engine: TinyHumans (hosted CortexDB, signed in with your account) or your own CortexDB (endpoint and key). It keeps a shared brain of documents (folders, files, links, GitHub, RSS, connected apps), each agent's conversations and shared learnings, recalls what matters before every turn, and answers questions with citations. With neither engine, memory is off. Everything is switched under Connections > Memory.\n- Web search: ten providers behind three capability roles (search, answer, page contents). Exa and Gemini have a managed route included with a subscription; Brave, Querit, Tavily, Seltz, Parallel, TinyFish and Gemini Deep Research are bring-your-own-key; SearXNG needs no key but needs your own instance URL.\n\nEngine details: [engines](./gitbooks/developing/engines.md).\n\n## Jev decides fast\n\nNot every decision needs the model to generate text. [Jev](./gitbooks/developing/jev.md) is a small decision model, run through the TinyHumans System One proxy, that takes a question and a fixed set of options and returns a calibrated probability for each: pick one of these (Choice), score this (Score), or yes/no (Noul). It never writes prose.\n\nThe clearest use is [tool search](./docs/plans/jev-tool-search-baseline.md). Measured on 2026-09-22, with the 215 tools one orchestrator session registers plus 1,000 Composio actions on the table and 160 test requests, plain BM25 retrieval got the right tool in its top pick 22.5% of the time and made 26 needless tool calls out of 31 tool-less requests. Retrieving the top 20 candidates by embedding and letting Jev choose among them got the right tool 62.0% of the time (66.7% in its top 3) and made 1 needless call, at a p50 of 1.5 seconds against BM25's 28 milliseconds. Letting Jev pick the Composio app family first and then the action within it pushes Composio-only accuracy to 80.3% top-1. It falls back to BM25 automatically when no TinyHumans credential is present. The static catalogue is smaller than that corpus: 198 tool names, machine-checked on every test run against `app/src/features/conversations/tools/__fixtures__/coreToolNames.json`. An orchestrator session adds the synthesized delegation tools and the signed-in connector dispatchers on top of it.\n\nJev also drives step-by-step decisions inside the [browser tool](./crates/openhuman-core/src/modules/browser_task.rs), where a consequential action (a purchase, a send, a delete) returns `NeedsConfirmation` instead of executing.\n\n## Workflows\n\n[Workflows](./gitbooks/features/workflows.md) are saved, typed automation graphs, built on the open-source [tinyflows](https://github.com/tinyhumansai/tinyflows) engine. The engine's catalog has 22 node kinds (agent calls, HTTP requests, code, conditions, loops, sub-workflows, approvals, and more) and the canvas palette offers fifteen of them. A graph triggers on a schedule, an app event, or manually, and resumes mid-run after a pause.\n\n<p align=\"center\">\n <img src=\"./gitbooks/.gitbook/assets/workflows.png\" alt=\"OpenHuman workflow canvas\">\n</p>\n\n> The agent proposes the workflow; you review it on a canvas and save it.\n\nThe difference from n8n or Zapier: you describe what you want, the agent drafts the graph, and you review and save it rather than wiring nodes by hand.\n\n## Desktop, browser, and terminal\n\nThe same core ships three ways: a Tauri v2 and Wry desktop app for Windows, mac",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# Virtual workspace root. Members: `crates/openhuman-core` (package `openhuman`,\n# the core library), `crates/openhuman-embed` (library facade),\n# `crates/openhuman-rpc` (JSON-RPC envelopes, client and server, and the on-disk\n# session store hosts install, above the core), `crates/openhuman-tinyhumans`\n# (SDK-backed backend transport + login/session ownership for hosts),\n# `crates/openhuman-cli` (the `openhuman-core` binary, developer bins and the\n# root integration tests), and `crates/openhuman-tui` (terminal client). `crates/openhuman-app` is deliberately excluded: it is its\n# own Cargo world with its own lockfile and target directory so that root-only\n# Cargo commands don't resolve GTK/WebKit/Tauri, and it must mirror this file's\n# `[patch]` tables rather than inherit them. Vendored module workspaces are also\n# excluded so their workspace-inherited keys continue to resolve against their\n# own roots.\n[workspace]\nresolver = \"2\"\nmembers = [\n    \"crates/openhuman-cli\",\n    \"crates/openhuman-core\",\n    \"crates/openhuman-embed\",\n    \"crates/openhuman-rpc\",\n    \"crates/openhuman-tinyhumans\",\n    \"crates/openhuman-tui\",\n]\nexclude = [\n    \"vendor\",\n    \"worktrees\",\n    \"crates/openhuman-app\",\n    \"app/src-tauri-mobile\",\n    \"packages/tauri-plugin-ptt\",\n]\n\n[workspace.package]\nversion = \"0.64.12\"\nedition = \"2021\"\nlicense = \"GPL-3.0-only\"\nrepository = \"https://github.com/tinyhumansai/openhuman\"\n\n[workspace.dependencies]\nopenhuman-core = { path = \"crates/openhuman-core\", package = \"openhuman\" }\nopenhuman-rpc = { path = \"crates/openhuman-rpc\", default-features = false }\nopenhuman-embed = { path = \"crates/openhuman-embed\", default-features = false }\nopenhuman-tinyhumans = { path = \"crates/openhuman-tinyhumans\", default-features = false }\n\n# Patches are workspace-root settings; Cargo ignores them in member manifests.\n[patch.\"https://github.com/tinyhumansai/tinytools\"]\n# tinymcp's `tools` feature names tinytools by git rev so it can be built on its\n# own. Redirect it to the copy tinyagents vendors — the one the harness and\n# every host tool link — so there is exactly one `tinytools` package and one\n# `Tool` trait. Without this, MCP tools would not satisfy the harness's trait.\ntinytools = { path = \"vendor/tinyagents/vendor/tinytools/crates/tinytools\" }\ntinytools-agent = { path = \"vendor/tinyagents/vendor/tinytools/crates/tinytools-agent\" }\n\n[patch.\"https://github.com/tinyhumansai/tinyinference\"]\ntinyinference-core = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-core\" }\ntinyinference-embeddings = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-embeddings\" }\ntinyinference-llm = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-llm\" }\ntinyinference-local = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-local\" }\ntinyinference-providers = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-providers\" }\ntinyinference-voice = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-voice\" }\n\n[patch.crates-io]\ntinyinference-core = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-core\" }\ntinyinference-embeddings = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-embeddings\" }\ntinyinference-llm = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-llm\" }\ntinyinference-local = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-local\" }\ntinyinference-providers = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-providers\" }\ntinyinference-voice = { path = \"vendor/tinyagents/vendor/tinyinference/crates/tinyinference-voice\" }\ntinyflows = { path = \"vendor/tinyflows/crates/tinyflows\" }\ntinychannels = { path = \"vendor/tinychannels\" }\n\n# Emit enough release DWARF for server-side Sentry symbolication while keeping\n# shipped binaries small. The CI profile deliberately disables LTO/debug info.\n[profile.release]\ndebug = \"line-tables-only\"\nsplit-debuginfo = \"packed\"\nlto = \"thin\"\ncodegen-units = 16\nstrip = \"symbols\"\n\n[profile.ci]\ninherits = \"release\"\nopt-level = 1\ncodegen-units = 16\nlto = false\nincremental = false\nstrip = true\ndebug = false\n\n[profile.dev.package.\"*\"]\ndebug = false\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "workspace",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "长期记忆",
+      "本地优先",
+      "Agent 编排"
+    ],
+    "brief_zh": {
+      "summary": "一个本地优先的个人 AI 中枢，主打长期记忆、Agent 编排和深度研究能力，把个人数据与工作流沉淀为可持续调用的智能上下文。",
+      "audience": "希望在本地环境中积累个人长期记忆、编排多个 Agent 并持续研究资料的高级 AI 用户和开发者",
+      "capabilities": "长期记忆、本地优先、Agent 编排、深度研究、持久化工作流",
+      "risk": "项目仍处于 early beta，长期记忆与多 Agent 自动执行会放大隐私、误操作和稳定性风险"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "calesthio",
+    "name": "OpenMontage",
+    "full_name": "calesthio/OpenMontage",
+    "url": "https://github.com/calesthio/OpenMontage",
+    "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+    "language": "Python",
+    "total_stars": 64992,
+    "forks": 8245,
+    "stars_this_period": 375,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "ai",
+        "claude",
+        "copilot",
+        "cursor",
+        "elevenlabs",
+        "ffmpeg",
+        "flux",
+        "image-generation",
+        "open-source",
+        "openai",
+        "python",
+        "remotion",
+        "stable-diffusion",
+        "text-to-speech",
+        "text-to-video",
+        "video-generation",
+        "video-production"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 388,
+      "created_at": "2026-03-29T15:23:22Z",
+      "pushed_at": "2026-10-03T16:28:55Z",
+      "homepage": "https://www.openmontage.video/",
+      "default_branch": "main",
+      "forks": 8245,
+      "watchers": 354,
+      "archived": false,
+      "size_kb": 77018
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/monty-dark.svg\">\n    <img src=\"assets/monty-light.svg\" alt=\"Monty the Clapper — the official mascot of OpenMontage\" width=\"200\">\n  </picture>\n</p>\n\n<p align=\"center\"><sub><em>Monty the Clapper — the official mascot of OpenMontage</em></sub></p>\n\n<h1 align=\"center\">OpenMontage</h1>\n\n<p align=\"center\"><strong>The first open-source, agentic video production system.</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://openmontage.video\"><img src=\"https://img.shields.io/badge/Website-openmontage.video-d14a28?style=for-the-badge\" alt=\"openmontage.video\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#start-from-a-video-you-already-love\">Paste A Video</a> &nbsp;·&nbsp;\n  <a href=\"#quick-start\">Quick Start</a> &nbsp;·&nbsp;\n  <a href=\"#try-these-prompts\">Try These Prompts</a> &nbsp;·&nbsp;\n  <a href=\"#pipelines\">Pipelines</a> &nbsp;·&nbsp;\n  <a href=\"#how-it-works\">How It Works</a> &nbsp;·&nbsp;\n  <a href=\"#sponsors\">Sponsors</a> &nbsp;·&nbsp;\n  <a href=\"docs/PROVIDERS.md\">Providers</a> &nbsp;·&nbsp;\n  <a href=\"docs/PR_REVIEW_GUIDE.md\">Review Guide</a> &nbsp;·&nbsp;\n  <a href=\"AGENT_GUIDE.md\">Agent Guide</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPLv3-blue.svg\" alt=\"License\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/trending\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\".github/assets/repo-of-the-day-dark.svg\">\n      <img alt=\"🏆 #1 Repository of the Day on GitHub Trending\" src=\".github/assets/repo-of-the-day-light.svg\" height=\"60\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\"><strong>Follow The Build</strong></p>\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage\"><img src=\"https://img.shields.io/badge/YouTube-%40OpenMontage-FF0000?style=for-the-badge&logo=youtube&logoColor=white\" alt=\"YouTube\"></a>\n  <a href=\"https://x.com/calesthioailabs\"><img src=\"https://img.shields.io/badge/X-%40calesthioailabs-111111?style=for-the-badge&logo=x&logoColor=white\" alt=\"X\"></a>\n  <a href=\"https://github.com/calesthio/OpenMontage/discussions\"><img src=\"https://img.shields.io/badge/Community-GitHub%20Discussions-0b1220?style=for-the-badge&logo=github&logoColor=white\" alt=\"GitHub Discussions\"></a>\n</p>\n\n## Sponsors\n\n> Want to support OpenMontage? [Sponsor the project](https://github.com/sponsors/calesthio).\n\n<details open>\n<summary>Click to collapse</summary>\n\n<table>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\"><img src=\"assets/sponsors/bloome.png\" alt=\"Bloome\" width=\"150\"></a></td>\n<td><strong>Bloome</strong> lets multiple AI agents (Claude, ChatGPT, DeepSeek, and more) collaborate in one conversation for agentic video pipelines. It has zero setup, runs in the cloud, works on web and mobile, and lets you share a configured agent with your whole team. <strong><a href=\"https://bloome.im/app?ref=calesthio&utm_medium=github&utm_source=calesthio-OpenMontage-ivor-202607\">Try Bloome</a></strong>.</td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.atlascloud.ai/coding-plan\"><img src=\"assets/sponsors/atlas-cloud.png\" alt=\"Atlas Cloud\" width=\"150\"></a></td>\n<td><strong>Atlas Cloud</strong> is a full-modal AI inference platform that gives developers a single AI API for video generation, image generation, and LLM APIs. Instead of managing multiple vendor integrations, you connect once and get unified access to 300+ curated models across all modalities. Check out Atlas Cloud's new <a href=\"https://www.atlascloud.ai/coding-plan\">coding plan</a> promotion for more budget-friendly API access.</td>\n</tr>\n</table>\n\n</details>\n\n---\n\nTurn your AI coding assistant into a full video production studio. Describe what you want in plain language — your agent handles research, scripting, asset generation, editing, and final composition.\n\n**Important distinction:** OpenMontage can make image-based videos, but it can also make a real **video video** for free/open-source workflows: the agent builds a corpus from free stock footage and open archives, retrieves actual motion clips, edits them into a timeline, and renders a finished piece. That is not the usual \"animate a handful of stills and call it video\" trick.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/f77ce7a4-68b8-4f94-a287-e94bf50a32e1\" width=\"100%\" controls></video>\n</div>\n\n> **\"SIGNAL FROM TOMORROW\"** — a cinematic sci-fi trailer fully produced through OpenMontage: concept, script, scene plan, Veo-generated motion clips, soundtrack, and Remotion composition.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/8daca07f-cdf8-4bec-89c3-9dc2176363fa\" width=\"100%\" controls></video>\n</div>\n\n> **\"THE LAST BANANA\"** — a 60-second Pixar-style animated short about a lonely banana who finds friendship with a kiwi. 6 Kling v3-generated motion clips (via fal.ai), Google Chirp3-HD narration, royalty-free piano music, TikTok-style word-level captions, and Remotion composition. Total cost: **$1.33**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/0a71333b-9b05-40b5-8800-a0a679e9b433\" width=\"100%\" controls></video>\n</div>\n\n> **\"OBJECTS IN OVERDRIVE\"** — a 54-second, music-driven 3D showcase featuring ten objects with distinct choreography: gravity-shifting furniture, frozen car drifts, cloth impacts, refractive lenses, moving gears, an acrobatic robot, and more. Custom Blender animation and physics, kinetic typography, and a phonk soundtrack. Rendered with Blender Eevee/Cycles and assembled with FFmpeg. No narration.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/88962725-97a0-4aac-a08e-34aaa9d8bb92\" width=\"100%\" controls></video>\n</div>\n\n> **\"Reimagine Your Universe\"** — a 50-second vertical transformation film in which one visual idea moves across objects, eras, materials, and scale. Five generated motion scenes, sparse Google Chirp narration, a Pixabay score, and a bespoke HyperFrames composition turn separate clips into one authored cinematic journey. Total cost: **about $4**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/c947070c-95ee-4d73-8d76-0bd3dc4826eb\" width=\"100%\" controls></video>\n</div>\n\n> **\"Products Come to Life\"** — a 60-second product film built from approved hero stills. Five hard-surface products separate into their own engineering and reassemble, with each still pinned as the first and last frame so the model invents motion without losing product identity. Image-to-video generation, bespoke sound, narration, and a custom composition complete the film.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/6815c2d2-17a3-4057-b9a0-893fc9c05bef\" width=\"100%\" controls></video>\n</div>\n\n> **\"Imagine the Possibilities with OpenMontage\"** — seven generated worlds collected into one music-only showcase. Three image models supply campaign, fashion, and miniature-world artwork; four video models expand the journey through architecture, material transformation, a living greenhouse, and a creature encounter. OpenMontage animates the stills, edits the motion, unifies the soundtrack, and closes with Monty the Clapper. Source generation cost: **about $5**.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/a524f02a-2d18-42ca-a2c4-d3dc09503546\" width=\"100%\" controls></video>\n</div>\n\n> **\"How Salt Made History\"** — a 100-second cinematic documentary about the mineral that funded empires, shaped trade routes, sparked revolutions, and gave us the word “salary.” Real-world footage is woven together with original narration and hand-authored motion graphics for its etched title, etymology reveal, animated maps, historical timeline, and closing thesis.\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/61919fb8-9dd1-446c-b833-dca82f6a3af8\" width=\"100%\" controls></video>\n</div>\n\n> **\"One Prompt Built This Complete 3D World\"** — a continuous 60-second journey through one coherent, editable fantasy world. Distinct terrain regions, an inhabited village, waterways, ruins, dense vegetation, and a late hero-landmark reveal are assembled from textured 3D assets, then brought together with cinematic lighting, atmospheric music, and a planned camera path.\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/@OpenMontage?sub_confirmation=1\"><strong>Subscribe to @OpenMontage on YouTube</strong></a> to see new videos as they ship — every video includes the full prompt, pipeline, tools used, and cost so you can reproduce it yourself.\n</p>\n\n---\n\n## Start From A Video You Already Love\n\nStarting from a reference video is often faster than starting from a blank prompt.\n\nOpenMontage can start from a **YouTube video, Short, Reel, TikTok, or local clip** and turn it into a grounded production plan:\n\n1. **Paste a reference video**\n2. **The agent analyzes transcript, pacing, scenes, keyframes, and style**\n3. **You get 2-3 differentiated concepts, an honest tool path, cost estimates, and a sample before full production**\n\n```text\n\"Here's a YouTube Short I love. Make me something like this, but about quantum computing.\"\n```\n\nWhat you get back is not \"best guess prompt spaghetti.\" You get:\n\n- **What it keeps** from the reference: pacing, hook style, structure, tone\n- **What it changes**: topic, visual treatment, angle, narration approach\n- **What it will cost** at your target duration, before asset generation starts\n- **What it will actually look like** with your currently available tools\n\nWorks with **Claude Code, Cursor, Copilot, Windsurf, Codex** — any AI coding assistant that can read files and run code.\n\n---\n\n## Watch It Happen — The Backlot Living Storyboard\n\nChat tells you what the agent *said*. **Backlot shows you what the production is actually doing** — a local board that fills itself in as the pipeline runs. Stages light up, the script lands as a screenplay page, scene cards shimmer while assets generate, and every provider decision and dollar spent is on the wall.\n\nWhen a production starts, the agent opens it for you automatically. No setup, no reporting — the board derives everything from the project files the pipeline already writes.\n\n<p align=\"center\"><img src=\"docs/images/backlot/board-live.png\" alt=\"Backlot live board — assets generating\" width=\"920\"></p>\n\n**The storyboard is now a real approval gate.** Asset generation pauses on a scene-by-scene contact sheet — takes, prompts, per-asset cost, quality scores — so you approve the visuals *before* the render, not after it's too late:\n\n<p align=\"center\"><img src=\"docs/images/backlot/storyboard.png\" alt=\"Backlot storyboard — filmstrip with takes and renders\" width=\"920\"></p>\n\nCreative gates hold until you answer. The board shows what's waiting and why; you reply in chat:\n\n<p align=\"center\"><img src=\"docs/images/backlot/script-gate.png\" alt=\"Backlot script gate — awaiting approval\" width=\"920\"></p>\n\nEvery production on your machine, live-first, in the library:\n\n<p align=\"center\"><img src=\"docs/images/backlot/library.png\" alt=\"Backlot library\" width=\"920\"></p>\n\n```bash\npython -m backlot open                  # the library — every project on disk\npython -m backlot open <project-id>     # one production's live board\npython scripts/backlot_simulate_run.py  # no production yet? watch a simulated one live\n```\n\nAnd when a run is done, hit **▶ REPLAY RUN** — the whole production replays from its timestamps, scrubbable end to end. See [`backlot/README.md`](backlot/README.md) for how it works.\n\n---\n\n## Quick Start\n\n### Prerequisites\n\n- **Python 3.10+** — [python.org](https://www.python.org/downloads/)\n- **FFmpeg** — `brew install ffmpeg` / `sudo apt install ffmpeg` / [ffmpeg.org](https://ffmpeg.org/download.html)\n- **Node.js 18+** — [nodejs.org](https://nodejs.org/)\n- **An AI coding assistant** — Claude ",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "# OpenMontage - Core Dependencies\npyyaml>=6.0\npydantic>=2.0\njsonschema>=4.20\npython-dotenv>=1.0\nPillow>=10.0\nnumpy>=1.24\nrequests>=2.31\ngoogle-auth>=2.0       # service-account auth for Google TTS + Imagen (Vertex AI)\ngoogle-genai>=1.0.0    # Gemini Developer API clients for Lyria, Veo, and Gemini Omni\nopenai>=2.44.0         # Videos API support for Sora 2\n\n# Backlot - the living storyboard (local board server)\nfastapi>=0.110\nuvicorn>=0.29\nwatchfiles>=0.21\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "llm",
+      "inference"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "视频制作",
+      "素材生成",
+      "剪辑合成"
+    ],
+    "brief_zh": {
+      "summary": "把调研、脚本、素材生成、剪辑与合成组织成流水线，让编码 Agent 执行视频制作任务。",
+      "capabilities": "视频制作、素材生成、剪辑合成",
+      "verified_at": "2026-09-14",
+      "evidence_sources": [
+        "https://github.com/calesthio/OpenMontage"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "tester-army",
+    "name": "e2e",
+    "full_name": "tester-army/e2e",
+    "url": "https://github.com/tester-army/e2e",
+    "description": "Next generation e2e testing framework for web and mobile apps.",
+    "language": "TypeScript",
+    "total_stars": 7333,
+    "forks": 331,
+    "stars_this_period": 1391,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "e2e",
+        "e2e-testing",
+        "end-to-end-testing",
+        "mobile",
+        "mobile-testing",
+        "playwright",
+        "web"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 69,
+      "created_at": "2026-07-22T09:29:04Z",
+      "pushed_at": "2026-10-07T21:54:06Z",
+      "homepage": "https://tester.army/e2e",
+      "default_branch": "main",
+      "forks": 331,
+      "watchers": 20,
+      "archived": false,
+      "size_kb": 19828
+    },
+    "readme_content": "<a href=\"https://tester.army/e2e?utm_source=e2e&utm_medium=github&utm_campaign=readme_banner\"><img src=\"./.github/assets/readme-banner.png\" alt=\"e2e, the open source AI testing framework by TesterArmy\" width=\"100%\" /></a>\n\n<p align=\"center\">\n  <a href=\"https://tester.army?utm_source=e2e&utm_medium=github&utm_campaign=readme_badge\"><img alt=\"Made by TesterArmy\" src=\"./.github/assets/made-by-testerarmy.svg\" /></a>\n  <a href=\"https://www.npmjs.com/package/e2e\"><img alt=\"npm version\" src=\"https://img.shields.io/npm/v/e2e.svg?style=for-the-badge&labelColor=000000\" /></a>\n  <a href=\"./LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/badge/license-Apache--2.0-green.svg?style=for-the-badge&labelColor=000000\" /></a>\n  <a href=\"https://tester.army/discord\"><img alt=\"Join the community on Discord\" src=\"https://img.shields.io/badge/Join%20the%20community-5865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=000000\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/tester-army/e2e\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=tester-army/e2e&type=trending&theme=dark\" /><img alt=\"GitHub Trending Repository of the Day\" src=\"https://api.star-history.com/badge?repo=tester-army/e2e&type=trending\" /></picture></a>\n</p>\n\n# e2e\n\n[e2e](https://tester.army/e2e?utm_source=e2e&utm_medium=github&utm_campaign=readme_intro) is an end-to-end testing framework for web and mobile apps. Describe a goal in natural language and an agent drives the app to reach it. Check the result with locators and assertions in the same test.\n\n```ts\n// tests/checkout.e2e.ts\nimport { test, expect } from 'e2e';\n\ntest('a member upgrades to Pro', async ({ app, agent, screen }) => {\n  await app.open('/settings/billing');\n\n  await agent.act('upgrade the workspace to the Pro plan');\n  await agent.assert('the invoice preview shows a prorated amount');\n\n  await expect(screen.getByRole('status')).toContainText('Pro');\n});\n```\n\nAn agent step that a later assertion verifies records its actions, and the\nnext run replays them with no model calls until the app changes. Tests\nwithout agent steps need no model. Bring your own subscription, API key, or\nlocal model.\n\n## Quick start\n\n```bash\nnpx e2e init\n```\n\n`init` asks for an engine, web or mobile, and a model provider, then writes a\nconfig and an example test. The\n[quickstart](https://e2e.tester.army/docs/quickstart) covers the rest.\n\nTo see a finished setup in your stack, open\n[`examples/`](https://github.com/tester-army/e2e/tree/main/examples):\nVite, Next.js, Expo, SwiftUI, Jetpack Compose, Kotlin Multiplatform, and\nFlutter, each a standalone project with a passing suite.\n\n## Packages\n\n| Package | What it does |\n| --- | --- |\n| [`e2e`](https://www.npmjs.com/package/e2e) | The SDK, runner, and CLI. |\n| [`@e2e-dev/web`](https://www.npmjs.com/package/@e2e-dev/web) | Browser engine: Chromium, Firefox, and WebKit through Playwright. |\n| [`@e2e-dev/mobile`](https://www.npmjs.com/package/@e2e-dev/mobile) | iOS and Android engine: simulators and emulators through agent-device. |\n| [`@e2e-dev/github`](https://www.npmjs.com/package/@e2e-dev/github) | Reporter that posts results as a pull request comment. |\n| [`@e2e-dev/kernel`](https://www.npmjs.com/package/@e2e-dev/kernel) | Kernel hosted browsers for the web engine. |\n| [`@e2e-dev/eas`](https://www.npmjs.com/package/@e2e-dev/eas) | EAS Simulators hosted iOS simulators and Android emulators for the mobile engine. |\n| [`@e2e-dev/decision`](https://e2e.tester.army/docs/decision-models) | Decision-model executors for bounded semantic actions and assertions. |\n\n## Documentation\n\n[e2e.tester.army/docs](https://e2e.tester.army/docs). The `e2e` package ships\nevery page, so coding agents can read them offline in `node_modules/e2e/docs`.\n\n## Contributing\n\nSee [CONTRIBUTING.md](./CONTRIBUTING.md). Questions go to\n[Discord](https://tester.army/discord).\n\n## Security\n\nPlease don't open public issues for security vulnerabilities. Follow\n[SECURITY.md](./SECURITY.md) and report them to\n[security@tester.army](mailto:security@tester.army).\n\n## Telemetry\n\nThe CLI sends anonymous usage data, such as which commands and engines run and\nwhere runs fail, but no test content, app content, or credentials. Opt out with\n`npx e2e telemetry disable` or `E2E_TELEMETRY_DISABLED=1`.\n[Telemetry](https://e2e.tester.army/docs/telemetry) lists every field.\n\n## Status\n\n> [!NOTE]\n> e2e is in active development on the way to 1.0. APIs and config can still\n> change between minor releases.\n\n## Made by TesterArmy\n\ne2e is built by [TesterArmy](https://tester.army/?utm_source=e2e&utm_medium=github&utm_campaign=readme_footer),\nthe agentic testing platform that runs natural language tests on web and mobile\napps, on every pull request or on a schedule.\n\nApache-2.0.\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"e2e-monorepo\",\n  \"private\": true,\n  \"description\": \"An open framework for agentic end-to-end testing\",\n  \"keywords\": [\n    \"e2e\",\n    \"testing\",\n    \"agentic\"\n  ],\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"pnpm --filter e2e run build && pnpm --filter @e2e-dev/web run build && pnpm --filter @e2e-dev/mobile run build && pnpm --filter @e2e-dev/github run build && pnpm --filter @e2e-dev/kernel run build && pnpm --filter @e2e-dev/eas run build && pnpm --filter @e2e-dev/decision run build\",\n    \"check\": \"pnpm run lint && pnpm run check:dead-code && pnpm run typecheck && pnpm run docs:check-errors && pnpm run check:peer-ranges && pnpm run check:install-scripts && pnpm run docs:check\",\n    \"check:dead-code\": \"fallow dead-code\",\n    \"check:peer-ranges\": \"node scripts/check-peer-ranges.ts\",\n    \"check:install-scripts\": \"node scripts/check-install-scripts.ts\",\n    \"docs:check-errors\": \"node scripts/check-error-codes.ts\",\n    \"docs:check\": \"pnpm --filter @e2e-dev/docs run check\",\n    \"docs:dev\": \"pnpm --filter @e2e-dev/docs run dev\",\n    \"lint\": \"oxlint\",\n    \"lint:fix\": \"oxlint --fix\",\n    \"changeset\": \"changeset\",\n    \"version-packages\": \"changeset version && node scripts/restore-peer-ranges.ts && pnpm install --lockfile-only\",\n    \"release\": \"pnpm run build && changeset publish\",\n    \"canary\": \"node scripts/canary-changeset.ts && changeset version --snapshot canary && pnpm run build\",\n    \"canary:publish\": \"changeset publish --tag canary --no-git-tag && node scripts/restore-peer-ranges.ts\",\n    \"typecheck\": \"pnpm run build && pnpm -r run typecheck && tsc -p scripts\",\n    \"test\": \"pnpm run build && pnpm --filter e2e run test && pnpm --filter @e2e-dev/web run test && pnpm --filter @e2e-dev/mobile run test && pnpm --filter @e2e-dev/github run test && pnpm --filter @e2e-dev/kernel run test && pnpm --filter @e2e-dev/eas run test && pnpm --filter @e2e-dev/decision run test && pnpm run test:scripts\",\n    \"test:testbed\": \"pnpm run build && pnpm --filter @e2e-dev/testbed test\",\n    \"test:web-benchmark\": \"pnpm run build && pnpm --filter @e2e-dev/web-benchmark test\",\n    \"test:mobile-benchmark\": \"pnpm run build && pnpm --filter @e2e-dev/mobile-benchmark test\",\n    \"test:agent\": \"pnpm run build && pnpm --filter @e2e-dev/testbed test:agent\",\n    \"test:scripts\": \"node --test \\\"scripts/**/*.test.ts\\\"\",\n    \"bench:ab\": \"node scripts/bench-ab.ts\"\n  },\n  \"contributors\": [\n    \"Oskar Kwaśniewski <oskar@tester.army>\",\n    \"Szymon Rybczak <szymon@tester.army>\"\n  ],\n  \"devDependencies\": {\n    \"@changesets/changelog-github\": \"1.0.1\",\n    \"@changesets/cli\": \"3.0.3\",\n    \"@types/node\": \"26.6.2\",\n    \"fallow\": \"3.27.0\",\n    \"oxlint\": \"1.83.0\",\n    \"typescript\": \"7.0.2\",\n    \"zod\": \"4.6.1\"\n  },\n  \"packageManager\": \"pnpm@12.3.4\"\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "workspace"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "自然语言测试",
+      "Agent 操作重放",
+      "Web 测试"
+    ],
+    "brief_zh": {
+      "summary": "一个面向 Web 与移动端的端到端测试框架：可用自然语言让 Agent 操作应用，再用定位器和断言验证结果；已验证的 Agent 操作可在后续运行中重放以减少模型调用。",
+      "audience": "需要把自然语言交互测试接入 Web、iOS 或 Android 工程的测试与开发团队",
+      "capabilities": "自然语言测试、Agent 操作重放、Web 测试、移动端测试、Playwright 集成、CLI 与 GitHub 报告",
+      "risk": "项目仍在迈向 1.0，API 与配置可能变化；涉及真实应用的 Agent 操作、模型调用成本和遥测设置都需要在 CI 中明确控制。",
+      "verified_at": "2026-10-06",
+      "evidence_sources": [
+        "https://github.com/tester-army/e2e"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做测试运行或 CI 集成验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "DuarteSantos8",
+    "name": "openGym",
+    "full_name": "DuarteSantos8/openGym",
+    "url": "https://github.com/DuarteSantos8/openGym",
+    "description": "Self-hosted gym & body-weight tracker — plan routines, log workouts (supersets, warm-ups, cardio), see which muscles are trained, fatigued or detrained, import from FitNotes/Strong/Hevy, passkey login. Your data, your server.",
+    "language": "JavaScript",
+    "total_stars": 6792,
+    "forks": 894,
+    "stars_this_period": 1494,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "bodyweight",
+        "docker",
+        "fitness",
+        "fitness-tracker",
+        "gym",
+        "health",
+        "mcp",
+        "nodejs",
+        "passkeys",
+        "progressive-web-applications",
+        "pwa",
+        "react",
+        "self-hosted",
+        "self-hosting",
+        "vite",
+        "webauthn",
+        "weightlifting",
+        "workout-tracker"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 131,
+      "created_at": "2026-07-18T20:41:24Z",
+      "pushed_at": "2026-10-07T16:48:33Z",
+      "homepage": "https://opengym.duarte-santos.ch",
+      "default_branch": "main",
+      "forks": 894,
+      "watchers": 24,
+      "archived": false,
+      "size_kb": 24525
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"assets/banner.png\" alt=\"openGym\" width=\"720\">\n\n**A self-hosted gym and body-weight tracker you actually own.**\n\nPlan your week, run guided workouts, log every set and your body weight —<br>\non your phone, synced across your devices, behind your own passkey login.\n\n[![Discord](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2Fe62jY6fwVb%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20members&label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge)](https://discord.gg/e62jY6fwVb)\n[![Online](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2Fe62jY6fwVb%3Fwith_counts%3Dtrue&query=%24.approximate_presence_count&suffix=%20online&label=&logo=discord&logoColor=white&color=3BA55C&style=for-the-badge)](https://discord.gg/e62jY6fwVb)\n[![GitHub stars](https://img.shields.io/github/stars/DuarteSantos8/openGym?style=for-the-badge&logo=github&logoColor=white&color=24292f)](https://github.com/DuarteSantos8/openGym/stargazers)\n\n[![Release](https://img.shields.io/github/v/release/DuarteSantos8/openGym?style=flat-square)](https://github.com/DuarteSantos8/openGym/releases)\n[![Tests](https://img.shields.io/github/actions/workflow/status/DuarteSantos8/openGym/test.yml?branch=main&label=tests&style=flat-square)](https://github.com/DuarteSantos8/openGym/actions/workflows/test.yml)\n[![Pipeline](https://gitlab.com/DuarteSantos8/opengym/badges/main/pipeline.svg?style=flat-square)](https://gitlab.com/DuarteSantos8/opengym/-/pipelines)\n[![Coverage](https://gitlab.com/DuarteSantos8/opengym/badges/main/coverage.svg?job=test:frontend&style=flat-square)](https://gitlab.com/DuarteSantos8/opengym/-/pipelines?ref=main)\n[![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-a3e635?style=flat-square)](LICENSE)\n\n[Website](https://opengym.duarte-santos.ch) ·\n[Live demo](https://opengym.duarte-santos.ch/demo/) ·\n[Android APK](https://github.com/DuarteSantos8/openGym/releases/latest) ·\n[Self-hosting guide](docs/SELF_HOSTING.md) ·\n[Roadmap](ROADMAP.md) ·\n[Changelog](CHANGELOG.md)\n\n<a href=\"https://buymeacoffee.com/duartesantos\" target=\"_blank\"><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" height=\"45\" width=\"163\"></a>\n\n</div>\n\n<table align=\"center\">\n<tr>\n<td align=\"center\"><img src=\"assets/screenshots/home.png\" alt=\"Home screen\" width=\"230\"><br><sub><b>Home</b> · today's workout and weight</sub></td>\n<td align=\"center\"><img src=\"assets/screenshots/workout.png\" alt=\"Workout screen\" width=\"230\"><br><sub><b>Guided workout</b> · demos and sets</sub></td>\n<td align=\"center\"><img src=\"assets/screenshots/stats.png\" alt=\"Stats screen\" width=\"230\"><br><sub><b>Stats</b> · heatmap, charts and PRs</sub></td>\n</tr>\n</table>\n\n## Why openGym\n\nMost workout apps keep your data on their servers, push you towards a subscription, or vanish\nwhen the company does. openGym runs on your own box, keeps your data in a folder you control, and\nis yours to fork. It still behaves like a modern app: installable on the home screen, passkey\nsign-in, works offline, syncs between your phone and your laptop.\n\nNo account on someone else's server, no subscription, no ads, no telemetry. One\n`docker compose up` and it's running.\n\nThe [in-browser demo](https://opengym.duarte-santos.ch/demo/) is the real app with example data,\nif you want to try it before installing anything.\n\n## Features\n\n**Planning**\n\n- A routine per weekday over a library of **1,324 exercises** with animated demos, searchable and\n  browsable by muscle on a body map. Filter by the equipment you own.\n- Four starter plans (Push/Pull/Legs, Upper/Lower, Full Body, 5×5) that load as ordinary,\n  editable routines.\n- Move a session to another day without touching the weekly plan. The week starts on Monday or\n  Sunday, your choice.\n- Or skip the weekdays altogether: a **rotation** (A, B, C, A, ...) where the next session is\n  simply the next one you haven't done, however the week went.\n- Supersets, warm-up sets, drop sets and rest-pause, timed exercises (planks, hangs, carries),\n  cardio by time and speed, rest time per exercise, planned deloads.\n- Your own exercises, with your own photo, GIF or short video. Location data is stripped on the\n  device before upload.\n\n**Training**\n\n- Guided sessions: today's workout starts itself, weights are pre-filled from last time, a rest\n  timer runs between sets, PRs are detected as you go. On a rest day it tells you when the next\n  session is.\n- A quiet workout screen: one menu per exercise, the set number as the set's own menu, card or\n  list view. Switches in Settings bring the old button rows back if you liked them.\n- Optional effort column as RIR or RPE, colour-coded, with a plain-language line per level.\n- Plate math for barbell, EZ bar, trap bar and Smith machine, worked out from the plates you own.\n- Bodyweight exercises know they carry no load: log reps, add a dip belt if you use one.\n- Per-side reps for lunges and single-arm work, the screen stays awake while you train, and a\n  rest-timer alert can flash the screen for loud gyms.\n- Swipe a set left to delete it (with Undo) or right to copy it. Pyramid sets with their own reps\n  and rest per set, and a scroll wheel for any rest time up to 15 minutes.\n\n**Progress**\n\n- Progression rules per routine or per exercise: linear, Greyskull LP, double progression through a\n  visible rep range, or adding time. Each target explains why it is that number; missed reps never\n  add load, stalls trigger a deload.\n- Estimated 1RM per exercise with its own curve, Structural Balance ratios (Poliquin, Thibaudeau,\n  ATG), a year-long activity heatmap.\n- A muscle map in three modes: where your volume went, what is still recovering, and what has gone\n  untrained.\n- Body-weight chart against a goal line, and progress photos on a timeline with a before/after\n  slider.\n- Edit any saved workout after the fact, log one you did on paper, or move it to the right date.\n  Records are re-read from the corrected history.\n\n**Accounts and data**\n\n- Passkeys (Face ID, Touch ID, fingerprint) with per-profile data synced across devices. Password\n  sign-in can be switched on per instance; new devices pair with a one-time code or QR.\n- Two devices editing at once merge field by field instead of overwriting each other (see\n  [sync](#how-sync-works)).\n- Import from FitNotes, Strong, Hevy (CSV or API key) and Apple Health weight exports. Export\n  everything as one JSON file whenever you like.\n- Share a plan as a small file or print it as a PDF.\n- Optional admin dashboard with invite-only signup and an activity log.\n- 18 languages, including right-to-left Arabic and Traditional Chinese. Exercise names and\n  instructions are translated for most of them.\n\n**Optional extras, off by default**\n\n- An [AI coach](docs/AI_COACH.md) that drafts a week of routines and later suggests changes based on\n  what you logged. You approve every change. It runs on your server with your own provider key\n  (Anthropic, OpenAI, Gemini or any OpenAI-compatible endpoint, Ollama included).\n- An [MCP server](mcp/README.md) so an assistant like Claude Desktop can answer questions about your\n  training history. Read-only and local; not part of the Docker build.\n\nThe full list of what changed release by release is in the [changelog](CHANGELOG.md).\n\n## Quick start\n\nYou need [Docker](https://docs.docker.com/get-docker/) with Compose.\n\n```bash\ngit clone https://github.com/DuarteSantos8/openGym\ncd openGym\ncp .env.example .env\ndocker compose pull      # prebuilt images, amd64 + arm64 (skip this to build from source)\ndocker compose up -d\n```\n\nOpen <http://localhost:8080>, tap **Create profile**, and you're in. The first start downloads\nthe exercise media (about 140 MB) once.\n\nTo reach it from your phone with passkeys you need HTTPS on a domain; that's a two-line change in\n`.env`. The [self-hosting guide](docs/SELF_HOSTING.md) walks through Cloudflare Tunnel, Caddy,\nTraefik and nginx, and there are separate guides for\n[HTTPS on a LAN](docs/SELF_HOSTING_HTTPS.md) and [Kubernetes](docs/SELF_HOSTING_KUBERNETES.md).\n\n> [!NOTE]\n> Images are published from the same tag to `registry.gitlab.com/duartesantos8/opengym/{api,web}`\n> (what `docker-compose.yml` pulls) and `ghcr.io/duartesantos8/opengym-{api,web}`. Swap the\n> `image:` lines if you prefer GHCR, or run `docker compose up -d --build` to build locally. Either\n> way you don't need Node on the host.\n\n<details>\n<summary><b>Configuration reference</b> (all through <code>.env</code>)</summary>\n\n| Variable | What it does | Default |\n|---|---|---|\n| `RP_ID` | Hostname passkeys are bound to | `localhost` |\n| `ORIGIN` | Full URL the app is served from | `http://localhost:8080` |\n| `WEB_PORT` | Host port for the web UI | `8080` |\n| `NGINX_PORT` | Port the web container listens on inside the container | `80` |\n| `BACKEND` | Name of the API service that `/api` is proxied to | `api` |\n| `PORT` | Port the API listens on; the web container proxies to the same value | `3000` |\n| `RP_NAME` | Name shown in the passkey prompt | `openGym` |\n| `SESSION_DAYS` | How long a sign-in lasts, in days | `90` |\n| `ADMIN_UIDS` | User ids that get the admin dashboard, comma-separated | *(none)* |\n| `FIRST_USER_ADMIN` | `1`: the first profile created on an empty instance becomes its admin | *(off)* |\n| `INVITE_ONLY` | Require an invite code to create a profile | *(off)* |\n| `ALLOW_GUEST` | Offer \"Continue without account\"; `0` requires a profile | *(on)* |\n| `PASSWORD_LOGIN` | Offer name-and-password sign-in next to passkeys | *(off)* |\n| `TRUST_PROXY` | Let the sign-in throttle read the client address from proxy headers | `1` in `docker-compose.yml` |\n| `AUDIT_LOG` | Record sign-ins and admin actions; `0` records nothing | *(on)* |\n| `AUDIT_MAX` | Events kept in the activity log; `0` for no limit | `5000` |\n| `AUDIT_DAYS` | Days kept in the activity log; `0` keeps until `AUDIT_MAX` | `90` |\n| `AUDIT_IP` | Record the caller's address: `off`, `net` (network only) or `full` | `off` |\n| `VAPID_SUBJECT` | Contact URL sent with push notifications | your `ORIGIN` |\n| `API_TARGET` | API image to build: `default`, or `coach` with the Claude Agent SDK and Codex CLI | `default` |\n| `COACH_DISABLED` | `1` forces the AI coach off instance-wide | *(unset)* |\n\nPush-notification keys are generated on first run into `./data/vapid.json`. `DATA_DIR` is pinned to\n`/data` inside the container and mapped to `./data` on the host; change the volume, not the\nvariable. The [self-hosting guide](docs/SELF_HOSTING.md) covers every option in detail.\n\n</details>\n\n## Phone app\n\nThe same codebase builds a standalone app with Capacitor: no account, no server, everything stays\non the phone, with native reminders and a rest countdown in the notification shade.\n\n- **Android:** download the signed APK from the [latest release](https://github.com/DuarteSantos8/openGym/releases/latest)\n  or the [website](https://opengym.duarte-santos.ch). Each build sits next to its `.sha256`, and\n  the app checks for updates itself. openGym is deliberately not on the Play Store.\n- **iPhone:** Apple doesn't allow installs outside the App Store. Self-host and add the PWA to your\n  home screen from Safari, or build the native app onto your own device with Xcode.\n\nDetails and build instructions: [docs/MOBILE.md](docs/MOBILE.md).\n\n## How it works\n\n<p align=\"center\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/diagrams/architecture-dark.png\">\n  <img src=\"docs/diagrams/architecture.png\" alt=\"Architecture: the phone talks HTTPS to nginx (web), which serves the app and proxies /api to the Node api; the api stores JSON in ./data. A one-shot media service downloads exercise media on first start; the AI coach and MCP server are optional.\" width=\"520\">\n</picture>\n</p>\n\n- **`frontend/`** is React 19 and Vite (React Router, Zustand), built to static files inside Docker.\n- **`api/`** is plain `node:http` w",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"devDependencies\": {\n    \"js-yaml\": \"^4.1.0\"\n  }\n}\n",
+    "strategic_keywords": [
+      "mcp",
+      "rag",
+      "workflow"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 10,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "自托管训练记录",
+      "训练计划",
+      "离线 PWA"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的健身与体重追踪 PWA：支持训练计划、引导训练、组数记录、进度图表和跨设备同步，数据可由用户自行掌控。",
+      "audience": "希望摆脱订阅式健身应用、并自行部署和管理训练数据的个人用户",
+      "capabilities": "自托管训练记录、训练计划、离线 PWA、通行密钥登录、跨设备同步、数据导入导出",
+      "risk": "采用 AGPL-3.0；自托管的同步、备份与账号安全需要用户自行负责，健康与训练建议也不应替代专业意见。",
+      "verified_at": "2026-10-06",
+      "evidence_sources": [
+        "https://github.com/DuarteSantos8/openGym"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未做部署或健康效果验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cathrynlavery",
+    "name": "diagram-design",
+    "full_name": "cathrynlavery/diagram-design",
+    "url": "https://github.com/cathrynlavery/diagram-design",
+    "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Factory Droid, and Pi. 42 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+    "language": "HTML",
+    "total_stars": 44890,
+    "forks": 2883,
+    "stars_this_period": 828,
+    "source_slice": "all",
+    "source_slices": [
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "claude-code",
+        "codex",
+        "data-visualization",
+        "diagrams",
+        "drawio",
+        "mermaid",
+        "svg"
+      ],
+      "license": "MIT",
+      "open_issues": 95,
+      "created_at": "2026-04-16T18:01:16Z",
+      "pushed_at": "2026-10-07T21:51:41Z",
+      "homepage": "https://cathrynlavery.github.io/diagram-design/",
+      "default_branch": "main",
+      "forks": 2883,
+      "watchers": 128,
+      "archived": false,
+      "size_kb": 22208
+    },
+    "readme_content": "<h1>\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/hero/hero-dark.webp\">\n    <img alt=\"Diagram Design. Editorial diagrams your designer won't hate.\" src=\"docs/hero/hero-light.webp\">\n  </picture>\n</h1>\n\n<a href=\"https://trendshift.io/repositories/26141?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-26141\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/26141\" alt=\"cathrynlavery%2Fdiagram-design | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n[![Content site architecture](docs/screenshots/thumbs/architecture.webp)](docs/screenshots/architecture.png)\n\n[![The self-improving loop](docs/screenshots/thumbs/loop.webp)](docs/screenshots/loop.png)\n\n*New in 2.0 — the Loop: flywheels with a shared-memory hub. The dashed lines are the write-backs.*\n\n*New in 2.3: semantic system patterns and optional accessible motion, while static output stays the default.*\n\n*New in 2.5.10: ten more layout grammars — Sankey, fishbone, Wardley map, kanban, user journey, deployment, dependency graph, UML class, story map, and database schema.*\n\nEditorial diagram types for Claude Code, Codex, Factory Droid, Pi, and Agent Skills-compatible hosts. Self-contained HTML + SVG. No shadows. No Mermaid slop. Semantic patterns describe behavior separately from layout, so a queue, policy trace, or trust boundary can use the nearest existing type without expanding the type count. Static HTML remains the default; optional motion is available for ordered explanations. The skill also redraws draw.io, Mermaid, or Excalidraw sources at a chosen format, size, and detail level.\n\nNo Figma. No generic rounded boxes. No 30-minute color-picking sessions.\n\nProject site: [diagramdesign.dev](https://diagramdesign.dev?utm_source=diagram-design&utm_medium=readme&utm_campaign=github&utm_content=intro)\n\n---\n\n## Why I built it\n\nI write at [littlemight.com](https://littlemight.com?utm_source=diagram-design&utm_medium=readme&utm_campaign=github&utm_content=intro) (and run [BestSelf.co](https://bestself.co?utm_source=diagram-design&utm_medium=readme&utm_campaign=github&utm_content=intro) on the side). Every time I needed a diagram — an architecture sketch, a flowchart, a pyramid of what matters most — I'd ask Claude and get back a generic rounded-box thing that looked nothing like the rest of the site. I'd either fight with Figma for 30 minutes or just skip the diagram.\n\nSo I built a Claude Code skill for it. Editorial-quality visual types, matched to your brand in 60 seconds by reading your website.\n\n> *The highest-quality move is usually deletion.* Every node earns its place. The accent color is reserved for the 1–2 things the reader should look at first. Target density: 4/10.\n\n---\n\n## What it makes\n\nEvery visual type ships in three static variants: minimal light, minimal dark, and full-editorial. Open any of them directly in a browser. There is no build step, JavaScript, or external image dependency.\n\n<table>\n<tr>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/architecture.png\"><img src=\"docs/screenshots/thumbs/architecture.webp\" alt=\"Architecture\"></a><br><b>Architecture</b><br><sub>Components + connections</sub></td>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/it-state.png\"><img src=\"docs/screenshots/thumbs/it-state.webp\" alt=\"IT current-state\"></a><br><b>IT current-state</b><br><sub>Legacy landscape + modernization</sub></td>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/flowchart.png\"><img src=\"docs/screenshots/thumbs/flowchart.webp\" alt=\"Flowchart\"></a><br><b>Flowchart</b><br><sub>Decision logic</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/sequence.png\"><img src=\"docs/screenshots/thumbs/sequence.webp\" alt=\"Sequence\"></a><br><b>Sequence</b><br><sub>Messages over time</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/state.png\"><img src=\"docs/screenshots/thumbs/state.webp\" alt=\"State machine\"></a><br><b>State machine</b><br><sub>States + transitions</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/er.png\"><img src=\"docs/screenshots/thumbs/er.webp\" alt=\"ER\"></a><br><b>ER / data model</b><br><sub>Entities + fields</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/timeline.png\"><img src=\"docs/screenshots/thumbs/timeline.webp\" alt=\"Timeline\"></a><br><b>Timeline</b><br><sub>Events on an axis</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/swimlane.png\"><img src=\"docs/screenshots/thumbs/swimlane.webp\" alt=\"Swimlane\"></a><br><b>Swimlane</b><br><sub>Cross-functional flow</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/quadrant.png\"><img src=\"docs/screenshots/thumbs/quadrant.webp\" alt=\"Quadrant\"></a><br><b>Quadrant</b><br><sub>Two-axis positioning</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/radar.png\"><img src=\"docs/screenshots/thumbs/radar.webp\" alt=\"Radar chart\"></a><br><b>Radar / spider</b><br><sub>Multi-axis comparison</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/loop.png\"><img src=\"docs/screenshots/thumbs/loop.webp\" alt=\"Loop\"></a><br><b>Loop / flywheel</b><br><sub>Reinforcing cycle + shared hub</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/nested.png\"><img src=\"docs/screenshots/thumbs/nested.webp\" alt=\"Nested\"></a><br><b>Nested</b><br><sub>Hierarchy by containment</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/tree.png\"><img src=\"docs/screenshots/thumbs/tree.webp\" alt=\"Tree\"></a><br><b>Tree</b><br><sub>Parent → children</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/org-chart.png\"><img src=\"docs/screenshots/thumbs/org-chart.webp\" alt=\"Org chart\"></a><br><b>Org chart</b><br><sub>Ownership + routing</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/layers.png\"><img src=\"docs/screenshots/thumbs/layers.webp\" alt=\"Layer stack\"></a><br><b>Layer stack</b><br><sub>Stacked abstractions</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/venn.png\"><img src=\"docs/screenshots/thumbs/venn.webp\" alt=\"Venn\"></a><br><b>Venn</b><br><sub>Set overlap</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/pyramid.png\"><img src=\"docs/screenshots/thumbs/pyramid.webp\" alt=\"Pyramid\"></a><br><b>Pyramid / funnel</b><br><sub>Ranked hierarchy or drop-off</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/bar.png\"><img src=\"docs/screenshots/thumbs/bar.webp\" alt=\"Bar chart\"></a><br><b>Bar chart</b><br><sub>Categorical comparison</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/treemap.png\"><img src=\"docs/screenshots/thumbs/treemap.webp\" alt=\"Treemap\"></a><br><b>Treemap</b><br><sub>Part-of-whole by area</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/line.png\"><img src=\"docs/screenshots/thumbs/line.webp\" alt=\"Line chart\"></a><br><b>Line chart</b><br><sub>Trends over time</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/gantt.png\"><img src=\"docs/screenshots/thumbs/gantt.webp\" alt=\"Gantt\"></a><br><b>Gantt</b><br><sub>Tasks + phases on a timeline</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/scatter.png\"><img src=\"docs/screenshots/thumbs/scatter.webp\" alt=\"Scatter plot\"></a><br><b>Scatter plot</b><br><sub>Distribution + correlation</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/high-level.png\"><img src=\"docs/screenshots/thumbs/high-level.webp\" alt=\"High-Level\"></a><br><b>High-Level</b><br><sub>End-to-end stack on a cluster</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/process.png\"><img src=\"docs/screenshots/thumbs/process.webp\" alt=\"Process\"></a><br><b>Process</b><br><sub>Multi-actor sequential workflow</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/medallion.png\"><img src=\"docs/screenshots/thumbs/medallion.webp\" alt=\"Medallion\"></a><br><b>Medallion</b><br><sub>Multi-tier data storage</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/data-flow.png\"><img src=\"docs/screenshots/thumbs/data-flow.webp\" alt=\"Data flow\"></a><br><b>Data flow</b><br><sub>Role-scoped pipeline steps</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/dp-integration.png\"><img src=\"docs/screenshots/thumbs/dp-integration.webp\" alt=\"DP integration\"></a><br><b>DP integration</b><br><sub>Sources → core → consumers</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/dp-security-matrix.png\"><img src=\"docs/screenshots/thumbs/dp-security-matrix.webp\" alt=\"DP security matrix\"></a><br><b>DP security matrix</b><br><sub>Per-role access permissions</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/sankey.png\"><img src=\"docs/screenshots/thumbs/sankey.webp\" alt=\"Sankey\"></a><br><b>Sankey</b><br><sub>Quantities that split + merge</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/fishbone.png\"><img src=\"docs/screenshots/thumbs/fishbone.webp\" alt=\"Fishbone\"></a><br><b>Fishbone</b><br><sub>Grouped causes → one effect</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/wardley.png\"><img src=\"docs/screenshots/thumbs/wardley.webp\" alt=\"Wardley map\"></a><br><b>Wardley map</b><br><sub>Value chain × evolution</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/kanban.png\"><img src=\"docs/screenshots/thumbs/kanban.webp\" alt=\"Kanban\"></a><br><b>Kanban</b><br><sub>Work in progress by state</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/journey.png\"><img src=\"docs/screenshots/thumbs/journey.webp\" alt=\"User journey\"></a><br><b>User journey</b><br><sub>Stages, actions + sentiment</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/deployment.png\"><img src=\"docs/screenshots/thumbs/deployment.webp\" alt=\"Deployment\"></a><br><b>Deployment</b><br><sub>Zones, hosts + artifacts</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/dependency.png\"><img src=\"docs/screenshots/thumbs/dependency.webp\" alt=\"Dependency graph\"></a><br><b>Dependency graph</b><br><sub>Fan-in, ranks + cycles</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/uml-class.png\"><img src=\"docs/screenshots/thumbs/uml-class.webp\" alt=\"UML class\"></a><br><b>UML class</b><br><sub>Classes, operations + typed relations</sub></td>\n</tr>\n<tr>\n  <td align=\"center\"><a href=\"docs/screenshots/story-map.png\"><img src=\"docs/screenshots/thumbs/story-map.webp\" alt=\"Story map\"></a><br><b>Story map</b><br><sub>Backbone × release slices</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/db-schema.png\"><img src=\"docs/screenshots/thumbs/db-schema.webp\" alt=\"Database schema\"></a><br><b>Database schema</b><br><sub>Physical tables + column FKs</sub></td>\n  <td align=\"center\"><a href=\"docs/screenshots/polar.png\"><img src=\"docs/screenshots/thumbs/polar.webp\" alt=\"Polar chart\"></a><br><b>Polar chart</b><br><sub>Cyclic magnitude · linear radius</sub></td>\n</tr>\n<tr>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/waterfall.png\"><img src=\"docs/screenshots/thumbs/waterfall.webp\" alt=\"Waterfall\"></a><br><b>Waterfall</b><br><sub>Running total + signed bridges</sub></td>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/architecture-delta.png\"><img src=\"docs/screenshots/thumbs/architecture-delta.webp\" alt=\"Architecture delta\"></a><br><b>Architecture delta</b><br><sub>Before · Changes · After topology</sub></td>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/exploded.png\"><img src=\"docs/screenshots/thumbs/exploded.webp\" alt=\"Exploded axonometric\"></a><br><b>Exploded axonometric</b><br><sub>Parts pulled apart on one axis</sub></td>\n</tr>\n<tr>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/axonometric-plan.png\"><img src=\"docs/screenshots/thumbs/axonometric-plan.webp\" alt=\"Axonometric plan\"></a><br><b>Axonometric plan</b><br><sub>Rooms and buildings on one plate</sub></td>\n  <td align=\"center\" width=\"33%\"><a href=\"docs/screenshots/heatmap.png\"><img src=\"docs/screenshots/thumbs/heatmap.webp\" alt=\"Heatmap\"></a><br><b>Heatmap</b><br><sub>Value per row × column cell</sub></td>\n  <td align=\"center\" width",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "skill"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "图解生成",
+      "架构可视化",
+      "技能扩展"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 提供编辑式图解技能，以独立 HTML 和 SVG 生成架构图、流程图等可视化。",
+      "capabilities": "图解生成、架构可视化、技能扩展",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/cathrynlavery/diagram-design"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "trycua",
+    "name": "cua",
+    "full_name": "trycua/cua",
+    "url": "https://github.com/trycua/cua",
+    "description": "Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation.",
+    "language": "Rust",
+    "total_stars": 28708,
+    "forks": 2038,
+    "stars_this_period": 229,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai-agent",
+        "apple",
+        "computer-use",
+        "computer-use-agent",
+        "containerization",
+        "cua",
+        "desktop-automation",
+        "hacktoberfest",
+        "lume",
+        "macos",
+        "manus",
+        "operator",
+        "swift",
+        "virtualization",
+        "virtualization-framework",
+        "windows",
+        "windows-sandbox"
+      ],
+      "license": "MIT",
+      "open_issues": 1145,
+      "created_at": "2025-01-31T15:02:49Z",
+      "pushed_at": "2026-10-07T20:50:51Z",
+      "homepage": "https://cua.ai",
+      "default_branch": "main",
+      "forks": 2038,
+      "watchers": 93,
+      "archived": false,
+      "size_kb": 586493
+    },
+    "readme_content": "<div align=\"center\">\n  <a href=\"https://cua.ai\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" alt=\"Cua logo\" width=\"150\" srcset=\"img/logo_white.svg\">\n      <source media=\"(prefers-color-scheme: light)\" alt=\"Cua logo\" width=\"150\" srcset=\"img/logo_black.svg\">\n      <img alt=\"Cua logo\" width=\"150\" src=\"img/logo_black.svg\">\n    </picture>\n  </a>\n\n  <p align=\"center\"><strong>Give AI agents computers they can use.</strong><br>Cua Spaces gives your agents full desktops on your Mac and on machines you own. This repository also holds Cua Driver for desktop automation, Lume for local VMs, CUA-S1 decision models and Cua Bench for evaluating computer-use agents.</p>\n\n  <p align=\"center\"><strong><a href=\"https://spaces.cua.ai\">Get Cua Spaces</a></strong></p>\n\n  <p align=\"center\">\n    <a href=\"https://cua.ai\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://img.shields.io/badge/cua.ai-0ea5e9\" alt=\"cua.ai\"></a>\n    <a href=\"https://discord.gg/mVnXXpdE85\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://img.shields.io/badge/Discord-Join%20Server-10b981?logo=discord&logoColor=white\" alt=\"Discord\"></a>\n    <a href=\"https://x.com/trycua\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://img.shields.io/twitter/follow/trycua?style=social\" alt=\"Twitter\"></a>\n    <a href=\"https://cua.ai/docs\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://img.shields.io/badge/Docs-0ea5e9.svg\" alt=\"Documentation\"></a>\n    <br>\n<a href=\"https://www.star-history.com/#trycua/cua\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://api.star-history.com/badge?repo=trycua/cua&type=trending\" alt=\"trycua/cua | GitHub Trending on Star History\" width=\"266\" height=\"64\"/></a>\n  </p>\n\n</div>\n\n## Choose your path\n\n<div align=\"center\">\n  <table width=\"100%\">\n    <tr>\n      <td colspan=\"3\" align=\"center\" valign=\"top\">\n        <a href=\"#cua-spaces\">\n          <img src=\"img/card-cua-spaces-wide.webp\" alt=\"Cua Spaces: full desktops for your agents. macOS and Linux Spaces on machines you own.\" width=\"100%\">\n        </a>\n      </td>\n    </tr>\n    <tr>\n      <td align=\"center\" valign=\"top\" width=\"33.33%\">\n        <a href=\"#cua-driver\">\n          <img src=\"img/card-cua-driver.webp\" alt=\"Cua Driver: inspect and operate apps on macOS, Windows, and Linux\" width=\"100%\">\n        </a>\n      </td>\n      <td align=\"center\" valign=\"top\" width=\"33.33%\">\n        <a href=\"#lume\">\n          <img src=\"img/card-cua-lume.webp\" alt=\"Lume: local macOS and Linux VMs on Apple Silicon\" width=\"100%\">\n        </a>\n      </td>\n      <td align=\"center\" valign=\"top\" width=\"33.33%\">\n        <a href=\"#cua-bench\">\n          <img src=\"img/card-cua-bench.webp\" alt=\"Cua Bench: create tasks, evaluate agents, and export trajectories\" width=\"100%\">\n        </a>\n      </td>\n    </tr>\n  </table>\n</div>\n\n- **Cua Spaces:** [Install the app and run your first Space](https://cua.ai/docs/spaces/quickstart).\n- **Cua Driver:** [Operate Calculator and verify its result](https://cua.ai/docs/cua-driver/quickstart).\n- **Lume:** [Create a Tahoe VM and connect over SSH](https://cua.ai/docs/lume/quickstart).\n- **Cua SDK and CLI:** [Install `cua` and create a local sandbox](#cua-sdk-and-cli).\n- **CUA-S1:** [Explore small, specialized models for computer-use decisions](#cua-s1).\n- **Cua Bench:** [Create and verify a simulated task](https://cua.ai/docs/cua-bench/quickstart).\n\nBring your own agent and model, or explore CUA-S1 for specialized decisions. Cua provides the computer and automation tools. [Computer-Use 2.0](https://cua.ai/docs/cua-driver/concepts/how-cua-driver-works) describes an agent moving between code, APIs, and graphical interfaces within the same task.\n\n---\n\n## Cua Spaces\n\nCua Spaces is a desktop app that gives your agents full desktops. Each desktop is a Space: a macOS VM built locally on your Mac, or a Linux or Omarchy image. Spaces run on your Mac, on other machines you own, and in [your own cloud account](https://cua.ai/docs/cua-sdk/guides/your-cloud) (AWS, Google Cloud or Modal), and the app keeps them in your menu bar and notch.\n\n- **Teleport.** Move a signed-in app, such as Chrome or Slack, into a Space and it opens there still signed in. Your sessions stay in the Cua Keyvault, encrypted on your Mac, and reach a Space only after you approve.\n- **Multiplayer.** You and your agents work on the same desktop, each with your own cursor. Step in to make a choice, then hand the desktop back.\n- **Agent-ready images.** Spaces images ship with [cua-spacesd](libs/cua-spacesd/README.md), so agents get processes, files, screenshots and input as soon as a Space starts.\n\nhttps://github.com/user-attachments/assets/a2ccc86b-10d0-48c0-bee6-7ae652ba1c59\n\n**Install on macOS 26 or later**\n\n```sh\ncurl -fsSL https://cua.ai/install.sh | sh\n```\n\nOn macOS the installer selects the Cua Spaces app by default and adds the `cua` CLI. You can also [download the signed `.dmg`](https://github.com/trycua/cua/releases/download/cua-spaces-v0.1.0/cua-spaces-0.1.0-darwin-universal.dmg), or get the `.pkg` from the [Cua Spaces 0.1.0 release](https://github.com/trycua/cua/releases/tag/cua-spaces-v0.1.0).\n\nSpaces is free for individuals. Pro and Teams plans are coming soon. The app is source-available under [FSL-1.1-MIT](#licensing).\n\n**[Quickstart](https://cua.ai/docs/spaces/quickstart)** | **[Teleport an app](https://cua.ai/docs/spaces/guides/teleport-an-app)** | **[Share a Space](https://cua.ai/docs/spaces/guides/share-a-space)** | **[Host Spaces on a spare Mac (relay, Tailscale or SSH)](https://cua.ai/docs/start-here/host-spaces-on-your-spare-mac)** | **[Your own cloud](https://cua.ai/docs/cua-sdk/guides/your-cloud)** | **[App source](apps/cua-spaces-macos/README.md)**\n\n---\n\n## Cua Driver\n\nGive your agent tools to inspect and operate native desktop apps and browsers on macOS, Windows, and Linux. Connect through the CLI, MCP, or typed SDKs. Background delivery lets agents work without moving your pointer or taking focus when the app and platform support it; see [platform support](https://cua.ai/docs/cua-driver/concepts/platform-support) for the boundaries.\n\n**macOS / Linux**\n\n```sh\n/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"\n```\n\n**Windows (PowerShell)**\n\n```powershell\nirm https://cua.ai/driver/install.ps1 | iex\n```\n\n**Your first result:** connect your agent, ask it to compute 6 × 7 in Calculator, and have it verify that the app displays 42. The tutorial covers platform setup, permissions, and agent connection.\n\n**[Drive your first app](https://cua.ai/docs/cua-driver/quickstart)** | **[Installation](https://cua.ai/docs/cua-driver/quickstart)** | **[CLI Reference](https://cua.ai/docs/cua-driver/reference/cli)**\n\nUsing Claude Code, Codex, Cursor, OpenClaw, or another agent? [Find your integration](https://cua.ai/docs/cua-driver/guides/connect-your-agent). Source documentation and architecture notes live in [`libs/cua-driver/README.md`](libs/cua-driver/README.md).\n\n### See Cua Driver in action\n\nTwo Cua Driver sessions select cells in LibreOffice Calc and objects in Inkscape on an Omarchy desktop while a terminal stays in the foreground. Watch the 50-second demo.\n\nhttps://github.com/user-attachments/assets/b4e5517c-d2db-4758-b4cf-07131b0753b2\n\n---\n\n## Lume\n\nCreate and manage local macOS and Linux VMs on Apple Silicon using Apple's Virtualization.Framework.\n\n```bash\n/bin/bash -c \"$(curl -fsSL https://cua.ai/lume/install.sh)\"\n```\n\n**Your first result:** create a vanilla macOS Tahoe VM from an Apple restore image, start it, and connect over SSH. The tutorial uses the Lume CLI directly and explains the unattended setup defaults.\n\n**[Create your first Lume VM](https://cua.ai/docs/lume/quickstart)** | **[Installation](https://cua.ai/docs/lume/quickstart)** | **[CLI reference](https://cua.ai/docs/lume/reference/cli)**\n\n---\n\n## Cua SDK and CLI\n\nOne SDK and one `cua` command for local VMs and containers, and for any machine that runs [cua-spacesd](libs/cua-spacesd/README.md).\n\n**macOS / Linux**\n\n```sh\ncurl -fsSL https://cua.ai/install.sh | sh\n```\n\n**Windows (PowerShell)**\n\n```powershell\nirm https://cua.ai/install.ps1 | iex\n```\n\nIn a terminal the script shows a short checklist: the `cua` CLI, the Cua Spaces app (default on macOS), the cua-driver MCP and skill for your agents, and hosting this machine. It then runs `cua auth login`, which signs you in and offers to install cua skills and the cua MCP server into your AI coding agents (Claude Code, Codex, Cursor, and others). Preselect items with `sh -s -- --select cua-driver`, or skip the checklist with `--only cua-driver`. See [the installer options](scripts/install/README.md).\n\n```sh\ncua sb create ubuntu --name dev          # a gVisor container, set up on first use\ncua sb exec dev uname -a\ncua sb screenshot dev\ncua sb rm dev\n```\n\nThe same sandbox from Python:\n\n```python\nfrom cua_sandbox import Image, Sandbox\n\nasync with Sandbox.ephemeral(Image.linux(), local=True) as sb:\n    print((await sb.shell.run(\"uname -a\")).stdout)\n```\n\n- **SDK:** the same API in Python (`pip install cua`), TypeScript (`@trycua/cua`), Swift (`Cua`) and Kotlin (generated bindings), running embedded in your process or through a shared `cua daemon`.\n- **Sandboxes need no agent inside.** Readiness comes from the runtime and optional port probes. Images that ship cua-spacesd (port 3211) add processes, files, screenshots, input through cua-driver, and low-latency video and audio streaming.\n- **Your own machines.** `cua host setup` makes this machine reachable through the cua.ai relay with no port forwarding.\n\n**[SDK README](libs/cua/README.md)** | **[Quickstart](https://cua.ai/docs/cua-sdk/quickstart)** | **[CLI reference](https://cua.ai/docs/cua-cli/reference/cli)** | **[Sandbox SDK reference](https://cua.ai/docs/cua-sdk/reference/sandbox)**\n\n---\n\n## CUA-S1\n\nCUA-S1 is our family of small, specialized System 1 models for computer use. We use \"System 1\" as an engineering analogy for fast, bounded decisions, such as choosing which value belongs in a field or whether to leave an element alone. It is not a strict classification of model architectures or a replacement for a general-purpose agent's planning and reasoning.\n\nThe first research profile focuses on forms: scoring decisions from structured interface elements and document values rather than generating a response token by token. Application code orders the actions, and the optional Cua Driver integration handles execution with explicit action boundaries.\n\nThe project includes Python model code, synthetic-data generation, training, and evaluation. The GitHub component is an early, source-only research release; model weights are hosted separately on Hugging Face. The source is MIT-licensed. Check each model and dataset card for its scope, limitations, and artifact-specific license.\n\n**[Explore CUA-S1](libs/cua-s1)** | **[Model card](libs/cua-s1/MODEL_CARD.md)** | **[Safety and deployment guidance](libs/cua-s1/SECURITY.md)**\n\n**CUA-S1-FORMS on Hugging Face:** **[Model weights](https://huggingface.co/cua-ai/cua-s1-forms)** | **[Dataset](https://huggingface.co/datasets/cua-ai/cua-s1-forms)**\n\n---\n\n## Cua Bench\n\nBuild computer-use tasks, evaluate agents, and export trajectories for training. Start with a simulated task that requires no VM, Docker, or model API key.\n\nWith Python 3.12 or 3.13 and [uv](https://docs.astral.sh/uv/) installed:\n\n```bash\nuv tool install 'cua-bench[browser]'\nuv tool run --from 'cua-bench[browser]' playwright install chromium\n```\n\n**Your first result:** create a small task, run its reference solution, and verify that its evaluator reports a reward of `1.0`. Then try the same task yourself.\n\n**[Build your first task](https://cua.ai/docs/cua-bench/quickstart)** | **[What is Cua-Bench?](https://cua.ai/docs/cua-bench)** | **[CLI reference](https://cua.ai/docs/cua-bench/reference/cli)** | **[Partner with us](https://cuabench.ai/)**\n\n---\n\n## Packages\n\n| Package                                          ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "eval",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "跨系统桌面自动化",
+      "本地虚拟机",
+      "Agent 计算机操作"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一套面向 AI Agent 的计算机操作开源组件：README 列出跨 macOS、Windows、Linux 的桌面驱动、本地虚拟机、专用决策模型，以及用于任务创建、评测和轨迹导出的基准工具。",
+      "audience": "需要为 Agent 配置可控桌面环境、跨系统操作能力或计算机操作评测流程的开发者与研究团队",
+      "capabilities": "跨系统桌面自动化、本地虚拟机、Agent 计算机操作、任务评测、轨迹导出、SDK 与 CLI",
+      "risk": "执行端可接触桌面与本地虚拟机；权限、凭据、隔离边界和真实操作的安全后果必须在部署环境中单独审查。",
+      "verified_at": "2026-10-08",
+      "evidence_sources": [
+        "https://github.com/trycua/cua"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未运行驱动、虚拟机或评测。"
+    }
+  },
+  {
+    "owner": "superdesigndev",
+    "name": "treg",
+    "full_name": "superdesigndev/treg",
+    "url": "https://github.com/superdesigndev/treg",
+    "description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
+    "language": "Python",
+    "total_stars": 4737,
+    "forks": 385,
+    "stars_this_period": 407,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "api-keys",
+        "cli",
+        "credentials",
+        "developer-tools",
+        "dsh-plugin",
+        "mcp",
+        "proxy",
+        "python",
+        "registry",
+        "secrets"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 125,
+      "created_at": "2026-07-15T13:38:07Z",
+      "pushed_at": "2026-10-07T21:49:21Z",
+      "homepage": "https://treg.to",
+      "default_branch": "main",
+      "forks": 385,
+      "watchers": 13,
+      "archived": false,
+      "size_kb": 89432
+    },
+    "readme_content": "# Treg (OpenRouter for Tools)\n\n![treg — the tool catalog for your agent](docs/assets/treg-hero.png)\n\n**OpenRouter, but for agent tools instead of models.** Point an agent at one base URL with one token\nand it can do the job: **a curated catalog of thousands of endpoints across many providers** — SEO and backlinks,\nsocial and trends, people and company enrichment, ads, scraping, image and video generation —\n**priced per call, from a cent**,\nwith no provider signup. Plus your own team's keys, skills and CLIs, callable by every teammate's\nagent without the credential ever leaving the server.\n\n**Ask for the task, not the tool.** You do not need to know which vendor sells backlink data, or to\nhold an account with them. Search for what you want to do, read the price, call it.\n\nBuilt for the Superdesign team, live at [treg.to](https://treg.to) — anyone can self-host.\n\n## Why it exists\n\nThe tools an agent needs for real work sit behind subscriptions nobody buys for a single run —\nSemrush $139/mo, Moz $99/mo, Crunchbase $99/mo, Apollo $59/seat — behind signup walls, or behind no\npublic API at all (invite-only, partner-only, app-review-only). treg carries those accounts and\nbills fractions of a cent per call.\n\n## Two kinds of tool, one token\n\n- **The catalog** — external endpoints treg can serve with its own key or through a verified public\n  route that needs no provider key. Own-key calls use the team's prepaid balance; anonymous calls\n  are free. No account with the provider is needed. New verified accounts receive **$1.00 free**\n  once, when they create an eligible team.\n- **Your own tools** — anything a teammate registered: a paid API account, an OAuth connection, a\n  vendor CLI, a `SKILL.md`. **Your own key always wins over treg's, and those calls are never\n  metered.**\n\nThe vocabulary for the second half:\n\n- **tool** = something the registry calls for you with the org's credential. Two kinds:\n  - **endpoint** — an upstream `base_url` + credential **bindings** (each binding injects one\n  secret into the request; a request can carry several, e.g. an OAuth bearer *and* a\n  `developer-token` header).\n  - **CLI** — a vendor binary (`stripe`, `gh`, `vercel`, ...) run with the credential injected.\n- **skill / bundle** = a recipe (`SKILL.md`) + its secrets + its tool(s), registered together.\n\n**The one rule:** the proxy **relays, never models** the upstream, and **injects auth server-side**\n— so it survives upstream API changes and callers never hold keys.\n\n---\n\n# Part 1 · Using the registry\n\nVisit [**treg.to**](https://treg.to) (hosted on Render) — the dashboard,\nsign-in, and every URL below live there.\n\n## Quickstart\n\nSame flow as the dashboard's **Getting started** guide:\n\n```bash\n# 1. install the CLI — also points it at the registry\ncurl -fsSL https://treg.to/install.sh | sh\n\n# 2. sign in (GitHub default · --email for a one-time code · --token for agents/CI)\ntreg login\n\n# 3. do something useful immediately — no key, nothing registered\ntreg catalog search \"backlinks for a domain\"     # find a tool by what it DOES\ntreg call tikhub.tiktok.user.profile --query uniqueId=tiktok\ntreg balance                                     # exactly what that cost\n\n# (or `treg onboard` for the guided walkthrough)\n```\n\nFish Audio provides S2.1 Pro speech, public-voice discovery, and private voice cloning.\nSpeech is binary stdout, so redirect it to a file. A discovered voice's `_id` or a team voice id is\nthe TTS `reference_id`; voices created on treg's Fish account are durable team resources:\n\n```bash\ntreg call fishaudio.tts.s2-1-pro --method POST --header model=s2.1-pro \\\n  --data '{\"text\":\"Hello from treg\",\"format\":\"mp3\"}' > speech.mp3\ntreg call fishaudio.voices.discover --query self=false --query licensed=false --query language=en\ntreg resources list --provider fishaudio --kind voice\n```\n\nWith your own Fish key, requests remain an unrestricted, unmetered upstream relay and Fish owns the\naccount boundary.\n\nCatalog tool inputs are described by `treg catalog get <id>`. Tools marked `strict_query` reject undeclared or repeated query parameters, unsupported values and request bodies.\n\nYour token identifies you on every call (`X-Treg-Token` header) and is the same for all tools.\nDiscover what your team has shared: `treg tool ls` · check credential health: `treg health`.\n\n### Or install it as a Claude Code plugin\n\n```\n/plugin marketplace add superdesigndev/treg\n/plugin install treg@treg\n```\n\nInstalls with no token and no configuration. The skill loads as `treg:treg` and, on its first run,\nwalks your agent through the rest — the CLI, sign-in, then `treg mcp install` — so you end up with\nthe command line **and** treg's tools. Other agents: `npx skills add superdesigndev/treg -s treg`\n(or see [Workflow skills](#workflow-skills) for the rest).\nSee [docs/CLAUDE-PLUGIN.md](docs/CLAUDE-PLUGIN.md). MiniMax Code / MiniMax Agent users: the same\nskill ships via the MiniMax Plugin Marketplace ([docs/MINIMAX-PLUGIN.md](docs/MINIMAX-PLUGIN.md)).\n\n### Workflow skills\n\nReady-made recipes your agent runs end to end, every call through treg:\n\n| Skill | What your agent can do |\n|---|---|\n| [`treg`](skills/treg/SKILL.md) | Find and call any tool in the catalog, plus your own tools |\n| [`lead-signals`](skills/lead-signals/SKILL.md) | Find in-market buyers from public signals (complaints, job changes, hiring, funding, tool adoption) and monitor a topic, competitor or account list for them ([treg.to/leads-signals](https://treg.to/leads-signals)) |\n| [`make-ugc`](skills/make-ugc/SKILL.md) | Make AI UGC videos: trending hooks, a presenter, talking-head clips, captions ([treg.to/ugc](https://treg.to/ugc)) |\n| [`jev-memory`](skills/jev-memory/SKILL.md) | Give Claude Code a memory: a Claude Code mod where Jev judges each prompt after the turn and keeps your lasting preferences, installed ready-made or built from one prompt ([the mod](examples/claude-code-mods/jev-memory)) |\n\n`install.sh` installs all of them for you except `jev-memory`, which is opt-in. To add them to an existing agent instead\n([skills.sh](https://skills.sh) CLI):\n\n```bash\nnpx skills add superdesigndev/treg                        # every public skill\nnpx skills add superdesigndev/treg --skill lead-signals   # just one\ntreg skill bootstrap                                      # same set, with the treg CLI you already have\n```\n\nThe workflow skills run on treg, so set it up first (the Quickstart above, or point your agent at\n[treg.to/llms.txt](https://treg.to/llms.txt)).\n\n### Claude.ai connector\n\nThe Claude Connectors Directory surface is `https://treg.to/mcp/v2/`. It exposes only curated\ncatalog endpoints and separates read calls from write calls so Claude receives accurate safety\nsignals. The existing `/mcp/` surface remains available for catalog endpoints, team-owned tools,\nand imported skills. See the [MCP and OAuth architecture](docs/context/architecture/mcp-oauth.md)\nfor the boundary and implementation, and the\n[submission runbook](https://github.com/superdesigndev/treg-internal/blob/main/docs/distribution/CLAUDE-CONNECTOR-SUBMISSION.md) for release gates.\n\n## Call a tool you don't have a key for\n\nThe catalog is grouped by what endpoints **do**: keyword and rank tracking, backlinks and authority,\nAI visibility, trending and discovery, publishing to socials, people and company enrichment, ads\nmanagement and creative, measurement.\n\n```bash\ntreg catalog                                    # every platform, busiest first\ntreg catalog search \"find a work email\"         # by the job, not the vendor\ntreg catalog get hunter.people.email.find       # params, PRICE, example response\ntreg call hunter.people.email.find --query domain=reddit.com --query full_name=\"Alexis Ohanian\"\n```\n\n**How a catalogued call is served** — the credential ladder, in order:\n\n1. your team registered its own tool for that provider → that tool, that key;\n2. your team stored a secret for the provider → injected through a virtual tool;\n3. neither, and the endpoint has a verified public route → **no provider key**, free;\n4. otherwise → **treg's own key**, billed to the team's prepaid balance.\n\nThe anonymous price assumes the caller does not send a provider credential header. The faithful\nrelay preserves caller headers, so a caller-supplied provider key can use that key's credits.\nYour own credential always beats treg's, so connecting a key you already pay for makes those calls\nfree of the balance rather than duplicating them. An endpoint treg has no published price for is\n**refused**, not served free — you are told to connect your own key instead. Where several providers\nserve one capability, `treg catalog search` shows them side by side with prices; **choosing is\nyours** — treg does not silently pick or fail over between providers for you. (When treg's own\naccount for a provider is out it may serve the *same* endpoint through a treg-owned relay account,\ndisclosed on the response; a team can opt out.) The exception you opt into: `treg.<capability>` routed endpoints, where treg picks the provider for you and names it.\n\n```bash\ntreg balance          # credit left, calls in flight, recent spend\ntreg topup            # add funds, or set up automatic top-ups\n```\n\nOut of balance is an HTTP **402** carrying `balance_micro`, `estimated_cost_micro` and a `topup_url`,\nso an agent can act on it without reading prose.\n\n**Enrich Arena** lives at `/enrich-arena`, outside the dashboard. Compare enrichment answers with each vendor’s cost and speed,\nvote for the best answer in one click, or watch a sequential waterfall. Capability-compatible\nasync providers participate too; Arena handles submit and polling internally. Browsing is\npublic; submitting requires login, and billable attempts use your team's credits. See the\n[Arena guide](docs/context/interface/enrich-arena.md).\n\n**Web Arena** compares Web Search, Web Fetch, and Sitemap providers at `/web-arena`.\nBattle calls selected providers for the same input; Waterfall tries them in order. The\nlive leaderboard combines direct provider-call hit rates and response times with checked\nWeb Arena quality results over a rolling 30-day window. The pages open when the feature\nis enabled. See the\n[Web Arena guide](docs/context/interface/web-arena.md).\n\n## Share & use your own tools\n\nThe zero-thought path — point treg at a project and it figures out what's shareable:\n\n```bash\ntreg scan     # read-only preview: the keys, skills & CLIs upload would register\ntreg upload   # register them (encrypted server-side); idempotent, --replace to update\n```\n\n`treg upload` scans the `.env` (matching keys against ~80 known providers), every skill\nsubdirectory, and installed catalog CLIs. Three kinds of things go into the registry — here's how\nto share and use each:\n\n### 1. Endpoints (HTTP APIs)\n\n**Share** — one upstream URL callable with a stored key, or bulk from a `.env`:\n\n```bash\ntreg secret add STRIPE_KEY --value sk_live_123\ntreg add stripe --base-url https://api.stripe.com --secret STRIPE_KEY\n\ntreg upload env --select openai,stripe,resend     # or straight from the .env\n```\n\n**Use** — the agent-native way: build the **real** upstream request and prefix it with the proxy.\ntreg resolves the tool by host, injects the credential, and relays everything else faithfully\n(your `X-Treg-Token` is stripped before the upstream sees it):\n\n```\nReal request:   GET https://api.intercom.io/conversations?per_page=5\nThrough treg:   GET https://treg.to/call/https://api.intercom.io/conversations?per_page=5\n                    header:  X-Treg-Token: <your token>\n```\n\nOr the CLI shorthand — and `treg calls` for the audit log:\n\n```bash\ntreg call intercom conversations --query per_page=5\ntreg call stripe v1/balance\n```\n\n### 2. CLIs\n\n**Share** — automatic: `treg upload` detects installed catalog CLIs (`stripe`, `gh`, `vercel`, …)\nand registers them; a recipe-only catalog CLI skill (e.g. `stripe-cli`) auto-becomes runnable too.\n\n**Use** — `treg run` executes the vendor CLI **with the org's credential injected**, so ",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[project]\nname = \"tools-registry\"\nversion = \"0.23.0\"\ndescription = \"A remote registry that turns team skills into shareable, callable tools via a credential-injecting proxy.\"\nreadme = \"README.md\"\nlicense = { file = \"LICENSE\" }\nrequires-python = \">=3.12,<3.14\"  # keep in sync with PYREQ in src/treg/web/install.sh\nauthors = [\n    { name = \"Unclecode\", email = \"unclecode@superdesign.dev\" },\n    { name = \"SuperDesign\" },\n]\nmaintainers = [{ name = \"Unclecode\", email = \"unclecode@superdesign.dev\" }]\nkeywords = [\"registry\", \"cli\", \"proxy\", \"credentials\", \"secrets\", \"api\", \"tools\", \"agents\"]\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Environment :: Console\",\n    \"Intended Audience :: Developers\",\n    \"License :: Other/Proprietary License\",\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Topic :: Software Development\",\n    \"Topic :: Utilities\",\n]\n# Base install = just the CLI. Light + pure-Python, so `pip install tools-registry` (and Homebrew) are\n# fast. Everything needed to RUN a registry server lives in the `[server]` extra below.\ndependencies = [\n    \"httpx>=0.27\",\n    \"posthog>=7.47.3\",\n    \"questionary>=2.0\",\n]\n\n[project.optional-dependencies]\n# The registry SERVER — host your own. The FastAPI app, the DB drivers, and encryption. Not needed to\n# USE the CLI against a hosted registry, only to RUN one. Install with: pip install \"tools-registry[server]\"\nserver = [\n    \"alembic>=1.16.5\",\n    \"fastapi>=0.115\",\n    \"uvicorn[standard]>=0.32\",\n    \"sqlmodel>=0.0.22,<0.0.45\",\n    \"sqlalchemy[asyncio]>=2.0.42\",\n    \"aiosqlite>=0.20\",\n    \"asyncpg>=0.30\",\n    \"cryptography>=43\",\n    \"pydantic-settings>=2.5\",\n    \"pyyaml>=6\",   # the endpoint catalog's data files (src/treg/catalog/*.yaml) — server-side only\n    \"stripe>=12\",  # balance top-ups (src/treg/infra/stripe.py) — the payment rail, server-side only\n    \"mcp>=2\",      # the MCP front door (src/treg/mcp.py) — server-side only; pulls httpx2 ALONGSIDE\n    \"quickjs>=1.19.4\",  # the hub's script sandbox engine (src/treg/hub_sandbox.py) — server-side only\n    # httpx (they coexist), so the light CLI's dependency set is untouched\n    \"redis>=5\",    # the shared key-value store (src/treg/infra/kv.py) — server-side only\n    \"obstore>=0.11,<0.12\",\n    \"numpy>=2.1\",  # find's card vectors: one matrix product per query (application/find_index.py)\n]\n# The LOCAL PROXY (`treg shell` catching the agent's own outgoing calls). It needs to generate a\n# certificate authority on the machine, and `cryptography` is a compiled package — putting it in the\n# base install would end the light, pure-Python CLI. Install with: pip install \"tools-registry[proxy]\"\n# A self-hoster already has it through [server]. Everything else the proxy uses is asyncio + ssl from\n# the standard library plus httpx, which is already a base dependency.\nproxy = [\n    \"cryptography>=43\",\n]\n\n[project.scripts]\ntreg = \"treg.cli:main\"\n# Scheduled maintainer commands (worker profile) — needs the [server] extra; Render cron calls this.\ntreg-worker = \"treg.worker:main\"\n\n[project.urls]\nHomepage = \"https://treg.to\"\nRepository = \"https://github.com/superdesigndev/treg\"\nIssues = \"https://github.com/superdesigndev/treg/issues\"\n\n[dependency-groups]\ndev = [\n    \"import-linter>=2.13\",\n    \"pytest>=8.3\",\n    \"pytest-asyncio>=0.24\",\n    \"tools-registry[server]\",   # the test suite imports the server (api, models, …), so dev pulls it in\n]\ntest = [\n    \"playwright>=1.62.0\",\n]\n\n[tool.uv]\n# uv.lock is `revision = 3`; uv < 0.8.4 silently rewrites it to revision 2 (a ~650-line diff\n# that changes no versions). Refuse to run on an old uv rather than teach everyone to avoid `uv lock`.\nrequired-version = \">=0.12\"\n\n[tool.importlinter]\nroot_package = \"treg\"\ninclude_external_packages = true\nexclude_type_checking_imports = true\n\n[[tool.importlinter.contracts]]\nname = \"Lightweight CLI modules do not import server dependencies\"\ntype = \"forbidden\"\nsource_modules = [\n    \"treg.cli\",\n    \"treg.convert\",\n    \"treg.skills\",\n    \"treg.providers\",\n    \"treg.localrun\",\n    \"treg.shell\",\n    \"treg.agents\",\n    \"treg.egress\",\n    \"treg.fsjail\",\n]\nforbidden_modules = [\n    \"obstore\",\n    \"aiosqlite\",\n    \"alembic\",\n    \"asyncpg\",\n    \"cryptography\",\n    \"fastapi\",\n    \"mcp\",\n    \"pydantic\",\n    \"pydantic_core\",\n    \"pydantic_settings\",\n    \"redis\",\n    \"sqlalchemy\",\n    \"sqlmodel\",\n    \"starlette\",\n    \"stripe\",\n    \"uvicorn\",\n    \"yaml\",\n]\nignore_imports = [\n    # ensure_proxy_dependency imports this only after the user invokes the optional proxy feature.\n    \"treg.cli -> cryptography\",\n    # render_grant is a server-only path and imports SQLModel only when the server calls it.\n    \"treg.localrun -> sqlmodel\",\n]\nallow_indirect_imports = true\nunmatched_ignore_imports_alerting = \"error\"\nas_packages = false\n\n[[tool.importlinter.contracts]]\nname = \"Money domain does not depend on best-effort audit\"\ntype = \"forbidden\"\nsource_modules = [\"treg.domain.money\"]\nfo",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "工具目录",
+      "统一调用",
+      "凭据管理"
+    ],
+    "brief_zh": {
+      "summary": "把外部工具、团队密钥和命令行工具汇成统一调用入口，让 Agent 查找并调用所需能力。",
+      "capabilities": "工具目录、统一调用、凭据管理",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/superdesigndev/treg"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "pingdotgg",
+    "name": "t3code",
+    "full_name": "pingdotgg/t3code",
+    "url": "https://github.com/pingdotgg/t3code",
+    "description": "",
+    "language": "TypeScript",
+    "total_stars": 26137,
+    "forks": 6767,
+    "stars_this_period": 241,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 2735,
+      "created_at": "2026-02-08T23:46:22Z",
+      "pushed_at": "2026-10-07T21:55:19Z",
+      "homepage": "https://t3.codes",
+      "default_branch": "main",
+      "forks": 6767,
+      "watchers": 73,
+      "archived": false,
+      "size_kb": 456516
+    },
+    "readme_content": "# T3 Code\n\nT3 Code is an \"agent harness control surface\". It enables control of the agents on your machine with a best-in-class mobile app ([iOS](https://apps.apple.com/us/app/t3-code-remote-claude-more/id6787819824), [Android](https://play.google.com/store/apps/details?id=com.t3tools.t3code)), [web app](https://app.t3.codes) and [Electron-based desktop app](https://t3.codes).\n\nWorks with your subscriptions on Claude Code, Codex, Cursor, Grok Build, OpenCode, and Google Antigravity. If they're set up on your computer, T3 Code can control them.\n\n## \"Wait, what are you selling me?\"\n\nNothing. We built T3 Code because we wanted the best possible development experience with agents. We were inspired by existing solutions like the Codex desktop app, Conductor, Claude Desktop and Cursor Glass, but none met our bar.\n\nWe wanted something performant, remote-ready, and truly open. If we ever go the wrong direction, we want you to have everything you need to fork and build the editor that you want.\n\n## Installation\n\n> [!WARNING]\n> T3 Code currently supports Codex, Claude, Cursor, Grok Build, OpenCode, and Antigravity. Install and authenticate at least one provider before use:\n>\n> - Codex: install [Codex CLI](https://developers.openai.com/codex/cli) and run `codex login`\n> - Claude: install [Claude Code](https://claude.com/product/claude-code) and run `claude auth login`\n> - Cursor: install [Cursor CLI](https://cursor.com/cli) and run `agent login`\n> - Grok Build: install [Grok Build CLI](https://x.ai/cli) and run `grok login`\n> - OpenCode: install [OpenCode](https://opencode.ai) and run `opencode auth login`\n> - Antigravity: enable it in Settings, then use **Install Antigravity** and **Sign in with Google**. No CLI is required.\n\n### Command line\n\n```bash\ncurl -fsSL https://t3.codes/install.sh | sh\n```\n\nOn Windows, in PowerShell:\n\n```powershell\nirm https://t3.codes/install.ps1 | iex\n```\n\nThen run `t3` to start the server and open the local web app. `t3 service install` keeps it running in the background, `t3 update` moves to a newer release, and `t3 --help` has the full reference.\n\nTo try it once without installing, run `npx t3@latest` instead.\n\n### Desktop app\n\nInstall the latest version of the desktop app from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), or from your favorite package registry:\n\n#### Windows (`winget`)\n\n```bash\nwinget install T3Tools.T3Code\n```\n\n#### macOS (Homebrew)\n\n```bash\nbrew install --cask t3-code\n```\n\n#### Debian, Ubuntu (`.deb`)\n\nDownload the `.deb` from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), then:\n\n```bash\nsudo apt install ./T3-Code-*.deb\n```\n\n#### Arch Linux (AUR)\n\nStable:\n\n```bash\nyay -S t3code-bin\n```\n\nNightly:\n\n```bash\nyay -S t3code-nightly-bin\n```\n\nThe AUR packaging is maintained in this repository under [`packaging/aur`](./packaging/aur).\n\n## Some notes\n\nWe are very very early in this project. Expect bugs.\n\nWe are (mostly) not accepting contributions yet. Small fixes may be considered. Big features will not be.\n\n## Documentation\n\nFull docs live in [docs/](./docs). There's no docs site yet.\n\n- [Install and first run](./docs/user/install.md)\n- [Permission modes](./docs/user/permission-modes.md)\n- [Keyboard shortcuts](./docs/user/keybindings.md)\n- [Project settings](./docs/user/project-settings.md)\n- [Appearance preferences](./docs/user/appearance.md)\n- [Remote access from a phone or another machine](./docs/user/remote-access.md)\n- [Connect Claude Code, Codex, ChatGPT and other agents over MCP](./docs/user/outside-agents.md)\n- [Keeping app and server in sync](./docs/user/updating.md)\n- [Source control integrations](./docs/user/source-control.md)\n- Multiple accounts: [Codex](./docs/user/providers-codex.md) · [Claude](./docs/user/providers-claude.md)\n- [Run T3 Code as a background service](./docs/user/background-service.md)\n\nBuilding from source? Start at [docs/internals/overview.md](./docs/internals/overview.md).\n\n## If you REALLY want to contribute still.... read this first\n\n### Install `vp`\n\nT3 Code uses Vite+ so you'll need to install the global `vp` command-line tool.\n\n#### macOS / Linux\n\n```bash\ncurl -fsSL https://vite.plus | bash\n```\n\n#### Windows\n\n```bash\nirm https://vite.plus/ps1 | iex\n```\n\nCheckout their getting started guide for more information: https://viteplus.dev/guide/\n\n### Install dependencies\n\n```bash\nvp i\n```\n\nRead [CONTRIBUTING.md](./CONTRIBUTING.md) before reporting a bug or opening a PR.\n\nHave a feature request? Start an [Ideas discussion](https://github.com/pingdotgg/t3code/discussions/categories/ideas).\n\nNeed support? Join the [Discord](https://discord.gg/jn4EGJjrvv).\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@t3tools/monorepo\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"prepare\": \"effect-tsgo patch && vp config --no-agent\",\n    \"dev\": \"node scripts/dev-runner.ts dev\",\n    \"dev:share\": \"node scripts/dev-runner.ts dev --share\",\n    \"dev:server\": \"node scripts/dev-runner.ts dev:server\",\n    \"dev:web\": \"node scripts/dev-runner.ts dev:web\",\n    \"dev:marketing\": \"vp run --filter @t3tools/marketing dev\",\n    \"dev:desktop\": \"node scripts/dev-runner.ts dev:desktop\",\n    \"migrate-dev-db\": \"node apps/server/scripts/migrate-dev-db.ts\",\n    \"start\": \"vp run --filter t3 start\",\n    \"start:desktop\": \"vp run --filter @t3tools/desktop start\",\n    \"start:marketing\": \"vp run --filter @t3tools/marketing preview\",\n    \"start:mock-update-server\": \"node scripts/mock-update-server.ts\",\n    \"screenshots:mobile\": \"node scripts/mobile-showcase.ts\",\n    \"icons:export\": \"node scripts/export-brand-icons.ts\",\n    \"icons:check\": \"node scripts/export-brand-icons.ts --check\",\n    \"licenses:sync\": \"node scripts/sync-third-party-license-notices.ts\",\n    \"icons:export:android\": \"node scripts/export-android-icons.ts\",\n    \"build\": \"vp run --filter './apps/*' build\",\n    \"build:marketing\": \"vp run --filter @t3tools/marketing build\",\n    \"build:desktop\": \"vp run --filter @t3tools/desktop --filter t3 build\",\n    \"build:resource-monitor\": \"cargo build --locked --release --manifest-path native/resource-monitor/Cargo.toml\",\n    \"typecheck\": \"vp run -r --concurrency-limit 2 typecheck\",\n    \"tc\": \"vp run -r --concurrency-limit 2 typecheck\",\n    \"lint\": \"vp lint --report-unused-disable-directives\",\n    \"knip\": \"knip --preprocessor ./scripts/knip-schemas.ts\",\n    \"knip:check\": \"knip --include files,dependencies --no-config-hints && knip --workspace apps/server --workspace apps/desktop --workspace apps/web --workspace packages/client-runtime --workspace packages/contracts --workspace packages/effect-acp --workspace packages/effect-codex-app-server --workspace packages/shared --workspace packages/ssh --workspace packages/tailscale --exports --preprocessor ./scripts/knip-schemas.ts --no-config-hints\",\n    \"knip:production\": \"knip --production --preprocessor ./scripts/knip-schemas.ts\",\n    \"lint:mobile\": \"node scripts/mobile-native-static-check.ts\",\n    \"test\": \"vp run -r test\",\n    \"test:perf:v2-wire\": \"vp test run apps/server/src/orchestration-v2/WireProjection.test.ts apps/server/src/orchestration-v2/threadHistoryPaging.test.ts apps/server/src/orchestration-v2/ThreadStream.test.ts apps/server/src/orchestration-v2/ThreadTransportPerformance.test.ts apps/server/src/orchestration-v2/ShellStream.test.ts apps/server/src/orchestration-v2/CommandPolicy.test.ts apps/server/src/orchestration-v2/runtimeLayer.test.ts apps/server/src/ws.test.ts packages/contracts/src/environmentHttp.test.ts packages/contracts/src/orchestrationV2.test.ts packages/client-runtime/src/operations/commands.test.ts packages/client-runtime/src/operations/commands.performance.test.ts packages/client-runtime/src/state/boundedThreadSnapshotHttp.test.ts packages/client-runtime/src/state/threadHistoryController.test.ts packages/client-runtime/src/state/threadHistoryMerge.test.ts packages/client-runtime/src/state/threadDetail.test.ts packages/client-runtime/src/state/threads-sync.test.ts packages/client-runtime/src/state/shellReducer.test.ts\",\n    \"test:resource-monitor\": \"cargo test --locked --manifest-path native/resource-monitor/Cargo.toml\",\n    \"test:desktop-smoke\": \"vp run --filter @t3tools/desktop smoke-test\",\n    \"fmt\": \"vp fmt\",\n    \"fmt:check\": \"vp fmt --check\",\n    \"dist:desktop:artifact\": \"node scripts/build-desktop-artifact.ts\",\n    \"dist:desktop:dmg\": \"node scripts/build-desktop-artifact.ts --platform mac --target dmg\",\n    \"dist:desktop:dmg:arm64\": \"node scripts/build-desktop-artifact.ts --platform mac --target dmg --arch arm64\",\n    \"dist:desktop:dmg:x64\": \"node scripts/build-desktop-artifact.ts --platform mac --target dmg --arch x64\",\n    \"dist:desktop:linux\": \"node scripts/build-desktop-artifact.ts --platform linux --target AppImage --arch x64\",\n    \"dist:gnome-extension\": \"gnome-extensions pack apps/desktop/gnome-extension --extra-source=captureService.js --extra-source=captureFeedback.js --extra-source=feedbackGeometry.js --out-dir=release --force\",\n    \"dist:desktop:win\": \"node scripts/build-desktop-artifact.ts --platform win --target nsis\",\n    \"dist:desktop:win:arm64\": \"node scripts/build-desktop-artifact.ts --platform win --target nsis --arch arm64\",\n    \"dist:desktop:win:x64\": \"node scripts/build-desktop-artifact.ts --platform win --target nsis --arch x64\",\n    \"release:smoke\": \"node scripts/release-smoke.ts\",\n    \"clean\": \"rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/dist apps/*/dist-electron packages/*/dist .vite-plus apps/*/.vite-plus packages/*/.vite-plus\",\n    \"sync:repos\": \"node scripts/sync-reference-repos.ts\"\n  },\n  \"devDependencies\": {\n    \"@coderabbitai/config\": \"1.1.0\",\n    \"@effect/tsgo\": \"catalog:\",\n    \"@shadc",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "Agent 控制界面",
+      "移动端远程访问",
+      "Web 与桌面端"
+    ],
+    "brief_zh": {
+      "summary": "一个用于控制本机编码 Agent 的开源控制界面：README 标注提供移动端、Web 与 Electron 桌面端，可连接已在本机配置的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity。",
+      "audience": "需要从电脑、网页或移动端统一查看和控制本机多个编码 Agent 的开发者",
+      "capabilities": "Agent 控制界面、移动端远程访问、Web 与桌面端、多个编码 Agent 连接、后台服务、MCP 连接",
+      "risk": "项目 README 明确仍处于早期阶段；远程访问、本机 Agent 权限和多提供商账号凭据需按实际部署方式审查。",
+      "verified_at": "2026-10-08",
+      "evidence_sources": [
+        "https://github.com/pingdotgg/t3code"
+      ],
+      "evidence_note": "依据本日抓取的 README；未安装客户端、配置远程访问或连接任一 Agent 提供商。"
+    },
+    "summary_source": "project_brief"
+  }
+]
