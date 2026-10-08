@@ -1,0 +1,24 @@
+{
+  "period": "2026-10-09",
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "slice_health": {"all": 9, "python": 12, "typescript": 17, "javascript": 13, "go": 16, "rust": 14},
+  "metadata_failures": 0,
+  "readme_failures": 0,
+  "dependency_manifests_available": 56,
+  "dependency_manifests_unavailable": 21,
+  "historical_daily_reports": 84,
+  "historical_daily_invalid": [],
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 212,
+    "snapshot_count": 84,
+    "deduplicated": true,
+    "continuous_ranks": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "summary_sources": {"project_brief": 147, "original_description": 65}
+  },
+  "exceptions": ["Dependency manifest unavailability is not distinguished between absent, unsupported, and request-failure cases."],
+  "checked_at": "2026-10-09T06:10:00+08:00"
+}

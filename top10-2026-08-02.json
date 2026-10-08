@@ -576,10 +576,21 @@
     },
     "strategic_score": 90,
     "capability_tags": [
-      "MCP 集成",
-      "大模型应用",
-      "评测"
+      "AI SRE Agent",
+      "运维工具连接",
+      "工作流定义"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
+      "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
+      "capabilities": "AI SRE Agent、运维工具连接、工作流定义、训练评测、告警与事件处置、可观测性集成",
+      "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
+      "verified_at": "2026-10-09",
+      "evidence_sources": [
+        "https://github.com/Tracer-Cloud/opensre"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未连接任何生产运维系统。"
+    }
   }
 ]

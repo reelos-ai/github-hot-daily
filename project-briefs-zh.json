@@ -1041,5 +1041,41 @@
     "verified_at": "2026-10-08",
     "evidence_sources": ["https://github.com/pingdotgg/t3code"],
     "evidence_note": "依据本日抓取的 README；未安装客户端、配置远程访问或连接任一 Agent 提供商。"
+  },
+  "cloudflare/security-audit-skill": {
+    "summary": "Cloudflare 开源的一套编码 Agent 安全审计技能：将侦察、覆盖率驱动排查、候选漏洞验证、机器可读发现记录和独立复核组织成六阶段流程，并区分已确认、待验证与已否定的结论。",
+    "audience": "希望将代码库安全审计流程结构化、可复核并持续运行的应用安全与工程团队",
+    "capabilities": "多阶段安全审计、覆盖率账本、独立候选验证、结构化发现、报告生成、Agent 编排",
+    "risk": "技能输出不能替代人工安全评估；自动化审计的覆盖率、误报处理、模型权限和代码数据边界仍需在目标环境中单独控制。",
+    "verified_at": "2026-10-09",
+    "evidence_sources": ["https://github.com/cloudflare/security-audit-skill"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未在目标代码库执行审计。"
+  },
+  "docker/docker-agent": {
+    "summary": "Docker Engineering 提供的 AI Agent 构建与运行时：通过声明式 YAML 定义 Agent、工具集和多 Agent 协作，可从 Docker CLI 启动，并接入 MCP、不同模型提供商与 OCI 分发。",
+    "audience": "希望以容器与声明式配置管理、运行和分发 AI Agent 的开发者与平台团队",
+    "capabilities": "YAML Agent 配置、多 Agent 编排、MCP 工具集、多模型接入、RAG、OCI 打包分发",
+    "risk": "Agent 的工具权限、模型密钥、镜像供应链与远程 MCP 服务都需要独立审查；README 功能清单并不代表生产可用性。",
+    "verified_at": "2026-10-09",
+    "evidence_sources": ["https://github.com/docker/docker-agent"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未运行 Docker 插件或连接模型服务。"
+  },
+  "Tracer-Cloud/opensre": {
+    "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
+    "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
+    "capabilities": "AI SRE Agent、运维工具连接、工作流定义、训练评测、告警与事件处置、可观测性集成",
+    "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
+    "verified_at": "2026-10-09",
+    "evidence_sources": ["https://github.com/Tracer-Cloud/opensre"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未连接任何生产运维系统。"
+  },
+  "CursorTouch/Windows-MCP": {
+    "summary": "一个把 AI Agent 接入 Windows 桌面操作的 MCP Server：README 指向文件浏览、应用控制、UI 交互与 QA 测试等能力，并提供 PyPI 安装入口。",
+    "audience": "需要让支持 MCP 的 Agent 在 Windows 环境中执行桌面操作和测试任务的开发者",
+    "capabilities": "Windows MCP Server、文件导航、应用控制、UI 自动化、QA 测试、PyPI 安装",
+    "risk": "桌面自动化可触及本机应用和文件；需最小化 Agent 权限、保护凭据并在隔离账户或虚拟机中验证高风险操作。",
+    "verified_at": "2026-10-09",
+    "evidence_sources": ["https://github.com/CursorTouch/Windows-MCP"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装 MCP 服务或执行 Windows 自动化。"
   }
 }
