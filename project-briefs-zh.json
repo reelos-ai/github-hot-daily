@@ -1077,5 +1077,23 @@
     "verified_at": "2026-10-09",
     "evidence_sources": ["https://github.com/CursorTouch/Windows-MCP"],
     "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装 MCP 服务或执行 Windows 自动化。"
+  },
+  "thesysdev/openui": {
+    "summary": "一个面向生成式 UI 的开源框架：用紧凑、流式的 OpenUI Lang 描述模型可生成的组件，并为 React、Vue、Svelte 与 Angular 提供渐进渲染运行时。",
+    "audience": "需要让 AI 应用稳定输出结构化、可控前端界面的产品与工程团队",
+    "capabilities": "生成式 UI 语言、组件驱动提示词、流式渲染、多框架运行时、Agent UI 集成、应用脚手架",
+    "risk": "README 的 token 效率比较来自项目自身基准；协议兼容性、模型输出边界和跨框架运行时成熟度仍需在实际产品中验证。",
+    "verified_at": "2026-10-10",
+    "evidence_sources": ["https://github.com/thesysdev/openui"],
+    "evidence_note": "依据本日通过 GitHub API 获取的 README 与仓库 description；未安装运行时或复现基准。"
+  },
+  "MHSanaei/3x-ui": {
+    "summary": "一个管理 Xray-core 服务器的开源 Web 控制面板，覆盖多协议代理与 VPN 入站、用户配额和流量统计，并支持多节点、SQLite 或 PostgreSQL 部署。",
+    "audience": "需要自建并管理多协议代理或 VPN 节点的个人用户和基础设施运维者",
+    "capabilities": "Xray 控制面板、多协议配置、用户与流量管理、多节点管理、订阅服务、REST API、SQLite/PostgreSQL",
+    "risk": "项目 README 明确提示仅供个人使用且不建议用于生产；网络代理部署涉及访问控制、合规、节点安全和供应链风险，需独立评估。",
+    "verified_at": "2026-10-10",
+    "evidence_sources": ["https://github.com/MHSanaei/3x-ui"],
+    "evidence_note": "依据本日通过 GitHub API 获取的 README 与仓库 description；未部署服务、未配置任何代理节点。"
   }
 }
