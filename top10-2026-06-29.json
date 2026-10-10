@@ -221,11 +221,22 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "长期记忆",
-      "评测",
-      "模型推理"
+      "流式三维重建",
+      "几何上下文 Transformer",
+      "轨迹记忆"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个用于流式三维重建的前馈式 3D 基础模型：将坐标锚点、几何线索与轨迹记忆放进统一框架，提供长序列推理、交互式查看和离线渲染示例。",
+      "audience": "需要从视频或多帧图像构建三维场景的视觉研究者、机器人与空间计算工程团队",
+      "capabilities": "流式三维重建、几何上下文 Transformer、轨迹记忆、长序列推理、交互式三维查看、离线渲染",
+      "risk": "README 的性能和对比结论来自项目自述；运行依赖 CUDA、PyTorch 与可选 FlashInfer，真实精度、显存占用与场景泛化仍需在目标数据上复现。",
+      "verified_at": "2026-10-11",
+      "evidence_sources": [
+        "https://github.com/Robbyant/lingbot-map"
+      ],
+      "evidence_note": "依据本日抓取的 README、依赖说明与仓库 description；未下载模型或复现三维重建结果。"
+    }
   },
   {
     "owner": "thedotmack",
