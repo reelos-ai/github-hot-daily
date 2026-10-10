@@ -1,0 +1,45 @@
+{
+  "period": "2026-10-11",
+  "top10_count": 10,
+  "capability_tag_count": 30,
+  "candidate_count": 66,
+  "slice_health": {
+    "all": 13,
+    "python": 13,
+    "typescript": 11,
+    "javascript": 11,
+    "go": 18,
+    "rust": 7
+  },
+  "metadata_failures": 0,
+  "readme_failures": 0,
+  "manifest_available": 44,
+  "manifest_unavailable": 22,
+  "historical_daily_reports": 86,
+  "historical_daily_complete": true,
+  "leaderboard": {
+    "parseable": true,
+    "deduplicated": true,
+    "continuous_ranks": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "repository_count": 215,
+    "snapshot_count": 86,
+    "summary_sources": {
+      "project_brief": 151,
+      "original_description": 64
+    }
+  },
+  "browser_qa": {
+    "default_rows": 10,
+    "page_2": true,
+    "language_filter": "Python",
+    "sort_mode": "growth",
+    "page_size_20": true,
+    "invalid_url_normalized": true,
+    "desktop_horizontal_overflow": false,
+    "mobile_horizontal_overflow": false,
+    "console_errors": 0
+  },
+  "limitations": "依赖清单未覆盖 22 个候选；原因可能是不存在、格式未支持或请求未返回，抓取器无法可靠区分。"
+}

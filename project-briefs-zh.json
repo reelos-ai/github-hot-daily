@@ -1095,5 +1095,23 @@
     "verified_at": "2026-10-10",
     "evidence_sources": ["https://github.com/MHSanaei/3x-ui"],
     "evidence_note": "依据本日通过 GitHub API 获取的 README 与仓库 description；未部署服务、未配置任何代理节点。"
+  },
+  "Robbyant/lingbot-map": {
+    "summary": "一个用于流式三维重建的前馈式 3D 基础模型：将坐标锚点、几何线索与轨迹记忆放进统一框架，提供长序列推理、交互式查看和离线渲染示例。",
+    "audience": "需要从视频或多帧图像构建三维场景的视觉研究者、机器人与空间计算工程团队",
+    "capabilities": "流式三维重建、几何上下文 Transformer、轨迹记忆、长序列推理、交互式三维查看、离线渲染",
+    "risk": "README 的性能和对比结论来自项目自述；运行依赖 CUDA、PyTorch 与可选 FlashInfer，真实精度、显存占用与场景泛化仍需在目标数据上复现。",
+    "verified_at": "2026-10-11",
+    "evidence_sources": ["https://github.com/Robbyant/lingbot-map"],
+    "evidence_note": "依据本日抓取的 README、依赖说明与仓库 description；未下载模型或复现三维重建结果。"
+  },
+  "hugohe3/ppt-master": {
+    "summary": "一个由 Agent 工作流驱动的本地 PowerPoint 生成工具：可从文档或主题创建可继续编辑的原生 PPTX，并覆盖模板复用、图表表格、动画和讲稿旁白等输出。",
+    "audience": "需要把材料快速转成可编辑演示文稿的知识工作者、内容团队和 AI 工具开发者",
+    "capabilities": "原生 PPTX 生成、文档转演示、模板复用、图表与表格、动画转场、讲稿旁白、本地工作流",
+    "risk": "输出质量仍受所接入模型和输入材料影响；README 也说明生成结果通常需要人工润色，涉及模板与源文档时还应评估数据和版权边界。",
+    "verified_at": "2026-10-11",
+    "evidence_sources": ["https://github.com/hugohe3/ppt-master"],
+    "evidence_note": "依据本日抓取的 README、MIT 许可标识与仓库 description；未安装或生成演示文稿。"
   }
 }
