@@ -1113,5 +1113,23 @@
     "verified_at": "2026-10-11",
     "evidence_sources": ["https://github.com/hugohe3/ppt-master"],
     "evidence_note": "依据本日抓取的 README、MIT 许可标识与仓库 description；未安装或生成演示文稿。"
+  },
+  "repowise-dev/repowise": {
+    "summary": "一个在本机一次性索引代码、调用图、Git 历史、测试与文档的代码库智能工具，并通过 MCP、仪表盘和 CI 帮助开发者或编码 Agent 查询改动影响、代码健康与待修问题。",
+    "audience": "希望让编码 Agent 与工程团队更快理解遗留代码、评估改动风险和治理技术债的开发者与平台团队",
+    "capabilities": "本地代码索引、调用图、MCP 服务、改动影响分析、代码健康评分、死代码检测、文档生成、Git 分析",
+    "risk": "README 中的效果与精度数字来自项目自述；大型仓库索引成本、跨语言解析准确性、Agent 会话采集与 AGPL-3.0 的使用边界都应在目标环境单独评估。",
+    "verified_at": "2026-10-12",
+    "evidence_sources": ["https://github.com/repowise-dev/repowise"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未在目标代码库安装或运行索引。"
+  },
+  "CopilotKit/OpenIntelligentUI": {
+    "summary": "一个基于 CopilotKit 与 AG-UI 的开源生成式 UI 示例与框架：Agent 可在对话中选择文本、原生组件或隔离的交互式界面，覆盖解释、比较、图表、计算器和地图等输出。",
+    "audience": "希望让 AI 对话从纯文本升级为可交互、可视化任务界面的产品与前端工程团队",
+    "capabilities": "生成式 UI、Agent 驱动渲染、交互式图表与工具、隔离 iframe、CopilotKit 集成、AG-UI 协议、可选 MCP 服务",
+    "risk": "项目的演示场景不代表通用生产能力；运行依赖模型与可视化路由服务，用户 API 密钥、沙箱边界、第三方网络资源和生成 UI 的安全审核需要在部署时单独控制。",
+    "verified_at": "2026-10-12",
+    "evidence_sources": ["https://github.com/CopilotKit/OpenIntelligentUI"],
+    "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未配置模型密钥、运行 Agent 或部署该应用。"
   }
 }
