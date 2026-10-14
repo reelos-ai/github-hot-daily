@@ -37,6 +37,18 @@
       "missing_description": 0
     }
   },
+  "browser_qa": {
+    "production": true,
+    "default_rows": 10,
+    "second_page_rows_with_rust_filter": 15,
+    "rust_filter_and_growth_sort": true,
+    "search": true,
+    "invalid_url_normalizes": true,
+    "mobile_viewport": 390,
+    "mobile_horizontal_overflow": false,
+    "console_errors": 0,
+    "local_and_production_assets_byte_match": true
+  },
   "limitations": [
     "依赖清单缺失、格式不受支持与请求失败在采集器中无法区分，因此只记录覆盖数量，不将其推断为仓库没有依赖清单。"
   ]
