@@ -743,14 +743,14 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "AI SRE Agent",
+      "智能运维助手",
       "运维工具连接",
       "工作流定义"
     ],
     "brief_zh": {
       "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
       "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
-      "capabilities": "AI SRE Agent、运维工具连接、工作流定义、训练评测、告警与事件处置、可观测性集成",
+      "capabilities": "智能运维助手、运维工具连接、工作流定义、训练评测、告警处置、可观测性集成",
       "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
       "verified_at": "2026-10-09",
       "evidence_sources": [
@@ -825,14 +825,14 @@
     },
     "strategic_score": 90,
     "capability_tags": [
-      "Windows MCP Server",
+      "系统协议服务",
       "文件导航",
       "应用控制"
     ],
     "brief_zh": {
       "summary": "一个把 AI Agent 接入 Windows 桌面操作的 MCP Server：README 指向文件浏览、应用控制、UI 交互与 QA 测试等能力，并提供 PyPI 安装入口。",
       "audience": "需要让支持 MCP 的 Agent 在 Windows 环境中执行桌面操作和测试任务的开发者",
-      "capabilities": "Windows MCP Server、文件导航、应用控制、UI 自动化、QA 测试、PyPI 安装",
+      "capabilities": "系统协议服务、文件导航、应用控制、界面自动化、质量测试、软件包安装",
       "risk": "桌面自动化可触及本机应用和文件；需最小化 Agent 权限、保护凭据并在隔离账户或虚拟机中验证高风险操作。",
       "verified_at": "2026-10-09",
       "evidence_sources": [
