@@ -1,0 +1,43 @@
+{
+  "period": "2026-10-14",
+  "generated_at": "2026-10-14T23:28:00+08:00",
+  "daily_top10_count": 10,
+  "daily_capability_tag_count": 30,
+  "slice_health": {
+    "all": 12,
+    "python": 15,
+    "typescript": 16,
+    "javascript": 8,
+    "go": 22,
+    "rust": 11
+  },
+  "enrichment": {
+    "metadata_failures": 0,
+    "readme_failures": 0,
+    "dependency_manifests": 57,
+    "dependency_manifest_unavailable": 19
+  },
+  "history": {
+    "daily_reports_checked": 88,
+    "all_have_ten_projects": true,
+    "all_capability_tags_are_chinese": true
+  },
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 217,
+    "snapshot_count": 88,
+    "repository_deduplicated": true,
+    "ranks_continuous": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "model_version": "leaderboard-v2",
+    "summary_sources": {
+      "project_brief": 153,
+      "original_description": 64,
+      "missing_description": 0
+    }
+  },
+  "limitations": [
+    "依赖清单缺失、格式不受支持与请求失败在采集器中无法区分，因此只记录覆盖数量，不将其推断为仓库没有依赖清单。"
+  ]
+}

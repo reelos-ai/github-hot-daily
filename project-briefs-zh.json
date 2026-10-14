@@ -946,7 +946,7 @@
   "oblien/openship": {
     "summary": "可自托管的开源部署平台：连接代码仓库后完成构建、发布、路由和 TLS 终止，并提供桌面端、Web 控制台和 CLI 操作入口。",
     "audience": "希望自行托管应用部署流程、并减少基础设施操作步骤的开发者",
-    "capabilities": "自托管部署、内置 CI/CD、应用路由、TLS 管理",
+    "capabilities": "自托管部署、持续集成、应用路由、证书管理",
     "risk": "部署平台的可靠性与安全性高度依赖凭据管理、构建隔离和生产环境配置，需在目标基础设施中评估",
     "verified_at": "2026-10-01",
     "evidence_sources": ["https://github.com/oblien/openship"],
@@ -1018,7 +1018,7 @@
   "earthtojake/text-to-cad": {
     "summary": "一个把自然语言 Agent 工作流接入本地 CAD 的技能与插件：可生成 STEP、GLB、STL、3MF 模型，支持可制造性检查、工程图，并连接 3D 打印、钣金和 CNC 服务。",
     "audience": "希望让 Claude Code、Codex 等 Agent 参与三维建模、原型设计或制造准备的设计与工程团队",
-    "capabilities": "文本生成 CAD、STEP/STL/GLB/3MF 导出、可制造性检查、工程图、MCP 本地服务、制造服务连接",
+    "capabilities": "文本生成建模、多格式导出、可制造性检查、工程图、本地协议服务、制造服务连接",
     "risk": "几何和制造约束必须由专业人员复核；首次启动依赖本地运行时下载，输出模型也需在真实工艺与安全要求下验证。",
     "verified_at": "2026-10-07",
     "evidence_sources": ["https://github.com/earthtojake/text-to-cad"],
@@ -1063,7 +1063,7 @@
   "Tracer-Cloud/opensre": {
     "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
     "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
-    "capabilities": "AI SRE Agent、运维工具连接、工作流定义、训练评测、告警与事件处置、可观测性集成",
+    "capabilities": "智能运维助手、运维工具连接、工作流定义、训练评测、告警处置、可观测性集成",
     "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
     "verified_at": "2026-10-09",
     "evidence_sources": ["https://github.com/Tracer-Cloud/opensre"],
@@ -1072,7 +1072,7 @@
   "CursorTouch/Windows-MCP": {
     "summary": "一个把 AI Agent 接入 Windows 桌面操作的 MCP Server：README 指向文件浏览、应用控制、UI 交互与 QA 测试等能力，并提供 PyPI 安装入口。",
     "audience": "需要让支持 MCP 的 Agent 在 Windows 环境中执行桌面操作和测试任务的开发者",
-    "capabilities": "Windows MCP Server、文件导航、应用控制、UI 自动化、QA 测试、PyPI 安装",
+    "capabilities": "系统协议服务、文件导航、应用控制、界面自动化、质量测试、软件包安装",
     "risk": "桌面自动化可触及本机应用和文件；需最小化 Agent 权限、保护凭据并在隔离账户或虚拟机中验证高风险操作。",
     "verified_at": "2026-10-09",
     "evidence_sources": ["https://github.com/CursorTouch/Windows-MCP"],
@@ -1131,5 +1131,23 @@
     "verified_at": "2026-10-12",
     "evidence_sources": ["https://github.com/CopilotKit/OpenIntelligentUI"],
     "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未配置模型密钥、运行 Agent 或部署该应用。"
+  },
+  "rust-lang/rust": {
+    "summary": "Rust 编程语言的主源码仓库，包含编译器、标准库与文档；它以所有权与类型系统降低内存和线程安全错误，并配套 Cargo、Clippy、rustfmt 与 rust-analyzer 工具链。",
+    "audience": "需要构建高性能且强调内存安全服务、嵌入式软件或开发者工具的工程团队",
+    "capabilities": "Rust 编译器、标准库、所有权模型、Cargo 工具链、静态检查、代码格式化、编辑器支持",
+    "risk": "这是大型语言工具链仓库，源码构建与贡献门槛较高；README 仅说明其工具链定位，具体版本兼容性、迁移成本和生产采用仍需结合目标工程验证。",
+    "verified_at": "2026-10-14",
+    "evidence_sources": ["https://github.com/rust-lang/rust"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未从源码构建编译器或验证具体工具链行为。"
+  },
+  "t8y2/dbx": {
+    "summary": "一个面向 100 多种数据库的轻量跨平台管理客户端，提供桌面端、Docker、CLI，以及内置 AI 助手和 MCP Server。",
+    "audience": "需要在同一工具中连接、查询和管理多类关系型与非关系型数据库的开发者与数据工程团队",
+    "capabilities": "多数据库连接、桌面客户端、Docker 部署、CLI、AI 助手、MCP Server、数据库管理",
+    "risk": "项目对支持范围、体积和 AI/MCP 能力的说明来自 README 与 description；生产接入前仍应评估数据库凭据保管、MCP 权限边界、驱动兼容性和查询审计。",
+    "verified_at": "2026-10-14",
+    "evidence_sources": ["https://github.com/t8y2/dbx"],
+    "evidence_note": "依据本日抓取的 README 与仓库 description；未连接真实数据库或运行其 AI/MCP 功能。"
   }
 }
