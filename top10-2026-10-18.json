@@ -1,0 +1,832 @@
+[
+  {
+    "owner": "debpalash",
+    "name": "VoiceStudio",
+    "full_name": "debpalash/VoiceStudio",
+    "url": "https://github.com/debpalash/VoiceStudio",
+    "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+    "language": "Python",
+    "total_stars": 73147,
+    "forks": 8002,
+    "stars_this_period": 2135,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "audiobook",
+        "cuda",
+        "dubbing",
+        "elevenlabs-alternative",
+        "huggingface",
+        "local-first",
+        "mlx",
+        "omnivoice-studio",
+        "speech-to-text",
+        "text-to-speech",
+        "transcription",
+        "translate",
+        "tts",
+        "voice-ai",
+        "voice-cloning",
+        "voice-generation",
+        "voicestudio",
+        "workflow"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 207,
+      "created_at": "2026-04-09T21:40:26Z",
+      "pushed_at": "2026-10-17T21:55:55Z",
+      "homepage": "https://voicestudio.sh",
+      "default_branch": "main",
+      "forks": 8002,
+      "watchers": 279,
+      "archived": false,
+      "size_kb": 138286
+    },
+    "readme_content": "<div align=\"center\">\n  <img src=\"docs/logo.png\" alt=\"VoiceStudio\" width=\"88\" />\n  <h1>VoiceStudio</h1>\n  <p>\n    <a href=\"https://trendshift.io/repositories/28176?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-28176\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/28176\" alt=\"VoiceStudio ranking on Trendshift\" width=\"220\" height=\"48\" /></a>\n  </p>\n  <p><strong>Open-source voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.</strong></p>\n  <p>\n    <a href=\"https://voicestudio.sh/?utm_source=github&utm_medium=readme&utm_campaign=project\">Website</a> ·\n    <a href=\"https://github.com/debpalash/VoiceStudio/releases/latest\">Download</a> ·\n    <a href=\"#get-started\">Get started</a> ·\n    <a href=\"#documentation\">Docs</a> ·\n    <a href=\"https://discord.gg/bzQavDfVV9\">Discord</a> ·\n    <a href=\"README_CN.md\">简体中文</a> ·\n    <a href=\"README_JA.md\">日本語</a>\n  </p>\n  <p>\n    <a href=\"https://github.com/debpalash/VoiceStudio/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/debpalash/VoiceStudio/ci.yml?branch=main\" alt=\"CI\" /></a>\n    <a href=\"https://github.com/debpalash/VoiceStudio/releases/latest\"><img src=\"https://img.shields.io/github/v/release/debpalash/VoiceStudio\" alt=\"Latest release\" /></a>\n    <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPL--3.0-blue\" alt=\"AGPL-3.0\" /></a>\n    <a href=\"https://supermetry.com\"><img src=\"https://app.supermetry.com/px/zfjiv7psp4ed.svg?c=VoiceStudio&style=stats\" alt=\"views\" /></a>\n  </p>\n</div>\n\n![A tour of the Electron app: voice cloning, voice design, dubbing, and model management](docs/media/electron/voicestudio.gif)\n\n## Your voice. Your workflow.\n\n| Create | Produce | Connect |\n| :--- | :--- | :--- |\n| Clone a voice or design your own | Dub videos with timed speech | Local API & MCP for agents |\n| Dictate with a floating widget | Stories, audiobooks & batch jobs | Reusable recipes & watch folders |\n\nStart with **VoiceStudio** (default, powered by k2-fsa/OmniVoice), or choose another engine. [Features & engine catalog](docs/feature-catalog.md).\n\nLocal workflows run on your hardware. Remote services are optional; usage analytics requires consent.\n\n<details>\n<summary><strong>Explore the workspaces</strong> · Clone, dub, design & models</summary>\n\n<table>\n  <tr>\n    <td><img src=\"docs/media/electron/voice-cloning.png\" alt=\"Electron voice cloning workspace with the bundled demo voice\" width=\"100%\" /></td>\n    <td><img src=\"docs/media/electron/dubbing.png\" alt=\"Electron video dubbing workspace\" width=\"100%\" /></td>\n  </tr>\n  <tr><td align=\"center\">Voice cloning</td><td align=\"center\">Video dubbing</td></tr>\n  <tr>\n    <td><img src=\"docs/media/electron/voice-design.png\" alt=\"Describe a voice in the Electron voice design workspace\" width=\"100%\" /></td>\n    <td><img src=\"docs/media/electron/models.png\" alt=\"Install and manage local speech models\" width=\"100%\" /></td>\n  </tr>\n  <tr><td align=\"center\">Voice design</td><td align=\"center\">Local models</td></tr>\n</table>\n\n<img width=\"2628\" height=\"1950\" alt=\"VoiceStudio desktop workspace\" src=\"https://github.com/user-attachments/assets/b474497d-a453-49a3-a2dd-f023ec6b7659\" />\n\n</details>\n\n## Get started\n\n### One-command install (macOS / Linux)\n\n```sh\n# Latest Electron release\ncurl -fsSL https://voicestudio.sh/install | sh\n\n# A specific published Electron release (replace X.Y.Z)\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --version X.Y.Z\n\n# Build current main and install the desktop app\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --main\n\n# Uninstall the app, keeping your data\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --uninstall\n```\n\nOn Windows, run `irm https://voicestudio.sh/install | iex` in PowerShell.\nRelease downloads require curl and a SHA-256 tool. `--main` requires Git,\nNode.js 22+, Bun, Rust/Cargo, and platform build tools; see\n[installer prerequisites and behavior](docs/install/script.md).\nThe installer preserves your settings, projects, and models. Older versions\nmust contain Electron packages; it never falls back to archived Tauri builds.\n\nOr download from [Releases](https://github.com/debpalash/VoiceStudio/releases/latest) (macOS `.dmg`, Windows `.exe`, Linux `.AppImage` or `.deb`) and follow your platform guide:\n\n**[macOS](docs/install/macos.md) · [Windows](docs/install/windows.md) · [Linux](docs/install/linux.md) · [Docker](docs/install/docker.md)**\n\n| Hardware | Support |\n|---|---|\n| NVIDIA GPU (Windows / Linux) | CUDA acceleration |\n| Apple Silicon | Metal (MPS) acceleration |\n| No dedicated GPU (Intel/AMD integrated graphics, older PCs) | Fully usable on the CPU, slower; setup installs the small CPU build of PyTorch (about 5 GB free disk) |\n| Windows on ARM (Snapdragon X etc.) | **Experimental**, validation pending: native ARM64 app, x64 Python backend under emulation, CPU only |\n| Intel Mac | App UI only; connect to a remote backend ([why](docs/install/macos.md)) |\n\nOpen **Voice cloning**, choose a voice or add a clean reference recording, enter your text, and generate. Install the required model when prompted. Hardware needs vary by engine; see [performance](docs/performance.md).\n\n### Install with prompt\n\nPaste into your coding agent (Claude Code, Codex, Cursor, …):\n\n```text\nInstall the VoiceStudio Electron app on this device and verify it works, following\nhttps://github.com/debpalash/VoiceStudio/blob/main/docs/install/agent.md\n```\n\nThe [agent guide](docs/install/agent.md) covers hardware detection, reusing existing\ndata, asking before model downloads, and a test generation. Agents that support skills\ncan also run `npx skills add debpalash/VoiceStudio`.\n\n<details>\n<summary><strong>Run the Electron preview from source</strong></summary>\n\n```bash\ngit clone https://github.com/debpalash/VoiceStudio.git\ncd VoiceStudio\nbun install\nbun run setup:api  # prepare Python dependencies before starting Electron\nbun run dev\n```\n\nSee [Electron setup](electron/README.md) for prerequisites and backend configuration.\n\nUse `bun run smoke-test` to build and launch an isolated packaged Electron app.\nAdd `-- --install` for the networked managed-runtime installation check.\n\n</details>\n\n> **Electron is the only desktop app and web UI.** Version 0.5.3 was the final Tauri release. Existing Tauri users must [install Electron separately](docs/electron-migration.md). The retired Tauri shell and legacy UI entry points have been removed.\n\n## Documentation\n\n| Need | Start here |\n|---|---|\n| Setup help | [Troubleshooting](docs/install/troubleshooting.md) · [Model downloads](docs/downloading-models.md) |\n| Models & audio quality | [Engine guides](docs/engines/README.md) · [Benchmarks](docs/benchmarks.md) |\n| Integrations | [Local API](docs/speech-platform.md) · [MCP](docs/mcp.md) · [Examples](examples/README.md) |\n| Phone companion (preview) | [iOS and Android apps](docs/mobile.md) |\n| Development | [Contributing](.github/CONTRIBUTING.md) ([CLA signing guidance](.github/CONTRIBUTING.md#contribution-licensing) for your first PR) · [Electron](electron/README.md) · [Changelog](CHANGELOG.md) |\n\nAgent skills: `npx skills add debpalash/VoiceStudio` — choose **voicestudio** for audio workflows or **voicestudio-maintainer** for repository maintenance.\n\n## Sponsors\n\n<a href=\"https://forms.gle/2PYCvd39hbwijzX37\"><img src=\"docs/media/sponsor-slot.svg\" alt=\"Your brand — apply for a featured VoiceStudio sponsor slot\" width=\"640\" /></a>\n\n**Become a featured partner.** [Apply for a paid placement](https://forms.gle/2PYCvd39hbwijzX37) · [Email us](mailto:partner@voicestudio.sh)\n\nSupport development: [GitHub Sponsors](https://github.com/sponsors/debpalash) · [Ko-fi](https://ko-fi.com/debpalash) · [PayPal](https://paypal.me/palashCoder) · [Sponsorship details](SPONSORS.md)\n\n## License & responsible use\n\n[AGPL-3.0](LICENSE) covers the application, including commercial use under its conditions. Model weights, tokenizers, voices and generated-output conditions are separate; a paid app licence does not grant those rights. Clone voices only with permission. Model Manager now shows versioned model-source notices, evidence links and unresolved review gaps from the [shared inventory](docs/licensing/model-inventory.md). Its optional [reviewed-file preview](docs/licensing/model-review-workflow.md) does not enforce ordinary downloads or certify commercial permission. See [license details](LICENSE-NOTICE.md).\n\n",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[project]\nname = \"omnivoice\"\nversion = \"0.5.7\"\ndescription = \"VoiceStudio — a private, local-first studio for voice cloning, speech generation, dubbing, transcription, and audiobooks\"\nreadme = \"README.md\"\n# Free and open-source under the GNU Affero General Public License v3 (see\n# LICENSE). A commercial license is available for proprietary/closed-source use\n# without AGPL obligations — contact hi@voicestudio.sh. The bundled omnivoice/\n# TTS model by Han Zhu remains Apache-2.0 upstream (Apache-2.0 is AGPL-compatible).\nlicense = \"AGPL-3.0-only\"\nrequires-python = \">=3.11\"\nauthors = [{name = \"Debpalash\"}, {name = \"Han Zhu\"}]\nkeywords = [\n    \"tts\",\n    \"text-to-speech\",\n    \"speech-synthesis\",\n    \"zero-shot\",\n    \"multilingual\",\n    \"diffusion\",\n    \"voice-cloning\",\n]\nclassifiers = [\n    \"Intended Audience :: Science/Research\",\n    \"Intended Audience :: Developers\",\n\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Topic :: Multimedia :: Sound/Audio :: Speech\",\n\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python :: 3\",\n]\ndependencies = [\n    \"torch>=2.4\",\n    \"torchaudio>=2.4\",\n    \"torchvision>=0.19\",\n    \"transformers>=5.10.0\",\n    \"accelerate\",\n    \"pydub\",\n    \"gradio>=6.15.1\",\n    \"tensorboardX\",\n    \"webdataset\",\n    \"numpy\",\n    \"soundfile\",\n    # whisperx / faster-whisper import `pkg_resources` at runtime. setuptools\n    # 80+ DROPPED the bundled pkg_resources, so an unpinned \">=75\" now resolves\n    # to a version WITHOUT it → \"No module named 'pkg_resources'\", which both\n    # breaks WhisperX transcription and makes its is_available() report false\n    # (\"No ASR backend is ready\"). Cap below 80 so pkg_resources stays present\n    # (issue #224; also #58). Revisit when whisperx/faster-whisper drop the\n    # pkg_resources dependency.\n    \"setuptools>=75,<80\",\n    \"psutil>=7.2.2\",\n    # Pinned to 3.x — pyannote 4.x removed `use_auth_token` from `Inference`\n    # which whisperx 3.4.2 still passes, blowing up `whisperx.load_model()`\n    # with TypeError. whisperx tests against pyannote 3.3.2+, so we track\n    # that range and revisit when whisperx releases a 4-compatible build.\n    \"pyannote-audio>=3.3.2,<4.0\",\n    \"imageio-ffmpeg>=0.6.0\",\n    # Directly used by video_context; 12.1 adds get_flattened_data(), the\n    # replacement for getdata() ahead of its Pillow 14 removal.\n    \"pillow>=12.1.0\",\n    # 0.9.21+ Linux x86_64 wheels are built with -march=native\n    # (spotify/pedalboard#454), so importing pedalboard SIGILLs on CPUs\n    # that lack the builder's SIMD set. 0.9.20 is the last known-good\n    # wheel. Cap below 0.9.21; revisit when upstream ships portable\n    # wheels (USE_PORTABLE_SIMD / pedalboard PR #466). VoiceStudio #2052.\n    \"pedalboard>=0.9.14,<0.9.21\",\n    # Primary ASR — cross-platform, CTranslate2-based under the hood. WhisperX\n    # adds wav2vec2 forced alignment (±10-30 ms word timing vs Whisper's own\n    # ±100-300 ms) which directly improves lip-sync on the dub pipeline.\n    # Pulls `faster-whisper` transitively, so a WhisperX install also provides\n    # the plain faster-whisper backend as a fallback for rare-language audio\n    # where no wav2vec2 alignment model exists.\n    \"whisperx>=3.1.0\",\n    \"faster-whisper>=1.0.0\",\n    # Apple Silicon-only speedup; skipped everywhere else so `uv sync` can\n    # succeed on Linux/Windows/mac-Intel (no mlx wheels exist for those).\n    \"mlx-whisper>=0.2.1 ; sys_platform == 'darwin' and platform_machine == 'arm64'\",\n    # Apple Silicon-only rich TTS library — 14+ engines (Kokoro, CSM, Dia,\n    # Qwen3-TTS, Chatterbox, MeloTTS, OuteTTS, Spark, Higgs-Audio, Voxtral,\n    # …). Gives mac-ARM users a broad engine picker in Settings. Also gated\n    # by platform markers because it depends on mlx (Apple Silicon only).\n    \"mlx-audio>=0.3.0 ; sys_platform == 'darwin' and platform_machine == 'arm64'\",\n    # Apple Silicon-only Parakeet TDT v3 ASR (mlx-community/parakeet-tdt-0.6b-v3\n    # via MLX). Gives mac-ARM the Parakeet tier CUDA/CPU users get from\n    # sherpa/NeMo: 25 European languages, TDT token/word timestamps, ~2 GB\n    # unified memory, dictation-grade speed on the GPU. Same platform gate as\n    # mlx-whisper/mlx-audio (depends on mlx — no wheels elsewhere).\n    \"parakeet-mlx>=0.5.2 ; sys_platform == 'darwin' and platform_machine == 'arm64'\",\n    \"demucs>=4.0.1\",\n    \"yt-dlp>=2026.7.4\",\n    # >=1.16: alembic.ini relies on path_separator=os (new in 1.16.0), which\n    # older alembic silently ignores and then colon-splits C:\\ paths /\n    # space-splits POSIX paths containing spaces.\n    \"alembic>=1.16\",\n    # Lightweight English TTS \"Turbo\" tier — 25-80 MB ONNX model, 8 preset\n    # voices (Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo), CPU\n    # realtime on any platform. Complements OmniVoice's 2.4 GB multilingual\n    # zero-shot clone: when the caller just needs fast English narration with\n    # no reference sample, thi",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 99
+    },
+    "strategic_score": 99,
+    "capability_tags": [
+      "语音克隆",
+      "视频配音",
+      "语音转录"
+    ],
+    "brief_zh": {
+      "summary": "在本机完成语音克隆、语音设计、视频配音、转录和有声书制作的开源语音工作台。",
+      "capabilities": "语音克隆、视频配音、语音转录",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/debpalash/VoiceStudio"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "affaan-m",
+    "name": "ECC",
+    "full_name": "affaan-m/ECC",
+    "url": "https://github.com/affaan-m/ECC",
+    "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+    "language": "JavaScript",
+    "total_stars": 282400,
+    "forks": 41973,
+    "stars_this_period": 1145,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "productivity"
+      ],
+      "license": "MIT",
+      "open_issues": 237,
+      "created_at": "2026-01-18T00:51:51Z",
+      "pushed_at": "2026-10-15T19:17:01Z",
+      "homepage": "https://ecc.tools",
+      "default_branch": "main",
+      "forks": 41973,
+      "watchers": 1408,
+      "archived": false,
+      "size_kb": 58550
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"assets/hero.png\" alt=\"ECC - the agent harness operating system\" width=\"100%\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=trending&theme=dark\" />\n      <img src=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=trending\" alt=\"GitHub Trending Repository of the Day\" height=\"46\" />\n    </picture>\n  </a>\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=rank&theme=dark\" />\n      <img src=\"https://api.star-history.com/badge?repo=affaan-m/ECC&type=rank\" alt=\"Star History Global Rank\" height=\"46\" />\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>Language:</strong>\n  <a href=\"README.md\">English</a> |\n  <a href=\"docs/ar/README.md\">العربية</a> |\n  <a href=\"docs/pt-BR/README.md\">Português (Brasil)</a> |\n  <a href=\"README.zh-CN.md\">简体中文</a> |\n  <a href=\"docs/zh-TW/README.md\">繁體中文</a> |\n  <a href=\"docs/ja-JP/README.md\">日本語</a> |\n  <a href=\"docs/ko-KR/README.md\">한국어</a> |\n  <a href=\"docs/tr/README.md\">Türkçe</a> |\n  <a href=\"docs/ru/README.md\">Русский</a> |\n  <a href=\"docs/vi-VN/README.md\">Tiếng Việt</a> |\n  <a href=\"docs/th/README.md\">ไทย</a> |\n  <a href=\"docs/de-DE/README.md\">Deutsch</a> |\n  <a href=\"docs/es/README.md\">Español</a> |\n  <a href=\"docs/uk-UA/README.md\">Українська</a> |\n  <a href=\"docs/pl/README.md\">Polski</a> |\n  <a href=\"docs/bn/README.md\">বাংলা</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\"><img src=\"https://img.shields.io/discord/1496644400590094540?logo=discord&logoColor=white&label=Discord&color=5865F2\" alt=\"Discord\" /></a>\n  <a href=\"https://ecc.tools\"><img src=\"https://img.shields.io/badge/Website-ecc.tools-E07856?logo=googlechrome&logoColor=white\" alt=\"Website\" /></a>\n  <a href=\"https://github.com/apps/ecc-tools\"><img src=\"https://img.shields.io/badge/GitHub%20App-ECC%20Tools-181717?logo=github&logoColor=white\" alt=\"GitHub App\" /></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-blue.svg\" alt=\"MIT license\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/affaan-m/ECC\"><img src=\"https://img.shields.io/github/stars/affaan-m/ECC?style=flat\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/affaan-m/ECC/forks\"><img src=\"https://img.shields.io/github/forks/affaan-m/ECC?style=flat\" alt=\"GitHub forks\" /></a>\n  <a href=\"https://github.com/affaan-m/ECC/graphs/contributors\"><img src=\"https://img.shields.io/github/contributors/affaan-m/ECC?style=flat\" alt=\"Contributors\" /></a>\n  <a href=\"https://github.com/marketplace/ecc-tools\"><img src=\"https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.ecc.tools%2Fbadge%2Finstalls&logo=github\" alt=\"GitHub App installs\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/ecc-universal\"><img src=\"https://img.shields.io/npm/dw/ecc-universal?label=ecc-universal&logo=npm\" alt=\"ecc-universal npm downloads\" /></a>\n  <a href=\"https://www.npmjs.com/package/ecc-agentshield\"><img src=\"https://img.shields.io/npm/dw/ecc-agentshield?label=ecc-agentshield&logo=npm\" alt=\"ecc-agentshield npm downloads\" /></a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white\" alt=\"Shell\" />\n  <img src=\"https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white\" alt=\"TypeScript\" />\n  <img src=\"https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white\" alt=\"Python\" />\n  <img src=\"https://img.shields.io/badge/-Go-00ADD8?logo=go&logoColor=white\" alt=\"Go\" />\n  <img src=\"https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white\" alt=\"Java\" />\n  <img src=\"https://img.shields.io/badge/-Perl-39457E?logo=perl&logoColor=white\" alt=\"Perl\" />\n  <img src=\"https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white\" alt=\"Markdown\" />\n</p>\n\n> [!WARNING]\n> **Official sources only.** Install ECC only from verified channels: the GitHub repository [github.com/affaan-m/ECC](https://github.com/affaan-m/ECC), the npm packages [`ecc-universal`](https://www.npmjs.com/package/ecc-universal) and [`ecc-agentshield`](https://www.npmjs.com/package/ecc-agentshield), the [GitHub App](https://github.com/apps/ecc-tools), the plugin slug `ecc@ecc`, and the project website [ecc.tools](https://ecc.tools). Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware.\n\n## Install with Claude Code\n\nUse the [guided setup](#install-ecc) or [native plugin commands](#claude-code-details). Both install the same `ecc@ecc` plugin. Choose one and do not stack a full manual Claude install on top.\n\n<div align=\"center\">\n\n<table aria-label=\"ECC primary links\">\n<tr>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://ecc.tools/pricing\">\n    <img src=\"assets/images/community/ecc-tools-mark.svg\" height=\"42\" alt=\"ECC Tools\" /><br />\n    <strong>ECC Pro + GitHub App</strong>\n  </a><br />\n  <sub><a href=\"https://github.com/apps/ecc-tools\">Install free</a> · <a href=\"https://ecc.tools/pricing\">Private repos from $19/seat/mo</a></sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://github.com/sponsors/affaan-m\">\n    <img src=\"assets/images/community/heart.svg\" height=\"42\" alt=\"\" /><br />\n    <strong>Sponsor ECC</strong>\n  </a><br />\n  <sub>Fund the open-source project</sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\">\n    <img src=\"assets/images/community/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n</div>\n\n<sub>**OSS stays free.** This repo is MIT-licensed forever. ECC Pro is the hosted GitHub App for private repos. <a href=\"https://github.com/sponsors/affaan-m\">Sponsors</a> and <a href=\"https://ecc.tools/pricing\">Pro subscribers</a> fund the work. That's why a single maintainer ships weekly across 7 harnesses.</sub>\n\n<div align=\"center\">\n\n<sub><strong>Partners &amp; sponsors</strong></sub>\n\n<p align=\"center\" aria-label=\"Partners and sponsors\">\n  <a href=\"https://www.coderabbit.ai\" title=\"CodeRabbit\"><img src=\"assets/images/sponsors/coderabbit.png\" height=\"54\" alt=\"CodeRabbit\" /></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://www.greptile.com/go/ecc\" title=\"Greptile\"><img src=\"assets/images/sponsors/greptile.png\" height=\"54\" alt=\"Greptile\" /></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://platform.kimi.ai?aff=ecc\" title=\"Moonshot AI - Kimi\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/images/sponsors/moonshot-dark.png\" /><img src=\"assets/images/sponsors/moonshot.png\" width=\"132\" alt=\"Moonshot AI - Kimi\" /></picture></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://compute.itomarkets.com\" title=\"Itô Markets\"><picture><source media=\"(prefers-color-scheme: light)\" srcset=\"assets/images/sponsors/ito-transparent-light.png\" /><img src=\"assets/images/sponsors/ito-transparent.png\" width=\"96\" alt=\"Itô Markets\" /></picture></a>&nbsp;&nbsp;&nbsp;\n  <a href=\"https://serpapi.com/github-ecc\" title=\"SerpApi: Web Search API\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/images/sponsors/serpapi-logo-dark-mode.svg\" /><img src=\"assets/images/sponsors/serpapi-logo-light-mode.svg\" width=\"200\" alt=\"SerpApi: Web Search API\" /></picture></a>\n</p>\n\n<sub><strong>Past sponsors:</strong> <a href=\"https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=link&amp;utm_campaign=ECC\">Atlas Cloud</a> · <a href=\"https://github.com/mikejmorgan-ai\">Mike Morgan (inactive)</a></sub>\n\n<sub><strong>Community sponsors:</strong> <a href=\"https://github.com/jasonwu513\">@jasonwu513</a> · <a href=\"https://github.com/1anter\">@1anter</a> · <a href=\"https://github.com/massimotodaro\">@massimotodaro</a> · <a href=\"https://github.com/meadmccabe\">@meadmccabe</a></sub>\n\n<sub><a href=\"https://github.com/sponsors/affaan-m\"><strong>Become a Sponsor</strong></a> · <a href=\"SPONSORS.md\">Sponsor Tiers</a> · <a href=\"SPONSORING.md\">Sponsorship Program</a></sub>\n\n</div>\n\n<p align=\"center\"><a href=\"#install-ecc\">Jump to install ↓</a></p>\n\n# ECC\n\nYour agent can write code, but ECC gives it a coordinated engineering system and toolbox: it plans before it builds, verifies changes with tests, reviews its own work from a fresh context, remembers what matters, and turns repeated wins into reusable skills and workflows.\n\n```text\nplan -> test -> implement -> review -> verify -> remember -> improve\n```\n\nInstead of rebuilding that process in every prompt, you install it once and make it part of how your agent works.\n\n> Optimize the context window. Persist everything else.\n\nECC is MIT-licensed open source. It works best with Claude Code today, has native Codex and Qoder plugin paths, and provides capability-limited adapters for Cursor, OpenCode, Gemini, Zed, GitHub Copilot, Antigravity, Qwen, and other harnesses. See the [support status matrix](#platform-support) before assuming feature parity.\n\nAccess to 71 agents, 311 skills, and 97 legacy command shims, plus hooks, rules, memory, continuous learning, and AgentShield security scanning. The agents are specialized for planning, review, build repair, security, architecture, and domain work.\n\n| Included         |       Count | What it gives you                                                                    |\n| ---------------- | ----------: | ------------------------------------------------------------------------------------ |\n| Agents           |   71 agents | Planning, review, build repair, security, architecture, and domain work              |\n| Skills           |  311 skills | TDD, research, security, docs, frontend, data, ML, operations, and more              |\n| Commands         | 97 commands | Convenient entry points while ECC moves to a skills-first surface                    |\n| Hooks and memory |     Runtime | Enforcement, session summaries, continuous learning, instincts, and context controls |\n| Rules            |   Selective | Always-loaded standards you choose by language or project                            |\n| AgentShield      |    Included | Scanning for prompts, hooks, MCP config, permissions, secrets, and agent files       |\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/affaan-m/ecc\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/svg?repos=affaan-m/ECC&type=Date&theme=dark\" />\n      <img src=\"https://api.star-history.com/svg?repos=affaan-m/ECC&type=Date\" alt=\"Live star history chart for affaan-m/ECC\" width=\"100%\" />\n    </picture>\n  </a>\n</p>\n\n## Install ECC\n\n> [!IMPORTANT]\n> ECC 2.2 includes guided package setup for Claude Code, Codex, and Kimi Code.\n> The universal package requires Node.js 18 or newer. Claude plugin setup also\n> requires Git and Claude Code 2.1 or newer on `PATH`.\n\n### Recommended: universal guided setup\n\nFor Claude Code plugin setup, updates, scope changes, and hook-profile changes:\n\n```bash\nnpx ecc-universal@2.2.3 setup\n```\n\n#### Windows first-time walkthrough\n\nIf you are new to command-line tools, use this copy-and-paste path:\n\n1. Install Node.js 18 or newer, Git, and Claude Code.\n2. Open **PowerShell** from the Windows Start menu.\n3. Confirm that each prerequisite is available:\n\n   ```powershell\n   node --version\n   git --version\n   claude --version\n   ```\n\n4. Run the guided installer:\n\n   ```powershell\n   npx ecc-universal@2.2.3 setup\n   ```\n\n5. For a typical personal setup, choose **Global user**, choose **Standard** hooks, and confirm.\n6. Start a new Claude Code session and run `/plugin list` to verify that `ecc@ecc` is enabled.\n\nThis path does not require cloning the repository. If any prerequisite command is not found, install or repair that prerequisite before rerunning ECC setup.\n\nIf npm reports a version or cache error, confir",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"ecc-universal\",\n  \"version\": \"2.2.3\",\n  \"description\": \"Harness-native agent operating system for Codex, OpenCode, Cursor, Gemini, Claude Code, and terminal workflows - skills, hooks, rules, MCP conventions, and operator control-plane patterns\",\n  \"main\": \".opencode/dist/index.js\",\n  \"types\": \".opencode/dist/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./.opencode/dist/index.d.ts\",\n      \"import\": \"./.opencode/dist/index.js\",\n      \"default\": \"./.opencode/dist/index.js\"\n    },\n    \"./package.json\": \"./package.json\",\n    \"./*\": \"./*\"\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"keywords\": [\n    \"ai\",\n    \"agents\",\n    \"skills\",\n    \"hooks\",\n    \"mcp\",\n    \"rules\",\n    \"harness\",\n    \"agent-harness\",\n    \"tdd\",\n    \"code-review\",\n    \"security\",\n    \"automation\",\n    \"best-practices\",\n    \"cursor\",\n    \"cursor-ide\",\n    \"opencode\",\n    \"codex\",\n    \"presentations\",\n    \"slides\"\n  ],\n  \"author\": {\n    \"name\": \"Affaan Mustafa\",\n    \"url\": \"https://x.com/affaan\"\n  },\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/affaan-m/ECC.git\"\n  },\n  \"homepage\": \"https://github.com/affaan-m/ECC#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/affaan-m/ECC/issues\"\n  },\n  \"files\": [\n    \".adal/\",\n    \".agents/\",\n    \".claude-plugin/\",\n    \".codex/\",\n    \".codex-plugin/\",\n    \".qoder-plugin/\",\n    \".cursor/\",\n    \".gemini/\",\n    \".github/PULL_REQUEST_TEMPLATE.md\",\n    \".hermes/\",\n    \".kimi/\",\n    \".opencode/\",\n    \".opencode/dist/\",\n    \".pi/\",\n    \".openclaw/\",\n    \".qwen/\",\n    \".zed/\",\n    \".mcp.json\",\n    \"AGENTS.md\",\n    \"COMMANDS-QUICK-REF.md\",\n    \"CONTRIBUTING.md\",\n    \"VERSION\",\n    \"agent.yaml\",\n    \"assets/ecc-icon.svg\",\n    \"assets/hero.png\",\n    \"assets/images/community/\",\n    \"assets/images/sponsors/\",\n    \"agents/\",\n    \"commands/\",\n    \"docs/bn/\",\n    \"docs/ar/\",\n    \"docs/de-DE/\",\n    \"docs/CODEX-NAVIGATION-GUIDE.md\",\n    \"docs/COMMAND-AGENT-MAP.md\",\n    \"docs/HERMES-HOOKS.md\",\n    \"docs/ROADMAP.md\",\n    \"docs/design/ecc-memory-vault.md\",\n    \"docs/design/context-profiles.md\",\n    \"docs/design/context-carriers.md\",\n    \"docs/design/context-profile-delivery.md\",\n    \"docs/ja-JP/\",\n    \"docs/ko-KR/\",\n    \"docs/pt-BR/\",\n    \"docs/pl/\",\n    \"docs/ru/\",\n    \"docs/tr/\",\n    \"docs/uk-UA/\",\n    \"docs/vi-VN/\",\n    \"docs/zh-CN/\",\n    \"docs/zh-TW/\",\n    \"examples/eval-harness/\",\n    \"hooks/\",\n    \"install.ps1\",\n    \"install.sh\",\n    \"manifests/\",\n    \"mcp-configs/\",\n    \"plugins/ecc/\",\n    \"rules/\",\n    \"schemas/\",\n    \"scripts/agent-convert.js\",\n    \"scripts/catalog.js\",\n    \"scripts/ci/scan-supply-chain-iocs.js\",\n    \"scripts/ci/supply-chain-advisory-sources.js\",\n    \"scripts/ci/validate-skill-host-compat.js\",\n    \"scripts/ci/validate-skills.js\",\n    \"scripts/consult.js\",\n    \"scripts/profile.js\",\n    \"scripts/astra-review.js\",\n    \"scripts/dsh/generate-hooks-config.js\",\n    \"scripts/auto-update.js\",\n    \"scripts/claw.js\",\n    \"scripts/control-pane.js\",\n    \"scripts/codex/check-plugin-cache.js\",\n    \"scripts/codex/merge-codex-config.js\",\n    \"scripts/codex/merge-mcp-config.js\",\n    \"scripts/discussion-audit.js\",\n    \"scripts/doctor.js\",\n    \"scripts/ecc.js\",\n    \"scripts/feedback.js\",\n    \"scripts/memory.js\",\n    \"scripts/memory-mcp.mjs\",\n    \"scripts/gemini-adapt-agents.js\",\n    \"scripts/gateguard-report.js\",\n    \"scripts/github-coordination.js\",\n    \"scripts/qwen-adapt-agents.js\",\n    \"scripts/harness-adapter-compliance.js\",\n    \"scripts/harness-audit.js\",\n    \"scripts/eval-harness.js\",\n    \"scripts/observability-readiness.js\",\n    \"scripts/operator-readiness-dashboard.js\",\n    \"scripts/platform-audit.js\",\n    \"scripts/preview-pack-smoke.js\",\n    \"scripts/release-approval-gate.js\",\n    \"scripts/release-video-suite.js\",\n    \"scripts/dashboard-web.js\",\n    \"scripts/skills-health.js\",\n    \"scripts/hooks/\",\n    \"scripts/install-apply.js\",\n    \"scripts/install-guided.js\",\n    \"scripts/install-plan.js\",\n    \"scripts/ito.js\",\n    \"scripts/nasiko.js\",\n    \"scripts/lib/\",\n    \"scripts/list-installed.js\",\n    \"scripts/loop-status.js\",\n    \"scripts/plan-canvas.js\",\n    \"scripts/orchestration-status.js\",\n    \"scripts/orchestrate-codex-worker.sh\",\n    \"scripts/orchestrate-worktrees.js\",\n    \"scripts/repair.js\",\n    \"scripts/setup.js\",\n    \"scripts/welcome.js\",\n    \"scripts/session-inspect.js\",\n    \"scripts/sessions-cli.js\",\n    \"scripts/setup-package-manager.js\",\n    \"scripts/skill-create-output.js\",\n    \"scripts/status.js\",\n    \"scripts/sync-ecc-to-codex.sh\",\n    \"scripts/codex/legacy-sync-state.js\",\n    \"scripts/codex/install-global-git-hooks.sh\",\n    \"scripts/codex/check-codex-global-state.sh\",\n    \"scripts/codex-git-hooks/\",\n    \"scripts/work-items.js\",\n    \"scripts/uninstall.js\",\n    \"skills/agent-architecture-audit/\",\n    \"skills/agent-harness-construction/\",\n    \"skills/agent-introspection-debugging/\",\n    \"skills/agent-security-hardening/\",\n    \"skills/agent-sort/\",\n    \"skills/agentic-engineering/\",\n    \"skills/agentic-os/\",\n    \"skills/ai",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "编码技能",
+      "长期记忆",
+      "安全约束"
+    ],
+    "brief_zh": {
+      "summary": "为 Claude Code、Codex 等编码 Agent 提供技能、记忆和安全规则，组织更完整的开发工作流程。",
+      "audience": "希望把 AI 编程助手改造成稳定工程工作流的开发者",
+      "capabilities": "编码技能、长期记忆、安全约束",
+      "risk": "内容覆盖面很广，需要区分可验证的工程能力和方法论包装",
+      "verified_at": "2026-09-23",
+      "evidence_sources": [
+        "https://github.com/affaan-m/ECC"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "ruvnet",
+    "name": "ruflo",
+    "full_name": "ruvnet/ruflo",
+    "url": "https://github.com/ruvnet/ruflo",
+    "description": "🌊 The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
+    "language": "TypeScript",
+    "total_stars": 76010,
+    "forks": 9001,
+    "stars_this_period": 406,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agentic-ai",
+        "agentic-framework",
+        "agentic-workflow",
+        "agents",
+        "ai-agents",
+        "ai-assistant",
+        "ai-skills",
+        "autonomous-agents",
+        "claude",
+        "codex",
+        "dsh-plugin",
+        "harness",
+        "mcp-server",
+        "multi-agent",
+        "multi-agent-systems",
+        "npm",
+        "skills",
+        "swarm",
+        "swarm-intelligence",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 1039,
+      "created_at": "2025-06-02T21:24:20Z",
+      "pushed_at": "2026-10-17T16:54:13Z",
+      "homepage": "https://Cognitum.One",
+      "default_branch": "main",
+      "forks": 9001,
+      "watchers": 467,
+      "archived": false,
+      "size_kb": 655773
+    },
+    "readme_content": "<div align=\"center\">\n\n<a href=\"https://cognitum.one/agentic-engineering\"><img src=\"ruflo/assets/ruflo-neon-flicker.gif\" alt=\"Ruflo animated neon sign\" width=\"100%\"></a>\n\n**An agent meta-harness for Claude Code and Codex.**\n\n<!-- Try Ruflo — the 3 badges first-time visitors actually act on -->\n[![npm version (ruflo)](https://img.shields.io/npm/v/ruflo?label=npx%20ruflo&style=for-the-badge&logo=npm&color=cb3837)](https://www.npmjs.com/package/ruflo)\n[![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)\n[![Star on GitHub](https://img.shields.io/github/stars/ruvnet/claude-flow?style=for-the-badge&logo=github&color=gold)](https://github.com/ruvnet/claude-flow)\n\n<p align=\"center\">\n<a href=\"data/npm-downloads.latest.json\"><img src=\"docs/assets/readme/badges/downloads.svg?v=mobile-readable-3\" width=\"300\" alt=\"Ecosystem npm downloads: 12.52M over 12 months through October 4, 2026\"></a>\n<br>\n<a href=\"https://github.com/ruvnet/claude-flow\"><img src=\"docs/assets/readme/badges/claude.svg?v=mobile-readable-3\" width=\"300\" alt=\"Claude Code\"></a>\n<a href=\"https://www.npmjs.com/package/@claude-flow/codex\"><img src=\"docs/assets/readme/badges/codex.svg?v=mobile-readable-3\" width=\"300\" alt=\"Codex Plugin\"></a>\n</p>\n\n</div>\n\n<a id=\"start-here\"></a>\n\n## <img src=\"docs/assets/readme/icons/terminal.svg\" width=\"32\" height=\"32\" alt=\"\"> Get started with Ruflo\n\n<img src=\"docs/assets/readme/icons/plugins.svg\" width=\"28\" height=\"28\" alt=\"\"> **Start in Claude Code** with core tools, the visual console and runtime mods. Requires Claude Code **2.1.287 or later**. Run inside Claude Code:\n\n```text\n/plugin marketplace add ruvnet/ruflo\n/plugin install ruflo-core@ruflo\n/plugin install ruflo-console@ruflo\n/plugin install ruflo-mods@ruflo\n/reload-plugins\n/ruflo\n```\n\n**Core** provides foundation tools. **Console** opens the agent cockpit. **Mods** add routing and policy enforcement inside Claude Code. Mods run with your account's permissions; review their code before installing.\n\n<img src=\"docs/assets/readme/icons/terminal.svg\" width=\"28\" height=\"28\" alt=\"\"> **Using Codex or another MCP enabled tool?** Use NPX for Ruflo project setup and connect your client to the Ruflo MCP server. Run the setup wizard in your project terminal:\n\n```bash\nnpx ruflo@latest init wizard\n```\n\nFor clients that support local stdio MCP servers, configure **command** `npx` and **arguments** `[\"-y\", \"ruflo@latest\", \"mcp\", \"start\"]`. The equivalent server command is:\n\n```bash\nnpx -y ruflo@latest mcp start\n```\n\nMCP exposes Ruflo tools to your client. The console and mods above are Claude Code integrations; hook support depends on the client.\n\n<img src=\"docs/assets/readme/icons/terminal.svg\" width=\"28\" height=\"28\" alt=\"\"> **Prefer a plain terminal? Optional.** The console also runs on its own, with no Claude Code: `npx ruflo tui` (add `--plain` to print one frame for scripts). It shows Overview, Cost, Swarm, Events and Missions, plus an optional AI page. [Terminal UI guide](docs/USERGUIDE.md#terminal-ui-optional)\n\n<p align=\"center\"><img src=\"docs/assets/ruflo-tui-compact.svg\" width=\"640\" alt=\"Looping recording of the optional ruflo terminal UI with its pictures: Overview in the Classic BBS look, the Orbital look with its moving globe, and the Swarm graph, in a sample project\"></p>\n\n[Compare install paths](#quick-start) · [Open the console](#console-walkthrough) · [User guide](docs/USERGUIDE.md)\n\n<div align=\"center\">\n\n\n### Optional: ruOS Desktop\n\n<a href=\"https://ruos.cognitum.one\"><img src=\"ruflo/assets/ruos-animated.svg\" alt=\"ruOS — A desktop that runs itself\" width=\"100%\"></a>\n\n**Connect ruOS to ChatGPT or Claude via MCP:**\n\n```text\nhttps://ruos.cognitum.one/mcp\n```\n\n\n\n<!-- RuVector promo -->\n<a href=\"https://github.com/ruvnet/ruvector\"><img src=\"docs/assets/readme/ruvector-promo-depth.svg\" width=\"100%\" alt=\"RuVector: Give your agents memory. Local vector search, persistent context, graph relationships and feedback learning. Explore RuVector.\"></a>\n\n```bash\nnpx ruvector\n```\n\n\n\n\n# Ruflo\n\n[English](README.md) · [简体中文](README.zh-CN.md)\n\n\n[![RuFlo Explained — build an AI team that plans, remembers, tests, and improves](docs/assets/ruflo-explained/ch14.jpg)](docs/ruflo-explained.md)\n\n**[📖 RuFlo Explained — Build an AI Team That Plans, Remembers, Tests, and Improves](docs/ruflo-explained.md)**\nA 14-chapter guide: from the basic idea to a first useful task, then memory, agent teams, plugins, cost and verification.\n\n</div>\n\n> **Agent = Model + Harness.** The model writes; the harness gives it tools, memory, loops, sandboxes, and controls so it can actually work. **Ruflo is the harness** — the execution layer around Claude Code and Codex that adds 100+ specialized agents, coordinated swarms, self-learning memory, federated comms across machines, and enterprise security guardrails. So agents don't just run, they collaborate.\n\nOne `npx ruflo init` gives Claude Code a nervous system: agents self-organize into swarms, learn from every task, remember across sessions, and — with federation — securely talk to agents on other machines without leaking data. You keep writing code. Ruflo handles the coordination.\n\n<p align=\"center\"><img src=\"docs/assets/readme/learning-cinematic-compact.svg\" width=\"100%\" alt=\"Ruflo trajectory learning: branching memory paths, outcome feedback, contrastive AI and local learning. No LLM required for local vector retrieval and contrastive updates; agent execution may still use an LLM.\"></p>\n\n<sub>Conceptual learning loop. Local vector retrieval and contrastive updates can run without an LLM; embeddings and configured learning modules are still required. See the <a href=\"v3/@claude-flow/cli/src/services/ruvector-training.ts\">RuVector training integration</a> and <a href=\"v3/@claude-flow/neural/src/modes/balanced.ts\">trajectory contrastive learning</a>.</sub>\n\n<details>\n<summary>Architecture in text</summary>\n\nUser → Ruflo (CLI/MCP) → Router → Swarm → Agents → Memory → LLM providers. Memory feeds useful experience back into routing. This is a conceptual flow, not a live execution trace.\n\n</details>\n\n> **New to Ruflo?** You don't need to learn 314 MCP tools or 26 CLI commands. After `init`, just use Claude Code normally — the hooks system automatically routes tasks, learns from successful patterns, and coordinates agents in the background.\n\n<details>\n<summary><strong>📖 Background — where the name comes from</strong></summary>\n\n> Claude Flow is now Ruflo — named by [`rUv`](https://ruv.io), who loves Rust, flow states, and building things that feel inevitable. The \"Ru\" is the rUv. The \"flo\" is working until 3am. Underneath, powered by [`Cognitum.One`](https://cognitum.one/?RuFlo) agentic architecture, running a supercharged Rust-based AI engine, embeddings, memory, and plugin system.\n\n</details>\n\n---\n\n<p align=\"center\"><img src=\"docs/assets/readme/console.svg\" alt=\"Mission control: inspect agent work\" width=\"100%\"></p>\n\n<p align=\"center\"><a href=\"https://raw.githubusercontent.com/ruvnet/ruflo/main/docs/assets/ruflo-console-theme-compact.svg\"><img src=\"docs/assets/ruflo-console-theme-compact.svg\" width=\"100%\" alt=\"Ruflo Orbital theme: animated boot checks, block logo, menu icons, rotating globe, swarm routing, six color palettes and responsive Theme Studio\"></a></p>\n\n[Open animated demo](https://raw.githubusercontent.com/ruvnet/ruflo/main/docs/assets/ruflo-console-theme-compact.svg) · [Theme Studio guide](plugins/ruflo-console/README.md) · [Workflow demo](docs/assets/ruflo-console-workflows.svg)\n\n<img src=\"docs/assets/readme/console-icon-workflows.svg\" width=\"28\" height=\"28\" alt=\"\"> **Your agent cockpit.** Track workflows, agents, models, tokens and cost beside Claude Code. The 38 second animation shows **Orbital and Theme Studio** through actual renderer frames, including boot checks, six palettes, customization, saved themes, JSON import and resizing. This compact 3.84 MB SVG retains all 456 frames. Native host and AI provider execution are not demonstrated.\n\n<img src=\"docs/assets/readme/console-icon-inspect.svg\" width=\"28\" height=\"28\" alt=\"\"> **Inspect any run.** Open agent logs and results, search, triage failures, replay and compare. Start with `npx ruflo init`, restart Claude Code, then `/ruflo`. [Full console tour](docs/assets/ruflo-console-walkthrough-wide.gif).\n\n<img src=\"docs/assets/readme/console-icon-control.svg\" width=\"28\" height=\"28\" alt=\"\"> **Let Claude drive. You set the limits.** Enable **Settings → Claude control** to navigate and run console actions. Choose `read`, `write`, `manage` or `full`, with `ask` or `auto` approval. The current default is **read + ask**; raising the level is your choice. Actions above your permission level are refused, and network, spending and destructive actions require confirmation even in `auto`. Review the live action log or press **Take back control** to stop Claude control. [Details](v3/docs/adr/ADR-444-claude-controls-the-console.md).\n\n<a id=\"console-walkthrough\"></a>\n\n### One task: create a mission with Claude\n\n<img src=\"docs/assets/readme/console-icon-workflows.svg\" width=\"28\" height=\"28\" alt=\"\"> **Watch the recorded console session below.** Claude creates a mission, opens the Learning and Security pages, and reports its actions in Overview.\n\n1. **Set the boundary.** Install the console using the commands below, open `/ruflo`, then choose **Settings → Claude control → write + ask**.\n2. **Give a concrete request.** Try: “Create a mission to add a dark mode toggle. Show me the mission and its status.”\n3. **Approve creation.** Claude opens Missions and sets the goal. Confirm the pending create action in the console.\n4. **Verify the result.** Check that Missions contains the goal and Overview records the action. Creating a mission does not mean the feature has been implemented.\n5. **Keep control.** **Take back control** pauses Claude's console tools. A later call should be refused until you restore control.\n\n**What the recording demonstrates:** a real Claude Haiku session with `write + auto`, mission creation, page navigation, a refused swarm stop, and control being taken back. The steps above use `ask` so you approve creation yourself. The linked workflow animation uses sample data, while the theme demo replays renderer frames. Neither is evidence of completed swarm work or memory recall.\n\n[Implementation and recorded test findings](v3/docs/adr/ADR-444-claude-controls-the-console.md) · [Reproduction script](plugins/ruflo-console/scripts/e2e-control.sh)\n\n<p align=\"center\"><img src=\"docs/assets/ruflo-console-claude-control.gif\" alt=\"Claude Code with the ruflo console beside it: Claude sets a mission goal, creates the mission and opens the Learning, Security and Overview pages through the console tools; the Claude control dashboard logs each action; swarm-stop is refused because it needs the full level; the person clicks Take back control and the next request is refused\"></p>\n\n\n**Install the mods from the ruflo marketplace** (Claude Code 2.1.287 or later; mods run with your account's permissions and are not sandboxed, so read the code first):\n\n```text\n/plugin marketplace add ruvnet/ruflo\n/plugin install ruflo-console@ruflo\n/plugin install ruflo-mods@ruflo\n/reload-plugins\n```\n\n`ruflo-console` is the cockpit above, `ruflo-mods` routes prompts and enforces policy in-process, `ruflo-swarm` shows the swarm in a pane, and `ruflo-ruos` adds the ruOS status segment. Open `/plugin` to confirm they appear in the active mods line. Inside the console, `/ruflo market` is the Plugin Catalog: every ruflo plugin, mod and skill with what it ships, and buttons to install, enable, disable and update (each asks first).\n\n## Quick Start\n\n<p align=\"center\"><img src=\"docs/assets/readme/quick-start.svg\" alt=\"Start building with Ruflo\" width=\"100%\"></p>\n\nThere are **two different install paths** with very different surface areas. Pick based on what you need (#1744):\n\n| | **Claude Code Plugin** | **CLI install (`npx ruflo init`)** |\n|---|---|---|\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"claude-flow\",\n  \"version\": \"3.56.10\",\n  \"workspaces\": [\n    \"v3/@claude-flow/codex\",\n    \"v3/@claude-flow/mcp\",\n    \"v3/@claude-flow/plugin-agent-federation\",\n    \"v3/@claude-flow/security\"\n  ],\n  \"description\": \"Ruflo - Enterprise AI agent orchestration for Claude Code. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration\",\n  \"main\": \"dist/index.js\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"claude-flow\": \"bin/cli.js\"\n  },\n  \"homepage\": \"https://github.com/ruvnet/claude-flow#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/ruvnet/claude-flow/issues\",\n    \"email\": \"support@ruv.io\"\n  },\n  \"funding\": {\n    \"type\": \"github\",\n    \"url\": \"https://github.com/sponsors/ruvnet\"\n  },\n  \"files\": [\n    \"bin/**\",\n    \"v3/@claude-flow/cli/bin/**\",\n    \"v3/@claude-flow/cli/dist/**/*.js\",\n    \"v3/@claude-flow/cli/dist/**/*.d.ts\",\n    \"!v3/@claude-flow/cli/dist/**/*.map\",\n    \"v3/@claude-flow/cli/package.json\",\n    \"v3/@claude-flow/cli/catalog-manifest.json\",\n    \"v3/@claude-flow/shared/dist/**/*.js\",\n    \"v3/@claude-flow/shared/dist/**/*.d.ts\",\n    \"!v3/@claude-flow/shared/dist/**/*.map\",\n    \"v3/@claude-flow/shared/package.json\",\n    \"v3/@claude-flow/guidance/dist/**/*.js\",\n    \"v3/@claude-flow/guidance/dist/**/*.d.ts\",\n    \"!v3/@claude-flow/guidance/dist/**/*.map\",\n    \"v3/@claude-flow/guidance/package.json\",\n    \".claude-plugin/**\",\n    \".claude/**\",\n    \"!.claude/**/*.db\",\n    \"!.claude/**/*.map\",\n    \"!.claude/worktrees/**\",\n    \"!.claude/projects/**\",\n    \"!.claude/scheduled_tasks.lock\",\n    \"!.claude/sessions/**\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"scripts\": {\n    \"dev\": \"tsx watch src/index.ts\",\n    \"build\": \"tsc\",\n    \"build:ts\": \"cd v3/@claude-flow/cli && npm run build || true\",\n    \"prepublishOnly\": \"node scripts/prepare-root-publish.mjs\",\n    \"test\": \"vitest\",\n    \"e2e\": \"node scripts/e2e/host-matrix.mjs\",\n    \"e2e:live\": \"RUFLO_E2E_LIVE=1 node scripts/e2e/host-matrix.mjs --live\",\n    \"test:ui\": \"vitest --ui\",\n    \"test:security\": \"vitest run v3/__tests__/security/\",\n    \"lint\": \"cd v3/@claude-flow/cli && npm run lint || true\",\n    \"security:audit\": \"npm audit --audit-level high\",\n    \"security:fix\": \"npm audit fix\",\n    \"security:test\": \"npm run test:security\",\n    \"v3:domains\": \"npm run build:domains\",\n    \"v3:swarm\": \"npm run start:swarm\",\n    \"v3:security\": \"npm run security:audit && npm run security:test\"\n  },\n  \"dependencies\": {\n    \"@claude-flow/cli-core\": \"3.7.3\",\n    \"@claude-flow/codex\": \"3.0.5\",\n    \"@claude-flow/mcp\": \"3.1.1\",\n    \"@claude-flow/neural\": \"3.0.0\",\n    \"@claude-flow/plugin-agent-federation\": \"1.0.1\",\n    \"@claude-flow/security\": \"3.0.5\",\n    \"@claude-flow/shared\": \"3.0.5\",\n    \"@iarna/toml\": \"^2.2.5\",\n    \"@noble/ed25519\": \"2.3.0\",\n    \"@ruvector/rabitq-wasm\": \"0.1.0\",\n    \"ajv\": \"^8.20.0\",\n    \"bcryptjs\": \"^3.0.3\",\n    \"chalk\": \"^5.3.0\",\n    \"commander\": \"^12.0.0\",\n    \"cors\": \"^2.8.5\",\n    \"fs-extra\": \"^11.2.0\",\n    \"express\": \">=4.22.2\",\n    \"express-rate-limit\": \">=8.4.1\",\n    \"fast-uri\": \"^3.1.6\",\n    \"helmet\": \"^7.2.0\",\n    \"inquirer\": \"^9.2.0\",\n    \"semver\": \"7.7.3\",\n    \"toml\": \"^3.0.0\",\n    \"ws\": \">=8.21.0\",\n    \"yaml\": \"^2.8.0\",\n    \"zod\": \"3.25.76\"\n  },\n  \"optionalDependencies\": {\n    \"@napi-rs/keyring\": \"1.3.0\",\n    \"@claude-flow/plugin-gastown-bridge\": \"^0.1.3\",\n    \"@ruvector/attention\": \"^0.1.3\",\n    \"@ruvector/core\": \"^0.1.30\",\n    \"@ruvector/router\": \"^0.1.31\",\n    \"@ruvector/router-linux-x64-gnu\": \"^0.1.31\",\n    \"@ruvector/sona\": \"^0.1.5\",\n    \"agentdb\": \"^3.0.0-alpha.20\",\n    \"agentic-flow\": \"^2.0.14\",\n    \"better-sqlite3\": \"12.9.0\"\n  },\n  \"overrides\": {\n    \"ruvector\": \"^0.2.27\",\n    \"better-sqlite3\": \"12.9.0\",\n    \"js-yaml\": \">=4.3.0\",\n    \"hono\": \">=4.13.2\",\n    \"@ruvector/rvf-wasm\": \"0.1.5\",\n    \"@hono/node-server\": \">=2.1.1\",\n    \"flatted\": \">=3.4.0\",\n    \"tar\": \">=7.5.11\",\n    \"picomatch\": \">=4.0.3\",\n    \"path-to-regexp\": \">=8.2.1\",\n    \"undici\": \">=8.10.0\",\n    \"minimatch\": \">=10.0.0\",\n    \"@isaacs/brace-expansion\": \">=5.0.1\",\n    \"cacache\": \">=20.0.0\",\n    \"make-fetch-happen\": \">=15.0.0\",\n    \"express-rate-limit\": \">=8.4.1\",\n    \"express\": \">=4.22.2\",\n    \"tinypool\": \">=2.1.2\",\n    \"qs\": \">=6.15.2\",\n    \"protobufjs\": \">=8.7.2\",\n    \"uuid\": \">=14.0.0\",\n    \"@opentelemetry/core\": \">=2.8.0\",\n    \"@opentelemetry/resources\": \">=2.8.0\",\n    \"@opentelemetry/sdk-trace-base\": \">=2.8.0\",\n    \"@opentelemetry/sdk-node\": \">=0.220.0\",\n    \"@opentelemetry/auto-instrumentations-node\": \">=0.75.0\",\n    \"@opentelemetry/exporter-prometheus\": \">=0.220.0\",\n    \"@opentelemetry/exporter-trace-otlp-grpc\": \">=0.220.0\",\n    \"@opentelemetry/exporter-trace-otlp-http\": \">=0.220.0\",\n    \"@opentelemetry/exporter-trace-otlp-proto\": \">=0.220.0\",\n    \"@opentelemetry/otlp-exporter-base\": \">=0.220.0\",\n    \"@opentelemetry/otlp-grpc-exporter-base\": \">=0.220.0\",\n    \"@opentelemetry/otlp-transformer\": \">=0.220.0\",\n    \"axios\": \">=1.19.0\",\n    \"fast-uri\": \"$fast-uri\",\n    \"vite\": \">=8.0.16\",\n    \"ws\": \">=8.2",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "runtime",
+      "skill",
+      "workspace",
+      "workflow",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "多 Agent 协作",
+      "Agent 元调度",
+      "自适应记忆"
+    ],
+    "brief_zh": {
+      "summary": "一个面向多 Agent swarm 的元调度框架，强调把自主工作流、记忆、RAG 和对话系统组合成可部署的协作网络。",
+      "audience": "想把多个 Agent 组织成持续协作工作流，而不是单次聊天机器人的开发者与实验团队",
+      "capabilities": "多 Agent 协作、Agent 元调度、自适应记忆、RAG 集成、对话式工作流",
+      "risk": "概念覆盖很广，真正的协作效果、稳定性和与现有 Agent 生态的差异仍需通过样例和代码验证"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "claude-plugins-official",
+    "full_name": "anthropics/claude-plugins-official",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+    "language": "Python",
+    "total_stars": 41647,
+    "forks": 4455,
+    "stars_this_period": 1383,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1166,
+      "created_at": "2025-11-20T18:36:20Z",
+      "pushed_at": "2026-10-17T16:41:00Z",
+      "homepage": "https://code.claude.com/docs/en/plugins",
+      "default_branch": "main",
+      "forks": 4455,
+      "watchers": 254,
+      "archived": false,
+      "size_kb": 17297
+    },
+    "readme_content": "# Claude Code Plugins Directory\n\nA curated directory of high-quality plugins for Claude Code.\n\n> **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.\n\n## Structure\n\n- **`/plugins`** - Internal plugins developed and maintained by Anthropic\n- **`/external_plugins`** - Third-party plugins from partners and the community\n\n## Installation\n\nPlugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`\n\n## Contributing\n\n### Internal Plugins\n\nInternal plugins are developed by Anthropic team members. See `/plugins/example-plugin` for a reference implementation.\n\n### External Plugins\n\nThird-party partners can submit plugins for inclusion in the marketplace. External plugins must meet quality and security standards for approval. To submit a new plugin, use the [plugin directory submission form](https://clau.de/plugin-directory-submission).\n\n## Plugin Structure\n\nEach plugin follows a standard structure:\n\n```\nplugin-name/\n├── .claude-plugin/\n│   └── plugin.json      # Plugin metadata (required)\n├── .mcp.json            # MCP server configuration (optional)\n├── commands/            # Slash commands (optional)\n├── agents/              # Agent definitions (optional)\n├── skills/              # Skill definitions (optional)\n└── README.md            # Documentation\n```\n\n## Plugin names are immutable\n\nThe `name` field in a marketplace entry is an **immutable slug**. Once a plugin has been published, its `name` must not change — users have it installed under that slug, and renaming it breaks their install with a `plugin-not-found` error.\n\n- To change how a plugin is labeled in the UI, set or update `displayName` instead.\n- If a rename is genuinely unavoidable, add an entry to the top-level `renames` map in `.claude-plugin/marketplace.json` so existing installs auto-migrate:\n\n```json\n\"renames\": {\n  \"old-name\": \"new-name\"\n}\n```\n\nThe Claude Code plugin loader reads this map and transparently rewrites the old slug to the new one on the user's next sync.\n\n## Skill-bundle plugins\n\nWhen a plugin's source repository ships skills (`SKILL.md` files) without a `.claude-plugin/plugin.json` manifest, the marketplace entry can declare the skills directly using `strict: false` and an explicit `skills` array.\n\n```json\n{\n  \"name\": \"example-bundle\",\n  \"description\": \"Brief description of the bundled skills.\",\n  \"author\": { \"name\": \"Author Name\" },\n  \"category\": \"development\",\n  \"source\": {\n    \"source\": \"git-subdir\",\n    \"url\": \"https://github.com/example-org/sdk.git\",\n    \"path\": \"packages/agent-skills\",\n    \"ref\": \"main\",\n    \"sha\": \"<commit sha>\"\n  },\n  \"strict\": false,\n  \"skills\": [\n    \"./skill-a\",\n    \"./skill-b\",\n    \"./skill-c\"\n  ],\n  \"homepage\": \"https://github.com/example-org/sdk\"\n}\n```\n\nEach path in `skills` is relative to `source.path` and points at a directory containing a `SKILL.md`. Paths can reach deeper than a single level — for example, `[\"./libA/skill-1\", \"./libB/skill-2\"]` exposes a curated subset across multiple library subdirectories. Each skill is registered as `<plugin-name>:<skill-name>` in Claude Code.\n\nFor the underlying schema, see [Strict mode](https://code.claude.com/docs/en/plugin-marketplaces) in the marketplace documentation.\n\n## License\n\nPlease see each linked plugin for the relevant LICENSE file.\n\n## Documentation\n\nFor more information on developing Claude Code plugins, see the [official documentation](https://code.claude.com/docs/en/plugins).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "插件目录",
+      "插件发现",
+      "插件安装"
+    ],
+    "brief_zh": {
+      "summary": "集中提供 Anthropic 自有和第三方 Claude Code 插件，支持发现与安装。",
+      "audience": "希望为 Claude Code 选择、评估和接入官方插件生态的开发者",
+      "capabilities": "插件目录、插件发现、插件安装",
+      "risk": "目录本身不等于插件质量保证，实际可用性、权限边界和维护节奏仍需逐个插件验证",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/anthropics/claude-plugins-official"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "xerj-org",
+    "name": "xerj",
+    "full_name": "xerj-org/xerj",
+    "url": "https://github.com/xerj-org/xerj",
+    "description": "XERJ is the new way for AI to search data. Its autoindex capability activates agents to know your data without the token waste of grep and sed. One command indexes code, docs, logs and PDFs for search, RAG, security audits and agent memory, using 40x fewer tokens than grep. Elasticsearch compatible, so existing clients just work.",
+    "language": "Rust",
+    "total_stars": 7736,
+    "forks": 409,
+    "stars_this_period": 1102,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-search",
+        "ai-search-algorithms",
+        "ai-search-engine",
+        "ai-search-free",
+        "ai-search-module",
+        "ai-search-optimization",
+        "ai-searchengine",
+        "bm25-search",
+        "elastic-search",
+        "elasticsearch",
+        "elasticstack",
+        "graph-search",
+        "graph-semantic-search",
+        "hybrid-search",
+        "hybrid-semantic-search",
+        "search-api",
+        "search-engine",
+        "semantic-search",
+        "vector-database",
+        "vector-search"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 48,
+      "created_at": "2026-06-30T04:32:45Z",
+      "pushed_at": "2026-10-17T21:58:49Z",
+      "homepage": "https://xerj.org",
+      "default_branch": "main",
+      "forks": 409,
+      "watchers": 21,
+      "archived": false,
+      "size_kb": 127558
+    },
+    "readme_content": "# XERJ\n\n<a href=\"https://trendshift.io/repositories/116361?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-116361\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/116361\" alt=\"xerj-org%2Fxerj | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n[English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja-JP.md)\n\n[![CI](https://img.shields.io/github/actions/workflow/status/xerj-org/xerj/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/xerj-org/xerj/actions/workflows/ci.yml)\n[![Release](https://img.shields.io/github/v/release/xerj-org/xerj?style=flat-square&label=release)](https://github.com/xerj-org/xerj/releases)\n[![License](https://img.shields.io/badge/license-Apache--2.0-blue?style=flat-square)](./LICENSE)\n[![Stars](https://img.shields.io/github/stars/xerj-org/xerj?style=flat-square)](https://github.com/xerj-org/xerj/stargazers)\n[![Rust](https://img.shields.io/badge/built%20with-Rust-000000?style=flat-square&logo=rust)](https://www.rust-lang.org)\n[![Discussions](https://img.shields.io/github/discussions/xerj-org/xerj?style=flat-square&label=discussions)](https://github.com/xerj-org/xerj/discussions)\n\n[![Reference coding](https://img.shields.io/badge/reference%20coding-2.7%C3%97%20fewer%20tokens-ff8c00?style=flat-square)](https://xerj.org/case-studies/reference-coding.html)\n[![Autoindex](https://img.shields.io/badge/autoindex-zero%20config-ff8c00?style=flat-square)](https://xerj.org/docs/cli.html)\n[![Search](https://img.shields.io/badge/search-BM25%20%2B%20kNN%20%2B%20hybrid-8957e5?style=flat-square)](https://xerj.org/docs/queries.html)\n[![Agent memory](https://img.shields.io/badge/agent%20memory-%2F__memory-00b3a4?style=flat-square)](https://xerj.org/docs/recipes/agentic-memory.html)\n[![MCP](https://img.shields.io/badge/MCP-native-1f6feb?style=flat-square)](https://xerj.org/llms.txt)\n[![llms.txt](https://img.shields.io/badge/llms.txt-agent%20ready-6f42c1?style=flat-square)](https://xerj.org/llms.txt)\n[![ES-YAML conformance](https://img.shields.io/badge/ES--YAML%20conformance-1366%2F1369-brightgreen?style=flat-square)](https://xerj.org/benchmarks)\n[![Single static binary](https://img.shields.io/badge/single%20static%20binary-no%20JVM-orange?style=flat-square)](https://xerj.org/docs/install.html)\n[![Default embedder](https://img.shields.io/badge/default%20embedder-lexical%2C%20offline-teal?style=flat-square)](https://xerj.org/docs/vectors.html)\n[![Neural](https://img.shields.io/badge/neural%20embedder-opt--in%2C%20downloads%20~90%20MB-9c6ade?style=flat-square)](https://xerj.org/docs/vectors.html)\n\nXERJ is a community-trusted local AI search that indexes any folder automatically, so your\ncoding agent stops burning tokens reading files one by one and pulls the exact code it\nneeds instead. Reference coding is its main use case and the clearest win: point an agent\nat a task and it downloads the open-source repos closest to it, indexes them, and reuses\nhow they solved the problem before writing its own code. In a controlled study that cut a\ncoding agent's output tokens by 2.7x at the same 16/16 solve rate\n([case study](https://xerj.org/case-studies/reference-coding.html)), and people report\nroughly 5x in everyday work\n([field reports](./user-feedback/11-reference-coding-field-reports/2026-08-11-token-savings-reports.md)).\nIt is enough for a smaller, cheaper model to out-code a pricier one working from memory,\nwhile you spend less time in fix loops. Try it now with a one-prompt install:\n\n```text\nInstall XERJ (docs: https://xerj.org/llms.txt), index this project's sources, and set up\nreference coding: clone and index the open-source repos closest to what we're building,\nand search how they solved a problem before writing code.\n```\n\nOr run it yourself:\n\n```sh\ncurl -fsSL https://xerj.org/get | sh\nxerj --insecure --data-dir ./data &\nxerj init                                        # wire XERJ into Claude Code/Cursor (MCP + skill), one command\nxerj autoindex ~/my-project\nxerj search \"how do we rotate the WAL segment\"   # ranked passages, file:line\nxerj def \"euler_to_rotationmatrix\"               # go-to-definition: file:line + signature\nxerj gain                                        # what it did for you — counted, not estimated\n```\n\nWindows and a hand-verified install are under [Install by hand](#install-by-hand).\n\nThat `--insecure` flag is a trust boundary, not a formality. It turns off TLS and API-key\nauth, so every caller that can reach the port is a superuser who can read and delete every\nindex, including every `/_memory` namespace. It is meant for one user on a dev machine: a\nfresh node binds `127.0.0.1` only, and a cleartext bind on any other interface refuses to\nstart unless you explicitly allow it. The full model is in\n[docs/SECURITY_MODEL.md](./docs/SECURITY_MODEL.md).\n\n## Join the community\n\nYou join XERJ by running it and sending back one short field report on what it was like: a\nsingle commit or PR. That report is the membership card, and it is the only thing the\nproject asks in return for a free, Apache-2.0 binary. It is what keeps the engine improving\nfor whoever runs it next.\n\nHumans and AI agents are both welcome; this is deliberately not an agents-only project.\nWhether you indexed a repo over lunch or an agent installed XERJ mid-session in someone\nelse's codebase, the ask is the same: one short report saying what you pointed it at, what\nyou used it for, and your honest verdict. A negative verdict is a good report. If something\nbroke, that is a separate issue or fix on top.\n\nField-report PRs are CLA-exempt, so they merge without a signature. The path that works on\nany build is a plain `gh pr create` adding exactly one markdown file under\n[`user-feedback/16-agent-field-reports/`](./user-feedback/16-agent-field-reports), with\nnothing else in the diff. On a build that has it, `xerj feedback` drafts the report and\nfills in version, OS and what was indexed, and `xerj feedback --open-pr` opens the PR for\nyou. Check `xerj --help` for whether your binary has the command.\n\n## The measured reason: reference coding\n\nAn agent that greps pulls whole files into its context, up to 1.06M input tokens on one\ncorpus in our measurements, and still has to read them. An agent that queries XERJ gets the\npassage. Measured end to end on code the model had not memorised\n([case study](https://xerj.org/case-studies/reference-coding.html): 8 tasks, 4 languages,\n16 runs per arm, real `claude -p` token counts):\n\n| | output tokens | cost | solved |\n|---|---:|---:|---:|\n| from memory only | 260,916 | $11.18 | 11/16 |\n| grep-driven agent | 26,477 | $3.27 | 16/16 |\n| XERJ | 9,982 | $1.58 | 16/16 |\n\nThat is 2.7x fewer output tokens than grep and 26x fewer than memory alone at the same solve\nrate, and up to 278x fewer on a single Java task. In real development, users report roughly\n5x fewer tokens end to end\n([field reports](./user-feedback/11-reference-coding-field-reports/2026-08-11-token-savings-reports.md)).\nThe value is gated by memorisation: it wins on private, internal, niche or post-cutoff code,\nand is neutral to harmful on popular public libraries the model already knows. The honest\nlimits are in the [case study](https://xerj.org/case-studies/reference-coding.html).\n\n## Feed it any folder\n\nReference coding is one use of the same primitive: `xerj autoindex <folder>` makes an agent\nknow a corpus instead of grepping it. One command indexes code, docs, logs, PDFs, SQLite and\nawkward CSVs into typed, queryable indices for search, RAG, security audits and agent\nmemory, with no schema to write and no pipeline to configure.\n\n```sh\nxerj --insecure --data-dir ./data &      # start it\nxerj autoindex ~/my-project              # point it at anything\n```\n\n`--insecure` again means no TLS and no auth — every caller a superuser — so this is the\nsame one-user-on-a-dev-machine boundary as above ([security model](./docs/SECURITY_MODEL.md)).\n\nXERJ sniffs every file, works out what it is, and creates one index per dataset it finds.\nCode arrives with its symbols and line numbers through tree-sitter, not as flat text:\n\n```\nphase A: 593 datasets inferred, 1955 junk/skipped files\nphase B: indexing 25329 files with 8 workers\ndone in 158.1s, 593 datasets, 83103 records live, 790 junk records\n```\n\n## What people point it at\n\n- Reference coding: index the OSS projects nearest your problem and retrieve how they solved\n  it before writing code (the measured use case above).\n- Codebase Q&A and RAG: index a repo, ask for the mechanism, get the passage with `file:line`\n  instead of a directory listing.\n- Security audits: index a target tree and query for sink patterns, secrets and dangerous\n  calls across every file type at once.\n- Log and incident analysis: mixed formats become typed indices with the aggregations you\n  would expect from Elasticsearch.\n- Agent long-term memory: `/_memory/{namespace}` stores what an agent learns and recalls it\n  by meaning next session.\n\n## How the prompt works\n\n[llms.txt](https://xerj.org/llms.txt) gives your agent the ordered steps: install, start the\nserver, `xerj autoindex .`, query with any Elasticsearch client, and the reference-coding\nloop (clone similar OSS, index it, retrieve the mechanism before writing, cite what you use,\nrespect licenses).\n\nThe reason it helps: an agent working from memory retry-loops on any API it has not\nmemorised, and grep only tells it where to look; the recovery is still reading source into\ncontext, up to 1.06M input tokens on one corpus in our measurements. An agent that queries\nXERJ reads the exact passage instead. The 2.7x fewer output tokens than grep (26x vs memory\nalone, 2.1x cheaper) at the same 16/16 solve rate is in\n[The measured reason](#the-measured-reason-reference-coding) above, with a companion run\nscoring 9/9 with retrieval versus 0/9 from memory on a Rust library the model had never seen.\n\nMore prompts that work on a fresh install:\n\n- *\"Read https://xerj.org/llms.txt, set XERJ up as your search backend, index `./docs`, and\n  show me one example query per index it created.\"*\n- *\"Run `xerj autoindex map` and tell me what is in this data (types, counts and the gotchas\n  it recorded), then answer my questions with search instead of reading files.\"*\n- *\"Use XERJ's `/_memory/notes` API as your long-term memory for this project: store what you\n  learn as you work, and recall it by meaning next session.\"*\n\nWorked, validated examples for each capability: [xerj.org/docs/recipes](https://xerj.org/docs/recipes/).\n\n<video src=\"https://xerj.org/xerj-biz-demo.mp4\" poster=\"docs/media/demo-poster.png\" controls muted playsinline width=\"840\">\n  <a href=\"https://xerj.org/aise-demo.html\"><img src=\"docs/media/demo-poster.png\" width=\"840\" alt=\"Watch the XERJ demo: boot, ingest, search, vectors, dashboards\"></a>\n</video>\n\n<sub>Boot, bulk ingest, search, vector kNN, live dashboards, no cuts.\n<a href=\"https://xerj.org/aise-demo.html\">Watch it on xerj.org</a> or\n<a href=\"https://xerj.org/playground/\">try the live playground</a>.</sub>\n\n## Install by hand\n\n```sh\ncurl -fsSL https://xerj.org/get | sh\n```\n\nWindows PowerShell:\n\n```powershell\nirm https://xerj.org/get.ps1 | iex\n```\n\nOne static binary, no JVM, no dependencies. Prebuilt for Linux, macOS and Windows on x86-64\nand arm64. You can also [build from source](#build-from-source). It speaks the Elasticsearch\nAPI, so existing clients, dashboards and tooling work against it unchanged.\n\nFirst commands after install (the installer prints where `xerj` landed; add it to your PATH\nif needed): `xerj --insecure --data-dir ./data &`, wait until `http://localhost:9200`\nresponds, then `xerj autoindex ~/my-project`. See [Index a folder](#index-a-folder).\n\nFor a host with no runtime internet access, follow the\n[air-gapped deployment recipe](./docs/recipes/air-gapped-deployment.md). The default lexical\nembedder is offline; neural mode needs the three model files staged locally before the first\nsemantic operation.\n\n## Index a folder",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "llm",
+      "workflow",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "stablyai",
+    "name": "orca",
+    "full_name": "stablyai/orca",
+    "url": "https://github.com/stablyai/orca",
+    "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+    "language": "TypeScript",
+    "total_stars": 95312,
+    "forks": 6103,
+    "stars_this_period": 829,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ade",
+        "agent-ide",
+        "ai-agents",
+        "automation",
+        "bot",
+        "claude-code",
+        "codex",
+        "ghostty",
+        "grok-bot",
+        "hermes-agent",
+        "mobile-app",
+        "muse",
+        "openclaw",
+        "opencode",
+        "orchestration",
+        "pi",
+        "runtime",
+        "terminal",
+        "worktrees",
+        "yc-backed"
+      ],
+      "license": "MIT",
+      "open_issues": 8543,
+      "created_at": "2026-03-17T03:28:57Z",
+      "pushed_at": "2026-10-17T21:59:20Z",
+      "homepage": "https://orca.dev",
+      "default_branch": "main",
+      "forks": 6103,
+      "watchers": 151,
+      "archived": false,
+      "size_kb": 1431148
+    },
+    "readme_content": "<h1 align=\"center\">\n  <a href=\"https://onOrca.dev\"><img src=\"resources/build/icon.png\" alt=\"Orca\" width=\"64\" valign=\"middle\" /></a> Orca\n</h1>\n\n<p align=\"center\">\n  <a href=\"https://github.com/stablyai/orca\"><img src=\"https://img.shields.io/github/stars/stablyai/orca?style=flat&amp;label=%E2%98%85&amp;color=08C\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/stablyai/orca/releases\"><img src=\"docs/assets/readme-downloads.svg\" alt=\"Total downloads across all releases\" /></a>\n  <img src=\"https://img.shields.io/badge/license-MIT-08C?style=flat\" alt=\"License: MIT\" />\n  <a href=\"https://discord.gg/fzjDKHxv8Q\"><img src=\"https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white\" alt=\"Join the Orca Discord\" /></a>\n  <a href=\"https://x.com/orca_build\"><img src=\"https://img.shields.io/badge/X-000000?logo=x&logoColor=white\" alt=\"Follow Orca on X\" /></a>\n  <img src=\"https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-4493F8?style=flat-square\" alt=\"Supported platforms: macOS, Windows, and Linux\" />\n</p>\n\n<p align=\"center\">\n  <sub><a href=\"docs/readme/README.zh-CN.md\">中文</a> · <a href=\"docs/readme/README.ja.md\">日本語</a> · <a href=\"docs/readme/README.ko.md\">한국어</a> · <a href=\"docs/readme/README.es.md\">Español</a> · <a href=\"docs/readme/README.fr.md\">Français</a> · <a href=\"docs/readme/README.pt.md\">Português</a></sub>\n</p>\n\n<p align=\"center\">\n  <strong>The AI Orchestrator for 100x builders.</strong><br/>\n  Run Codex, ClaudeCode, OpenCode or Pi side-by-side — each in its own worktree, tracked in one place.\n</p>\n\n<h3 align=\"center\"><a href=\"https://onorca.dev/download\"><ins>Download Orca</ins></a></h3>\n\n<p align=\"center\">\n  <img src=\"docs/assets/readme-hero.jpg\" alt=\"Orca desktop app running agents in parallel worktrees, with the Orca mobile companion app in the corner\" width=\"960\" />\n</p>\n\n## Features\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Mobile Companion\n\nMonitor and steer your agents from your phone — get notified when an agent finishes and send follow-ups from anywhere.\n\n[iOS App Store](https://apps.apple.com/us/app/orca-ide/id6766130217) · [Android APK](https://www.onorca.dev/download/android) · [Docs →](https://www.onorca.dev/docs/mobile)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/mobile\"><picture><source srcset=\"docs/assets/feature-wall/mobile-companion-app-showcase.gif\" type=\"image/gif\"><img src=\"docs/assets/feature-wall/mobile-companion-app-showcase.jpg\" alt=\"Orca desktop with the mobile companion app\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Parallel Worktrees\n\nFan one prompt across five agents, each in its own isolated git worktree — compare the results and merge the winner.\n\n[Docs →](https://www.onorca.dev/docs/model/worktrees)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/model/worktrees\"><picture><source srcset=\"docs/site/public/docs/tab-split.gif\" type=\"image/gif\"><img src=\"docs/site/public/docs/posters/tab-split.jpg\" alt=\"Parallel worktree orchestration\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Terminal Splits\n\nGhostty-class terminals with WebGL rendering, infinite splits, and scrollback that survives restarts.\n\n[Docs →](https://www.onorca.dev/docs/terminal)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/terminal\"><picture><source srcset=\"resources/onboarding/feature-wall/tile-02.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-02.poster.jpg\" alt=\"Terminal splits\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Design Mode\n\nClick any UI element in a real Chromium window to send its HTML, CSS, and a cropped screenshot straight into your agent's prompt.\n\n[Docs →](https://www.onorca.dev/docs/browser/design-mode)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/browser/design-mode\"><picture><source srcset=\"docs/site/public/docs/orca-design-mode.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-05.poster.jpg\" alt=\"Embedded browser and Design Mode\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### GitHub &amp; Linear, Native\n\nBrowse PRs, issues, and project boards in-app — open a worktree from any task and review without a context switch.\n\n[Docs →](https://www.onorca.dev/docs/review/linear)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/review/linear\"><picture><source srcset=\"resources/onboarding/feature-wall/tile-03.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-03.poster.jpg\" alt=\"GitHub and Linear task workflows in Orca\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### SSH Worktrees\n\nRun agents on a beefy remote box with full file editing, git, and terminals — auto-reconnect and port forwarding included.\n\n[Docs →](https://www.onorca.dev/docs/ssh)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/ssh\"><picture><source srcset=\"resources/onboarding/feature-wall/tile-06.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-06.poster.jpg\" alt=\"Remote worktrees over SSH\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Annotate AI Diffs\n\nDrop comments on any diff line and ship them back to the agent — review, edit, and commit without leaving Orca.\n\n[Docs →](https://www.onorca.dev/docs/review/annotate-ai-diff)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/review/annotate-ai-diff\"><picture><source srcset=\"docs/site/public/docs/annotate-ai-diff.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-08.poster.jpg\" alt=\"Annotate AI-generated diffs\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Drag Files to Agents\n\nVS Code's editor with autosave everywhere — drag files or images straight into an agent prompt.\n\n[Docs →](https://www.onorca.dev/docs/editing/file-explorer)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/editing/file-explorer\"><picture><source srcset=\"resources/onboarding/feature-wall/tile-07.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-07.poster.jpg\" alt=\"Drag files and images into an agent prompt\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Orca CLI\n\nAgents drive Orca too — script every workflow with `orca worktree create`, `snapshot`, `click`, and `fill`.\n\n[Docs →](https://www.onorca.dev/docs/cli/overview)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/cli/overview\"><picture><source srcset=\"resources/onboarding/feature-wall/tile-09.gif\" type=\"image/gif\"><img src=\"resources/onboarding/feature-wall/tile-09.poster.jpg\" alt=\"Script Orca from the CLI\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n</table>\n\n**Also in the box:**\n\n- **[Quick open](https://www.onorca.dev/docs/model/quick-open)** — Search across worktrees, files, agents, commands, and repo context without leaving your flow.\n- **[Account switcher &amp; usage tracking](https://www.onorca.dev/docs/agents/usage-tracking)** — See Claude and Codex usage and rate-limit resets, and hot-swap accounts without re-logging in.\n- **[Rich repo previews](https://www.onorca.dev/docs/editing/markdown)** — Preview Markdown, images, PDFs, and repo docs in the workspace.\n- **[Computer Use](https://www.onorca.dev/docs/cli/computer-use)** — Let agents operate desktop apps and visible UI when a workflow needs real interaction.\n- **[Notifications and unread state](https://www.onorca.dev/docs/notifications)** — Know when an agent finishes or needs attention, then mark threads unread to come back later.\n- **And many, many more** — we ship daily, so this list is perpetually behind. The [changelog](https://github.com/stablyai/orca/releases) is the real feature list.\n\n---\n\n## Supported Agents\n\nWorks with **any CLI agent** — if it runs in a terminal, it runs in Orca.\n\n<p>\n  <a href=\"https://docs.anthropic.com/claude/docs/claude-code\"><kbd><img src=\"docs/assets/claude-logo.svg\" alt=\"Claude Code logo\" width=\"16\" valign=\"middle\" /> Claude Code</kbd></a> &nbsp;\n  <a href=\"https://github.com/openai/codex\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=openai.com&sz=64\" alt=\"Codex logo\" width=\"16\" valign=\"middle\" /> Codex</kbd></a> &nbsp;\n  <a href=\"https://x.ai/cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=x.ai&sz=64\" alt=\"Grok logo\" width=\"16\" valign=\"middle\" /> Grok</kbd></a> &nbsp;\n  <a href=\"https://cursor.com/cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=cursor.com&sz=64\" alt=\"Cursor logo\" width=\"16\" valign=\"middle\" /> Cursor</kbd></a> &nbsp;\n  <a href=\"https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=github.com&sz=64\" alt=\"GitHub Copilot logo\" width=\"16\" valign=\"middle\" /> GitHub Copilot</kbd></a> &nbsp;\n  <a href=\"https://dev.meta.ai/docs/muse-code\"><kbd><img src=\"src/shared/agent-icons/muse.png\" alt=\"Muse logo\" width=\"16\" valign=\"middle\" /> Muse</kbd></a> &nbsp;\n  <a href=\"https://deepseek-harness.github.io/deepseek-harness/\"><kbd><img src=\"src/shared/agent-icons/dsh.png\" alt=\"DeepSeek Harness logo\" width=\"16\" valign=\"middle\" /> DeepSeek Harness</kbd></a> &nbsp;\n  <a href=\"https://zcode.z.ai/en/docs\"><kbd><img src=\"src/shared/agent-icons/zcode.png\" alt=\"ZCode logo\" width=\"16\" valign=\"middle\" /> ZCode</kbd></a> &nbsp;\n  <a href=\"https://opencode.ai/docs/cli/\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=opencode.ai&sz=64\" alt=\"OpenCode logo\" width=\"16\" valign=\"middle\" /> OpenCode</kbd></a> &nbsp;\n  <a href=\"https://mimo.xiaomi.com/coder\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=mimo.xiaomi.com&sz=64\" alt=\"MiMo Code logo\" width=\"16\" valign=\"middle\" /> MiMo Code</kbd></a> &nbsp;\n  <a href=\"https://ampcode.com/manual#install\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=ampcode.com&sz=64\" alt=\"Amp logo\" width=\"16\" valign=\"middle\" /> Amp</kbd></a> &nbsp;\n  <a href=\"https://openclaude.gitlawb.com/\"><kbd><img src=\"resources/openclaude-logo.png\" alt=\"OpenClaude logo\" width=\"16\" valign=\"middle\" /> OpenClaude</kbd></a> &nbsp;\n  <a href=\"https://antigravity.google/docs/cli-overview\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=antigravity.google&sz=64\" alt=\"Antigravity logo\" width=\"16\" valign=\"middle\" /> Antigravity</kbd></a> &nbsp;\n  <a href=\"https://pi.dev\"><kbd><img src=\"https://pi.dev/favicon.svg\" alt=\"Pi logo\" width=\"16\" valign=\"middle\" /> Pi</kbd></a> &nbsp;\n  <a href=\"https://omp.sh\"><kbd><img src=\"https://omp.sh/favicon.svg\" alt=\"oh-my-pi logo\" width=\"16\" valign=\"middle\" /> oh-my-pi</kbd></a> &nbsp;\n  <a href=\"https://hermes-agent.nousresearch.com/docs/\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=nousresearch.com&sz=64\" alt=\"Hermes Agent logo\" width=\"16\" valign=\"middle\" /> Hermes Agent</kbd></a> &nbsp;\n  <a href=\"https://devin.ai/cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=devin.ai&sz=64\" alt=\"Devin logo\" width=\"16\" valign=\"middle\" /> Devin</kbd></a> &nbsp;\n  <a href=\"https://block.github.io/goose/docs/quickstart/\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=goose-docs.ai&sz=64\" alt=\"Goose logo\" width=\"16\" valign=\"middle\" /> Goose</kbd></a> &nbsp;\n  <a href=\"https://docs.augmentcode.com/cli/overview\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=augmentcode.com&sz=64\" alt=\"Auggie logo\" width=\"16\" valign=\"middle\" /> Auggie</kbd></a> &nbsp;\n  <a href=\"https://github.com/autohandai/code-cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=autohand.ai&sz=64\" alt=\"Autohand Code logo\" width=\"16\" valign=\"middle\" /> Autohand Code</kbd></a> &nbsp;\n  <a href=\"https://github.com/charmbracelet/crush\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=charm.sh&sz=64\" alt=\"Charm logo\" width=\"16\" valign=\"middle\" /> Charm</kbd></a> &nbsp;\n  <a href=\"https://docs.cline.bot/cline-cli/overview\"><kbd><img src",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"orca\",\n  \"version\": \"1.4.214\",\n  \"description\": \"Next-gen IDE for parallel agentic development\",\n  \"homepage\": \"https://github.com/stablyai/orca\",\n  \"author\": \"stablyai\",\n  \"bin\": {\n    \"orca\": \"./out/cli/index.js\",\n    \"orca-dev\": \"./config/scripts/orca-dev.mjs\"\n  },\n  \"main\": \"./out/main/index.js\",\n  \"scripts\": {\n    \"install:release\": \"pnpm install --frozen-lockfile --cpu=current,x64,arm64\",\n    \"audit:perf\": \"oxlint --config config/oxlint-performance-audit.json --format json src\",\n    \"test:perf:contracts\": \"vitest run --config config/vitest.performance.config.ts\",\n    \"format\": \"oxfmt --write .\",\n    \"lint\": \"oxlint && pnpm run audit:anti-slop && pnpm run audit:code-quality:native && pnpm run audit:code-quality:type-aware && pnpm run check:reliability-gates && pnpm run check:dead-classes && pnpm run check:max-lines-ratchet && pnpm run check:ts-nocheck-ratchet && pnpm run check:runtime-electron-ratchet && pnpm run check:focus-read-ratchet && pnpm run check:layout-writer-ratchets && pnpm run check:deprecated-runtime-owner-ratchet && pnpm run check:readme-local-links && pnpm run check:node-runtime-pin && pnpm run verify:rpc-params-catalog && pnpm run verify:acp-protocol && pnpm run verify:bundled-skill-guides && pnpm run verify:skill-bundle-manifest && pnpm run verify:localization-catalogs && pnpm run verify:localization-extraction && pnpm run verify:localization-coverage && pnpm run check:process-host-imports && pnpm run check:main-sync-spawn-ratchet && pnpm run check:compat-boundary-imports\",\n    \"audit:code-quality\": \"pnpm run audit:code-quality:native && pnpm run audit:code-quality:type-aware && pnpm run audit:react-doctor\",\n    \"audit:code-quality:native\": \"oxlint --config config/oxlint-code-quality-native-plugins.json src config tests mobile --deny-warnings\",\n    \"audit:code-quality:type-aware\": \"oxlint --type-aware --config config/oxlint-code-quality-type-aware.json src config tests --deny-warnings\",\n    \"audit:react-doctor\": \"pnpm dlx react-doctor@0.9.14 . --yes --no-supply-chain --no-telemetry --blocking none\",\n    \"audit:dead-code\": \"pnpm dlx knip@5.88.1 --config config/knip.json\",\n    \"check:code-quality:changed\": \"node config/scripts/check-changed-code-quality.mjs\",\n    \"check:dead-classes\": \"oxlint --config config/oxlint-dead-classes.json src/renderer\",\n    \"lint:design-system\": \"oxlint --config config/oxlint-design-system.json src/renderer\",\n    \"check:react-doctor:changed\": \"node config/scripts/check-react-doctor-changed.mjs\",\n    \"check:zustand-selector-fanout\": \"node config/scripts/zustand-selector-fanout-benchmark.mjs --check\",\n    \"doctor\": \"pnpm dlx react-doctor@0.9.14 . --no-telemetry\",\n    \"lint:react-doctor\": \"oxlint --config config/oxlint-react-doctor.json\",\n    \"lint:react-doctor:changed\": \"node config/scripts/lint-react-doctor-changed.mjs\",\n    \"prepare\": \"husky\",\n    \"test\": \"pnpm run build:packages && node config/scripts/ensure-native-runtime.mjs --runtime=node && node config/scripts/run-vitest.mjs run --config config/vitest.config.ts\",\n    \"test:node\": \"pnpm run build:packages && node config/scripts/ensure-native-runtime.mjs --runtime=node && vitest run --config config/vitest.config.ts\",\n    \"test:node-server\": \"node config/scripts/run-node-server-tests.mjs\",\n    \"test:skill-sharing:release\": \"vitest run --config config/vitest.config.ts src/main/skills src/main/runtime/rpc/methods/skills.test.ts src/shared/skill-bundle-install-contract.test.ts src/shared/skill-install-contract.test.ts src/shared/skill-install-failure.test.ts src/shared/skill-package-manifest.test.ts\",\n    \"test:repro:remote-agent-session\": \"pnpm run build:cli && pnpm run build:electron-vite && node config/scripts/remote-agent-session-authority-repro.mjs\",\n    \"capture:agent-transcript\": \"node config/scripts/ensure-native-runtime.mjs --runtime=node && node config/scripts/capture-agent-pty-transcript.mjs\",\n    \"check:reliability-gates\": \"node config/scripts/check-reliability-gates.mjs\",\n    \"check:max-lines-ratchet\": \"node config/scripts/check-max-lines-ratchet.mjs\",\n    \"check:ts-nocheck-ratchet\": \"node config/scripts/check-ts-nocheck-ratchet.mjs\",\n    \"check:deprecated-runtime-owner-ratchet\": \"node config/scripts/check-deprecated-runtime-owner-ratchet.mjs\",\n    \"check:runtime-electron-ratchet\": \"node config/scripts/check-runtime-electron-ratchet.mjs\",\n    \"check:focus-read-ratchet\": \"node config/scripts/check-focus-read-ratchet.mjs\",\n    \"check:layout-writer-ratchets\": \"node config/scripts/check-layout-writer-ratchets.mjs\",\n    \"check:readme-local-links\": \"node config/scripts/check-readme-local-links.mjs\",\n    \"check:daemon-protocol-crossing\": \"node config/scripts/check-daemon-protocol-crossing.mjs\",\n    \"check:runtime-launcher-protocol-ratchet\": \"node config/scripts/check-runtime-launcher-protocol-ratchet.mjs\",\n    \"check:node-runtime-pin\": \"node config/scripts/check-node-runtime-pin.mjs\",\n    \"build:orcad\": \"pnpm run build:packages && node config/scripts/build-orcad-node.mjs\",\n    \"build:orcad-t",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "并行编码",
+      "任务管理",
+      "远程开发"
+    ],
+    "brief_zh": {
+      "summary": "在桌面、移动端或远程环境中管理多个并行编码 Agent，使用已有模型订阅推进开发任务。",
+      "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
+      "capabilities": "并行编码、任务管理、远程开发",
+      "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/stablyai/orca"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "thesysdev",
+    "name": "openui",
+    "full_name": "thesysdev/openui",
+    "url": "https://github.com/thesysdev/openui",
+    "description": "The Open Standard for Generative UI",
+    "language": "TypeScript",
+    "total_stars": 11565,
+    "forks": 781,
+    "stars_this_period": 190,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ag-ui",
+        "agent",
+        "agents",
+        "ai",
+        "generative-ui",
+        "javascript",
+        "langchain",
+        "llm",
+        "mastra",
+        "react"
+      ],
+      "license": "MIT",
+      "open_issues": 164,
+      "created_at": "2024-12-02T10:40:06Z",
+      "pushed_at": "2026-10-17T10:48:07Z",
+      "homepage": "https://www.openui.com",
+      "default_branch": "main",
+      "forks": 781,
+      "watchers": 33,
+      "archived": false,
+      "size_kb": 423319
+    },
+    "readme_content": "<div align=\"center\">\n\n<a href=\"https://www.openui.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n  <img \n    src=\"./assets/banner.png\" \n    alt=\"OpenUI - The Open Standard for Generative UI\" \n    width=\"100%\" \n    style=\"cursor: pointer;\"\n  >\n</a>\n\n# OpenUI - The Open Standard for Generative UI\n\n<p align=\"center\">\n  <a href=\"https://github.com/thesysdev/openui/actions/workflows/build-js.yml\"><img alt=\"Build\" src=\"https://github.com/thesysdev/openui/actions/workflows/build-js.yml/badge.svg\"></a>\n  <a href=\"./LICENSE\"><img alt=\"License: MIT\" src=\"https://img.shields.io/badge/License-MIT-blue.svg\"></a>\n  <a href=\"https://discord.com/invite/Pbv5PsqUSv\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Fv10%2Finvites%2FPbv5PsqUSv%3Fwith_counts%3Dtrue&query=%24.approximate_presence_count&label=Discord&suffix=%20online&logo=discord&logoColor=white&color=5865F2\"></a>\n</p>\n\n<a href=\"https://trendshift.io/repositories/22357\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/22357\" alt=\"thesysdev%2Fopenui | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n</div>\n\nOpenUI is a full-stack, framework-agnostic Generative UI framework built around a compact, streaming-first language. A framework-agnostic core powers first-party runtimes for React, Vue, Svelte, and Angular, and React additionally ships built-in component libraries and ready-to-use chat interfaces. OpenUI Lang uses up to 67% fewer tokens than JSON.\n\n<div align=\"center\">\n\n[Docs](https://openui.com) · [Playground](https://www.openui.com/playground) · [Discord](https://discord.com/invite/Pbv5PsqUSv) · [Contributing](./CONTRIBUTING.md)\n\n</div>\n\n> **Important:** OpenUI has no official cryptocurrency, token, or coin. Any asset using the OpenUI name is unaffiliated with this project and is not endorsed by its maintainers.\n\n---\n\n## What is OpenUI\n\n<div align=\"center\">\n\n<img src=\"./assets/demo.gif\" alt=\"OpenUI Demo\" width=\"100%\">\n</div>\n\nAt the center of OpenUI is **OpenUI Lang**: a compact, streaming-first language for model-generated UI. Instead of treating model output as only text, OpenUI lets you define components, generate prompt instructions from that component library, and render structured UI as the model streams.\n\n**Core capabilities:**\n\n- **OpenUI Lang** - A compact language for structured UI generation designed for streaming output.\n- **Built-in component libraries** - Charts, forms, tables, layouts, and more, ready to use or extend.\n- **Prompt generation from your component library** - Generate model instructions directly from the components you allow.\n- **Streaming renderer** - Parse and render model output progressively in React, Vue, Svelte, or Angular as tokens arrive.\n- **Chat and app surfaces** - Use the same foundation for assistants, copilots, and broader interactive product flows.\n\n## Quick Start\n\n```bash\nnpx @openuidev/cli@latest create --name genui-chat-app\n```\n\nThis is the fastest way to start with OpenUI. The scaffolded app gives you an end-to-end starting point with streaming, built-in UI, and OpenUI Lang support.\n\nWhat this gives you:\n\n- **OpenUI Lang support** - Start with structured UI generation built into the app flow.\n- **Library-driven prompts** - Generate instructions from your allowed component set.\n- **Streaming support** - Update the UI progressively as output arrives.\n- **Working app foundation** - Start from a ready-to-run example instead of wiring everything manually.\n\n## How it works\n\nYour components define what the model can generate.\n\n```mermaid\nflowchart LR\n    A[\"Component Library\"] --> B[\"System Prompt\"]\n    B --> C[\"LLM\"]\n    C --> D[\"OpenUI Lang Stream\"]\n    D --> E[\"Renderer\"]\n    E --> F[\"Live UI\"]\n```\n\n1. Define or reuse a component library.\n2. Generate a system prompt from that library.\n3. Send that prompt to your model.\n4. Stream OpenUI Lang output back to the client.\n5. Render the output progressively with Renderer.\n\nTry it yourself in the [Playground](https://www.openui.com/playground): generate UI live with the default component library.\n\n## Packages\n\n| Package                                                                                                    | Best for                                         | Description                                                                                                  |\n| :--------------------------------------------------------------------------------------------------------- | :----------------------------------------------- | :----------------------------------------------------------------------------------------------------------- |\n| [`@openuidev/lang-core`](./packages/lang-core)                                                             | Framework-agnostic parsing and prompt generation | Core parser, prompt-generation, runtime-evaluation, and type layer with no React, Angular, Vue, or Svelte dependency  |\n| [`@openuidev/langchain`](./packages/langchain)                                                             | LangChain and LangGraph agents                   | Agent transformer and server helpers that stream OpenUI through AG-UI                                        |\n| [`@openuidev/react-lang`](./packages/react-lang)                                                           | React rendering runtimes                         | Define component libraries, generate prompts, and render streamed OpenUI Lang in React                       |\n| [`@openuidev/react-headless`](./packages/react-headless)                                                   | Bring-your-own React chat UI                     | Headless chat state, streaming adapters, and message format converters                                       |\n| [`@openuidev/react-ui`](./packages/react-ui)                                                               | Fastest path to a full React chat experience     | Prebuilt chat layouts, standalone UI primitives, and two built-in component libraries                        |\n| [`@openuidev/react-email`](./packages/react-email)                                                         | Email generation and HTML export                 | React Email component definitions plus prompt options for model-generated emails                             |\n| [`@openuidev/assistant-ui`](./packages/assistant-ui)                                                       | assistant-ui apps                                | Tool UI renderers and instruction wiring for streaming OpenUI Lang inside assistant-ui                       |\n| [`@openuidev/vue-lang`](./packages/vue-lang)                                                               | Vue integrations                                 | Vue 3 bindings for defining model-renderable components and rendering streamed OpenUI Lang                   |\n| [`@openuidev/svelte-lang`](./packages/svelte-lang)                                                         | Svelte integrations                              | Svelte 5 bindings for defining model-renderable components and rendering streamed OpenUI Lang                |\n| [`@openuidev/angular-lang`](./packages/angular-lang)                                                       | Angular integrations                             | Angular bindings for defining component libraries and rendering streamed OpenUI Lang                         |\n| [`@openuidev/browser-bundle`](./packages/browser-bundle)                                                   | CDN, iframe, and no-build embeds                 | Prebuilt browser bundle that ships the renderer, UI library, React, and styles as script + stylesheet assets |\n| [`@openuidev/a2ui`](./packages/a2ui)                                                                       | A2UI with OpenUI Lang component payloads         | Framework-agnostic A2UI v1.0 protocol client with an optional React renderer                                 |\n| [`@openuidev/server`](./packages/server)                                                                   | Server side utilities                            | Server utilities for OpenUI and OpenUI Gateway                                                               |\n| [`@openuidev/observability-cloud`](./packages/observability-cloud)                                         | Hosted observability in the Thesys console       | Cloud sink that batches OpenUI events and ships them to OpenUI Gateway                                       |\n| [`@openuidev/cli`](./packages/openui-cli)                                                                  | Project scaffolding and prompt generation        | CLI for creating new apps and generating system prompts or JSON schema from a library definition             |\n| [`@openuidev/openclaw-os-plugin`](https://github.com/thesysdev/openclaw-os/tree/main/packages/claw-plugin) | OpenClaw workspaces                              | OpenClaw OS plugin for serving OpenUI-powered OpenClaw workspaces                                            |\n\nCommon starting points:\n\n```bash\n# React app with OpenUI rendering and prebuilt components\nnpm install @openuidev/react-lang @openuidev/react-ui\n\n# Framework-agnostic backend or Edge prompt generation\nnpm install @openuidev/lang-core\n\n# LangChain/LangGraph agent and server integration\nnpm install @openuidev/langchain @langchain/langgraph\n\n# Vue, Svelte, or Angular runtime\nnpm install @openuidev/vue-lang\nnpm install @openuidev/svelte-lang\nnpm install @openuidev/angular-lang\n\n# A2UI protocol with OpenUI Lang component payloads\nnpm install @openuidev/a2ui zod\n```\n\n## Why OpenUI Lang\n\nOpenUI Lang is designed for model-generated UI that needs to be both structured and streamable.\n\n- **Streaming output** - Emit UI incrementally as tokens arrive.\n- **Token efficiency** - Up to 67% fewer tokens than equivalent JSON (see [benchmarks](./benchmarks)).\n- **Controlled rendering** - Restrict output to the components you define and register.\n- **Typed component contracts** - Define component props and structure up front with Zod schemas.\n\n### Token efficiency benchmarks\n\nMeasured with `tiktoken` (GPT-5 encoder). OpenUI Lang vs two JSON-based streaming formats across seven UI scenarios:\n\n| Scenario           | Vercel JSON-Render | Thesys C1 JSON | OpenUI Lang |  vs Vercel |      vs C1 |\n| ------------------ | -----------------: | -------------: | ----------: | ---------: | ---------: |\n| simple-table       |                340 |            357 |         148 |     -56.5% |     -58.5% |\n| chart-with-data    |                520 |            516 |         231 |     -55.6% |     -55.2% |\n| contact-form       |                893 |            849 |         294 |     -67.1% |     -65.4% |\n| dashboard          |               2247 |           2261 |        1226 |     -45.4% |     -45.8% |\n| pricing-page       |               2487 |           2379 |        1195 |     -52.0% |     -49.8% |\n| settings-panel     |               1244 |           1205 |         540 |     -56.6% |     -55.2% |\n| e-commerce-product |               2449 |           2381 |        1166 |     -52.4% |     -51.0% |\n| **TOTAL**          |          **10180** |       **9948** |    **4800** | **-52.8%** | **-51.7%** |\n\nFull methodology and reproduction steps in [`benchmarks/`](./benchmarks).\n\n## Documentation\n\nDetailed documentation is available at [openui.com](https://openui.com).\n\n## Repository structure\n\n```\nopenui/\n├── packages/\n│   ├── react-lang/       # Core runtime (parser, renderer, prompt generation)\n│   ├── react-headless/   # Headless chat state & streaming adapters\n│   ├── react-ui/         # Prebuilt chat layouts & component libraries\n│   ├── react-email/      # React Email component library for generated emails\n│   ├── assistant-ui/     # assistant-ui Tool UI renderers for OpenUI Lang\n│   ├── lang-core/        # Framework-agnostic parser, prompt, and runtime layer\n│   ├── langchain/        # LangChain/LangGraph streaming integration\n│   ├",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"OpenUI\",\n  \"version\": \"1.0.1\",\n  \"private\": true,\n  \"packageManager\": \"pnpm@10.33.0\",\n  \"description\": \"A full-stack, framework-agnostic Generative UI framework with a streaming-first language and first-party runtimes for React, Vue, Svelte, and Angular\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"examples:install\": \"node scripts/manage-starters.mjs examples install\",\n    \"examples:update\": \"node scripts/manage-starters.mjs examples update\",\n    \"examples:verify\": \"node scripts/manage-starters.mjs examples verify\",\n    \"templates:update\": \"node scripts/manage-starters.mjs templates update\",\n    \"test\": \"pnpm -r run test\",\n    \"build:packages\": \"pnpm --filter \\\"./packages/**\\\" --workspace-concurrency=1 run build\",\n    \"version:ci\": \"changeset version && node scripts/verify-peer-windows.mjs && pnpm install --lockfile-only\",\n    \"release:publish\": \"node scripts/verify-peer-windows.mjs && pnpm run build:packages && pnpm changeset publish\"\n  },\n  \"engines\": {\n    \"node\": \"^20.19.0 || >=22.12.0\"\n  },\n  \"devDependencies\": {\n    \"@arethetypeswrong/cli\": \"^0.18.2\",\n    \"@changesets/changelog-github\": \"^1.0.0\",\n    \"@changesets/cli\": \"^3.0.1\",\n    \"@typescript-eslint/eslint-plugin\": \"catalog:\",\n    \"eslint\": \"catalog:\",\n    \"eslint-config-prettier\": \"catalog:\",\n    \"eslint-plugin-prettier\": \"catalog:\",\n    \"eslint-plugin-react-hooks\": \"catalog:\",\n    \"eslint-plugin-react-refresh\": \"catalog:\",\n    \"eslint-plugin-storybook\": \"catalog:\",\n    \"eslint-plugin-unused-imports\": \"catalog:\",\n    \"prettier\": \"^3.2.5\",\n    \"prettier-plugin-organize-imports\": \"^3.2.4\",\n    \"publint\": \"^0.3.18\",\n    \"tsdown\": \"^0.21.7\",\n    \"typescript\": \"catalog:\"\n  },\n  \"keywords\": [\n    \"openui\",\n    \"generative-ui\",\n    \"react\",\n    \"ai\",\n    \"llm\",\n    \"streaming\",\n    \"chat\",\n    \"copilot\",\n    \"components\",\n    \"ui-framework\"\n  ],\n  \"homepage\": \"https://openui.com\",\n  \"author\": \"engineering@openui.com\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/thesysdev/openui.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/thesysdev/openui/issues\"\n  },\n  \"pnpm\": {\n    \"overrides\": {\n      \"postcss@<8.5.10\": \">=8.5.10\",\n      \"uuid@<11.1.1\": \"^11.1.1\"\n    }\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "workspace",
+      "llm",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "生成式 UI 语言",
+      "组件驱动提示词",
+      "流式渲染"
+    ],
+    "brief_zh": {
+      "summary": "一个面向生成式 UI 的开源框架：用紧凑、流式的 OpenUI Lang 描述模型可生成的组件，并为 React、Vue、Svelte 与 Angular 提供渐进渲染运行时。",
+      "audience": "需要让 AI 应用稳定输出结构化、可控前端界面的产品与工程团队",
+      "capabilities": "生成式 UI 语言、组件驱动提示词、流式渲染、多框架运行时、Agent UI 集成、应用脚手架",
+      "risk": "README 的 token 效率比较来自项目自身基准；协议兼容性、模型输出边界和跨框架运行时成熟度仍需在实际产品中验证。",
+      "verified_at": "2026-10-10",
+      "evidence_sources": [
+        "https://github.com/thesysdev/openui"
+      ],
+      "evidence_note": "依据本日通过 GitHub API 获取的 README 与仓库 description；未安装运行时或复现基准。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "google",
+    "name": "ax",
+    "full_name": "google/ax",
+    "url": "https://github.com/google/ax",
+    "description": "Google's open agentic orchestration runtime",
+    "language": "Go",
+    "total_stars": 13898,
+    "forks": 715,
+    "stars_this_period": 154,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 89,
+      "created_at": "2026-03-30T17:55:01Z",
+      "pushed_at": "2026-10-16T20:29:45Z",
+      "homepage": "https://agentexecutor.io",
+      "default_branch": "main",
+      "forks": 715,
+      "watchers": 62,
+      "archived": false,
+      "size_kb": 45124
+    },
+    "readme_content": "<h1>\n  <img src=\"assets/axolotl.svg\" width=\"70\" align=\"absmiddle\" alt=\"AX axolotl\">\n  AX\n</h1>\n\n> [!WARNING]\n> AX and several of its features are in heavy development. We are actively\n> refining our core concepts, protocols, and specifications, and will likely\n> introduce major breaking changes prior to a stable release.\n\n**Declare an agentic task with workspaces and model specifications. AX sandboxes it, wires up its workspace, and helps running it at scale.**\n\nAX is a high-throughput, declarative orchestrator to run billions of autonomous agent workloads in a cluster. It runs on top of [Agent Substrate](https://github.com/agent-substrate/substrate) for sandboxed execution and is built to run billions of tasks per cluster. If you have used Kubernetes, `ax` will feel similar.\n\n```yaml\n# task.yaml\napiVersion: ax.io/v1alpha1\nkind: Workspace\nmetadata:\n  name: golang\nspec:\n  git:\n    - repo: https://github.com/golang/go.git\n      branch: \"my-fix\"\n---\napiVersion: ax.io/v1alpha1\nkind: Task\nmetadata:\n  name: test\nspec:\n  workspaces:\n    - name: golang\n      goal: \"Ensure that Go tool chain is available and is built from source\"\n  debug: true   # lets you `ax ssh` into the sandbox\n```\n\nThen apply it, watch it come up, and look over the agent's shoulder:\n\n```bash\nax apply -f task.yaml\nax watch task test\nax ssh test -- ls -al /workspace\n```\n\n## Why?\n\nAgents are a new kind of workload. They are neither stateless microservices nor run-to-completion batch jobs. They accumulate state, need strict isolation, call out to model APIs and tool servers, and can burn money in a loop if nobody is watching. AX gives you three small primitives that handle all of that declaratively:\n\n| You want to... | AX gives you |\n|---|---|\n| Run untrusted agent code in an isolated sandbox with CPU/memory limits | **`Task`** |\n| Pre-wire Git repos, MCP servers, and skill packages so every agent starts warm | **`Workspace`** |\n| Configure which LLM the platform itself uses, with credentials from a Kubernetes secret | **`Model`** |\n| Pause an idle agent and pick up exactly where it left off | `ax suspend` / `ax resume` |\n| Shell into a running agent to see what it is doing | `ax ssh` |\n\nEverything is expressed as `ax.io/v1alpha1` manifests and applied with a single command.\n\n## Quick start\n\n### Prerequisites\n\nAX schedules every task as a sandboxed actor on [Agent Substrate](https://github.com/agent-substrate/substrate), so Substrate must be running in your cluster before you deploy AX. You need:\n\n- A Kubernetes cluster with **Agent Substrate** installed (see below)\n- [Go](https://go.dev/doc/install) and `kubectl`\n- [`ko`](https://ko.build/) (`brew install ko`) and a container registry your cluster can pull from\n\nTo install Agent Substrate, follow the instructions in the [Substrate README](https://github.com/agent-substrate/substrate#readme). Substrate lands in the `ate-system` namespace and exposes its Control API at `api.ate-system.svc.cluster.local:443`, which is where AX expects to find it. Verify it is up before moving on:\n\n```bash\nkubectl get svc api -n ate-system\n```\n\n### 1. Install the CLI\n\n```bash\ngo install github.com/google/ax/cmd/ax@latest\n```\n\nThis puts the `ax` binary in `$(go env GOPATH)/bin`. Make sure that directory is on your `PATH`.\n\n### 2. Deploy the control plane\n\nWith the [prerequisites](#prerequisites) in place — most importantly a reachable Agent Substrate Control API — deploy the AX control plane:\n\n```bash\nmake deploy AX_IMAGE_REPO=<your-registry>\n```\n\nThis deploys Redis, then builds and deploys the control plane images with `ko`. Everything lands in the `ax-system` namespace.\n\n### 3. Run your first task\n\n```bash\nax apply -f examples/task.yaml       # Task + Workspace + Model in one file\nax get tasks\n# NAME      ATESPACE   PHASE     ACTOR           WORKER-IP    AGE\n# task123   default    Running   task123         10.20.3.67   1m\n\nax watch task task123                # stream phase and condition changes live\nax ssh task123 -- ls -la /workspace  # poke around inside the sandbox\nax suspend task task123              # checkpoint and pause\nax resume task task123               # pick up where it left off\n```\n\nWant to see the whole lifecycle end to end? Run [`./demo.sh`](demo.sh). It applies a custom workspace, waits for readiness, runs commands over `ax ssh`, and suspends the task.\n\n## Documentation\n\n| Guide | Read it to... |\n|---|---|\n| [Concepts](docs/concepts.md) | Learn what a `Task`, `Workspace`, and `Model` each do, and how a task moves through phases and conditions. |\n| [Manifests](docs/manifests.md) | Write your own YAML, with an annotated example of every kind. |\n| [Sandbox](docs/sandbox.md) | See what the runner does on boot and what your command can rely on: metadata server, guest services, environment. |\n| [Runners](docs/runner.md) | Understand the contract between the control plane and the task container, and build your own runner image to replace the default. |\n| [Networking](docs/networking.md) | Reach a running task through the atenet router from the cluster, your laptop, or a gRPC client. |\n| [Architecture](DESIGN.md) | Understand how the control plane fits together, plus the [API reference](DESIGN.md#api-reference). |\n| [Development](docs/development.md) | Build, test, and ship changes to AX itself. |\n| [Roadmap](docs/roadmap.md) | See planned milestones across core specs, actor architecture, agentic environments, and governance. |\n\n## CLI usage\n\n`ax` talks to the control plane over gRPC. It is deliberately `kubectl`-shaped: `apply`, `get`, `describe`, `watch`, `delete`, plus a few agent-specific verbs.\n\n### Everyday commands\n\n```bash\n# Apply anything (multi-document YAML, file or stdin)\nax apply -f examples/task.yaml\n\n# Tasks\nax get tasks                          # list\nax get tasks -a my-atespace           # list in another atespace\nax get task task123                   # full spec + live status as YAML\nax describe task task123              # human-readable detail\nax watch task task123                 # stream status and condition transitions\nax suspend task task123               # checkpoint actor state and pause\nax resume task task123                # resume a suspended task\nax delete task task123\n\n# Shell into the running sandbox\nax ssh task123                        # interactive shell (task needs spec.debug: true)\nax ssh task123 -- ls -la /workspace   # one-off command\nax ssh task123 -- python3 main.py\n\n# Workspaces and models follow the same pattern\n\nax get workspaces\n# NAME                ATESPACE   GIT-REPOS   MCP-SERVERS\n# default-workspace   default    1           1\nax describe workspace default-workspace\nax delete workspace default-workspace\n\nax get models\n# NAME            ATESPACE   PROVIDER   MODEL\n# default-model   default    google     gemini-3.8-flash\nax describe model default-model\nax delete model default-model\n\n# Connection plumbing\nax ctx                                # active kube context and how ax is reaching the control plane\nax tunnel list                        # background tunnels (state lives in ~/.ax/tunnels)\nax tunnel stop\nax version\n```\n\n### Works with `kubectx`\n\n`ax` follows your active Kubernetes context. Switch clusters and `ax` resolves and tunnels to that cluster's control plane in the background.\n\n```bash\nkubectx staging-cluster\nax get tasks\n\nkubectx prod-cluster\nax get tasks\n\n# Or target a context without switching\nax --context=dev-cluster get tasks\n```\n\n### Global flags\n\n| Flag | Description | Default |\n|---|---|---|\n| `-a`, `--atespace` | Atespace scope for the command | `default` |\n| `-n`, `--namespace` | Kubernetes namespace where AX is installed | `ax-system` |\n| `--context` | Kubernetes context to target | active `kubectx` / `current-context` |\n| `--server` | Control plane address, bypassing auto-detection | derived from kube context, or `$AX_SERVER` |\n\n## License\n\nApache License 2.0. See [LICENSE](LICENSE) for details.\n",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/google/ax\n\ngo 1.27.1\n\nrequire (\n\tgithub.com/agent-substrate/env v0.0.11-0.20260912052224-4468a200b170\n\tgithub.com/agent-substrate/substrate v0.4.1-0.20261009152331-f6a1dc72a35d\n\tgithub.com/cenkalti/backoff/v5 v5.0.3\n\tgithub.com/redis/go-redis/v9 v9.22.0\n\tgoogle.golang.org/grpc v1.83.2\n\tgoogle.golang.org/protobuf v1.36.12\n\tgopkg.in/yaml.v3 v3.0.1\n)\n\nrequire (\n\tgithub.com/cespare/xxhash/v2 v2.3.0 // indirect\n\tgithub.com/kr/pretty v0.3.1 // indirect\n\tgithub.com/rogpeppe/go-internal v1.14.1 // indirect\n\tgo.uber.org/atomic v1.11.0 // indirect\n\tgolang.org/x/net v0.58.0 // indirect\n\tgolang.org/x/sys v0.47.0 // indirect\n\tgolang.org/x/text v0.41.0 // indirect\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect\n\tgopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect\n)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "任务编排",
+      "沙箱执行",
+      "工作区管理"
+    ],
+    "brief_zh": {
+      "summary": "用声明式任务配置编排 Agent 工作负载，统一安排沙箱、工作区和网络边界。",
+      "capabilities": "任务编排、沙箱执行、工作区管理",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/google/ax"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "mixelpixx",
+    "name": "Konnect",
+    "full_name": "mixelpixx/Konnect",
+    "url": "https://github.com/mixelpixx/Konnect",
+    "description": "AI-assisted PCB design for KiCAD 10. Native KiCAD plugin — a single Rust binary exposing 217 schematic, layout, routing, placement, design-review, and manufacturing tools to Claude, or the LLM of your choosing",
+    "language": "Rust",
+    "total_stars": 1239,
+    "forks": 139,
+    "stars_this_period": 228,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "claude",
+        "kicad-pcb",
+        "kicad-schematics",
+        "llm",
+        "mcp-server",
+        "mcp-tools"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 220,
+      "created_at": "2026-07-05T21:47:46Z",
+      "pushed_at": "2026-10-12T06:22:09Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 139,
+      "watchers": 11,
+      "archived": false,
+      "size_kb": 8123
+    },
+    "readme_content": "<a name=\"top\"></a>\n\n<div align=\"center\">\n\n<img src=\"resources/images/KiCAD-MCP-Server-rust.svg\" alt=\"KiCAD-MCP-Server Logo\" height=\"240\" />\n\n\n# Konnect *BETA Release\n\n</div>\n\n**AI-assisted PCB design for KiCAD 10.** Konnect is a native KiCAD plugin — a single\nRust binary — that lets Claude and other AI assistants design schematics and PCBs\nthrough the [Model Context Protocol](https://modelcontextprotocol.io) (MCP).\n\n**228 tools across 21 on-demand toolsets.** Schematic capture, PCB layout and\nrouting, ERC/DRC, design-review audits, JLCPCB part search, reference\ncircuits, and a full manufacturing export pipeline — with bundled skills and agents\nthat teach Claude KiCAD conventions out of the box.\n\n> **Status: beta.** The core toolchain is tested and working, but this is a young\n> release and it wants real-world mileage and review. Issues and PRs are welcome —\n> see [CONTRIBUTING.md](CONTRIBUTING.md) and the\n> [naming conventions](docs/NAMING_CONVENTIONS.md).\n\n> ## Add realtime research to KiCAD MCP and Konnect. Introducing Nimrod\n>\n> [**Nimrod**](https://nimrod.orchis.ai) is our web-research MCP server:\n> quality-scored Google search, clean webpage extraction, and deep multi-source\n> research. Design the board with Konnect while Nimrod pulls live parts availability, datasheets,\n> and errata — no more guessing from year-old training data\n>\n> - Works with claude.ai, Claude Desktop, Claude Code, VS Code, and any MCP client\n> - 1 credit = 1 search · extraction always free · free 50-credit trial, no card\n> - Official MCP Registry: [`ai.orchis/nimrod`](https://registry.modelcontextprotocol.io)\n\n\n## Why Konnect exists\n\nKonnect is the successor to [KiCAD-MCP-Server](https://github.com/mixelpixx/KiCAD-MCP-Server),\na Python/TypeScript project that proved AI-driven PCB design works — and, in the\nprocess, showed exactly where that architecture runs out of road. Konnect was built\nto fix those specific problems:\n\n**The call path was too long.** In the original server, a single tool call travels\nthrough TypeScript, schema validation, a spawned Python subprocess, JSON over\nstdin/stdout, a command router, and finally SWIG-generated C++ proxy objects before\nanything touches your board. That's four language and serialization boundaries, each\nwith its own failure modes — subprocess lifecycle management, stdout parsing that\nfilters out warnings KiCAD leaks into the stream, chunked-JSON reassembly. In\nKonnect, a tool call is a function call. One process, one language, no plumbing.\n\n**The dependency surface was enormous.** Running the original means carrying Node.js\nand its npm tree, Python and its pip packages, wxPython, kicad-skip, and KiCAD's\nSWIG bindings — two package ecosystems plus a binding layer, every one of them a\nmoving target that can break an install. Konnect is a single static binary —\n20–25 MB depending on platform, a ~9 MB download. There is nothing to install\nalongside it and nothing to version-match.\n\n**SWIG is a dead end.** The original's PCB backend depends on KiCAD's SWIG Python\nbindings, which KiCAD is deprecating in favor of its IPC API. SWIG also carried\nreal operational scars: a zone-fill call that can segfault the backend, proxy-object\ncomparison bugs, and a fallback path that can silently swap backends mid-session.\nKonnect talks to KiCAD 10 through the official IPC API (protobuf over NNG) — the\ninterface KiCAD is investing in — with real-time board edits that integrate with\nKiCAD's own undo/redo.\n\n**Schematic edits should not corrupt files.** Konnect edits `.kicad_sch` files\nthrough its own S-expression engine with atomic writes (write, fsync, rename), UUID\npreservation, and round-trip tests — no third-party schematic library with known\ngaps, no text-manipulation workarounds.\n\n**Context economy is a feature.** Exposing all 228 tools to an LLM costs roughly 23K\ntokens of context on every listing. Konnect's router loads a starter kit (~2K\ntokens) and lets the model pull in toolsets on demand — plus built-in observability\n(`get_recent_calls`, `server_stats`, JSONL call logs) so the model can diagnose its\nown tool failures.\n\nThe result is smaller, faster to install, aligned with where KiCAD is going, and\nbuilt for production use rather than experimentation. The original project remains\nopen, maintained, and useful — see [the comparison below](#relationship-to-kicad-mcp-server).\n\n## What it does\n\nInstead of describing changes and applying them by hand, the AI works your project\ndirectly:\n\n- **Place and wire schematic components** — add resistors, ICs, connectors; wire them\n  together by pin name\n- **Lay out the PCB** — place, move, rotate, and route footprints in real time via\n  KiCAD's IPC API, with full undo/redo integration\n- **Run design checks** — ERC, DRC, connectivity validation, decoupling audits,\n  power-rail review, BOM health checks\n- **Export production files** — Gerbers, drill, BOM, pick-and-place, 3D models, PDF\n- **Search JLCPCB parts** — find in-stock components in a local 2.5M-part catalog and\n  suggest alternatives\n- **Start from reference circuits** — USB-C, LDO, buck converter, STM32, I2C, LED\n  templates with verified component values\n- **Watch it happen** — a live schematic viewer auto-refreshes as the AI edits\n\nThe full tool catalog is documented in [tool-directory.md](tool-directory.md).\n\n## How it works\n\n| Layer | Mechanism |\n|-------|-----------|\n| Schematic editing | Direct `.kicad_sch` S-expression editing with atomic writes (no KiCAD required) |\n| PCB editing | KiCad 10 IPC API (NNG + protobuf) — real-time and undo-aware; single-footprint placement has a safe headless fallback |\n| Specctra routing | Revision-bound Rust DSN export, local Freerouting MCP routing, and strict one-transaction SES import; an authenticated KiCad 10 native-export bridge is explicit opt-in |\n| Exports & checks | `kicad-cli` subprocess (Gerber, PDF, ERC, DRC, …) |\n| Transport | MCP JSON-RPC over stdio (default), or Streamable HTTP (`transport = \"http\"` / `\"both\"`) |\n\nExplore the request path and safety boundaries in the\n[interactive architecture diagrams](docs/ARCHITECTURE_DIAGRAMS.md). They are\npublished from a standalone documentation repository and add no dependencies to\nKonnect.\n\n## Installation\n\n### From the KiCAD Plugin Manager (recommended)\n\n1. Download the package for your OS from [Releases](https://github.com/mixelpixx/Konnect/releases):\n   `konnect-pcm-v<version>-windows.zip`, `-macos.zip`, or `-linux.zip`. Each\n   bundles that platform's server binary — the macOS package is a universal\n   build, so one download covers Apple Silicon and Intel. (The `konnect-pcm-*`\n   assets are the KiCAD plugin packages; the other archives are standalone\n   server binaries.)\n2. Open KiCAD 10 → **Plugin and Content Manager**\n3. Click **Install from File** and select the zip\n4. Restart KiCAD\n\nVerify: open the **PCB Editor** → **Tools → External Plugins** → you should see\n**Konnect**.\n\nFor KiCad 10, the Konnect settings dialog also offers an optional **native\nSpecctra bridge**. When enabled, `export_specctra_dsn` can ask the active PCB\nEditor to generate its native DSN while Konnect still binds the export to the\nexact IPC snapshot and creates the strict reverse manifest used during SES\nimport. The bridge is local-only, authenticated, disabled by default, and not\nthe KiCad 11 integration path. Konnect uses its Rust exporter by default;\n`native_bridge_mode: \"prefer\"` enables fallback to Rust when the bridge is\nunavailable, while `\"require\"` refuses instead.\n\nFor end-to-end autorouting, run `check_freerouting`, then\n`export_specctra_dsn` → `route_specctra_dsn` →\n`plan_specctra_ses_import` / `apply_specctra_ses`. Readiness reports engine\ndiscovery, native-MCP compatibility, and complete bridge availability\nseparately. The owned Java child is loopback-only and is reaped on success,\nfailure, timeout, or cancellation. The first supported profile preserves fixed\nstraight tracks and through vias; unlocked routing, arcs, zones, and unsupported\ngeometry are rejected before mutation.\n\n### Build from source\n\n```bash\n# protoc is required (protobuf code generation), and cmake (the nng crate\n# compiles the NNG C library with it).\n# Windows: choco install protoc cmake\n# macOS:   brew install protobuf cmake\n# Linux:   apt install protobuf-compiler cmake\ncargo build --release -p konnect\n```\n\n### Install guidance for your AI client\n\nKonnect bundles shared KiCad skills for Claude and Codex. Select the client when\ninstalling, checking, or removing that guidance:\n\n```bash\n# Existing behavior remains the default: Claude skills, agents, and hooks\nkonnect init\n\n# Codex installs only the shared skills under ~/.agents/skills\nkonnect init --client codex\nkonnect status --client codex\nkonnect uninstall --client codex\n```\n\nMCP server startup never installs or restores guidance. Run `konnect init`\nexplicitly when you want those files installed; after `konnect uninstall`,\nstarting the server leaves them removed.\n\nGuidance written by an older `konnect init` is not updated by upgrading the\nbinary. `konnect status` compares every installed skill, agent, and hook with\nthe bundle in the binary you run and marks each `current`, `different`, or\n`missing`. The server makes the same check once for each installed version:\nthe first start after `konnect init` compares the files, records\nthe result in `~/.konnect`, and adds a one-line notice to its `initialize`\ninstructions if guidance is out of sync. Later starts reuse that record, so\nguidance you chose to keep is not reported again. `get_installation_info`\nshows the result. Re-run `konnect init` to update it.\nIt overwrites differing files, so keep a copy of any file you edited. `--client` remains accepted in server\ncommands for compatibility. For example, register a standalone binary with the\nCodex CLI using:\n\n```bash\ncodex mcp add konnect -- /path/to/konnect --client codex\n```\n\nClaude remains the default when `--client` is omitted. The installer tracks the\ntwo clients independently, and a Codex install does not create or modify\n`~/.claude`.\n\n`--help` on any subcommand prints that subcommand's usage and writes nothing —\n`konnect init --help` describes the installer rather than running it. An\nargument Konnect does not recognise is an error rather than being ignored, so a\ntypo such as `--cleint codex` stops instead of quietly installing for the\ndefault client.\n\nTo verify which Konnect process an MCP client is actually using, call the\nalways-visible `get_installation_info` tool. It reports the serving build,\nexecutable path, verified installation source when one can be proven, KiCad\nCLI and IPC detection, and restart guidance. A missing build commit or an\n`unknown` installation source means the available evidence was insufficient;\nit is not silently guessed from a directory name.\n\n### macOS\n\nThe [Releases](https://github.com/mixelpixx/Konnect/releases) page ships\nstandalone server binaries for both Apple Silicon (`aarch64-apple-darwin`) and\nIntel (`x86_64-apple-darwin`). They are not yet code-signed, so if you download\none through a browser, clear the quarantine flag before first launch:\n\n```bash\ntar xzf konnect-v*-aarch64-apple-darwin.tar.gz\nxattr -d com.apple.quarantine ./konnect   # only needed for browser downloads\n./konnect --help\n```\n\nOr build from source as above (verified on Apple Silicon; the same\n`target/release/konnect` binary is the MCP server).\n\nKiCad on macOS keeps its tools inside the app bundle and they are not on\n`PATH`, so point Konnect at them in `~/Library/Application Support/konnect/config.toml`:\n\n```toml\nkicad_cli = \"/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli\"\nkicad_binary = \"/Applications/KiCad/KiCad.app/Contents/MacOS/kicad\"\n# KiCad 10's IPC socket on macOS (enable it in KiCad:\n# Preferences → Plugins → \"Enable KiCad API\")\nipc_address = \"ipc:///tmp/kicad/api.sock\"\n```\n\nClaude Desktop's config lives at\n`~/Library/Application Support/Claude/claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"konnect\": {\n      \"command\": \"/path/to/k",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\nresolver = \"2\"\nmembers = [\n    \"crates/konnect\",\n    \"crates/konnect-core\",\n    \"crates/konnect-sexp\",\n    \"crates/konnect-ipc\",\n    \"crates/konnect-schematic-editor\",\n    \"crates/konnect-render\",\n    \"crates/konnect-vcs\",\n    \"xtask\",\n]\nexclude = [\n    \"crates/schematic-viewer\",  # Tauri app — built separately with `cargo tauri build`\n]\n\n[workspace.package]\nversion = \"0.13.0\"\nedition = \"2021\"\nauthors = [\"Konnect contributors\"]\nlicense = \"AGPL-3.0-only\"\n# Minimum supported Rust version. Set to the pinned toolchain\n# (rust-toolchain.toml) — the only version the gate actually verifies.\n# Lower it only after genuinely building and testing on the older compiler.\nrust-version = \"1.96\"\n\n[workspace.dependencies]\n# Serialization\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = \"1\"\ncsv = \"1\"\njsonschema = { version = \"0.58\", default-features = false }\n\n# Async runtime\ntokio = { version = \"1\", features = [\"full\"] }\ntokio-stream = \"0.1\"\n\n# HTTP/SSE transport\naxum = { version = \"0.8\", features = [\"macros\"] }\n\n# S-expression parsing\nnom = \"8\"\n\n# Specctra DSN/SES syntax. Konnect owns the KiCad lowering and manifest;\n# Topola supplies the format AST and serializer/parser used for parity checks.\ntopola_specctra = \"0.1.0\"\n\n# NNG for KiCAD 10 IPC (nanomsg-next-gen, replaces ZeroMQ)\nnng = \"1\"\nprost = \"0.13\"\nprost-types = \"0.13\"\n\n# Config\ntoml = \"1.1\"\n\n# HTTP client (JLCPCB, datasheets)\nreqwest = { version = \"0.13\", features = [\"json\", \"stream\"] }\n\n# SQLite (JLCPCB database)\nrusqlite = { version = \"0.40\", features = [\"bundled\"] }\nzip = { version = \"8\", default-features = false, features = [\"deflate-flate2-zlib-rs\"] }\n\n# Error handling\nanyhow = \"1\"\nthiserror = \"1\"\nfs4 = \"1.1\"\nsha2 = \"0.10\"\n\n# Logging\ntracing = \"0.1\"\ntracing-subscriber = { version = \"0.3\", features = [\"env-filter\", \"json\"] }\n\n# UUID generation\nuuid = { version = \"1\", features = [\"v4\"] }\n\n# Base64 (image encoding for view tools)\nbase64 = \"0.23\"\n\n# Platform directories (home dir, config dir)\ndirs = \"7\"\nwinreg = \"0.56\"\n\n# SVG parsing (import_svg_logo)\nusvg = \"0.48\"\n\n# Rasterization for the visual-feedback tools (konnect-render). resvg and\n# tiny-skia are pinned EXACTLY: visual baselines compare pixel output across\n# machines, so a silent renderer bump must be a deliberate decision.\nresvg = \"=0.48.1\"\nimage = { version = \"0.25\", default-features = false, features = [\"png\"] }\n\n# Pure-Rust git for the vcs toolset (konnect-vcs). No libgit2, no C.\n# Default features for now — the T2.1 spike trims to the plumbing actually\n# used once the API surface is settled (default-features=false breaks\n# gix-hash's backend selection).\ngix = { version = \"0.87\", features = [\"status\", \"worktree-mutation\"] }\n\n# Internal crates\nkonnect-sexp = { path = \"crates/konnect-sexp\" }\nkonnect-ipc = { path = \"crates/konnect-ipc\" }\nkonnect-core = { path = \"crates/konnect-core\" }\nkonnect-schematic-editor = { path = \"crates/konnect-schematic-editor\" }\nkonnect-render = { path = \"crates/konnect-render\" }\nkonnect-vcs = { path = \"crates/konnect-vcs\" }\n\n# The S-expression parser is ~25x slower unoptimized. The installed-demo\n# tests parse 185 MB of KiCad boards, and debug servers parse real boards.\n[profile.dev.package.konnect-sexp]\nopt-level = 3\n\n[profile.dev.package.nom]\nopt-level = 3\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "MCP 集成",
+      "技能扩展",
+      "工作区"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "cursor",
+    "name": "plugins",
+    "full_name": "cursor/plugins",
+    "url": "https://github.com/cursor/plugins",
+    "description": "Cursor plugin specification and official plugins",
+    "language": "TypeScript",
+    "total_stars": 12269,
+    "forks": 1190,
+    "stars_this_period": 384,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "NOASSERTION",
+      "open_issues": 277,
+      "created_at": "2026-01-23T01:57:42Z",
+      "pushed_at": "2026-10-17T19:06:43Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 1190,
+      "watchers": 61,
+      "archived": false,
+      "size_kb": 10914
+    },
+    "readme_content": "# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local automation, and verification. |\n| `thermos` | [Thermos](thermos/) | Cursor | Developer Tools | Thermo-nuclear branch review: deep security/correctness audits, harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional merge-ready PR flows. |\n| `create-plugin` | [Create Plugin](create-plugin/) | Cursor | Developer Tools | Scaffold and validate new agent plugins. |\n| `ralph-loop` | [Ralph Loop](ralph-loop/) | Cursor | Developer Tools | Iterative self-referential AI loops using the Ralph Wiggum technique. |\n| `agent-compatibility` | [Agent Compatibility](agent-compatibility/) | Cursor | Developer Tools | CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality. |\n| `cli-for-agent` | [CLI for Agents](cli-for-agent/) | Eric Zakariasson | Developer Tools | Patterns for designing CLIs that coding agents can run reliably: flags, help with examples, pipelines, errors, idempotency, dry-run. |\n| `pr-review-canvas` | [PR Review Canvas](pr-review-canvas/) | Cursor | Developer Tools | Render PR diffs as review canvases grouped by importance. |\n| `docs-canvas` | [Docs Canvas](docs-canvas/) | Cursor | Developer Tools | Render documentation as a navigable canvas. |\n| `cursor-sdk` | [Cursor SDK](cursor-sdk/) | Cursor | Developer Tools | Build apps, scripts, and automations with the TypeScript SDK. |\n| `origin-apps` | [Origin Apps](origin-apps/) | Cursor | Developer Tools | Skills for building on the Cursor Origin API. Fetch the live spec first, then follow the Origin rules for credentials, scopes, webhooks, paging, and errors. Includes a skill that plans the port of an existing GitHub App. |\n| `orchestrate` | [Orchestrate](orchestrate/) | Cursor | Developer Tools | Fan large tasks out across parallel cloud agents with planners, workers, verifiers, and structured handoffs. |\n| `pstack` | [pstack](pstack/) | Lauren Tan | Developer Tools | if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. |\n| `dyl-stack` | [dyl-stack](dyl-stack/) | Dylan Gattey | Developer Tools | Dylan's agent style on top of pstack: root causes over symptom patches, The Algorithm before design, terse verified delivery, a PR review that fits in a paste, and Figma-to-UI with a visual judge. |\n| `advisor` | [Advisor](advisor/) | Cursor | Developer Tools | Consult a stronger model before major decisions, when stuck, and before declaring done. |\n| `grok-voice` | [Grok Voice](grok-voice/) | Eric Zakariasson | Developer Tools | Add Grok voice to an app: realtime speech-to-speech, speech-to-text dictation, text-to-speech read-aloud, and a log-driven fix loop for voice sessions. |\n| `gmail` | [Gmail](third_party/gmail/) | Cursor | Productivity | Search, read, draft, and manage email. |\n| `google-drive` | [Google Drive](third_party/google-drive/) | Cursor | Productivity | Search, read, create, and share files. |\n| `google-calendar` | [Google Calendar](third_party/google-calendar/) | Cursor | Productivity | Search events and schedule meetings. |\n| `google-docs` | [Google Docs](third_party/google-docs/) | Cursor | Productivity | Read, create, and edit documents. |\n| `google-sheets` | [Google Sheets](third_party/google-sheets/) | Cursor | Productivity | Read, write, and append spreadsheet data. |\n| `google-slides` | [Google Slides](third_party/google-slides/) | Cursor | Productivity | Create, edit, and render presentations. |\n| `gong` | [Gong](third_party/gong/) | Cursor | Integrations | Pull account summaries, deal insights, and call briefs. |\n| `salesforce` | [Salesforce](third_party/salesforce/) | Cursor | Integrations | Query, create, and update records in your org. |\n| `salesforce-headless-360` | [Salesforce (Headless 360, Beta)](third_party/salesforce-headless-360/) | Cursor | Integrations | Manage records, users, and org setup across Salesforce. |\n| `playwright` | [Playwright](third_party/playwright/) | Cursor | Integrations | Navigate, click, screenshot, and test in a real browser. |\n| `github` | [GitHub](third_party/github/) | Cursor | Integrations | Manage repos, issues, pull requests, and Actions. |\n| `ashby` | [Ashby](third_party/ashby/) | Cursor | Integrations | Search candidates, prep interviews, and manage pipeline tasks. |\n| `hubspot` | [HubSpot](third_party/hubspot/) | Cursor | Integrations | Search and update contacts, companies, deals, and tickets. |\n| `intercom` | [Intercom](third_party/intercom/) | Cursor | Integrations | Search conversations, contacts, and Help Center articles. |\n| `zoom` | [Zoom](third_party/zoom/) | Cursor | Integrations | Search meetings, pull transcripts, and work with Zoom Docs. |\n| `x` | [X](third_party/x/) | Cursor | Integrations | Search posts, read timelines, pull trends, manage bookmarks, access X Chat, and schedule X calls. |\n| `clay` | [Clay](third_party/clay/) | Cursor | Integrations | Enrich people and companies, run AI research agents. |\n| `circleback` | [Circleback](third_party/circleback/) | Cursor | Integrations | Search meetings, transcripts, action items, and emails. |\n| `docusign` | [Docusign](third_party/docusign/) | Cursor | Integrations | Manage envelopes, templates, workflows, and agreements. |\n| `navan` | [Navan](third_party/navan/) | Cursor | Integrations | Query expenses, travel bookings, policies, and cards. |\n| `profound` | [Profound](third_party/profound/) | Cursor | Integrations | Track AI visibility, sentiment, and citations. |\n| `juicebox` | [Juicebox](third_party/juicebox/) | Cursor | Integrations | Query recruiting analytics, shortlists, and sourcing agents. |\n| `outreach` | [Outreach](third_party/outreach/) | Cursor | Integrations | Search sequences, prospects, and Kaia meetings. |\n| `amplemarket` | [Amplemarket](third_party/amplemarket/) | Cursor | Integrations | Search people and companies, enrich leads, run sequences. |\n| `klaviyo` | [Klaviyo](third_party/klaviyo/) | Cursor | Integrations | Manage profiles, segments, campaigns, and flows. |\n| `customer-io` | [Customer.io](third_party/customer-io/) | Cursor | Integrations | Build campaigns, manage segments, and query people. |\n| `mailerlite` | [MailerLite](third_party/mailerlite/) | Cursor | Integrations | Manage subscribers, groups, campaigns, and automations. |\n| `brevo` | [Brevo](third_party/brevo/) | Cursor | Integrations | Manage contacts, email and SMS campaigns, and CRM deals. |\n| `typeform` | [Typeform](third_party/typeform/) | Cursor | Integrations | Build forms, analyze responses, and manage contacts. |\n| `jotform` | [Jotform](third_party/jotform/) | Cursor | Integrations | Create and edit forms, then read submissions. |\n| `semrush` | [Semrush](third_party/semrush/) | Cursor | Integrations | Research keywords, backlinks, traffic, and competitors. |\n| `ahrefs` | [Ahrefs](third_party/ahrefs/) | Cursor | Integrations | Research keywords, backlinks, rankings, and site health. |\n| `godaddy` | [GoDaddy](third_party/godaddy/) | Cursor | Integrations | Brainstorm domain names and check availability. |\n| `upwork` | [Upwork](third_party/upwork/) | Cursor | Integrations | Search talent, post jobs, and manage contracts. |\n| `workable` | [Workable](third_party/workable/) | Cursor | Integrations | Search candidates, move pipelines, and manage HR records. |\n| `brex` | [Brex](third_party/brex/) | Cursor | Integrations | Query expenses, receipts, bills, cards, and travel. |\n| `todoist` | [Todoist](third_party/todoist/) | Cursor | Integrations | Create, find, and complete tasks and projects. |\n| `calendly` | [Calendly](third_party/calendly/) | Cursor | Integrations | Check availability and book, cancel, or reschedule. |\n| `smartsheet` | [Smartsheet](third_party/smartsheet/) | Cursor | Integrations | Query and update sheets, rows, and workspaces. |\n| `wrike` | [Wrike](third_party/wrike/) | Cursor | Integrations | Search projects, create tasks, and post comments. |\n| `coda` | [Coda](third_party/coda/) | Cursor | Integrations | Search docs, read pages, and update tables. |\n| `guru` | [Guru](third_party/guru/) | Cursor | Integrations | Search company knowledge and draft verified answers. |\n| `fireflies` | [Fireflies](third_party/fireflies/) | Cursor | Integrations | Search meeting transcripts, summaries, and action items. |\n| `otter` | [Otter.ai](third_party/otter/) | Cursor | Integrations | Search meeting history and pull full transcripts. |\n| `fathom` | [Fathom](third_party/fathom/) | Cursor | Integrations | Search meetings and pull transcripts and summaries. |\n| `craft` | [Craft](third_party/craft/) | Cursor | Integrations | Search, create, and update documents and daily notes. |\n| `mem` | [Mem](third_party/mem/) | Cursor | Integrations | Capture, search, and organize notes and collections. |\n| `readwise` | [Readwise](third_party/readwise/) | Cursor | Integrations | Search highlights and Reader documents, save articles. |\n| `similarweb` | [Similarweb](third_party/similarweb/) | Cursor | Integrations | Analyze website traffic, audiences, and competitors. |\n| `xero` | [Xero](third_party/xero/) | Cursor | Integrations | Read and write invoices, contacts, reports, and payroll. |\n| `x-ads` | [X Ads](third_party/x-ads/) | Cursor | Integrations | Manage ad campaigns, create ads, track conversions, and pull performance stats. |\n| `attio` | [Attio](third_party/attio/) | Cursor | Integrations | Search and update CRM records, lists, notes, and tasks. |\n| `hunter` | [Hunter](third_party/hunter/) | Cursor | Integrations | Find and verify emails, discover companies, and save leads. |\n| `gamma` | [Gamma](third_party/gamma/) | Cursor | Integrations | Generate presentations, documents, and webpages. |\n| `teams` | [Teams](third_party/teams/) | Cursor | Productivity | Search, read, and send Microsoft Teams chats and channel messages. |\n| `sharepoint` | [SharePoint](third_party/sharepoint/) | Cursor | Productivity | Search and read Microsoft SharePoint sites, document libraries, files, and lists. |\n| `finance` | [Finance](third_party/finance/) | Cursor | Integrations | Securely connect your accounts so Grok can help with questions about your spending, subscriptions, balances, and investments. |\n| `webull` | [Webull](third_party/webull/) | Cursor | Integrations | View accounts, positions, orders, watchlists, and market data. |\n| `sp-global` | [S&P Global](third_party/sp-global/) | Cursor | Integrations | Query S&P Capital IQ financials, prices, and transcripts. |\n| `interactive-brokers` | [Interactive Brokers](third_party/interactive-brokers/) | Cursor | Integrations | Review positions, balances, P&L, and draft trade instructions. |\n| `meltwater` | [Meltwater](third_party/meltwater/) | Cursor | Integrations | Search media and social mentions and pull analytics. |\n| `daloopa` | [Daloopa](third_party/daloopa/) | Cursor | Integrations | Pull source-linked fundamentals, KPIs, filings, and prices. |\n| `excalidraw` | [Excalidraw](third_party/excalidraw/) | Cursor | Integrations | Draw and export hand-drawn diagrams from chat. |\n| `google-cloud-bigquery` | [Google Cloud BigQuery](third_party/google-cloud-bigquery/) | Cu",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "workflow",
+      "automation",
+      "developer tool"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "medium",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 90
+    },
+    "strategic_score": 90,
+    "capability_tags": [
+      "长期记忆",
+      "技能扩展",
+      "工作流"
+    ],
+    "summary_source": "original_description"
+  }
+]
