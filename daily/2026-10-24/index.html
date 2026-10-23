@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub 热榜情报日报 · 2026-10-24 · ReelOS</title>
+  <meta name="description" content="GitHub 热榜情报日报 2026-10-24，一眼看懂项目做什么。">
+  <style>
+    
+    :root{
+      color-scheme:light;
+      --bg:#fcfaf6;
+      --bg-2:#fffdf8;
+      --surface:rgba(255,255,255,.74);
+      --surface-2:rgba(255,255,255,.58);
+      --surface-3:rgba(255,250,241,.8);
+      --line:rgba(228,228,225,.92);
+      --line-strong:rgba(232,178,126,.72);
+      --text:#111111;
+      --muted:rgba(48,45,40,.68);
+      --soft:rgba(48,45,40,.82);
+      --blue:#8ea3e8;
+      --cyan:#a9b7ea;
+      --amber:#f97316;
+      --amber-soft:rgba(249,115,22,.14);
+      --rail:rgba(177,164,148,.34);
+      --ok:#4c8b66;
+      --shadow:0 20px 70px rgba(17,17,17,.07);
+      --radius:14px;
+      --radius-sm:8px;
+    }
+    *{box-sizing:border-box}
+    html{color-scheme:light}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(176,192,255,.18), transparent 30%),
+        radial-gradient(circle at 84% 16%, rgba(249,115,22,.12), transparent 22%),
+        linear-gradient(rgba(196,203,230,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,203,230,.18) 1px, transparent 1px),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      background-size:auto,auto,72px 72px,72px 72px,auto;
+      background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--amber)}
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 96px}
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .brand-mark{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#ff9f54,#f97316);
+      box-shadow:0 0 14px rgba(249,115,22,.22);
+    }
+    .brand-copy{min-width:0}
+    .brand-kicker{
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+    .brand-title{
+      font-size:14px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.6);
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      backdrop-filter:blur(12px);
+    }
+    .nav a.active,.nav a:hover{
+      color:var(--text);
+      border-color:var(--line-strong);
+      background:rgba(255,244,232,.92);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
+      gap:18px;
+      margin-top:22px;
+      align-items:stretch;
+    }
+    .hero-main,.hero-side,.panel,.list,.quote{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,253,248,.72));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(20px);
+    }
+    .hero-main{
+      border-radius:22px;
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% -35% 30%;
+      height:260px;
+      background:radial-gradient(circle, rgba(249,115,22,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(90deg, rgba(120,130,170,0) 0 47px, rgba(120,130,170,.08) 47px 48px),
+        repeating-linear-gradient(180deg, rgba(249,115,22,0) 0 13px, rgba(249,115,22,.02) 13px 14px);
+      opacity:.42;
+      pointer-events:none;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.38), transparent 76%);
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--soft);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      background:rgba(255,255,255,.46);
+    }
+    .eyebrow::before{
+      content:"";
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--amber);
+      box-shadow:0 0 10px rgba(249,115,22,.3);
+    }
+    h1{
+      margin:16px 0 10px;
+      font-size:clamp(42px,8vw,86px);
+      line-height:.94;
+      letter-spacing:-.045em;
+      font-weight:650;
+      font-family:Sora,"Space Grotesk","IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    }
+    .headline{
+      display:block;
+      max-width:9ch;
+    }
+    .headline-line{display:block}
+    .ghost-word,
+    .texture-word{
+      display:inline-block;
+      position:relative;
+      font-weight:700;
+      letter-spacing:-.06em;
+    }
+    .ghost-word{color:rgba(17,17,17,.96)}
+    .texture-word{
+      color:transparent;
+      background-image:
+        linear-gradient(180deg, rgba(255,171,97,.98), rgba(249,115,22,.96)),
+        repeating-linear-gradient(90deg, rgba(255,250,241,0) 0 14px, rgba(255,250,241,.18) 14px 15px),
+        repeating-linear-gradient(180deg, rgba(17,17,17,0) 0 9px, rgba(17,17,17,.16) 9px 10px);
+      background-blend-mode:normal,screen,multiply;
+      -webkit-background-clip:text;
+      background-clip:text;
+      text-shadow:0 8px 26px rgba(249,115,22,.16);
+    }
+    .texture-word::after{
+      content:"";
+      position:absolute;
+      inset:10% 3% 8% 3%;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,250,241,0) 0 8px, rgba(255,250,241,.18) 8px 9px),
+        repeating-linear-gradient(90deg, rgba(120,90,40,0) 0 12px, rgba(120,90,40,.12) 12px 13px);
+      opacity:.38;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+      border-radius:12px;
+    }
+    .lead{
+      max-width:62ch;
+      margin:0;
+      color:var(--soft);
+      font-size:16px;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:11px 15px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      color:var(--text);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+    .btn.primary{
+      border-color:rgba(249,115,22,.3);
+      background:linear-gradient(180deg, rgba(255,166,84,.95), rgba(249,115,22,.9));
+      color:#fffaf1;
+    }
+    .hero-side{
+      border-radius:22px;
+      padding:18px;
+      display:grid;
+      gap:12px;
+      align-content:start;
+    }
+    .hero-side.compact{
+      background:rgba(255,252,246,.72);
+      gap:14px;
+    }
+    .side-label{
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .signal-title{
+      font-size:24px;
+      line-height:1.15;
+      margin:0;
+    }
+    .signal-copy{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+    }
+    .hero-side .signal-copy{max-width:34ch}
+    .status-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      padding-top:4px;
+    }
+    .status-item{
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      min-width:0;
+    }
+    .status-item.wide{grid-column:1 / -1}
+    .status-label{
+      display:block;
+      margin-bottom:6px;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .status-value{
+      display:block;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.35;
+      word-break:break-word;
+    }
+    .stat-grid,.card-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .card-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .metric,.card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface-2);
+      padding:14px;
+      min-width:0;
+    }
+    .metric b{
+      display:block;
+      font-size:28px;
+      line-height:1;
+      color:var(--text);
+      margin-bottom:6px;
+    }
+    .metric span,.card p{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .card b{
+      display:block;
+      margin-bottom:8px;
+      color:var(--blue);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+    .section{
+      display:grid;
+      grid-template-columns:96px minmax(0,1fr);
+      gap:16px;
+      margin-top:18px;
+      align-items:start;
+    }
+    .section-rail{
+      padding-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      position:relative;
+    }
+    .section-rail::after{
+      content:"";
+      position:absolute;
+      left:8px;
+      top:34px;
+      bottom:-24px;
+      width:1px;
+      background:linear-gradient(180deg,var(--rail),transparent);
+    }
+    .panel{
+      border-radius:20px;
+      padding:18px;
+    }
+    .panel h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+    .panel > p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:68ch;
+    }
+    .list{
+      border-radius:20px;
+      margin-top:14px;
+      overflow:hidden;
+    }
+    .row{
+      display:grid;
+      grid-template-columns:90px minmax(0,1fr) 104px;
+      gap:12px;
+      align-items:center;
+      padding:15px 18px;
+      border-bottom:1px solid var(--line);
+      transition:background .2s ease, transform .2s ease, border-color .2s ease;
+    }
+    .row:last-child{border-bottom:0}
+    .row:hover{
+      background:rgba(255,247,239,.88);
+      transform:translateX(2px);
+      border-color:rgba(232,178,126,.72);
+    }
+    .row .type{
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+    .row .title{
+      font-size:15px;
+      color:var(--text);
+    }
+    .row .meta{
+      text-align:right;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .quote{
+      border-radius:20px;
+      margin-top:22px;
+      padding:18px 20px;
+      position:relative;
+    }
+    .quote::before{
+      content:"Conclusion";
+      display:block;
+      margin-bottom:8px;
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+    .quote p{
+      margin:0;
+      color:var(--text);
+      font-size:18px;
+      line-height:1.6;
+    }
+    .mini-list{
+      display:grid;
+      gap:10px;
+    }
+    .mini-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px 0;
+      border-top:1px solid var(--line);
+    }
+    .mini-item:first-child{border-top:0;padding-top:0}
+    .mini-item b{
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+    .mini-item span{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .flow-intro{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:flex-end;
+      margin-bottom:12px;
+    }
+    .flow-intro h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.12;
+      letter-spacing:-.03em;
+    }
+    .flow-intro p{
+      margin:6px 0 0;
+      max-width:54ch;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .flow-meta{
+      color:var(--amber);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      white-space:nowrap;
+    }
+    .list.open{
+      margin-top:0;
+      border:none;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+    .list.open .row{
+      padding:17px 0;
+      border-bottom:1px solid rgba(223,219,210,.92);
+    }
+    .list.open .row:hover{
+      background:transparent;
+      transform:translateX(4px);
+      border-color:rgba(232,178,126,.72);
+    }
+    .home-main{
+      margin-top:18px;
+    }
+    .home-page{
+      --bg:#edf1f6;
+      --bg-2:#edf1f6;
+      --surface:#fff;
+      --surface-2:#fff;
+      --surface-3:#f7f9fc;
+      --line:#d7dce5;
+      --line-strong:#bcc5d2;
+      --text:#0d1424;
+      --muted:#6c788d;
+      --soft:#344159;
+      --blue:#315fc8;
+      --amber:#315fc8;
+      --amber-soft:#eef3ff;
+      background:#edf1f6;
+      background-attachment:scroll;
+    }
+    .home-page .wrap{
+      padding-bottom:56px;
+    }
+    .skip-link{
+      position:fixed;
+      z-index:100;
+      top:12px;
+      left:16px;
+      padding:8px 11px;
+      color:#fff;
+      background:var(--text);
+      transform:translateY(-160%);
+    }
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+    .home-page :where(a,button):focus-visible{
+      outline:2px solid var(--blue);
+      outline-offset:3px;
+    }
+    .home-page .topbar{
+      padding-top:4px;
+    }
+    .home-page .nav a{
+      border-radius:0;
+      background:transparent;
+      backdrop-filter:none;
+    }
+    .home-page .nav a.active,
+    .home-page .nav a:hover{
+      color:#315fc8;
+      border-color:#bcc5d2;
+      background:#fff;
+    }
+    .home-page .btn.primary{
+      color:#fff;
+      border-color:#315fc8;
+      background:#315fc8;
+      box-shadow:none;
+    }
+    .home-masthead{
+      padding:10px 0 34px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-masthead-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .home-masthead-brand{
+      display:flex;
+      align-items:center;
+    }
+    .home-masthead-edition{
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);
+      align-items:end;
+      gap:64px;
+      padding-top:48px;
+    }
+    .home-masthead-kicker{
+      display:block;
+      margin-bottom:12px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .home-masthead h1{
+      max-width:820px;
+      margin:0;
+      font-size:clamp(40px,4.8vw,66px);
+      line-height:1.08;
+      letter-spacing:0;
+      text-wrap:balance;
+    }
+    .home-masthead h1 > span{
+      display:block;
+    }
+    .home-title-subline{
+      font-size:.74em;
+      line-height:1.2;
+    }
+    .home-masthead-copy{
+      margin:0 0 6px;
+      color:var(--soft);
+      font-size:15px;
+      line-height:1.85;
+      text-wrap:pretty;
+    }
+    .today-hero{
+      display:grid;
+      grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .today-intro{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:300px;
+      padding:30px;
+      border-right:1px solid var(--line);
+      background:#f7f9fc;
+    }
+    .today-intro h1{
+      margin:12px 0 18px;
+      font-size:clamp(32px,3.2vw,42px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    .today-intro .text-link{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .today-preview{
+      padding:10px 26px;
+    }
+    .today-project{
+      display:grid;
+      grid-template-columns:34px minmax(0,1fr);
+      gap:12px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .today-project:last-child{
+      border-bottom:0;
+    }
+    .today-rank{
+      padding-top:3px;
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .today-project h2{
+      margin:0 0 7px;
+      font-size:18px;
+      line-height:1.35;
+      overflow-wrap:anywhere;
+    }
+    .today-project p{
+      margin:0;
+      color:var(--soft);
+      font-size:14px;
+      line-height:1.72;
+    }
+    .report-library{
+      margin:38px 0 18px;
+    }
+    .library-head{
+      max-width:680px;
+      margin-bottom:16px;
+    }
+    .library-head h2{
+      margin:6px 0 0;
+      font-size:28px;
+      line-height:1.2;
+      letter-spacing:-.04em;
+    }
+    .report-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .report-entry{
+      min-height:190px;
+      padding:22px;
+      border-right:1px solid var(--line);
+    }
+    .report-entry:last-child{
+      border-right:0;
+    }
+    .report-number{
+      color:var(--amber);
+      font-size:11px;
+      font-weight:700;
+    }
+    .report-entry h3{
+      margin:12px 0 8px;
+      font-size:25px;
+      line-height:1.1;
+      letter-spacing:-.04em;
+    }
+    .report-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:11px;
+    }
+    .report-links{
+      display:flex;
+      gap:16px;
+      margin-top:14px;
+    }
+    .report-links a{
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+    }
+    .report-links a:last-child{
+      color:var(--blue);
+    }
+    .home-report-tabs{
+      display:flex;
+      gap:0;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-nav{
+      display:flex;
+      align-items:stretch;
+      border-bottom:1px solid var(--line);
+    }
+    .home-report-nav .home-report-tabs{
+      flex:1;
+      margin-bottom:-1px;
+      border-bottom:0;
+    }
+    .home-report-index-link{
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-report-index-link:hover{
+      color:var(--blue);
+    }
+    .home-report-tab{
+      appearance:none;
+      padding:12px 22px;
+      color:var(--muted);
+      border:0;
+      border-bottom:2px solid transparent;
+      background:transparent;
+      font:inherit;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .home-report-tab:hover,
+    .home-report-tab[aria-selected="true"],
+    .home-report-tab[aria-current="page"]{
+      color:var(--blue);
+      border-bottom-color:var(--blue);
+    }
+    .home-report-tab-meta{
+      margin-left:5px;
+      color:var(--muted);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:9px;
+      font-weight:600;
+    }
+    .home-report-tab[aria-selected="true"] .home-report-tab-meta,
+    .home-report-tab[aria-current="page"] .home-report-tab-meta{
+      color:inherit;
+    }
+    .home-report-panel[hidden]{
+      display:none;
+    }
+    .home-report-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:24px;
+      padding:20px 0 18px;
+    }
+    .home-report-head .mono{
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    .home-report-head h1{
+      margin:6px 0 4px;
+      font-size:30px;
+      line-height:1.2;
+      letter-spacing:0;
+    }
+    .home-report-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .home-report-links{
+      display:flex;
+      gap:8px;
+    }
+    .home-report-links a{
+      padding:8px 12px;
+      color:var(--blue);
+      border:1px solid var(--line-strong);
+      background:#fff;
+      font-size:12px;
+      font-weight:700;
+    }
+    .home-project-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .home-project-row{
+      display:grid;
+      grid-template-columns:52px minmax(0,1fr) 110px;
+      gap:18px;
+      padding:20px 6px;
+      border-bottom:1px solid var(--line);
+    }
+    .home-project-row:last-child{
+      border-bottom:0;
+    }
+    .home-project-rank{
+      padding-top:3px;
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+    .home-project-main h2{
+      margin:0 0 6px;
+      font-size:19px;
+      line-height:1.3;
+      overflow-wrap:anywhere;
+    }
+    .home-project-main p{
+      max-width:850px;
+      margin:0;
+      color:#2b3850;
+      font-size:14px;
+      line-height:1.7;
+    }
+    .home-project-signal{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .home-project-signal strong{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:650;
+    }
+    .home-project-signal a{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+    .archive-main{
+      margin-top:14px;
+    }
+    .period-index-main{
+      margin-top:14px;
+    }
+    .period-masthead .home-masthead-body{
+      grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);
+      gap:48px;
+      padding-top:34px;
+    }
+    .period-masthead h1{
+      font-size:clamp(34px,4.2vw,54px);
+    }
+    .archive-policy{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      margin-bottom:24px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .archive-policy-item{
+      padding:18px 20px;
+      border-right:1px solid var(--line);
+    }
+    .archive-policy-item:last-child{
+      border-right:0;
+    }
+    .archive-policy-item span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .archive-policy-item strong{
+      display:block;
+      margin:4px 0 2px;
+      color:var(--text);
+      font-size:24px;
+      line-height:1.2;
+    }
+    .archive-report-list{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .archive-report-row{
+      display:grid;
+      grid-template-columns:76px minmax(0,1fr) 96px;
+      gap:16px;
+      align-items:center;
+      padding:18px 8px;
+      border-bottom:1px solid var(--line);
+    }
+    .archive-report-row:hover{
+      color:inherit;
+      background:#f7f9fc;
+    }
+    .archive-report-row:last-child{
+      border-bottom:0;
+    }
+    .archive-report-category{
+      width:max-content;
+      padding:4px 8px;
+      color:var(--blue);
+      border:1px solid #c8d2e3;
+      background:#f7f9fc;
+      font-size:11px;
+      font-weight:700;
+    }
+    .archive-report-title{
+      font-size:16px;
+      font-weight:700;
+      line-height:1.45;
+    }
+    .archive-report-meta{
+      color:var(--muted);
+      font-size:11px;
+      text-align:right;
+    }
+    .archive-empty{
+      padding:28px 8px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .site-footer{
+      color:#a7adbc;
+      background:#080b13;
+      border-top:1px solid #222735;
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns:minmax(280px,2.2fr) repeat(3,minmax(130px,1fr));
+      gap:56px;
+      max-width:1180px;
+      margin:0 auto;
+      padding:64px 20px 72px;
+    }
+    .footer-brand a{
+      color:#f5f6fa;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:-.02em;
+    }
+    .footer-brand p{
+      margin:4px 0 0;
+      color:#a7adbc;
+      font-size:15px;
+      font-weight:600;
+    }
+    .footer-column{
+      display:grid;
+      align-content:start;
+      gap:14px;
+    }
+    .footer-column h2{
+      margin:0 0 4px;
+      color:#777f91;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    .footer-column a{
+      width:max-content;
+      max-width:100%;
+      color:#a7adbc;
+      font-size:14px;
+      font-weight:600;
+    }
+    .footer-column a:hover{
+      color:#fff;
+    }
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .flow-intro{display:block}
+      .flow-meta{display:block;margin-top:10px}
+      .today-hero{grid-template-columns:1fr}
+      .today-intro{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .footer-inner{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:44px 32px;
+      }
+    }
+    @media (max-width:680px){
+      .wrap{padding:22px 14px 72px}
+      .topbar{align-items:flex-start;flex-direction:column}
+      .nav{
+        width:100%;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:4px;
+        scrollbar-width:none;
+      }
+      .nav::-webkit-scrollbar{display:none}
+      .nav a{flex:0 0 auto}
+      .section{grid-template-columns:1fr}
+      .section-rail{padding-top:0}
+      .section-rail::after{display:none}
+      .stat-grid,.card-grid,.card-grid.three{grid-template-columns:1fr}
+      .status-grid{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr;gap:6px}
+      .row .meta{text-align:left}
+      .list.open .row{padding:14px 0}
+      h1{font-size:clamp(38px,15vw,66px)}
+      .today-intro{padding:30px 24px}
+      .today-intro h1{font-size:34px}
+      .today-preview{padding:10px 20px}
+      .report-library{margin-top:48px}
+      .report-grid{grid-template-columns:1fr}
+      .home-report-tabs{
+        overflow-x:auto;
+      }
+      .home-report-index-link{
+        flex:0 0 auto;
+        padding:0 5px 0 10px;
+      }
+      .home-masthead{
+        padding-top:2px;
+        padding-bottom:18px;
+      }
+      .home-masthead-top{
+        align-items:center;
+        flex-direction:row;
+        gap:12px;
+      }
+      .home-masthead-edition{display:none}
+      .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:10px;
+        padding-top:20px;
+      }
+      .home-masthead h1{
+        max-width:12em;
+        font-size:clamp(34px,9.5vw,42px);
+        line-height:1.12;
+      }
+      .home-masthead-copy{
+        max-width:32em;
+        font-size:14px;
+        line-height:1.65;
+      }
+      .home-masthead-kicker{margin-bottom:8px}
+      .home-report-tab{
+        flex:1 0 auto;
+        padding:10px 13px;
+      }
+      .home-report-head{
+        align-items:flex-end;
+        flex-direction:row;
+        gap:10px;
+        padding:12px 0;
+      }
+      .home-report-head h1{
+        font-size:24px;
+      }
+      .home-report-head p{
+        font-size:12px;
+      }
+      .home-report-links{
+        margin-left:auto;
+      }
+      .home-report-links a{
+        padding:6px 8px;
+        white-space:nowrap;
+      }
+      .home-project-row{
+        grid-template-columns:32px minmax(0,1fr);
+        gap:10px;
+        padding:16px 0;
+      }
+      .home-project-signal{
+        grid-column:2;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .archive-policy{
+        grid-template-columns:1fr;
+      }
+      .archive-policy-item{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .archive-policy-item:last-child{
+        border-bottom:0;
+      }
+      .archive-report-row{
+        grid-template-columns:64px minmax(0,1fr);
+        gap:10px;
+        padding:16px 0;
+      }
+      .archive-report-meta{
+        grid-column:2;
+        text-align:left;
+      }
+      .period-masthead .home-masthead-body{
+        grid-template-columns:1fr;
+        gap:8px;
+        padding-top:18px;
+      }
+      .period-masthead h1{
+        font-size:32px;
+      }
+      .report-entry{
+        min-height:0;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .report-entry:last-child{border-bottom:0}
+      .report-entry > p{min-height:0}
+      .footer-inner{
+        padding:44px 20px 52px;
+      }
+    }
+    
+    .report-shell{max-width:980px;margin:0 auto;padding:32px 20px 88px}
+    .hero{padding:34px 0 22px;border-bottom:1px solid var(--line)}
+    .hero h1{margin:14px 0 12px;font-size:clamp(34px,6vw,58px);line-height:1.08}
+    .hero h1 span{color:var(--amber)}
+    .hero p{margin:0;color:var(--muted)}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .hero-meta span{padding:8px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}
+    .section{padding-top:28px}
+    .section h2{margin:0 0 14px;font-size:22px}
+    .health-list,.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+    .health-list li,.project-tags li{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);background:var(--surface);font-size:12px}
+    .project-list{display:grid;gap:16px}
+    .project-row{display:grid;grid-template-columns:56px minmax(0,1fr) 210px;gap:16px;padding:18px;border:1px solid var(--line);background:var(--surface);overflow:hidden}
+    .project-rank{font-size:24px;color:var(--amber)}
+    .project-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .project-head h3{margin:0;font-size:20px;line-height:1.25}
+    .project-head p{margin:0}
+    .project-source{flex:0 0 auto;color:var(--blue)}
+    .project-main p{margin:10px 0 12px;color:var(--soft)}
+    .project-meta{display:grid;grid-template-columns:1fr;gap:10px;margin:0}
+    .project-meta div{padding:10px 12px;border:1px solid var(--line);background:var(--surface-2)}
+    .project-meta dt{margin:0 0 4px;color:var(--muted);font-size:11px}
+    .project-meta dd{margin:0;font-size:14px}
+    .note{padding:16px 18px;border-left:3px solid var(--amber);background:var(--surface-3);color:var(--soft)}
+    @media (max-width:800px){
+      .project-row{grid-template-columns:1fr}
+      .project-head{flex-direction:column}
+      .project-rank{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <main class="report-shell">
+    <header class="topbar">
+      <div class="brand"><a class="reelos-lockup" href="/" aria-label="ReelOS.ai">
+      <span class="reelos-mark" aria-hidden="true"><span></span></span>
+      <span class="reelos-lockup-copy">
+        <span class="reelos-wordmark">Reel<span class="reelos-logo-os">OS</span>.ai</span>
+        <span class="reelos-lockup-subtitle">GitHub 热榜情报</span>
+      </span>
+    </a></div>
+      <nav class="nav" aria-label="站点导航"><a class="" href="/">首页</a><a class="active" href="/daily/">日报</a><a class="" href="/weekly/">周报</a><a class="" href="/monthly/">月报</a><a class="" href="/leaderboard/">总榜</a><a class="" href="/archive/">归档</a></nav>
+    </header>
+    <section class="hero">
+      <span class="mono">ReelOS · GitHub Signal</span>
+      <h1>GitHub <span>日报</span> 情报</h1>
+      <p>减少噪音，一眼看懂项目做什么。当前页为基于本地已验证 Top 10 与原始抓取数据补生成的历史日报页。</p>
+      <div class="hero-meta">
+        <span class="mono">日期 2026-10-24</span>
+        <span class="mono">Top 10 10</span>
+        <span class="mono">候选仓库 60</span>
+        <span class="mono">README 覆盖 60</span>
+        <span class="mono">主信号 NVIDIA/OpenShell</span>
+      </div>
+    </section>
+    <section class="section">
+      <h2>当日抓取健康度</h2>
+      <ul class="health-list"><li><strong>all</strong><span class="mono">8</span></li><li><strong>go</strong><span class="mono">11</span></li><li><strong>javascript</strong><span class="mono">6</span></li><li><strong>python</strong><span class="mono">10</span></li><li><strong>rust</strong><span class="mono">15</span></li><li><strong>typescript</strong><span class="mono">17</span></li></ul>
+    </section>
+    <section class="section">
+      <h2>Top 10 项目</h2>
+      <div class="project-list"><article class="project-row">
+          <div class="project-rank mono">01</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener noreferrer">NVIDIA/OpenShell</a></h3>
+              <a class="project-source mono" href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>NVIDIA 开源的 AI Agent 安全运行时：通过策略声明、内核级隔离与变更前验证，限制 Agent 对文件、网络、凭据和系统调用的访问范围。</p>
+            <ul class="project-tags"><li>Agent 沙箱</li><li>策略执行</li><li>内核级隔离</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Rust</dd></div>
+            <div><dt>周期增长</dt><dd>+1240</dd></div>
+            <div><dt>总星标</dt><dd>18726</dd></div>
+            <div><dt>切片</dt><dd>all / rust</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">02</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer">TauricResearch/TradingAgents</a></h3>
+              <a class="project-source mono" href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个多 Agent 金融交易框架，利用 LLM Agent 组织市场分析、研究和交易决策流程。</p>
+            <ul class="project-tags"><li>多 Agent 交易</li><li>市场分析</li><li>LLM 研究流程</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Python</dd></div>
+            <div><dt>周期增长</dt><dd>+498</dd></div>
+            <div><dt>总星标</dt><dd>113373</dd></div>
+            <div><dt>切片</dt><dd>python</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">03</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener noreferrer">pbakaus/impeccable</a></h3>
+              <a class="project-source mono" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一套专门为 AI harness 准备的设计语言，目标是让 Agent 生成的界面更统一、更耐看，也更容易落地到产品。</p>
+            <ul class="project-tags"><li>设计语言</li><li>界面规范</li><li>AI 生成 UI 约束</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Rust</dd></div>
+            <div><dt>周期增长</dt><dd>+533</dd></div>
+            <div><dt>总星标</dt><dd>85494</dd></div>
+            <div><dt>切片</dt><dd>rust</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">04</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/QuantumNous/new-api" target="_blank" rel="noopener noreferrer">QuantumNous/new-api</a></h3>
+              <a class="project-source mono" href="https://github.com/QuantumNous/new-api" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>把多个模型服务统一接入网关，转换接口格式并集中管理模型调用。</p>
+            <ul class="project-tags"><li>模型网关</li><li>接口转换</li><li>调用管理</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Go</dd></div>
+            <div><dt>周期增长</dt><dd>+109</dd></div>
+            <div><dt>总星标</dt><dd>50582</dd></div>
+            <div><dt>切片</dt><dd>go</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">05</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener noreferrer">Graphify-Labs/graphify</a></h3>
+              <a class="project-source mono" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
+            <ul class="project-tags"><li>MCP 集成</li><li>RAG 检索</li><li>技能扩展</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Python</dd></div>
+            <div><dt>周期增长</dt><dd>+1328</dd></div>
+            <div><dt>总星标</dt><dd>133866</dd></div>
+            <div><dt>切片</dt><dd>python</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">06</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/stablyai/orca" target="_blank" rel="noopener noreferrer">stablyai/orca</a></h3>
+              <a class="project-source mono" href="https://github.com/stablyai/orca" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>在桌面、移动端或远程环境中管理多个并行编码 Agent，使用已有模型订阅推进开发任务。</p>
+            <ul class="project-tags"><li>并行编码</li><li>任务管理</li><li>远程开发</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+1085</dd></div>
+            <div><dt>总星标</dt><dd>103763</dd></div>
+            <div><dt>切片</dt><dd>typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">07</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/genspark-ai/genoffice" target="_blank" rel="noopener noreferrer">genspark-ai/genoffice</a></h3>
+              <a class="project-source mono" href="https://github.com/genspark-ai/genoffice" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
+            <ul class="project-tags"><li>MCP 集成</li><li>技能扩展</li><li>工作区</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+152</dd></div>
+            <div><dt>总星标</dt><dd>10651</dd></div>
+            <div><dt>切片</dt><dd>typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">08</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener noreferrer">cloudflare/security-audit-skill</a></h3>
+              <a class="project-source mono" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>Cloudflare 开源的一套编码 Agent 安全审计技能：将侦察、覆盖率驱动排查、候选漏洞验证、机器可读发现记录和独立复核组织成六阶段流程，并区分已确认、待验证与已否定的结论。</p>
+            <ul class="project-tags"><li>多阶段安全审计</li><li>覆盖率账本</li><li>独立候选验证</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>JavaScript</dd></div>
+            <div><dt>周期增长</dt><dd>+2706</dd></div>
+            <div><dt>总星标</dt><dd>41994</dd></div>
+            <div><dt>切片</dt><dd>all / javascript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">09</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">firecrawl/firecrawl</a></h3>
+              <a class="project-source mono" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。</p>
+            <ul class="project-tags"><li>网页搜索</li><li>批量抓取</li><li>交互式采集</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>TypeScript</dd></div>
+            <div><dt>周期增长</dt><dd>+431</dd></div>
+            <div><dt>总星标</dt><dd>194660</dd></div>
+            <div><dt>切片</dt><dd>typescript</dd></div>
+          </dl>
+        </article><article class="project-row">
+          <div class="project-rank mono">10</div>
+          <div class="project-main">
+            <div class="project-head">
+              <h3><a href="https://github.com/onyx-dot-app/onyx" target="_blank" rel="noopener noreferrer">onyx-dot-app/onyx</a></h3>
+              <a class="project-source mono" href="https://github.com/onyx-dot-app/onyx" target="_blank" rel="noopener noreferrer">原文</a>
+            </div>
+            <p>中文摘要待补，点击“原文”查看仓库介绍。</p>
+            <ul class="project-tags"><li>MCP 集成</li><li>RAG 检索</li><li>技能扩展</li></ul>
+          </div>
+          <dl class="project-meta mono">
+            <div><dt>语言</dt><dd>Python</dd></div>
+            <div><dt>周期增长</dt><dd>+84</dd></div>
+            <div><dt>总星标</dt><dd>32925</dd></div>
+            <div><dt>切片</dt><dd>python</dd></div>
+          </dl>
+        </article></div>
+    </section>
+    <section class="section">
+      <h2>说明</h2>
+      <p class="note">该页用于补齐缺失历史日报 HTML。项目说明优先取人工中文摘要，其次回退仓库原始 description；不补造 README、依赖或排行数据。</p>
+    </section>
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="https://www.reelos.ai/">ReelOS.ai</a>
+        <p>AI Native Builder Lab</p>
+      </div>
+      <nav class="footer-column" aria-label="ReelOS">
+        <h2>ReelOS</h2>
+        <a href="https://www.reelos.ai/about/">关于</a>
+        <a href="https://www.reelos.ai/principles/">原则</a>
+        <a href="https://www.reelos.ai/faq/">FAQ</a>
+        <a href="https://github.com/reelos-ai">GitHub</a>
+      </nav>
+      <nav class="footer-column" aria-label="Projects">
+        <h2>Projects</h2>
+        <a href="https://daoyin.reelos.ai/">DaoYin</a>
+        <a href="https://yi.reelos.ai/">Yi</a>
+        <a href="https://macro.reelos.ai/">MacroFlow</a>
+      </nav>
+      <nav class="footer-column" aria-label="Channels">
+        <h2>Channels</h2>
+        <a href="https://www.reelos.ai/feed.xml">RSS Feed</a>
+        <a href="https://infra.reelos.ai/">AI Infra</a>
+        <a href="https://ainews.reelos.ai/">AI News</a>
+        <a href="https://gh.reelos.ai/">GitHub Radar</a>
+        <a href="/leaderboard/">开源信号总榜</a>
+        <a href="https://www.reelos.ai/daily/">Daily Research</a>
+      </nav>
+    </div>
+  </footer>
+  </main>
+</body>
+</html>
