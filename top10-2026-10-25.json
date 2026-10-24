@@ -233,11 +233,22 @@
     },
     "strategic_score": 95,
     "capability_tags": [
-      "长期记忆",
-      "MCP 集成",
-      "技能扩展"
+      "本地 Agent 工作台",
+      "多 harness 切换",
+      "连续工作区与记忆"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个开源的本地优先 AI Agent 客户端，把 Claude Code、Codex 等 harness、模型、工具、技能与连续工作区整合到桌面和移动端，用于在用户自己的文件和已登录应用中执行任务。",
+      "audience": "希望把多个编码 Agent、模型和本地工作环境放进同一工作台的个人开发者与团队",
+      "capabilities": "本地 Agent 工作台、多 harness 切换、连续工作区与记忆、浏览器与电脑操作、桌面和移动客户端",
+      "risk": "README 对多 harness 与设备操作的能力来自项目自述；真实执行权限、不同模型账户的计费与任务并发稳定性仍需在目标设备单独验证。",
+      "verified_at": "2026-10-25",
+      "evidence_sources": [
+        "https://github.com/makecindy/cindy"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装客户端或授权本地应用。"
+    }
   },
   {
     "owner": "vectorize-io",
@@ -640,11 +651,22 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "RAG 检索",
-      "技能扩展",
-      "工作区"
+      "终端会话持久化",
+      "SSH 机器汇总",
+      "Agent 会话恢复"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个面向编码 Agent 的终端运行时与工作区管理工具：在后台保持终端和会话状态，并把本地与 SSH 机器中的 Agent 会话汇总到同一窗口。",
+      "audience": "需要同时管理多台机器、终端会话和编码 Agent 的开发者",
+      "capabilities": "终端会话持久化、SSH 机器汇总、Agent 会话恢复、终端工作区管理、命令行界面",
+      "risk": "会话恢复依赖其后台服务和受支持的 Agent 类型；进程在重启后并不会原样存活，远程连接与本地凭据边界也需按部署环境评估。",
+      "verified_at": "2026-10-25",
+      "evidence_sources": [
+        "https://github.com/herdrdev/herdr"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装或连接真实 SSH 主机。"
+    }
   },
   {
     "owner": "Gaurav-Gosain",
@@ -725,11 +747,22 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "MCP 集成",
+      "终端分屏",
       "工作区",
-      "工作流"
+      "会话持久化"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个用 Go 构建的终端窗口管理器与复用器，提供分屏、工作区、可跨重启保留的会话，以及让终端内编码 Agent 上报状态和互相传递消息的 Inbox。",
+      "audience": "在终端中同时运行多个编码 Agent、项目会话和远程环境的开发者",
+      "capabilities": "终端分屏、工作区、会话持久化、跨机器会话、Agent 状态汇总、Agent Inbox",
+      "risk": "README 的 Agent 协作方式和跨机器会话能力尚未在真实工程环境验证；终端会话的访问控制、远程连接安全和特定终端协议兼容性需要单独评估。",
+      "verified_at": "2026-10-25",
+      "evidence_sources": [
+        "https://github.com/Gaurav-Gosain/tuios"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装、配置 daemon 或连接远程主机。"
+    }
   },
   {
     "owner": "Tencent",
