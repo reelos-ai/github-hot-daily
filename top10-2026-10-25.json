@@ -1,0 +1,831 @@
+[
+  {
+    "owner": "heygen-com",
+    "name": "hyperframes",
+    "full_name": "heygen-com/hyperframes",
+    "url": "https://github.com/heygen-com/hyperframes",
+    "description": "Write HTML. Render video. Built for agents.",
+    "language": "TypeScript",
+    "total_stars": 71439,
+    "forks": 6453,
+    "stars_this_period": 777,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agents",
+        "animation",
+        "claude-code",
+        "ffmpeg",
+        "framework",
+        "gsap",
+        "html",
+        "html-to-video",
+        "mcp",
+        "motion-graphics",
+        "puppeteer",
+        "rendering",
+        "typescript",
+        "video-editor"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 316,
+      "created_at": "2026-03-10T01:51:06Z",
+      "pushed_at": "2026-10-24T21:57:30Z",
+      "homepage": "https://hyperframes.dev",
+      "default_branch": "main",
+      "forks": 6453,
+      "watchers": 179,
+      "archived": false,
+      "size_kb": 516738
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/logo/dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/logo/light.svg\">\n    <img alt=\"HyperFrames\" src=\"docs/logo/light.svg\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/v/hyperframes.svg?style=flat\" alt=\"npm version\"></a>\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/dm/hyperframes.svg?style=flat\" alt=\"npm downloads\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-blue.svg\" alt=\"License\"></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/badge/node-%3E%3D22-brightgreen\" alt=\"Node.js\"></a>\n  <a href=\"https://discord.gg/EbK98HBPdk\"><img src=\"https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\"><b>Write HTML. Render video. Built for agents.</b></p>\n\n<p align=\"center\">\n  <a href=\"https://www.hyperframes.dev/studio\">Studio</a> |\n  <a href=\"https://hyperframes.heygen.com/quickstart\">Quickstart</a> |\n  <a href=\"https://hyperframes.heygen.com/showcase\">Showcase</a> |\n  <a href=\"https://www.hyperframes.dev/\">Playground</a> |\n  <a href=\"https://hyperframes.heygen.com/catalog/blocks/data-chart\">Catalog</a> |\n  <a href=\"https://hyperframes.heygen.com/introduction\">Docs</a> |\n  <a href=\"https://discord.gg/EbK98HBPdk\">Discord</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b\" alt=\"HyperFrames app opening from the Dock: native Mac and Linux app now available\" width=\"800\">\n</p>\n\nHyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.\n\nUsing Claude Code, Codex, Cursor, or another coding agent? Run `npx hyperframes skills update` once, then ask your agent to make a video.\n\n## Quick Start\n\n### With an AI coding agent\n\nFor Claude Code, install the versioned plugin:\n\n```bash\nclaude plugin marketplace add heygen-com/hyperframes\nclaude plugin install hyperframes@hyperframes\n```\n\nTo enable auto-update for the **hyperframes** marketplace, run `claude` in a\nterminal in your project. In Claude Code's terminal UI, run `/plugin`, then select\n**Marketplaces** → **hyperframes** → **Enable auto-update**. Afterward, use\n`/hyperframes:hyperframes`. See the [plugin guide](docs/guides/plugins.mdx)\nfor Copilot, VS Code, Cursor, Gemini CLI, updates, and migration.\n\nFor standalone skills (including OpenCode), use:\n\n```bash\nnpx skills add heygen-com/hyperframes\n```\n\n> The picker opens with nothing pre-selected — the **Core Skills** group is all you need; `/slideshow`, `/remotion-to-hyperframes` and `/figma` install on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 7 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.\n>\n> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.\n\nTry a prompt like:\n\n> Using `/hyperframes`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.\n\nThe skills teach agents the HyperFrames production loop: plan the video, write valid HTML, wire seekable animations, add media, lint, preview, and render. They work with Claude Code, Codex, Cursor, Gemini CLI, IBM Bob, and other coding agents that support skills.\n\n## Skills\n\nHyperFrames ships 7 skills. Make any video by asking for it; the `/hyperframes` skill carries the contract and the references (film, captions, overlays, motion, look). Read it first.\n\nFor standalone installation, default to the **core set** (`/hyperframes`, `/hyperframes-cli`, `/hyperframes-registry`, `/media-use`). `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the \"Core Skills\" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 7. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).\n\nStandalone installs stay lean after that: `npx hyperframes init` installs the **core set** only when it is missing and never touches a skill you already have (`npx hyperframes skills update` refreshes them, and never removes one); `/figma`, `/slideshow` and `/remotion-to-hyperframes` install **on demand** with `npx hyperframes skills update <name>`. Nothing re-pulls the full set behind your back.\n\n### Plugin packages\n\nPlugins bundle the full skill catalog and use their agent's update manager.\n`bun run package:agent-plugin` builds the committed portable ZIP, source metadata,\nand SHA-256 checksum. See the [maintainer checklist](docs/contributing/agent-plugins.mdx).\n\n### Upload to Codex\n\nBuild the upload-ready Codex plugin archive from the committed `HEAD` version of the manifest, brand assets, and skills:\n\n```bash\nbun run package:codex-plugin\n```\n\nThis writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.\n\n### Core set\n\n| Skill                   | Use when                                                                                                                                                                                                                                                                                            |\n| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/hyperframes`          | **Read first** for any request to make, edit, animate or render a video, motion graphic, captions or overlays with HyperFrames (HTML rendered to video). Holds the render contract and the work loop, and points to the references for format, motion, look, captions, whole films and storyboards. |\n| `/hyperframes-cli`      | The HyperFrames CLI by job — scaffold, check, look at frames, edit the timeline, preview, render locally or in the cloud, publish, project history — plus reading its JSON and recovering from build or render failures.                                                                            |\n| `/hyperframes-registry` | About 450 ready-made blocks and components installed as editable source — transitions, overlays, titles, kinetic type, captions, charts, maps, 3D, camera moves. Use before hand-building any named visual; also for `hyperframes add` and `catalog`.                                               |\n| `/media-use`            | Get or make any media for a video — music, sound effects, images, icons, logos, voiceover, avatar and generated video, transcripts, cutouts, colour grades and looks — with HeyGen or free local tools, and mix placed audio. Also for footage that looks dark, flat or dull.                       |\n\n### On demand\n\n| Skill                      | Use when                                                                                                                                                                                              |\n| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/figma`                   | Bring Figma into a video — rendered assets, brand tokens, components, storyboard frames as reconstructed motion, shaders and connector-assisted motion. Use when you paste a figma.com link.          |\n| `/slideshow`               | A presentation, pitch deck or interactive deck — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode with speaker notes. Output is a navigable deck, not a rendered MP4. |\n| `/remotion-to-hyperframes` | Bringing existing video code or footage into HyperFrames (Remotion first; also Motion Canvas, Lottie, Three.js, canvas, other tools' renders), verified frame by frame.                               |\n\nFor visual design handoff workflows, see the [Claude Design guide](https://hyperframes.heygen.com/guides/claude-design) and [Open Design guide](https://hyperframes.heygen.com/guides/open-design).\n\n### Manually with the CLI\n\n```bash\nnpx hyperframes init my-video\ncd my-video\nnpx hyperframes preview      # preview in browser with live reload\nnpx hyperframes render       # render to MP4\n```\n\n**Requirements:** Node.js 22+, FFmpeg\n\n## What You Can Build\n\nNeed ideas? Browse the [Showcase](https://hyperframes.heygen.com/showcase) for finished videos you can watch, read, run, and remix.\n\n- Product launch videos and feature announcements\n- PR walkthroughs with animated code diffs, narration, and captions\n- Data visualizations, chart races, and map animations\n- Social videos with kinetic captions, overlays, and music\n- Docs-to-video, PDF-to-video, and site-tour explainers\n- Reusable motion graphics for automated content pipelines\n\n## Frame.md\n\n**frame.md — your design system, ready for video.**\n\nEvery brand has a `design.md`. None of them were written for a camera. `frame.md` is the missing translation layer: it takes your web-context design spec and inverts it for the frame — the same tokens, the same rules, but rewritten so an AI agent can compose a promo video without guessing at scale or reaching for web chrome.\n\nThe output is a `DESIGN.md` superset your whole toolchain can read. Atoms stay sacred. Composition stays free. Numbers come from the script.\n\n<table>\n  <tr>\n    <td width=\"50%\" align=\"center\">\n      <a href=\"https://www.hyperframes.dev/design/biennale-yellow\"><img src=\"https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/biennale-yellow.png\" alt=\"Biennale Yellow\" width=\"100%\"></a>\n      <br><b><a href=\"https://www.hyperframes.dev/design/biennale-yellow\">Biennale Yellow</a></b>\n    </td>\n    <td width=\"50%\" align=\"center\">\n      <a href=\"https://www.hyperframes.dev/design/blockframe\"><img src=\"https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blockframe.png\" alt=\"BlockFrame\" width=\"100%\"></a>\n      <br><b><a href=\"https://www.hyperframes.dev/design/blockframe\">BlockFrame</a></b>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" align=\"center\">\n      <a href=\"https://www.hyperframes.dev/design/blue-professional\"><img src=\"https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blue-professional.png\" alt=\"Blue Professional\" width=\"100%\"></a>\n      <br><b><a href=\"https://www.hyperframes.dev/design/blue-professional\">Blue Professional</a></b>\n    </td>\n    <td width=\"50%\" align=\"center\">\n      <a href=\"https://www.hyperframes.dev/design/bold-poster\"><img src=\"https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/bold-poster.png\" alt=\"Bold Poster\" width=\"100%\"></a>\n      <br><b><a href=\"https://www.hyperframes.dev/design/bold-poster\">Bold Poster</a></b>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" align=\"center\">\n      <a href=\"https://www.hyperframes.dev/design/broadside\"><img src=\"https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/broadside.png\" alt=\"Broadside\" width=\"100%\"><",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"hyperframes-monorepo\",\n  \"private\": true,\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/heygen-com/hyperframes\"\n  },\n  \"workspaces\": [\n    \"packages/*\"\n  ],\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"bun run studio\",\n    \"build\": \"bun run --filter '@hyperframes/{parsers,lint,studio-server}' build && bun run --filter @hyperframes/core build && bun run --filter '@hyperframes/{engine,producer,player,studio,shader-transitions,aws-lambda,gcp-cloud-run,sdk,inspector}' build && bun run --filter @hyperframes/cli build && bun run --filter @hyperframes/sdk-playground build\",\n    \"build:producer\": \"bun run --filter @hyperframes/producer build\",\n    \"studio\": \"bun run --filter @hyperframes/studio dev\",\n    \"build:hyperframes-runtime\": \"bun run --filter @hyperframes/core build:hyperframes-runtime\",\n    \"build:hyperframes-runtime:modular\": \"bun run --filter @hyperframes/core build:hyperframes-runtime:modular\",\n    \"verify:packed-manifests\": \"node scripts/verify-packed-manifests.mjs\",\n    \"validate:release-channel\": \"node scripts/validate-release-channel.mjs\",\n    \"set-version\": \"tsx scripts/set-version.ts\",\n    \"release:prepare\": \"tsx scripts/release-prepare.ts\",\n    \"changelog:draft\": \"tsx scripts/draft-changelog.ts\",\n    \"changelog:weekly\": \"tsx scripts/changelog-weekly.ts\",\n    \"sync-schemas\": \"tsx scripts/sync-schemas.ts\",\n    \"sync-schemas:check\": \"tsx scripts/sync-schemas.ts --check\",\n    \"sync:package-subpaths\": \"node scripts/package-subpaths.mjs --write\",\n    \"check:package-subpaths\": \"node scripts/package-subpaths.mjs\",\n    \"lint\": \"bun run check:docs-snippet-motion && bun run check:studio-copy-dashes && bun run check:tracked-artifacts && bun run check:workspace-contracts && bun run check:gcp-cloud-run-dockerfile && bun run check:package-cycles && bun run check:package-subpaths && bun run check:cli-process-ownership && oxlint . && tsx scripts/lint-skills.ts && node scripts/check-core-skills.mjs && node scripts/check-skill-mirror.mjs\",\n    \"check:gcp-cloud-run-dockerfile\": \"bun run --cwd packages/gcp-cloud-run test:dockerfile-workspaces\",\n    \"lint:skills\": \"tsx scripts/lint-skills.ts && node scripts/check-core-skills.mjs\",\n    \"check:skill-mirror\": \"node scripts/check-skill-mirror.mjs\",\n    \"lint:fix\": \"oxlint --fix .\",\n    \"check:tracked-artifacts\": \"node scripts/check-tracked-artifacts.mjs\",\n    \"check:docs-snippet-motion\": \"node scripts/check-docs-snippet-motion.mjs\",\n    \"check:docs-catalog\": \"node scripts/check-docs-catalog.mjs\",\n    \"generate:catalog\": \"bun scripts/generate-catalog.ts\",\n    \"check:catalog-drift\": \"tsx scripts/catalog-drift.ts\",\n    \"verify:catalog-payloads\": \"tsx scripts/verify-catalog-payloads.ts\",\n    \"check:workspace-contracts\": \"node scripts/check-workspace-contracts.mjs\",\n    \"check:package-cycles\": \"node scripts/check-package-cycles.mjs\",\n    \"check:cli-process-ownership\": \"node scripts/check-cli-process-ownership.mjs\",\n    \"check:cli-lazy-deps\": \"node scripts/check-cli-lazy-deps.mjs\",\n    \"check:studio-copy-dashes\": \"node scripts/check-studio-copy-dashes.mjs\",\n    \"format\": \"oxfmt .\",\n    \"test\": \"bun run test:unit\",\n    \"test:unit\": \"bun run --filter '*' test\",\n    \"producer:test:classification\": \"bun run --cwd packages/producer test:classification\",\n    \"producer:test:unit\": \"bun run --cwd packages/producer test:unit\",\n    \"producer:test:unit:bun\": \"bun run --cwd packages/producer test:unit:bun\",\n    \"producer:test:unit:vitest\": \"bun run --cwd packages/producer test:unit:vitest\",\n    \"producer:test:integration\": \"bun run --cwd packages/producer test:integration\",\n    \"test:regression\": \"bun run --cwd packages/producer test:regression\",\n    \"player:perf\": \"bun run --filter @hyperframes/player perf\",\n    \"format:check\": \"oxfmt --check .\",\n    \"knip\": \"knip\",\n    \"test:scripts\": \"node --import tsx --test scripts/animejs-v4-guidance.test.mjs scripts/check-tracked-artifacts.test.mjs scripts/check-registry-set-delta.test.mjs scripts/check-no-main-deletions.test.mjs scripts/check-pr-captures.test.mjs scripts/check-comment-citations.test.mjs scripts/comments-workflow.test.mjs scripts/comment-ratchet.test.mjs scripts/check-docs-snippet-motion.test.mjs scripts/registry-target-paths.test.mjs scripts/check-workspace-contracts.test.mjs scripts/check-media-use-copy-parity.test.mjs scripts/check-svg-sanitize-parity.test.mjs scripts/check-media-use-svg-sanitize-generated.test.mjs scripts/check-package-cycles.test.mjs scripts/check-cli-process-ownership.test.mjs scripts/check-cli-lazy-deps.test.mjs scripts/file-url-paths.test.mjs scripts/check-studio-copy-dashes.test.mjs scripts/check-large-files.test.mjs scripts/package-subpaths.test.mjs scripts/validate-release-channel.test.mjs scripts/clawhub-sync.test.mjs scripts/clawhub-unlist-retired.test.mjs scripts/publish-workflow.test.mjs scripts/pr-edit-concurrency.test.mjs scripts/merge-queue-workflows.test.mjs scripts/install-workspace-dependencies.test.mjs scripts/check-edit-accuracy-filter.test.mjs scripts/edit",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "skill",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 96
+    },
+    "strategic_score": 96,
+    "capability_tags": [
+      "HTML 渲染视频",
+      "Agent 视频工作流",
+      "模板化动画"
+    ],
+    "brief_zh": {
+      "summary": "一个让 Agent 直接用 HTML 驱动视频生成的开源引擎，把时间轴、动画和渲染流程压缩成更轻量的可编排接口。",
+      "audience": "想把脚本、模板和 Agent 工作流直接连接到视频渲染环节的内容自动化团队与开发者",
+      "capabilities": "HTML 渲染视频、Agent 视频工作流、模板化动画、自动化出片、轻量视频运行时",
+      "risk": "项目仍偏新，复杂动画能力、工程稳定性和大规模渲染体验还需要通过真实生产场景检验"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "pbakaus",
+    "name": "impeccable",
+    "full_name": "pbakaus/impeccable",
+    "url": "https://github.com/pbakaus/impeccable",
+    "description": "The design language that makes your AI harness better at design.",
+    "language": "Rust",
+    "total_stars": 86321,
+    "forks": 5151,
+    "stars_this_period": 733,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 39,
+      "created_at": "2025-11-16T01:52:04Z",
+      "pushed_at": "2026-10-24T06:29:27Z",
+      "homepage": "https://impeccable.style",
+      "default_branch": "main",
+      "forks": 5151,
+      "watchers": 196,
+      "archived": false,
+      "size_kb": 828652
+    },
+    "readme_content": "# Impeccable\n\nDesign guidance for AI coding agents. 1 skill, 24 commands, live browser iteration, and 62 deterministic detector rules for AI-generated frontend design.\n\n> **Quick start:** From your project root, run `npx impeccable install`, then run `/impeccable init` inside your AI coding tool. Full docs: [impeccable.style](https://impeccable.style).\n\n## Why Impeccable?\n\nAnthropic's [frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) was the first widely-used design skill for Claude. Impeccable started from there.\n\nEvery model trained on the same SaaS templates. Skip the guidance and you get the same handful of tells on every project: Inter for everything, purple-to-blue gradients, cards nested in cards, gray text on colored backgrounds, the rounded-square icon tile above every heading.\n\nImpeccable adds:\n- **One setup flow.** `/impeccable init` records durable product truth in `PRODUCT.md`, so later commands know the audience, purpose, operating context, constraints, voice, and evidence without confusing those facts with surface-level visual direction.\n- **24 commands.** A shared design vocabulary with your AI: `polish`, `audit`, `critique`, `distill`, `animate`, `bolder`, `quieter`, and more.\n- **62 deterministic detector rules** plus LLM-only critique checks. The CLI and browser extension run the deterministic rules with no LLM and no API key.\n\n## What's Included\n\n### The Skill: impeccable\n\nThe skill installs as one command:\n\n```bash\n/impeccable <command> <target>\n```\n\nStart every new project with:\n\n```bash\n/impeccable init\n```\n\n`init` inspects the project, asks only for material gaps in durable product truth, and writes `PRODUCT.md`. Visitor mode and visual direction are chosen later for each surface; incumbent or newly built visual systems are recorded separately in `DESIGN.md`.\n\n### 24 Commands\n\nAll commands are accessed through `/impeccable`:\n\n| Command | What it does |\n|---------|--------------|\n| `/impeccable craft` | Full shape-then-build flow with visual iteration |\n| `/impeccable init` | One-time setup: gather durable product context, write PRODUCT.md, configure live mode when applicable, recommend next steps |\n| `/impeccable document` | Generate root DESIGN.md from existing project code |\n| `/impeccable extract` | Pull reusable components and tokens into the design system |\n| `/impeccable shape` | Plan UX/UI before writing code |\n| `/impeccable critique` | UX design review: hierarchy, clarity, emotional resonance |\n| `/impeccable audit` | Run technical quality checks (a11y, performance, responsive) |\n| `/impeccable polish` | Final pass, design system alignment, and shipping readiness |\n| `/impeccable bolder` | Amplify boring designs |\n| `/impeccable quieter` | Tone down overly bold designs |\n| `/impeccable distill` | Strip to essence |\n| `/impeccable harden` | Error handling, i18n, text overflow, edge cases |\n| `/impeccable onboard` | First-run flows, empty states, activation paths |\n| `/impeccable animate` | Add purposeful motion |\n| `/impeccable colorize` | Introduce strategic color |\n| `/impeccable typeset` | Fix font choices, hierarchy, sizing |\n| `/impeccable layout` | Fix layout, spacing, visual rhythm |\n| `/impeccable delight` | Add moments of joy |\n| `/impeccable overdrive` | Add technically extraordinary effects |\n| `/impeccable clarify` | Improve unclear UX copy |\n| `/impeccable adapt` | Adapt for different devices |\n| `/impeccable optimize` | Performance improvements |\n| `/impeccable live` | Visual variant mode: iterate on elements in the browser |\n| `/impeccable generate` | Generate variants of a named element in the live browser, no manual picking |\n\nUse `/impeccable pin <command>` to create standalone shortcuts (e.g., `pin audit` creates `/audit`).\n\n#### Usage Examples\n\n```\n/impeccable audit blog           # Audit blog hub + post pages\n/impeccable critique landing     # UX design review\n/impeccable polish settings      # Final pass before shipping\n/impeccable harden checkout      # Add error handling + edge cases\n```\n\nOr use `/impeccable` directly with a description:\n```\n/impeccable redo this hero section\n```\n\n### Anti-Patterns\n\nThe skill includes explicit guidance on what to avoid:\n\n- Don't use overused fonts (Arial, Inter, system defaults)\n- Don't use gray text on colored backgrounds\n- Don't use pure black/gray (always tint)\n- Don't wrap everything in cards or nest cards inside cards\n- Don't use bounce/elastic easing (feels dated)\n\n## See It In Action\n\nVisit [the Neo Mirai case study](https://impeccable.style/cases/neo-mirai) to see a before/after case study of a real project transformed with Impeccable commands.\n\n## Installation\n\nThe skill needs no runtime of its own. Every skill copy ships a small launcher (`scripts/impeccable`, plus `impeccable.cmd` for Windows) that runs the Impeccable engine, a self-contained binary that either sits next to the launcher or is downloaded once on first run into `~/.impeccable/bin/`. Node is only involved if you use the `npx impeccable` installer, which is a shim around the same binary; the manual and Git options below work without it.\n\n### Option 1: CLI installer (Recommended)\n\nFrom the root of your project, run:\n\n```bash\nnpx impeccable install\n```\n\nThis shows the harness folders or installed CLIs it detected (for example `~/.claude`, `~/.codex`, `~/.grok`, `~/.hermes`, `~/.veto`, or project-local `.cursor`), lets you keep the detected set or customize providers, then asks whether to install into the current project or globally. Use `--providers=claude,codex,cursor,grok,hermes,veto` and `--scope=project|global` to skip those choices in scripts. On Claude Code, Cursor, Codex, GitHub Copilot, and Grok Build, it also installs the provider-native hook manifest for the current project. Veto receives the packaged skill under `~/.veto/skills/` and does not run native Impeccable edit hooks. Works with Cursor, Claude Code, Gemini CLI, Codex CLI, Grok Build, Hermes Agent, Veto, and every other supported tool. Reload your harness afterward.\n\nTo refresh an existing install, run:\n\n```bash\nnpx impeccable update\n```\n\nCodex users should open `/hooks` after install or update and approve the project hook when prompted. Codex tracks trust by hook definition, so updates that change `.codex/hooks.json` can require approval again. Grok Build users need project folder trust (`/hooks-trust` or launch with `--trust`) before `.grok/hooks/` scripts run.\n\nSee [Allow the hook in your harness](https://impeccable.style/docs/hooks#allow-the-hook-in-your-harness) for harness-specific trust and verification steps.\n\n### Option 2: Git Submodule\n\nFor teams that want to keep Impeccable vendored and updated through Git, add this repo as a submodule and link the compiled provider build into your harness folders:\n\n```bash\ngit submodule add https://github.com/pbakaus/impeccable .impeccable\nnpx impeccable link --source=.impeccable --providers=claude,cursor\ngit add .gitmodules .impeccable .claude .cursor\ngit commit -m \"Add Impeccable skills\"\n```\n\nUse the providers your project needs, for example `claude`, `cursor`, `gemini`, `codex`, `github`, `grok`, `hermes`, `opencode`, `pi`, `qoder`, `trae`, `trae-cn`, `rovo-dev`, `vibe`, or `veto`. The command links individual skill folders from `.impeccable/dist/universal/` and leaves existing real skill directories untouched unless you pass `--force`.\n\nTo update later:\n\n```bash\ngit submodule update --remote .impeccable\nnpx impeccable link --source=.impeccable --providers=claude,cursor\n```\n\n### Option 3: Plugin install\n\n**GitHub Copilot in VS Code:**\n\nInstall [Impeccable from the Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=renaissance-geek.impeccable), or run:\n\n```bash\ncode --install-extension renaissance-geek.impeccable\n```\n\nRequires VS Code 1.109.3+, Copilot Chat access, and a trusted local workspace. Open Chat in Agent mode and try `/impeccable polish`. This skill-only extension does not install automatic hooks; avoid a duplicate Impeccable skill in the same workspace/profile. See [VS Code distribution details](docs/VSCODE-EXTENSION.md).\n\n**Claude Code:**\n```bash\n/plugin marketplace add pbakaus/impeccable\n```\n\n> Claude Code only. After adding the marketplace, open `/plugin` and install Impeccable from the list.\n\n**Grok Build:**\n```bash\ngrok plugin install pbakaus/impeccable#plugin --trust\n```\n\n> Grok Build only. The `#plugin` suffix installs the slim plugin package (skills, agents, and hooks) instead of the full monorepo. Then run `/impeccable init` in a Grok session. Project-scoped installs via `npx impeccable install --providers=grok` also work and write `.grok/skills/` plus `.grok/hooks/impeccable.json`.\n\n### Option 4: Download from Website\n\nVisit [impeccable.style](https://impeccable.style), download the ZIP for your tool, and extract to your project.\n\n### Option 5: Copy from Repository\n\n**Cursor:**\n```bash\ncp -r dist/cursor/.cursor your-project/\n```\n\n> **Note:** Cursor skills require setup:\n> 1. Switch to Nightly channel in Cursor Settings → Beta\n> 2. Enable Agent Skills in Cursor Settings → Rules\n>\n> [Learn more about Cursor skills](https://cursor.com/docs/context/skills)\n\n**Claude Code:**\n```bash\n# Project-specific\ncp -r dist/claude-code/.claude your-project/\n\n# Or global (applies to all projects)\ncp -r dist/claude-code/.claude/* ~/.claude/\n```\n\n**OpenCode:**\n```bash\ncp -r dist/opencode/.opencode your-project/\n```\n\n**DeepSeek Harness:**\n```bash\n# Project-specific\ncp -r dist/dsh/.dsh your-project/\n\n# Or global (applies to all projects)\nmkdir -p \"${DSH_HOME:-$HOME/.dsh}/skills\"\ncp -r dist/dsh/.dsh/skills/* \"${DSH_HOME:-$HOME/.dsh}/skills/\"\n```\n\nThe CLI honors `DSH_HOME` only when it resolves inside your home directory (or to home itself); otherwise it uses `~/.dsh`. An outside-home manual copy is not managed by `impeccable install/update`.\n\n**Hermes Agent:**\n```bash\n# Global (applies to all projects; uses the active profile, or ~/.hermes by default)\ncp -r dist/hermes/.hermes/skills/* \"${HERMES_HOME:-$HOME/.hermes}/skills/\"\n\n# Or project-specific\ncp -r dist/hermes/.hermes your-project/\n```\n\n> **Note:** Hermes gates project-local skills behind a per-repo trust decision\n> (they are procedure documents, so auto-loading them from any cloned repo is\n> treated as a prompt-injection vector). After a project-scoped install, run\n> `hermes skills trust` once from the project root. Global installs into the\n> active `$HERMES_HOME/skills/` (or `~/.hermes/skills/` when unset) load without\n> a trust step. `/impeccable <command>` then\n> routes through the skill's Commands table; the design hook does not install\n> on Hermes (no hook surface).\n>\n> [Learn more about Hermes skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)\n\n**Pi:**\n```bash\ncp -r dist/pi/.pi your-project/\n```\n\n**Gemini CLI:**\n```bash\ncp -r dist/gemini/.gemini your-project/\n```\n\n> **Note:** Gemini CLI skills require setup:\n> 1. Install preview version: `npm i -g @google/gemini-cli@preview`\n> 2. Run `/settings` and enable \"Skills\"\n> 3. Run `/skills list` to verify installation\n>\n> [Learn more about Gemini CLI skills](https://geminicli.com/docs/cli/skills/)\n\n**Codex CLI:**\n```bash\n# Project-local\ncp -r dist/agents/.agents your-project/\nmkdir -p your-project/.codex\ncp dist/codex/.codex/hooks.json your-project/.codex/hooks.json\n\n# Or install the skill user-wide. Copy .codex/hooks.json into each project\n# where you want the design hook to run.\nmkdir -p ~/.agents/skills\ncp -r dist/agents/.agents/skills/* ~/.agents/skills/\n```\n\n> The asset-producer subagent ships nested inside the skill's own `agents/` folder, which Codex auto-discovers. No separate `.codex/agents/` copy is needed. The hook is project-local because Codex discovers hooks from `.codex/hooks.json` next to trusted project config.\n\n**GitHub Copilot:**\n```bash\ncp -r dist/github/.github your-project/\n```\n\n**Trae:**\n```bash\n# Trae China (domestic version)\ncp -r dist/trae/.trae-cn/skills/* ~/.trae-cn/skill",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "# The impeccable runtime: one Cargo workspace next to the skill it powers.\n# `cargo build --release -p impeccable` produces the engine binary the launcher\n# (skill/scripts/impeccable) runs. See docs/ENGINE.md.\n[workspace]\nresolver = \"2\"\nmembers = [\"crates/*\"]\n\n[workspace.package]\nversion = \"0.1.17\"\nedition = \"2021\"\nlicense = \"Apache-2.0\"\npublish = false\n\n[workspace.dependencies]\nimpeccable-foundation = { path = \"crates/foundation\" }\nimpeccable-common = { path = \"crates/common\" }\nimpeccable-core = { path = \"crates/core\" }\nimpeccable-detect = { path = \"crates/detect\" }\nimpeccable-html = { path = \"crates/html\" }\nimpeccable-browser = { path = \"crates/browser\" }\nimpeccable-live = { path = \"crates/live\" }\nimpeccable-context = { path = \"crates/context\" }\nimpeccable-hook = { path = \"crates/hook\" }\nimpeccable-comp = { path = \"crates/comp\" }\nimpeccable-comp-verbs = { path = \"crates/comp-verbs\" }\nimpeccable-bundle = { path = \"crates/bundle\" }\nserde = { version = \"1\", features = [\"derive\"] }\nserde_json = { version = \"1\", features = [\"preserve_order\"] }\nthiserror = \"2\"\nregex = \"1\"\nonce_cell = \"1\"\n\n# Dev and test builds keep file:line backtraces and drop the rest of the\n# debuginfo, which is most of a target dir's size. Dependencies carry none.\n[profile.dev]\ndebug = \"line-tables-only\"\n\n[profile.dev.package.\"*\"]\ndebug = false\n\n[profile.release]\nopt-level = 3\nlto = \"fat\"\ncodegen-units = 1\nstrip = true\npanic = \"abort\"\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "设计语言",
+      "界面规范",
+      "AI 生成 UI 约束"
+    ],
+    "brief_zh": {
+      "summary": "一套专门为 AI harness 准备的设计语言，目标是让 Agent 生成的界面更统一、更耐看，也更容易落地到产品。",
+      "audience": "正在用 AI 生成前端界面，并希望提升设计一致性和可交付性的团队",
+      "capabilities": "设计语言、界面规范、AI 生成 UI 约束、视觉一致性、前端落地参考",
+      "risk": "更像设计方法和规范层资产，真正效果取决于是否能被不同模型和团队稳定执行"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "makecindy",
+    "name": "cindy",
+    "full_name": "makecindy/cindy",
+    "url": "https://github.com/makecindy/cindy",
+    "description": "Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。",
+    "language": "TypeScript",
+    "total_stars": 4043,
+    "forks": 580,
+    "stars_this_period": 471,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "ai-agent",
+        "ai-assistant",
+        "android",
+        "claude-code",
+        "codex",
+        "electron",
+        "ios",
+        "llm",
+        "macos",
+        "react-native",
+        "typescript",
+        "windows"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 1893,
+      "created_at": "2026-07-22T17:49:34Z",
+      "pushed_at": "2026-10-24T21:56:53Z",
+      "homepage": "https://cindy.app",
+      "default_branch": "main",
+      "forks": 580,
+      "watchers": 18,
+      "archived": false,
+      "size_kb": 493184
+    },
+    "readme_content": "<p align=\"center\">\n  <a href=\"https://cindy.app\"><img src=\".github/assets/hero-en.webp\" width=\"100%\" alt=\"CINDY — Consider it done. The open-source AI agent that works out of the box, doing real work on your own computer.\"></a>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong> · <a href=\"README.zh-CN.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache--2.0-blue.svg\" alt=\"License\" /></a>\n  <a href=\"https://github.com/makecindy/cindy/actions/workflows/ci.yml\"><img src=\"https://github.com/makecindy/cindy/actions/workflows/ci.yml/badge.svg\" alt=\"CI\" /></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/badge/node-22.x-brightgreen.svg\" alt=\"Node.js 22.x\" /></a>\n  <a href=\"https://pnpm.io\"><img src=\"https://img.shields.io/badge/pnpm-10-orange.svg\" alt=\"pnpm\" /></a>\n</p>\n\n<p align=\"center\">\n  🌐 <a href=\"https://cindy.app\">cindy.app</a> &nbsp;·&nbsp; ⬇️ <a href=\"https://cindy.app/download/\">Download</a>\n</p>\n\n\nCindy is an open-source AI agent that works out of the box. She brings multiple\nharnesses, models and tools into one agent that finishes real work in your\nprojects and apps. Ready from day one, yours to shape over time.\n\nCindy runs locally on your own machine, using your real files and logged-in\napps. The first supported harnesses are **Claude Code** and **Codex** — more are\nbeing added, and a native harness is in the works. Models and harnesses mix\nfreely and can switch mid-task while your workspace, memory, skills and tools\nstay continuous; one task can even be planned, executed in parallel, and\nreviewed by agents on different harness × model combos. She can drive your\nbrowser, computer and phone, and take work from IM and schedules.\n\nThis repository is the open-source **client** for Cindy — the desktop and mobile\napps plus their shared packages, organized as a pnpm monorepo.\n\nThe client is free to use, and its source code is open under Apache-2.0. Bring\nmodels your way: sign in to the official Cindy service (usage deducted\ntransparently), authorize the **Claude Code / Codex Coding Plan** you already\npay for and keep using it inside Cindy — no duplicate bill — connect your own\nAPI keys, or use local models.\nSee [cindy.app](https://cindy.app) for service details,\n[pricing](https://cindy.app/#pricing), and [downloads](https://cindy.app/download/).\n\nLinux users: see the [Ubuntu, Arch Linux and Omarchy installation guide](docs/linux.md)\nfor installation, updates, keyring setup and migration from a manual install.\n\n## Yours to shape\n\nOpen source means more than visible — it means changeable:\n\n- **Memory** — correct her once and she does it right from then on, shared across harnesses.\n- **Skills** — teach a way of working once and reuse it everywhere; handing them to your team is in the making.\n- **Automation** — recurring work schedules itself, runs itself, reports back.\n- **MCP** — wire your internal tools and business systems into her reach.\n- **Plugins** — reshape features, UI and interactions, shared through an open marketplace *(in the making)*.\n- **Source** — audit, fork, extend, and contribute improvements back under Apache-2.0.\n\nReady out of the box, never boxed in — start with\n[`CONTRIBUTING.en.md`](CONTRIBUTING.en.md) and build Cindy with us.\n\n## What's in this repo\n\n| Path | Description |\n| --- | --- |\n| `apps/desktop` | Electron desktop client |\n| `apps/mobile` | Expo / React Native mobile client |\n| `packages/*` | Shared client capabilities (auth, device-link, agent orchestration, model providers, …) |\n| `apps/*-bin` | Tool binaries shipped with the desktop app; none are committed — claude-code, codex, and ripgrep are downloaded per platform by `pnpm install`, and the Android platform-tools binaries are fetched (pinned version, sha256-verified) before Windows packaging |\n\n**Not in this repo:** the backend service lives in a separate\nrepository and is not part of this monorepo.\n\n| Mode | Account requirement | Availability |\n| --- | --- | --- |\n| Hosted service | Cindy cloud account | Use Cindy's full hosted service. See [pricing](https://cindy.app/#pricing). |\n| Skip Sign-In | No Cindy sign-in required | Choose “Skip Sign-In” on the login screen to use local agents; the app then shows the account state as “Not signed in”. Server-backed capabilities are unavailable in this state. |\n\n## Prerequisites\n\n- **Node.js** 22.x\n- **pnpm** 10.x (v11 is not yet supported)\n- **Git LFS**\n\n## Getting started\n\nContributor setup, Git LFS, dependency updates, and access requirements are maintained in\n[`CONTRIBUTING.en.md`](CONTRIBUTING.en.md).\nPlugins are installed through SkillHub or manually.\n\nMinimal entry point:\n\n```bash\ngit clone https://github.com/makecindy/cindy.git\ncd cindy\ngit lfs pull\npnpm install\n```\n\n## Development entry points\n\n```bash\n# Mainland China Cindy account\npnpm restart:desktop:remote --region=cn\n\n# Global Cindy account\npnpm restart:desktop:remote --region=global\n```\n\nRemote development uses your own Cindy cloud account and existing login state, so\nyou can continue existing sessions and work while developing the client. Use `cn`\nfor Mainland China accounts and `global` for everyone else; do not rely\non the internal default. Full desktop, mobile, data-isolation, and validation\nworkflows are in [`CONTRIBUTING.en.md`](CONTRIBUTING.en.md).\n\n“Skip Sign-In” on the login screen runs local agents without a Cindy account\n(shown in the app as “Not signed in”), not a connection to a local server.\nServer-backed capabilities are unavailable in this state.\n\n**About the default servers:** the client connects to Cindy's official cloud\nservices by default (endpoint manifests in\n[`config/endpoint.json`](config/endpoint.json) and\n[`config/endpoint.global.json`](config/endpoint.global.json); desktop\nauto-updates also come from the official CDN). This is intentional — external\ndevelopers don't need to self-host a server: sign in with your own Cindy\naccount in a dev build and develop / test directly against the official\nservers.\n\nSkill Hub migration uses two separate manifest fields: released clients keep\nusing `skillhubApiBaseUrl` (the deprecated XD proxy), while current clients use\n`cindySkillHubApiBaseUrl`. The current client deliberately does not fall back to\nthe legacy field when the new endpoint is absent.\n\n## Architecture\n\n- [`DESIGN.md`](DESIGN.md) — visual design system, color tokens, and UI conventions\n- [`docs/README.md`](docs/README.md) — complete documentation and rules index\n- [`docs/auth-realm-routing.md`](docs/auth-realm-routing.md) — organization SSO region discovery and session endpoint routing\n- [`CONTRIBUTING.en.md`](CONTRIBUTING.en.md) — contributor setup, validation, and submission workflow\n- [`AGENTS.md`](AGENTS.md) — engineering rules, launch/runtime contracts, and module boundaries\n- [`docs/dev-rules/`](docs/dev-rules/) — deep-dive architecture docs (e.g. Orca multi-agent orchestration)\n\n## Contributing\n\nContributions go through pull requests into `main`. Read\n[`CONTRIBUTING.en.md`](CONTRIBUTING.en.md) first, then use\n[`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md).\nEvery commit needs a [Developer Certificate of Origin](DCO) sign-off\n(`git commit -s`); a DCO check on each pull request enforces it, and no CLA is\nrequired.\nPlease also follow [`CODE_OF_CONDUCT.en.md`](CODE_OF_CONDUCT.en.md). For ordinary\nusage questions, see [`SUPPORT.en.md`](SUPPORT.en.md); report security issues\nprivately through [`SECURITY.en.md`](SECURITY.en.md).\n\n## Security\n\nNever commit credentials or authorization files to the working tree. If you\ndiscover a security issue, follow [`SECURITY.en.md`](SECURITY.en.md) to report it\nprivately rather than opening a public issue.\n\n## Privacy & telemetry\n\n**Official distribution builds** include [TapDB](https://www.taptap.io/tapdb)\nusage analytics for product-level aggregate statistics (device / OS / app-version\nmetadata; associated with your account ID after sign-in). It does **not** collect\nchat content, file content, or working-directory data. In addition, while signed\nin to a cloud account the client sends an online heartbeat to Cindy services\n(account ID, platform, and version only). Crash dumps stay on the local machine\nand are never uploaded automatically.\n\n**Building from source?** You are not required to keep analytics:\n\n- Mobile is off by default — without TapDB credentials (`clientId` /\n  `clientToken`) injected at build time, `apps/mobile/src/analytics/mobileTapdb.ts`\n  is a no-op;\n- Desktop can be fully stripped by removing the `initTapdb()` call in\n  `apps/desktop/src/renderer/index.tsx` (implementation lives in\n  `apps/desktop/src/renderer/analytics/`).\n\n## License / 许可证\n\nExcept as otherwise noted, the source code in this repository is licensed under\nthe [Apache License, Version 2.0](LICENSE). Individual source files do not\ncarry per-file license headers; the repository-root `LICENSE` governs.\n\nModel weights, datasets, prompts, trademarks, and other separately identified\nmaterials may be subject to their own license terms and are not automatically\ncovered by the repository-level Apache-2.0 grant. Third-party open-source\ncomponents retain their own copyright and license. Their attribution notices and\nSPDX SBOMs are managed under [`docs/legal/`](docs/legal/), with artifact-specific\noutputs in [`docs/legal/notices/`](docs/legal/notices/). See [`NOTICE`](NOTICE)\nfor this project's copyright and attribution information.\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"cindy\",\n  \"private\": true,\n  \"description\": \"Cindy open-source client monorepo — desktop, mobile, and shared packages\",\n  \"license\": \"Apache-2.0\",\n  \"author\": {\n    \"name\": \"XD Inc.\",\n    \"email\": \"feedback@cindy.app\"\n  },\n  \"homepage\": \"https://cindy.app\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/makecindy/cindy.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/makecindy/cindy/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=22.12\",\n    \"pnpm\": \">=10.7 <11\"\n  },\n  \"packageManager\": \"pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8\",\n  \"pnpm\": {\n    \"onlyBuiltDependencies\": [\n      \"@parcel/watcher\",\n      \"better-sqlite3\",\n      \"electron\",\n      \"electron-winstaller\",\n      \"esbuild\",\n      \"node-pty\",\n      \"sharp\"\n    ],\n    \"supportedArchitectures\": {\n      \"os\": [\n        \"win32\",\n        \"darwin\",\n        \"linux\"\n      ],\n      \"cpu\": [\n        \"x64\",\n        \"arm64\"\n      ],\n      \"libc\": [\n        \"glibc\"\n      ]\n    },\n    \"overrides\": {\n      \"@electron/rebuild\": \"^4.0.3\",\n      \"protobufjs\": \"7.6.5\",\n      \"tar\": \"^7.5.21\",\n      \"brace-expansion@^5.0.0\": \"^5.0.8\",\n      \"@anthropic-ai/sdk\": \"0.93.0\",\n      \"js-yaml@^4.0.0\": \"^4.3.0\",\n      \"zod\": \"4.3.6\",\n      \"tmp\": \"^0.2.7\",\n      \"fast-uri\": \"^3.1.4\",\n      \"sharp\": \"^0.35.0\",\n      \"@esbuild-kit/core-utils>esbuild\": \"^0.25.0\",\n      \"builder-util-runtime\": \"^9.7.0\"\n    },\n    \"patchedDependencies\": {\n      \"harmonyos-sans-sc-webfont-splitted\": \"dependency-patches/harmonyos-sans-sc-webfont-splitted.patch\",\n      \"react-native@0.85.3\": \"dependency-patches/react-native@0.85.3.patch\",\n      \"react-native-uitextview@2.2.0\": \"dependency-patches/react-native-uitextview@2.2.0.patch\",\n      \"react-native-webview@13.16.1\": \"dependency-patches/react-native-webview@13.16.1.patch\",\n      \"expo-image-manipulator@57.0.14\": \"dependency-patches/expo-image-manipulator@57.0.14.patch\",\n      \"expo-paste-input@0.2.2\": \"dependency-patches/expo-paste-input@0.2.2.patch\",\n      \"rollup@4.62.2\": \"dependency-patches/rollup@4.62.2.patch\",\n      \"@expo/cli@57.0.25\": \"dependency-patches/@expo__cli@57.0.25.patch\",\n      \"react-native-screens@4.26.2\": \"dependency-patches/react-native-screens@4.26.2.patch\",\n      \"expo-router@57.0.17\": \"dependency-patches/expo-router@57.0.17.patch\",\n      \"react-native-gesture-handler@2.32.0\": \"dependency-patches/react-native-gesture-handler@2.32.0.patch\"\n    },\n    \"allowUnusedPatches\": true\n  },\n  \"scripts\": {\n    \"h\": \"node scripts/help.mjs\",\n    \"mobile:xcode\": \"node apps/mobile/scripts/open-ios-xcode.mjs\",\n    \"mobile:sim:rebuild\": \"node scripts/ensure-deps.mjs --workspace-only && node apps/mobile/scripts/sim-rebuild.mjs\",\n    \"mobile:sim:start\": \"node scripts/ensure-deps.mjs --workspace-only && node apps/mobile/scripts/sim-start.mjs\",\n    \"mobile:sim:start:cn\": \"node scripts/ensure-deps.mjs --workspace-only && node apps/mobile/scripts/sim-start.mjs --region=cn\",\n    \"mobile:sim:whoami\": \"node scripts/ensure-deps.mjs --workspace-only && node apps/mobile/scripts/sim-whoami.mjs\",\n    \"mobile:sim:open\": \"node scripts/ensure-deps.mjs --workspace-only && node apps/mobile/scripts/sim-open.mjs\",\n    \"sync:mobile-rich-content-assets\": \"node apps/mobile/scripts/sync-rich-content-assets.mjs\",\n    \"mobile:release:check\": \"node apps/mobile/scripts/release-with-env.mjs check\",\n    \"mobile:release:prod\": \"node apps/mobile/scripts/release-with-env.mjs prod\",\n    \"mobile:build:ios\": \"node apps/mobile/scripts/build-ios.mjs\",\n    \"mobile:build:android\": \"node apps/mobile/scripts/build-android.mjs\",\n    \"ensure-deps\": \"node scripts/ensure-deps.mjs\",\n    \"sync:browser-runtime\": \"node scripts/browser-runtime/sync.mjs\",\n    \"repo:worktrees\": \"node scripts/repo-worktrees.mjs\",\n    \"update:claude\": \"node tools/claude/update.mjs\",\n    \"update:codex\": \"node tools/codex/update.mjs\",\n    \"update:codex-package\": \"node tools/codex-package/update.mjs\",\n    \"update:ripgrep\": \"node tools/ripgrep/update.mjs\",\n    \"update:pi\": \"node tools/pi/update.mjs\",\n    \"sync:pi-model-catalog\": \"node tools/pi/sync-model-catalog.mjs\",\n    \"update:vendors\": \"node tools/claude/update.mjs && node tools/codex/update.mjs && node tools/ripgrep/update.mjs && node tools/pi/update.mjs\",\n    \"install:claude\": \"node scripts/ensure-agent-binaries.mjs --kinds=claude\",\n    \"install:codex\": \"node scripts/ensure-agent-binaries.mjs --kinds=codex\",\n    \"install:ripgrep\": \"node scripts/ensure-agent-binaries.mjs --kinds=ripgrep\",\n    \"install:pi\": \"node scripts/ensure-agent-binaries.mjs --kinds=pi\",\n    \"install:agent-binaries\": \"node scripts/ensure-agent-binaries.mjs\",\n    \"postinstall\": \"node scripts/ensure-agent-binaries.mjs --best-effort && node scripts/fix-node-pty-perms.mjs && node scripts/ensure-deps.mjs --electron-binary\",\n    \"ui:check\": \"node apps/desktop/scripts/ui-page/cli.mjs\",\n    \"ui:preview\": \"node apps/desktop/scripts/ui-page/cli.mjs --preview\",",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "workspace",
+      "llm",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "vectorize-io",
+    "name": "hindsight",
+    "full_name": "vectorize-io/hindsight",
+    "url": "https://github.com/vectorize-io/hindsight",
+    "description": "Hindsight: Agent Memory That Learns",
+    "language": "Python",
+    "total_stars": 53428,
+    "forks": 6237,
+    "stars_this_period": 342,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai-memory",
+        "memory"
+      ],
+      "license": "MIT",
+      "open_issues": 142,
+      "created_at": "2025-10-30T11:49:48Z",
+      "pushed_at": "2026-10-24T21:44:51Z",
+      "homepage": "https://hindsight.vectorize.io/",
+      "default_branch": "main",
+      "forks": 6237,
+      "watchers": 109,
+      "archived": false,
+      "size_kb": 825184
+    },
+    "readme_content": "<div align=\"center\">\n\n![Hindsight Banner](./hindsight-docs/static/img/hindsight-github-banner.png)\n\n[Documentation](https://hindsight.vectorize.io) • [Integrations](https://hindsight.vectorize.io/integrations) • [Cookbook](https://hindsight.vectorize.io/cookbook) • [Benchmarks](https://benchmarks.hindsight.vectorize.io/) • [Paper](https://arxiv.org/abs/2512.12818) • [Hindsight Cloud](https://ui.hindsight.vectorize.io)\n\n[![Release](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml/badge.svg)](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml)\n[![Version](https://img.shields.io/pypi/v/hindsight-api?logo=python&logoColor=white&label=version&color=blue)](https://pypi.org/project/hindsight-api/)\n[![PyPI Downloads](https://img.shields.io/pypi/dm/hindsight-client?logo=pypi&logoColor=white&label=PyPI&color=blue)](https://pypi.org/project/hindsight-client/)\n[![NPM Downloads](https://img.shields.io/npm/dm/%40vectorize-io%2Fhindsight-client?logo=npm&logoColor=white&label=NPM&color=blue)](https://www.npmjs.com/package/@vectorize-io/hindsight-client)\n[![Slack Community](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://vectorize.io/slack)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n<br/>\n<p align=\"center\">\n <a href=\"https://www.star-history.com/vectorize-io/hindsight\"><img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=rank\" alt=\"Star History Rank\" /> <img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=trending\" alt=\"GitHub Trending Repository of the Day\" /></a>\n</p>\n\n</div>\n\n---\n\n## What is Hindsight?\n\nHindsight™ is an agent memory system built to create smarter agents that learn over time. Most agent memory systems focus on recalling conversation history. Hindsight is focused on making agents that learn, not just remember.\n\n<video src=\"https://github.com/user-attachments/assets/923b798d-3581-4897-bb62-9cfa5a931682\" controls></video>\n\nIt eliminates the shortcomings of alternative techniques such as RAG and knowledge graph and delivers state-of-the-art performance on long term memory tasks.\n\n**Contents**\n\n- [Memory Performance & Accuracy](#memory-performance--accuracy)\n- [Quick Start](#quick-start) — [server](#1-start-a-server) · [clients](#2-connect-a-client) · [platforms](#supported-platforms) · [embedded](#python-embedded-no-server-required)\n- [Adding Hindsight to Your Agent](#adding-hindsight-to-your-agent) — [LLM Wrapper](#llm-wrapper-2-lines-of-code) · [integrations](#integrations) · [coding agents](#coding-agents) · [MCP](#mcp-server)\n- [Core Concepts](#core-concepts) — [memory types](#memory-types) · [retain / recall / reflect](#the-three-operations) · [observations](#observations) · [mental models & knowledge pages](#mental-models--knowledge-pages) · [banks](#memory-banks)\n- [Use Cases](#use-cases)\n- [Running in Production](#running-in-production)\n- [Resources](#resources)\n\n---\n\n## Memory Performance & Accuracy\n\nHindsight is the most accurate agent memory system ever tested according to benchmark performance. It has achieved state-of-the-art performance on the LongMemEval benchmark, widely used to assess memory system performance across a variety of conversational AI scenarios. The current reported performance of Hindsight and other agent memory solutions as of January 2026 is shown here:\n\n![Overview](./hindsight-docs/static/img/hindsight-benchmarks.png)\n\n> Live, continuously updated results — including per-model accuracy, latency and cost — are published at [benchmarks.hindsight.vectorize.io](https://benchmarks.hindsight.vectorize.io/).\n\nThe benchmark performance data for Hindsight has been independently reproduced by research collaborators at the Virginia Tech [Sanghani Center for Artificial Intelligence and Data Analytics](https://sanghani.cs.vt.edu/) and The Washington Post. Other scores are self-reported by software vendors.\n\nHindsight is being used in production at Fortune 500 enterprises and by a growing number of AI startups.\n\n---\n\n> 🤖 **Using a coding agent?** Install the Hindsight documentation skill for instant access to docs while you code:\n> ```bash\n> npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs\n> ```\n> Works with Claude Code, Cursor, and other AI coding assistants.\n\n---\n\n## Quick Start\n\n### 1. Start a server\n\n#### Docker (recommended)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\n\ndocker run -it --pull always --name hindsight --restart unless-stopped -p 8888:8888 -p 9999:9999 \\\n  -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY \\\n  -v hindsight-data:/home/hindsight/.pg0 \\\n  ghcr.io/vectorize-io/hindsight:latest\n```\n\n>API: http://localhost:8888\n>UI: http://localhost:9999\n\nHindsight works with **25+ LLM providers** via `HINDSIGHT_API_LLM_PROVIDER` — hosted (`openai`, `anthropic`, `gemini`, `groq`, `bedrock`, `vertexai`, `minimax`, `deepseek`, `atlas`, `meta`, …), fully local (`ollama`, `lmstudio`, `llamacpp`), any OpenAI-compatible endpoint, and gateways (`litellm`, `litellmrouter`) that reach the rest. Existing subscriptions work too: `openai-codex` (ChatGPT Plus/Pro), `claude-code` (Claude Pro/Max), `cursor` (Cursor) and `github-copilot` (GitHub Copilot) need no API key. See [supported models](https://hindsight.vectorize.io/developer/models).\n\n#### Docker (external PostgreSQL)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\nexport HINDSIGHT_DB_PASSWORD=choose-a-password\ncd docker/docker-compose\ndocker compose up\n```\n\n> Oracle AI Database is also supported for enterprise deployments with full feature parity. See the [storage documentation](https://hindsight.vectorize.io/developer/storage) for details.\n\n#### Bare metal (pip)\n\n```bash\npip install hindsight-api\nexport HINDSIGHT_API_LLM_API_KEY=sk-xxx\n\nhindsight-api\n```\n\n#### Kubernetes (Helm)\n\n```bash\nhelm install hindsight oci://ghcr.io/vectorize-io/charts/hindsight \\\n  --set api.llm.provider=openai \\\n  --set api.llm.apiKey=sk-xxx \\\n  --set postgresql.enabled=true\n```\n\n#### Managed (no server)\n\n[Hindsight Cloud](https://vectorize.io/pricing) is the hosted option: managed infrastructure that scales automatically, plus a dashboard, backups, team collaboration and a 99.9% uptime SLA. Billing is usage-based with free credits to start — no fixed monthly or per-seat fee. Point any client at `https://api.hindsight.vectorize.io` with your API key and skip the deployment entirely.\n\n[Compare self-hosted, Cloud and Enterprise →](https://vectorize.io/pricing) · [Sign up →](https://ui.hindsight.vectorize.io)\n\nAll options, including Windows and air-gapped setups, are covered in the [installation guide](https://hindsight.vectorize.io/developer/installation).\n\n### 2. Connect a client\n\n```bash\npip install hindsight-client -U                                  # Python\nnpm install @vectorize-io/hindsight-client                        # Node.js / TypeScript\ngo get github.com/vectorize-io/hindsight/hindsight-clients/go     # Go\ncurl -fsSL https://hindsight.vectorize.io/get-cli | bash          # CLI\n```\n\n#### Python\n\n```python\nfrom hindsight_client import Hindsight\n\nclient = Hindsight(base_url=\"http://localhost:8888\")\n\n# Retain: Store information\nclient.retain(bank_id=\"my-bank\", content=\"Alice works at Google as a software engineer\")\n\n# Recall: Search memories\nclient.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")\n\n# Reflect: Generate disposition-aware response\nclient.reflect(bank_id=\"my-bank\", query=\"Tell me about Alice\")\n```\n\n#### Node.js / TypeScript\n\n```javascript\nconst { HindsightClient } = require('@vectorize-io/hindsight-client');\n\nconst main = async () => {\n  const client = new HindsightClient({ baseUrl: 'http://localhost:8888' });\n\n  await client.retain('my-bank', 'Alice loves hiking in Yosemite');\n\n  const results = await client.recall('my-bank', 'What does Alice like?');\n  console.log(results);\n}\n\nmain();\n```\n\nFull reference: [Python](https://hindsight.vectorize.io/sdks/python) · [Node.js](https://hindsight.vectorize.io/sdks/nodejs) · [Go](https://hindsight.vectorize.io/sdks/go) · [CLI](https://hindsight.vectorize.io/sdks/cli) · [REST API](https://hindsight.vectorize.io/api-reference)\n\n### Supported Platforms\n\n| Platform | Docker | Bare Metal (pip) | Embedded DB (pg0) |\n|----------|--------|------------------|--------------------|\n| **Linux** (x86_64, ARM64) | ✅ | ✅ | ✅ |\n| **macOS** (Apple Silicon / arm64) | ✅ | ✅ | ✅ |\n| **macOS** (Intel / x86_64) | ✅ | ⚠️ | ✅ |\n| **Windows** (x86_64) | ✅ | ✅ | ✅ |\n\n⚠️ Intel Macs: use `hindsight-all-slim` — see the [installation guide](https://hindsight.vectorize.io/developer/installation#supported-platforms) for details.\n\n### Python Embedded (no server required)\n\n```bash\npip install hindsight-all -U\n```\n\nOn Intel (x86_64) Macs, install `hindsight-all-slim` instead — see [Supported Platforms](#supported-platforms).\n\n```python\nimport os\nfrom hindsight import HindsightServer, HindsightClient\n\nwith HindsightServer(\n    llm_provider=\"openai\",\n    llm_model=\"gpt-5-mini\",\n    llm_api_key=os.environ[\"OPENAI_API_KEY\"]\n) as server:\n    client = HindsightClient(base_url=server.url)\n    client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")\n    results = client.recall(bank_id=\"my-bank\", query=\"Where does Alice work?\")\n```\n\nA [Node.js equivalent](https://hindsight.vectorize.io/sdks/hindsight-all-npm) and a [daemon CLI](https://hindsight.vectorize.io/sdks/embed) are also available.\n\n---\n\n## Adding Hindsight to Your Agent\n\n### LLM Wrapper (2 lines of code)\n\nThe easiest way to add memory to an existing agent is the LLM Wrapper. Swap your LLM client for a wrapped one — memories are then stored and retrieved automatically on every call, with no other changes to your code.\n\n```bash\npip install hindsight-litellm\n```\n\n```python\nfrom openai import OpenAI\nfrom hindsight_litellm import wrap_openai\n\n# Wrap your existing LLM client and you're done.\n# Defaults to Hindsight Cloud; pass hindsight_api_url for a self-hosted server.\nclient = wrap_openai(\n    OpenAI(),\n    bank_id=\"user-123\",\n    hindsight_api_url=\"http://localhost:8888\",\n)\n\n# Hindsight recalls relevant memories before the call\n# and retains the conversation after it.\nresponse = client.chat.completions.create(\n    model=\"gpt-5-mini\",\n    messages=[{\"role\": \"user\", \"content\": \"What do you know about me?\"}],\n)\n```\n\n`wrap_anthropic()` does the same for the Anthropic SDK, and every setting — bank, recall budget, fact types, reflect instead of recall — can be overridden per call with `hindsight_*` kwargs. LiteLLM sits underneath, so the same integration covers **100+ models**. See the [LiteLLM integration](https://hindsight.vectorize.io/sdks/integrations/litellm).\n\nIf you need explicit control over *when* memories are stored and recalled, use the [SDKs or REST API](#2-connect-a-client) directly instead.\n\n### Integrations\n\n**60+ integrations** — most need no code changes.\n\n| | |\n|---|---|\n| **Coding agents** | [Claude Code](https://hindsight.vectorize.io/sdks/integrations/claude-code) · [Codex](https://hindsight.vectorize.io/sdks/integrations/codex) · [Cursor](https://hindsight.vectorize.io/sdks/integrations/cursor) · [GitHub Copilot](https://hindsight.vectorize.io/sdks/integrations/github-copilot) · [opencode](https://hindsight.vectorize.io/sdks/integrations/opencode) · [Cline](https://hindsight.vectorize.io/sdks/integrations/cline) · [Aider](https://hindsight.vectorize.io/sdks/integrations/aider) · [Zed](https://hindsight.vectorize.io/sdks/integrations/zed) · [Continue](https://hindsight.vectorize.io/sdks/integrations/continue) · [Roo Code](https://hindsight.vectorize.io/sdks/integrations/roo-code) · [OpenHands](https://hindsight.vectorize.io/sdks/integrations/openhands) |\n| **Agent frameworks** | [LangGraph / LangChain](https://hindsight.vectorize.io/sdks/integrations/langgraph) · [LlamaIndex](https://hindsight.vectorize.io/sdks/integrations/llamaindex) · [CrewAI](https://hindsight.vectorize.io/sdks/integrations/crewai) · [Pydantic AI](http",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[tool.uv.workspace]\nmembers = [\"hindsight-all\", \"hindsight-api\", \"hindsight-api-slim\", \"hindsight-all-slim\", \"hindsight-dev\", \"hindsight-mcp-server\", \"hindsight-clients/python\", \"hindsight-embed\"]\n\n[tool.uv]\n# Allow uv to search all configured indexes for packages, not just the first one\n# This prevents dependency resolution failures when using pytorch index + PyPI\nindex-strategy = \"unsafe-best-match\"\ndev-dependencies = []\n# magika 0.6.x (pinned by every markitdown release) caps onnxruntime<=1.20.1 on\n# win32 only, but the universal lock applied that cap everywhere, and 1.20.1 has\n# no cp314 wheels. This forks onnxruntime per platform. Drop it once markitdown\n# allows magika 1.x.\nconstraint-dependencies = [\"onnxruntime>=1.24.1; sys_platform != 'win32'\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "runtime",
+      "workspace",
+      "llm",
+      "eval",
+      "workflow",
+      "vector"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "记忆检索",
+      "反思生成"
+    ],
+    "brief_zh": {
+      "summary": "为 Agent 保存和检索长期记忆，并通过反思接口基于已存信息生成回答。",
+      "capabilities": "长期记忆、记忆检索、反思生成",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/vectorize-io/hindsight"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "TauricResearch",
+    "name": "TradingAgents",
+    "full_name": "TauricResearch/TradingAgents",
+    "url": "https://github.com/TauricResearch/TradingAgents",
+    "description": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+    "language": "Python",
+    "total_stars": 113653,
+    "forks": 22008,
+    "stars_this_period": 307,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "finance",
+        "llm",
+        "multiagent",
+        "trading"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 121,
+      "created_at": "2024-12-28T03:31:08Z",
+      "pushed_at": "2026-10-16T21:38:46Z",
+      "homepage": "https://arxiv.org/pdf/2412.20138",
+      "default_branch": "main",
+      "forks": 22008,
+      "watchers": 855,
+      "archived": false,
+      "size_kb": 6425
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"tradingagents/assets/tauric-logo.svg\" width=\"60%\" alt=\"Tauric Research\">\n</p>\n\n<div align=\"center\" style=\"line-height: 1;\">\n  <a href=\"https://arxiv.org/abs/2412.20138\" target=\"_blank\"><img alt=\"arXiv\" src=\"https://img.shields.io/badge/arXiv-2412.20138-B31B1B?logo=arxiv\"/></a>\n  <a href=\"https://discord.com/invite/hk9PGKShPK\" target=\"_blank\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/Discord-TradingResearch-7289da?logo=discord&logoColor=white&color=7289da\"/></a>\n  <a href=\"https://x.com/TauricResearch\" target=\"_blank\"><img alt=\"X Follow\" src=\"https://img.shields.io/badge/X-TauricResearch-white?logo=x&logoColor=white\"/></a>\n  <a href=\"https://github.com/TauricResearch/\" target=\"_blank\"><img alt=\"Community\" src=\"https://img.shields.io/badge/GitHub_Community-TauricResearch-14C290?logo=discourse\"/></a>\n</div>\n<br>\n<div align=\"center\">\n  <a href=\"https://github.com/TauricResearch\" target=\"_blank\"><img alt=\"TradingAgents #1 Repository of the Day\" src=\"https://trendshift.io/api/badge/repositories/16192\" width=\"250\" height=\"55\"/></a>\n</div>\n<br>\n<div align=\"center\">\n  <!-- Keep these links. Translations will automatically update with the README. -->\n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=de\">Deutsch</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=es\">Español</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=fr\">français</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ja\">日本語</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ko\">한국어</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=pt\">Português</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ru\">Русский</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=zh\">中文</a>\n</div>\n\n---\n\n# TradingAgents: Multi-Agents LLM Financial Trading Framework\n\n## News\n\n<!-- news:start -->\n- [2026-10] **TradingAgents v0.7.0** released with runs on your own ChatGPT Plus or Pro plan, backtests scored from the first close after each decision, a note at start-up when a newer release is out, and a wheel attached to each GitHub release.\n- [2026-10] **TradingAgents v0.6.0** released with reports saved as one HTML page, a provider per model tier so the managers and analysts can run on different models, past decisions settled for every ticker while the analysts work, and company news read from Yahoo search while Yahoo's news feed is down.\n- [2026-09] **TradingAgents v0.5.2** released with parallel analysts for a faster analysis, a CLI that runs without prompts from flags such as `--ticker` and `--date`, the run's settings recorded in every report, and backtests that see only data published by each analysis date.\n\nFull release notes are in [CHANGELOG.md](CHANGELOG.md).\n\n<details>\n<summary>Earlier news</summary>\n\n- [2026-09] **TradingAgents v0.5.1** released with a package layout organised by what each module holds (import paths moved), optional Jev screening of social posts, GPT-6 Sol and Luna as the default models, and fixes to run isolation and SEC EDGAR statements.\n- [2026-09] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider.\n- [2026-08] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models.\n- [2026-07] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support.\n- [2026-06] **TradingAgents v0.3.0** released with a verified data-access contract, an expanded provider registry (NVIDIA, Kimi, Groq, Mistral, Bedrock, and any OpenAI-compatible endpoint), FRED and Polymarket data vendors, a current-generation model catalog, and a CI gate.\n- [2026-05] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening.\n- [2026-04] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.\n- [2026-03] **TradingAgents v0.2.3** released with multi-language support, GPT-5.4 family models, unified model catalog, backtesting date fidelity, and proxy support.\n- [2026-03] **TradingAgents v0.2.2** released with GPT-5.4/Gemini 3.1/Claude 4.6 model coverage, five-tier rating scale, OpenAI Responses API, Anthropic effort control, and cross-platform stability.\n- [2026-02] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.\n- [2026-01] **Trading-R1** [Technical Report](https://arxiv.org/abs/2509.11420) released, with [Terminal](https://github.com/TauricResearch/Trading-R1) expected to land soon.\n\n</details>\n<!-- news:end -->\n\n<div align=\"center\">\n\n🚀 [TradingAgents](#tradingagents-framework) | ⚡ [Installation & CLI](#installation-and-cli) | 🎬 [Demo](https://www.youtube.com/watch?v=90gr5lwjIho) | 📦 [Package Usage](#tradingagents-package) | 🤝 [Contributing](#contributing) | 📄 [Citation](#citation)\n\n</div>\n\n> 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.\n>\n> So we decided to fully open-source the framework. Looking forward to building impactful projects with you!\n\n## TradingAgents Framework\n\nTradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms. By deploying specialized LLM-powered agents: from fundamental analysts, sentiment experts, and technical analysts, to trader, risk management team, the platform collaboratively evaluates market conditions and informs trading decisions. Moreover, these agents engage in dynamic discussions to pinpoint the optimal strategy.\n\n<p align=\"center\">\n  <img src=\"assets/schema.png\" style=\"width: 100%; height: auto;\">\n</p>\n\n> TradingAgents framework is designed for research purposes. Trading performance may vary based on many factors, including the chosen backbone language models, model temperature, trading periods, the quality of data, and other non-deterministic factors. [It is not intended as financial, investment, or trading advice.](https://tauric.ai/disclaimer/)\n\nOur framework decomposes complex trading tasks into specialized roles.\n\n### Analyst Team\n- Fundamentals Analyst: Evaluates company financials and performance metrics, identifying intrinsic values and potential red flags.\n- Sentiment Analyst: Aggregates news headlines, StockTwits, and Reddit chatter into a single sentiment read to gauge short-term market mood.\n- News Analyst: Monitors global news and macroeconomic indicators, interpreting the impact of events on market conditions.\n- Technical Analyst: Utilizes technical indicators (like MACD and RSI) to detect trading patterns and forecast price movements.\n\nThe selected analysts work at the same time, each on its own tools, and the research debate starts once all of their reports are in.\n\n<p align=\"center\">\n  <img src=\"assets/analyst.png\" width=\"100%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Researcher Team\n- Comprises both bullish and bearish researchers who critically assess the insights provided by the Analyst Team. Through structured debates, they balance potential gains against inherent risks.\n\n<p align=\"center\">\n  <img src=\"assets/researcher.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Trader Agent\n- Composes reports from the analysts and researchers to make informed trading decisions, determining the timing and magnitude of trades.\n\n<p align=\"center\">\n  <img src=\"assets/trader.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Risk Management and Portfolio Manager\n- Continuously evaluates portfolio risk by assessing market volatility, liquidity, and other risk factors. The risk management team evaluates and adjusts trading strategies, providing assessment reports to the Portfolio Manager for final decision.\n- The Portfolio Manager approves/rejects the transaction proposal. If approved, the order will be sent to the simulated exchange and executed.\n\n<p align=\"center\">\n  <img src=\"assets/risk.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n## Installation and CLI\n\n### Installation\n\nClone TradingAgents:\n```bash\ngit clone https://github.com/TauricResearch/TradingAgents.git\ncd TradingAgents\n```\n\nTradingAgents needs Python 3.11 or later. Create a virtual environment in any of your favorite environment managers:\n```bash\nconda create -n tradingagents python=3.13\nconda activate tradingagents\n```\n\nOr with [uv](https://docs.astral.sh/uv/):\n```bash\nuv venv --python 3.13\nsource .venv/bin/activate\n```\n\nInstall the package and its dependencies (`uv pip install .` with uv):\n```bash\npip install .\n```\n\n### Docker\n\nAlternatively, run with Docker:\n```bash\ncp .env.example .env  # add your API keys\ndocker compose run --rm tradingagents\n```\n\nAfter updating the repository, rebuild the image with `docker compose build`.\n\nResults, reports, the memory log and the cache live in the `tradingagents_data` volume. To keep them in a folder on the host instead, create the folder and point `TRADINGAGENTS_DATA_DIR` at it, in `.env` or the shell: `mkdir -p data && TRADINGAGENTS_DATA_DIR=./data docker compose run --rm tradingagents`.\n\nFor local models with Ollama:\n```bash\ndocker compose --profile ollama run --rm tradingagents-ollama\n```\n\n### Required APIs\n\nTradingAgents supports multiple LLM providers. Set the API key for your chosen provider:\n\n```bash\nexport OPENAI_API_KEY=...          # OpenAI (GPT)\nexport GOOGLE_API_KEY=...          # Google (Gemini)\nexport ANTHROPIC_API_KEY=...       # Anthropic (Claude)\nexport XAI_API_KEY=...             # xAI (Grok)\nexport DEEPSEEK_API_KEY=...        # DeepSeek\nexport DASHSCOPE_API_KEY=...       # Qwen (international, dashscope-intl.aliyuncs.com)\nexport DASHSCOPE_CN_API_KEY=...    # Qwen (China, dashscope.aliyuncs.com)\nexport ZHIPU_API_KEY=...           # GLM via Z.AI (international)\nexport ZHIPU_CN_API_KEY=...        # GLM via BigModel (China, open.bigmodel.cn)\nexport MINIMAX_API_KEY=...         # MiniMax (global, api.minimax.io)\nexport MINIMAX_CN_API_KEY=...      # MiniMax (China, api.minimaxi.com)\nexport OPENROUTER_API_KEY=...      # OpenRouter\nexport MISTRAL_API_KEY=...         # Mistral\nexport MOONSHOT_API_KEY=...        # Kimi (Moonshot)\nexport GROQ_API_KEY=...            # Groq\nexport NVIDIA_API_KEY=...          # NVIDIA NIM\nexport FRED_API_KEY=...            # FRED macro data (free, optional)\nexport ALPHA_VANTAGE_API_KEY=...   # Alpha Vantage\nexport TYPESAFE_API_KEY=...        # Jev social-post screening (optional)\n```\n\nFor Azure OpenAI, copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.\n\nTo run on your ChatGPT Plus or Pro plan instead of an API key, choose \"Subscription\" in the CLI's provider menu, or set `llm_provider: \"chatgpt\"`. Sign in once with `tradingagents login chatgpt`: it prints an address to open in your browser, which returns to this machine on `127.0.0.1`. When the browser runs on another machine, or TradingAgents runs in Do",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=61.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"tradingagents\"\ndynamic = [\"version\"]\ndescription = \"TradingAgents: Multi-Agents LLM Financial Trading Framework\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n    \"cryptography>=42.0\",\n    \"langchain-core>=1.6.5\",\n    \"langchain-anthropic>=1.7.4\",\n    \"langchain-google-genai>=4.4.0\",\n    \"langchain-openai>=1.6.6\",\n    \"langgraph>=1.2.12\",\n    \"langgraph-checkpoint-sqlite>=3.1.1\",\n    \"markdown-it-py>=4.0\",\n    \"packaging>=24.0\",\n    \"pandas>=3.0.6\",\n    \"python-dotenv>=1.0.0\",\n    \"pytz>=2025.2\",\n    \"questionary>=2.1.0\",\n    \"requests>=2.32.4\",\n    \"rich>=14.0.0\",\n    \"typer>=0.21.0\",\n    \"stockstats>=0.6.5\",\n    \"typing-extensions>=4.14.0\",\n    \"yfinance>=1.7.0\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"ruff>=0.16\",\n    \"pytest>=8.0\",\n    \"pytest-subtests>=0.13\",\n]\n# Amazon Bedrock support (AWS SigV4 auth + boto3). Optional so the core install\n# stays lean: pip install \"tradingagents[bedrock]\".\nbedrock = [\n    \"langchain-aws>=1.7.9\",\n]\n\n[project.scripts]\ntradingagents = \"cli.main:app\"\n\n[tool.setuptools.dynamic]\nversion = {attr = \"tradingagents.__version__\"}\n\n[tool.setuptools.packages.find]\ninclude = [\"tradingagents*\", \"cli*\"]\n\n[tool.setuptools.package-data]\ncli = [\"static/*\"]\ntradingagents = [\"assets/*.svg\"]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\naddopts = \"-ra --strict-markers -m \\\"not integration\\\"\"\nmarkers = [\n    \"unit: fast isolated unit tests\",\n    \"integration: tests requiring external services; run only when asked for, with -m integration\",\n    \"smoke: quick sanity-check tests\",\n]\nfilterwarnings = [\n    \"ignore::DeprecationWarning\",\n]\n\n[tool.ruff]\nline-length = 100\ntarget-version = \"py311\"\nextend-exclude = [\"results\"]\n\n[tool.ruff.lint]\n# Standard \"good defaults\" rule set (pyflakes + pycodestyle + isort + bugbear +\n# pyupgrade + comprehensions/simplify). Line length (E501) and layout are owned\n# by the formatter; whole-repo `ruff format` adoption is deferred until the\n# open-PR backlog clears, to avoid mass merge conflicts.\nselect = [\"E\", \"W\", \"F\", \"I\", \"B\", \"UP\", \"C4\", \"SIM\"]\nignore = [\"E501\"]\n\n[tool.ruff.lint.per-file-ignores]\n\"**/__init__.py\" = [\"F401\"]   # intentional re-exports\n\n[tool.ruff.lint.isort]\n# Keep multiple aliased names from one module in a single combined import block\n# (e.g. the vendor imports in router.py) instead of one statement per name.\ncombine-as-imports = true\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "llm"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "多 Agent 交易",
+      "市场分析",
+      "LLM 研究流程"
+    ],
+    "brief_zh": {
+      "summary": "一个多 Agent 金融交易框架，利用 LLM Agent 组织市场分析、研究和交易决策流程。",
+      "audience": "希望用多 Agent 方法辅助投资研究和量化交易实验的个人研究者与团队",
+      "capabilities": "多 Agent 交易、市场分析、LLM 研究流程、金融决策支持",
+      "risk": "交易类框架容易放大数据质量和假设偏差，研究结果不能直接等同于可执行收益"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "thedotmack",
+    "name": "claude-mem",
+    "full_name": "thedotmack/claude-mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "description": "Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+    "language": "TypeScript",
+    "total_stars": 102798,
+    "forks": 9082,
+    "stars_this_period": 274,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 113,
+      "created_at": "2025-08-31T20:50:03Z",
+      "pushed_at": "2026-10-24T13:23:28Z",
+      "homepage": "https://claude-mem.ai",
+      "default_branch": "main",
+      "forks": 9082,
+      "watchers": 319,
+      "archived": false,
+      "size_kb": 663018
+    },
+    "readme_content": "<h1 align=\"center\">\n  <br>\n  <a href=\"https://github.com/thedotmack/claude-mem\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/public/claude-mem-logo-for-dark-mode.webp\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/public/claude-mem-logo-for-light-mode.webp\">\n      <img src=\"docs/public/claude-mem-logo-for-light-mode.webp\" alt=\"Claude-Mem\" width=\"400\">\n    </picture>\n  </a>\n</h1>\n\n<p align=\"center\">\n  <img alt=\"Vercel OSS Program\" src=\"https://vercel.com/oss/program-badge-2026.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"Greptile\" src=\"docs/public/greptile-wordmark-green.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"SerpApi\" src=\"docs/public/serpapi-logo-with-wordmark-gradient.svg\" height=\"24\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/i18n/README.zh.md\">🇨🇳 中文</a> •\n  <a href=\"docs/i18n/README.zh-tw.md\">🇹🇼 繁體中文</a> •\n  <a href=\"docs/i18n/README.ja.md\">🇯🇵 日本語</a> •\n  <a href=\"docs/i18n/README.pt.md\">🇵🇹 Português</a> •\n  <a href=\"docs/i18n/README.pt-br.md\">🇧🇷 Português</a> •\n  <a href=\"docs/i18n/README.ko.md\">🇰🇷 한국어</a> •\n  <a href=\"docs/i18n/README.es.md\">🇪🇸 Español</a> •\n  <a href=\"docs/i18n/README.de.md\">🇩🇪 Deutsch</a> •\n  <a href=\"docs/i18n/README.fr.md\">🇫🇷 Français</a> •\n  <a href=\"docs/i18n/README.he.md\">🇮🇱 עברית</a> •\n  <a href=\"docs/i18n/README.ar.md\">🇸🇦 العربية</a> •\n  <a href=\"docs/i18n/README.ru.md\">🇷🇺 Русский</a> •\n  <a href=\"docs/i18n/README.pl.md\">🇵🇱 Polski</a> •\n  <a href=\"docs/i18n/README.cs.md\">🇨🇿 Čeština</a> •\n  <a href=\"docs/i18n/README.nl.md\">🇳🇱 Nederlands</a> •\n  <a href=\"docs/i18n/README.tr.md\">🇹🇷 Türkçe</a> •\n  <a href=\"docs/i18n/README.uk.md\">🇺🇦 Українська</a> •\n  <a href=\"docs/i18n/README.vi.md\">🇻🇳 Tiếng Việt</a> •\n  <a href=\"docs/i18n/README.tl.md\">🇵🇭 Tagalog</a> •\n  <a href=\"docs/i18n/README.id.md\">🇮🇩 Indonesia</a> •\n  <a href=\"docs/i18n/README.th.md\">🇹🇭 ไทย</a> •\n  <a href=\"docs/i18n/README.hi.md\">🇮🇳 हिन्दी</a> •\n  <a href=\"docs/i18n/README.bn.md\">🇧🇩 বাংলা</a> •\n  <a href=\"docs/i18n/README.ur.md\">🇵🇰 اردو</a> •\n  <a href=\"docs/i18n/README.ro.md\">🇷🇴 Română</a> •\n  <a href=\"docs/i18n/README.sv.md\">🇸🇪 Svenska</a> •\n  <a href=\"docs/i18n/README.it.md\">🇮🇹 Italiano</a> •\n  <a href=\"docs/i18n/README.el.md\">🇬🇷 Ελληνικά</a> •\n  <a href=\"docs/i18n/README.hu.md\">🇭🇺 Magyar</a> •\n  <a href=\"docs/i18n/README.fi.md\">🇫🇮 Suomi</a> •\n  <a href=\"docs/i18n/README.da.md\">🇩🇰 Dansk</a> •\n  <a href=\"docs/i18n/README.no.md\">🇳🇴 Norsk</a>\n</p>\n\n<h4 align=\"center\">Persistent memory compression system built for <a href=\"https://claude.com/claude-code\" target=\"_blank\">Claude Code</a>.</h4>\n\n<p align=\"center\">\n  <a href=\"LICENSE\">\n    <img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/version-15.0.2-green.svg\" alt=\"Version\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg\" alt=\"Node\">\n  </a>\n  <a href=\"https://github.com/thedotmack/awesome-claude-code\">\n    <img src=\"https://awesome.re/mentioned-badge.svg\" alt=\"Mentioned in Awesome Claude Code\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15496\" target=\"_blank\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\" alt=\"thedotmack/claude-mem | Trendshift\" width=\"250\" height=\"55\"/>\n    </picture>\n  </a>\n</p>\n\n<br>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://github.com/thedotmack/claude-mem\">\n        <picture>\n          <img\n            src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/cm-preview.gif\"\n            alt=\"Claude-Mem Preview\"\n            width=\"500\"\n          >\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\">\n      <a href=\"https://www.star-history.com/#thedotmack/claude-mem&Date\">\n        <picture>\n          <source\n            media=\"(prefers-color-scheme: dark)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&theme=dark&legend=top-left\"\n          />\n          <source\n            media=\"(prefers-color-scheme: light)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n          />\n          <img\n            alt=\"Star History Chart\"\n            src=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n            width=\"500\"\n          />\n        </picture>\n      </a>\n    </td>\n  </tr>\n</table>\n\n<p align=\"center\">\n  <a href=\"#quick-start\">Quick Start</a> •\n  <a href=\"#how-it-works\">How It Works</a> •\n  <a href=\"#mcp-search-tools\">Search Tools</a> •\n  <a href=\"#documentation\">Documentation</a> •\n  <a href=\"#configuration\">Configuration</a> •\n  <a href=\"#troubleshooting\">Troubleshooting</a> •\n  <a href=\"#license\">License</a>\n</p>\n\n<p align=\"center\">\n  Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions. This enables Claude to maintain continuity of knowledge about projects even after sessions end or reconnect.\n</p>\n\n---\n\n## Quick Start\n\nInstall claude-mem for Grok Bot:\n\n```bash\nnpx claude-mem install --ide grok-bot\n```\n\nGrok Bot has no host hooks, so we watch the chat log files. Default is CMEM Pro, the hosted memory. Local observer is opt-in: `--provider host`. Installing this plugin does not install Cursor.\n\n**Awareness push pilot (LFG + Orifice):** needle observations (`decision`, `bugfix`, `security_alert`, `sensitive`) are appended as dated `- YYYY-MM-DD [awareness] …` lines into that bot's `memory/log/YYYY-MM.md`. Grok Bot already re-reads the log from disk. This does not write `profile.md`, user-memory, or project memory. Disable with `CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false`.\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nThe installer sets everything up first, then asks you to sign in to claude-mem in your browser (email magic link — no card required). Signing in provisions a memory key for your account and unlocks the **claude-mem observer** with a **30 Day Free Trial**: memory runs off-plan, so you get up to 100% more usage from your plan. When the free trial ends, memory automatically falls back to your Anthropic plan unless you subscribe. After sign-in you pick your memory provider — the claude-mem observer, your own OpenRouter or Gemini key, or your Anthropic plan.\n\nPrefer to skip the sign-in? Pass an explicit `--provider` flag, set `CLAUDE_MEM_ONLINE_OPTIN=false`, or run in CI/non-interactive shells — the installer completes without any account interaction.\n\nOr install for OpenCode:\n\n```bash\nnpx claude-mem install --ide opencode\n```\n\nThis works with OpenCode 1.3.4 or later, including OpenCode 2. Restart OpenCode after installing.\n\nOr install for **T3 Code** (Codex and Claude Code providers):\n\n```bash\nnpx claude-mem install --ide t3code\n```\n\nThe installer discovers T3 Code's enabled providers, registers native Claude-Mem plugins in their configured homes, and supports T3-managed Codex. Restart T3 Code, trust the provider's hooks when prompted, and start a new thread. See the [T3 Code integration guide](https://docs.claude-mem.ai/t3code-integration) for custom server settings, status, and removal.\n\nOr install for Antigravity CLI ([setup guide](https://docs.claude-mem.ai/antigravity-cli/setup)):\n\n```bash\nnpx claude-mem install --ide antigravity\n```\n\nOr install for OMP (Oh My Pi):\n\n```bash\nnpx claude-mem install --ide omp\n```\n\nOr install the native Pi extension or DeepSeek Harness plugin:\n\n```bash\nnpx claude-mem install --ide pi\nnpx claude-mem install --ide dsh --dsh-profile tui\n```\n\nPi and DeepSeek Harness use the worker runtime. See [native harness setup](docs/native-harness-integrations.md) for capture, recall, and troubleshooting.\n\nOr install from the plugin marketplace inside Claude Code:\n\n```bash\n/plugin marketplace add thedotmack/claude-mem\n\n/plugin install claude-mem\n```\n\nRestart Claude Code. Context from previous sessions will automatically appear in new sessions.\n\n> **Note:** Claude-Mem is also published on npm, but `npm install -g claude-mem` installs the **SDK/library only** — it does not register the plugin hooks or set up the worker service. Always install via `npx claude-mem install` or the `/plugin` commands above.\n\n### 🦞 OpenClaw Gateway\n\nInstall claude-mem as a persistent memory plugin on [OpenClaw](https://openclaw.ai) gateways with a single command:\n\n```bash\ncurl -fsSL https://install.cmem.ai/openclaw.sh | bash\n```\n\nThe installer handles dependencies, plugin setup, AI provider configuration, worker startup, and optional real-time observation feeds to Telegram, Discord, Slack, and more. See the [OpenClaw Integration Guide](https://docs.claude-mem.ai/openclaw-integration) for details.\n\n**Key Features:**\n\n- 🧠 **Persistent Memory** - Context survives across sessions\n- 📊 **Progressive Disclosure** - Layered memory retrieval with token cost visibility\n- 🔍 **Smart Search (Default)** - Query your project history with the three-step mem-search skill\n- 🖥️ **Local My Work** - Live requests, progress, human handoffs and a saved review queue at the worker URL printed on startup. [Guide](https://docs.claude-mem.ai/usage/my-work). Memory, sessions and settings remain at `/viewer`.\n- 👥 **TeamBrain** - An optional shared workspace beside My Work, with real team work lists, member attribution and linked findings. Each person chooses what to share; personal requests and review notes stay separate. [Set up a team](https://cmem.ai/teambrain/start).\n- 💻 **Claude Desktop Skill** - Search memory from Claude Desktop conversations\n- 🔒 **Privacy Control** - Use `<private>` tags to exclude sensitive content from storage\n- ⚙️ **Context Configuration** - Fine-grained control over what context gets injected\n- 🤖 **Automatic Operation** - No manual intervention required\n- 🔗 **Citations** - Reference past observations with IDs through the worker API or view all in the web viewer\n\n---\n\n## Documentation\n\n📚 **[View Full Documentation](https://docs.claude-mem.ai/)** - Browse on official website\n\n### Getting Started\n\n- **[Installation Guide](https://docs.claude-mem.ai/installation)** - Quick start & advanced installation\n- **[Usage Guide](https://docs.claude-mem.ai/usage/getting-started)** - How Claude-Mem works automatically\n- **[Search Tools](https://docs.claude-mem.ai/usage/search-tools)** - Query your project history with natural language\n- **[Cloud Sync](https://docs.claude-mem.ai/cloud-sync)** - Back up your memories to cmem.ai — no daemon, the worker syncs on write\n\n### Best Practices\n\n- **[Context Engineering](https://docs.claude-mem.ai/context-engineering)** - AI agent context optimization principles\n- **[Progressive Disclosure](https://docs.claude-mem.ai/progressive-disclosure)** - Philosophy behind Claude-Mem's context priming strategy\n\n### Architecture\n\n- **[Overview](https://docs.claude-mem.ai/architecture/overview)** - System components & data flow\n- **[Architecture Evolution](https://docs.claude-mem.ai/architecture-evolution)** - The journey from v3 to v5\n- **[Hooks Architecture](https://docs.claude-mem.ai/hooks-architecture)** - How Claude-Mem uses lifecycle hooks\n- **[Hooks Reference](https://docs.claude-mem.ai/architecture/hooks)** - Every hook entry explained\n- **[Worker Service](https://docs.claude-mem.ai/architecture/worker-service)** - HTTP API & Bun management\n- **[Database](https://docs.claude-mem.ai/architecture/database)** - SQLite schema & FTS5 search\n- **[Search Architecture](https:",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"claude-mem\",\n  \"version\": \"15.0.2\",\n  \"description\": \"Memory compression system for Claude Code - persist context across sessions\",\n  \"keywords\": [\n    \"claude\",\n    \"claude-code\",\n    \"claude-agent-sdk\",\n    \"mcp\",\n    \"plugin\",\n    \"memory\",\n    \"compression\",\n    \"knowledge-graph\",\n    \"transcript\",\n    \"typescript\",\n    \"nodejs\"\n  ],\n  \"author\": \"Alex Newman\",\n  \"license\": \"Apache-2.0\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/thedotmack/claude-mem.git\"\n  },\n  \"homepage\": \"https://github.com/thedotmack/claude-mem#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/thedotmack/claude-mem/issues\"\n  },\n  \"type\": \"module\",\n  \"bin\": {\n    \"claude-mem\": \"./dist/npx-cli/index.js\"\n  },\n  \"exports\": {\n    \"./modes/*\": \"./plugin/modes/*\"\n  },\n  \"files\": [\n    \"dist\",\n    \".agents/plugins/marketplace.json\",\n    \".claude-plugin\",\n    \".codex-plugin\",\n    \".qoder-plugin\",\n    \"plugin/.claude-plugin\",\n    \"plugin/.codex-plugin\",\n    \"plugin/.qoder-plugin\",\n    \"plugin/.mcp.json\",\n    \"plugin/qoder.mcp.json\",\n    \"plugin/package.json\",\n    \"plugin/bun.lock\",\n    \"plugin/hooks\",\n    \"plugin/modes\",\n    \"plugin/scripts/*.js\",\n    \"plugin/scripts/*.cjs\",\n    \"plugin/scripts/*.map\",\n    \"plugin/sqlite\",\n    \"plugin/skills\",\n    \"plugin/ui\",\n    \"openclaw\",\n    \"omp\",\n    \"hermes\",\n    \"ods/README.md\",\n    \"ods/install.mjs\",\n    \"ods/native\",\n    \"ods/patches\",\n    \"ods/service\",\n    \"pi\",\n    \"dsh\",\n    \"NOTICE\"\n  ],\n  \"engines\": {\n    \"node\": \">=20.12.0\",\n    \"bun\": \">=1.1.31\"\n  },\n  \"scripts\": {\n    \"dev\": \"npm run build-and-sync\",\n    \"build\": \"node scripts/sync-plugin-manifests.js && node scripts/build-hooks.js && node scripts/gen-plugin-lockfile.cjs\",\n    \"build-and-sync\": \"npm run build && npm run sync-marketplace && node scripts/restart-marketplace-worker.cjs\",\n    \"sync-marketplace\": \"node scripts/sync-marketplace.cjs\",\n    \"sync-marketplace:force\": \"node scripts/sync-marketplace.cjs --force\",\n    \"build:binaries\": \"node scripts/build-worker-binary.js\",\n    \"build:cli-binary\": \"bun build --compile --minify --entry-naming \\\"[name].js\\\" ./src/services/worker-service.ts ./src/services/context/context-read-worker.ts --outfile plugin/scripts/claude-mem\",\n    \"worker:logs\": \"node scripts/worker-logs.cjs\",\n    \"worker:tail\": \"node scripts/worker-logs.cjs --follow\",\n    \"changelog:generate\": \"node scripts/generate-changelog.js\",\n    \"discord:notify\": \"node scripts/discord-release-notify.js\",\n    \"worker:start\": \"bun plugin/scripts/worker-service.cjs start\",\n    \"worker:stop\": \"bun plugin/scripts/worker-service.cjs stop\",\n    \"worker:restart\": \"bun plugin/scripts/worker-service.cjs restart\",\n    \"worker:status\": \"bun plugin/scripts/worker-service.cjs status\",\n    \"queue\": \"bun scripts/check-pending-queue.ts\",\n    \"queue:process\": \"bun scripts/check-pending-queue.ts --process\",\n    \"queue:clear:pending\": \"bun scripts/clear-pending-queue.ts --all --force\",\n    \"pr:status\": \"bun scripts/pr-babysit-status.ts\",\n    \"claude-md:regenerate\": \"bun scripts/regenerate-claude-md.ts\",\n    \"claude-md:dry-run\": \"bun scripts/regenerate-claude-md.ts --dry-run\",\n    \"strip-comments\": \"bun scripts/strip-comments.ts\",\n    \"strip-comments:check\": \"bun scripts/strip-comments.ts --check\",\n    \"strip-comments:dry-run\": \"bun scripts/strip-comments.ts --dry-run\",\n    \"translate-readme\": \"bun scripts/translate-readme/cli.ts -v -o docs/i18n README.md\",\n    \"translate:tier1\": \"npm run translate-readme -- zh zh-tw ja pt pt-br ko es de fr\",\n    \"translate:tier2\": \"npm run translate-readme -- he ar ru pl cs nl tr uk\",\n    \"translate:tier3\": \"npm run translate-readme -- vi tl id th hi bn ur ro sv\",\n    \"translate:tier4\": \"npm run translate-readme -- it el hu fi da no\",\n    \"translate:all\": \"npm run translate:tier1 & npm run translate:tier2 & npm run translate:tier3 & npm run translate:tier4 & wait\",\n    \"bug-report\": \"node dist/bug-report/index.js\",\n    \"cursor:install\": \"bun plugin/scripts/worker-service.cjs cursor install\",\n    \"cursor:uninstall\": \"bun plugin/scripts/worker-service.cjs cursor uninstall\",\n    \"cursor:status\": \"bun plugin/scripts/worker-service.cjs cursor status\",\n    \"cursor:setup\": \"bun plugin/scripts/worker-service.cjs cursor setup\",\n    \"lint:hook-io\": \"node scripts/check-hook-io-discipline.cjs\",\n    \"lint:spawn-env\": \"node scripts/check-spawn-env-discipline.cjs\",\n    \"typecheck\": \"tsc --noEmit && tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"typecheck:root\": \"tsc --noEmit\",\n    \"typecheck:viewer\": \"tsc --noEmit -p src/ui/viewer/tsconfig.json\",\n    \"test\": \"bun scripts/test-lanes.ts fast\",\n    \"test:integration\": \"bun scripts/test-lanes.ts integration\",\n    \"test:all\": \"bun scripts/test-lanes.ts all\",\n    \"test:lanes:check\": \"bun scripts/test-lanes.ts check\",\n    \"test:sqlite\": \"bun test tests/sqlite/\",\n    \"test:agents\": \"bun test tests/worker/agents/\",\n    \"test:search\": \"bun test tests/worker/search/\",\n    \"test:context\": \"bun test tests/context/\",\n    \"test:infra\": \"bun test tests/infras",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "RAG 检索"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cloudflare",
+    "name": "security-audit-skill",
+    "full_name": "cloudflare/security-audit-skill",
+    "url": "https://github.com/cloudflare/security-audit-skill",
+    "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+    "language": "JavaScript",
+    "total_stars": 44350,
+    "forks": 2760,
+    "stars_this_period": 2271,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 85,
+      "created_at": "2026-06-18T14:08:44Z",
+      "pushed_at": "2026-09-14T19:29:02Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 2760,
+      "watchers": 167,
+      "archived": false,
+      "size_kb": 143
+    },
+    "readme_content": "# security-audit\n\nA coding-agent skill that turns your agent into a security auditor. It orchestrates isolated agents through reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting.\n\nThis is the skill that seeded Cloudflare's vulnerability discovery harness, described in [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness). The harness grew into a multi-stage, fleet-wide system; this skill is the single-repo starting point it evolved from.\n\n## What it does\n\nThe skill runs a structured audit in six phases:\n\n1. **Reconnaissance** -- map architecture, trust boundaries, input surfaces, prior evidence, and deterministic coverage in `architecture.md` and `coverage-ledger.json`.\n2. **Coverage-led hunting** -- assign isolated hunters from ledger units, record their checks, and use coverage critics to find gaps.\n3. **Candidate validation** -- give every unique candidate to a fresh verifier that tries to disprove it.\n4. **Structured output** -- write `confirmed`, `needs_validation`, and `rejected` records to `findings.json` and validate them against `report-schema.json`.\n5. **Independent record verification** -- fresh agents verify final source claims. Material replacements receive another independent verifier.\n6. **Target-neutral reporting** -- derive `REPORT.md`, `FINDINGS-DETAIL.md`, and `NEEDS-VALIDATION.md` from the verified records and coverage ledger.\n\nThe parent runs `validate-coverage-ledger.cjs` after creating the ledger and after each later ledger update. It runs `validate-findings.cjs` in Phase 4 and again after every Phase 5 replacement.\n\nThe verdicts are distinct: `confirmed` has a complete source trace and bounded observed result, `needs_validation` has an exact unresolved fact and no severity, and `rejected` records a disproved candidate.\n\nMultiple runs against the same repo are additive. The skill uses prior ledgers and findings to target gaps, revalidate changed source, and carry forward current-source evidence without treating stale or unresolved work as covered.\n\n## Files\n\n| File | Purpose |\n|------|---------|\n| `SKILL.md` | Setup, core principles, platform terminology, workflow overview, and audit anti-patterns |\n| `RECONNAISSANCE.md` | Phase 1 reconnaissance prompts and synthesis instructions |\n| `HUNTING.md` | Phase 2 orchestration, hunting methodology, and validation rules |\n| `ATTACK-CLASSES.md` | Core, wildcard, and obvious-things attack prompts |\n| `MEMORY-SAFETY-AND-BINARY.md` | Memory-safety, binary, and kernel hunting classes for native targets |\n| `AI-AND-LLM.md` | Prompt-injection, agent/tool, and output-handling hunting classes for LLM-backed targets |\n| `WEB-PROTOCOL-AND-AUTH.md` | HTTP request-framing, cache, and authentication-protocol hunting classes for HTTP-protocol and auth targets |\n| `CLIENT-SIDE.md` | DOM-injection, messaging-trust, UI-redress, and prototype-pollution hunting classes for client-side/browser targets |\n| `SUPPLY-CHAIN-AND-RELEASE.md` | Dependency, CI, release, signing, update, plugin, and extension hunting classes |\n| `CLOUD-AND-DEPLOYMENT.md` | IAM, infrastructure-as-code, container, serverless, ingress, and runtime-configuration hunting classes |\n| `PROTOCOLS-RPC-AND-MESSAGING.md` | RPC, serialization, queue, broker, webhook, and streaming-protocol hunting classes |\n| `RESOURCE-EXHAUSTION-AND-AVAILABILITY.md` | Shared resource, quota, queue, worker, and operator-spend hunting classes |\n| `DATA-ISOLATION-AND-LIFECYCLE.md` | Tenant isolation, cache, search, export, backup, migration, deletion, and restore hunting classes |\n| `DESKTOP-MOBILE-AND-LOCAL-IPC.md` | Native app, deep-link, webview, exported-component, helper, daemon, and local-IPC hunting classes |\n| `VALIDATION-AND-REPORTING.md` | Phases 3–6 candidate validation, structured output, record verification, and reporting |\n| `report-schema.json` | JSON schema for all three `findings.json` verdicts |\n| `validate-findings.cjs` | Zero-dependency validator for `findings.json` in Phases 4 and 5 |\n| `validate-findings.test.cjs` | Findings-validator tests and producer-compatible fixture checks |\n| `validate-coverage-ledger.cjs` | Zero-dependency validator for `coverage-ledger.json` in Phases 1–5 |\n| `validate-coverage-ledger.test.cjs` | Coverage-ledger validator tests |\n\n## Installation\n\nInstall the skill with the [Skills CLI](https://skills.sh):\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit\n```\n\nUse `--global` for a user-level installation:\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit \\\n  --global\n```\n\nRun `npx skills --help` for agent-selection and non-interactive options.\n\n## Usage\n\nStart your coding agent in (or pointed at) the codebase you want to audit, then ask it to do a security audit:\n\n```\nsecurity audit this codebase\n```\n\n```\nfind security vulnerabilities in ./src\n```\n\n```\ndo a security review, output to ~/audits/my-project\n```\n\nThe skill activates automatically when the request matches its trigger (security audit, find vulnerabilities, pen-test the code, etc.). A direct codebase audit or pen-test request uses full audit mode. Security questions and focused vulnerability work use guidance mode unless you request report artifacts. In full audit mode, an unspecified output directory defaults to `~/security-audit-skill/<repo-name>/run-<N>`. The workflow writes inside the target repository only when you explicitly select a directory that version control ignores.\n\n## Requirements\n\n- A coding agent with a model that supports tool use and parallel sub-agents\n- Node.js for the zero-dependency findings and coverage-ledger validators\n- An OS-enforced sandbox for target-controlled builds, tests, processes, browsers, emulators, fuzzers, and fixtures. It must disable external networking, use a sanitized allowlisted environment, enforce resource limits, and allow writes only to assigned scratch paths. Without these controls, the workflow keeps the lead as `needs_validation` instead of executing target code.\n\n## Design principles\n\n- **Only confirm established boundary failures.** Keep a source-grounded blocked lead as `needs_validation` with its exact unresolved fact.\n- **Adversarial validation.** The agent that checks a finding is never the agent that found it.\n- **Severity requires impact.** Likelihood x impact, not deviation from a checklist.\n- **Defense-in-depth gaps are not vulnerabilities.** If Layer A prevents the attack, the absence of Layer B is a hardening note.\n- **Multiple runs improve coverage.** In our test runs, a single run found roughly half of the vulnerabilities that repeated runs found in total.\n\n## Contact\n\nQuestions, feedback, or comparing notes on AI-driven security tooling: security-ai-research@cloudflare.com\n\n## License\n\nMIT -- see [LICENSE](LICENSE).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "runtime",
+      "skill",
+      "llm",
+      "eval",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "多阶段安全审计",
+      "覆盖率账本",
+      "独立候选验证"
+    ],
+    "brief_zh": {
+      "summary": "Cloudflare 开源的一套编码 Agent 安全审计技能：将侦察、覆盖率驱动排查、候选漏洞验证、机器可读发现记录和独立复核组织成六阶段流程，并区分已确认、待验证与已否定的结论。",
+      "audience": "希望将代码库安全审计流程结构化、可复核并持续运行的应用安全与工程团队",
+      "capabilities": "多阶段安全审计、覆盖率账本、独立候选验证、结构化发现、报告生成、Agent 编排",
+      "risk": "技能输出不能替代人工安全评估；自动化审计的覆盖率、误报处理、模型权限和代码数据边界仍需在目标环境中单独控制。",
+      "verified_at": "2026-10-09",
+      "evidence_sources": [
+        "https://github.com/cloudflare/security-audit-skill"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未在目标代码库执行审计。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "herdrdev",
+    "name": "herdr",
+    "full_name": "herdrdev/herdr",
+    "url": "https://github.com/herdrdev/herdr",
+    "description": "the runtime your coding agents live on",
+    "language": "Rust",
+    "total_stars": 45689,
+    "forks": 3634,
+    "stars_this_period": 147,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agent-orchestration",
+        "ai",
+        "ai-agents",
+        "claude-code",
+        "cli",
+        "codex",
+        "coding-agents",
+        "developer-tools",
+        "devtools",
+        "multiplexer",
+        "rust",
+        "terminal",
+        "terminal-multiplexer",
+        "terminal-ui",
+        "tmux",
+        "tui",
+        "workspace-manager"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 433,
+      "created_at": "2026-03-27T17:54:33Z",
+      "pushed_at": "2026-10-23T21:54:15Z",
+      "homepage": "https://herdr.dev",
+      "default_branch": "master",
+      "forks": 3634,
+      "watchers": 107,
+      "archived": false,
+      "size_kb": 49070
+    },
+    "readme_content": "# herdr\n\n\n<p align=\"center\">\n  <img src=\"assets/logo.png\" alt=\"herdr\" width=\"100\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://herdr.dev\">herdr.dev</a> · <a href=\"#install\">install</a> · <a href=\"https://herdr.dev/docs/quick-start/\">quick start</a> · <a href=\"https://herdr.dev/docs/\">docs</a>\n</p>\n\n<p align=\"center\">\n  English · <a href=\"README.zh-CN.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache--2.0-666666?labelColor=333333\" alt=\"Apache 2.0 license\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/releases\"><img src=\"https://img.shields.io/github/downloads/herdrdev/herdr/total?labelColor=333333&color=666666\" alt=\"total GitHub release downloads\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/stargazers\"><img src=\"https://img.shields.io/github/stars/herdrdev/herdr?labelColor=333333&color=666666&logo=github\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/releases/latest\"><img src=\"https://img.shields.io/github/v/release/herdrdev/herdr?label=release&labelColor=333333&color=666666\" alt=\"latest stable release\" /></a>\n  <a href=\"https://formulae.brew.sh/formula/herdr\"><img src=\"https://img.shields.io/homebrew/v/herdr?label=homebrew&labelColor=333333&color=666666\" alt=\"Homebrew version\" /></a>\n  <a href=\"https://x.com/herdrdev\"><img src=\"https://img.shields.io/badge/follow-%40herdrdev-000000?logo=x&logoColor=white\" alt=\"follow @herdrdev on X\" /></a>\n</p>\n\n---\n\nhttps://github.com/user-attachments/assets/043ec09f-4bdd-41d5-aee0-8fda6b83e267\n\n**the runtime your coding agents live on.**\n\n- **detach without stopping work** — herdr keeps terminals running in a background server when you close the client or lose your SSH connection. after a server or machine restart, herdr restores the saved layout and can resume supported agent sessions; the original processes do not survive. [session state →](https://herdr.dev/docs/session-state/)\n- **several machines, one window** — keep local work and saved ssh machines together, with a combined agent list and independent reconnects. [remote machines →](https://herdr.dev/docs/connecting-machines/)\n- **never hunt for the stuck one** — every pane is marked working, blocked, or idle. when an agent stops and needs an answer, herdr says so.\n- **agent-native** — agents drive herdr through the cli and socket api: they can spawn panes, prompt each other, and wait until another agent is genuinely blocked. [agent skill →](https://herdr.dev/docs/agent-skill/)\n- **runs what you already run** — claude code, codex, cursor, opencode, grok and the rest. herdr doesn't wrap or replace them; it owns their terminals. building an agent? [add herdr support →](https://herdr.dev/docs/add-herdr-support/)\n- **keyboard and mouse, both first-class** — tmux-style prefix keys *and* click, drag, split. pick per moment, not per tool.\n- **plugins** — extend panes and workflows. [browse the marketplace →](https://herdr.dev/plugins/)\n- **one rust binary, no electron** — runs in whatever terminal you already use.\n\n---\n\n## install\n\n```bash\ncurl -fsSL https://herdr.dev/install.sh | sh\n```\n\nor `brew install herdr` · `mise use -g herdr` · windows: `powershell -ExecutionPolicy Bypass -c \"irm https://herdr.dev/install.ps1 | iex\"` · [endpoint-protected Windows](https://herdr.dev/docs/windows-beta/) · [binaries](https://github.com/herdrdev/herdr/releases)\n\nthen start it where the work lives:\n\n```bash\nherdr\n```\n\nrun your agents, split panes, walk away. `ctrl+b q` detaches, `herdr` reattaches. [quick start →](https://herdr.dev/docs/quick-start/)\n\n## docs\n\neverything lives at [herdr.dev/docs](https://herdr.dev/docs/): [quick start](https://herdr.dev/docs/quick-start/) · [concepts](https://herdr.dev/docs/concepts/) · [supported agents](https://herdr.dev/docs/agents/) · [keyboard](https://herdr.dev/docs/keyboard/) · [configuration](https://herdr.dev/docs/configuration/) · [session state](https://herdr.dev/docs/session-state/) · [connecting machines](https://herdr.dev/docs/connecting-machines/) · [remote](https://herdr.dev/docs/persistence-remote/) · [integrations](https://herdr.dev/docs/integrations/) · [add herdr support to your agent](https://herdr.dev/docs/add-herdr-support/) · [plugins](https://herdr.dev/docs/plugins/) · [socket api](https://herdr.dev/docs/socket-api/)\n\n## thanks\n\nevery past sponsor and backer is listed in [SPONSORS.md](./SPONSORS.md) — thank you 🐑\n\nenterprise / partnership: hey@herdr.dev\n\n## agent instructions\n\nif you are an ai agent helping with this repository, read [`AGENTS.md`](./AGENTS.md) before making changes and read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before opening issues or PRs.\n\n## development\n\n```bash\ngit clone https://github.com/herdrdev/herdr\ncd herdr\ncargo build --release\n\njust test        # unit tests\njust check       # formatting, tests, and maintenance checks\n```\n\n## license\n\nHerdr is licensed under the [Apache License 2.0](LICENSE).\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"herdr\"\nversion = \"0.9.5\"\nedition = \"2021\"\nbuild = \"build.rs\"\ndescription = \"terminal workspace manager for AI coding agents\"\nlicense = \"Apache-2.0\"\nrepository = \"https://github.com/herdrdev/herdr\"\nhomepage = \"https://herdr.dev\"\nkeywords = [\"terminal\", \"tui\", \"ai\", \"agents\", \"multiplexer\"]\ncategories = [\"command-line-utilities\"]\ninclude = [\n    \"src/**/*\",\n    \"assets/sounds/*\",\n    \"docs/next/api/herdr-api.schema.json\",\n    \"skills/herdr/SKILL.md\",\n    \"distribution/install.ps1\",\n    \"README.md\",\n    \"LICENSE\",\n    \"Cargo.toml\",\n]\n\n[workspace]\nmembers = [\"crates/ghostty-vt\"]\ndefault-members = [\".\", \"crates/ghostty-vt\"]\n\n[dependencies]\nghostty-vt = { path = \"crates/ghostty-vt\" }\nbase64 = \"0.22.1\"\nbincode = { version = \"2\", features = [\"serde\"] }\nbytes = \"1\"\nclap = { version = \"4.5\", default-features = false, features = [\"std\", \"help\", \"usage\", \"error-context\", \"string\"] }\nclap_complete = \"4.5\"\ncrossterm = \"0.29\"\nctrlc = { version = \"3\", features = [\"termination\"] }\ninterprocess = \"2.4.2\"\njsonc-parser = { version = \"0.33.1\", default-features = false, features = [\"cst\", \"serde_json\"] }\nlibc = \"0.2\"\nportable-pty = \"=0.9.0\"\npng = \"0.17\"\nratatui = { version = \"0.30\", features = [\"unstable-rendered-line-info\"] }\nregex = \"1\"\nserde = { version = \"1\", features = [\"derive\"] }\nserde_ignored = \"0.1.14\"\nserde_json = \"1\"\nsha2 = \"0.10\"\ntime = { version = \"0.3.47\", features = [\"formatting\"] }\ntokio = { version = \"1\", features = [\"rt-multi-thread\", \"macros\", \"sync\", \"time\", \"process\", \"io-util\", \"signal\"] }\ntoml = \"0.8\"\ntoml_edit = \"0.22\"\ntracing = \"0.1.44\"\ntracing-subscriber = { version = \"0.3.23\", features = [\"env-filter\"] }\nunicode-width = \"0.2\"\nunicode-segmentation = \"1.13.1\"\nschemars = { version = \"1.2.1\", features = [\"derive\"] }\n\n[patch.crates-io]\nportable-pty = { path = \"vendor/portable-pty\" }\n\n[target.'cfg(unix)'.dependencies]\nsignal-hook = \"0.3\"\n\n[target.'cfg(target_os = \"linux\")'.dependencies]\n# logind's delay inhibitor lets the server save before host shutdown kills panes.\nzbus = { version = \"5.19\", default-features = false, features = [\"tokio\"] }\nfutures-util = { version = \"0.3\", default-features = false, features = [\"std\"] }\n\n[target.'cfg(windows)'.dependencies]\n# UTF-16 SDDL input for interprocess security descriptors.\nwidestring = \"1.2\"\nwmi = { version = \"0.18.4\", default-features = false }\n# Native Notification Center delivery for unpackaged Windows installs.\nwindows = { version = \"0.62.2\", features = [\"Data_Xml_Dom\", \"UI_Notifications\", \"Win32_System_Com\"] }\nwindows-sys = { version = \"0.61.2\", features = [\n    \"Wdk_System_Threading\",\n    \"Win32_Foundation\",\n    \"Win32_Globalization\",\n    \"Win32_Graphics_Gdi\",\n    \"Win32_Security\",\n    \"Win32_Storage_FileSystem\",\n    \"Win32_System_DataExchange\",\n    \"Win32_System_Diagnostics_Debug\",\n    \"Win32_System_Diagnostics_ToolHelp\",\n    \"Win32_System_Console\",\n    \"Win32_System_JobObjects\",\n    \"Win32_System_Kernel\",\n    \"Win32_System_Memory\",\n    \"Win32_System_LibraryLoader\",\n    \"Win32_System_Ole\",\n    \"Win32_System_Pipes\",\n    \"Win32_System_Power\",\n    \"Win32_System_Registry\",\n    \"Win32_System_SystemInformation\",\n    \"Win32_System_Threading\",\n    \"Win32_UI_Input_Ime\",\n    \"Win32_UI_Input_KeyboardAndMouse\",\n    \"Win32_UI_Shell\",\n    \"Win32_UI_WindowsAndMessaging\",\n] }\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "skill",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "RAG 检索",
+      "技能扩展",
+      "工作区"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "Gaurav-Gosain",
+    "name": "tuios",
+    "full_name": "Gaurav-Gosain/tuios",
+    "url": "https://github.com/Gaurav-Gosain/tuios",
+    "description": "A terminal window manager that knows what your agents are doing. Tiling panes, workspaces, sessions that survive restarts, and one Inbox for every coding agent. Official only at tuios.dev and this repo. tuios has no X/Twitter account.",
+    "language": "Go",
+    "total_stars": 5793,
+    "forks": 271,
+    "stars_this_period": 121,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-agents",
+        "bubbletea",
+        "charm",
+        "claude-code",
+        "codex",
+        "coding-agents",
+        "developer-tools",
+        "go",
+        "golang",
+        "multiplexer",
+        "omarchy",
+        "ssh",
+        "terminal",
+        "terminal-emulator",
+        "terminal-multiplexer",
+        "tiling-window-manager",
+        "tmux-alternative",
+        "tui",
+        "window-manager",
+        "zellij-alternative"
+      ],
+      "license": "MIT",
+      "open_issues": 60,
+      "created_at": "2025-09-06T18:13:51Z",
+      "pushed_at": "2026-10-24T22:04:43Z",
+      "homepage": "https://tuios.dev",
+      "default_branch": "main",
+      "forks": 271,
+      "watchers": 14,
+      "archived": false,
+      "size_kb": 94034
+    },
+    "readme_content": "> [!WARNING]\n> **An account on X called @tuiosdev is pretending to be tuios. It is not this project.** tuios has no X or Twitter account. It lives only at [tuios.dev](https://tuios.dev) and in this repository. There is no tuios token or presale. Please report that account if you see it.\n\n<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"./assets/brand/banner-dark.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"./assets/brand/banner-light.png\">\n    <img alt=\"tuios: a terminal window manager that knows what your agents are doing. Tilly, a small purple CRT whose screen is a tiled layout, stands beside the tuios wordmark and a tiled terminal session.\" src=\"./assets/brand/banner-light.png\" width=\"100%\">\n  </picture>\n\n  <p><strong>TUIOS: Terminal UI Operating System</strong></p>\n\n  <a href=\"https://github.com/Gaurav-Gosain/tuios/releases\"><img src=\"https://img.shields.io/github/release/Gaurav-Gosain/tuios.svg\" alt=\"Latest Release\"></a>\n  <a href=\"https://pkg.go.dev/github.com/Gaurav-Gosain/tuios?tab=doc\"><img src=\"https://godoc.org/github.com/Gaurav-Gosain/tuios?status.svg\" alt=\"GoDoc\"></a>\n  <a href=\"https://deepwiki.com/Gaurav-Gosain/tuios\"><img src=\"https://deepwiki.com/badge.svg\" alt=\"Ask DeepWiki\"></a>\n  <br>\n  <a title=\"This tool is Tool of The Week on Terminal Trove, The $HOME of all things in the terminal\" href=\"https://terminaltrove.com/\"><img src=\"https://cdn.terminaltrove.com/media/badges/tool_of_the_week/png/terminal_trove_tool_of_the_week_green_on_dark_grey_bg.png\" alt=\"Terminal Trove Tool of The Week\" style=\"width: 250px;\" /></a>\n</div>\n\n<picture>\n  <source srcset=\"./assets/demo.avif\" type=\"image/avif\">\n  <img alt=\"TUIOS\" src=\"./assets/demo.gif\">\n</picture>\n\nTUIOS is a modern terminal multiplexer and window manager built with Go. It provides a vim-like modal interface with multiple terminal panes, workspaces, BSP tiling, kitty graphics protocol support, and a command palette, all running inside your existing terminal. A daemon keeps sessions alive, reaches sessions on your other machines, and lets the coding agents in your panes report their state and message each other.\n\nBuilt on the Charm stack (Bubble Tea v2, Lipgloss v2), TUIOS features event-driven rendering for near-zero idle CPU usage, flicker-free kitty image passthrough, and comprehensive keyboard/mouse interaction.\n\n## Documentation\n\nFull documentation is available at **[tuios.dev](https://tuios.dev)** (hosted) or in the [`docs/`](./docs/) folder. To try tuios without installing it, take the guided tour at **[tuios.dev/learn](https://tuios.dev/learn)**: the real app, compiled to WebAssembly, with a practice shell in every pane.\n\nWhat changed in v0.10.1 is in the [release notes](docs/release-notes/v0.10.1.md).\n\n### Quick Links\n- **[Getting Started](https://tuios.dev/docs/getting-started)**: Install and first session\n- **[Keybindings](docs/KEYBINDINGS.md)**: Default keys and how to rebind them\n- **[BSP Tiling](docs/BSP_TILING.md)**: Tiling with preselection and split control\n- **[Layout Modes](docs/LAYOUT_MODES.md)**: BSP, master-stack and scrolling layouts, aggregate view, multifocus\n- **[Configuration](docs/CONFIGURATION.md)**: Customize keybindings, themes, and behavior\n- **[Hooks](docs/HOOKS.md)**: Run shell commands on window, session and agent events\n- **[Themes](docs/THEMES.md)**: Built-in themes and custom theme JSON\n- **[Glyph sets](docs/GLYPHS.md)**: The characters the chrome is drawn with\n- **[CLI Reference](docs/CLI_REFERENCE.md)**: All command-line options\n- **[Tape Scripting](docs/TAPE_SCRIPTING.md)**: Automate workflows\n- **[Sessions](docs/SESSIONS.md)**: Daemon mode, attach/detach, other machines, and what survives\n- **[Agents](docs/AGENT_STATE.md)**: Running coding agents in tuios: state, the Inbox, approvals, fleets, other machines, grants and MCP\n- **[Program Status](docs/PROGRAM_STATUS.md)**: OSC 7501 from any program, `tuios status`, and the reports tuios sends to its own terminal\n- **[tmux Shim](docs/TMUX_SHIM.md)**: Run tools that drive tmux, such as Claude Code agent teams\n- **[Control Protocol](docs/protocol.md)**: JSON verb protocol for driving the daemon\n- **[Architecture](docs/ARCHITECTURE.md)**: Technical design\n\n<details>\n<summary>Table of Contents</summary>\n\n<!--toc:start-->\n- [Installation](#installation)\n- [Features](#features)\n- [Quick Start](#quick-start)\n- [Architecture](#architecture)\n- [Performance](#performance)\n- [Development](#development)\n- [Contributors](#contributors)\n- [License](#license)\n<!--toc:end-->\n\n</details>\n\n## Installation\n\n### Package Managers\n\n**Homebrew (macOS/Linux):**\n```bash\nbrew install tuios\n```\n\n**Homebrew, ghostty build (Linux only):** `tuios` built with the [libghostty-vt emulator](./docs/ghostty-vt.md). It installs a binary with the same name as the `tuios` formula. Uninstall the formula first.\n```bash\nbrew uninstall tuios\nbrew install gaurav-gosain/tap/tuios-ghostty\n```\n\n**Arch Linux (AUR):**\n```bash\nyay -S tuios-bin\n```\n\n**Nix:**\n```bash\nnix run github:Gaurav-Gosain/tuios/v0.10.1#tuios   # a release\nnix run github:Gaurav-Gosain/tuios#tuios          # the latest main\nnix run nixpkgs#tuios                             # the nixpkgs package\n```\n\nPut a release tag after the repo name to build that release. Without a tag, Nix builds the newest commit on `main`.\n\n### Other Methods\n\n```bash\n# Quick install script (Linux/macOS)\ncurl -fsSL https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/install.sh | bash\n\n# Go install\ngo install github.com/Gaurav-Gosain/tuios/cmd/tuios@latest\n\n# Docker\ndocker run -it --rm ghcr.io/gaurav-gosain/tuios:latest\n```\n\n**[GitHub Releases](https://github.com/Gaurav-Gosain/tuios/releases)**: Pre-built binaries for Linux, macOS, Windows, FreeBSD and OpenBSD, with a `checksums.txt`. The `tuios-ghostty_*` archives are `tuios` built on the [libghostty-vt emulator](./docs/ghostty-vt.md), for Linux, macOS and Windows on amd64 and arm64.\n\n**Building from source** needs Go 1.26.8 or newer.\n\n**Updating.** If you installed with the quick install script or a release\nbinary, `tuios update` fetches the newest release and puts it in place\n(`tuios update --check` just reports). Everything else has a package manager\nthat owns the binary, so use that instead; `tuios update` detects which you have\nand prints the right command rather than overwriting it.\n\n### Shell Completions\n\n`tuios completion <shell>` prints a completion script for bash, zsh, fish or\nPowerShell. Besides subcommands and flags, it completes values such as session\nnames for `--session` and configured hosts for `--host`.\n\n```bash\n# Bash (needs the bash-completion package)\ntuios completion bash > ~/.local/share/bash-completion/completions/tuios\n\n# Zsh (the directory must be on your $fpath, before compinit runs)\ntuios completion zsh > \"${fpath[1]}/_tuios\"\n\n# Fish\ntuios completion fish > ~/.config/fish/completions/tuios.fish\n```\n\n```powershell\n# PowerShell: add this line to your $PROFILE\ntuios completion powershell | Out-String | Invoke-Expression\n```\n\nStart a new shell afterwards. Run `tuios completion <shell> --help` for more\noptions, or see the [CLI reference](docs/CLI_REFERENCE.md#tuios-completion).\n\n**Requirements:** A terminal with true color support. Kitty graphics and sixel support recommended (Ghostty, Kitty, WezTerm).\n\n## Features\n\n![TUIOS](./assets/tuios.gif)\n\n<table>\n  <tr>\n    <td width=\"50%\"><a href=\"https://tuios.dev/docs/layout-modes\"><img src=\"https://tuios.dev/shots/overview.webp\" width=\"400\" alt=\"tuios with four tiled panes: a git diff, a Go file, test output and a build. The sidebar lists the session, its files and four agents with their states.\"></a><br><b>Panes and the rail.</b> Tiled panes, and every agent's state at a glance.</td>\n    <td width=\"50%\"><a href=\"https://tuios.dev/docs/agent-inbox\"><img src=\"https://tuios.dev/shots/inbox.webp\" width=\"400\" alt=\"The tuios Inbox listing an approval marked risky, a question and an errored agent, with the reason the approval is risky.\"></a><br><b>The Inbox.</b> Everything your agents wait on, in one list.</td>\n  </tr>\n  <tr>\n    <td width=\"50%\"><a href=\"https://tuios.dev/docs/agent-inbox#reviewing-an-agents-changes\"><img src=\"https://tuios.dev/shots/review.webp\" width=\"400\" alt=\"The tuios review view: a file list on the left and a highlighted diff on the right, with keys for notes, hunks and files.\"></a><br><b>Review.</b> Read an agent's changes and send notes back to it.</td>\n    <td width=\"50%\"><a href=\"https://tuios.dev/docs/configuration\"><img src=\"https://tuios.dev/shots/settings.webp\" width=\"400\" alt=\"The tuios settings page searched for theme. The Theme row carries a dot because it differs from the default.\"></a><br><b>Settings.</b> Every option on one page, applied at once.</td>\n  </tr>\n</table>\n\nEach picture is a capture that tuios made of itself. Click one to read its docs page.\n\n### Core\n- **Multiple Terminal Panes**: Create, resize, drag, and organize terminal sessions\n- **9 Workspaces**: Independent workspace isolation with instant switching\n- **Modal Interface**: Vim-inspired Window Management and Terminal modes\n- **Command Palette**: Fuzzy-searchable action launcher (<kbd>Ctrl</kbd>+<kbd>P</kbd>)\n- **Launcher**: Fuzzy search everything on `$PATH` plus your installed desktop apps (<kbd>Alt</kbd>+<kbd>Space</kbd>), ranked by what you actually run. <kbd>Enter</kbd> starts it; <kbd>Tab</kbd> opens a shell with the command typed but not entered, so you can add arguments. App icons are drawn where the terminal supports kitty graphics.\n- **Pane Zoom**: Zoom any pane with <kbd>z</kbd> (WM mode) or <kbd>Prefix</kbd>+<kbd>z</kbd>. It takes 95% of the screen by default; set `appearance.zoom_size = 100` for fullscreen. A fullscreen zoom hides the shared borders, and the dockbar shows a **Z** indicator.\n- **Session Rail**: A sidebar with sessions, terminals, files, git state and agents, on by default on the right (`appearance.sidebar.enabled`)\n- **Settings Page**: Change options in the app with <kbd>Prefix</kbd>+<kbd>,</kbd>\n- **Popups**: `tuios popup -- fzf` runs a command in a floating pane that closes when it exits\n\n### Agents\nThe guide is [docs/AGENT_STATE.md](docs/AGENT_STATE.md).\n- **Agent State**: Panes running a coding agent show whether it is working, waiting for you, done or errored, as a shape in the title and a row on the rail. `tuios integration install` wires 19 harnesses (Claude Code, Codex, Gemini CLI, opencode and more) to report it, and tuios detects 24 agent CLIs by their process and screen\n- **Program Status (OSC 7501)**: Any program can say what it is doing with the Program Status Protocol, or with `tuios status working --app build --progress 40`. A build, a deploy script or `brew` then shows on the rail and in the Inbox like an agent. tuios also reports its panes to a terminal that reads the protocol, such as Rex ([docs](docs/PROGRAM_STATUS.md))\n- **Inbox**: <kbd>Prefix</kbd>+<kbd>i</kbd> lists everything waiting for you in every session and on every machine: approvals, questions, mail, errors, finished turns. <kbd>Prefix</kbd>+<kbd>o</kbd> jumps to the oldest. Answer a prompt from there without going to the pane, and with `[agents.approvals]` answer Claude Code, opencode, Kilo and Qwen Code permission requests with one key\n- **Questions and Messages**: `tuios ask-human` puts a question with fixed answers in your Inbox. Agents mail each other with `tuios send-agent-message`, and `tuios ask-agent` asks one and waits for its answer. It never types into a pane waiting on a prompt, and replies from you are marked verified\n- **Fleets**: `tuios fan` starts one prompt in several agents, mixed harnesses allowed, each in its own git worktree. `tuios start-agent` starts one helper beside you, in its TUI or headless over ACP or the Codex app-server. Selectors such as `group:fan/retry needs:you` address a whole group\n- **Resume**: After a daemon restart, the Inbox offers to resume each agent conversation that was running\n- **Pane Grants*",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/Gaurav-Gosain/tuios\n\ngo 1.26.8\n\ntoolchain go1.26.10\n\nrequire (\n\tcharm.land/bubbletea/v2 v2.0.10\n\tcharm.land/lipgloss/v2 v2.0.6\n\tcharm.land/ssh v0.4.3\n\tcharm.land/tone v0.1.0\n\tcharm.land/wish/v2 v2.0.5\n\tgithub.com/Gaurav-Gosain/sip v0.9.4\n\tgithub.com/Gaurav-Gosain/tuiffects v0.7.1\n\tgithub.com/adrg/xdg v0.5.3\n\tgithub.com/alecthomas/chroma/v2 v2.27.0\n\tgithub.com/charmbracelet/colorprofile v0.4.3\n\tgithub.com/charmbracelet/ultraviolet v0.0.0-20260906173415-0277a179edd9\n\tgithub.com/charmbracelet/x/xpty v0.1.4\n\tgithub.com/epilande/go-devicons v0.0.0-20250505162540-0661cab71a28\n\tgithub.com/fsnotify/fsnotify v1.10.1\n\tgithub.com/google/go-cmp v0.7.0\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/lrstanley/bubbletint/v2 v2.0.2\n\tgithub.com/lrstanley/go-nf v0.0.0-20260418212552-215ab243b591\n\tgithub.com/pelletier/go-toml/v2 v2.4.3\n\tgithub.com/shirou/gopsutil/v4 v4.26.7\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgolang.org/x/image v0.45.0\n\tgolang.org/x/sys v0.48.0\n\tgolang.org/x/term v0.46.0\n\trsc.io/qr v0.2.0\n)\n\nrequire (\n\tgithub.com/dlclark/regexp2/v2 v2.2.1 // indirect\n\tgithub.com/dunglas/httpsfv v1.1.1 // indirect\n\tgithub.com/mattn/go-runewidth v0.0.30 // indirect\n\tgithub.com/pires/go-proxyproto v0.15.0 // indirect\n\tgithub.com/rivo/uniseg v0.4.7 // indirect\n\tgo.mitchellh.com/libghostty v0.0.0-20260920220152-31b65cdc24cf // indirect\n)\n\nrequire (\n\tcharm.land/log/v2 v2.0.1 // indirect\n\tgithub.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be\n\tgithub.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect\n\tgithub.com/charmbracelet/keygen v0.5.4 // indirect\n\tgithub.com/charmbracelet/lipgloss v1.1.0 // indirect\n\tgithub.com/charmbracelet/log v1.0.0 // indirect\n\tgithub.com/charmbracelet/x/ansi v0.11.8\n\tgithub.com/charmbracelet/x/cellbuf v0.0.15 // indirect\n\tgithub.com/charmbracelet/x/conpty v0.2.0 // indirect\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/charmbracelet/x/termios v0.1.1 // indirect\n\tgithub.com/charmbracelet/x/windows v0.2.2 // indirect\n\tgithub.com/clipperhouse/displaywidth v0.11.0 // indirect\n\tgithub.com/clipperhouse/uax29/v2 v2.7.0 // indirect\n\tgithub.com/coder/websocket v1.8.15\n\tgithub.com/creack/pty v1.1.24 // indirect\n\tgithub.com/ebitengine/purego v0.10.2 // indirect\n\tgithub.com/go-logfmt/logfmt v0.6.1 // indirect\n\tgithub.com/go-ole/go-ole v1.3.0 // indirect\n\tgithub.com/inconshreveable/mousetrap v1.1.0 // indirect\n\tgithub.com/lucasb-eyer/go-colorful v1.4.1 // indirect\n\tgithub.com/lufia/plan9stats v0.0.0-20260627054121-477a66015f15 // indirect\n\tgithub.com/mattn/go-isatty v0.0.24 // indirect\n\tgithub.com/muesli/cancelreader v0.2.2 // indirect\n\tgithub.com/muesli/termenv v0.16.0 // indirect\n\tgithub.com/power-devops/perfstat v0.0.0-20240221224432-82ca36839d55 // indirect\n\tgithub.com/quic-go/qpack v0.6.0 // indirect\n\tgithub.com/quic-go/quic-go v0.63.0 // indirect\n\tgithub.com/quic-go/webtransport-go v0.13.0 // indirect\n\tgithub.com/tklauser/go-sysconf v0.4.0 // indirect\n\tgithub.com/tklauser/numcpus v0.12.0 // indirect\n\tgithub.com/xo/terminfo v1.2.0 // indirect\n\tgithub.com/yusufpapurcu/wmi v1.2.4 // indirect\n\tgolang.org/x/crypto v0.57.0\n\tgolang.org/x/exp v0.0.0-20260908205506-85c1c2202aba // indirect\n\tgolang.org/x/net v0.60.0 // indirect\n\tgolang.org/x/sync v0.23.0\n\tgolang.org/x/text v0.42.0\n\ttuios.dev/loom v0.2.2-0.20261023124928-adf889029b64\n\ttuios.dev/plot v0.2.2-0.20261023124927-50c38920e301 // indirect\n\ttuios.dev/progstatus v0.1.1-0.20261023124927-50c38920e301\n\ttuios.dev/shot v0.2.1-0.20261023124927-50c38920e301\n\ttuios.dev/sketch v0.3.2-0.20261023124928-adf889029b64\n\ttuios.dev/swatch v0.1.1-0.20261023124927-50c38920e301\n\ttuios.dev/tml v0.1.1-0.20261023124927-50c38920e301\n\ttuios.dev/vt v0.3.1-0.20261023124927-211d9f938c2a\n)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "workspace",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "MCP 集成",
+      "工作区",
+      "工作流"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "Tencent",
+    "name": "WeKnora",
+    "full_name": "Tencent/WeKnora",
+    "url": "https://github.com/Tencent/WeKnora",
+    "description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
+    "language": "Go",
+    "total_stars": 35308,
+    "forks": 4750,
+    "stars_this_period": 98,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agentic",
+        "ai",
+        "chatbot",
+        "dsh-plugin",
+        "embeddings",
+        "evaluation",
+        "generative-ai",
+        "golang",
+        "knowledge-base",
+        "llm",
+        "multi-tenant",
+        "ollama",
+        "openai",
+        "question-answering",
+        "rag",
+        "reranking",
+        "semantic-search",
+        "vector-search",
+        "wiki"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 781,
+      "created_at": "2025-07-22T08:01:23Z",
+      "pushed_at": "2026-10-24T08:55:01Z",
+      "homepage": "https://weknora.weixin.qq.com",
+      "default_branch": "main",
+      "forks": 4750,
+      "watchers": 152,
+      "archived": false,
+      "size_kb": 218867
+    },
+    "readme_content": "<p align=\"center\">\n  <a href=\"https://weknora.weixin.qq.com\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"./docs/images/readme/hero-en-dark.svg\">\n      <img src=\"./docs/images/readme/hero-en-light.svg\" alt=\"WeKnora: find the answers, and put knowledge to work. Tencent's open-source knowledge management framework for Q&A, tasks and wikis.\" width=\"100%\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://weknora.weixin.qq.com\"><img alt=\"Website\" src=\"https://img.shields.io/badge/website-weknora.weixin.qq.com-b8863b?style=flat-square&labelColor=101f38\"></a>\n  <a href=\"https://weknora.weixin.qq.com/docs/\"><img alt=\"Docs\" src=\"https://img.shields.io/badge/docs-read-b8863b?style=flat-square&labelColor=101f38\"></a>\n  <a href=\"./CHANGELOG.md\"><img alt=\"Release\" src=\"https://img.shields.io/badge/release-v0.8.3-b8863b?style=flat-square&labelColor=101f38\"></a>\n  <a href=\"./LICENSE\"><img alt=\"License\" src=\"https://img.shields.io/badge/license-MIT-b8863b?style=flat-square&labelColor=101f38\"></a>\n  <a href=\"https://github.com/Tencent/WeKnora/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/Tencent/WeKnora?style=flat-square&labelColor=101f38&color=b8863b\"></a>\n  <br/>\n  <a href=\"https://chatbot.weixin.qq.com\"><img alt=\"WeChat Dialog Open Platform\" src=\"https://img.shields.io/badge/WeChat_Dialog-Open_Platform-07c160?style=flat-square&labelColor=101f38&logo=wechat&logoColor=white\"></a>\n  <a href=\"https://chromewebstore.google.com/detail/jpemjbopikggjlmikmclgbmkhhopjdgd\"><img alt=\"Chrome Extension\" src=\"https://img.shields.io/badge/Chrome-extension-4285f4?style=flat-square&labelColor=101f38&logo=googlechrome&logoColor=white\"></a>\n  <a href=\"https://clawhub.ai/lyingbug/weknora\"><img alt=\"ClawHub Skill\" src=\"https://img.shields.io/badge/ClawHub-skill-ff6b35?style=flat-square&labelColor=101f38\"></a>\n  <a href=\"https://www.npmjs.com/package/@wxg-prc-cpg/dsh-weknora\"><img alt=\"npm @wxg-prc-cpg/dsh-weknora\" src=\"https://img.shields.io/npm/v/@wxg-prc-cpg/dsh-weknora?style=flat-square&label=dsh-weknora&labelColor=101f38&color=cb3837&logo=npm&logoColor=white\"></a>\n</p>\n\n<p align=\"center\">\n  <b>English</b> · <a href=\"./README_CN.md\">简体中文</a> · <a href=\"./README_JA.md\">日本語</a> · <a href=\"./README_KO.md\">한국어</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#overview\">Overview</a> ·\n  <a href=\"#quick-start\">Quick Start</a> ·\n  <a href=\"#whats-new\">What's New</a> ·\n  <a href=\"#features\">Features</a> ·\n  <a href=\"#clients-and-integrations\">Clients</a> ·\n  <a href=\"#documentation\">Docs</a> ·\n  <a href=\"#development\">Development</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15289\"><img src=\"https://trendshift.io/api/badge/repositories/15289\" alt=\"Tencent/WeKnora | Trendshift\" width=\"220\" height=\"48\"/></a>\n</p>\n\n## Overview\n\n[WeKnora](https://weknora.weixin.qq.com) is an open-source, LLM-powered knowledge framework for enterprise document understanding, semantic retrieval and reasoning. It brings a team's documents together so they can be searched, reasoned over and kept up to date.\n\nhttps://github.com/user-attachments/assets/5722b10d-d04d-49ed-a6cc-635a8c77d91f\n\n<p align=\"center\"><sub>1:52 · 1080p · No narration, English on-screen text</sub></p>\n\nUse RAG to look things up, the agent for multi-step tasks, and the wiki to organize knowledge. All three work on the same knowledge bases.\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./docs/images/readme/capabilities-en-dark.svg\">\n  <img src=\"./docs/images/readme/capabilities-en-light.svg\" alt=\"01 RAG: answers you can check, with hybrid search, multimodal parsing and citations. 02 Agent: tasks done with knowledge and tools, with multi-step reasoning, skills and sandbox, the local browser, MCP tools and memory. 03 Wiki: documents organized into a wiki, with a knowledge graph and rollback.\" width=\"100%\">\n</picture>\n\n**The agent's toolbox.** Skills installed from ClawHub / SkillHub / Git / ZIP run in session-persistent Docker / E2B / Cube sandboxes, with an interactive terminal and graphical desktop beside the chat. Through the BrowserSkill extension the agent operates the user's own Chrome or Edge, and external MCP services (OAuth included) can be connected and enabled tool by tool.\n\nBeyond the three modes:\n\n- **Memory and curation**: cross-session long-term memory keeps the profile, preferences and facts a user has confirmed. Folder uploads keep their directory tree, and retrieval chunks can be edited, diffed and rolled back.\n- **Data sources and formats**: auto-sync from Feishu wiki / Feishu Drive / Confluence / GitLab / Tencent IMA / Notion / Yuque / DingTalk Docs / Seafile / RSS, with more on the way. 10+ document formats including PDF, Word, images, Excel and XMind; Office files are parsed in-process by anydoc.\n- **Channels and integrations**: Q&A in WeCom, Feishu, Slack, Telegram and other IM apps; an embed widget for external websites; a built-in MCP Server for Cursor, Claude and other AI tools; scoped API keys with a principal model for programmatic access.\n- **Models**: 29 built-in vendors with a generated model catalog, including OpenAI, DeepSeek, Qwen (Alibaba Cloud), Zhipu, Hunyuan, Gemini, MiniMax, NVIDIA, LiteLLM and Ollama.\n- **Permissions and operations**: multi-workspace RBAC (four roles, per-resource ownership, per-workspace audit log), several storage instances per workspace, a runtime task-queue dashboard with worker-pool governance, and Langfuse tracing for agent steps, token usage and pipelines.\n- **Deployment**: LLMs, vector databases and storage backends are all swappable. Deploy locally or on a private cloud and keep the data in your own environment.\n\n## Quick Start\n\n<table>\n  <tr>\n    <td width=\"33%\" valign=\"top\">\n      <img src=\"./website-docs/homepage/public/docs/_home/brands/wechat-dialog.png\" width=\"28\" height=\"28\" alt=\"\"><br/>\n      <sub>ONLINE</sub><br/>\n      <b>WeChat Dialog Open Platform</b><br/>\n      Manage knowledge bases online and connect Q&A to Official Accounts, Mini Programs and other WeChat scenarios.<br/><br/>\n      <a href=\"https://chatbot.weixin.qq.com/login\">Open the platform →</a>\n    </td>\n    <td width=\"33%\" valign=\"top\">\n      <img src=\"./website-docs/homepage/public/docs/_home/brands/tencent-cloud.ico\" width=\"28\" height=\"28\" alt=\"\"><br/>\n      <sub>CLOUD</sub><br/>\n      <b>Tencent Cloud Lighthouse</b><br/>\n      Deploy WeKnora from an application template and run it on your own cloud server.<br/><br/>\n      <a href=\"https://mc.tencent.com/s69nKCVz\">Deploy on Tencent Cloud →</a>\n    </td>\n    <td width=\"33%\" valign=\"top\">\n      <img src=\"./docs/images/readme/icons/server.svg\" width=\"28\" height=\"28\" alt=\"\"><br/>\n      <sub>SELF-HOSTED</sub><br/>\n      <b>Your own environment</b><br/>\n      Deploy with Docker or Kubernetes and configure models, storage and networking yourself.<br/><br/>\n      <a href=\"#run-with-docker-compose\">Run with Docker Compose ↓</a>\n    </td>\n  </tr>\n</table>\n\n### Run with Docker Compose\n\nRequires [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and [Git](https://git-scm.com/).\n\n```bash\ngit clone https://github.com/Tencent/WeKnora.git\ncd WeKnora\ncp .env.example .env    # Edit .env as needed, see comments in the file\ndocker compose pull     # Pull the latest images\ndocker compose up -d    # Start core services\n```\n\nThen open **http://localhost** and follow the onboarding guide. A walkthrough with sample data is in the [Quickstart](https://weknora.weixin.qq.com/docs/01-getting-started/03-quickstart).\n\n> [!TIP]\n> To use a local Ollama model, run `ollama serve > /dev/null 2>&1 &` first. For the Ollama embedding model name, `OLLAMA_BASE_URL`, and RAM notes, see [Configuration](https://weknora.weixin.qq.com/docs/01-getting-started/04-configuration).\n\n| Service | URL |\n|---------|-----|\n| Web UI | `http://localhost` |\n| Backend API | `http://localhost:8080` |\n| Langfuse Tracing | `http://localhost:3000` |\n\n### Optional services\n\nAdd `--profile` flags to enable additional components; multiple profiles can be combined.\n\n| Profile | Adds |\n|---------|------|\n| _(default)_ | Core services |\n| `full` | All features |\n| `neo4j` | Knowledge Graph (Neo4j) |\n| `minio` | Object Storage (MinIO) |\n| `langfuse` | Tracing (Langfuse) |\n\n```bash\ndocker compose --profile neo4j --profile minio pull\ndocker compose --profile neo4j --profile minio up -d\ndocker compose down     # Stop services\n```\n\n### Upgrading\n\nIf you already have WeKnora running and downloaded a newer release:\n\n```bash\n# Set WEKNORA_VERSION in .env to the target release (e.g. 0.8.3), or keep latest\ndocker compose pull     # Pull images matching WEKNORA_VERSION\ndocker compose up -d    # Recreate containers with new images\n```\n\n> [!NOTE]\n> `docker compose up -d` alone reuses locally cached images and may leave the UI version out of sync with the release you downloaded. Read the [upgrade notes](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#upgrade-notes) before upgrading. Deployments older than v0.8.2 should also read the [v0.8.2 notes](https://weknora.weixin.qq.com/docs/07-releases/v0.8.2#upgrade-notes).\n\n### Other ways to deploy\n\n| Option | When to use it |\n|--------|----------------|\n| **Docker Compose** | The standard deployment above: all features, multiple services |\n| **Kubernetes (Helm)** | Production clusters; the chart is in [`helm/`](./helm) |\n| **Lite single binary** | Local or low-resource use with no external dependencies (SQLite + in-memory queue); see [Lite vs. standard](./docs/LITE.md) |\n| **Desktop app** | The Lite runtime with a GUI, login-free start and a macOS host sandbox; no installer is published yet, so build it from source |\n\nAll options, hardware requirements and deployment topologies: [Installation guide](https://weknora.weixin.qq.com/docs/01-getting-started/02-installation).\n\n> [!WARNING]\n> WeKnora ships with login authentication, but for production deployments we strongly recommend that you:\n> - deploy it in an internal / private network rather than on the public internet;\n> - avoid exposing the service directly to public networks, to prevent information leakage;\n> - configure proper firewall rules and access controls for the deployment environment;\n> - regularly update to the latest version for security patches and improvements.\n\n## What's New\n\n### v0.8.3 <sub>· 2026-10-14 · [release notes](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3)</sub>\n\n- **[Image gallery](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#images)**: browse document images and filter by source, caption, OCR and image attributes.\n- **[Multimodal Embedding](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#multimodal-embedding)**: support for multimodal embedding models that encode text and images into a shared vector space, including Tencent WeMM-Embedding and Qwen3-VL-Embedding, with opt-in image-vector retrieval and compatible image-aware reranking.\n- **[Wiki graph](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#wiki-graph)**: clearer group layouts and theme captions, with group focus, switching and return to the full graph.\n- **[Source citations](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#conversation)**: navigate from an answer to the cited passage in the original document.\n- **[Chat and tools](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#tools)**: on-demand attachment reading without a sandbox, unread replies, @ mention search, Docker terminals, Lite host skills and MCP interoperability updates.\n- **[Administration and integrations](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#administration)**: platform user management, invitation-only signup mode, administrator model catalog, WeMM embeddings, TEI/Pinecone/Cohere reranking, Seafile and Traditional Chinese.\n- **[Reliability](https://weknora.weixin.qq.com/docs/07-releases/v0.8.3#other-changes)**: broad retrieval, parsing, datasource, Wiki, OAuth and CLI fixes. Review [upgrade requirements](https:",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/Tencent/WeKnora\n\ngo 1.26.0\n\nrequire (\n\tcodeberg.org/readeck/go-readability/v2 v2.1.2\n\tconnectrpc.com/connect v1.19.1\n\tgithub.com/DATA-DOG/go-sqlmock v1.5.2\n\tgithub.com/JohannesKaufmann/html-to-markdown/v2 v2.5.1\n\tgithub.com/PuerkitoBio/goquery v1.12.0\n\tgithub.com/alicebob/miniredis/v2 v2.38.0\n\tgithub.com/aliyun/alibabacloud-oss-go-sdk-v2 v1.5.1\n\tgithub.com/asg017/sqlite-vec-go-bindings v0.1.6\n\tgithub.com/aws/aws-sdk-go-v2 v1.41.7\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.17\n\tgithub.com/aws/aws-sdk-go-v2/credentials v1.19.16\n\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.101.0\n\tgithub.com/chromedp/chromedp v0.15.1\n\tgithub.com/duckdb/duckdb-go/v2 v2.10502.0\n\tgithub.com/elastic/go-elasticsearch/v7 v7.17.10\n\tgithub.com/elastic/go-elasticsearch/v8 v8.19.6\n\tgithub.com/gin-contrib/cors v1.7.7\n\tgithub.com/gin-gonic/gin v1.12.0\n\tgithub.com/go-openapi/strfmt v0.26.2\n\tgithub.com/go-sql-driver/mysql v1.10.0\n\tgithub.com/go-viper/mapstructure/v2 v2.5.0\n\tgithub.com/golang-jwt/jwt/v5 v5.3.1\n\tgithub.com/golang-migrate/migrate/v4 v4.19.1\n\tgithub.com/google/jsonschema-go v0.4.3\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/hibiken/asynq v0.26.0\n\tgithub.com/jackc/pgx/v5 v5.9.2\n\tgithub.com/joho/godotenv v1.5.1\n\tgithub.com/ks3sdklib/aws-sdk-go v1.11.0\n\tgithub.com/larksuite/oapi-sdk-go/v3 v3.9.7\n\tgithub.com/mark3labs/mcp-go v1.1.1\n\tgithub.com/matiasinsaurralde/go-e2b v0.1.1-0.20260808041540-fdc08ceaa1c1\n\tgithub.com/milvus-io/milvus/client/v2 v2.6.4\n\tgithub.com/minio/minio-go/v7 v7.1.0\n\tgithub.com/mmcdole/gofeed v1.3.0\n\tgithub.com/neo4j/neo4j-go-driver/v6 v6.0.0\n\tgithub.com/ollama/ollama v0.23.2\n\tgithub.com/open-dingtalk/dingtalk-stream-sdk-go v0.9.2-beta.1\n\tgithub.com/opensearch-project/opensearch-go/v4 v4.6.0\n\tgithub.com/panjf2000/ants/v2 v2.12.0\n\tgithub.com/parquet-go/parquet-go v0.29.0\n\tgithub.com/pganalyze/pg_query_go/v6 v6.2.2\n\tgithub.com/pgvector/pgvector-go v0.3.0\n\tgithub.com/qdrant/go-client v1.18.1\n\tgithub.com/redis/go-redis/v9 v9.14.1\n\tgithub.com/robfig/cron/v3 v3.0.1\n\tgithub.com/santhosh-tekuri/jsonschema/v6 v6.0.2\n\tgithub.com/sirupsen/logrus v1.9.4\n\tgithub.com/slack-go/slack v0.23.1\n\tgithub.com/spf13/viper v1.21.0\n\tgithub.com/stretchr/testify v1.11.1\n\tgithub.com/swaggo/files v1.0.1\n\tgithub.com/swaggo/gin-swagger v1.6.1\n\tgithub.com/swaggo/swag v1.16.6\n\tgithub.com/tencent/vectordatabase-sdk-go v1.8.4\n\tgithub.com/tencentcloud/CubeSandbox/sdk/go v0.0.0-20260807115140-5cefcca27a7f\n\tgithub.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.103\n\tgithub.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap v1.3.103\n\tgithub.com/tencentyun/cos-go-sdk-v5 v0.7.73\n\tgithub.com/tiktoken-go/tokenizer v0.7.0\n\tgithub.com/volcengine/ve-tos-golang-sdk/v2 v2.9.4\n\tgithub.com/volcengine/vikingdb-go-sdk v0.0.11\n\tgithub.com/wailsapp/wails/v2 v2.12.0\n\tgithub.com/weaviate/weaviate v1.37.3\n\tgithub.com/weaviate/weaviate-go-client/v5 v5.7.3\n\tgithub.com/xuri/excelize/v2 v2.11.0\n\tgithub.com/yanyiwu/gojieba v1.4.7\n\tgo.opentelemetry.io/otel v1.43.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.43.0\n\tgo.opentelemetry.io/otel/sdk v1.43.0\n\tgo.opentelemetry.io/otel/trace v1.43.0\n\tgo.uber.org/dig v1.19.0\n\tgolang.org/x/crypto v0.53.0\n\tgolang.org/x/image v0.38.0\n\tgolang.org/x/mod v0.36.0\n\tgolang.org/x/net v0.56.0\n\tgolang.org/x/sync v0.21.0\n\tgolang.org/x/time v0.15.0\n\tgoogle.golang.org/api v0.278.0\n\tgoogle.golang.org/grpc v1.81.0\n\tgoogle.golang.org/protobuf v1.36.11\n\tgopkg.in/natefinch/lumberjack.v2 v2.2.1\n\tgopkg.in/yaml.v3 v3.0.1\n\tgorm.io/driver/postgres v1.6.0\n\tgorm.io/driver/sqlite v1.6.0\n\tgorm.io/gorm v1.31.1\n)\n\nrequire (\n\tcloud.google.com/go/auth v0.20.0 // indirect\n\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n\tcloud.google.com/go/compute/metadata v0.9.0 // indirect\n\tfilippo.io/edwards25519 v1.2.0 // indirect\n\tgit.sr.ht/~jackmordaunt/go-toast/v2 v2.0.3 // indirect\n\tgithub.com/JohannesKaufmann/dom v0.2.0 // indirect\n\tgithub.com/KyleBanks/depth v1.2.1 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.2 // indirect\n\tgithub.com/andybalholm/brotli v1.2.0 // indirect\n\tgithub.com/andybalholm/cascadia v1.3.3 // indirect\n\tgithub.com/apache/arrow-go/v18 v18.5.1 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.10 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/configsources v1.4.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/v4a v1.4.24 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.9 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/checksum v1.9.15 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.19.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/signin v1.0.11 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sso v1.30.17 // indirect\n\tgithub.com/aws/",
+    "strategic_keywords": [
+      "agent",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "llm",
+      "eval",
+      "vector",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "知识库检索",
+      "推理问答",
+      "知识维护"
+    ],
+    "brief_zh": {
+      "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
+      "capabilities": "知识库检索、推理问答、知识维护",
+      "verified_at": "2026-09-12",
+      "evidence_sources": [
+        "https://github.com/Tencent/WeKnora"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  }
+]
