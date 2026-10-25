@@ -72,11 +72,22 @@
     },
     "strategic_score": 98,
     "capability_tags": [
-      "MCP 集成",
-      "大模型应用",
-      "AstrBot 生态"
+      "多平台聊天接入",
+      "LLM 集成",
+      "插件生态"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个开源的一体化 Agent 聊天机器人平台，把多种即时通信渠道、LLM、插件与 MCP 能力接入同一开发和运营框架。",
+      "audience": "需要在多个聊天平台部署 AI 助手、管理模型与插件的开发者和社区运营者",
+      "capabilities": "多平台聊天接入、LLM 集成、插件生态、MCP 集成、Agent 开发框架",
+      "risk": "采用 AGPL-3.0 许可证；接入聊天平台和外部模型时需单独核验数据权限、部署安全与许可证义务。",
+      "verified_at": "2026-10-26",
+      "evidence_sources": [
+        "https://github.com/AstrBotDevs/AstrBot"
+      ],
+      "evidence_note": "依据本次抓取的 README、topics 与仓库 description；未部署或连接外部聊天平台。"
+    }
   },
   {
     "owner": "diegosouzapw",
