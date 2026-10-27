@@ -1,0 +1,38 @@
+{
+  "period": "2026-10-27",
+  "published_daily_period": "2026-10-26",
+  "daily_top10_count": 10,
+  "daily_capability_tag_count": 30,
+  "slice_health": {
+    "all": 14,
+    "python": 16,
+    "typescript": 20,
+    "javascript": 9,
+    "go": 17,
+    "rust": 16
+  },
+  "history": {
+    "daily_reports_checked": 96,
+    "all_have_ten_projects": true,
+    "all_capability_tags_are_chinese": true
+  },
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 226,
+    "snapshot_count": 96,
+    "repository_deduplicated": true,
+    "ranks_continuous": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "model_version": "leaderboard-v2",
+    "summary_sources": {
+      "project_brief": 158,
+      "original_description": 68,
+      "missing": 0
+    }
+  },
+  "limitations": [
+    "2026-10-27 的 GitHub Trending 主抓取和浏览器回退均失败，未生成当日数据或快照。",
+    "此质检基于最新有效日报 2026-10-26 与全部有效本地快照。"
+  ]
+}
