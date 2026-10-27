@@ -31,6 +31,16 @@
       "missing": 0
     }
   },
+  "browser_qa": {
+    "production": true,
+    "default_rows": 10,
+    "second_page": "verified via page-2 control; first rank #011",
+    "rust_filter_and_growth_sort": true,
+    "invalid_url_normalizes": true,
+    "mobile_viewport": 390,
+    "mobile_horizontal_overflow": false,
+    "console_errors": 0
+  },
   "limitations": [
     "2026-10-27 的 GitHub Trending 主抓取和浏览器回退均失败，未生成当日数据或快照。",
     "此质检基于最新有效日报 2026-10-26 与全部有效本地快照。"
