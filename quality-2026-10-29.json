@@ -36,6 +36,16 @@
       "missing": 0
     }
   },
+  "browser_qa": {
+    "production": true,
+    "default_rows": 10,
+    "second_page": "verified at ?page=2 with 10 rendered projects",
+    "rust_filter_and_growth_sort": true,
+    "invalid_url_normalizes": true,
+    "mobile_viewport": 390,
+    "mobile_horizontal_overflow": false,
+    "console_errors": 0
+  },
   "limitations": [
     "六个 Trending 切片均已成功抓取；本次只富化并发布加权 Top 10，未将其余候选写入日报数据文件。"
   ]
