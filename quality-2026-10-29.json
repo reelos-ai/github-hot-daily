@@ -1,0 +1,42 @@
+{
+  "period": "2026-10-29",
+  "daily_top10_count": 10,
+  "daily_capability_tag_count": 30,
+  "slice_health": {
+    "all": 14,
+    "python": 10,
+    "typescript": 14,
+    "javascript": 10,
+    "go": 18,
+    "rust": 12
+  },
+  "enrichment": {
+    "candidate_count": 10,
+    "metadata_failures": 0,
+    "readme_coverage": 10,
+    "manifest_coverage": 6
+  },
+  "history": {
+    "daily_reports_checked": 98,
+    "all_have_ten_projects": true,
+    "all_capability_tags_are_chinese": true
+  },
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 227,
+    "snapshot_count": 98,
+    "repository_deduplicated": true,
+    "ranks_continuous": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "model_version": "leaderboard-v2",
+    "summary_sources": {
+      "project_brief": 159,
+      "original_description": 68,
+      "missing": 0
+    }
+  },
+  "limitations": [
+    "六个 Trending 切片均已成功抓取；本次只富化并发布加权 Top 10，未将其余候选写入日报数据文件。"
+  ]
+}
