@@ -162,7 +162,14 @@ def choose_chinese_summary(*candidates: str | None) -> str:
         text = (candidate or "").strip()
         if text and CHINESE_TEXT_RE.search(text):
             return text
-    return "中文摘要待补，点击“原文”查看仓库介绍。"
+    # A verified repository description is preferable to a fabricated Chinese
+    # paraphrase.  Callers pass project briefs first, so this is only the
+    # explicit source-description fallback for projects without one.
+    for candidate in candidates:
+        text = (candidate or "").strip()
+        if text:
+            return text
+    return "暂无可靠项目说明，点击“原文”查看仓库介绍。"
 
 
 def enrich_top10_payload(path: Path, briefs: dict[str, dict]) -> bool:
