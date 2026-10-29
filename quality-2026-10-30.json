@@ -1,0 +1,30 @@
+{
+  "period": "2026-10-30",
+  "daily_top10_count": 10,
+  "daily_capability_tag_count": 30,
+  "slice_health": {"all": 11, "python": 10, "typescript": 14, "javascript": 6, "go": 11, "rust": 15},
+  "enrichment": {"candidate_count": 60, "metadata_failures": 0, "readme_coverage": 10, "manifest_coverage": 9},
+  "history": {"daily_reports_checked": 99, "all_have_ten_projects": true, "all_capability_tags_are_chinese": true},
+  "leaderboard": {
+    "json_parseable": true,
+    "repository_count": 229,
+    "snapshot_count": 99,
+    "repository_deduplicated": true,
+    "ranks_continuous": true,
+    "default_page_size": 10,
+    "page_size_options": [10, 20, 50],
+    "model_version": "leaderboard-v2",
+    "summary_sources": {"project_brief": 159, "original_description": 70, "missing": 0}
+  },
+  "browser_qa": {
+    "production": true,
+    "default_rows": 10,
+    "second_page": "verified at ?page=2 with 10 rendered projects",
+    "rust_filter_and_growth_sort": true,
+    "invalid_url_normalizes": true,
+    "mobile_viewport": 390,
+    "mobile_horizontal_overflow": false,
+    "console_errors": 0
+  },
+  "limitations": []
+}

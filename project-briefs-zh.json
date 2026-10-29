@@ -1202,6 +1202,33 @@
     "evidence_sources": ["https://github.com/hmjz100/LinkSwift"],
     "evidence_note": "依据本次抓取的仓库 description；未运行工具或验证各网盘兼容性。"
   },
+  "CopilotKit/OpenBot": {
+    "summary": "一个开源 AI 同事运行环境：每个 Agent 拥有独立的浏览器、文件系统和电脑操作空间，并可在团队中协作完成任务。",
+    "audience": "希望为多 Agent 工作流提供隔离执行环境、浏览器和文件操作能力的开发者与团队",
+    "capabilities": "AI 同事、独立浏览器、文件系统、电脑操作、多 Agent 协作",
+    "risk": "浏览器、文件和电脑操作属于高权限能力；实际隔离边界、凭据处理、审计与生产稳定性需在目标部署中验证。",
+    "verified_at": "2026-10-30",
+    "evidence_sources": ["https://github.com/CopilotKit/OpenBot"],
+    "evidence_note": "依据本次抓取的 README、topics 与仓库 description；未运行或授予真实电脑权限。"
+  },
+  "jub0t/Concat": {
+    "summary": "一个免费、开源、local-first 的跨平台视频剪辑应用，定位为 CapCut 的替代方案。",
+    "audience": "希望在本机完成跨平台视频剪辑、避免依赖闭源云端编辑器的创作者和开发者",
+    "capabilities": "本地优先、跨平台视频剪辑、开源 CapCut 替代",
+    "risk": "功能完整度、编解码兼容性、性能和导出稳定性需按实际素材与设备单独验证。",
+    "verified_at": "2026-10-30",
+    "evidence_sources": ["https://github.com/jub0t/Concat"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未导入真实项目或进行剪辑测试。"
+  },
+  "JetBrains/thinkrail": {
+    "summary": "一个围绕 pi 的轻量级 AI 编程 IDE，可按开发者工作方式调整自身配置，用于通过自然语言协助编写代码。",
+    "audience": "希望在更轻量 IDE 中使用可定制 AI 编程工作流的开发者",
+    "capabilities": "AI 编程 IDE、pi 集成、工作流定制、自然语言编程",
+    "risk": "IDE 的自定义范围、对 pi 的依赖以及在大型代码库中的性能和稳定性仍需通过实际工程验证。",
+    "verified_at": "2026-10-30",
+    "evidence_sources": ["https://github.com/JetBrains/thinkrail"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未安装或在真实代码库中测试。"
+  },
   "Gaurav-Gosain/tuios": {
     "summary": "一个用 Go 构建的终端窗口管理器与复用器，提供分屏、工作区、可跨重启保留的会话，以及让终端内编码 Agent 上报状态和互相传递消息的 Inbox。",
     "audience": "在终端中同时运行多个编码 Agent、项目会话和远程环境的开发者",
