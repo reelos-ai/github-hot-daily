@@ -1131,6 +1131,12 @@ def project_chinese_summary(project: dict, brief: dict) -> str:
         text = (candidate or "").strip()
         if text and CHINESE_TEXT_RE.search(text):
             return text
+    # Do not invent a Chinese paraphrase when no verified brief exists. The
+    # repository description is the public source of record and the payload
+    # keeps summary_source=original_description for these rows.
+    description = (project.get("description") or "").strip()
+    if description:
+        return description
     return "中文摘要待补，点击“原文”查看仓库介绍。"
 
 
