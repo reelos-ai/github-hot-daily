@@ -81,11 +81,17 @@
     "strategic_score": 97,
     "capability_tags": [
       "长期记忆",
-      "MCP 集成",
-      "RAG 检索"
+      "跨会话上下文",
+      "Agent 集成"
     ],
     "brief_zh": {
-      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+      "summary": "为 Claude Code、Codex 等 Agent 保存跨会话上下文：记录会话活动、用 AI 压缩，并在后续会话注入相关信息。",
+      "capabilities": "长期记忆、跨会话上下文、Agent 集成",
+      "verified_at": "2026-11-03",
+      "evidence_sources": [
+        "https://github.com/thedotmack/claude-mem"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；未运行或验证记忆质量。"
     },
     "summary_source": "project_brief"
   },
@@ -428,15 +434,18 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "新闻聚合",
-      "地缘事件监控",
-      "基础设施追踪"
+      "情报聚合",
+      "地缘监测",
+      "MCP 服务"
     ],
     "brief_zh": {
-      "summary": "一个实时全球态势看板，聚合新闻、地缘政治事件和基础设施信息，并用 AI 辅助形成统一监控视图。",
-      "audience": "研究国际事件、风险情报或全球运营状态的分析人员",
-      "capabilities": "新闻聚合、地缘事件监控、基础设施追踪、统一态势界面",
-      "risk": "判断质量高度依赖数据源覆盖、更新速度和事件去重能力"
+      "summary": "一个实时全球情报仪表盘，聚合 AI 新闻、地缘监测和基础设施追踪信息。",
+      "capabilities": "情报聚合、地缘监测、MCP 服务",
+      "verified_at": "2026-11-03",
+      "evidence_sources": [
+        "https://github.com/koala73/worldmonitor"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；信息来源和实时性未逐项验证。"
     },
     "summary_source": "project_brief"
   },

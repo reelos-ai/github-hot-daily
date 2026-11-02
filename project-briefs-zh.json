@@ -1229,6 +1229,62 @@
     "evidence_sources": ["https://github.com/JetBrains/thinkrail"],
     "evidence_note": "依据本次抓取的 README 与仓库 description；未安装或在真实代码库中测试。"
   },
+  "thedotmack/claude-mem": {
+    "summary": "为 Claude Code、Codex 等 Agent 保存跨会话上下文：记录会话活动、用 AI 压缩，并在后续会话注入相关信息。",
+    "capabilities": "长期记忆、跨会话上下文、Agent 集成",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/thedotmack/claude-mem"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；未运行或验证记忆质量。"
+  },
+  "calesthio/OpenMontage": {
+    "summary": "一个开源的 Agent 视频制作系统，项目说明列出 12 条制作流水线、100 多种工具和 700 多份 Agent Skill 与制作知识文件。",
+    "capabilities": "Agent 视频制作、制作流水线、技能文件",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/calesthio/OpenMontage"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；未完成端到端视频制作测试。"
+  },
+  "FlashML-org/FreeToken": {
+    "summary": "面向桌面端的本地模型服务项目，仓库说明定位为高效运行大型模型的推理方案。",
+    "capabilities": "本地模型服务、模型推理、桌面部署",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/FlashML-org/FreeToken"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；性能与模型兼容性未实测。"
+  },
+  "Nasiko-Labs/nasiko": {
+    "summary": "一个面向 AI Agent 的开放运行时。",
+    "capabilities": "Agent 运行时、MCP 网关、多 Agent",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/Nasiko-Labs/nasiko"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；运行时边界和安全能力未实测。"
+  },
+  "D4Vinci/Scrapling": {
+    "summary": "一个从单次请求到大规模爬取都覆盖的 Web 抓取框架。",
+    "capabilities": "网页抓取、数据提取、MCP 服务",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/D4Vinci/Scrapling"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；未针对目标网站验证反爬与抓取成功率。"
+  },
+  "cheaper-inference/OmniRoute": {
+    "summary": "一个开源 AI 网关，以统一端点连接多家模型供应商，提供额度感知的自动回退，并支持 MCP 与 A2A。",
+    "capabilities": "统一模型接口、自动回退、MCP 集成",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/cheaper-inference/OmniRoute"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；供应商可用性、额度和路由效果未独立验证。"
+  },
+  "Orkas-AI/Orkas": {
+    "summary": "一个 local-first 桌面 AI 团队应用：Commander 将目标拆成待办，并协调内置专家 Agent 与 Claude Code、Codex 等工具。",
+    "capabilities": "本地优先、多 Agent 协作、自动化连接器",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/Orkas-AI/Orkas"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；未安装桌面端或验证自动化能力。"
+  },
+  "koala73/worldmonitor": {
+    "summary": "一个实时全球情报仪表盘，聚合 AI 新闻、地缘监测和基础设施追踪信息。",
+    "capabilities": "情报聚合、地缘监测、MCP 服务",
+    "verified_at": "2026-11-03",
+    "evidence_sources": ["https://github.com/koala73/worldmonitor"],
+    "evidence_note": "依据本次抓取的仓库 description 与 topics；信息来源和实时性未逐项验证。"
+  },
   "Gaurav-Gosain/tuios": {
     "summary": "一个用 Go 构建的终端窗口管理器与复用器，提供分屏、工作区、可跨重启保留的会话，以及让终端内编码 Agent 上报状态和互相传递消息的 Inbox。",
     "audience": "在终端中同时运行多个编码 Agent、项目会话和远程环境的开发者",

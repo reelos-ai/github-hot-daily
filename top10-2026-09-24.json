@@ -814,18 +814,18 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "智能体部署",
-      "请求路由",
-      "运行观测"
+      "Agent 运行时",
+      "MCP 网关",
+      "Runtime 参考"
     ],
     "brief_zh": {
-      "summary": "为支持 A2A 协议的 Agent 提供部署、路由、安全控制和运行观测的统一控制台。",
-      "capabilities": "智能体部署、请求路由、运行观测",
-      "verified_at": "2026-09-25",
+      "summary": "一个面向 AI Agent 的开放运行时。",
+      "capabilities": "Agent 运行时、MCP 网关、多 Agent",
+      "verified_at": "2026-11-03",
       "evidence_sources": [
         "https://github.com/Nasiko-Labs/nasiko"
       ],
-      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；运行时边界和安全能力未实测。"
     },
     "summary_source": "project_brief"
   }

@@ -488,11 +488,17 @@
     "strategic_score": 94,
     "capability_tags": [
       "长期记忆",
-      "MCP 集成",
-      "RAG 检索"
+      "跨会话上下文",
+      "Agent 集成"
     ],
     "brief_zh": {
-      "summary": "为编码 Agent 保存跨会话记忆，自动压缩历史操作，并在后续任务中注入相关上下文。"
+      "summary": "为 Claude Code、Codex 等 Agent 保存跨会话上下文：记录会话活动、用 AI 压缩，并在后续会话注入相关信息。",
+      "capabilities": "长期记忆、跨会话上下文、Agent 集成",
+      "verified_at": "2026-11-03",
+      "evidence_sources": [
+        "https://github.com/thedotmack/claude-mem"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；未运行或验证记忆质量。"
     },
     "summary_source": "project_brief"
   },

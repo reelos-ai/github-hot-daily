@@ -702,16 +702,19 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "自适应抓取",
-      "网页爬取框架",
-      "规模化采集"
+      "网页抓取",
+      "数据提取",
+      "MCP 服务"
     ],
     "summary_source": "project_brief",
     "brief_zh": {
-      "summary": "一个自适应网页抓取框架，覆盖从单次请求到大规模爬取的不同场景，强调更现代网页环境下的抓取灵活性。",
-      "audience": "需要处理复杂站点采集、逐步扩展抓取规模或为自动化流程提供网页数据的开发者",
-      "capabilities": "自适应抓取、网页爬取框架、规模化采集、Python 库、现代网页兼容",
-      "risk": "抓取框架的实际价值取决于反爬对抗、动态渲染支持和长期维护质量，复杂站点下仍需实测"
+      "summary": "一个从单次请求到大规模爬取都覆盖的 Web 抓取框架。",
+      "capabilities": "网页抓取、数据提取、MCP 服务",
+      "verified_at": "2026-11-03",
+      "evidence_sources": [
+        "https://github.com/D4Vinci/Scrapling"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；未针对目标网站验证反爬与抓取成功率。"
     }
   },
   {
