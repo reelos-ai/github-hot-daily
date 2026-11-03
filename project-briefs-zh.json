@@ -1293,5 +1293,40 @@
     "verified_at": "2026-10-25",
     "evidence_sources": ["https://github.com/Gaurav-Gosain/tuios"],
     "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装、配置 daemon 或连接远程主机。"
+  },
+  "vercel-labs/agent-desktop": {
+    "summary": "一个供 AI Agent 操作桌面环境的命令行工具，仓库将其定位为 computer use CLI。",
+    "capabilities": "计算机操作、命令行界面、MCP 集成",
+    "verified_at": "2026-11-04",
+    "evidence_sources": ["https://github.com/vercel-labs/agent-desktop"],
+    "evidence_note": "依据本次抓取的仓库 description、topics 与 README；未在真实桌面环境执行自动化任务。"
+  },
+  "lexmount/moli": {
+    "summary": "一个用 Rust 构建、面向 AI Agent 的无头浏览器，项目说明强调轻量、速度和兼容性。",
+    "capabilities": "无头浏览器、浏览器自动化、Agent 工具",
+    "verified_at": "2026-11-04",
+    "evidence_sources": ["https://github.com/lexmount/moli"],
+    "evidence_note": "依据本次抓取的仓库 description、topics 与 README；未独立测试页面兼容性或性能。"
+  },
+  "max-sixty/worktrunk": {
+    "summary": "一个用于管理 Git worktree 的命令行工具，面向并行运行 AI Agent 的开发工作流。",
+    "capabilities": "Git worktree 管理、并行 Agent 工作流、开发者工具",
+    "verified_at": "2026-11-04",
+    "evidence_sources": ["https://github.com/max-sixty/worktrunk"],
+    "evidence_note": "依据本次抓取的仓库 description、topics 与 README；未在多 Agent 项目中验证隔离和合并流程。"
+  },
+  "keploy/keploy": {
+    "summary": "一个用于 API、集成与端到端测试的开源平台，仓库说明主张创建安全、隔离的生产环境沙箱。",
+    "capabilities": "测试自动化、隔离沙箱、API 测试",
+    "verified_at": "2026-11-04",
+    "evidence_sources": ["https://github.com/keploy/keploy"],
+    "evidence_note": "依据本次抓取的仓库 description、topics 与 README；未在生产服务验证沙箱隔离边界。"
+  },
+  "hieunc229/mailflare": {
+    "summary": "一个面向专业人士和团队的邮件项目；当前公开 description 仅提供该定位，具体功能仍需查阅原文确认。",
+    "capabilities": "团队邮件、Cloudflare Workers 应用、Web 应用",
+    "verified_at": "2026-11-04",
+    "evidence_sources": ["https://github.com/hieunc229/mailflare"],
+    "evidence_note": "依据本次抓取的仓库 description、topics 与 README；功能边界信息有限，未补充推断。"
   }
 }
