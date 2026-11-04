@@ -56,6 +56,7 @@ CAPABILITY_TRANSLATIONS = {
     "bun": "Bun 运行时",
     "browser": "浏览器 Agent",
     "claude-code": "Claude Code 生态",
+    "copilot": "AI 编程助手",
     "cli": "CLI",
     "coding": "编码 Agent",
     "code-editor": "代码编辑器",
