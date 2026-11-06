@@ -242,11 +242,20 @@
     },
     "strategic_score": 94,
     "capability_tags": [
-      "MCP 集成",
-      "RAG 检索",
-      "大模型应用"
+      "语义图谱",
+      "上下文检索",
+      "确定性查询"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "NVIDIA 开源的 Python 框架，用语义和图结构为数据构建可解释的推理层，服务 LLM 与 Agent 的上下文检索和确定性查询生成。",
+      "capabilities": "语义图谱、上下文检索、确定性查询",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/auto-ontology"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；检索质量和真实数据集适配效果未独立验证。"
+    }
   },
   {
     "owner": "garrytan",
@@ -749,10 +758,19 @@
     },
     "strategic_score": 90,
     "capability_tags": [
-      "长期记忆",
-      "工作区",
-      "大模型应用"
+      "图像生成",
+      "视频生成",
+      "自托管"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
+      "capabilities": "图像生成、视频生成、自托管",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/Anil-matcha/Open-Generative-AI"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description、topics 与 README；模型可用性、内容安全和部署成本未独立验证。"
+    }
   }
 ]

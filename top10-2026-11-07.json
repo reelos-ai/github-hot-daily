@@ -1,0 +1,817 @@
+[
+  {
+    "owner": "stablyai",
+    "name": "orca",
+    "full_name": "stablyai/orca",
+    "url": "https://github.com/stablyai/orca",
+    "description": "Orca lets you run a fleet of coding agents (e.g. Claude Code, Codex) with your own subscription. Available on desktop, mobile and remote runtime.",
+    "language": "TypeScript",
+    "total_stars": 117782,
+    "forks": 7466,
+    "stars_this_period": 1199,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-ide",
+        "ai-agents",
+        "automation",
+        "bot",
+        "claude-code",
+        "codex",
+        "ghostty",
+        "grok-bot",
+        "hermes-agent",
+        "mobile-app",
+        "muse",
+        "openclaw",
+        "opencode",
+        "orchestration",
+        "pi",
+        "runtime",
+        "swarm",
+        "terminal",
+        "worktrees",
+        "yc-backed"
+      ],
+      "license": "MIT",
+      "open_issues": 8105,
+      "created_at": "2026-03-17T03:28:57Z",
+      "pushed_at": "2026-11-06T22:07:10Z",
+      "homepage": "https://orca.dev",
+      "default_branch": "main",
+      "forks": 7466,
+      "watchers": 159,
+      "archived": false,
+      "size_kb": 2436445
+    },
+    "readme_content": "<h1 align=\"center\">\n  <a href=\"https://onOrca.dev\"><img src=\"resources/build/icon.png\" alt=\"Orca\" width=\"64\" valign=\"middle\" /></a> Orca\n</h1>\n\n<p align=\"center\">\n  <a href=\"https://github.com/stablyai/orca\"><img src=\"https://img.shields.io/github/stars/stablyai/orca?style=flat&amp;label=%E2%98%85&amp;color=08C\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/stablyai/orca/releases\"><img src=\"docs/assets/readme-downloads.svg\" alt=\"Total downloads across all releases\" /></a>\n  <img src=\"https://img.shields.io/badge/license-MIT-08C?style=flat\" alt=\"License: MIT\" />\n  <a href=\"https://discord.gg/fzjDKHxv8Q\"><img src=\"https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white\" alt=\"Join the Orca Discord\" /></a>\n  <a href=\"https://x.com/orca_build\"><img src=\"https://img.shields.io/badge/X-000000?logo=x&logoColor=white\" alt=\"Follow Orca on X\" /></a>\n  <img src=\"https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-4493F8?style=flat-square\" alt=\"Supported platforms: macOS, Windows, and Linux\" />\n</p>\n\n<p align=\"center\">\n  <sub><a href=\"docs/readme/README.zh-CN.md\">中文</a> · <a href=\"docs/readme/README.ja.md\">日本語</a> · <a href=\"docs/readme/README.ko.md\">한국어</a> · <a href=\"docs/readme/README.es.md\">Español</a> · <a href=\"docs/readme/README.fr.md\">Français</a> · <a href=\"docs/readme/README.pt.md\">Português</a> · <a href=\"docs/readme/README.tr.md\">Türkçe</a> · <a href=\"docs/readme/README.ru.md\">Русский</a></sub>\n</p>\n\n<p align=\"center\">\n  <strong>The AI Orchestrator for 100x builders.</strong><br/>\n  Run Claude Code, Codex, and any other coding agent in parallel, each in its own worktree. Chat or terminal, on your laptop or in the cloud, with diffs, a browser, and a CLI in one app.\n</p>\n\n<h3 align=\"center\"><a href=\"https://onorca.dev/download\"><ins>Download Orca</ins></a></h3>\n\n<p align=\"center\">\n  <img src=\"docs/assets/readme-hero.jpg\" alt=\"Orca desktop app with a coordinator agent running worker agents in parallel workspaces, and the Orca mobile app in the corner\" width=\"960\" />\n</p>\n\n## Features\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Orchestrate Agents\n\nHand a big task to one agent. It splits the work, starts worker agents in their own workspaces, and brings their results back to you.\n\n[Docs →](https://www.onorca.dev/docs/cli/orchestration)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/cli/orchestration\"><picture><source srcset=\"docs/assets/readme-features/orchestration.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/orchestration.poster.jpg\" alt=\"A coordinator agent splitting a task between two worker agents and reporting their results\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Chat or Terminal\n\nRun any agent in Chat UI or as the raw CLI, and move a conversation between the two without losing context.\n\n[Docs →](https://www.onorca.dev/docs/agents/native-chat)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/agents/native-chat\"><picture><source srcset=\"docs/assets/readme-features/chat-or-terminal.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/chat-or-terminal.poster.jpg\" alt=\"The same agent conversation in Chat UI and in the terminal, side by side\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Run Anywhere\n\nPair a Remote Orca Server, work on any SSH host, or give a worktree its own cloud VM. Your agents keep running when your laptop sleeps.\n\n[Docs →](https://www.onorca.dev/docs/ways-to-run)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/ways-to-run\"><picture><source srcset=\"docs/assets/readme-features/remote.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/remote.poster.jpg\" alt=\"Choosing which machine a new worktree runs on, from this computer to an SSH host or a per-workspace environment\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Mobile App\n\nPair Orca with the mobile app to get pinged when an agent needs you, reply in chat, and keep work moving on any of your machines when you are away from your desk.\n\n[iOS App Store](https://apps.apple.com/us/app/orca-ide/id6766130217) · [Android APK](https://www.onorca.dev/download/android) · [Docs →](https://www.onorca.dev/docs/mobile)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/mobile\"><picture><source srcset=\"docs/assets/readme-features/mobile-companion.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/mobile-companion.poster.jpg\" alt=\"The Orca mobile app getting a notification that Claude needs input, opening the session, and replying so the agent opens the PR\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Review AI Output\n\nReview diffs, leave notes on exact changed lines, and send focused feedback back to an agent.\n\n[Docs →](https://www.onorca.dev/docs/review/annotate-ai-diff)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/review/annotate-ai-diff\"><picture><source srcset=\"docs/assets/readme-features/annotate-ai-diffs.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/annotate-ai-diffs.poster.jpg\" alt=\"A note on a changed diff line sent back to the agent\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Git Integration\n\nDraft commit messages and pull requests from the diff, then send failing checks or PR review comments back to an agent to fix.\n\n[Docs →](https://www.onorca.dev/docs/review/commit-push)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/review/commit-push\"><picture><source srcset=\"docs/assets/readme-features/git-integration.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/git-integration.poster.jpg\" alt=\"Drafting a commit and pull request, then sending a review comment back to the agent\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Parallel Worktrees\n\nQuickly split tasks into isolated environments, so multiple agents can work side by side without interfering with each other.\n\n[Docs →](https://www.onorca.dev/docs/model/worktrees)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/model/worktrees\"><picture><source srcset=\"docs/assets/readme-features/parallel-worktrees.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/parallel-worktrees.poster.jpg\" alt=\"Creating a new worktree with its own agent next to other running worktrees\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Design Mode\n\nClick any element in Orca's browser to copy its HTML, styles, and selector, then paste it into your agent's chat.\n\n[Docs →](https://www.onorca.dev/docs/browser/design-mode)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/browser/design-mode\"><picture><source srcset=\"docs/assets/readme-features/design-mode.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/design-mode.poster.jpg\" alt=\"Picking a button in Orca's browser and sending it to the agent's chat\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### GitHub &amp; Linear, Native\n\nSee your GitHub and Linear tasks in one place, and start a workspace for each when you're ready to build.\n\n[Docs →](https://www.onorca.dev/docs/review/linear)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/review/linear\"><picture><source srcset=\"docs/assets/readme-features/github-linear-tasks.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/github-linear-tasks.poster.jpg\" alt=\"GitHub and Linear issues in Orca, with a workspace started from a Linear issue\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Orca CLI\n\nAnything you can do in Orca, your agents can do too: create worktrees, start workers, drive the browser and desktop apps, and schedule automations, all from the command line.\n\n[Docs →](https://www.onorca.dev/docs/cli/overview)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/cli/overview\"><picture><source srcset=\"docs/assets/readme-features/orca-cli.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/orca-cli.poster.jpg\" alt=\"An agent running orca worktree create to start a worker in a new worktree\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Plugins\n\nThemes, editors, languages, and panels from the community, installed in a click.\n\n[Browse plugins →](https://www.onorca.dev/plugins)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/plugins\"><picture><source srcset=\"docs/assets/readme-features/plugins.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/plugins.poster.jpg\" alt=\"Installing the Orca Midnight theme from the plugin catalog\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Split Anything\n\nPut agents, terminals, browsers, and diffs side by side in split panes shaped to the task.\n\n[Docs →](https://www.onorca.dev/docs/model/tabs-panes-splits)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://www.onorca.dev/docs/model/tabs-panes-splits\"><picture><source srcset=\"docs/assets/readme-features/split-anything.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/split-anything.poster.jpg\" alt=\"Dragging tabs into split panes with an agent, browser, terminal, and diff\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n</table>\n\n**Also in the box:**\n\n- **[Drag Files to Agents](https://www.onorca.dev/docs/editing/file-explorer)**: drag files from the explorer, or images from your desktop, straight into an agent's prompt.\n- **[Jump Anywhere](https://www.onorca.dev/docs/model/quick-open)**: one shortcut jumps to any workspace or tab across every repo and host.\n- **[Rich Previews](https://www.onorca.dev/docs/editing/viewers)**: open images, PDFs, and Markdown right in the workspace, next to the agent that made them.\n- **[Mobile Emulator](https://www.onorca.dev/docs/cli/overview#mobile-emulator)**: run an iOS Simulator or Android emulator beside your agent, and let it tap, type, and check its own work.\n- **[Dictation](https://www.onorca.dev/docs/settings#voice)**: press a shortcut and talk. Orca types what you say into the agent's prompt or terminal.\n- **[Usage &amp; Accounts](https://www.onorca.dev/docs/agents/usage-tracking)**: see how much of your agent limits you've used and when they reset, and switch accounts without logging out.\n- **[Automations](https://www.onorca.dev/docs/cli/automations)**: schedule prompts to run on any repo: nightly dependency bumps, weekly triage, flaky-test sweeps.\n- **[Computer Use](https://www.onorca.dev/docs/cli/computer-use)**: when there's no CLI or API, agents can see and drive desktop apps and external browsers.\n- **And many, many more**: we ship daily, so this list is perpetually behind. The [changelog](https://github.com/stablyai/orca/releases) is the real feature list.\n\n---\n\n## Supported Agents\n\nWorks with **any CLI agent** — if it runs in a terminal, it runs in Orca.\n\n<p>\n  <a href=\"https://docs.anthropic.com/claude/docs/claude-code\"><kbd><img src=\"docs/assets/claude-logo.svg\" alt=\"Claude Code logo\" width=\"16\" valign=\"middle\" /> Claude Code</kbd></a> &nbsp;\n  <a href=\"https://github.com/openai/codex\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=openai.com&sz=64\" alt=\"Codex logo\" width=\"16\" valign=\"middle\" /> Codex</kbd></a> &nbsp;\n  <a href=\"https://x.ai/cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=x.ai&sz=64\" alt=\"Grok logo\" width=\"16\" valign=\"middle\" /> Grok</kbd></a> &nbsp;\n  <a href=\"https://cursor.com/cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=cursor.com&sz=64\" alt=\"Cursor logo\" width=\"16\" valign=\"middle\" /> Cursor</kbd></a> &nbsp;\n  <a href=\"https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli\"><kbd><img src=\"https://www.google.com/s2/favicons?domain=github.com&sz=64\" alt=\"GitHub Copilot logo\" width=\"16\" valign=\"middle\" /> GitHub Copilot</kbd></a> &nbsp;\n  <a href",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"orca\",\n  \"version\": \"1.4.214\",\n  \"description\": \"Next-gen IDE for parallel agentic development\",\n  \"homepage\": \"https://github.com/stablyai/orca\",\n  \"author\": \"stablyai\",\n  \"bin\": {\n    \"orca\": \"./out/cli/index.js\",\n    \"orca-dev\": \"./config/scripts/development/launch/orca-dev.mjs\"\n  },\n  \"main\": \"./out/main/index.js\",\n  \"scripts\": {\n    \"check:dependencies\": \"pnpm run build:packages && node config/scripts/dependency-security/audit-tools/check-dependency-security.mjs\",\n    \"install:release\": \"pnpm install --frozen-lockfile --cpu=current,x64,arm64\",\n    \"audit:perf\": \"oxlint --config config/oxlint-performance-audit.json --format json src\",\n    \"test:perf:contracts\": \"vitest run --config config/vitest.performance.config.ts\",\n    \"format\": \"oxfmt --write .\",\n    \"lint\": \"node config/scripts/preflight/changed-checks/run-lint.mjs\",\n    \"audit:code-quality\": \"pnpm run audit:code-quality:native && pnpm run audit:code-quality:type-aware && pnpm run audit:react-doctor\",\n    \"audit:code-quality:native\": \"oxlint --config config/oxlint-code-quality-native-plugins.json src config tests mobile --deny-warnings\",\n    \"audit:code-quality:type-aware\": \"oxlint --type-aware --config config/oxlint-code-quality-type-aware.json src config tests --deny-warnings\",\n    \"audit:react-doctor\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs react-doctor . --yes --no-supply-chain --no-telemetry --blocking none\",\n    \"audit:dead-code\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs knip --config config/knip.json\",\n    \"check:changed\": \"node config/scripts/preflight/changed-checks/check-changed.mjs\",\n    \"check:code-quality:changed\": \"node config/scripts/preflight/changed-checks/check-changed-code-quality.mjs\",\n    \"lint:js-plugins\": \"oxlint --config config/oxlint-js-plugins.json src config tests mobile native .github\",\n    \"lint:ast-grep\": \"ast-grep scan --config config/sgconfig.yml --min-severity warning src config tests mobile\",\n    \"lint:ast-grep-gates\": \"node config/scripts/static-analysis/structural-scan/ast-grep-gates.mjs\",\n    \"lint:ast-grep:flaky-tests\": \"ast-grep scan --config config/sgconfig.yml --filter \\\"^test-\\\" src config tests mobile\",\n    \"test:ast-grep\": \"ast-grep test --config config/sgconfig.yml --skip-snapshot-tests\",\n    \"check:dead-classes\": \"oxlint --config config/oxlint-dead-classes.json src/renderer\",\n    \"lint:design-system\": \"oxlint --config config/oxlint-design-system.json src/renderer\",\n    \"check:react-doctor:changed\": \"node config/scripts/static-analysis/react-doctor/check-react-doctor-changed.mjs\",\n    \"check:zustand-selector-fanout\": \"node config/scripts/performance/renderer-projection/zustand-selector-fanout-benchmark.mjs --check\",\n    \"doctor\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs react-doctor . --no-telemetry\",\n    \"lint:react-doctor\": \"oxlint --config config/oxlint-react-doctor.json\",\n    \"lint:react-doctor:changed\": \"node config/scripts/static-analysis/react-doctor/lint-react-doctor-changed.mjs\",\n    \"prepare\": \"husky\",\n    \"test\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/test-runtime/execution-policy/run-vitest.mjs run --config config/vitest.config.ts\",\n    \"test:changed\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/test-runtime/execution-policy/run-vitest.mjs run --config config/vitest.config.ts --changed=HEAD\",\n    \"test:node\": \"pnpm run build:packages && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && vitest run --config config/vitest.config.ts\",\n    \"test:node-server\": \"node config/scripts/ci/unit-selection/run-node-server-tests.mjs\",\n    \"test:skill-sharing:release\": \"vitest run --config config/vitest.config.ts src/main/skills src/main/runtime/rpc/methods/skills/skills.test.ts src/shared/skill-bundle-install-contract.test.ts src/shared/skill-install-contract.test.ts src/shared/skill-install-failure.test.ts src/shared/skill-package-manifest.test.ts\",\n    \"test:repro:remote-agent-session\": \"pnpm run build:cli && pnpm run build:electron-vite && node config/scripts/diagnostics/remote-agent-authority/remote-agent-session-authority-repro.mjs\",\n    \"capture:agent-transcript\": \"node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/diagnostics/terminal-transcripts/capture-agent-pty-transcript.mjs\",\n    \"check:reliability-gates\": \"node config/scripts/static-analysis/reliability-policy/check-reliability-gates.mjs\",\n    \"check:ratchets\": \"node config/scripts/static-analysis/ratchet-runner/run-ratchets.mjs\",\n    \"check:max-lines-ratchet\": \"node config/scripts/static-analysis/ratchets/source-budget/check-max-lines-ratchet.mjs\",\n    \"chec",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "runtime",
+      "workspace",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 97
+    },
+    "strategic_score": 97,
+    "capability_tags": [
+      "并行编码",
+      "任务管理",
+      "远程开发"
+    ],
+    "brief_zh": {
+      "summary": "在桌面、移动端或远程环境中管理多个并行编码 Agent，使用已有模型订阅推进开发任务。",
+      "audience": "需要同时运行多个编码 Agent、并在不同终端统一管理它们的开发者和团队",
+      "capabilities": "并行编码、任务管理、远程开发",
+      "risk": "多 Agent 协作的真实收益依赖调度体验和失败恢复机制，需重点验证复杂任务下的稳定性",
+      "verified_at": "2026-09-26",
+      "evidence_sources": [
+        "https://github.com/stablyai/orca"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "D4Vinci",
+    "name": "Scrapling",
+    "full_name": "D4Vinci/Scrapling",
+    "url": "https://github.com/D4Vinci/Scrapling",
+    "description": "🕷️ The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks: https://x.com/Scrapling_dev",
+    "language": "Python",
+    "total_stars": 98797,
+    "forks": 10350,
+    "stars_this_period": 1312,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "ai-scraping",
+        "automation",
+        "crawler",
+        "crawling",
+        "crawling-python",
+        "data",
+        "data-extraction",
+        "mcp",
+        "mcp-server",
+        "playwright",
+        "python",
+        "scraping",
+        "selectors",
+        "stealth",
+        "web-scraper",
+        "web-scraping",
+        "web-scraping-python",
+        "webscraping",
+        "xpath"
+      ],
+      "license": "BSD-3-Clause",
+      "open_issues": 15,
+      "created_at": "2024-10-13T20:29:53Z",
+      "pushed_at": "2026-11-05T18:01:47Z",
+      "homepage": "https://scrapling.readthedocs.io/en/latest/",
+      "default_branch": "main",
+      "forks": 10350,
+      "watchers": 345,
+      "archived": false,
+      "size_kb": 16790
+    },
+    "readme_content": "<!-- mcp-name: io.github.D4Vinci/Scrapling -->\n\n<h1 align=\"center\">\n    <a href=\"https://scrapling.readthedocs.io\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/docs/assets/cover_dark.svg?sanitize=true\">\n          <img alt=\"Scrapling Poster\" src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/docs/assets/cover_light.svg?sanitize=true\">\n        </picture>\n    </a>\n    <br>\n    <small>Effortless Web Scraping for the Modern Web</small>\n</h1>\n\n<p align=\"center\">\n    <a href=\"https://trendshift.io/repositories/14244\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/14244\" alt=\"D4Vinci%2FScrapling | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n    <a href=\"https://www.star-history.com/d4vinci/scrapling\"><img src=\"https://api.star-history.com/badge?repo=D4Vinci/Scrapling&type=rank\" alt=\"Star History Rank\" style=\"height: 55px;\" height=\"55\"/></a>\n    <br/>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_AR.md\"><img alt=\"README بالعربية\" title=\"README بالعربية\" src=\"https://img.shields.io/badge/Arabic-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_ES.md\"><img alt=\"README en Español\" src=\"https://img.shields.io/badge/Español-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_PT_BR.md\"><img alt=\"README em Português (Brasil)\" src=\"https://img.shields.io/badge/Português%20(Brasil)-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_FR.md\"><img alt=\"README en Français\" src=\"https://img.shields.io/badge/Français-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_DE.md\"><img alt=\"README auf Deutsch\" src=\"https://img.shields.io/badge/Deutsch-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_CN.md\"><img alt=\"简体中文版自述文件\" src=\"https://img.shields.io/badge/简体中文-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_JP.md\"><img alt=\"日本語のREADME\" src=\"https://img.shields.io/badge/日本語-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_RU.md\"><img alt=\"Русская версия README\" src=\"https://img.shields.io/badge/Русский-DFE0E5\"></a>\n    <a href=\"https://github.com/D4Vinci/Scrapling/blob/main/docs/README_KR.md\"><img alt=\"한국어 README\" src=\"https://img.shields.io/badge/한국어-DFE0E5\"></a>\n    <br/>\n    <a href=\"https://github.com/D4Vinci/Scrapling/actions/workflows/tests.yml\" alt=\"Tests\">\n        <img alt=\"Tests\" src=\"https://github.com/D4Vinci/Scrapling/actions/workflows/tests.yml/badge.svg\"></a>\n    <a href=\"https://badge.fury.io/py/Scrapling\" alt=\"PyPI version\">\n        <img alt=\"PyPI version\" src=\"https://badge.fury.io/py/Scrapling.svg\"></a>\n    <a href=\"https://hub.docker.com/r/pyd4vinci/scrapling\" target=\"_blank\">\n        <img alt=\"Docker Pulls\" src=\"https://img.shields.io/docker/pulls/pyd4vinci/scrapling?labelColor=%20%23FDB062&logo=Docker&labelColor=%20%23528bff\"></a>\n    <a href=\"https://clickpy.clickhouse.com/dashboard/scrapling\" rel=\"nofollow\"><img src=\"https://img.shields.io/pypi/dm/scrapling\" alt=\"PyPI package downloads\"></a>\n    <a href=\"https://scrapling.readthedocs.io/en/latest/ai/agent-skill.html\" alt=\"AI Agent Skill\">\n        <img alt=\"Static Badge\" src=\"https://img.shields.io/badge/Skill-black?style=flat&label=Agent&link=https%3A%2F%2Fscrapling.readthedocs.io%2Fen%2Flatest%2Fai%2Fagent-skill.html\"></a>\n    <a href=\"https://clawhub.ai/D4Vinci/scrapling-official\" alt=\"OpenClaw Skill\">\n        <img alt=\"OpenClaw Skill\" src=\"https://img.shields.io/badge/Clawhub-darkred?style=flat&label=OpenClaw&link=https%3A%2F%2Fclawhub.ai%2FD4Vinci%2Fscrapling-official\"></a>\n    <br/>\n    <a href=\"https://discord.gg/EMgGbDceNQ\" alt=\"Discord\" target=\"_blank\">\n      <img alt=\"Discord\" src=\"https://img.shields.io/discord/1360786381042880532?style=social&logo=discord&link=https%3A%2F%2Fdiscord.gg%2FEMgGbDceNQ\">\n    </a>\n    <a href=\"https://x.com/Scrapling_dev\" alt=\"X (formerly Twitter)\">\n      <img alt=\"X (formerly Twitter) Follow\" src=\"https://img.shields.io/twitter/follow/Scrapling_dev?style=social&logo=x&link=https%3A%2F%2Fx.com%2FScrapling_dev\">\n    </a>\n    <br/>\n    <a href=\"https://pypi.org/project/scrapling/\" alt=\"Supported Python versions\">\n        <img alt=\"Supported Python versions\" src=\"https://img.shields.io/pypi/pyversions/scrapling.svg\"></a>\n</p>\n\n<p align=\"center\">\n    <a href=\"https://scrapling.readthedocs.io/en/latest/parsing/selection.html\"><strong>Selection methods</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/fetching/choosing.html\"><strong>Fetchers</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/spiders/architecture.html\"><strong>Spiders</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/spiders/proxy-blocking.html\"><strong>Proxy Rotation</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/cli/overview.html\"><strong>CLI</strong></a>\n    &middot;\n    <a href=\"https://scrapling.readthedocs.io/en/latest/ai/mcp-server.html\"><strong>MCP</strong></a>\n</p>\n\nScrapling is a Python Web Scraping framework that brings fast HTTP requests, stealth browsers, powerful parsing, and concurrent crawling into one library.\n\nScrape static pages, render JavaScript, interact with websites, and extract data from the API calls behind them. Build crawlers with reusable sessions, proxy rotation, automatic retries, pause/resume, and built-in data exports.\n\nUse it from Python, the terminal, or your AI agent through its MCP server and Agent Skill. From extracting a few fields to collecting a whole website as clean Markdown, Scrapling covers the full scraping workflow.\n\n## What you can do with Scrapling\n\n- **[Fetch & interact](https://scrapling.readthedocs.io/en/latest/fetching/choosing.html)**: Fast HTTP requests, stealth browsers, JavaScript rendering, Cloudflare Turnstile/Interstitial handling, persistent sessions, and background API capture.\n- **[Parse & extract](https://scrapling.readthedocs.io/en/latest/parsing/selection.html)**: CSS, XPath, text and regex search, adaptive element tracking, similar-element matching, and clean Markdown output.\n- **[Crawl & export](https://scrapling.readthedocs.io/en/latest/spiders/getting-started.html)**: Concurrent spiders, proxy rotation, retries, AutoThrottle, pause/resume, streaming, ready-made templates, and JSON/JSONL/CSV/XML exports.\n- **[Scrape with AI or from your terminal](https://scrapling.readthedocs.io/en/latest/ai/mcp-server.html)**: An MCP server for AI agents to browse and extract data, an Agent Skill, CLI commands, and an interactive shell.\n\nStart with a single page:\n\n```python\nfrom scrapling.fetchers import Fetcher\n\npage = Fetcher.get('https://quotes.toscrape.com/')\nquotes = page.css('.quote .text::text').getall()\nprint(quotes)\n```\n\nOr scale up with a spider:\n\n```python\nfrom scrapling.spiders import Spider, Response\n\nclass QuotesSpider(Spider):\n    name = \"quotes\"\n    start_urls = [\"https://quotes.toscrape.com/\"]\n\n    async def parse(self, response: Response):\n        for quote in response.css('.quote'):\n            yield {\n                \"text\": quote.css('.text::text').get(),\n                \"author\": quote.css('.author::text').get(),\n            }\n\nresult = QuotesSpider().start()\nprint(len(result.items))\nresult.items.to_json(\"quotes.json\")\n```\n\nThis prints `10` and saves the quotes and authors to `quotes.json`.\n\n<p align=\"center\">\n    <a href=\"https://dataimpulse.com/?utm_source=scrapling&utm_medium=banner&utm_campaign=scrapling\" target=\"_blank\" style=\"display:flex; justify-content:center; padding:4px 0;\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/DataImpulse.png\" alt=\"At DataImpulse, we specialize in developing custom proxy services for your business. Make requests from anywhere, collect data, and enjoy fast connections with our premium proxies.\" style=\"max-height:60px;\">\n    </a>\n</p>\n\n# Platinum Sponsors\n<table>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://go.nodemaven.com/scraplingoctober\" target=\"_blank\" title=\"Proxies with the Highest IP Scores\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/NodeMaven.jpg\" width=\"240\" height=\"100\">\n      </a>\n    </td>\n    <td>\n    <a href=\"https://go.nodemaven.com/scraplingoctober\" target=\"_blank\">NodeMaven</a> - The most efficient proxy provider for Web Scraping and Automation with the Highest Quality IP on the market. Use code SCRAPLING35 for 35% discount.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://hypersolutions.co/?utm_source=github&utm_medium=readme&utm_campaign=scrapling\" target=\"_blank\" title=\"Bot Protection Bypass API for Akamai, DataDome, Incapsula & Kasada\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/HyperSolutions.png\">\n      </a>\n    </td>\n    <td> Scrapling handles Cloudflare Turnstile. For enterprise-grade protection, <a href=\"https://hypersolutions.co?utm_source=github&utm_medium=readme&utm_campaign=scrapling\">\n        <b>Hyper Solutions</b>\n      </a> provides API endpoints that generate valid antibot tokens for <b>Akamai</b>, <b>DataDome</b>, <b>Kasada</b>, and <b>Incapsula</b>. Simple API calls, no browser automation required. </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=d4vinci-scrapling\" target=\"_blank\" title=\"Evomi is your Swiss Quality Proxy Provider, starting at $0.49/GB\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/evomi.png\">\n      </a>\n    </td>\n    <td>\n      <a href=\"https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=d4vinci-scrapling\">\n        <b>Evomi</b>\n      </a>: residential proxies from $0.49/GB. Scraping browser with fully spoofed Chromium, residential IPs, auto CAPTCHA solving, and anti-bot bypass. </br>\n      <b>Scraper API for hassle-free results. MCP and N8N integrations are available.</b>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://tikhub.io/?utm_source=github.com/D4Vinci/Scrapling&utm_medium=marketing_social&utm_campaign=retargeting&utm_content=carousel_ad\" target=\"_blank\" title=\"Unlock the Power of Social Media Data & AI\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/TikHub.jpg\">\n      </a>\n    </td>\n    <td>\n      <a href=\"https://tikhub.io/?utm_source=github.com/D4Vinci/Scrapling&utm_medium=marketing_social&utm_campaign=retargeting&utm_content=carousel_ad\" target=\"_blank\">TikHub.io</a> provides 900+ stable APIs across 16+ platforms including TikTok, X, YouTube & Instagram, with 40M+ datasets. <br /> Also offers <a href=\"https://ai.tikhub.io/?ref=KarimShoair\" target=\"_blank\">DISCOUNTED AI models</a> - Claude, GPT, GEMINI & more up to 71% off.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://substack.thewebscraping.club/p/scrapling-hands-on-guide?utm_source=github&utm_medium=repo&utm_campaign=scrapling\" target=\"_blank\" title=\"The #1 newsletter dedicated to Web Scraping\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/TWSC.png\">\n      </a>\n    </td>\n    <td>\n    Read a full review of <a href=\"https://substack.thewebscraping.club/p/scrapling-hands-on-guide?utm_source=github&utm_medium=repo&utm_campaign=scrapling\" target=\"_blank\">Scrapling on The Web Scraping Club</a> (Nov 2025), the #1 newsletter dedicated to Web Scraping.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"200\">\n      <a href=\"https://www.swiftproxy.net/?ref=D4Vinci\" target=\"_blank\" title=\"Scalable Solutions for Web Data Access\">\n        <img src=\"https://raw.githubusercontent.com/D4Vinci/Scrapling/main/images/SwiftProxy.png\">\n      </a>\n    </td>\n    <td>\n    <a href=\"https://www.swiftproxy.net",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=61.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"scrapling\"\n# Static version instead of a dynamic version so we can get better layer caching while building docker, check the docker file to understand\nversion = \"0.5.1\"\ndescription = \"Scrapling is an undetectable, powerful, flexible, high-performance Python framework that makes Web Scraping easy and effortless as it should be!\"\nreadme = {file = \"README.md\", content-type = \"text/markdown\"}\nlicense = {file = \"LICENSE\"}\nauthors = [\n    {name = \"Karim Shoair\", email = \"scrapling@proton.me\"}\n]\nmaintainers = [\n    {name = \"Karim Shoair\", email = \"scrapling@proton.me\"}\n]\nkeywords = [\n    \"web-scraping\",\n    \"scraping\",\n    \"automation\",\n    \"browser-automation\",\n    \"data-extraction\",\n    \"html-parsing\",\n    \"undetectable\",\n    \"playwright\",\n    \"selenium-alternative\",\n    \"web-crawler\",\n    \"browser\",\n    \"crawling\",\n    \"headless\",\n    \"scraper\",\n    \"chrome\",\n]\nrequires-python = \">=3.10\"\nclassifiers = [\n    \"Operating System :: OS Independent\",\n    \"Development Status :: 4 - Beta\",\n    # \"Development Status :: 5 - Production/Stable\",\n    # \"Development Status :: 6 - Mature\",\n    # \"Development Status :: 7 - Inactive\",\n    \"Intended Audience :: Developers\",\n    \"Intended Audience :: Information Technology\",\n    \"License :: OSI Approved :: BSD License\",\n    \"Natural Language :: English\",\n    \"Topic :: Internet :: WWW/HTTP\",\n    \"Topic :: Internet :: WWW/HTTP :: Browsers\",\n    \"Topic :: Text Processing :: Markup\",\n    \"Topic :: Text Processing :: Markup :: HTML\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Topic :: Software Development :: Libraries\",\n    \"Topic :: Software Development :: Libraries :: Application Frameworks\",\n    \"Topic :: Software Development :: Libraries :: Python Modules\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3 :: Only\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Programming Language :: Python :: Implementation :: CPython\",\n    \"Typing :: Typed\",\n]\ndependencies = [\n    \"lxml>=6.1.1\",\n    \"cssselect>=1.5.0\",\n    \"orjson>=3.11.8\",\n    \"tld>=0.13.2\",\n    \"w3lib>=2.4.1\",\n    \"typing_extensions\"\n]\n\n[project.optional-dependencies]\nfetchers = [\n    \"click>=8.3.0\",\n    \"curl_cffi>=0.16.3\",\n    \"playwright>=1.62.0\",\n    \"patchright>=1.62.1\",\n    \"browserforge>=1.2.4\",\n    \"apify-fingerprint-datapoints>=0.15.0\",\n    \"msgspec>=0.21.1\",\n    \"anyio>=4.14.0\",\n    \"protego>=0.7.0\",\n]\nrag = [\n    \"markdownify>=1.2.0\",\n    \"scrapling[fetchers]\",\n]\nai = [\n    \"mcp>=2.0.0\",\n    \"markdownify>=1.2.0\",\n    \"scrapling[fetchers]\",\n]\nshell = [\n    \"IPython>=8.37\",  # The last version that supports Python 3.10\n    \"markdownify>=1.2.0\",\n    \"scrapling[fetchers]\",\n]\nall = [\n    \"scrapling[ai,shell]\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/D4Vinci/Scrapling\"\nChangelog = \"https://scrapling.readthedocs.io/en/latest/changelog.html\"\nDocumentation = \"https://scrapling.readthedocs.io/en/latest/\"\nRepository = \"https://github.com/D4Vinci/Scrapling\"\n\"Bug Tracker\" = \"https://github.com/D4Vinci/Scrapling/issues\"\n\"Discord\" = \"https://discord.gg/EMgGbDceNQ\"\n\"Release Notes\" = \"https://github.com/D4Vinci/Scrapling/releases\"\n\n[project.scripts]\nscrapling = \"scrapling.cli:main\"\nscrapling-mcp = \"scrapling.cli:mcp\"\n\n[tool.setuptools]\nzip-safe = false\ninclude-package-data = true\n\n[tool.setuptools.packages.find]\nwhere = [\".\"]\ninclude = [\"scrapling*\"]\n\n[tool.mypy]\npython_version = \"3.10\"\nwarn_unused_configs = true\nignore_missing_imports = true\ncheck_untyped_defs = true\n\n[tool.pyright]\npythonVersion = \"3.10\"\ntypeCheckingMode = \"basic\"\ninclude = [\"scrapling\"]\nignore = [\"tests\", \"benchmarks.py\"]\n",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "网页抓取",
+      "数据提取",
+      "MCP 服务"
+    ],
+    "brief_zh": {
+      "summary": "一个从单次请求到大规模爬取都覆盖的 Web 抓取框架。",
+      "capabilities": "网页抓取、数据提取、MCP 服务",
+      "verified_at": "2026-11-03",
+      "evidence_sources": [
+        "https://github.com/D4Vinci/Scrapling"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 topics；未针对目标网站验证反爬与抓取成功率。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "microsoft",
+    "name": "vscode",
+    "full_name": "microsoft/vscode",
+    "url": "https://github.com/microsoft/vscode",
+    "description": "Visual Studio Code",
+    "language": "TypeScript",
+    "total_stars": 194981,
+    "forks": 44421,
+    "stars_this_period": 295,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "electron",
+        "microsoft",
+        "typescript",
+        "visual-studio-code"
+      ],
+      "license": "MIT",
+      "open_issues": 21848,
+      "created_at": "2015-09-03T20:23:38Z",
+      "pushed_at": "2026-11-06T22:06:51Z",
+      "homepage": "https://code.visualstudio.com",
+      "default_branch": "main",
+      "forks": 44421,
+      "watchers": 3563,
+      "archived": false,
+      "size_kb": 1712929
+    },
+    "readme_content": "# Visual Studio Code - Open Source (\"Code - OSS\")\n[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)\n[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/microsoft/vscode/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)\n\n## The Repository\n\nThis repository (\"`Code - OSS`\") is where we (Microsoft) develop the [Visual Studio Code](https://code.visualstudio.com) product together with the community. Not only do we work on code and issues here, but we also publish our [roadmap](https://github.com/microsoft/vscode/wiki/Roadmap), [monthly iteration plans](https://github.com/microsoft/vscode/wiki/Iteration-Plans), and our [endgame plans](https://github.com/microsoft/vscode/wiki/Running-the-Endgame). This source code is available to everyone under the standard [MIT license](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).\n\n## Visual Studio Code\n\n<p align=\"center\">\n  <img alt=\"VS Code in action\" src=\"https://github.com/user-attachments/assets/56af271c-949d-454c-a3ea-16188c063414\">\n</p>\n\n[Visual Studio Code](https://code.visualstudio.com) is a distribution of the `Code - OSS` repository with Microsoft-specific customizations released under a traditional [Microsoft product license](https://code.visualstudio.com/License/).\n\n[Visual Studio Code](https://code.visualstudio.com) combines the simplicity of a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools.\n\nVisual Studio Code is updated monthly with new features and bug fixes. You can download it for Windows, macOS, and Linux on the [Visual Studio Code website](https://code.visualstudio.com/Download). To get the latest releases every day, install the [Insiders build](https://code.visualstudio.com/insiders).\n\n## Contributing\n\nThere are many ways in which you can participate in this project, for example:\n\n* [Submit bugs and feature requests](https://github.com/microsoft/vscode/issues), and help us verify them as they are checked in\n* Review [source code changes](https://github.com/microsoft/vscode/pulls)\n* Review the [documentation](https://github.com/microsoft/vscode-docs) and make pull requests for anything from typos to new content.\n\nIf you are interested in fixing issues and contributing directly to the codebase, please see the document [How to Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute), which covers the following:\n\n* [How to build and run from source](https://github.com/microsoft/vscode/wiki/How-to-Contribute)\n* [The development workflow, including debugging and running tests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#debugging)\n* [Coding guidelines](https://github.com/microsoft/vscode/wiki/Coding-Guidelines)\n* [Submitting pull requests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests)\n* [Finding an issue to work on](https://github.com/microsoft/vscode/wiki/How-to-Contribute#where-to-contribute)\n* [Contributing to translations](https://aka.ms/vscodeloc)\n\n## Feedback\n\n* Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/vscode)\n* [Request a new feature](CONTRIBUTING.md)\n* Upvote [popular feature requests](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)\n* [File an issue](https://github.com/microsoft/vscode/issues)\n* Connect with the extension author community on [GitHub Discussions](https://github.com/microsoft/vscode-discussions/discussions) or [Slack](https://aka.ms/vscode-dev-community)\n* Follow [@code](https://x.com/code) and let us know what you think!\n\nSee our [wiki](https://github.com/microsoft/vscode/wiki/Feedback-Channels) for a description of each of these channels and information on some other available community-driven channels.\n\n## Related Projects\n\nMany of the core components and extensions to VS Code live in their own repositories on GitHub. For example, the [node debug adapter](https://github.com/microsoft/vscode-node-debug) and the [mono debug adapter](https://github.com/microsoft/vscode-mono-debug) repositories are separate from each other. For a complete list, please visit the [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects) page on our [wiki](https://github.com/microsoft/vscode/wiki).\n\n## Bundled Extensions\n\nVS Code includes a set of built-in extensions located in the [extensions](extensions) folder, including grammars and snippets for many languages. Extensions that provide rich language support (inline suggestions, Go to Definition) for a language have the suffix `language-features`. For example, the `json` extension provides coloring for `JSON` and the `json-language-features` extension provides rich language support for `JSON`.\n\n## Development Container\n\nThis repository includes a Visual Studio Code Dev Containers / GitHub Codespaces development container.\n\n* For [Dev Containers](https://aka.ms/vscode-remote/download/containers), use the **Dev Containers: Clone Repository in Container Volume...** command, which creates a Docker volume for better disk I/O on macOS and Windows.\n  * If you already have VS Code and Docker installed, you can also click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode) to get started. This will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.\n\n* For Codespaces, install the [GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) extension in VS Code, and use the **Codespaces: Create New Codespace** command.\n\nDocker / the Codespace should have at least **4 cores and 6 GB of RAM (8 GB recommended)** to run a full build. See the [development container README](.devcontainer/README.md) for more information.\n\n## Code of Conduct\n\nThis project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.\n\n## License\n\nCopyright (c) Microsoft Corporation. All rights reserved.\n\nLicensed under the [MIT](LICENSE.txt) license.\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"code-oss-dev\",\n  \"version\": \"1.146.0\",\n  \"packageManager\": \"pnpm@12.16.0\",\n  \"distro\": \"d915b90d880d6ec3c76cd109247ccded03003672\",\n  \"nativeBuild\": {\n    \"runtime\": \"electron\",\n    \"target\": \"43.8.6\",\n    \"disturl\": \"https://electronjs.org/headers\",\n    \"msBuildId\": \"15893748\",\n    \"buildFromSource\": true\n  },\n  \"author\": {\n    \"name\": \"Microsoft Corporation\"\n  },\n  \"license\": \"MIT\",\n  \"main\": \"./out/main.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"scripts\": {\n    \"test\": \"node -e \\\"console.error('Run a test script from the scripts folder, for example: ./scripts/test.sh --run <file>.'); process.exit(1)\\\"\",\n    \"test-browser\": \"pnpm exec playwright install && node test/unit/browser/index.js\",\n    \"test-browser-no-install\": \"node test/unit/browser/index.js\",\n    \"test-node\": \"mocha test/unit/node/index.js --delay --ui=tdd --exit\",\n    \"test-extension\": \"vscode-test\",\n    \"test-build-scripts\": \"pnpm -C build run test\",\n    \"test-agent-host-e2e\": \"node test/integration/agentHost/runner.ts\",\n    \"markdown-editor-package-json-check\": \"pnpm -C extensions/markdown-language-features run check-markdown-editor-package-json\",\n    \"test-agent-host-e2e-coverage\": \"node test/integration/agentHost/coverage.ts\",\n    \"check-cyclic-dependencies\": \"node build/lib/checkCyclicDependencies.ts out\",\n    \"preinstall\": \"node build/npm/preinstall.ts\",\n    \"postinstall\": \"node build/npm/postinstall.ts\",\n    \"compile\": \"npm-run-all2 -lp compile-client compile-copilot\",\n    \"compile-client\": \"pnpm run gulp compile\",\n    \"compile-copilot\": \"pnpm -C extensions/copilot run compile\",\n    \"build-fast\": \"node build/next/build-fast.ts\",\n    \"build-fast-extensions\": \"pnpm run gulp copy-codicons compile-extensions compile-extension-media\",\n    \"typecheck-client\": \"tsc --project ./src/tsconfig.json --noEmit --skipLibCheck\",\n    \"codex:gen-protocol\": \"node build/codex/generate-protocol.mjs\",\n    \"codex:check-protocol\": \"node build/codex/check-protocol-sync.ts\",\n    \"agent-host:generate-copilot-meta\": \"node build/agentHost/generateCopilotMetadata.ts\",\n    \"agent-host:check-copilot-meta\": \"node build/agentHost/generateCopilotMetadata.ts --check\",\n    \"watch\": \"npm-run-all2 -lp watch-client-transpile watch-client watch-extensions watch-copilot\",\n    \"watch-transpile\": \"npm-run-all2 -lp watch-client-transpile watch-extensions watch-copilot\",\n    \"watchd\": \"deemon pnpm run watch\",\n    \"watch-webd\": \"deemon pnpm run watch-web\",\n    \"kill-watchd\": \"deemon --kill pnpm run watch\",\n    \"kill-watch-webd\": \"deemon --kill pnpm run watch-web\",\n    \"restart-watchd\": \"deemon --restart pnpm run watch\",\n    \"restart-watch-webd\": \"deemon --restart pnpm run watch-web\",\n    \"watch-client\": \"pnpm run gulp watch-client\",\n    \"watch-clientd\": \"deemon pnpm run watch-client\",\n    \"kill-watch-clientd\": \"deemon --kill pnpm run watch-client\",\n    \"transpile-client\": \"node build/next/index.ts transpile\",\n    \"bundle-dev-tunnels-web\": \"node build/next/devTunnelsWeb.ts\",\n    \"watch-client-transpile\": \"node build/next/index.ts transpile --watch\",\n    \"watch-client-transpiled\": \"deemon pnpm run watch-client-transpile\",\n    \"kill-watch-client-transpiled\": \"deemon --kill pnpm run watch-client-transpile\",\n    \"watch-extensions\": \"pnpm run gulp watch-extensions watch-extension-media\",\n    \"watch-extensionsd\": \"deemon pnpm run watch-extensions\",\n    \"kill-watch-extensionsd\": \"deemon --kill pnpm run watch-extensions\",\n    \"watch-copilot\": \"pnpm -C extensions/copilot run watch\",\n    \"watch-copilotd\": \"deemon pnpm run watch-copilot\",\n    \"kill-watch-copilotd\": \"deemon --kill pnpm run watch-copilot\",\n    \"precommit\": \"node --experimental-strip-types build/hygiene.ts\",\n    \"gulp\": \"node --experimental-strip-types --max-old-space-size=8192 ./node_modules/gulp/bin/gulp.js\",\n    \"electron\": \"node build/lib/electron.ts\",\n    \"7z\": \"7z\",\n    \"update-grammars\": \"node build/npm/update-all-grammars.ts\",\n    \"update-localization-extension\": \"node build/npm/update-localization-extension.ts\",\n    \"mixin-telemetry-docs\": \"node build/npm/mixin-telemetry-docs.ts\",\n    \"smoketest\": \"node build/lib/preLaunch.ts && cd test/smoke && pnpm run compile && node test/index.js\",\n    \"smoketest-no-compile\": \"cd test/smoke && node test/index.js\",\n    \"download-builtin-extensions\": \"node build/lib/builtInExtensions.ts\",\n    \"download-builtin-extensions-cg\": \"node build/lib/builtInExtensionsCG.ts\",\n    \"monaco-compile-check\": \"tsc --project src/tsconfig.monaco.json --noEmit\",\n    \"tsec-compile-check\": \"node --max-old-space-size=8192 node_modules/tsec/bin/tsec -p src/tsconfig.tsec.json\",\n    \"vscode-dts-compile-check\": \"tsc --project src/tsconfig.vscode-dts.json && tsc --project src/tsconfig.vscode-proposed-dts.json\",\n    \"valid-layers-check\": \"node build/checker/layersChecker.ts && node build/checker/layersTypeCheck.ts\",\n    \"define-class-fields-check\": \"node --max-old-space-size=8192 build/lib/propertyInitOrderChecker.ts && tsc --project src/tsconfig.defineClassFields.json\",\n    \"update-distro\": \"node",
+    "strategic_keywords": [
+      "agent",
+      "runtime",
+      "workflow"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "代码编辑",
+      "调试工具",
+      "扩展生态"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "微软维护的开源代码编辑器，提供桌面端开发环境和可扩展的编辑、调试与语言支持能力。",
+      "capabilities": "代码编辑、调试工具、扩展生态",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/microsoft/vscode"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description、topics 与 README；未对具体扩展或版本能力做运行验证。"
+    }
+  },
+  {
+    "owner": "NVIDIA",
+    "name": "auto-ontology",
+    "full_name": "NVIDIA/auto-ontology",
+    "url": "https://github.com/NVIDIA/auto-ontology",
+    "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+    "language": "Python",
+    "total_stars": 8902,
+    "forks": 717,
+    "stars_this_period": 2005,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 61,
+      "created_at": "2026-04-27T21:45:56Z",
+      "pushed_at": "2026-11-06T20:57:20Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 717,
+      "watchers": 46,
+      "archived": false,
+      "size_kb": 21708
+    },
+    "readme_content": "<!--\nSPDX-FileCopyrightText: Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES.\nAll rights reserved.\nSPDX-License-Identifier: Apache-2.0\n-->\n\n# Auto Ontology\n\nAgents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is similar. NVIDIA Auto Ontology is an open library that builds that layer from enterprise metadata, reconciles definitions across systems, and exposes it to any agent harness through MCP, CLI, and API. It complements the semantic models customers already own.\n\nIt enables developers to:\n\n- Discover: generate enterprise ontologies from metadata; connect existing ontologies and semantic models; build AI-ready knowledge graphs.\n- Ground: give agents trusted business meaning for metrics, entities, and relationships; reconcile inconsistent definitions across systems.\n- Validate: check generated queries against certified definitions and lineage; return provenance with every answer.\n- Expose: serve context to any agent harness through MCP, CLI, and API.\nLearn: fold certified corrections and usage back into the ontology, so shared context improves with every question.\n\n## Benchmarks\n\nTo run a text-to-SQL benchmark such as BIRD, refer to the\n[ontology SQL evaluation repository](https://github.com/NVIDIA/ontology-sql-eval/).\n\n> **Licensing & contributions.** Auto Ontology is distributed under the\n> [Apache License 2.0](./LICENSE). Third-party open-source components\n> bundled, linked, or otherwise used by this project are listed in\n> [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md). **This project\n> is currently not accepting external contributions.**\n\n<p>\n<img src=\"./docs/assets/arch.png\" alt=\"Auto Ontology Architecture\" width=\"800\">\n</p>\n\n## Key Features\n\n- **Natural-language querying** of structured data — questions are translated to\n  SQL and executed against connected databases, powered by NVIDIA NIM.\n- **Semantic catalog / ontology layer** over relational sources, stored in\n  Postgres alongside the catalog it describes.\n- **Authentication & RBAC** —using [Better Auth](https://github.com/better-auth/better-auth).\n- **Web UI** for chat, analysis, data catalog, analytics, and settings.\n- **Flexible deployment** — Helm chart for Kubernetes or Docker Compose for a\n  local stack.\n\n## Software Components\n\n| Component           | Technology                                                             | Role                                       | Default port |\n| ------------------- | ---------------------------------------------------------------------- | ------------------------------------------ | ------------ |\n| Frontend            | Next.js 16 (React 19, TypeScript, Tailwind CSS 4), Better Auth, Prisma | Web UI, authentication, API gateway        | 3000         |\n| Backend             | FastAPI (Python 3.12+), LangChain                                      | Chat / NL-to-SQL, catalog, datasource APIs | 3001         |\n| Ingestion worker    | FastAPI (Python 3.12+)                                                 | Ingests tabular data and writes embeddings | 3002         |\n| Postgres + pgvector | Relational Database                                                    | App metadata, the catalog and ontology, vector store | 5432 |\n| HashiCorp Vault     | Optional                                                               | Secure storage of connection credentials   | —            |\n\n### NVIDIA NIM\n\nAuto Ontology uses NVIDIA NIM endpoints for inference — either the hosted\n[NVIDIA API catalog](https://build.nvidia.com) (`integrate.api.nvidia.com`) or\nself-hosted NIMs. The defaults in `.env.example` are:\n\n- **LLM:** `nvidia/nemotron-3.5-lightning-30b-a3b`\n- **Embeddings:** `nvidia/nemotron-3-embed-1b`\n- **Reranking:** `nvidia/llama-nemotron-rerank-vl-1b-v2`\n\nThe endpoints and models are configured via the `DEFAULT_MODELS_ENDPOINT`, `DEFAULT_MODELS_MODEL`,\n`EMBED_ENDPOINT`, and `EMBED_MODEL` environment variables and require a\n`DEFAULT_MODELS_API_KEY`.\n\n#### Model triplets\n\nEach model role is configured by a **triplet** of environment variables —\n`<PREFIX>_ENDPOINT` (URL), `<PREFIX>_API_KEY`, and `<PREFIX>_MODEL`:\n\n| Prefix           | Role                                                        |\n| ---------------- | ----------------------------------------------------------- |\n| `DEFAULT_MODELS` | Shared default; every field below falls back to it.         |\n| `REASONING`      | Main chat / NL-to-SQL model.                                |\n| `NON_REASONING`  | Lighter model used for entity extraction.                   |\n| `EMBED`          | Text-embedding model (must match between ingest and query). |\n| `RERANK`         | Reranker used by the retrieval flow.                        |\n\nYou can set a full triplet, only some of its fields, or none at all — any field\nleft unset falls back to the matching `DEFAULT_MODELS_<FIELD>`. So the simplest\nsetup is to fill in `DEFAULT_MODELS_*` and override per-triplet fields only where\nthey differ (e.g. `EMBED_MODEL`, `NON_REASONING_MODEL`). `*_API_KEY` also falls\nback to the legacy `NVIDIA_API_KEY` for backward compatibility.\n\n## Quickstart\n\nThis runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET=<a long random string, e.g. from openssl rand -base64 32>\n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD=<a new password>\n   CONNECTION_STRINGS=postgresql://postgres:<the same password>@postgres:5432/wideworldimporters\n   AUTO_ONTOLOGY_ADMIN_PASSWORD=<a new password>\n   PGADMIN_PASSWORD=<a new password>\n   ```\n\n   Compose publishes Postgres, pgAdmin, and the web app on the host, so replace\n   each default password before you start it. `.env.example` also sets an API\n   key per model role: replace each `nvapi-your-api-key-here` with your key, or\n   delete those lines so they fall back to `DEFAULT_MODELS_API_KEY`.\n\n2. Start Postgres and load the sample database. The seed script lives in\n   auto-ontology-eval; pass it the Postgres password you set:\n\n   ```bash\n   docker compose up -d --wait postgres\n   git clone https://github.com/NVIDIA/auto-ontology-eval.git ../auto-ontology-eval\n   (cd ../auto-ontology-eval && uv sync && cp .env.example .env && \\\n     POSTGRES_PASSWORD='<the same password>' \\\n     uv run python scripts/seed/seed_wwi.py --database-name wideworldimporters --drop)\n   ```\n\n3. Build and start the rest of the stack:\n\n   ```bash\n   docker compose up -d --build\n   ```\n\n4. Open <http://localhost:3000> and sign in with `AUTO_ONTOLOGY_ADMIN_EMAIL` and\n   `AUTO_ONTOLOGY_ADMIN_PASSWORD` from `.env`. Go to **Settings → Semantic\n   Compilation** and turn it on. Ingestion runs at startup; compilation starts\n   immediately and reports **Semantic compilation is ready** when it finishes.\n\n5. Ask a question in **Chat**:\n\n   > What was revenue for the USB food flash drive - sushi roll in Pennsylvania\n   > in June 2015?\n\n   The agent resolves *revenue*, *product*, and *state* to terms in the\n   ontology, follows their relationships to the joins it needs, and runs the\n   query. The answer comes back with its SQL and the steps that produced it,\n   so you can check the result against the source:\n\n   ```text\n   Answer:  Revenue for USB food flash drive - sushi roll in Pennsylvania in\n            June 2015 was $588.80, from 3 invoice lines.\n\n   SQL:     SELECT SUM(il.extendedprice) AS revenue, COUNT(*) AS invoice_lines\n            FROM sales.invoicelines il\n            JOIN sales.invoices i             ON il.invoiceid = i.invoiceid\n            JOIN warehouse.stockitems si      ON il.stockitemid = si.stockitemid\n            JOIN sales.customers c            ON i.customerid = c.customerid\n            JOIN application.cities ct        ON c.deliverycityid = ct.cityid\n            JOIN application.stateprovinces sp ON ct.stateprovinceid = sp.stateprovinceid\n            WHERE si.stockitemname = 'USB food flash drive - sushi roll'\n              AND sp.stateprovincename = 'Pennsylvania'\n              AND i.invoicedate >= '2015-06-01' AND i.invoicedate < '2015-07-01'\n\n   Steps:   Resolved terms: Invoice Line (revenue), Stock Item, State Province, Invoice\n            Joined: invoice line -> invoice -> customer -> city -> state province\n            Validated the filter values against the data, then executed\n   ```\n\n6. Ask something the data can't answer. Wide World Importers has no\n   advertising data, so a question about ad spend has nothing to resolve\n   against. An agent connected through [MCP](#mcp-server) checks answerability\n   first and asks you to clarify:\n\n   ```text\n   You:    What was return on ad spend for the sushi roll flash drive in June 2015?\n   Agent:  check_answerable -> coverage 0.5; no term covers \"ad spend\"\n   Agent:  I can find revenue for that product, but this data has no\n           advertising spend, so I can't compute return on ad spend. Do you\n           want June 2015 revenue instead, or is ad spend tracked in another\n           source I should connect?\n   ```\n\nIf the UI loads without its left navigation after a restart, the browser is\nholding a stale session cookie. Clear site data for `localhost:3000` and sign in\nagain. For other setup failures, see the\n[setup skill's troubleshooting guide](./skills/nvidia-ontology-setup/references/troubleshooting.md).\n\n## How it works\n\n<p>\n<img src=\"./docs/assets/arch.png\" alt=\"Auto-Ontology architecture\" width=\"800\">\n</p>\n\nAuto-Ontology works in three stages: it generates an ontology, people certify\nit, and the agent answers questions from it.\n\nThe ontology holds three kinds of definition:\n\n- **Terms.** Business concepts such as *Customer* or *Invoice Line*, each with a\n  description and synonyms, mapped to the columns that hold them.\n- **SQL attributes.** Reviewed SQL expressions under a term, such as a margin or\n  a rolling total. The agent reuses them, so answers compute each measure the\n  same way.\n- **Relationships.** How tables join, including bridge tables, inferred from\n  keys and from the data.\n\n**Generate.** The ingestion service builds a first draft from the source\ndatabases:\n\n1. Read sources: extract schemas, profile columns, and sample values into the\n   catalog.\n2. Name entities: extract terms table by table and map each to columns.\n3. Resolve relationships: infer joins between tables and bridge tables, and\n   suggest SQL attributes from query history.\n4. Write the ontology: store terms, relationships, and SQL attributes in\n   Postgres, with embeddings in pgvector for retrieval.\n\nThe result is a semantic graph you can explore in the UI. In this example, one\ncompilation of Wide World Importers produced 31 terms; selecting **Order** shows\nits description, related terms, mapped columns, and SQL attributes:\n\n<p>\n<img src=\"./docs/assets/ontology-graph.png\" alt=\"Semantic graph of the Wide World Importers ontology, with the Order term selected\" width=\"800\">\n</p>\n\n**Certify.** People make the draft trustworthy:\n\n1. Test with real questions in Chat, or with `check_answerable` and\n   `ask_question` over MCP.\n2. Refine terms, descriptions, and SQL attributes in the UI or through the API.\n3. Certify names, descriptions, and SQL attributes once they're correct.\n\n**Answer.** For each question, the agent:\n\n1. Classifies the intent and extracts the entities the question names.\n2. Retrieves candidate terms, columns, and SQL attributes by embedding search.\n3. Writes SQL from those",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "# SPDX-FileCopyrightText: Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES.\n# All rights reserved.\n# SPDX-License-Identifier: Apache-2.0\n\n[project]\nname = \"auto-ontology-server\"\nversion = \"1.2.0\"\nrequires-python = \">=3.12,<3.14\"\ndependencies = [\n    \"duckdb>=1.5.5\",\n    \"fastapi>=0.141.1\",\n    \"httpx>=0.28.1\",\n    \"hvac>=2.4.0\",\n    # Capped at 1.3.4, the last release that accepts openai<2.45.0; see the openai pin.\n    \"langchain-openai>=1.3.0,<1.3.5\",\n    \"langgraph>=1.2.11\",\n    \"pydantic>=2.13.5\",\n    # Kept below 3 until the code is tested against pandas 3; the cap used to be\n    # forced by nemo-retriever.\n    \"pandas>=2.3.3,<3\",\n    \"psycopg-pool>=3.3.1\",\n    \"psycopg[binary]>=3.3.4\",\n    \"pyheavydb>=8.0.1.post1\",\n    # `heavydb/version.py` does `import importlib_metadata` -- the backport, not\n    # the stdlib `importlib.metadata` -- but pyheavydb does not declare it. It\n    # used to arrive transitively; an upgrade dropped whatever was carrying it\n    # and every `import auto_ontology.connectors` started failing at collection. Declared\n    # here so the next upgrade cannot take it away again.\n    \"importlib-metadata>=8.7.1\",\n    \"python-dotenv>=1.2.3\",\n    \"snowflake-connector-python>=4.7.2\",\n    \"uvicorn[standard]>=0.52.4\",\n    # The pyarrow extra turns on Arrow result sets and cloud fetch; without it\n    # large Databricks reads fall back to slow row-by-row Thrift fetches.\n    \"databricks-sql-connector[pyarrow]>=4.4.0\",\n    \"mysql-connector-python>=26.7.0\",\n    \"pyyaml>=6.0.3\",\n    \"sqlalchemy>=2.0.52\",\n    \"alembic>=1.19.1\",\n    \"apache-ossie-nvidia-auto-ontology @ git+https://github.com/apache/ossie-converters.git@cb4b46b97bcdb9f2685ef2f7023b9134a4426da2#subdirectory=nvidia\",\n    \"langchain-postgres>=0.0.17\",\n    \"pyhive[hive-pure-sasl]>=0.7.0\",\n    \"thrift>=0.24.0\",\n    \"thrift-sasl>=0.4.3\",\n    \"pure-sasl>=0.6.2\",\n    \"pyjks>=20.0.0\",\n    \"trino>=0.339.0\",\n    # The embedding client (auto_ontology/utils/embedding.py). Pinned to the\n    # version nemo-gym 0.6.0 declares, so this matches the ontology-sql-eval\n    # harness.\n    \"openai==2.44.0\",\n    # Imported directly but previously only installed transitively. Declared so\n    # dropping whatever carried them cannot break an import the way pyheavydb's\n    # importlib-metadata did; langchain-nvidia-ai-endpoints arrived solely via\n    # nemo-retriever.\n    \"langchain-nvidia-ai-endpoints>=1.4.3\",\n    \"langchain-core>=1.6.1\",\n    \"sqlglot>=30.17.0\",\n    \"numpy>=2.5.2\",\n    \"requests>=2.34.2\",\n    \"tqdm>=4.70.0\",\n    \"cryptography>=50.0.1\",\n    # Not imported, but FastAPI refuses to register the model-import upload\n    # route without it.\n    \"python-multipart>=0.0.32\",\n]\n\n[project.optional-dependencies]\nkumo = [\"kumo-relational-client[relational]>=1.0.0,<2\"]\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"auto_ontology\"]\n\n[tool.hatch.metadata]\nallow-direct-references = true\n\n[tool.uv]\npackage = true\n# Patched versions of transitive dependencies flagged by nSpect. Constraints,\n# so their dependents' upper bounds still apply.\nconstraint-dependencies = [\n    \"pyjwt>=2.15.1\",  # BDSA-2026-35552 (via databricks/snowflake connectors)\n    \"urllib3>=2.8.0\",  # BDSA-2026-35861, BDSA-2026-35864 (via requests, botocore)\n]\n\n[[tool.uv.index]]\nname = \"vendored-engine\"\nurl = \"vendor/wheels\"\nformat = \"flat\"\n\n[dependency-groups]\ndev = [\n    \"pytest>=9.1.1\",\n    \"ruff>=0.16.5\",\n]\nrelease = [\n    \"ngcsdk>=4.37.0\",\n    \"pyyaml>=6.0.3\",\n]\n\n# Stated, not inherited. With no `select` at all, the rule set is whatever the\n# installed ruff happens to default to -- and 0.16 widened that default from\n# `E4,E7,E9,F` to some twenty families (B, BLE, S, SIM, TRY, UP, ...), turning a\n# routine version bump into 541 findings in code nobody had touched.\n#\n# These are the rules the codebase was written against and passes cleanly. The\n# wider set is worth adopting deliberately, as its own change: a good part of it\n# argues with patterns that are intentional here -- BLE001 and S110 against the\n# best-effort `except Exception` around reads whose failure is meant to\n# degrade rather than raise, for instance -- so it needs judgement per rule, not\n# a bulk `--fix`.\n[tool.ruff]\nline-length = 88\n\n[tool.ruff.lint]\nselect = [\"E4\", \"E7\", \"E9\", \"F\"]\n\n[tool.pytest.ini_options]\npythonpath = [\".\"]\n# mcp/ is a separate project with its own venv and CI workflow. It must stay out\n# of this suite: pythonpath = [\".\"] would otherwise make the mcp/ directory\n# shadow the installed mcp SDK as a namespace package.\naddopts = \"--import-mode=importlib --ignore=mcp\"\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "llm",
+      "eval",
+      "workflow",
+      "inference",
+      "vector",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "语义图谱",
+      "上下文检索",
+      "确定性查询"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "NVIDIA 开源的 Python 框架，用语义和图结构为数据构建可解释的推理层，服务 LLM 与 Agent 的上下文检索和确定性查询生成。",
+      "capabilities": "语义图谱、上下文检索、确定性查询",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/auto-ontology"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；检索质量和真实数据集适配效果未独立验证。"
+    }
+  },
+  {
+    "owner": "vercel-labs",
+    "name": "agent-browser",
+    "full_name": "vercel-labs/agent-browser",
+    "url": "https://github.com/vercel-labs/agent-browser",
+    "description": "Browser automation CLI for AI agents",
+    "language": "Rust",
+    "total_stars": 46302,
+    "forks": 3172,
+    "stars_this_period": 613,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 488,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-06T21:43:10Z",
+      "homepage": "https://agent-browser.dev",
+      "default_branch": "main",
+      "forks": 3172,
+      "watchers": 103,
+      "archived": false,
+      "size_kb": 31562
+    },
+    "readme_content": "# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n<p>\n  <a href=\"https://vercel.com/labs#labs-products\"><img alt=\"Vercel Labs Product\" src=\"https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm version: agent-browser\" src=\"https://img.shields.io/npm/v/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://github.com/vercel-labs/agent-browser/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/github/license/vercel-labs/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm downloads per month: agent-browser\" src=\"https://img.shields.io/npm/dm/agent-browser.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads\" height=\"28\"></a>\n  <a href=\"https://skills.sh/vercel-labs/agent-browser\"><img alt=\"skills.sh\" src=\"https://skills.sh/b/vercel-labs/agent-browser?style=for-the-badge\" height=\"28\"></a>\n</p>\n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/selectors).\n- A click fails, instead of reporting success, when the target is hidden, disabled, outside the viewport, or covered by another element such as a consent banner. Dismiss the covering element, take a new snapshot, and retry.\n\nThe full walkthrough is in the [quick start](https://agent-browser.dev/quick-start).\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](https://agent-browser.dev/engines/obscura) engine with `--engine`, drive Mobile Safari in the [iOS Simulator](https://agent-browser.dev/ios), or use a cloud browser provider such as [Browserbase](https://agent-browser.dev/providers/browserbase), [Browserless](https://agent-browser.dev/providers/browserless), [Browser Use](https://agent-browser.dev/providers/browser-use), [Kernel](https://agent-browser.dev/providers/kernel), or [AgentCore](https://agent-browser.dev/providers/agentcore).\n\n## For AI agents\n\nThe CLI ships skills that match its version:\n\n```bash\nagent-browser skills get core                 # the core loop, refs, waiting, and common workflows\nagent-browser skills get core --ref commands  # one reference, such as the full command list\nagent-browser skills get core --full          # adds the full command reference and templates\nagent-browser skills list                     # specialized skills: electron, slack, dogfood, and more\n```\n\nInstall the discovery skill into an agent harness from [skills.sh](https://skills.sh/vercel-labs/agent-browser):\n\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\nThe installed skill is a thin stub that tells the agent to load `agent-browser skills get core`, so its instructions always match the installed CLI. Or add this to your `AGENTS.md`:\n\n```markdown\nUse `agent-browser` for browser automation. Before the first use, run\n`agent-browser skills get core` and follow it.\n```\n\nFor MCP clients, `agent-browser mcp` starts an MCP server over stdio. See [MCP server](https://agent-browser.dev/commands#mcp-server).\n\n## Commands\n\nRun `agent-browser --help` for the full list, or `agent-browser <command> --help` for one command.\n\n| Group | Commands | Docs |\n|---|---|---|\n| Navigate and read | `open`, `back`, `forward`, `reload`, `read`, `snapshot`, `get`, `is` | [Core](https://agent-browser.dev/commands#core), [Snapshots](https://agent-browser.dev/snapshots) |\n| Interact | `click`, `dblclick`, `fill`, `type`, `press`, `keyboard`, `hover`, `focus`, `select`, `check`, `uncheck`, `scroll`, `drag`, `upload`, `mouse`, `find` | [Core](https://agent-browser.dev/commands#core), [Find elements](https://agent-browser.dev/commands#find-elements) |\n| Wait | `wait` | [Wait](https://agent-browser.dev/commands#wait) |\n| Capture | `screenshot`, `pdf`, `record`, `download`, `diff` | [Recording](https://agent-browser.dev/recording), [Diffing](https://agent-browser.dev/diffing), [Files](https://agent-browser.dev/files) |\n| Page and network state | `cookies`, `storage`, `network`, `set`, `clipboard`, `eval`, `pushstate` | [Network](https://agent-browser.dev/network), [Settings](https://agent-browser.dev/commands#settings) |\n| Tabs, frames, and dialogs | `tab`, `frame`, `dialog` | [Tabs and frames](https://agent-browser.dev/commands#tabs-frames) |\n| Debug and performance | `console`, `errors`, `highlight`, `inspect`, `trace`, `profiler`, `vitals`, `react`, `a11y` | [Debugging](https://agent-browser.dev/debugging), [Profiler](https://agent-browser.dev/profiler), [React](https://agent-browser.dev/react) |\n| Sessions and auth | `session`, `state`, `auth`, `profiles`, `confirm`, `deny` | [Sessions](https://agent-browser.dev/sessions), [Security](https://agent-browser.dev/security) |\n| Agents and integrations | `skills`, `mcp`, `webmcp`, `flow`, `chat`, `batch`, `plugin` | [Skills](https://agent-browser.dev/skills), [WebMCP](https://agent-browser.dev/webmcp), [Plugins](https://agent-browser.dev/plugins) |\n| Observe | `stream`, `dashboard` | [Streaming](https://agent-browser.dev/streaming), [Dashboard](https://agent-browser.dev/dashboard) |\n| Setup | `install`, `upgrade`, `doctor`, `connect`, `close` | [Installation](https://agent-browser.dev/installation) |\n\nFlags, environment variables, and `agent-browser.json` are documented in [Configuration](https://agent-browser.dev/configuration).\n\n## Platforms\n\nNative binaries ship for macOS (ARM64, x64), Linux (ARM64, x64, glibc and musl), and Windows (x64). The npm package picks the right binary for the host.\n\n## Development\n\nBuilding from source requires Node.js 24 or later, pnpm 11 or later, and Rust:\n\n```bash\npnpm install\npnpm build:source               # builds the dashboard and the native CLI\npnpm link --global\nagent-browser install\n```\n\nRun the Rust checks from `cli/`:\n\n```bash\ncargo fmt -- --check\ncargo clippy\ncargo test\ncargo test e2e -- --ignored --test-threads=1   # launches real headless Chrome\n```\n\n[AGENTS.md](AGENTS.md) lists the files to update with each change, the docs checks, and the release process.\n\n## Documentation\n\n- [agent-browser.dev](https://agent-browser.dev): introduction, guides, and reference\n- [Commands](https://agent-browser.dev/commands) and [Configuration](https://agent-browser.dev/configuration)\n- [Security](https://agent-browser.dev/security): the auth vault, domain allowlists, action policies, and content boundaries\n- [Next.js and Vercel](https://agent-browser.dev/next) and [eve](https://agent-browser.dev/eve): running agent-browser in Vercel Sandbox and eve agents\n- [Changelog](CHANGELOG.md)\n\n## License\n\nApache-2.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "浏览器自动化",
+      "终端 CLI",
+      "Memory 组件"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
+      "capabilities": "浏览器自动化、Agent 工具、终端 CLI",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/vercel-labs/agent-browser"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；未在目标网站验证兼容性、权限边界或自动化成功率。"
+    }
+  },
+  {
+    "owner": "Anil-matcha",
+    "name": "Open-Generative-AI",
+    "full_name": "Anil-matcha/Open-Generative-AI",
+    "url": "https://github.com/Anil-matcha/Open-Generative-AI",
+    "description": "Unrestricted Open-source alternative to AI video platforms — Free AI image & video generation studio with 600+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
+    "language": "JavaScript",
+    "total_stars": 32826,
+    "forks": 6230,
+    "stars_this_period": 381,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-art-generator",
+        "ai-image-generation",
+        "ai-video-generation",
+        "fal-ai-alternative",
+        "generative-ai",
+        "image-to-video",
+        "invideo-alternative",
+        "kling-ai",
+        "lipsync",
+        "litellm-alternative",
+        "midjourney-alternative",
+        "muapi",
+        "open-source",
+        "openrouter-alternative",
+        "seedance2",
+        "sora-alternative",
+        "text-to-image",
+        "text-to-video",
+        "uncensored",
+        "wan-video"
+      ],
+      "license": "MIT",
+      "open_issues": 48,
+      "created_at": "2023-05-09T14:12:37Z",
+      "pushed_at": "2026-11-06T09:32:33Z",
+      "homepage": "https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=about&utm_campaign=open-generative-ai",
+      "default_branch": "main",
+      "forks": 6230,
+      "watchers": 261,
+      "archived": false,
+      "size_kb": 116016
+    },
+    "readme_content": "# Open Generative AI — Unrestricted Open-Source Alternative to AI Video Platforms\n\n[![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMSAxNHYtNGgtMnYtMmg0djZoLTJ6bTAtOFY2aDJ2MmgtMnoiLz48L3N2Zz4=)](https://muapi.ai?utm_source=github&utm_medium=badge&utm_campaign=open-generative-ai)\n\n\n> **The free, open-source alternative to AI Video Platforms.** Generate AI images and videos using 600+ state-of-the-art models across 14 studios — no content filters, no closed ecosystem, no subscription fees.\n\n**Community:** Join [Discord](https://discord.com/invite/zpnuBRXhKg) for discussions and support\n\n\n<p align=\"center\"><a href=\"https://youtu.be/PUYsfx_ZCaE\"><img src=\"https://i.ytimg.com/vi/PUYsfx_ZCaE/maxresdefault.jpg\" width=\"720\"></a></p>\n<p align=\"center\"><a href=\"https://youtu.be/PUYsfx_ZCaE\"><b>▶ Watch: Best Free Uncensored AI Image & Video Models in 2026 (Ranked) </b></a></p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Anil-matcha/awesome-generative-ai-apps\">\n    <img src=\"https://img.shields.io/badge/Part%20of-Awesome%20Generative%20AI%20Apps-FFD700?style=for-the-badge&logo=github&logoColor=black\" alt=\"Awesome Generative AI Apps\">\n  </a>\n</p>\n\n> 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**\n\n> 🤝 **New: [Open Duet](https://github.com/Anil-matcha/open-duet)** — open-source, self-hosted AI coworkers (named agents) with instructions, memory, routines, their own isolated computer, and your approval before they act. An alternative to Claude Duet, OpenAI Dots, and Manus Cue. [Star it on GitHub →](https://github.com/Anil-matcha/open-duet)\n\n## 💰 Turn This Into Your Own Product — White Label & Resell\n\nWant to launch this as **your own branded AI studio** and charge your own customers for it? [MuAPI White Label](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai) lets you spin up a fully white-labeled version of this app — your logo, your colors, your custom domain, your own pricing — with zero infra to manage. You keep the markup on every generation; MuAPI handles the models, the queue, and the billing plumbing underneath.\n\n- **Your branding** — logo, color theme, and a custom domain (e.g. `studio.yourbrand.com`)\n- **Your pricing** — set your own credit/subscription prices for end users, keep the margin\n- **No infra** — no servers, workers, or model hosting to run yourself\n- **All studios included** — Image, Video, Audio, Lip Sync, Cinema, Workflows, and more, depending on plan\n\nPlans start at $49/mo. [Get started with White Label →](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\n### What similar AI studios charge their users\n\nConsumer AI image/video platforms almost all run on paid monthly subscriptions — this is the same playbook you'd run under your own brand:\n\n| Platform | Typical subscription range |\n|---|---|\n| Midjourney | ~$10–$120/mo (Basic → Mega) |\n| Runway | ~$12–$76/mo (Standard → Unlimited), custom Enterprise |\n| Kling AI | ~$10–$92/mo across Standard → Premier tiers |\n| Luma Dream Machine | ~$10–$100+/mo |\n| Pika | ~$8–$58/mo |\n\n*(Figures are approximate, general-market ranges and change over time — check each platform's current pricing page before quoting them.)* With MuAPI White Label, you set these numbers yourself for your own end users — the subscription revenue is yours.\n\n---\n\n## API examples and model references\n\n- [OpenAI API examples](https://github.com/Anil-matcha/OpenAI-API) — GPT Image, Sora, and GPT endpoints through Muapi.\n- [Google Gemini Media API examples](https://github.com/Anil-matcha/Google-Gemini-Media-API) — Nano Banana, Imagen, Veo, Gemini Omni, and speech endpoints.\n- [MiniMax Media API examples](https://github.com/Anil-matcha/MiniMax-Media-API) — Hailuo, H3 Max, speech, and music workflows.\n- [Kling Video API examples](https://github.com/Anil-matcha/Kling-Video-API) — Kling text-to-video, image-to-video, and motion control.\n- [Qwen Image API examples](https://github.com/Anil-matcha/Qwen-Image-API) — Qwen image generation, editing, and LoRA workflows through Muapi.\n\n## Related Projects\n\nThis is a curated set of high-value hubs, popular distribution tools, and model-specific integrations rather than a directory of every related repository.\n\n- [awesome-vibecoded-saas](https://github.com/Anil-matcha/awesome-vibecoded-saas) — broader catalog of open-source SaaS alternatives featuring this studio.\n- [Muapi open-source alternatives](https://muapi.ai/open-source/alternative/midjourney) — compare this studio with the Midjourney workflow and its honest scope.\n- [awesome-generative-ai-apps](https://github.com/Anil-matcha/awesome-generative-ai-apps) — catalog of open-source generative-AI applications.\n- [awesome-ai-video-models](https://github.com/Anil-matcha/awesome-ai-video-models) — compare video models by API, price, and capability.\n- [awesome-ai-image-models](https://github.com/Anil-matcha/awesome-ai-image-models) — compare image models by API, price, and quality.\n- [AI-Youtube-Shorts-Generator](https://github.com/SamurAIGPT/AI-Youtube-Shorts-Generator) — Open-source Opus Clip alternative application.\n- [open-duet](https://github.com/Anil-matcha/open-duet) — Open-source, self-hosted AI coworkers with memory, routines, isolated computers, and approval-gated actions.\n- [Open-AI-Design-Agent](https://github.com/Anil-matcha/Open-AI-Design-Agent) — Ppen-source autonomous AI design agent.\n- [muapi-skills](https://github.com/SamurAIGPT/muapi-skills) — Agent-ready skills for driving generative-media workflows.\n- [Seedance-2.5-API](https://github.com/SamurAIGPT/Seedance-2.5-API) — Python SDK for Seedance 2.5 video generation.\n\n## 🌐 Try it Online — No Install Required\n\n**Hosted version:** [https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai](https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\nUse all studios (Image, Video, Audio, AI Clipping, Vibe Motion, Lip Sync, Cinema, Marketing, Workflows, Agents, Design Agent, Apps, MCP & CLI) directly in your browser — no Node.js, no setup. Sign up for a free account to start generating. The hosted version is always up to date with the latest models.\n\n**Follow** the [creator](https://x.com/matchaman11) for updates\n\n---\n\n## ⬇️ Download Desktop App\n\nOne-click installers — no Node.js or terminal required.\n\n| Platform | Download |\n|---|---|\n| macOS Apple Silicon (M1/M2/M3/M4) | [Open Generative AI-2.0.0-arm64.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0-arm64.dmg) |\n| macOS Intel (x64) | [Open Generative AI-2.0.0.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.dmg) |\n| Windows (x64) | [Open Generative AI Setup 2.0.0.exe](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI.Setup.2.0.0.exe) |\n| Linux (Ubuntu x64) | [`.AppImage`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.AppImage) / [`.deb`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/open-generative-ai_2.0.0_amd64.deb), or build locally with `npm run electron:build:linux`. |\n\nAll releases: [github.com/Anil-matcha/Open-Generative-AI/releases](https://github.com/Anil-matcha/Open-Generative-AI/releases)\n\n### macOS Installation Guide\n\nBecause the app is not notarized by Apple, macOS Gatekeeper will block it on first launch. Follow these steps:\n\n**Step 1** — Mount the DMG and drag the app to `/Applications`\n\n**Step 2** — Open Terminal and run:\n```bash\nxattr -cr \"/Applications/Open Generative AI.app\"\n```\n\n**Step 3** — Right-click the app in `/Applications` → click **Open** → click **Open** again on the dialog\n\n> You only need to do this once. After that, the app opens normally.\n\n**Alternative (no Terminal):**\n1. Try to open the app — macOS will block it\n2. Go to **System Settings → Privacy & Security**\n3. Scroll down to find _\"Open Generative AI was blocked\"_\n4. Click **Open Anyway** → **Open**\n\n### Windows Installation — SmartScreen warning fix\n\nWindows SmartScreen may show a warning because the installer is not code-signed:\n\n1. Click **More info** on the SmartScreen dialog\n2. Click **Run anyway**\n\nThe app will install silently to `%LocalAppData%` with a Start Menu shortcut.\n\n### Ubuntu / Linux Installation\n\nLinux artifacts are available when building with Electron Builder:\n\n```bash\n# Build Linux installers (AppImage + .deb)\nnpm run electron:build:linux\n```\n\nGenerated files are written to the `release/` folder:\n- **AppImage** — portable, run directly after making executable:\n  ```bash\n  chmod +x \"release/Open Generative AI-*.AppImage\"\n  ./release/Open\\ Generative\\ AI-*.AppImage\n  ```\n- **.deb** — install on Debian/Ubuntu:\n  ```bash\n  sudo apt install ./release/open-generative-ai_*_amd64.deb\n  ```\n\nIf AppImage fails to start on older systems, install `libfuse2`:\n\n```bash\nsudo apt install libfuse2\n```\n\n#### Ubuntu 24.04+ / AppArmor sandbox restriction\n\nUbuntu 24.04 and later enable a kernel security policy (`apparmor_restrict_unprivileged_userns`) that blocks Chromium's user-namespace sandbox. If the app fails to start silently or crashes immediately, you have two options:\n\n**Option A — Recommended: install the `.deb` instead.**\nThe `.deb` package ships an AppArmor profile that grants the required permission automatically on install with no system-wide changes.\n\n**Option B — Temporary system fix (AppImage users):**\n```bash\nsudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0\n```\nThis lasts until next reboot. To make it permanent:\n```bash\necho 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-userns.conf\n```\n\n---\n\nOpen Generative AI is a free, open-source AI image, video, cinema, and lip sync studio that brings creative workflows to everyone. No content filters, no prompt rejections, no guardrails — just full creative freedom. Powered by [Muapi.ai](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai), it supports text-to-image, image-to-image, text-to-video, image-to-video, and audio-driven lip sync generation across models like Flux, Nano Banana, Midjourney, Kling, Sora, Veo, Seedream, Infinite Talk, LTX Lipsync, Wan 2.2, and more — all from a sleek, modern interface you can self-host and customize.\n\n**Why Open Generative AI instead of other AI Video Platforms?**\n- **No filters** — no content filters, no nanny guardrails, no prompt rejections\n- **Free & open-source** — no subscription, no vendor lock-in\n- **Self-hosted** — your data stays on your machine, full creative control\n- **200+ models** — text-to-image, image-to-image, text-to-video, image-to-video, lip sync\n- **Multi-image input** — feed up to 14 reference images into compatible models\n- **Lip Sync Studio** — animate portraits or sync lips to any audio with 9 dedicated models\n- **Extensible** — add your own models, modify the UI, build on top of it\n\nFor a deep dive into the technical architecture and the philosophy behind the \"Infinite Budget\" cinema workflow, see our [comprehensive guide and roadmap](https://medium.com/@anilmatcha/).\n\n## ⚡ Local Model Inference (Desktop App Only)\n\nThe desktop app supports **two independent local engines**. Pick whichever fits the machine you actually run on:\n\n| Engine | What it is | Best for |\n|---|---|---|\n| **sd.cpp** (bundled) | C++ engine from [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp), runs on the same machine as the app. Metal GPU on Apple Silicon, CUDA/Vulkan/ROCm on Linux/Windows. | Image-only models. Works on Mac",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"open-generative-ai\",\n  \"description\": \"Open-source alternative to HF AI — AI image, video, cinema and lip sync studio\",\n  \"homepage\": \"https://github.com/Anil-matcha/Open-Generative-AI\",\n  \"private\": true,\n  \"version\": \"2.0.0\",\n  \"license\": \"MIT\",\n  \"workspaces\": [\n    \"packages/studio\",\n    \"packages/Vibe-Workflow/packages/workflow-builder\",\n    \"packages/Open-Poe-AI/packages/agents\",\n    \"packages/Open-AI-Design-Agent/packages/design-agent\"\n  ],\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\",\n    \"build:studio\": \"npm run build -w studio\",\n    \"build:workflow\": \"npm run build -w workflow-builder\",\n    \"build:agent\": \"npm run build -w ai-agent\",\n    \"build:design\": \"npm run build -w design-agent\",\n    \"build:packages\": \"npm run build:workflow && npm run build:agent && npm run build:design && npm run build:studio\",\n    \"setup\": \"git submodule update --init --recursive && npm install && npm run build:packages\",\n    \"vite:dev\": \"vite\",\n    \"vite:build\": \"vite build\",\n    \"electron:dev\": \"npm run vite:build && electron .\",\n    \"electron:build\": \"vite build && electron-builder --mac\",\n    \"electron:build:win\": \"vite build && electron-builder --win\",\n    \"electron:build:linux\": \"vite build && electron-builder --linux\",\n    \"electron:build:linux:dir\": \"vite build && electron-builder --linux dir\",\n    \"electron:build:linux:arm64:dir\": \"vite build && electron-builder --linux dir --arm64\",\n    \"stage:local-ai\": \"node scripts/stage-local-ai-binary.js\",\n    \"package:linux:deb\": \"node scripts/package-linux-deb.js\",\n    \"package:linux:deb:arm64\": \"node scripts/package-linux-deb.js --arch arm64\",\n    \"package:linux:deb:x64\": \"node scripts/package-linux-deb.js --arch x64\",\n    \"electron:build:all\": \"vite build && electron-builder --mac --win --linux\"\n  },\n  \"build\": {\n    \"appId\": \"ai.generative.open\",\n    \"productName\": \"Open Generative AI\",\n    \"copyright\": \"Copyright © 2025\",\n    \"directories\": {\n      \"output\": \"release\"\n    },\n    \"afterPack\": \"./afterPack.js\",\n    \"files\": [\n      \"dist/**/*\",\n      \"electron/**/*\"\n    ],\n    \"extraResources\": [\n      {\n        \"from\": \"build/local-ai\",\n        \"to\": \"local-ai\",\n        \"filter\": [\n          \"**/*\"\n        ]\n      }\n    ],\n    \"mac\": {\n      \"category\": \"public.app-category.graphics-design\",\n      \"icon\": \"public/banner.png\",\n      \"gatekeeperAssess\": false,\n      \"target\": [\n        {\n          \"target\": \"dmg\",\n          \"arch\": [\n            \"x64\",\n            \"arm64\"\n          ]\n        }\n      ]\n    },\n    \"win\": {\n      \"icon\": \"public/banner.png\",\n      \"signAndEditExecutable\": false,\n      \"target\": [\n        {\n          \"target\": \"nsis\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    },\n    \"nsis\": {\n      \"oneClick\": false,\n      \"allowToChangeInstallationDirectory\": true,\n      \"include\": \"build/installer.nsh\"\n    },\n    \"linux\": {\n      \"icon\": \"public/banner.png\",\n      \"category\": \"Utility\",\n      \"maintainer\": \"Open Generative AI Team\",\n      \"extraFiles\": [\n        {\n          \"from\": \"build/linux/apparmor.profile\",\n          \"to\": \"resources/apparmor.profile\"\n        }\n      ],\n      \"target\": [\n        {\n          \"target\": \"AppImage\",\n          \"arch\": [\n            \"x64\"\n          ]\n        },\n        {\n          \"target\": \"deb\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    }\n  },\n  \"dependencies\": {\n    \"ai-agent\": \"file:./packages/Open-Poe-AI/packages/agents\",\n    \"axios\": \"^1.7.0\",\n    \"next\": \"^15.0.0\",\n    \"react\": \"^19.0.0\",\n    \"react-dom\": \"^19.0.0\",\n    \"react-hot-toast\": \"^2.4.1\",\n    \"studio\": \"*\",\n    \"workflow-builder\": \"file:./packages/Vibe-Workflow/packages/workflow-builder\",\n    \"xtend\": \"^4.0.2\"\n  },\n  \"devDependencies\": {\n    \"@eslint/eslintrc\": \"^3\",\n    \"@tailwindcss/vite\": \"^4.1.18\",\n    \"autoprefixer\": \"^10.4.24\",\n    \"electron\": \"^33.4.11\",\n    \"electron-builder\": \"^25.1.8\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"^15.0.0\",\n    \"postcss\": \"^8.5.6\",\n    \"tailwindcss\": \"^3.4.0\",\n    \"vite\": \"^5.4.0\"\n  },\n  \"main\": \"electron/main.js\"\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "workspace",
+      "llm",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "图像生成",
+      "视频生成",
+      "自托管"
+    ],
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
+      "capabilities": "图像生成、视频生成、自托管",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/Anil-matcha/Open-Generative-AI"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description、topics 与 README；模型可用性、内容安全和部署成本未独立验证。"
+    }
+  },
+  {
+    "owner": "react",
+    "name": "react",
+    "full_name": "react/react",
+    "url": "https://github.com/react/react",
+    "description": "The library for web and native user interfaces.",
+    "language": "JavaScript",
+    "total_stars": 252219,
+    "forks": 51807,
+    "stars_this_period": 244,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "declarative",
+        "frontend",
+        "javascript",
+        "library",
+        "react",
+        "ui"
+      ],
+      "license": "MIT",
+      "open_issues": 1503,
+      "created_at": "2013-05-24T16:15:54Z",
+      "pushed_at": "2026-11-06T19:49:25Z",
+      "homepage": "https://react.dev",
+      "default_branch": "main",
+      "forks": 51807,
+      "watchers": 6620,
+      "archived": false,
+      "size_kb": 1139870
+    },
+    "readme_content": "# [React](https://react.dev/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/react/react/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) [![(Runtime) Build and Test](https://github.com/react/react/actions/workflows/runtime_build_and_test.yml/badge.svg)](https://github.com/react/react/actions/workflows/runtime_build_and_test.yml) [![(Compiler) TypeScript](https://github.com/react/react/actions/workflows/compiler_typescript.yml/badge.svg?branch=main)](https://github.com/react/react/actions/workflows/compiler_typescript.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://legacy.reactjs.org/docs/how-to-contribute.html#your-first-pull-request)\n\nReact is a JavaScript library for building user interfaces.\n\n* **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.\n* **Component-Based:** Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep the state out of the DOM.\n* **Learn Once, Write Anywhere:** We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using [Node](https://nodejs.org/en) and power mobile apps using [React Native](https://reactnative.dev/).\n\n[Learn how to use React in your project](https://react.dev/learn).\n\n## Installation\n\nReact has been designed for gradual adoption from the start, and **you can use as little or as much React as you need**:\n\n* Use [Quick Start](https://react.dev/learn) to get a taste of React.\n* [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) to use as little or as much React as you need.\n* [Create a New React App](https://react.dev/learn/start-a-new-react-project) if you're looking for a powerful JavaScript toolchain.\n\n## Documentation\n\nYou can find the React documentation [on the website](https://react.dev/).\n\nCheck out the [Getting Started](https://react.dev/learn) page for a quick overview.\n\nThe documentation is divided into several sections:\n\n* [Quick Start](https://react.dev/learn)\n* [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)\n* [Thinking in React](https://react.dev/learn/thinking-in-react)\n* [Installation](https://react.dev/learn/installation)\n* [Describing the UI](https://react.dev/learn/describing-the-ui)\n* [Adding Interactivity](https://react.dev/learn/adding-interactivity)\n* [Managing State](https://react.dev/learn/managing-state)\n* [Advanced Guides](https://react.dev/learn/escape-hatches)\n* [API Reference](https://react.dev/reference/react)\n* [Where to Get Support](https://react.dev/community)\n* [Contributing Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)\n\nYou can improve it by sending pull requests to [this repository](https://github.com/reactjs/react.dev).\n\n## Examples\n\nWe have several examples [on the website](https://react.dev/). Here is the first one to get you started:\n\n```jsx\nimport { createRoot } from 'react-dom/client';\n\nfunction HelloMessage({ name }) {\n  return <div>Hello {name}</div>;\n}\n\nconst root = createRoot(document.getElementById('container'));\nroot.render(<HelloMessage name=\"Taylor\" />);\n```\n\nThis example will render \"Hello Taylor\" into a container on the page.\n\nYou'll notice that we used an HTML-like syntax; [we call it JSX](https://react.dev/learn#writing-markup-with-jsx). JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML.\n\n## Contributing\n\nThe main purpose of this repository is to continue evolving React core, making it faster and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving React.\n\n### [Code of Conduct](https://code.fb.com/codeofconduct)\n\nFacebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.fb.com/codeofconduct) so that you can understand what actions will and will not be tolerated.\n\n### [Contributing Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)\n\nRead our [contributing guide](https://legacy.reactjs.org/docs/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React.\n\n### [Good First Issues](https://github.com/react/react/labels/good%20first%20issue)\n\nTo help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/react/react/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started.\n\n### License\n\nReact is [MIT licensed](./LICENSE).\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"private\": true,\n  \"workspaces\": [\n    \"packages/*\"\n  ],\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.10.5\",\n    \"@babel/code-frame\": \"^7.10.4\",\n    \"@babel/core\": \"^7.11.1\",\n    \"@babel/helper-define-map\": \"^7.18.6\",\n    \"@babel/helper-module-imports\": \"^7.10.4\",\n    \"@babel/parser\": \"^7.11.3\",\n    \"@babel/plugin-external-helpers\": \"^7.10.4\",\n    \"@babel/plugin-proposal-class-properties\": \"^7.10.4\",\n    \"@babel/plugin-proposal-object-rest-spread\": \"^7.11.0\",\n    \"@babel/plugin-syntax-dynamic-import\": \"^7.8.3\",\n    \"@babel/plugin-syntax-import-meta\": \"^7.10.4\",\n    \"@babel/plugin-syntax-jsx\": \"^7.23.3\",\n    \"@babel/plugin-syntax-typescript\": \"^7.14.5\",\n    \"@babel/plugin-transform-arrow-functions\": \"^7.10.4\",\n    \"@babel/plugin-transform-block-scoped-functions\": \"^7.10.4\",\n    \"@babel/plugin-transform-block-scoping\": \"^7.11.1\",\n    \"@babel/plugin-transform-class-properties\": \"^7.25.9\",\n    \"@babel/plugin-transform-classes\": \"^7.10.4\",\n    \"@babel/plugin-transform-destructuring\": \"^7.10.4\",\n    \"@babel/plugin-transform-for-of\": \"^7.10.4\",\n    \"@babel/plugin-transform-literals\": \"^7.10.4\",\n    \"@babel/plugin-transform-modules-commonjs\": \"^7.10.4\",\n    \"@babel/plugin-transform-object-super\": \"^7.10.4\",\n    \"@babel/plugin-transform-parameters\": \"^7.10.5\",\n    \"@babel/plugin-transform-private-methods\": \"^7.10.4\",\n    \"@babel/plugin-transform-react-jsx\": \"^7.23.4\",\n    \"@babel/plugin-transform-react-jsx-development\": \"^7.22.5\",\n    \"@babel/plugin-transform-react-jsx-source\": \"^7.10.5\",\n    \"@babel/plugin-transform-shorthand-properties\": \"^7.10.4\",\n    \"@babel/plugin-transform-spread\": \"^7.11.0\",\n    \"@babel/plugin-transform-template-literals\": \"^7.10.5\",\n    \"@babel/preset-env\": \"^7.26.9\",\n    \"@babel/preset-flow\": \"^7.10.4\",\n    \"@babel/preset-react\": \"^7.23.3\",\n    \"@babel/preset-typescript\": \"^7.26.0\",\n    \"@babel/traverse\": \"^7.11.0\",\n    \"@rollup/plugin-babel\": \"^6.0.3\",\n    \"@rollup/plugin-commonjs\": \"^24.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^15.0.1\",\n    \"@rollup/plugin-replace\": \"^5.0.2\",\n    \"@rollup/plugin-typescript\": \"^12.1.2\",\n    \"@types/invariant\": \"^2.2.35\",\n    \"@typescript-eslint/eslint-plugin\": \"^6.21.0\",\n    \"@typescript-eslint/parser\": \"^6.21.0\",\n    \"art\": \"0.10.1\",\n    \"babel-jest\": \"^30.4.1\",\n    \"babel-plugin-syntax-hermes-parser\": \"^0.36.1\",\n    \"babel-plugin-syntax-trailing-function-commas\": \"^6.5.0\",\n    \"busboy\": \"^1.6.0\",\n    \"chalk\": \"^3.0.0\",\n    \"cli-table\": \"^0.3.1\",\n    \"coffee-script\": \"^1.12.7\",\n    \"confusing-browser-globals\": \"^1.0.9\",\n    \"core-js\": \"^3.6.4\",\n    \"create-react-class\": \"^15.6.3\",\n    \"error-stack-parser\": \"^2.0.6\",\n    \"eslint\": \"^7.7.0\",\n    \"eslint-config-prettier\": \"^6.9.0\",\n    \"eslint-plugin-babel\": \"^5.3.0\",\n    \"eslint-plugin-es\": \"^4.1.0\",\n    \"eslint-plugin-eslint-plugin\": \"^3.5.3\",\n    \"eslint-plugin-ft-flow\": \"^2.0.3\",\n    \"eslint-plugin-jest\": \"28.4.0\",\n    \"eslint-plugin-no-for-of-loops\": \"^1.0.0\",\n    \"eslint-plugin-no-function-declare-after-return\": \"^1.0.0\",\n    \"eslint-plugin-react\": \"^6.7.1\",\n    \"eslint-plugin-react-hooks-published\": \"npm:eslint-plugin-react-hooks@^5.2.0\",\n    \"eslint-plugin-react-internal\": \"link:./scripts/eslint-rules\",\n    \"fbjs-scripts\": \"^3.0.1\",\n    \"filesize\": \"^6.0.1\",\n    \"flow-bin\": \"^0.317.0\",\n    \"flow-remove-types\": \"^2.317.0\",\n    \"flow-typed\": \"^4.1.1\",\n    \"glob\": \"^7.1.6\",\n    \"glob-stream\": \"^6.1.0\",\n    \"google-closure-compiler\": \"^20230206.0.0\",\n    \"gzip-size\": \"^5.1.1\",\n    \"hermes-eslint\": \"^0.36.1\",\n    \"hermes-parser\": \"^0.36.1\",\n    \"jest\": \"^30.4.1\",\n    \"jest-cli\": \"^30.4.1\",\n    \"jest-diff\": \"^30.4.1\",\n    \"jest-environment-jsdom\": \"^30.4.1\",\n    \"jest-silent-reporter\": \"^0.6.0\",\n    \"jest-snapshot-serializer-raw\": \"^1.2.0\",\n    \"minimatch\": \"^3.0.4\",\n    \"minimist\": \"^1.2.3\",\n    \"mkdirp\": \"^0.5.1\",\n    \"ncp\": \"^2.0.0\",\n    \"prettier\": \"^3.3.3\",\n    \"prettier-plugin-hermes-parser\": \"^0.36.1\",\n    \"pretty-format\": \"^30.4.1\",\n    \"prop-types\": \"^15.6.2\",\n    \"random-seed\": \"^0.3.0\",\n    \"react-lifecycles-compat\": \"^3.0.4\",\n    \"rimraf\": \"^3.0.0\",\n    \"rollup\": \"^3.29.5\",\n    \"rollup-plugin-dts\": \"^6.1.1\",\n    \"rollup-plugin-prettier\": \"^4.1.1\",\n    \"rollup-plugin-strip-banner\": \"^3.0.0\",\n    \"semver\": \"^7.1.1\",\n    \"shelljs\": \"^0.8.5\",\n    \"signedsource\": \"^2.0.0\",\n    \"targz\": \"^1.0.1\",\n    \"through2\": \"^3.0.1\",\n    \"tmp\": \"^0.1.0\",\n    \"to-fast-properties\": \"^2.0.0\",\n    \"tsup\": \"^8.4.0\",\n    \"typescript\": \"^5.4.3\",\n    \"undici\": \"^5.28.4\",\n    \"web-streams-polyfill\": \"^3.1.1\",\n    \"yargs\": \"^15.3.1\"\n  },\n  \"jest\": {\n    \"testRegex\": \"/scripts/jest/dont-run-jest-directly\\\\.js$\"\n  },\n  \"scripts\": {\n    \"prebuild\": \"./scripts/react-compiler/link-compiler.sh\",\n    \"build\": \"node ./scripts/rollup/build-all-release-channels.js\",\n    \"build-for-devtools\": \"cross-env yarn build react/index,react/jsx,react/compiler-runtime,react-dom/index,react-dom/client,react-dom/unstable_testing,react-dom/test-utils,react-is,react-debug-tools,scheduler,react-test-renderer,react-refresh,react-art --type=NOD",
+    "strategic_keywords": [
+      "runtime",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "组件开发",
+      "声明式界面",
+      "服务端渲染"
+    ],
+    "brief_zh": {
+      "summary": "用可组合组件构建交互界面的 JavaScript 库，根据状态变化更新页面，并支持服务端渲染和原生应用开发。",
+      "capabilities": "组件开发、声明式界面、服务端渲染",
+      "verified_at": "2026-09-12",
+      "evidence_sources": [
+        "https://github.com/react/react"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "lobehub",
+    "name": "lobehub",
+    "full_name": "lobehub/lobehub",
+    "url": "https://github.com/lobehub/lobehub",
+    "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
+    "language": "TypeScript",
+    "total_stars": 84233,
+    "forks": 16102,
+    "stars_this_period": 184,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agent-collaboration",
+        "agent-harness",
+        "loop-engineering",
+        "mcp",
+        "personal-assistant",
+        "proactive-agent",
+        "skills",
+        "super-agent",
+        "task-management"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 1338,
+      "created_at": "2023-05-21T07:19:12Z",
+      "pushed_at": "2026-11-06T22:05:27Z",
+      "homepage": "https://lobehub.com",
+      "default_branch": "canary",
+      "forks": 16102,
+      "watchers": 297,
+      "archived": false,
+      "size_kb": 608402
+    },
+    "readme_content": "<div align=\"center\"><a name=\"readme-top\"></a>\n\n[![][image-banner]][vercel-link]\n\n# LobeHub\n\n**Super-Agents on Your Team**\n\nAdd super-agents to the chats your team already uses.<br/>\nThey take on work by themselves and get better every week.\n\n**English** · [简体中文](./README.zh-CN.md) · [Official Site][official-site] · [Changelog][changelog] · [Documents][docs] · [Blog][blog] · [Feedback][github-issues-link]\n\n<!-- SHIELD GROUP -->\n\n[![][github-release-shield]][github-release-link]\n[![][docker-release-shield]][docker-release-link]\n[![][vercel-shield]][vercel-link]\n[![][discord-shield]][discord-link]<br/>\n[![][codecov-shield]][codecov-link]\n[![][github-action-test-shield]][github-action-test-link]\n[![][github-action-release-shield]][github-action-release-link]\n[![][github-releasedate-shield]][github-releasedate-link]<br/>\n[![][github-contributors-shield]][github-contributors-link]\n[![][github-forks-shield]][github-forks-link]\n[![][github-stars-shield]][github-stars-link]\n[![][github-issues-shield]][github-issues-link]\n[![][github-license-shield]][github-license-link]<br>\n\n**Share LobeHub Repository**\n\n[![][share-x-shield]][share-x-link]\n[![][share-telegram-shield]][share-telegram-link]\n[![][share-whatsapp-shield]][share-whatsapp-link]\n[![][share-reddit-shield]][share-reddit-link]\n[![][share-weibo-shield]][share-weibo-link]\n[![][share-mastodon-shield]][share-mastodon-link]\n[![][share-linkedin-shield]][share-linkedin-link]\n\n<a href=\"https://www.producthunt.com/products/lobehub?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-lobehub-2\" target=\"_blank\" rel=\"noopener noreferrer\"><img alt=\"LobeHub - Your Chief Agent Operator for multi-agent work | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1147569&amp;theme=light&amp;period=daily&amp;t=1779247564355\"></a> <a href=\"https://trendshift.io/repositories/19224\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/19224\" alt=\"lobehub%2Flobehub | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n[![](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)\n\n</div>\n\n<details>\n<summary><kbd>Table of contents</kbd></summary>\n\n#### TOC\n\n- [👋🏻 Getting Started & Join Our Community](#-getting-started--join-our-community)\n- [✨ Features](#-features)\n  - [From new hire to one of the team](#from-new-hire-to-one-of-the-team)\n  - [`Day 1` Welcome to the team](#day-1-welcome-to-the-team)\n  - [`Week 1` Its first task](#week-1-its-first-task)\n  - [`Month 1–2` Settling in as the team grows](#month-12-settling-in-as-the-team-grows)\n  - [`Month 3` It passes its review](#month-3-it-passes-its-review)\n  - [Bring them onto your team](#bring-them-onto-your-team)\n- [🧩 Marketplace](#-marketplace)\n- [📖 Documentation](#-documentation)\n- [🛳 Self Hosting](#-self-hosting)\n  - [`A` Docker Compose (recommended)](#a-docker-compose-recommended)\n  - [`B` One-click deploy](#b-one-click-deploy)\n- [⌨️ Local Development](#️-local-development)\n- [🤝 Contributing](#-contributing)\n- [❤️ Sponsor](#️-sponsor)\n- [🔬 Research](#-research)\n\n####\n\n<br/>\n\n</details>\n\n<br/>\n\n<https://github.com/user-attachments/assets/0a33365f-b786-48b5-9ed6-f8af7927bccb>\n\n## 👋🏻 Getting Started & Join Our Community\n\nWe are a group of e/acc design-engineers, hoping to provide modern design components and tools for AIGC.\n\nWhether for users or professional developers, LobeHub will be your AI Agent playground. Please be aware that LobeHub is currently under active development, and feedback is welcome for any [issues][issues-link] encountered.\n\n| [![](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1065874&theme=light&t=1769347414733)](https://www.producthunt.com/products/lobehub?launch=lobehub-2&embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lobehub) | We are live on Product Hunt! We are thrilled to bring LobeHub to the world. If you believe in a future where humans and agents co-evolve, please support our journey. |\n| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| [![][discord-shield-badge]][discord-link]                                                                                                                                                                                                                          | Join our Discord community! This is where you can connect with developers and other enthusiastic users of LobeHub.                                                    |\n\n> \\[!IMPORTANT]\n>\n> **Star Us**, You will receive all release notifications from GitHub without any delay \\~ ⭐️\n\n[![][image-star]][github-stars-link]\n\n<details>\n  <summary><kbd>Star History</kbd></summary>\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/svg?repos=lobehub%2Flobehub&theme=dark&type=Date\">\n    <img width=\"100%\" src=\"https://api.star-history.com/svg?repos=lobehub%2Flobehub&type=Date\">\n  </picture>\n</details>\n\n## ✨ Features\n\n<div align=\"center\">\n\n### From new hire to one of the team\n\nSee what Lobe AI gets done, from its first day in your team chat onward.\n\n<sub>WHAT MAKES A SUPER-AGENT</sub>\n\n</div>\n\n<table>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <b>🔌 Flexible access</b><br/>\n      Plug in any IM app, agent or model, all in one place.\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <b>⚡ Parallel work</b><br/>\n      Runs several tasks at once, so you don't have to chase each one.\n    </td>\n  </tr>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <b>🙋 Finds its own work</b><br/>\n      Takes on the tasks that suit it, without someone passing messages along.\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <b>📈 Gets more expert</b><br/>\n      The more you use it, the faster an agent builds up its expertise.\n    </td>\n  </tr>\n</table>\n\n### `Day 1` Welcome to the team\n\nYou add it to your team chat and ask it to read up. By lunch it has gone through the history and said hello to everyone.\n\n![Before it starts, it reads up](https://hub-apac-1.lobeobjects.space/blog/assets/ed6fc1ef1e21e4add545c1e83c32fcb4.webp)\n\n![Lobe AI's IM Bots settings, its team badge and its Day 1 checklist](https://hub-apac-1.lobeobjects.space/blog/assets/a1c721a3cbe9cb8ec0f515217322b514.webp)\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n### `Week 1` Its first task\n\nSomeone posts a feature request in Discord and nobody assigns it. Lobe AI takes it on, and you only step in once, to accept the result.\n\n![Picks it up: nobody tags it, and it takes the request anyway](https://hub-apac-1.lobeobjects.space/blog/assets/b0c761a9084a5958d4205e5d056fa3ae.webp)\n\n![Hands it in: you check the evidence, accept, and the PR merges](https://hub-apac-1.lobeobjects.space/blog/assets/b8635a2bf3b600697068d70690a62438.webp)\n\n![Reports back: it replies in the original thread](https://hub-apac-1.lobeobjects.space/blog/assets/3e187a7e1fd004238163b58e20c59817.webp)\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n### `Month 1–2` Settling in as the team grows\n\nEveryone now has their own agent, and design, releases and docs each have a dedicated one. Lobe AI is still learning when to speak up and when to stay quiet.\n\n![One brief every morning](https://hub-apac-1.lobeobjects.space/blog/assets/c4e5bac0c35f840d9476256996e93e49.webp)\n\n![It's learning when to speak up](https://hub-apac-1.lobeobjects.space/blog/assets/bc065ed83d1ab0862aea98a7216ff787.webp)\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n### `Month 3` It passes its review\n\nWhen it started, it got about half of these right. Now it rarely misses, and every correction you gave it has become a lesson it keeps.\n\n![What it has learned](https://hub-apac-1.lobeobjects.space/blog/assets/82c6818a9dc6fa27cf5aea75a092b448.webp)\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n<div align=\"center\">\n\n### Bring them onto your team\n\nStart with one, and add more when you need them.\n\n[**Try LobeHub Cloud**][vercel-link] · [**Self-host it**](#-self-hosting)\n\n</div>\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n## 🧩 Marketplace\n\nFind agents, MCP servers and skills on [lobehub.com][official-site], add them to your workspace, or publish your own.\n\n| Market                                | What you'll find                                                                                                   |\n| :------------------------------------ | :----------------------------------------------------------------------------------------------------------------- |\n| [**🤖 Agents**][market-agents]        | Ready-to-use agents for writing, Q\\&A, images, video, voice and workflows. Add one to your workspace and adapt it. |\n| [**🔌 MCP Servers**][market-mcp]      | MCP servers rated on activity, stability and community feedback, so you can pick ones you can trust.               |\n| [**🧠 Skills**][market-skills]        | Agent skills in the open `SKILL.md` format. They also work in Claude Code, Codex CLI and ChatGPT.                  |\n| [**🎨 AI / LLM Icons**][market-icons] | A free icon set for major AI brands and models, with SVG, PNG and vector downloads.                                |\n\n**Publish your own**\n\n- **Agents**: submit one from its settings in LobeHub. The [Creator Reward Program][creator-program] features a community agent every two weeks.\n\n- **MCP servers**: ask your agent to `Read https://lobehub.com/publish-mcp/skill.md and follow the instructions to publish my MCP server to the LobeHub Marketplace`, or use the CLI:\n\n  ```bash\n  npx -y @lobehub/market-cli login\n  npx -y @lobehub/market-cli plugin submit https://github.com/OWNER/REPOSITORY\n  ```\n\n- **Skills**: submit a GitHub repository from the [Skills marketplace][market-skills].\n\n<div align=\"right\">\n\n[![][back-to-top]](#readme-top)\n\n</div>\n\n## 📖 Documentation\n\nAll documentation lives at [lobehub.com/docs](https://lobehub.com/docs/usage/start):\n\n| Section                                                                                 | What's covered                                                                               |\n| :-------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- |\n| [Get LobeHub](https://lobehub.com/docs/usage/getting-started/get-lobehub)               | Web, macOS, Windows, Linux and mobile apps, and where work runs                              |\n| [Lobe AI](https://lobehub.com/docs/usage/getting-started/lobe-ai)                       | The built-in agent: chat, code, research and write with no setup                             |\n| [Agents](https://lobehub.com/docs/usage/getting-started/agent)                          | System role, model, skills, connectors, web search, resources and memory                     |\n| [Agent Team](https://lobehub.com/docs/usage/agent/agent-team)                           | Several agents working together: sequential, parallel, iterative or debate                   |\n| [Connect External Agents](https://lobehub.com/docs/usage/agent/connect-external-agents) | Bring in Claude Code, Codex, OpenClaw, Hermes and more, with project context and permissions |\n| [Tasks](https://lobehub.com/docs/usage/getting-started/task)                            | Delegate work, track status, follow up in comments, run once or on a schedule                |\n| [Memory](https://lobehub.com/docs/usage/getting-started/memory)                         | Structured memories you can review, edit and delet",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@lobehub/lobehub\",\n  \"version\": \"2.3.2\",\n  \"description\": \"LobeHub - an open-source,comprehensive AI Agent framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. Supports one-click free deployment of your private ChatGPT/LLM web application.\",\n  \"keywords\": [\n    \"framework\",\n    \"chatbot\",\n    \"chatgpt\",\n    \"nextjs\",\n    \"vercel-ai\",\n    \"openai\",\n    \"azure-openai\",\n    \"visual-model\",\n    \"tts\",\n    \"stt\"\n  ],\n  \"homepage\": \"https://github.com/lobehub/lobehub\",\n  \"bugs\": {\n    \"url\": \"https://github.com/lobehub/lobehub/issues/new/choose\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/lobehub/lobehub.git\"\n  },\n  \"license\": \"MIT\",\n  \"author\": \"LobeHub <i@lobehub.com>\",\n  \"sideEffects\": [\n    \"./src/initialize.ts\",\n    \"./src/libs/providerIcon.ts\",\n    \"./src/spa/entry.auth.tsx\",\n    \"./src/spa/entry.desktop.tsx\",\n    \"./src/spa/entry.mobile.tsx\",\n    \"./src/spa/entry.popup.tsx\",\n    \"./src/spa/entry.web.tsx\"\n  ],\n  \"workspaces\": [\n    \"packages/*\",\n    \"packages/business/*\",\n    \"e2e\",\n    \"apps/desktop/src/main\",\n    \"apps/share\",\n    \"apps/workbench\"\n  ],\n  \"scripts\": {\n    \"alint\": \"alint\",\n    \"alint:audit\": \"alint --config alint.audit.toml --format json --rule-concurrency 48 src packages\",\n    \"alint:setup\": \"bun packages/alint/setup.ts\",\n    \"build\": \"bun run build:spa && bun run build:spa:auth && bun run build:spa:workbench && bun run build:spa:share && bun run build:spa:copy && bun run build:next\",\n    \"build:analyze\": \"cross-env NODE_OPTIONS=--max-old-space-size=81920 next experimental-analyze\",\n    \"build:canvas-runtime\": \"pnpm --filter @lobechat/canvas-runtime build\",\n    \"build:docker\": \"pnpm run build:spa && pnpm run build:spa:mobile && pnpm run build:spa:auth && pnpm run build:spa:workbench && pnpm run build:spa:share && cross-env WORKBENCH_REQUIRED=1 SHARE_REQUIRED=1 pnpm run build:spa:copy && cross-env NODE_OPTIONS=--max-old-space-size=8192 DOCKER=true next build\",\n    \"build:next\": \"cross-env NODE_OPTIONS=--max-old-space-size=7168 bun run build:next:raw\",\n    \"build:next:raw\": \"next build\",\n    \"build:raw\": \"bun run build:spa:raw && bun run build:spa:auth && bun run build:spa:workbench && bun run build:spa:share && bun run build:spa:copy && bun run build:next:raw\",\n    \"build:spa\": \"cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm run build:spa:raw\",\n    \"build:spa:auth\": \"rm -rf public/_spa public/_spa-auth && cross-env NODE_OPTIONS=--max-old-space-size=8192 AUTH=true vite build\",\n    \"build:spa:copy\": \"tsx scripts/copySpaBuild.mts && tsx scripts/generateSpaTemplates.mts\",\n    \"build:spa:mobile\": \"cross-env NODE_OPTIONS=--max-old-space-size=8192 MOBILE=true vite build\",\n    \"build:spa:raw\": \"rm -rf public/_spa && vite build\",\n    \"build:spa:share\": \"rm -rf dist/share public/_spa-share && cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm --filter @lobehub/share build\",\n    \"build:spa:workbench\": \"rm -rf dist/workbench public/_spa-workbench && cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm --filter @lobehub/workbench build\",\n    \"build:vercel\": \"cross-env-shell NODE_OPTIONS=--max-old-space-size=8192 \\\"bun run build:raw && bun run db:migrate\\\"\",\n    \"build-migrate-db\": \"bun run db:migrate\",\n    \"check\": \"bun run .agents/scripts/check/cli.ts\",\n    \"clean:node_modules\": \"bash -lc 'set -e; echo \\\"Removing all node_modules...\\\"; rm -rf node_modules; pnpm -r exec rm -rf node_modules; rm -rf apps/desktop/node_modules; echo \\\"All node_modules removed.\\\"'\",\n    \"db:generate\": \"drizzle-kit generate && tsx ./scripts/pruneMigrationSnapshots/index.ts && npm run workflow:dbml\",\n    \"db:install-fts-search-capture\": \"cross-env MIGRATION_DB=1 tsx ./scripts/installFtsSearchSyncCapture/index.ts\",\n    \"db:migrate\": \"cross-env MIGRATION_DB=1 tsx ./scripts/migrateServerDB/index.ts\",\n    \"db:studio\": \"drizzle-kit studio\",\n    \"db:visualize\": \"dbdocs build docs/development/database-schema.dbml --project lobe-chat\",\n    \"desktop:build:all\": \"npm run desktop:build:main\",\n    \"desktop:build:main\": \"npm run build:main --prefix=./apps/desktop\",\n    \"desktop:build-channel\": \"tsx scripts/electronWorkflow/buildDesktopChannel.ts\",\n    \"desktop:main:build\": \"npm run desktop:main:build --prefix=./apps/desktop\",\n    \"desktop:package:app\": \"npm run desktop:package:app:platform\",\n    \"desktop:package:app:platform\": \"tsx scripts/electronWorkflow/buildElectron.ts\",\n    \"desktop:package:local\": \"npm run package:local --prefix=./apps/desktop\",\n    \"desktop:package:local:reuse\": \"npm run package:local:reuse --prefix=./apps/desktop\",\n    \"dev\": \"tsx scripts/devStartupSequence.mts\",\n    \"dev:bun\": \"bun --bun next dev -p 3010\",\n    \"dev:desktop\": \"cd apps/desktop && pnpm run dev\",\n    \"dev:docker\": \"docker compose -f docker-compose/dev/docker-compose.yml up -d --wait postgresql redis rustfs searxng\",\n    \"dev:docker:down\": \"docker compose -f docker-compose/dev/docker-compose.yml down\",\n    \"dev:docker:reset\": \"docker compose -f docker-com",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "llm"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "MCP 集成",
+      "技能扩展",
+      "大模型应用"
+    ],
+    "brief_zh": {
+      "summary": "一个 AI Agent 运营平台，用于集中创建、调度和监控持续运行的 Agent 团队。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cloudflare",
+    "name": "security-audit-skill",
+    "full_name": "cloudflare/security-audit-skill",
+    "url": "https://github.com/cloudflare/security-audit-skill",
+    "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+    "language": "JavaScript",
+    "total_stars": 63806,
+    "forks": 4137,
+    "stars_this_period": 2524,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 115,
+      "created_at": "2026-06-18T14:08:44Z",
+      "pushed_at": "2026-09-14T19:29:02Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 4137,
+      "watchers": 224,
+      "archived": false,
+      "size_kb": 143
+    },
+    "readme_content": "# security-audit\n\nA coding-agent skill that turns your agent into a security auditor. It orchestrates isolated agents through reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting.\n\nThis is the skill that seeded Cloudflare's vulnerability discovery harness, described in [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness). The harness grew into a multi-stage, fleet-wide system; this skill is the single-repo starting point it evolved from.\n\n## What it does\n\nThe skill runs a structured audit in six phases:\n\n1. **Reconnaissance** -- map architecture, trust boundaries, input surfaces, prior evidence, and deterministic coverage in `architecture.md` and `coverage-ledger.json`.\n2. **Coverage-led hunting** -- assign isolated hunters from ledger units, record their checks, and use coverage critics to find gaps.\n3. **Candidate validation** -- give every unique candidate to a fresh verifier that tries to disprove it.\n4. **Structured output** -- write `confirmed`, `needs_validation`, and `rejected` records to `findings.json` and validate them against `report-schema.json`.\n5. **Independent record verification** -- fresh agents verify final source claims. Material replacements receive another independent verifier.\n6. **Target-neutral reporting** -- derive `REPORT.md`, `FINDINGS-DETAIL.md`, and `NEEDS-VALIDATION.md` from the verified records and coverage ledger.\n\nThe parent runs `validate-coverage-ledger.cjs` after creating the ledger and after each later ledger update. It runs `validate-findings.cjs` in Phase 4 and again after every Phase 5 replacement.\n\nThe verdicts are distinct: `confirmed` has a complete source trace and bounded observed result, `needs_validation` has an exact unresolved fact and no severity, and `rejected` records a disproved candidate.\n\nMultiple runs against the same repo are additive. The skill uses prior ledgers and findings to target gaps, revalidate changed source, and carry forward current-source evidence without treating stale or unresolved work as covered.\n\n## Files\n\n| File | Purpose |\n|------|---------|\n| `SKILL.md` | Setup, core principles, platform terminology, workflow overview, and audit anti-patterns |\n| `RECONNAISSANCE.md` | Phase 1 reconnaissance prompts and synthesis instructions |\n| `HUNTING.md` | Phase 2 orchestration, hunting methodology, and validation rules |\n| `ATTACK-CLASSES.md` | Core, wildcard, and obvious-things attack prompts |\n| `MEMORY-SAFETY-AND-BINARY.md` | Memory-safety, binary, and kernel hunting classes for native targets |\n| `AI-AND-LLM.md` | Prompt-injection, agent/tool, and output-handling hunting classes for LLM-backed targets |\n| `WEB-PROTOCOL-AND-AUTH.md` | HTTP request-framing, cache, and authentication-protocol hunting classes for HTTP-protocol and auth targets |\n| `CLIENT-SIDE.md` | DOM-injection, messaging-trust, UI-redress, and prototype-pollution hunting classes for client-side/browser targets |\n| `SUPPLY-CHAIN-AND-RELEASE.md` | Dependency, CI, release, signing, update, plugin, and extension hunting classes |\n| `CLOUD-AND-DEPLOYMENT.md` | IAM, infrastructure-as-code, container, serverless, ingress, and runtime-configuration hunting classes |\n| `PROTOCOLS-RPC-AND-MESSAGING.md` | RPC, serialization, queue, broker, webhook, and streaming-protocol hunting classes |\n| `RESOURCE-EXHAUSTION-AND-AVAILABILITY.md` | Shared resource, quota, queue, worker, and operator-spend hunting classes |\n| `DATA-ISOLATION-AND-LIFECYCLE.md` | Tenant isolation, cache, search, export, backup, migration, deletion, and restore hunting classes |\n| `DESKTOP-MOBILE-AND-LOCAL-IPC.md` | Native app, deep-link, webview, exported-component, helper, daemon, and local-IPC hunting classes |\n| `VALIDATION-AND-REPORTING.md` | Phases 3–6 candidate validation, structured output, record verification, and reporting |\n| `report-schema.json` | JSON schema for all three `findings.json` verdicts |\n| `validate-findings.cjs` | Zero-dependency validator for `findings.json` in Phases 4 and 5 |\n| `validate-findings.test.cjs` | Findings-validator tests and producer-compatible fixture checks |\n| `validate-coverage-ledger.cjs` | Zero-dependency validator for `coverage-ledger.json` in Phases 1–5 |\n| `validate-coverage-ledger.test.cjs` | Coverage-ledger validator tests |\n\n## Installation\n\nInstall the skill with the [Skills CLI](https://skills.sh):\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit\n```\n\nUse `--global` for a user-level installation:\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit \\\n  --global\n```\n\nRun `npx skills --help` for agent-selection and non-interactive options.\n\n## Usage\n\nStart your coding agent in (or pointed at) the codebase you want to audit, then ask it to do a security audit:\n\n```\nsecurity audit this codebase\n```\n\n```\nfind security vulnerabilities in ./src\n```\n\n```\ndo a security review, output to ~/audits/my-project\n```\n\nThe skill activates automatically when the request matches its trigger (security audit, find vulnerabilities, pen-test the code, etc.). A direct codebase audit or pen-test request uses full audit mode. Security questions and focused vulnerability work use guidance mode unless you request report artifacts. In full audit mode, an unspecified output directory defaults to `~/security-audit-skill/<repo-name>/run-<N>`. The workflow writes inside the target repository only when you explicitly select a directory that version control ignores.\n\n## Requirements\n\n- A coding agent with a model that supports tool use and parallel sub-agents\n- Node.js for the zero-dependency findings and coverage-ledger validators\n- An OS-enforced sandbox for target-controlled builds, tests, processes, browsers, emulators, fuzzers, and fixtures. It must disable external networking, use a sanitized allowlisted environment, enforce resource limits, and allow writes only to assigned scratch paths. Without these controls, the workflow keeps the lead as `needs_validation` instead of executing target code.\n\n## Design principles\n\n- **Only confirm established boundary failures.** Keep a source-grounded blocked lead as `needs_validation` with its exact unresolved fact.\n- **Adversarial validation.** The agent that checks a finding is never the agent that found it.\n- **Severity requires impact.** Likelihood x impact, not deviation from a checklist.\n- **Defense-in-depth gaps are not vulnerabilities.** If Layer A prevents the attack, the absence of Layer B is a hardening note.\n- **Multiple runs improve coverage.** In our test runs, a single run found roughly half of the vulnerabilities that repeated runs found in total.\n\n## Contact\n\nQuestions, feedback, or comparing notes on AI-driven security tooling: security-ai-research@cloudflare.com\n\n## License\n\nMIT -- see [LICENSE](LICENSE).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "runtime",
+      "skill",
+      "llm",
+      "eval",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "多阶段安全审计",
+      "覆盖率账本",
+      "独立候选验证"
+    ],
+    "brief_zh": {
+      "summary": "Cloudflare 开源的一套编码 Agent 安全审计技能：将侦察、覆盖率驱动排查、候选漏洞验证、机器可读发现记录和独立复核组织成六阶段流程，并区分已确认、待验证与已否定的结论。",
+      "audience": "希望将代码库安全审计流程结构化、可复核并持续运行的应用安全与工程团队",
+      "capabilities": "多阶段安全审计、覆盖率账本、独立候选验证、结构化发现、报告生成、Agent 编排",
+      "risk": "技能输出不能替代人工安全评估；自动化审计的覆盖率、误报处理、模型权限和代码数据边界仍需在目标环境中单独控制。",
+      "verified_at": "2026-10-09",
+      "evidence_sources": [
+        "https://github.com/cloudflare/security-audit-skill"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未在目标代码库执行审计。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rust-lang",
+    "name": "rust",
+    "full_name": "rust-lang/rust",
+    "url": "https://github.com/rust-lang/rust",
+    "description": "Empowering everyone to build reliable and efficient software.",
+    "language": "Rust",
+    "total_stars": 121388,
+    "forks": 17363,
+    "stars_this_period": 186,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "compiler",
+        "language",
+        "rust"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 12620,
+      "created_at": "2010-06-16T20:39:03Z",
+      "pushed_at": "2026-11-06T21:22:32Z",
+      "homepage": "https://www.rust-lang.org",
+      "default_branch": "main",
+      "forks": 17363,
+      "watchers": 1570,
+      "archived": false,
+      "size_kb": 1040565
+    },
+    "readme_content": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-light.svg\">\n    <img alt=\"The Rust Programming Language: A language empowering everyone to build reliable and efficient software\"\n         src=\"https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-light.svg\"\n         width=\"50%\">\n  </picture>\n\n[Website][Rust] | [Getting started] | [Learn] | [Documentation] | [Contributing]\n</div>\n\nThis is the main source code repository for [Rust]. It contains the compiler,\nstandard library, and documentation.\n\n[Rust]: https://www.rust-lang.org/\n[Getting Started]: https://www.rust-lang.org/learn/get-started\n[Learn]: https://www.rust-lang.org/learn\n[Documentation]: https://www.rust-lang.org/learn#learn-use\n[Contributing]: CONTRIBUTING.md\n\n## Why Rust?\n\n- **Performance:** Fast and memory-efficient, suitable for critical services, embedded devices, and easily integrated with other languages.\n\n- **Reliability:** Our rich type system and ownership model ensure memory and thread safety, reducing bugs at compile-time.\n\n- **Productivity:** Comprehensive documentation, a compiler committed to providing great diagnostics, and advanced tooling including package manager and build tool ([Cargo]), auto-formatter ([rustfmt]), linter ([Clippy]) and editor support ([rust-analyzer]).\n\n[Cargo]: https://github.com/rust-lang/cargo\n[rustfmt]: https://github.com/rust-lang/rustfmt\n[Clippy]: https://github.com/rust-lang/rust-clippy\n[rust-analyzer]: https://github.com/rust-lang/rust-analyzer\n\n## Quick Start\n\nRead [\"Installation\"] from [The Book].\n\n[\"Installation\"]: https://doc.rust-lang.org/book/ch01-01-installation.html\n[The Book]: https://doc.rust-lang.org/book/index.html\n\n## Installing from Source\n\nIf you really want to install from source (though this is not recommended), see\n[INSTALL.md](INSTALL.md).\n\n## Getting Help\n\nSee https://www.rust-lang.org/community for a list of chat platforms and forums.\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md).\n\nFor a detailed explanation of the compiler's architecture and how to begin contributing, see the [rustc-dev-guide](https://rustc-dev-guide.rust-lang.org/).\n\n## License\n\nRust is primarily distributed under the terms of both the MIT license and the\nApache License (Version 2.0), with portions covered by various BSD-like\nlicenses.\n\nSee [LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT), and\n[COPYRIGHT](COPYRIGHT) for details.\n\n## Trademark\n\n[The Rust Foundation][rust-foundation] owns and protects the Rust and Cargo\ntrademarks and logos (the \"Rust Trademarks\").\n\nIf you want to use these names or brands, please read the\n[Rust language trademark policy][trademark-policy].\n\nThird-party logos may be subject to third-party copyrights and trademarks. See\n[Licenses][policies-licenses] for details.\n\n[rust-foundation]: https://rustfoundation.org/\n[trademark-policy]: https://rustfoundation.org/policy/rust-trademark-policy/\n[policies-licenses]: https://www.rust-lang.org/policies/licenses\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\nresolver = \"2\"\nmembers = [\n# tidy-alphabetical-start\n  \"compiler/rustc\",\n  \"src/build_helper\",\n  \"src/rustc-std-workspace/rustc-std-workspace-alloc\",\n  \"src/rustc-std-workspace/rustc-std-workspace-core\",\n  \"src/rustc-std-workspace/rustc-std-workspace-std\",\n  \"src/rustdoc-json-types\",\n  \"src/shim_utils\",\n  \"src/tools/build-manifest\",\n  \"src/tools/bump-stage0\",\n  \"src/tools/cargotest\",\n  \"src/tools/clippy\",\n  \"src/tools/clippy/clippy_dev\",\n  \"src/tools/collect-license-metadata\",\n  \"src/tools/compiletest\",\n  \"src/tools/coverage-dump\",\n  \"src/tools/features-status-dump\",\n  \"src/tools/generate-copyright\",\n  \"src/tools/generate-windows-sys\",\n  \"src/tools/html-checker\",\n  \"src/tools/jsondocck\",\n  \"src/tools/jsondoclint\",\n  \"src/tools/linkchecker\",\n  \"src/tools/lint-docs\",\n  \"src/tools/lld-wrapper\",\n  \"src/tools/llvm-bitcode-linker\",\n  \"src/tools/miri\",\n  \"src/tools/miri/cargo-miri\",\n  \"src/tools/miropt-test-tools\",\n  \"src/tools/opt-dist\",\n  \"src/tools/remote-test-client\",\n  \"src/tools/remote-test-server\",\n  \"src/tools/replace-version-placeholder\",\n  \"src/tools/run-make-support\",\n  \"src/tools/rust-installer\",\n  \"src/tools/rustdoc\",\n  \"src/tools/rustdoc-gui-test\",\n  \"src/tools/rustdoc-themes\",\n  \"src/tools/rustfmt\",\n  \"src/tools/test-float-parse\",\n  \"src/tools/tidy\",\n  \"src/tools/tier-check\",\n  \"src/tools/unicode-table-generator\",\n  \"src/tools/unstable-book-gen\",\n  \"src/tools/wasm-component-ld\",\n  \"src/tools/x\",\n# tidy-alphabetical-end\n]\n\nexclude = [\n  \"build\",\n  \"compiler/rustc_codegen_cranelift\",\n  \"compiler/rustc_codegen_gcc\",\n  \"src/bootstrap\",\n  \"tests/rustdoc-gui\",\n  # HACK(eddyb) This hardcodes the fact that our CI uses `/checkout/obj`.\n  \"obj\",\n]\n\n# These are very thin wrappers around executing lld with the right binary name.\n# Basically nothing within them can go wrong without having been explicitly logged anyway.\n# We ship these in every rustc tarball and even after compression they add up\n# to around 0.6MB of data every user needs to download (and 15MB on disk).\n[profile.release.package.lld-wrapper]\ndebug = 0\nstrip = true\n[profile.release.package.wasm-component-ld-wrapper]\ndebug = 0\nstrip = true\n\n# Bigint libraries are slow without optimization, speed up testing. Note that this doesn't affect\n# its dependencies, it should still be run in release mode where possible.\n[profile.dev.package.test-float-parse]\nopt-level = 3\n\n# Speed up the binary as much as possible\n[profile.release.package.test-float-parse]\nopt-level = 3\ncodegen-units = 1\n# FIXME: LTO cannot be enabled for binaries in a workspace\n# <https://github.com/rust-lang/cargo/issues/9330>\n# lto = true\n\n# If you want to use a crate with local modifications, you can set a path or git dependency here.\n# For git dependencies, also add your source to ALLOWED_SOURCES in src/tools/tidy/src/extdeps.rs.\n#[patch.crates-io]\n",
+    "strategic_keywords": [
+      "memory",
+      "rag",
+      "workspace"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Rust 编译器",
+      "标准库",
+      "所有权模型"
+    ],
+    "brief_zh": {
+      "summary": "Rust 编程语言的主源码仓库，包含编译器、标准库与文档；它以所有权与类型系统降低内存和线程安全错误，并配套 Cargo、Clippy、rustfmt 与 rust-analyzer 工具链。",
+      "audience": "需要构建高性能且强调内存安全服务、嵌入式软件或开发者工具的工程团队",
+      "capabilities": "Rust 编译器、标准库、所有权模型、Cargo 工具链、静态检查、代码格式化、编辑器支持",
+      "risk": "这是大型语言工具链仓库，源码构建与贡献门槛较高；README 仅说明其工具链定位，具体版本兼容性、迁移成本和生产采用仍需结合目标工程验证。",
+      "verified_at": "2026-10-14",
+      "evidence_sources": [
+        "https://github.com/rust-lang/rust"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未从源码构建编译器或验证具体工具链行为。"
+    },
+    "summary_source": "project_brief"
+  }
+]
