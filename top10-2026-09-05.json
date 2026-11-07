@@ -795,10 +795,21 @@
     },
     "strategic_score": 92,
     "capability_tags": [
-      "MCP 集成",
-      "技能扩展",
-      "工作流"
+      "Agent 技能包",
+      "技能模板",
+      "任务流程封装"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "Anthropic 公开的 Agent Skills 示例与规范仓库：每个技能以包含 SKILL.md、脚本和资源的独立目录封装，用于让 Claude 在专门任务中按可复用流程工作。",
+      "audience": "希望为 Claude 或兼容 Agent 设计、学习和复用任务技能包的开发者与平台团队",
+      "capabilities": "Agent Skills、技能模板、任务流程封装、文档与开发技能示例",
+      "risk": "仓库明确说明示例用于演示和教育；具体技能的行为及其在不同环境中的可靠性仍需单独测试。",
+      "verified_at": "2026-11-08",
+      "evidence_sources": [
+        "https://github.com/anthropics/skills"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与 agent-skills topic；未进行功能运行验证。"
+    }
   }
 ]
