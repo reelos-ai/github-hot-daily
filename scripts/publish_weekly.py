@@ -8,7 +8,6 @@ from pathlib import Path
 
 from generate_leaderboard import build_leaderboard
 import publish_daily as shared_publisher
-from restyle_report_pages import restyle_report_html
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -46,7 +45,11 @@ def copy_unique_assets(period: str) -> dict:
 
     html_dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(html_src, html_dst)
-    html_dst.write_text(restyle_report_html(html_dst.read_text(encoding="utf-8")), encoding="utf-8")
+    # The generated weekly report already contains the complete strategic analysis
+    # and its dark, responsive ReelOS presentation.  Keep it intact here: the
+    # generic restyler deliberately reduces reports to a project overview, which
+    # drops the deep analysis, trend, six-lens, and action sections required for
+    # a weekly intelligence report.
     shutil.copyfile(top_src, top_dst)
     shutil.copyfile(raw_src, raw_dst)
 
