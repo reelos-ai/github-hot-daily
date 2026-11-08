@@ -1367,5 +1367,14 @@
     "verified_at": "2026-11-04",
     "evidence_sources": ["https://github.com/hieunc229/mailflare"],
     "evidence_note": "依据本次抓取的仓库 description、topics 与 README；功能边界信息有限，未补充推断。"
+  },
+  "meta/astryx": {
+    "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
+    "audience": "希望在 React 项目中统一界面基础组件、设计令牌与 Agent 辅助开发流程的产品和工程团队",
+    "capabilities": "设计系统、React 组件、StyleX 样式、界面令牌、Agent 协作开发",
+    "risk": "项目仍处于 Beta；README 的 Agent-ready 定位不代表已验证所有 Agent 集成场景，升级兼容性和组件覆盖范围需在采用前单独评估。",
+    "verified_at": "2026-11-09",
+    "evidence_sources": ["https://github.com/meta/astryx"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与技术栈说明；未在生产 React 项目或 Agent 工作流中运行验证。"
   }
 }

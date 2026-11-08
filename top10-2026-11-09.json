@@ -1,0 +1,830 @@
+[
+  {
+    "owner": "vercel-labs",
+    "name": "agent-browser",
+    "full_name": "vercel-labs/agent-browser",
+    "url": "https://github.com/vercel-labs/agent-browser",
+    "description": "Browser automation CLI for AI agents",
+    "language": "Rust",
+    "total_stars": 47519,
+    "forks": 3255,
+    "stars_this_period": 812,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 525,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-08T10:03:53Z",
+      "homepage": "https://agent-browser.dev",
+      "default_branch": "main",
+      "forks": 3255,
+      "watchers": 106,
+      "archived": false,
+      "size_kb": 31766
+    },
+    "readme_content": "# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n<p>\n  <a href=\"https://vercel.com/labs#labs-products\"><img alt=\"Vercel Labs Product\" src=\"https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm version: agent-browser\" src=\"https://img.shields.io/npm/v/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://github.com/vercel-labs/agent-browser/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/github/license/vercel-labs/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm downloads per month: agent-browser\" src=\"https://img.shields.io/npm/dm/agent-browser.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads\" height=\"28\"></a>\n  <a href=\"https://skills.sh/vercel-labs/agent-browser\"><img alt=\"skills.sh\" src=\"https://skills.sh/b/vercel-labs/agent-browser?style=for-the-badge\" height=\"28\"></a>\n</p>\n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/selectors).\n- A click fails, instead of reporting success, when the target is hidden, disabled, outside the viewport, or covered by another element such as a consent banner. Dismiss the covering element, take a new snapshot, and retry.\n\nThe full walkthrough is in the [quick start](https://agent-browser.dev/quick-start).\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](https://agent-browser.dev/engines/obscura) engine with `--engine`, drive Mobile Safari in the [iOS Simulator](https://agent-browser.dev/ios), or use a cloud browser provider such as [Browserbase](https://agent-browser.dev/providers/browserbase), [Browserless](https://agent-browser.dev/providers/browserless), [Browser Use](https://agent-browser.dev/providers/browser-use), [Kernel](https://agent-browser.dev/providers/kernel), or [AgentCore](https://agent-browser.dev/providers/agentcore).\n\n## For AI agents\n\nThe CLI ships skills that match its version:\n\n```bash\nagent-browser skills get core                 # the core loop, refs, waiting, and common workflows\nagent-browser skills get core --ref commands  # one reference, such as the full command list\nagent-browser skills get core --full          # adds the full command reference and templates\nagent-browser skills list                     # specialized skills: electron, slack, dogfood, and more\n```\n\nInstall the discovery skill into an agent harness from [skills.sh](https://skills.sh/vercel-labs/agent-browser):\n\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\nThe installed skill is a thin stub that tells the agent to load `agent-browser skills get core`, so its instructions always match the installed CLI. Or add this to your `AGENTS.md`:\n\n```markdown\nUse `agent-browser` for browser automation. Before the first use, run\n`agent-browser skills get core` and follow it.\n```\n\nFor MCP clients, `agent-browser mcp` starts an MCP server over stdio. See [MCP server](https://agent-browser.dev/commands#mcp-server).\n\n## Commands\n\nRun `agent-browser --help` for the full list, or `agent-browser <command> --help` for one command.\n\n| Group | Commands | Docs |\n|---|---|---|\n| Navigate and read | `open`, `back`, `forward`, `reload`, `read`, `snapshot`, `get`, `is` | [Core](https://agent-browser.dev/commands#core), [Snapshots](https://agent-browser.dev/snapshots) |\n| Interact | `click`, `dblclick`, `fill`, `type`, `press`, `keyboard`, `hover`, `focus`, `select`, `check`, `uncheck`, `scroll`, `drag`, `upload`, `mouse`, `find` | [Core](https://agent-browser.dev/commands#core), [Find elements](https://agent-browser.dev/commands#find-elements) |\n| Wait | `wait` | [Wait](https://agent-browser.dev/commands#wait) |\n| Capture | `screenshot`, `pdf`, `record`, `download`, `diff` | [Recording](https://agent-browser.dev/recording), [Diffing](https://agent-browser.dev/diffing), [Files](https://agent-browser.dev/files) |\n| Page and network state | `cookies`, `storage`, `network`, `set`, `clipboard`, `eval`, `pushstate` | [Network](https://agent-browser.dev/network), [Settings](https://agent-browser.dev/commands#settings) |\n| Tabs, frames, and dialogs | `tab`, `frame`, `dialog` | [Tabs and frames](https://agent-browser.dev/commands#tabs-frames) |\n| Debug and performance | `console`, `errors`, `highlight`, `inspect`, `trace`, `profiler`, `vitals`, `react`, `a11y` | [Debugging](https://agent-browser.dev/debugging), [Profiler](https://agent-browser.dev/profiler), [React](https://agent-browser.dev/react) |\n| Sessions and auth | `session`, `state`, `auth`, `profiles`, `confirm`, `deny` | [Sessions](https://agent-browser.dev/sessions), [Security](https://agent-browser.dev/security) |\n| Agents and integrations | `skills`, `mcp`, `webmcp`, `flow`, `chat`, `batch`, `plugin` | [Skills](https://agent-browser.dev/skills), [WebMCP](https://agent-browser.dev/webmcp), [Plugins](https://agent-browser.dev/plugins) |\n| Observe | `stream`, `dashboard` | [Streaming](https://agent-browser.dev/streaming), [Dashboard](https://agent-browser.dev/dashboard) |\n| Setup | `install`, `upgrade`, `doctor`, `connect`, `close` | [Installation](https://agent-browser.dev/installation) |\n\nFlags, environment variables, and `agent-browser.json` are documented in [Configuration](https://agent-browser.dev/configuration).\n\n## Platforms\n\nNative binaries ship for macOS (ARM64, x64), Linux (ARM64, x64, glibc and musl), and Windows (x64). The npm package picks the right binary for the host.\n\n## Development\n\nBuilding from source requires Node.js 24 or later, pnpm 11 or later, and Rust:\n\n```bash\npnpm install\npnpm build:source               # builds the dashboard and the native CLI\npnpm link --global\nagent-browser install\n```\n\nRun the Rust checks from `cli/`:\n\n```bash\ncargo fmt -- --check\ncargo clippy\ncargo test\ncargo test e2e -- --ignored --test-threads=1   # launches real headless Chrome\n```\n\n[AGENTS.md](AGENTS.md) lists the files to update with each change, the docs checks, and the release process.\n\n## Documentation\n\n- [agent-browser.dev](https://agent-browser.dev): introduction, guides, and reference\n- [Commands](https://agent-browser.dev/commands) and [Configuration](https://agent-browser.dev/configuration)\n- [Security](https://agent-browser.dev/security): the auth vault, domain allowlists, action policies, and content boundaries\n- [Next.js and Vercel](https://agent-browser.dev/next) and [eve](https://agent-browser.dev/eve): running agent-browser in Vercel Sandbox and eve agents\n- [Changelog](CHANGELOG.md)\n\n## License\n\nApache-2.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "浏览器自动化",
+      "终端 CLI",
+      "Memory 组件"
+    ],
+    "brief_zh": {
+      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
+      "capabilities": "浏览器自动化、Agent 工具、终端 CLI",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/vercel-labs/agent-browser"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；未在目标网站验证兼容性、权限边界或自动化成功率。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "jub0t",
+    "name": "Concat",
+    "full_name": "jub0t/Concat",
+    "url": "https://github.com/jub0t/Concat",
+    "description": "Beta: The truly free, open-source, local-first, cross-platform video editor. Scriptable through a JSON-RPC API & MCP.",
+    "language": "Rust",
+    "total_stars": 15693,
+    "forks": 1958,
+    "stars_this_period": 491,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "ffmpeg",
+        "free-video-editor",
+        "model-context-protocol",
+        "non-linear-editor",
+        "offline-first",
+        "open-source-video-editor",
+        "self-hosted",
+        "video-editing",
+        "video-editing-automation",
+        "video-editing-software",
+        "video-editing-tools",
+        "video-editor",
+        "voice-cloning",
+        "youtube-automation",
+        "youtube-shorts"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 248,
+      "created_at": "2026-08-25T18:34:47Z",
+      "pushed_at": "2026-11-08T11:39:06Z",
+      "homepage": "https://concat.standalones.org",
+      "default_branch": "main",
+      "forks": 1958,
+      "watchers": 100,
+      "archived": false,
+      "size_kb": 79116
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/concat-mark-dark.png\" alt=\"Concat\" width=\"100\" />\n</p>\n\n<h1 align=\"center\">Concat</h1>\n<h3 align=\"center\">The free, open-source, cross-platform video editor.</h3>\n\n<div align=\"center\">\n\n<img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/editor.png\" alt=\"Concat editor\" width=\"100%\" />\n\n<p align=\"center\">\n  <a href=\"https://github.com/jub0t/Concat/releases\"><img src=\"https://img.shields.io/github/downloads/jub0t/concat/total?style=flat&logo=github&logoColor=F8F8F8&label=Downloads&labelColor=212123&color=0568FD\" alt=\"Total Downloads\" /></a>\n  <a href=\"https://github.com/jub0t/Concat/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/jub0t/Concat/ci.yml?style=flat&logo=githubactions&logoColor=F8F8F8&label=Build&labelColor=000000\" alt=\"Build Status\" /></a>\n  <a href=\"https://github.com/jub0t/Concat/releases\"><img src=\"https://img.shields.io/badge/Version-0.2.10-0568FD?style=flat&logo=semver&logoColor=F8F8F8&labelColor=212123\" alt=\"Concat Version 0.2.10\" /></a>\n  <a href=\"https://discord.gg/DVuPfpXfqP\"><img src=\"https://img.shields.io/badge/Discord-Join%20the%20server-5865F2?style=flat&logo=discord&logoColor=F8F8F8&labelColor=000000\" alt=\"Join Concat Discord\" /></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-AGPL%20v3-0568FD?style=flat&logo=gnu&logoColor=F8F8F8&labelColor=212123\" alt=\"License: AGPL-3.0-or-later\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/jub0t/concat\"><img src=\"https://api.star-history.com/badge?repo=jub0t/concat&type=rank\" alt=\"Star History Rank\" height=\"62\" /></a>\n  <a href=\"https://trendshift.io/repositories/191379?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-191379\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/191379/daily?language=Rust\" alt=\"jub0t%2FConcat | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://concat.standalones.org/#download\"><img src=\"assets/download_button.svg\" alt=\"Download Concat\" width=\"251\" /></a>\n</p>\n\n**🇬🇧 English** · [🇩🇪 Deutsch](docs/README.de.md) · [🇪🇸 Español](docs/README.es.md) · [🇫🇷 Français](docs/README.fr.md) · [🇮🇹 Italiano](docs/README.it.md) · [🇳🇱 Nederlands](docs/README.nl.md) · [🇵🇱 Polski](docs/README.pl.md) · [🇧🇷 Português (Brasil)](docs/README.pt-BR.md) · [🇷🇺 Русский](docs/README.ru.md) · [🇺🇦 Українська](docs/README.uk.md) · [🇹🇷 Türkçe](docs/README.tr.md) · [🇦🇿 Azərbaycanca](docs/README.az.md) · [🇭🇷 Hrvatski](docs/README.hr.md) · [🇮🇩 Bahasa Indonesia](docs/README.id.md) · [🇻🇳 Tiếng Việt](docs/README.vi.md) · [🇹🇭 ไทย](docs/README.th.md) · [🇯🇵 日本語](docs/README.ja.md) · [🇰🇷 한국어](docs/README.ko.md) · [🇨🇳 简体中文](docs/README.zh-Hans.md) · [🇹🇼 繁體中文](docs/README.zh-TW.md) · [🇸🇦 العربية](docs/README.ar.md) · [🇮🇱 עברית](docs/README.he.md) · [🇮🇷 فارسی](docs/README.fa.md) · [🇮🇳 हिन्दी](docs/README.hi.md) · [🇵🇰 اردو](docs/README.ur.md) · [🇧🇩 বাংলা](docs/README.bn.md)\n\n## Paid Sponsors\n\n<table width=\"100%\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://proxyon.io/?ref=concat\"><img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/proxyon_sponsor_logo.png\" alt=\"Proxyon\" width=\"80\" /></a><br />\n      <a href=\"https://proxyon.io/?ref=concat\"><b>Proxyon</b></a><br />\n      <sub>Pay-as-you-go proxies for developers<br />Use code <code>JUB0T</code> for 20% off</sub>\n    </td>\n      <td align=\"center\">\n      <a href=\"https://www.patreon.com/cw/jub0t\"><b>Support Concat</b></a><br />\n      <sub>Concat needs your donations to continue development,<br/>we have come too far to back down now 😢</sub>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n\n## About\n\nConcat is a free, open-source video editor for macOS, Windows, Linux and Android. It covers what most edits need: auto-captions, text-to-speech, background removal, keyframe animation, effects and titles, multi-track cutting, 4K export. With none of the catches: no watermark, no account, no subscription, no upload.\n\nEverything runs locally on a native Rust engine with a GPU compositor. Install it, drop in footage, cut. The AI models for captions, voices and cutout download once from Settings and work offline after that. Your footage never leaves your disk.\n\n**Good for:** TikTok, Reels and Shorts, YouTube videos, tutorials and screen recordings, podcast clips, memes.\n\n**Also for machines:** a built-in MCP server for AI agents (`concat --mcp`, [set up](docs/MCP.md)) and a JSON-RPC API for scripts, so they can cut video with it too.\n\n## Highlights\n\n- 🚫 **No watermarks. No account. No paywall.** Ever.\n- 🔒 **100% local.** Nothing uploads. Works offline.\n- 💬 **Auto-captions.** Local Whisper. Pick a model size, get styled captions on the timeline.\n- 🗣️ **Text-to-speech + voice cloning.** A free local voice on the desktop, or any voice from a few seconds of a recording. Phones are getting their own system voice.\n- 🧍 **Background removal.** People, objects, or paint the mask yourself.\n- 🎞️ **Keyframes.** Position, scale, rotation, opacity, volume, effect parameters. Curve editor built in.\n- ✨ **100 effects, filters and transitions.** GPU-rendered, live in the preview.\n- ✂️ **Cut fast.** Split, trim, ripple, merge, freeze frame, speed. Magnetic timeline if you want it.\n- 🎚️ **Multi-track, multi-timeline.** Overlays and picture-in-picture: stack video, stills and titles on as many tracks as you like. Several cuts in one project. Blend modes (screen, add, multiply…), crop, flips.\n- 📝 **Titles.** Fonts, stroke, shadow, background plate. Presets to start from.\n- 🎙️ **One-switch voice cleanup.** Denoise, enhance voice, level the loudness. Plus chipmunk, robot, telephone and friends.\n- 📤 **Export.** H.264, HEVC, AV1. Up to 4K 60, 10-bit colour.\n- 🦀 **Native Rust engine.** GPU compositor, proxies, hardware decode. 4K scrubs smoothly.\n- 🤖 **Scriptable.** An MCP server built in, so Claude and other AI agents can edit with it ([one line to set up](docs/MCP.md)), and a JSON-RPC API for scripts. A build from source adds gRPC and a command-line tool.\n- 🖥️ **macOS, Windows, Linux, Android.** 26 languages. Same app, same project files.\n\n## Download\n\nTwo ways in:\n\n1. **[The website](https://concat.standalones.org/#download)** hands you the right build for your machine. Start here.\n2. **[GitHub Releases](https://github.com/jub0t/Concat/releases)** has every build for every platform, with installers, packages and checksums. For when you want to pick.\n\nConcat is in **beta**: it works, and it still has edges. [Say so](https://github.com/jub0t/Concat/issues) when you find one.\n\n**Platforms**\n\n- ✅ **Windows** · x86_64 (ARM builds are paused, see [#326](https://github.com/jub0t/Concat/issues/326)). A setup and an `.msi`. If SmartScreen stops an unsigned build: **More info** › **Run anyway**\n- ✅ **macOS** · Intel and Apple silicon. If macOS refuses to open an unsigned build: `xattr -dr com.apple.quarantine /Applications/Concat.app`\n- ✅ **Linux** · x86_64 and ARM. `.deb`, `.rpm`, `.AppImage` and an Arch package. Also a Flatpak on **[Flatpark](https://flatpark.org/apps/app.concat.editor/)**, a community Flatpak remote that wraps the x86_64 `.deb` of each release and updates with it\n- ✅ **Android** · phones and tablets\n- ✅ **iOS / iPadOS** · iPhone and iPad, sideloaded\n\n✅ Supported · 🚧 Work in progress · 🧪 To be tested\n\n**System requirements** and the optional model sizes are on [the website](https://concat.standalones.org/guides/system-requirements).\n\n**[Code signing policy](CODE_SIGNING.md)**: why the Windows builds are not signed yet, and what Concat sends over the network (nothing you did not ask for).\n\n## Build from source\n\nYou need Rust 1.93 or newer (see `rust-version` in `src/Cargo.toml`), the FFmpeg 7+ development libraries, cmake and a C++ compiler.\n\n- **macOS:** `brew install ffmpeg`\n- **Windows:** from [FFmpeg's Windows downloads](https://ffmpeg.org/download.html#build-windows), take BtbN's `win64-gpl-shared` build (the one CI uses), unpack it and point `FFMPEG_DIR` at it\n- **Linux:** use your distro's FFmpeg if it is version 7 or newer, otherwise use a BtbN `shared` build with `FFMPEG_DIR` like on Windows\n\nThen:\n\n```sh\ncd src\ncargo run -p concat          # the editor window\n```\n\nOther useful commands:\n\n```sh\ncargo build --profile app -p concat   # the shipping binary (fat LTO, stripped)\ncargo test                            # run the test suite\ncargo fmt --check && cargo clippy --all-targets -- -D warnings   # what CI checks\n```\n\nIf you change text the interface shows, run `python3 scripts/locales.py` from the repo root so the string inventory stays in sync. Full details live in [CONTRIBUTING.md](CONTRIBUTING.md).\n\n## How to Contribute\n\n> [!IMPORTANT]\n> The best way to contribute is to grab a build from the [Releases](https://github.com/jub0t/Concat/releases) page and use it: find where it breaks, and say where it could be better.\n>\n> Ready to write code? [CONTRIBUTING.md](./CONTRIBUTING.md) covers setup, the layout of the tree, the checks to run, and how contributions are licensed. Driving Concat from a script, a service or an agent? [The developer docs](https://concat.standalones.org/docs) cover the Concat API and its transports: JSON-RPC and gRPC; [docs/MCP.md](docs/MCP.md) connects an AI agent over MCP. [This Discussion](https://github.com/jub0t/Concat/discussions/3) is where the project was announced.\n> \n> Contributors can claim a `@Contributor` role in the Discord server: just ask.\n\n## Star History\n\n<a href=\"https://www.star-history.com/?repos=jub0t%2Fconcat&type=date&releases=&legend=bottom-right\">\n <img alt=\"Star History Chart\" src=\"https://api.star-history.com/chart?repos=jub0t/concat&type=date&legend=bottom-right\" />\n</a>\n\n## Contributors\n\n<a href=\"https://github.com/jub0t/Concat/graphs/contributors\">\n  <img alt=\"Contributors\" src=\"https://contrib.rocks/image?repo=jub0t/concat\">\n</a>\n\n## Licence\n\nConcat is free software under [AGPL-3.0-or-later](LICENSE). A commercial licence is available for closed-source use; see [LICENSING.md](LICENSING.md).\n\n## DMCA\n\nIf you believe something in this repository, its releases, or a package or model it distributes infringes your copyright, email [jub0trd@gmail.com](mailto:jub0trd@gmail.com) with a description of the work you own, a link to where the infringing material appears here, your contact details, a statement that you believe in good faith the use is not authorised by you, your agent, or the law, and a statement, under penalty of perjury, that the notice is accurate and that you are the owner or authorised to act for the owner, signed with your physical or electronic signature; valid notices are acted on promptly, and anyone whose material is removed may send a counter-notice to the same address.\n",
+    "strategic_keywords": [
+      "mcp",
+      "workflow",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "本地优先",
+      "跨平台视频剪辑",
+      "开源 CapCut 替代"
+    ],
+    "brief_zh": {
+      "summary": "一个免费、开源、local-first 的跨平台视频剪辑应用，定位为 CapCut 的替代方案。",
+      "audience": "希望在本机完成跨平台视频剪辑、避免依赖闭源云端编辑器的创作者和开发者",
+      "capabilities": "本地优先、跨平台视频剪辑、开源 CapCut 替代",
+      "risk": "功能完整度、编解码兼容性、性能和导出稳定性需按实际素材与设备单独验证。",
+      "verified_at": "2026-10-30",
+      "evidence_sources": [
+        "https://github.com/jub0t/Concat"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未导入真实项目或进行剪辑测试。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "herdrdev",
+    "name": "herdr",
+    "full_name": "herdrdev/herdr",
+    "url": "https://github.com/herdrdev/herdr",
+    "description": "the runtime your coding agents live on",
+    "language": "Rust",
+    "total_stars": 49407,
+    "forks": 3986,
+    "stars_this_period": 374,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "agent",
+        "agent-orchestration",
+        "ai",
+        "ai-agents",
+        "claude-code",
+        "cli",
+        "codex",
+        "coding-agents",
+        "developer-tools",
+        "devtools",
+        "multiplexer",
+        "rust",
+        "terminal",
+        "terminal-multiplexer",
+        "terminal-ui",
+        "tmux",
+        "tui",
+        "workspace-manager"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 456,
+      "created_at": "2026-03-27T17:54:33Z",
+      "pushed_at": "2026-11-07T12:32:55Z",
+      "homepage": "https://herdr.dev",
+      "default_branch": "master",
+      "forks": 3986,
+      "watchers": 114,
+      "archived": false,
+      "size_kb": 49708
+    },
+    "readme_content": "# herdr\n\n\n<p align=\"center\">\n  <img src=\"assets/logo.png\" alt=\"herdr\" width=\"100\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://herdr.dev\">herdr.dev</a> · <a href=\"#install\">install</a> · <a href=\"https://herdr.dev/docs/quick-start/\">quick start</a> · <a href=\"https://herdr.dev/docs/\">docs</a>\n</p>\n\n<p align=\"center\">\n  English · <a href=\"README.zh-CN.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache--2.0-666666?labelColor=333333\" alt=\"Apache 2.0 license\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/releases\"><img src=\"https://img.shields.io/github/downloads/herdrdev/herdr/total?labelColor=333333&color=666666\" alt=\"total GitHub release downloads\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/stargazers\"><img src=\"https://img.shields.io/github/stars/herdrdev/herdr?labelColor=333333&color=666666&logo=github\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/herdrdev/herdr/releases/latest\"><img src=\"https://img.shields.io/github/v/release/herdrdev/herdr?label=release&labelColor=333333&color=666666\" alt=\"latest stable release\" /></a>\n  <a href=\"https://formulae.brew.sh/formula/herdr\"><img src=\"https://img.shields.io/homebrew/v/herdr?label=homebrew&labelColor=333333&color=666666\" alt=\"Homebrew version\" /></a>\n  <a href=\"https://x.com/herdrdev\"><img src=\"https://img.shields.io/badge/follow-%40herdrdev-000000?logo=x&logoColor=white\" alt=\"follow @herdrdev on X\" /></a>\n</p>\n\n---\n\nhttps://github.com/user-attachments/assets/043ec09f-4bdd-41d5-aee0-8fda6b83e267\n\n**the runtime your coding agents live on.**\n\n- **detach without stopping work** — herdr keeps terminals running in a background server when you close the client or lose your SSH connection. after a server or machine restart, herdr restores the saved layout and can resume supported agent sessions; the original processes do not survive. [session state →](https://herdr.dev/docs/session-state/)\n- **several machines, one window** — keep local work and saved ssh machines together, with a combined agent list and independent reconnects. [remote machines →](https://herdr.dev/docs/connecting-machines/)\n- **never hunt for the stuck one** — every pane is marked working, blocked, or idle. when an agent stops and needs an answer, herdr says so.\n- **agent-native** — agents drive herdr through the cli and socket api: they can spawn panes, prompt each other, and wait until another agent is genuinely blocked. [agent skill →](https://herdr.dev/docs/agent-skill/)\n- **runs what you already run** — claude code, codex, cursor, opencode, grok and the rest. herdr doesn't wrap or replace them; it owns their terminals. building an agent? [add herdr support →](https://herdr.dev/docs/add-herdr-support/)\n- **keyboard and mouse, both first-class** — tmux-style prefix keys *and* click, drag, split. pick per moment, not per tool.\n- **plugins** — extend panes and workflows. [browse the marketplace →](https://herdr.dev/plugins/)\n- **one rust binary, no electron** — runs in whatever terminal you already use.\n\n---\n\n## install\n\n```bash\ncurl -fsSL https://herdr.dev/install.sh | sh\n```\n\nor `brew install herdr` · `mise use -g herdr` · windows: `powershell -ExecutionPolicy Bypass -c \"irm https://herdr.dev/install.ps1 | iex\"` · [endpoint-protected Windows](https://herdr.dev/docs/windows-beta/) · [binaries](https://github.com/herdrdev/herdr/releases)\n\nthen start it where the work lives:\n\n```bash\nherdr\n```\n\nrun your agents, split panes, walk away. `ctrl+b q` detaches, `herdr` reattaches. [quick start →](https://herdr.dev/docs/quick-start/)\n\n## docs\n\neverything lives at [herdr.dev/docs](https://herdr.dev/docs/): [quick start](https://herdr.dev/docs/quick-start/) · [concepts](https://herdr.dev/docs/concepts/) · [supported agents](https://herdr.dev/docs/agents/) · [keyboard](https://herdr.dev/docs/keyboard/) · [configuration](https://herdr.dev/docs/configuration/) · [session state](https://herdr.dev/docs/session-state/) · [connecting machines](https://herdr.dev/docs/connecting-machines/) · [remote](https://herdr.dev/docs/persistence-remote/) · [integrations](https://herdr.dev/docs/integrations/) · [add herdr support to your agent](https://herdr.dev/docs/add-herdr-support/) · [plugins](https://herdr.dev/docs/plugins/) · [socket api](https://herdr.dev/docs/socket-api/)\n\n## thanks\n\nevery past sponsor and backer is listed in [SPONSORS.md](./SPONSORS.md) — thank you 🐑\n\nenterprise / partnership: hey@herdr.dev\n\n## agent instructions\n\nif you are an ai agent helping with this repository, read [`AGENTS.md`](./AGENTS.md) before making changes and read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before opening issues or PRs.\n\n## development\n\n```bash\ngit clone https://github.com/herdrdev/herdr\ncd herdr\ncargo build --release\n\njust test        # unit tests\njust check       # formatting, tests, and maintenance checks\n```\n\n## license\n\nHerdr is licensed under the [Apache License 2.0](LICENSE).\n",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[package]\nname = \"herdr\"\nversion = \"0.9.5\"\nedition = \"2021\"\nbuild = \"build.rs\"\ndescription = \"terminal workspace manager for AI coding agents\"\nlicense = \"Apache-2.0\"\nrepository = \"https://github.com/herdrdev/herdr\"\nhomepage = \"https://herdr.dev\"\nkeywords = [\"terminal\", \"tui\", \"ai\", \"agents\", \"multiplexer\"]\ncategories = [\"command-line-utilities\"]\ninclude = [\n    \"src/**/*\",\n    \"assets/sounds/*\",\n    \"docs/next/api/herdr-api.schema.json\",\n    \"skills/herdr/SKILL.md\",\n    \"distribution/install.ps1\",\n    \"README.md\",\n    \"LICENSE\",\n    \"Cargo.toml\",\n]\n\n[workspace]\nmembers = [\"crates/ghostty-vt\"]\ndefault-members = [\".\", \"crates/ghostty-vt\"]\n\n[dependencies]\nghostty-vt = { path = \"crates/ghostty-vt\" }\nbase64 = \"0.22.1\"\nbincode = { version = \"2\", features = [\"serde\"] }\nbytes = \"1\"\nclap = { version = \"4.5\", default-features = false, features = [\"std\", \"help\", \"usage\", \"error-context\", \"string\"] }\nclap_complete = \"4.5\"\ncrossterm = \"0.29\"\nctrlc = { version = \"3\", features = [\"termination\"] }\ninterprocess = \"2.4.2\"\njsonc-parser = { version = \"0.33.1\", default-features = false, features = [\"cst\", \"serde_json\"] }\nlibc = \"0.2\"\nportable-pty = \"=0.9.0\"\npng = \"0.17\"\nratatui = { version = \"0.30\", features = [\"unstable-rendered-line-info\"] }\nregex = \"1\"\nserde = { version = \"1\", features = [\"derive\"] }\nserde_ignored = \"0.1.14\"\nserde_json = \"1\"\nsha2 = \"0.10\"\ntime = { version = \"0.3.47\", features = [\"formatting\"] }\ntokio = { version = \"1\", features = [\"rt-multi-thread\", \"macros\", \"sync\", \"time\", \"process\", \"io-util\", \"signal\"] }\ntoml = \"0.8\"\ntoml_edit = \"0.22\"\ntracing = \"0.1.44\"\ntracing-subscriber = { version = \"0.3.23\", features = [\"env-filter\"] }\nunicode-width = \"0.2\"\nunicode-segmentation = \"1.13.1\"\nschemars = { version = \"1.2.1\", features = [\"derive\"] }\n\n[patch.crates-io]\nportable-pty = { path = \"vendor/portable-pty\" }\n\n[target.'cfg(unix)'.dependencies]\nsignal-hook = \"0.3\"\n\n[target.'cfg(target_os = \"linux\")'.dependencies]\n# logind's delay inhibitor lets the server save before host shutdown kills panes.\nzbus = { version = \"5.19\", default-features = false, features = [\"tokio\"] }\nfutures-util = { version = \"0.3\", default-features = false, features = [\"std\"] }\n\n[target.'cfg(windows)'.dependencies]\n# UTF-16 SDDL input for interprocess security descriptors.\nwidestring = \"1.2\"\nwmi = { version = \"0.18.4\", default-features = false }\n# Native Notification Center delivery for unpackaged Windows installs.\nwindows = { version = \"0.62.2\", features = [\"Data_Xml_Dom\", \"UI_Notifications\", \"Win32_System_Com\"] }\nwindows-sys = { version = \"0.61.2\", features = [\n    \"Wdk_System_Threading\",\n    \"Win32_Foundation\",\n    \"Win32_Globalization\",\n    \"Win32_Graphics_Gdi\",\n    \"Win32_Security\",\n    \"Win32_Storage_FileSystem\",\n    \"Win32_System_DataExchange\",\n    \"Win32_System_Diagnostics_Debug\",\n    \"Win32_System_Diagnostics_ToolHelp\",\n    \"Win32_System_Console\",\n    \"Win32_System_JobObjects\",\n    \"Win32_System_Kernel\",\n    \"Win32_System_Memory\",\n    \"Win32_System_LibraryLoader\",\n    \"Win32_System_Ole\",\n    \"Win32_System_Pipes\",\n    \"Win32_System_Power\",\n    \"Win32_System_Registry\",\n    \"Win32_System_SystemInformation\",\n    \"Win32_System_Threading\",\n    \"Win32_UI_Input_Ime\",\n    \"Win32_UI_Input_KeyboardAndMouse\",\n    \"Win32_UI_Shell\",\n    \"Win32_UI_WindowsAndMessaging\",\n] }\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "rag",
+      "runtime",
+      "skill",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "终端会话持久化",
+      "SSH 机器汇总",
+      "Agent 会话恢复"
+    ],
+    "brief_zh": {
+      "summary": "一个面向编码 Agent 的终端运行时与工作区管理工具：在后台保持终端和会话状态，并把本地与 SSH 机器中的 Agent 会话汇总到同一窗口。",
+      "audience": "需要同时管理多台机器、终端会话和编码 Agent 的开发者",
+      "capabilities": "终端会话持久化、SSH 机器汇总、Agent 会话恢复、终端工作区管理、命令行界面",
+      "risk": "会话恢复依赖其后台服务和受支持的 Agent 类型；进程在重启后并不会原样存活，远程连接与本地凭据边界也需按部署环境评估。",
+      "verified_at": "2026-10-25",
+      "evidence_sources": [
+        "https://github.com/herdrdev/herdr"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未安装或连接真实 SSH 主机。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "Anil-matcha",
+    "name": "Open-Generative-AI",
+    "full_name": "Anil-matcha/Open-Generative-AI",
+    "url": "https://github.com/Anil-matcha/Open-Generative-AI",
+    "description": "Uncensored Open-source alternative to AI video platforms — Free AI image & video generation studio with 600+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
+    "language": "JavaScript",
+    "total_stars": 33385,
+    "forks": 6319,
+    "stars_this_period": 361,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-art-generator",
+        "ai-image-generation",
+        "ai-video-generation",
+        "fal-ai-alternative",
+        "generative-ai",
+        "image-to-video",
+        "invideo-alternative",
+        "kling-ai",
+        "lipsync",
+        "litellm-alternative",
+        "midjourney-alternative",
+        "muapi",
+        "open-source",
+        "openrouter-alternative",
+        "seedance2",
+        "sora-alternative",
+        "text-to-image",
+        "text-to-video",
+        "uncensored",
+        "wan-video"
+      ],
+      "license": "MIT",
+      "open_issues": 50,
+      "created_at": "2023-05-09T14:12:37Z",
+      "pushed_at": "2026-11-08T19:06:02Z",
+      "homepage": "https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=about&utm_campaign=open-generative-ai",
+      "default_branch": "main",
+      "forks": 6319,
+      "watchers": 263,
+      "archived": false,
+      "size_kb": 116073
+    },
+    "readme_content": "# Open Generative AI — Unrestricted Open-Source Alternative to AI Video Platforms\n\n[![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMSAxNHYtNGgtMnYtMmg0djZoLTJ6bTAtOFY2aDJ2MmgtMnoiLz48L3N2Zz4=)](https://muapi.ai?utm_source=github&utm_medium=badge&utm_campaign=open-generative-ai)\n\n\n> **The free, open-source alternative to AI Video Platforms.** Generate AI images and videos using 600+ state-of-the-art models across 14 studios — no content filters, no closed ecosystem, no subscription fees.\n\n**Community:** Join [Discord](https://discord.com/invite/zpnuBRXhKg) for discussions and support\n\n\n<p align=\"center\"><a href=\"https://youtu.be/oP4ioCVRK-o\"><img src=\"https://i.ytimg.com/vi/oP4ioCVRK-o/maxresdefault.jpg\" width=\"720\"></a></p>\n<p align=\"center\"><a href=\"https://youtu.be/oP4ioCVRK-o\"><b>▶ Watch: MiniMax H3 Uncensored (Spicy) Video Generator API: H3 vs H3 Max vs H3 Max Turbo </b></a></p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Anil-matcha/awesome-generative-ai-apps\">\n    <img src=\"https://img.shields.io/badge/Part%20of-Awesome%20Generative%20AI%20Apps-FFD700?style=for-the-badge&logo=github&logoColor=black\" alt=\"Awesome Generative AI Apps\">\n  </a>\n</p>\n\n> 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**\n\n> 🤝 **New: [Open Duet](https://github.com/Anil-matcha/open-duet)** — open-source, self-hosted AI coworkers (named agents) with instructions, memory, routines, their own isolated computer, and your approval before they act. An alternative to Claude Duet, OpenAI Dots, and Manus Cue. [Star it on GitHub →](https://github.com/Anil-matcha/open-duet)\n\n## 💰 Turn This Into Your Own Product — White Label & Resell\n\nWant to launch this as **your own branded AI studio** and charge your own customers for it? [MuAPI White Label](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai) lets you spin up a fully white-labeled version of this app — your logo, your colors, your custom domain, your own pricing — with zero infra to manage. You keep the markup on every generation; MuAPI handles the models, the queue, and the billing plumbing underneath.\n\n- **Your branding** — logo, color theme, and a custom domain (e.g. `studio.yourbrand.com`)\n- **Your pricing** — set your own credit/subscription prices for end users, keep the margin\n- **No infra** — no servers, workers, or model hosting to run yourself\n- **All studios included** — Image, Video, Audio, Lip Sync, Cinema, Workflows, and more, depending on plan\n\nPlans start at $49/mo. [Get started with White Label →](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\n### What similar AI studios charge their users\n\nConsumer AI image/video platforms almost all run on paid monthly subscriptions — this is the same playbook you'd run under your own brand:\n\n| Platform | Typical subscription range |\n|---|---|\n| Midjourney | ~$10–$120/mo (Basic → Mega) |\n| Runway | ~$12–$76/mo (Standard → Unlimited), custom Enterprise |\n| Kling AI | ~$10–$92/mo across Standard → Premier tiers |\n| Luma Dream Machine | ~$10–$100+/mo |\n| Pika | ~$8–$58/mo |\n\n*(Figures are approximate, general-market ranges and change over time — check each platform's current pricing page before quoting them.)* With MuAPI White Label, you set these numbers yourself for your own end users — the subscription revenue is yours.\n\n---\n\n## API examples and model references\n\n- [OpenAI API examples](https://github.com/Anil-matcha/OpenAI-API) — GPT Image, Sora, and GPT endpoints through Muapi.\n- [Google Gemini Media API examples](https://github.com/Anil-matcha/Google-Gemini-Media-API) — Nano Banana, Imagen, Veo, Gemini Omni, and speech endpoints.\n- [MiniMax Media API examples](https://github.com/Anil-matcha/MiniMax-Media-API) — Hailuo, H3 Max, speech, and music workflows.\n- [Kling Video API examples](https://github.com/Anil-matcha/Kling-Video-API) — Kling text-to-video, image-to-video, and motion control.\n- [Qwen Image API examples](https://github.com/Anil-matcha/Qwen-Image-API) — Qwen image generation, editing, and LoRA workflows through Muapi.\n\n## Related Projects\n\nThis is a curated set of high-value hubs, popular distribution tools, and model-specific integrations rather than a directory of every related repository.\n\n- [awesome-vibecoded-saas](https://github.com/Anil-matcha/awesome-vibecoded-saas) — broader catalog of open-source SaaS alternatives featuring this studio.\n- [Muapi open-source alternatives](https://muapi.ai/open-source/alternative/midjourney) — compare this studio with the Midjourney workflow and its honest scope.\n- [awesome-generative-ai-apps](https://github.com/Anil-matcha/awesome-generative-ai-apps) — catalog of open-source generative-AI applications.\n- [awesome-ai-video-models](https://github.com/Anil-matcha/awesome-ai-video-models) — compare video models by API, price, and capability.\n- [awesome-ai-image-models](https://github.com/Anil-matcha/awesome-ai-image-models) — compare image models by API, price, and quality.\n- [AI-Youtube-Shorts-Generator](https://github.com/SamurAIGPT/AI-Youtube-Shorts-Generator) — Open-source Opus Clip alternative application.\n- [open-duet](https://github.com/Anil-matcha/open-duet) — Open-source, self-hosted AI coworkers with memory, routines, isolated computers, and approval-gated actions.\n- [Open-AI-Design-Agent](https://github.com/Anil-matcha/Open-AI-Design-Agent) — Ppen-source autonomous AI design agent.\n- [muapi-skills](https://github.com/SamurAIGPT/muapi-skills) — Agent-ready skills for driving generative-media workflows.\n- [Seedance-2.5-API](https://github.com/SamurAIGPT/Seedance-2.5-API) — Python SDK for Seedance 2.5 video generation.\n\n## 🌐 Try it Online — No Install Required\n\n**Hosted version:** [https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai](https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\nUse all studios (Image, Video, Audio, AI Clipping, Vibe Motion, Lip Sync, Cinema, Marketing, Workflows, Agents, Design Agent, Apps, MCP & CLI) directly in your browser — no Node.js, no setup. Sign up for a free account to start generating. The hosted version is always up to date with the latest models.\n\n**Follow** the [creator](https://x.com/matchaman11) for updates\n\n---\n\n## ⬇️ Download Desktop App\n\nOne-click installers — no Node.js or terminal required.\n\n| Platform | Download |\n|---|---|\n| macOS Apple Silicon (M1/M2/M3/M4) | [Open Generative AI-2.0.0-arm64.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0-arm64.dmg) |\n| macOS Intel (x64) | [Open Generative AI-2.0.0.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.dmg) |\n| Windows (x64) | [Open Generative AI Setup 2.0.0.exe](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI.Setup.2.0.0.exe) |\n| Linux (Ubuntu x64) | [`.AppImage`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.AppImage) / [`.deb`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/open-generative-ai_2.0.0_amd64.deb), or build locally with `npm run electron:build:linux`. |\n\nAll releases: [github.com/Anil-matcha/Open-Generative-AI/releases](https://github.com/Anil-matcha/Open-Generative-AI/releases)\n\n### macOS Installation Guide\n\nBecause the app is not notarized by Apple, macOS Gatekeeper will block it on first launch. Follow these steps:\n\n**Step 1** — Mount the DMG and drag the app to `/Applications`\n\n**Step 2** — Open Terminal and run:\n```bash\nxattr -cr \"/Applications/Open Generative AI.app\"\n```\n\n**Step 3** — Right-click the app in `/Applications` → click **Open** → click **Open** again on the dialog\n\n> You only need to do this once. After that, the app opens normally.\n\n**Alternative (no Terminal):**\n1. Try to open the app — macOS will block it\n2. Go to **System Settings → Privacy & Security**\n3. Scroll down to find _\"Open Generative AI was blocked\"_\n4. Click **Open Anyway** → **Open**\n\n### Windows Installation — SmartScreen warning fix\n\nWindows SmartScreen may show a warning because the installer is not code-signed:\n\n1. Click **More info** on the SmartScreen dialog\n2. Click **Run anyway**\n\nThe app will install silently to `%LocalAppData%` with a Start Menu shortcut.\n\n### Ubuntu / Linux Installation\n\nLinux artifacts are available when building with Electron Builder:\n\n```bash\n# Build Linux installers (AppImage + .deb)\nnpm run electron:build:linux\n```\n\nGenerated files are written to the `release/` folder:\n- **AppImage** — portable, run directly after making executable:\n  ```bash\n  chmod +x \"release/Open Generative AI-*.AppImage\"\n  ./release/Open\\ Generative\\ AI-*.AppImage\n  ```\n- **.deb** — install on Debian/Ubuntu:\n  ```bash\n  sudo apt install ./release/open-generative-ai_*_amd64.deb\n  ```\n\nIf AppImage fails to start on older systems, install `libfuse2`:\n\n```bash\nsudo apt install libfuse2\n```\n\n#### Ubuntu 24.04+ / AppArmor sandbox restriction\n\nUbuntu 24.04 and later enable a kernel security policy (`apparmor_restrict_unprivileged_userns`) that blocks Chromium's user-namespace sandbox. If the app fails to start silently or crashes immediately, you have two options:\n\n**Option A — Recommended: install the `.deb` instead.**\nThe `.deb` package ships an AppArmor profile that grants the required permission automatically on install with no system-wide changes.\n\n**Option B — Temporary system fix (AppImage users):**\n```bash\nsudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0\n```\nThis lasts until next reboot. To make it permanent:\n```bash\necho 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-userns.conf\n```\n\n---\n\nOpen Generative AI is a free, open-source AI image, video, cinema, and lip sync studio that brings creative workflows to everyone. No content filters, no prompt rejections, no guardrails — just full creative freedom. Powered by [Muapi.ai](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai), it supports text-to-image, image-to-image, text-to-video, image-to-video, and audio-driven lip sync generation across models like Flux, Nano Banana, Midjourney, Kling, Sora, Veo, Seedream, Infinite Talk, LTX Lipsync, Wan 2.2, and more — all from a sleek, modern interface you can self-host and customize.\n\n**Why Open Generative AI instead of other AI Video Platforms?**\n- **No filters** — no content filters, no nanny guardrails, no prompt rejections\n- **Free & open-source** — no subscription, no vendor lock-in\n- **Self-hosted** — your data stays on your machine, full creative control\n- **200+ models** — text-to-image, image-to-image, text-to-video, image-to-video, lip sync\n- **Multi-image input** — feed up to 14 reference images into compatible models\n- **Lip Sync Studio** — animate portraits or sync lips to any audio with 9 dedicated models\n- **Extensible** — add your own models, modify the UI, build on top of it\n\nFor a deep dive into the technical architecture and the philosophy behind the \"Infinite Budget\" cinema workflow, see our [comprehensive guide and roadmap](https://medium.com/@anilmatcha/).\n\n## ⚡ Local Model Inference (Desktop App Only)\n\nThe desktop app supports **two independent local engines**. Pick whichever fits the machine you actually run on:\n\n| Engine | What it is | Best for |\n|---|---|---|\n| **sd.cpp** (bundled) | C++ engine from [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp), runs on the same machine as the app. Metal GPU on Apple Silicon, CUDA/Vulkan/ROCm on Linux/Windows. | Image-only mo",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"open-generative-ai\",\n  \"description\": \"Open-source alternative to HF AI — AI image, video, cinema and lip sync studio\",\n  \"homepage\": \"https://github.com/Anil-matcha/Open-Generative-AI\",\n  \"private\": true,\n  \"version\": \"2.0.0\",\n  \"license\": \"MIT\",\n  \"workspaces\": [\n    \"packages/studio\",\n    \"packages/Vibe-Workflow/packages/workflow-builder\",\n    \"packages/Open-Poe-AI/packages/agents\",\n    \"packages/Open-AI-Design-Agent/packages/design-agent\"\n  ],\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\",\n    \"build:studio\": \"npm run build -w studio\",\n    \"build:workflow\": \"npm run build -w workflow-builder\",\n    \"build:agent\": \"npm run build -w ai-agent\",\n    \"build:design\": \"npm run build -w design-agent\",\n    \"build:packages\": \"npm run build:workflow && npm run build:agent && npm run build:design && npm run build:studio\",\n    \"setup\": \"git submodule update --init --recursive && npm install && npm run build:packages\",\n    \"vite:dev\": \"vite\",\n    \"vite:build\": \"vite build\",\n    \"electron:dev\": \"npm run vite:build && electron .\",\n    \"electron:build\": \"vite build && electron-builder --mac\",\n    \"electron:build:win\": \"vite build && electron-builder --win\",\n    \"electron:build:linux\": \"vite build && electron-builder --linux\",\n    \"electron:build:linux:dir\": \"vite build && electron-builder --linux dir\",\n    \"electron:build:linux:arm64:dir\": \"vite build && electron-builder --linux dir --arm64\",\n    \"stage:local-ai\": \"node scripts/stage-local-ai-binary.js\",\n    \"package:linux:deb\": \"node scripts/package-linux-deb.js\",\n    \"package:linux:deb:arm64\": \"node scripts/package-linux-deb.js --arch arm64\",\n    \"package:linux:deb:x64\": \"node scripts/package-linux-deb.js --arch x64\",\n    \"electron:build:all\": \"vite build && electron-builder --mac --win --linux\"\n  },\n  \"build\": {\n    \"appId\": \"ai.generative.open\",\n    \"productName\": \"Open Generative AI\",\n    \"copyright\": \"Copyright © 2025\",\n    \"directories\": {\n      \"output\": \"release\"\n    },\n    \"afterPack\": \"./afterPack.js\",\n    \"files\": [\n      \"dist/**/*\",\n      \"electron/**/*\"\n    ],\n    \"extraResources\": [\n      {\n        \"from\": \"build/local-ai\",\n        \"to\": \"local-ai\",\n        \"filter\": [\n          \"**/*\"\n        ]\n      }\n    ],\n    \"mac\": {\n      \"category\": \"public.app-category.graphics-design\",\n      \"icon\": \"public/banner.png\",\n      \"gatekeeperAssess\": false,\n      \"target\": [\n        {\n          \"target\": \"dmg\",\n          \"arch\": [\n            \"x64\",\n            \"arm64\"\n          ]\n        }\n      ]\n    },\n    \"win\": {\n      \"icon\": \"public/banner.png\",\n      \"signAndEditExecutable\": false,\n      \"target\": [\n        {\n          \"target\": \"nsis\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    },\n    \"nsis\": {\n      \"oneClick\": false,\n      \"allowToChangeInstallationDirectory\": true,\n      \"include\": \"build/installer.nsh\"\n    },\n    \"linux\": {\n      \"icon\": \"public/banner.png\",\n      \"category\": \"Utility\",\n      \"maintainer\": \"Open Generative AI Team\",\n      \"extraFiles\": [\n        {\n          \"from\": \"build/linux/apparmor.profile\",\n          \"to\": \"resources/apparmor.profile\"\n        }\n      ],\n      \"target\": [\n        {\n          \"target\": \"AppImage\",\n          \"arch\": [\n            \"x64\"\n          ]\n        },\n        {\n          \"target\": \"deb\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    }\n  },\n  \"dependencies\": {\n    \"ai-agent\": \"file:./packages/Open-Poe-AI/packages/agents\",\n    \"axios\": \"^1.7.0\",\n    \"next\": \"^15.0.0\",\n    \"react\": \"^19.0.0\",\n    \"react-dom\": \"^19.0.0\",\n    \"react-hot-toast\": \"^2.4.1\",\n    \"studio\": \"*\",\n    \"workflow-builder\": \"file:./packages/Vibe-Workflow/packages/workflow-builder\",\n    \"xtend\": \"^4.0.2\"\n  },\n  \"devDependencies\": {\n    \"@eslint/eslintrc\": \"^3\",\n    \"@tailwindcss/vite\": \"^4.1.18\",\n    \"autoprefixer\": \"^10.4.24\",\n    \"electron\": \"^33.4.11\",\n    \"electron-builder\": \"^25.1.8\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"^15.0.0\",\n    \"postcss\": \"^8.5.6\",\n    \"tailwindcss\": \"^3.4.0\",\n    \"vite\": \"^5.4.0\"\n  },\n  \"main\": \"electron/main.js\"\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "workspace",
+      "llm",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "图像生成",
+      "视频生成",
+      "自托管"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
+      "capabilities": "图像生成、视频生成、自托管",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/Anil-matcha/Open-Generative-AI"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description、topics 与 README；模型可用性、内容安全和部署成本未独立验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cloudflare",
+    "name": "security-audit-skill",
+    "full_name": "cloudflare/security-audit-skill",
+    "url": "https://github.com/cloudflare/security-audit-skill",
+    "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+    "language": "JavaScript",
+    "total_stars": 66758,
+    "forks": 4352,
+    "stars_this_period": 1579,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 120,
+      "created_at": "2026-06-18T14:08:44Z",
+      "pushed_at": "2026-09-14T19:29:02Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 4352,
+      "watchers": 233,
+      "archived": false,
+      "size_kb": 143
+    },
+    "readme_content": "# security-audit\n\nA coding-agent skill that turns your agent into a security auditor. It orchestrates isolated agents through reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting.\n\nThis is the skill that seeded Cloudflare's vulnerability discovery harness, described in [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness). The harness grew into a multi-stage, fleet-wide system; this skill is the single-repo starting point it evolved from.\n\n## What it does\n\nThe skill runs a structured audit in six phases:\n\n1. **Reconnaissance** -- map architecture, trust boundaries, input surfaces, prior evidence, and deterministic coverage in `architecture.md` and `coverage-ledger.json`.\n2. **Coverage-led hunting** -- assign isolated hunters from ledger units, record their checks, and use coverage critics to find gaps.\n3. **Candidate validation** -- give every unique candidate to a fresh verifier that tries to disprove it.\n4. **Structured output** -- write `confirmed`, `needs_validation`, and `rejected` records to `findings.json` and validate them against `report-schema.json`.\n5. **Independent record verification** -- fresh agents verify final source claims. Material replacements receive another independent verifier.\n6. **Target-neutral reporting** -- derive `REPORT.md`, `FINDINGS-DETAIL.md`, and `NEEDS-VALIDATION.md` from the verified records and coverage ledger.\n\nThe parent runs `validate-coverage-ledger.cjs` after creating the ledger and after each later ledger update. It runs `validate-findings.cjs` in Phase 4 and again after every Phase 5 replacement.\n\nThe verdicts are distinct: `confirmed` has a complete source trace and bounded observed result, `needs_validation` has an exact unresolved fact and no severity, and `rejected` records a disproved candidate.\n\nMultiple runs against the same repo are additive. The skill uses prior ledgers and findings to target gaps, revalidate changed source, and carry forward current-source evidence without treating stale or unresolved work as covered.\n\n## Files\n\n| File | Purpose |\n|------|---------|\n| `SKILL.md` | Setup, core principles, platform terminology, workflow overview, and audit anti-patterns |\n| `RECONNAISSANCE.md` | Phase 1 reconnaissance prompts and synthesis instructions |\n| `HUNTING.md` | Phase 2 orchestration, hunting methodology, and validation rules |\n| `ATTACK-CLASSES.md` | Core, wildcard, and obvious-things attack prompts |\n| `MEMORY-SAFETY-AND-BINARY.md` | Memory-safety, binary, and kernel hunting classes for native targets |\n| `AI-AND-LLM.md` | Prompt-injection, agent/tool, and output-handling hunting classes for LLM-backed targets |\n| `WEB-PROTOCOL-AND-AUTH.md` | HTTP request-framing, cache, and authentication-protocol hunting classes for HTTP-protocol and auth targets |\n| `CLIENT-SIDE.md` | DOM-injection, messaging-trust, UI-redress, and prototype-pollution hunting classes for client-side/browser targets |\n| `SUPPLY-CHAIN-AND-RELEASE.md` | Dependency, CI, release, signing, update, plugin, and extension hunting classes |\n| `CLOUD-AND-DEPLOYMENT.md` | IAM, infrastructure-as-code, container, serverless, ingress, and runtime-configuration hunting classes |\n| `PROTOCOLS-RPC-AND-MESSAGING.md` | RPC, serialization, queue, broker, webhook, and streaming-protocol hunting classes |\n| `RESOURCE-EXHAUSTION-AND-AVAILABILITY.md` | Shared resource, quota, queue, worker, and operator-spend hunting classes |\n| `DATA-ISOLATION-AND-LIFECYCLE.md` | Tenant isolation, cache, search, export, backup, migration, deletion, and restore hunting classes |\n| `DESKTOP-MOBILE-AND-LOCAL-IPC.md` | Native app, deep-link, webview, exported-component, helper, daemon, and local-IPC hunting classes |\n| `VALIDATION-AND-REPORTING.md` | Phases 3–6 candidate validation, structured output, record verification, and reporting |\n| `report-schema.json` | JSON schema for all three `findings.json` verdicts |\n| `validate-findings.cjs` | Zero-dependency validator for `findings.json` in Phases 4 and 5 |\n| `validate-findings.test.cjs` | Findings-validator tests and producer-compatible fixture checks |\n| `validate-coverage-ledger.cjs` | Zero-dependency validator for `coverage-ledger.json` in Phases 1–5 |\n| `validate-coverage-ledger.test.cjs` | Coverage-ledger validator tests |\n\n## Installation\n\nInstall the skill with the [Skills CLI](https://skills.sh):\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit\n```\n\nUse `--global` for a user-level installation:\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit \\\n  --global\n```\n\nRun `npx skills --help` for agent-selection and non-interactive options.\n\n## Usage\n\nStart your coding agent in (or pointed at) the codebase you want to audit, then ask it to do a security audit:\n\n```\nsecurity audit this codebase\n```\n\n```\nfind security vulnerabilities in ./src\n```\n\n```\ndo a security review, output to ~/audits/my-project\n```\n\nThe skill activates automatically when the request matches its trigger (security audit, find vulnerabilities, pen-test the code, etc.). A direct codebase audit or pen-test request uses full audit mode. Security questions and focused vulnerability work use guidance mode unless you request report artifacts. In full audit mode, an unspecified output directory defaults to `~/security-audit-skill/<repo-name>/run-<N>`. The workflow writes inside the target repository only when you explicitly select a directory that version control ignores.\n\n## Requirements\n\n- A coding agent with a model that supports tool use and parallel sub-agents\n- Node.js for the zero-dependency findings and coverage-ledger validators\n- An OS-enforced sandbox for target-controlled builds, tests, processes, browsers, emulators, fuzzers, and fixtures. It must disable external networking, use a sanitized allowlisted environment, enforce resource limits, and allow writes only to assigned scratch paths. Without these controls, the workflow keeps the lead as `needs_validation` instead of executing target code.\n\n## Design principles\n\n- **Only confirm established boundary failures.** Keep a source-grounded blocked lead as `needs_validation` with its exact unresolved fact.\n- **Adversarial validation.** The agent that checks a finding is never the agent that found it.\n- **Severity requires impact.** Likelihood x impact, not deviation from a checklist.\n- **Defense-in-depth gaps are not vulnerabilities.** If Layer A prevents the attack, the absence of Layer B is a hardening note.\n- **Multiple runs improve coverage.** In our test runs, a single run found roughly half of the vulnerabilities that repeated runs found in total.\n\n## Contact\n\nQuestions, feedback, or comparing notes on AI-driven security tooling: security-ai-research@cloudflare.com\n\n## License\n\nMIT -- see [LICENSE](LICENSE).\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "rag",
+      "runtime",
+      "skill",
+      "llm",
+      "eval",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "多阶段安全审计",
+      "覆盖率账本",
+      "独立候选验证"
+    ],
+    "brief_zh": {
+      "summary": "Cloudflare 开源的一套编码 Agent 安全审计技能：将侦察、覆盖率驱动排查、候选漏洞验证、机器可读发现记录和独立复核组织成六阶段流程，并区分已确认、待验证与已否定的结论。",
+      "audience": "希望将代码库安全审计流程结构化、可复核并持续运行的应用安全与工程团队",
+      "capabilities": "多阶段安全审计、覆盖率账本、独立候选验证、结构化发现、报告生成、Agent 编排",
+      "risk": "技能输出不能替代人工安全评估；自动化审计的覆盖率、误报处理、模型权限和代码数据边界仍需在目标环境中单独控制。",
+      "verified_at": "2026-10-09",
+      "evidence_sources": [
+        "https://github.com/cloudflare/security-audit-skill"
+      ],
+      "evidence_note": "依据本日抓取的 README 与仓库 description；未在目标代码库执行审计。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "skills",
+    "full_name": "anthropics/skills",
+    "url": "https://github.com/anthropics/skills",
+    "description": "Public repository for Agent Skills",
+    "language": "Python",
+    "total_stars": 189532,
+    "forks": 22338,
+    "stars_this_period": 793,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 1499,
+      "created_at": "2025-09-22T15:53:31Z",
+      "pushed_at": "2026-11-06T22:32:32Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 22338,
+      "watchers": 1153,
+      "archived": false,
+      "size_kb": 5502
+    },
+    "readme_content": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[![skills.sh](https://skills.sh/b/anthropics/skills)](https://skills.sh/anthropics/skills)\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)\n- [Equipping agents for the real world with Agent Skills](https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creation & editing skills that power [Claude's document capabilities](https://www.anthropic.com/news/create-files) under the hood in the [`skills/docx`](./skills/docx), [`skills/pdf`](./skills/pdf), [`skills/pptx`](./skills/pptx), and [`skills/xlsx`](./skills/xlsx) subfolders. These are also open source (Apache 2.0), and we wanted to share them with developers as a reference for more complex skills that are actively used in a production AI application.\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks.\n\n# Skill Sets\n- [./skills](./skills): Skill examples for Creative & Design, Development & Technical, Enterprise & Communication, and Document Skills\n- [./spec](./spec): The Agent Skills specification\n- [./template](./template): Skill template\n\n# Try in Claude Code, Claude.ai, and the API\n\n## Claude Code\nYou can register this repository as a Claude Code Plugin marketplace by running the following command in Claude Code:\n```\n/plugin marketplace add anthropics/skills\n```\n\nThen, to install a specific set of skills:\n1. Select `Browse and install plugins`\n2. Select `anthropic-agent-skills`\n3. Select `document-skills` or `example-skills`\n4. Select `Install now`\n\nAlternatively, directly install either Plugin via:\n```\n/plugin install document-skills@anthropic-agent-skills\n/plugin install example-skills@anthropic-agent-skills\n```\n\nAfter installing the plugin, you can use the skill by just mentioning it. For instance, if you install the `document-skills` plugin from the marketplace, you can ask Claude Code to do something like: \"Use the PDF skill to extract the form fields from `path/to/some-file.pdf`\"\n\n## Claude.ai\n\nThese example skills are all already available to paid plans in Claude.ai. \n\nTo use any skill from this repository or upload custom skills, follow the instructions in [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude#h_a4222fa77b).\n\n## Claude API\n\nYou can use Anthropic's pre-built skills, and upload custom skills, via the Claude API. See the [Skills API Quickstart](https://docs.claude.com/en/api/skills-guide#creating-a-skill) for more.\n\n# Creating a Basic Skill\n\nSkills are simple to create - just a folder with a `SKILL.md` file containing YAML frontmatter and instructions. You can use the **template-skill** in this repository as a starting point:\n\n```markdown\n---\nname: my-skill-name\ndescription: A clear description of what this skill does and when to use it\n---\n\n# My Skill Name\n\n[Add your instructions here that Claude will follow when this skill is active]\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n## Guidelines\n- Guideline 1\n- Guideline 2\n```\n\nThe frontmatter requires only two fields:\n- `name` - A unique identifier for your skill (lowercase, hyphens for spaces)\n- `description` - A complete description of what the skill does and when to use it\n\nThe markdown content below contains the instructions, examples, and guidelines that Claude will follow. For more details, see [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills).\n\n# Partner Skills\n\nSkills are a great way to teach Claude how to get better at using specific pieces of software. As we see awesome example skills from partners, we may highlight some of them here:\n\n- **Notion** - [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 技能包",
+      "技能模板",
+      "任务流程封装"
+    ],
+    "brief_zh": {
+      "summary": "Anthropic 公开的 Agent Skills 示例与规范仓库：每个技能以包含 SKILL.md、脚本和资源的独立目录封装，用于让 Claude 在专门任务中按可复用流程工作。",
+      "audience": "希望为 Claude 或兼容 Agent 设计、学习和复用任务技能包的开发者与平台团队",
+      "capabilities": "Agent Skills、技能模板、任务流程封装、文档与开发技能示例",
+      "risk": "仓库明确说明示例用于演示和教育；具体技能的行为及其在不同环境中的可靠性仍需单独测试。",
+      "verified_at": "2026-11-08",
+      "evidence_sources": [
+        "https://github.com/anthropics/skills"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与 agent-skills topic；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "jamiepine",
+    "name": "voicebox",
+    "full_name": "jamiepine/voicebox",
+    "url": "https://github.com/jamiepine/voicebox",
+    "description": "The open-source AI voice studio. Clone, dictate, create.",
+    "language": "Python",
+    "total_stars": 60142,
+    "forks": 7552,
+    "stars_this_period": 208,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "cuda",
+        "mlx",
+        "qwen3-tts",
+        "qwen3-tts-ui",
+        "voice-ai",
+        "voice-clone",
+        "whisper"
+      ],
+      "license": "MIT",
+      "open_issues": 534,
+      "created_at": "2026-01-25T12:27:03Z",
+      "pushed_at": "2026-10-07T01:17:58Z",
+      "homepage": "https://voicebox.sh",
+      "default_branch": "main",
+      "forks": 7552,
+      "watchers": 263,
+      "archived": false,
+      "size_kb": 102546
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\".github/assets/icon-dark.webp\" alt=\"Voicebox\" width=\"120\" height=\"120\" />\n</p>\n\n<h1 align=\"center\">Voicebox</h1>\n\n<p align=\"center\">\n  <strong>The open-source AI voice studio.</strong><br/>\n  Clone any voice. Generate speech. Dictate into any app. Talk to agents in voices you own.<br/>\n  The full voice I/O stack, running locally on your machine.\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/jamiepine/voicebox/releases\">\n    <img src=\"https://img.shields.io/github/downloads/jamiepine/voicebox/total?style=flat&color=blue\" alt=\"Downloads\" />\n  </a>\n  <a href=\"https://github.com/jamiepine/voicebox/releases/latest\">\n    <img src=\"https://img.shields.io/github/v/release/jamiepine/voicebox?style=flat\" alt=\"Release\" />\n  </a>\n  <a href=\"https://github.com/jamiepine/voicebox/stargazers\">\n    <img src=\"https://img.shields.io/github/stars/jamiepine/voicebox?style=flat\" alt=\"Stars\" />\n  </a>\n  <a href=\"https://github.com/jamiepine/voicebox/blob/main/LICENSE\">\n    <img src=\"https://img.shields.io/github/license/jamiepine/voicebox?style=flat\" alt=\"License\" />\n  </a>\n  <a href=\"https://capy.ai?utm_source=voicebox&utm_medium=readme&utm_campaign=built-with-capy\">\n    <img src=\"https://img.shields.io/badge/built%20with-Capy-63C8C1?style=flat\" alt=\"Built with Capy\" />\n  </a>\n  <a href=\"https://deepwiki.com/jamiepine/voicebox\">\n    <img src=\"https://img.shields.io/static/v1?label=Ask&message=DeepWiki&color=5B6EF7\" alt=\"Ask DeepWiki\" />\n  </a>\n</p>\n\n<p align=\"center\">\n    <a href=\"https://trendshift.io/repositories/21213\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/21213\" alt=\"jamiepine%2Fvoicebox | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://voicebox.sh\">voicebox.sh</a> •\n  <a href=\"https://docs.voicebox.sh\">Docs</a> •\n  <a href=\"#download\">Download</a> •\n  <a href=\"#features\">Features</a> •\n  <a href=\"#api\">API</a> •\n  <a href=\"docs/content/docs/overview/troubleshooting.mdx\">Troubleshooting</a>\n</p>\n\n<br/>\n\n<p align=\"center\">\n  <a href=\"https://voicebox.sh\">\n    <img src=\".github/assets/app-screenshot-1.webp\" alt=\"Voicebox App Screenshot\" width=\"800\" />\n  </a>\n</p>\n\n<p align=\"center\">\n  <em>Click the image above to watch the demo video on <a href=\"https://voicebox.sh\">voicebox.sh</a></em>\n</p>\n\n<br/>\n\n<p align=\"center\">\n  <img src=\".github/assets/app-screenshot-2.webp\" alt=\"Voicebox Screenshot 2\" width=\"800\" />\n</p>\n\n<p align=\"center\">\n  <img src=\".github/assets/app-screenshot-3.webp\" alt=\"Voicebox Screenshot 3\" width=\"800\" />\n</p>\n\n<br/>\n\n## Built with Capy\n\n<p align=\"center\">\n  <a href=\"https://capy.ai?utm_source=voicebox&utm_medium=readme&utm_campaign=built-with-capy\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\".github/assets/capy-wordmark-dark.svg\" />\n      <img src=\".github/assets/capy-wordmark-light.svg\" alt=\"Capy\" width=\"160\" />\n    </picture>\n  </a>\n</p>\n\nVoicebox is built and maintained with [Capy](https://capy.ai?utm_source=voicebox&utm_medium=readme&utm_campaign=built-with-capy). A Capy Captain thread directs the project day to day, and its crew threads test, rebase, and review each contributor pull request on Linux and on a Mac Studio before Jamie merges it. Voicebox stays free and open source under the MIT license, with no splash screens, banners, or interruptions in the app.\n\n**[Try Capy →](https://capy.ai?utm_source=voicebox&utm_medium=readme&utm_campaign=built-with-capy)** · [How Voicebox is built](https://voicebox.sh/built-with-capy)\n\n---\n\n## What is Voicebox?\n\nVoicebox is a **local-first AI voice studio** — a free and open-source alternative to **ElevenLabs** and **WisprFlow** in one app. Clone voices from a few seconds of audio, generate speech in 23 languages across 8 TTS engines, dictate into any text field with a global hotkey, and give any MCP-aware AI agent a voice of your choosing.\n\nThe two cloud incumbents sit on opposite halves of the voice I/O loop — ElevenLabs on output, WisprFlow on input. Voicebox does both, bridges them with a bundled local LLM for refinement and per-profile personas, and runs the whole thing on your machine.\n\n- **Complete privacy** — models, voice data, and captures never leave your machine\n- **8 TTS engines** — Qwen3-TTS, Qwen CustomVoice, Qwen VoiceDesign, LuxTTS, Chatterbox Multilingual, Chatterbox Turbo, HumeAI TADA, and Kokoro\n- **Voice cloning and preset voices** — zero-shot cloning from a reference sample, or 50+ curated preset voices via Kokoro and Qwen CustomVoice\n- **23 languages** — from English to Arabic, Japanese, Hindi, Swahili, and more\n- **Post-processing effects** — pitch shift, reverb, delay, chorus, compression, and filters\n- **Expressive speech** — paralinguistic tags like `[laugh]`, `[sigh]`, `[gasp]` via Chatterbox Turbo; natural-language delivery control via Qwen CustomVoice; voices described in plain language via Qwen VoiceDesign\n- **Unlimited length** — auto-chunking with crossfade for scripts, articles, and chapters\n- **Stories editor** — multi-track timeline for conversations, podcasts, and narratives\n- **Voice input** — global dictation hotkey with push-to-talk and toggle modes, accessibility-verified auto-paste on macOS, in-app mic on every text field, Whisper-based STT\n- **Agent voice output** — one tool call (`voicebox_speak`) and any MCP-aware agent (Claude Code, Cursor, Cline) speaks to you in a voice you've cloned\n- **Voice personalities** — attach a free-form persona to any voice profile, then Compose, Rewrite, or Respond via a bundled local LLM — agents can invoke the same modes over MCP\n- **API-first** — REST API plus a built-in MCP server for integrating voice I/O into your own apps and agents\n- **Native performance** — built with Tauri (Rust), not Electron\n- **Runs everywhere** — macOS (MLX/Metal), Windows (CUDA), Linux, AMD ROCm, Intel Arc, Docker\n\n---\n\n## Download\n\n| Platform              | Download                                               |\n| --------------------- | ------------------------------------------------------ |\n| macOS (Apple Silicon) | [Download DMG](https://voicebox.sh/download/mac-arm)   |\n| macOS (Intel)         | [Download DMG](https://voicebox.sh/download/mac-intel) |\n| Windows               | [Download MSI](https://voicebox.sh/download/windows)   |\n| Docker                | `docker compose up`                                    |\n\n> **[View all binaries →](https://github.com/jamiepine/voicebox/releases/latest)**\n\n> **Linux** — Pre-built binaries are not yet available. See [voicebox.sh/linux-install](https://voicebox.sh/linux-install) for build-from-source instructions.\n\n> **Having trouble?** See the [Troubleshooting Guide](docs/content/docs/overview/troubleshooting.mdx) for common install, generation, model-download, and GPU issues.\n\n---\n\n## Features\n\n### Multi-Engine Voice Cloning\n\nEight TTS engines with different strengths, switchable per-generation:\n\n| Engine                      | Languages | Strengths                                                                                                                                |\n| --------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------- |\n| **Qwen3-TTS** (0.6B / 1.7B) | 10        | High-quality multilingual cloning, delivery instructions (\"speak slowly\", \"whisper\")                                                     |\n| **Qwen CustomVoice**        | 10        | 9 curated preset voices with natural-language delivery control — no reference audio required                                             |\n| **Qwen VoiceDesign**        | 10        | Builds a voice from a written description — no reference audio or preset needed                                                         |\n| **LuxTTS**                  | English   | Lightweight (~1GB VRAM), 48kHz output, 150x realtime on CPU                                                                              |\n| **Chatterbox Multilingual** | 23        | Broadest language coverage — Arabic, Danish, Finnish, Greek, Hebrew, Hindi, Malay, Norwegian, Polish, Swahili, Swedish, Turkish and more |\n| **Chatterbox Turbo**        | English   | Fast 350M model with paralinguistic emotion/sound tags                                                                                   |\n| **TADA** (1B / 3B)          | 10        | HumeAI speech-language model — 700s+ coherent audio, text-acoustic dual alignment                                                        |\n| **Kokoro**                  | 8         | 50 curated preset voices, tiny 82M model, fast CPU inference                                                                             |\n\n### Emotions & Paralinguistic Tags\n\nOnly **Chatterbox Turbo** interprets paralinguistic tags like `[laugh]` and\n`[sigh]`. Qwen3-TTS, LuxTTS, Chatterbox Multilingual, and HumeAI TADA read them\nliterally as text.\n\nWith **Chatterbox Turbo** selected, type `/` in the text input to open the tag\ninserter and add expressive tags inline with speech:\n\nSounds: `[laugh]` `[chuckle]` `[gasp]` `[cough]` `[sigh]` `[groan]` `[sniff]` `[shush]` `[clear throat]`\n\nDelivery: `[angry]` `[crying]` `[dramatic]` `[fear]` `[happy]` `[narration]` `[sarcastic]` `[surprised]` `[whispering]` `[advertisement]`\n\n### Post-Processing Effects\n\n8 audio effects powered by Spotify's `pedalboard` library. Apply after generation, preview in real time, build reusable presets.\n\n| Effect           | Description                                   |\n| ---------------- | --------------------------------------------- |\n| Pitch Shift      | Up or down by up to 12 semitones              |\n| Reverb           | Configurable room size, damping, wet/dry mix  |\n| Delay            | Echo with adjustable time, feedback, and mix  |\n| Chorus / Flanger | Modulated delay for metallic or lush textures |\n| Compressor       | Dynamic range compression                     |\n| Gain             | Volume adjustment (-40 to +40 dB)             |\n| High-Pass Filter | Remove low frequencies                        |\n| Low-Pass Filter  | Remove high frequencies                       |\n\nShips with 4 built-in presets (Robotic, Radio, Echo Chamber, Deep Voice) and supports custom presets. Effects can be assigned per-profile as defaults.\n\n### Unlimited Generation Length\n\nText is automatically split at sentence boundaries and each chunk is generated independently, then crossfaded together. Works with all engines.\n\n- Configurable auto-chunking limit (100–5,000 chars)\n- Crossfade slider (0–200ms) for smooth transitions\n- Max text length: 50,000 characters\n- Smart splitting respects abbreviations, CJK punctuation, and `[tags]`\n\n### Generation Versions\n\nEvery generation supports multiple versions with provenance tracking:\n\n- **Original** — clean TTS output, always preserved\n- **Effects versions** — apply different effects chains from any source version\n- **Takes** — regenerate with a new seed for variation\n- **Source tracking** — each version records its lineage\n- **Favorites** — star generations for quick access\n\n### Async Generation Queue\n\nGeneration is non-blocking. Submit and immediately start typing the next one.\n\n- Serial execution queue prevents GPU contention\n- Real-time SSE status streaming\n- Failed generations can be retried\n- Stale generations from crashes auto-recover on startup\n\n### Voice Profile Management\n\n- Create profiles from audio files or record directly in-app\n- Import/export profiles to share or back up\n- Multi-sample support for higher quality cloning\n- Per-profile default effects chains\n- Organize with descriptions and language tags\n\n### Stories Editor\n\nMulti-voice timeline editor for conversations, podcasts, and narratives.\n\n- Multi-track composition with drag-and-drop\n- Inline audio trimming and splitting\n- Auto-playback with synchronized playhead\n- Version pinning per track clip\n\n### Global Dictation & Voice Inpu",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "uvicorn\nfastapi\nsqlalchemy\ntorch\ntorchvision\nsoundfile\nlibrosa\npython-multipart\nhuggingface_hub\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "声音克隆",
+      "语音听写",
+      "音频创作"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 语音工作室，聚焦声音克隆、语音听写和音频内容创作。",
+      "capabilities": "声音克隆、语音听写、音频创作、AI 语音工作流"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "MHSanaei",
+    "name": "3x-ui",
+    "full_name": "MHSanaei/3x-ui",
+    "url": "https://github.com/MHSanaei/3x-ui",
+    "description": "Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG)",
+    "language": "Go",
+    "total_stars": 49551,
+    "forks": 12691,
+    "stars_this_period": 71,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "ech",
+        "fail2ban",
+        "http",
+        "hysteria2",
+        "mixed",
+        "mtproto",
+        "nodes",
+        "post-quantum",
+        "reality",
+        "shadowsocks",
+        "shadowsocks2022",
+        "tls",
+        "trojan",
+        "tun",
+        "tunnel",
+        "vless",
+        "vmess",
+        "wireguard",
+        "x25519",
+        "xhttp"
+      ],
+      "license": "GPL-3.0",
+      "open_issues": 279,
+      "created_at": "2023-02-09T19:16:57Z",
+      "pushed_at": "2026-11-06T17:58:20Z",
+      "homepage": "https://docs.sanaei.dev/",
+      "default_branch": "main",
+      "forks": 12691,
+      "watchers": 297,
+      "archived": false,
+      "size_kb": 80642
+    },
+    "readme_content": "[English](/README.md) | [فارسی](/README.fa_IR.md) | [العربية](/README.ar_EG.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md) | [Türkçe](/README.tr_TR.md)\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"./media/3x-ui-dark.png\">\n    <img alt=\"3x-ui\" src=\"./media/3x-ui-light.png\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/MHSanaei/3x-ui/releases\"><img src=\"https://img.shields.io/github/v/release/mhsanaei/3x-ui\" alt=\"Release\"></a>\n  <a href=\"https://github.com/MHSanaei/3x-ui/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/mhsanaei/3x-ui/release.yml.svg\" alt=\"Build\"></a>\n  <a href=\"#\"><img src=\"https://img.shields.io/github/go-mod/go-version/mhsanaei/3x-ui.svg\" alt=\"GO Version\"></a>\n  <a href=\"https://github.com/MHSanaei/3x-ui/releases/latest\"><img src=\"https://img.shields.io/github/downloads/mhsanaei/3x-ui/total.svg\" alt=\"Downloads\"></a>\n  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img src=\"https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true\" alt=\"License\"></a>\n  <a href=\"https://pkg.go.dev/github.com/mhsanaei/3x-ui/v3\"><img src=\"https://pkg.go.dev/badge/github.com/mhsanaei/3x-ui/v3.svg\" alt=\"Go Reference\"></a>\n  <a href=\"https://docs.sanaei.dev\"><img src=\"https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee\" alt=\"Documentation\"></a>\n</p>\n\n**3X-UI** is an advanced, open-source web control panel for managing [Xray-core](https://github.com/XTLS/Xray-core) servers. It provides a clean, multi-language interface for deploying, configuring, and monitoring a wide range of proxy and VPN protocols — from a single VPS to multi-node deployments.\n\nBuilt as an enhanced fork of the original X-UI project, 3X-UI adds broader protocol support, improved stability, per-client traffic accounting, and many quality-of-life features.\n\n> [!IMPORTANT]\n> This project is intended for personal use only. Please do not use it for illegal purposes or in a production environment.\n\n## Features\n\n- **Multi-protocol inbounds** — VLESS, VMess, Trojan, Shadowsocks, WireGuard, AmneziaWG, TUIC v5, Hysteria2, MTProto, HTTP, SOCKS (Mixed), Dokodemo-door / Tunnel, and TUN.\n- **Modern transports & security** — TCP (Raw), mKCP, WebSocket, gRPC, HTTPUpgrade, and XHTTP, secured with TLS, XTLS, and REALITY.\n- **AmneziaWG built in** — DPI-resistant WireGuard runs inside the panel on a userspace network stack, with no kernel module, DKMS, or extra packages to install.\n- **Native TUIC v5 server** — In-process Go QUIC server with Xray routing and per-client traffic accounting; BBR and New Reno are available server-side. CUBIC is preserved in the client profile but currently falls back to New Reno on the server.\n- **MTProto proxies** — per-client FakeTLS secrets, ad-tags, and quotas, applied live without dropping existing connections.\n- **Fallbacks** — serve multiple protocols on a single port (e.g. VLESS and Trojan on 443) using Xray's fallback support.\n- **Per-client management** — traffic quotas, expiry dates, IP limits with trusted-address exemptions, HWID device limits, scheduled renewal cycles, live online status, and one-click share links, QR codes, and subscriptions.\n- **Traffic statistics** — per inbound, per client, and per outbound, with reset controls.\n- **Multi-node support** — manage and scale across multiple servers from a single panel, including cloning inbounds onto other nodes.\n- **Outbound & routing** — WARP, NordVPN, PIA, custom routing rules, load balancers with balancer-to-balancer fallback, and outbound proxy chaining. Bundled geosite and geoip categories are browsable straight from the rule editor.\n- **Built-in subscription server** — raw, JSON, and Clash output, auto-selected from the client's User-Agent, plus [custom page templates](docs/custom-subscription-templates.md).\n- **Telegram and Discord bots** for remote monitoring and management.\n- **RESTful API** with scoped, optionally expiring tokens and an in-panel API reference.\n- **Installable panel (PWA)** — pin 3X-UI to a desktop or phone home screen.\n- **Flexible storage** — SQLite (default) or PostgreSQL.\n- **14 UI languages** with dark and light themes.\n- **Fail2ban integration** for enforcing per-client IP limits.\n\n## Screenshots\n\n<details>\n<summary>Click to expand</summary>\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./media/01-overview-dark.png\">\n  <img alt=\"Overview\" src=\"./media/01-overview-light.png\">\n</picture>\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./media/02-add-inbound-dark.png\">\n  <img alt=\"Inbounds\" src=\"./media/02-add-inbound-light.png\">\n</picture>\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./media/03-add-client-dark.png\">\n  <img alt=\"Add client\" src=\"./media/03-add-client-light.png\">\n</picture>\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./media/05-add-nodes-dark.png\">\n  <img alt=\"Configs\" src=\"./media/05-add-nodes-light.png\">\n</picture>\n\n</details>\n\n## Quick Start\n\n```bash\nbash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)\n```\n\nTo install a specific version, append its tag (e.g. `v3.7.0`):\n\n```bash\nbash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) v3.7.0\n```\n\nTo install the rolling **dev** build (latest per-commit pre-release from `main`, not a stable release), pass `dev-latest`:\n\n```bash\nbash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) dev-latest\n```\n\nDuring installation a random username, password, and access path are generated. After installation, run `x-ui` to open the management menu, where you can start/stop the service, view or reset your login credentials, manage SSL certificates, and more.\n\nEvery release asset is published with a `.sha256` sum next to it. Both `install.sh` and the updater verify the archive against that sum and abort on a mismatch.\n\nFor full documentation — installation, configuration, operations, and the complete API reference — visit **[docs.sanaei.dev](https://docs.sanaei.dev)**.\n\n### Unattended install\n\nThe installer also runs **non-interactively** for cloud-init.\nSet `XUI_NONINTERACTIVE=1` (or pipe with no TTY) and it installs end-to-end with\nzero prompts, generating random credentials and writing them to\n`/etc/x-ui/install-result.env`. See [`deploy/`](deploy/) for:\n\n- [Cloud-init user-data](deploy/cloud-init/) — unattended install on any cloud (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)\n- [Hetzner Cloud notes](deploy/marketplace/hetzner/) — cloud-init deployment on Hetzner\n\n## Supported Platforms\n\n**Operating systems:** Ubuntu, Debian, Armbian, Fedora, CentOS, RHEL, AlmaLinux, Rocky Linux, Oracle Linux, Amazon Linux, Virtuozzo, Arch, Manjaro, Parch, openSUSE (Tumbleweed / Leap), Alpine, and Windows.\n\n**Architectures:** `amd64` · `386` · `arm64` (aarch64) · `armv7` · `armv6` · `armv5` · `s390x`.\n\n## Database Options\n\n3X-UI supports two backends, chosen during the install:\n\n- **SQLite** (default) — a single file at `/etc/x-ui/x-ui.db`. Zero setup, ideal for small and medium deployments.\n- **PostgreSQL** — recommended for high client counts or multi-node setups. The installer can install PostgreSQL locally for you, or accept a DSN to an existing server.\n\nAt runtime the backend is selected via environment variables (the installer writes these to `/etc/default/x-ui` for you):\n\n```\nXUI_DB_TYPE=postgres\nXUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable\n```\n\n### Migrating an existing SQLite install to PostgreSQL\n\n```bash\nx-ui migrate-db --dsn \"postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable\"\n# then set XUI_DB_TYPE and XUI_DB_DSN in /etc/default/x-ui and restart:\nsystemctl restart x-ui\n```\n\nThe source SQLite file is left untouched; remove it manually once you have verified the new backend.\n\n### Docker\n\nThe default `docker compose up -d` keeps using SQLite. To run with the bundled PostgreSQL service, uncomment the two `XUI_DB_*` env lines in `docker-compose.yml` and start with the profile:\n\n```bash\ndocker compose --profile postgres up -d\n```\n\nThe image bundles Fail2ban (enabled by default) to enforce per-client **IP limits**. Fail2ban bans offenders with `iptables`, which requires the `NET_ADMIN` capability. `docker-compose.yml` already grants it via `cap_add`; if you start the container with `docker run` instead, add the capabilities yourself, otherwise bans are logged but never applied:\n\n```bash\ndocker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/mhsanaei/3x-ui\n```\n\n## Environment Variables\n\n| Variable | Description | Default |\n| --- | --- | --- |\n| `XUI_DB_TYPE` | Database backend: `sqlite` or `postgres` | `sqlite` |\n| `XUI_DB_DSN` | PostgreSQL connection string (when `XUI_DB_TYPE=postgres`) | — |\n| `XUI_DB_FOLDER` | Directory for the SQLite database file | `/etc/x-ui` |\n| `XUI_DB_MAX_OPEN_CONNS` | Maximum open connections (PostgreSQL pool) | — |\n| `XUI_DB_MAX_IDLE_CONNS` | Maximum idle connections (PostgreSQL pool) | — |\n| `XUI_INIT_WEB_BASE_PATH` | The initial URI path for the web panel | `/` |\n| `XUI_ENABLE_FAIL2BAN` | Enable Fail2ban-based IP-limit enforcement | `true` |\n| `XUI_LOG_LEVEL` | Log verbosity (`debug`, `info`, `warning`, `error`) | `info` |\n| `XUI_DEBUG` | Enable debug mode | `false` |\n| `XUI_TUNNEL_HEALTH_MONITOR` | Enable the tunnel health monitor (probes a URL and restarts xray after repeated failures; a restart drops all clients) | `false` |\n| `XUI_TUNNEL_HEALTH_PROXY` | Proxy the probe is sent through; point it at a local xray inbound so the probe tests the tunnel (e.g. `socks5://127.0.0.1:1080`). Empty means the probe only checks host connectivity | — |\n| `XUI_TUNNEL_HEALTH_URL` | URL probed for tunnel health | `https://www.cloudflare.com/cdn-cgi/trace` |\n| `XUI_TUNNEL_HEALTH_INTERVAL` | Interval between probes | `30s` |\n| `XUI_TUNNEL_HEALTH_TIMEOUT` | Per-probe timeout | `10s` |\n| `XUI_TUNNEL_HEALTH_FAILURES` | Consecutive failures before a restart is triggered | `3` |\n| `XUI_TUNNEL_HEALTH_COOLDOWN` | Minimum delay between consecutive restarts | `5m` |\n| `NODE_TOKEN_ENCRYPTION` | Encryption at rest for node API tokens: `off`, `migration`, or `required` (note: no `XUI_` prefix) | `off` |\n| `XUI_NODE_TOKEN_KEY_FILE` | JSON keyring (mode `0600`) holding the active key id and its base64 32-byte keys | `/etc/x-ui/node_token_key.json` |\n| `XUI_NODE_TOKEN_KEY` | A single base64 32-byte key, used only when the key file cannot be loaded | — |\n\nThe complete list is on the [environment variables reference](https://docs.sanaei.dev/docs/reference/env-vars).\n\n## Supported Languages\n\nThe panel UI is available in 14 languages:\n\nEnglish · فارسی · العربية · 中文（简体） · 中文（繁體） · Español · Русский · Українська · Türkçe · Tiếng Việt · 日本語 · Bahasa Indonesia · Português (Brasil) · Slovenčina\n\n## Contributing\n\nContributions are welcome. Please read the [Contributing Guide](/CONTRIBUTING.md) before opening an issue or pull request.\n\n## A Special Thanks to\n\n- [alireza0](https://github.com/alireza0/)\n\n## Acknowledgment\n\n- [Iran v2ray rules](https://github.com/chocolate4u/Iran-v2ray-rules) (License: **GPL-3.0**): _Enhanced v2ray/xray and v2ray/xray-clients routing rules with built-in Iranian domains and a focus on security and adblocking._\n- [Russia v2ray rules](https://github.com/runetfreedom/russia-v2ray-rules-dat) (License: **GPL-3.0**): _This repository contains automatically updated V2Ray routing rules based on data on blocked domains and addresses in Russia._\n\n## Community Tools\n\nTools and integrations built by the community around 3x-ui.\n\n- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._\n- [3X-UI Manager](https://github.com/yukh975/3X-UI-Manager) (License: **MIT**): _Native Android client for 3x-ui — dashboard, inbounds, clients with QR sharing, nodes and ",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/mhsanaei/3x-ui/v3\n\ngo 1.27.3\n\nrequire (\n\tgithub.com/amnezia-vpn/amneziawg-go/v3 v3.1.20260828\n\tgithub.com/apernet/quic-go v0.61.1-0.20260806010916-184d081eef3e\n\tgithub.com/gin-contrib/gzip v1.2.9\n\tgithub.com/gin-contrib/sessions v1.1.3\n\tgithub.com/gin-gonic/gin v1.12.0\n\tgithub.com/go-ldap/ldap/v3 v3.4.15\n\tgithub.com/go-playground/validator/v10 v10.30.6\n\tgithub.com/goccy/go-json v0.12.0\n\tgithub.com/goccy/go-yaml v1.19.2\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/jackc/pgx/v5 v5.12.0\n\tgithub.com/joho/godotenv v1.5.1\n\tgithub.com/klauspost/compress v1.20.3\n\tgithub.com/mattn/go-sqlite3 v1.14.52\n\tgithub.com/mymmrac/telego v1.12.1\n\tgithub.com/nicksnyder/go-i18n/v2 v2.7.0\n\tgithub.com/op/go-logging v0.0.0-20160315200505-970db520ece7\n\tgithub.com/quic-go/quic-go v0.64.1\n\tgithub.com/refraction-networking/utls v1.8.3-0.20260301010127-aa6edf4b11af\n\tgithub.com/robfig/cron/v3 v3.0.1\n\tgithub.com/shirou/gopsutil/v4 v4.26.10\n\tgithub.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e\n\tgithub.com/valyala/fasthttp v1.77.0\n\tgithub.com/xlzd/gotp v0.1.0\n\tgithub.com/xtls/xray-core v1.260327.1-0.20261031132019-a4a3dff5b20c\n\tgo.uber.org/atomic v1.12.0\n\tgolang.org/x/crypto v0.58.0\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/sync v0.24.0\n\tgolang.org/x/sys v0.49.0\n\tgolang.org/x/text v0.43.0\n\tgoogle.golang.org/grpc v1.86.0-dev\n\tgoogle.golang.org/protobuf v1.36.12\n\tgopkg.in/natefinch/lumberjack.v2 v2.2.1\n\tgorm.io/driver/postgres v1.6.3\n\tgorm.io/driver/sqlite v1.6.0\n\tgorm.io/gorm v1.31.2\n\tgvisor.dev/gvisor v0.0.0-20260122175437-89a5d21be8f0\n\tpgregory.net/rapid v1.3.0\n)\n\nrequire (\n\tgithub.com/Azure/go-ntlmssp v0.1.1 // indirect\n\tgithub.com/andybalholm/brotli v1.2.7 // indirect\n\tgithub.com/bytedance/gopkg v0.1.4 // indirect\n\tgithub.com/bytedance/sonic v1.15.5 // indirect\n\tgithub.com/bytedance/sonic/loader v0.5.3 // indirect\n\tgithub.com/cloudwego/base64x v0.1.7 // indirect\n\tgithub.com/ebitengine/purego v0.11.2 // indirect\n\tgithub.com/gabriel-vasile/mimetype v1.4.16 // indirect\n\tgithub.com/gin-contrib/sse v1.2.0 // indirect\n\tgithub.com/go-asn1-ber/asn1-ber v1.5.8 // indirect\n\tgithub.com/go-ole/go-ole v1.3.0 // indirect\n\tgithub.com/go-playground/locales v0.14.2 // indirect\n\tgithub.com/go-playground/universal-translator v0.18.2 // indirect\n\tgithub.com/google/btree v1.1.3 // indirect\n\tgithub.com/gorilla/context v1.1.2 // indirect\n\tgithub.com/gorilla/securecookie v1.1.2 // indirect\n\tgithub.com/gorilla/sessions v1.4.0 // indirect\n\tgithub.com/grbit/go-json v0.11.0 // indirect\n\tgithub.com/huin/goupnp v1.3.0 // indirect\n\tgithub.com/jackc/pgpassfile v1.0.0 // indirect\n\tgithub.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect\n\tgithub.com/jackc/puddle/v2 v2.2.3 // indirect\n\tgithub.com/jackpal/go-nat-pmp v1.1.0 // indirect\n\tgithub.com/jinzhu/inflection v1.0.0 // indirect\n\tgithub.com/jinzhu/now v1.1.5 // indirect\n\tgithub.com/json-iterator/go v1.1.12 // indirect\n\tgithub.com/juju/ratelimit v1.0.2 // indirect\n\tgithub.com/klauspost/cpuid/v2 v2.4.1 // indirect\n\tgithub.com/koron/go-ssdp v0.9.1 // indirect\n\tgithub.com/leodido/go-urn v1.5.0 // indirect\n\tgithub.com/libp2p/go-nat v1.0.1-0.20250821073202-01afc089f138 // indirect\n\tgithub.com/libp2p/go-netroute v0.4.0 // indirect\n\tgithub.com/lufia/plan9stats v0.0.0-20261101121723-be84dd9509a0 // indirect\n\tgithub.com/mattn/go-isatty v0.0.24 // indirect\n\tgithub.com/miekg/dns v1.1.73 // indirect\n\tgithub.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect\n\tgithub.com/modern-go/reflect2 v1.0.2 // indirect\n\tgithub.com/molecule-man/go-brrr v1.3.1 // indirect\n\tgithub.com/pelletier/go-toml/v2 v2.4.3 // indirect\n\tgithub.com/pion/dtls/v3 v3.1.15 // indirect\n\tgithub.com/pion/logging v0.2.4 // indirect\n\tgithub.com/pion/stun/v3 v3.1.7 // indirect\n\tgithub.com/pion/transport/v4 v4.1.3 // indirect\n\tgithub.com/pion/transport/v5 v5.1.4 // indirect\n\tgithub.com/pires/go-proxyproto v0.16.0 // indirect\n\tgithub.com/power-devops/perfstat v0.0.0-20260916203055-22a1a467d9f0 // indirect\n\tgithub.com/quic-go/qpack v0.6.0 // indirect\n\tgithub.com/rogpeppe/go-internal v1.15.0 // indirect\n\tgithub.com/tklauser/go-sysconf v0.4.0 // indirect\n\tgithub.com/tklauser/numcpus v0.12.0 // indirect\n\tgithub.com/twitchyliquid64/golang-asm v0.15.1 // indirect\n\tgithub.com/ugorji/go/codec v1.3.2 // indirect\n\tgithub.com/valyala/bytebufferpool v1.0.0 // indirect\n\tgithub.com/valyala/fastjson v1.6.10 // indirect\n\tgithub.com/vishvananda/netlink v1.3.1 // indirect\n\tgithub.com/vishvananda/netns v0.0.5 // indirect\n\tgithub.com/wlynxg/anet v0.0.5 // indirect\n\tgithub.com/xtls/reality v0.0.0-20261014101318-83f621788ca8 // indirect\n\tgithub.com/yuin/gopher-lua v1.1.2 // indirect\n\tgithub.com/yusufpapurcu/wmi v1.2.4 // indirect\n\tgo.mongodb.org/mongo-driver/v2 v2.9.2 // indirect\n\tgo4.org/netipx v0.0.0-20260823151212-3075585bcbeb // indirect\n\tgolang.org/x/arch v0.32.0 // indirect\n\tgolang.org/x/crypto/x509roots/fallback v0.0.0-20261030153154-30a33513ff6d // indirect\n\tgolang.org/x/exp v0.0.0-202",
+    "strategic_keywords": [
+      "agent",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 14,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 9,
+      "risk_signal": 10,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Xray 控制面板",
+      "多协议配置",
+      "用户与流量管理"
+    ],
+    "brief_zh": {
+      "summary": "一个管理 Xray-core 服务器的开源 Web 控制面板，覆盖多协议代理与 VPN 入站、用户配额和流量统计，并支持多节点、SQLite 或 PostgreSQL 部署。",
+      "audience": "需要自建并管理多协议代理或 VPN 节点的个人用户和基础设施运维者",
+      "capabilities": "Xray 控制面板、多协议配置、用户与流量管理、多节点管理、订阅服务、REST API、SQLite/PostgreSQL",
+      "risk": "项目 README 明确提示仅供个人使用且不建议用于生产；网络代理部署涉及访问控制、合规、节点安全和供应链风险，需独立评估。",
+      "verified_at": "2026-10-10",
+      "evidence_sources": [
+        "https://github.com/MHSanaei/3x-ui"
+      ],
+      "evidence_note": "依据本日通过 GitHub API 获取的 README 与仓库 description；未部署服务、未配置任何代理节点。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "meta",
+    "name": "astryx",
+    "full_name": "meta/astryx",
+    "url": "https://github.com/meta/astryx",
+    "description": "An open source design system that's fully customizable and agent ready",
+    "language": "TypeScript",
+    "total_stars": 16453,
+    "forks": 1303,
+    "stars_this_period": 863,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 658,
+      "created_at": "2026-01-09T16:20:32Z",
+      "pushed_at": "2026-11-08T22:04:06Z",
+      "homepage": "http://astryx.atmeta.com",
+      "default_branch": "main",
+      "forks": 1303,
+      "watchers": 82,
+      "archived": false,
+      "size_kb": 1258632
+    },
+    "readme_content": "<!-- SYNC CONTRACT: Architecture changes require documentation updates. -->\n\n<div align=\"center\">\n\n<img src=\"https://lookaside.facebook.com/assets/astryx/Astryx-Banner.png\" alt=\"Astryx\" width=\"100%\" />\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now: <br/> by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[![npm version](https://img.shields.io/npm/v/@astryxdesign/core?label=npm&color=cb3837&logo=npm)](https://www.npmjs.com/package/@astryxdesign/core)\n[![license MIT](https://img.shields.io/npm/l/@astryxdesign/core?color=blue)](LICENSE)\n[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/meta/astryx/wiki/Contributing)\n\n[![Docs](https://img.shields.io/badge/Docs-astryx.atmeta.com-6741d9?logo=readthedocs&logoColor=white)](https://astryx.atmeta.com)\n[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785?logo=storybook&logoColor=white)](https://astryx.atmeta.com/storybook/)\n[![Sandbox](https://img.shields.io/badge/Sandbox-playground-A9792B)](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributing](https://github.com/meta/astryx/wiki/Contributing)** · **[Discord](https://discord.com/invite/XnsUcFykEP)**\n\n</div>\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Components are built to be composed at any level, not locked behind a closed top-level API. The building blocks you'd reach for are exported directly, and when you need to go deeper, swizzle ejects a component's full source into your project to own.\n- **No styling lock-in.** Astryx authors its styles with StyleX, but that's invisible to consumers. Override with `className` using Tailwind, CSS modules, or plain CSS — whatever your project already uses.\n- **Customize without wrapping.** A theme is a set of CSS custom property overrides, so a designer can make Astryx unmistakably theirs without forking or wrapping component source.\n- **Built for people and agents.** The API, docs, and CLI are designed together so a person and an AI assistant build the same way, from the same reference.\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both is recommended), and `astryx docs global` explains how global mode works.\n\nThe simplest setup is a few CSS imports plus a theme provider — no build plugin, no PostCSS or Babel config. See the **[@astryxdesign/core README](packages/core/README.md#quick-start)** for the full guide (Next.js, Tailwind, Vite, and CDN).\n\nFor reliable CLI access, add a script to your `package.json`:\n\n```json\n\"scripts\": {\n  \"astryx\": \"node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs\"\n}\n```\n\nThen use it as `npm run astryx -- component --list`. This avoids path errors when AI assistants or new developers invoke the CLI directly.\n\n## Packages\n\n| Package                                    | Description                                                                                          | README                             |\n| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |\n| [`@astryxdesign/core`](packages/core)      | Components, theme system, and utilities                                                              | [README](packages/core/README.md)  |\n| [`@astryxdesign/cli`](packages/cli)        | CLI tooling: component docs, templates, scaffolding, themes, and codemods                            | [README](packages/cli/README.md)   |\n| [`@astryxdesign/build`](packages/build)    | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md) |\n| [`@astryxdesign/theme-*`](packages/themes) | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)          |\n\n> `@astryxdesign/lab` (experimental components) is used internally for Storybook and the sandbox and is not published to npm. `@astryxdesign/vega` (Vega/Vega-Lite chart wrapper) and `@astryxdesign/charts` (chart components) are published to npm only under the `@canary` dist-tag — there is no stable release yet.\n\n## Principles\n\nThese are the promises Astryx makes to the people building on it.\n\n- **Guidance over enforcement.** Components give you capability rather than guardrails that fight you. Design opinions live in docs and examples — if you pass a value, the component renders it.\n- **Strong, documented conventions.** Every component follows the same naming, prop, and composition rules, and every one is thoroughly documented — so once you've learned a few, the rest feel familiar, and both people and AI can predict how an unfamiliar component behaves.\n- **One system for humans and AI.** The API, conventions, docs, and CLI are designed together so people and AI assistants build the same way. Every change that made Astryx easier for AI made it easier for people too.\n- **Earned by measurement.** We test conventions rather than assert them, hold the results loosely, and revisit them when a new situation proves them wrong.\n\n## Architecture\n\n### Foundations\n\nThe building blocks for visually cohesive and accessible interfaces: typography, color, layout, and accessibility.\n\n### Components\n\nA library of 150+ reusable UI building blocks with full TypeScript support.\n\n### Patterns\n\nBattle-tested design solutions for common interactions and workflows: table pages, detail page layouts, form wizards, navigation patterns, data entry flows.\n\n## Project Structure\n\n| Directory   | Purpose                                                     |\n| ----------- | ----------------------------------------------------------- |\n| `apps/`     | Example apps, the docsite, and Storybook                    |\n| `packages/` | Published packages: core, cli, build, themes                |\n| `internal/` | Internal tooling: test utilities, eslint plugin, vibe tests |\n\n## Contributing\n\nWe welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.\n\nQuestions, or want a hand with a PR? Come find us in\n**[Discord](https://discord.com/invite/XnsUcFykEP)**.\n\nOur conventions and review rubrics live in the\n[Contributing wiki](https://github.com/meta/astryx/wiki/Contributing) —\nincluding [API Conventions](https://github.com/meta/astryx/wiki/API-Conventions),\n[Design Conventions](https://github.com/meta/astryx/wiki/Design-Conventions),\nthe [Component Lifecycle](https://github.com/meta/astryx/wiki/Component-Lifecycle),\nthe [Contributing Templates](https://github.com/meta/astryx/wiki/Contributing-Templates),\nand the [Blog Review Rubric](https://github.com/meta/astryx/wiki/Blog-Review-Rubric#three-required-scored-criteria). Read the relevant rubric before opening a PR.\n\nQuick start for contributors: this repo uses **Node 22+ on an active LTS line**\nand **pnpm 11**. Install pnpm directly, or enable\n[Corepack](https://nodejs.org/api/corepack.html) once so the pinned pnpm version\ninstalls automatically:\n\n```bash\ncorepack enable\npnpm install\n```\n\nIf `corepack` is missing, install pnpm directly or install Corepack manually;\nsee the troubleshooting notes in\n[CONTRIBUTING.md](CONTRIBUTING.md#troubleshooting).\n\nThe Theme Showcase DOM tests use the root `ui` project for shared DOM and\nStyleX test setup. Run `pnpm exec vitest run --project ui apps/docsite/src/__tests__/theme-showcase/`\nfrom the repository root.\n\n## License\n\nMIT\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pnpm -F @astryxdesign/theme-butter build && pnpm -F @astryxdesign/theme-probe build && pnpm bundle:cli-themes && pnpm bundle:cli-official-packages && pnpm -F @astryxdesign/cli sync:api-types\",\n    \"api:report\": \"node scripts/api-report/cli.mjs\",\n    \"bundle:cli-themes\": \"node scripts/generate-cli-themes.mjs\",\n    \"bundle:cli-official-packages\": \"node scripts/generate-cli-official-packages.mjs\",\n    \"generate:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs\",\n    \"check:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs --check\",\n    \"generate:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs\",\n    \"check:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs --check\",\n    \"generate:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs\",\n    \"check:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs --check\",\n    \"generate:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs\",\n    \"check:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs --check\",\n    \"generate:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs\",\n    \"check:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs --check\",\n    \"generate:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs\",\n    \"check:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs --check\",\n    \"dev\": \"pnpm -F @astryxdesign/storybook dev\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:coverage\": \"vitest --coverage\",\n    \"test:ui\": \"vitest run --project ui\",\n    \"test:ui:isolated\": \"vitest run --project perf --no-file-parallelism\",\n    \"test:node\": \"vitest run --project node\",\n    \"test:build\": \"vitest run packages/build/src/packed-consumer.test.mjs --project node --maxWorkers=1 && pnpm -F @astryxdesign/build build && node .github/scripts/theme-layer-cascade.js && ASTRYX_STYLEX_BROWSER=1 vitest run scripts/stylex-module-resolution.browser.test.mjs --project node --maxWorkers=1 && ASTRYX_TURBOPACK_E2E=1 vitest run packages/build/src/next.turbopack.test.mjs --project node --maxWorkers=1\",\n    \"test:theme-family\": \"pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/sandbox generate:theme-family && node .github/scripts/theme-family-cascade.js\",\n    \"test:a11y-contract\": \"playwright test --config playwright.config.ts --project chromium\",\n    \"test:a11y-contract:pr\": \"node .github/scripts/a11y-pr-contracts.mjs\",\n    \"test:docsite-browser\": \"playwright test --config apps/docsite/playwright.config.ts\",\n    \"test:interaction\": \"playwright test --config playwright.interaction.config.ts\",\n    \"storyboards\": \"playwright test --config playwright.interaction.config.ts --grep @storyboard\",\n    \"typecheck\": \"pnpm -r --no-bail --workspace-concurrency=1 --if-present --filter \\\"!@astryxdesign/docsite\\\" --filter \\\"!@astryxdesign/sandbox\\\" run typecheck\",\n    \"check:package-boundaries\": \"node scripts/check-package-boundaries.js\",\n    \"check:repo\": \"pnpm check:visual-owner && pnpm check:published-manifests && pnpm check:sync && pnpm check:neutral-palette-refs && pnpm check:stone-palette-refs && pnpm check:gothic-palette-refs && pnpm check:matcha-palette-refs && pnpm check:butter-palette-refs && pnpm check:y2k-palette-refs && pnpm check:data-tokens && pnpm check:token-docs && pnpm check:motion-roles && pnpm check:knowledge && pnpm check:package-boundaries && pnpm check:changesets && pnpm check:demo-media && pnpm check:executable-bits && pnpm check:cli-structure && pnpm check:use-client && pnpm check:portable-scripts && pnpm check:i18n-runtime && pnpm check:i18n-catalog && pnpm check:cldr-weekdays && pnpm check:cldr-month-capitals && pnpm check:fixtures && pnpm check:setup-contract\",\n    \"check:visual-owner\": \"node scripts/check-visual-workflow-owner.mjs\",\n    \"check:fixtures\": \"node internal/vibe-tests/scripts/fixture-suite.mjs verify\",\n    \"generate:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs\",\n    \"check:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs --check\",\n    \"generate:cldr-month-capitals\": \"node scripts/generate-cldr-month-capitals.mjs\",\n    \"check:cldr-month-capitals\": \"node scripts/generate-cldr-month-capitals.mjs --check\",\n    \"check:changesets\": \"node scripts/check-changesets.mjs\",\n    \"check:portable-scripts\": \"node scripts/check-portable-scripts.mjs\",\n    \"check",
+    "strategic_keywords": [
+      "agent",
+      "agents"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 16,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 8,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "设计系统",
+      "React 组件",
+      "StyleX 样式"
+    ],
+    "brief_zh": {
+      "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
+      "audience": "希望在 React 项目中统一界面基础组件、设计令牌与 Agent 辅助开发流程的产品和工程团队",
+      "capabilities": "设计系统、React 组件、StyleX 样式、界面令牌、Agent 协作开发",
+      "risk": "项目仍处于 Beta；README 的 Agent-ready 定位不代表已验证所有 Agent 集成场景，升级兼容性和组件覆盖范围需在采用前单独评估。",
+      "verified_at": "2026-11-09",
+      "evidence_sources": [
+        "https://github.com/meta/astryx"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与技术栈说明；未在生产 React 项目或 Agent 工作流中运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "rohitg00",
+    "name": "ai-engineering-from-scratch",
+    "full_name": "rohitg00/ai-engineering-from-scratch",
+    "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "description": "Learn AI Engineering! Learn it. Build it. Ship it for others.",
+    "language": "Python",
+    "total_stars": 77794,
+    "forks": 13810,
+    "stars_this_period": 439,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "dsh",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "python",
+        "rea",
+        "reinforcement-learning",
+        "rust",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "open_issues": 59,
+      "created_at": "2026-03-18T18:38:02Z",
+      "pushed_at": "2026-11-08T17:23:17Z",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "default_branch": "main",
+      "forks": 13810,
+      "watchers": 459,
+      "archived": false,
+      "size_kb": 163655
+    },
+    "readme_content": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/readme/header-dark.svg\">\n    <img src=\"assets/readme/header-light.svg\" alt=\"AI Engineering from Scratch\" width=\"840\">\n  </picture>\n</p>\n\n<p align=\"center\">\n <a href=\"https://www.star-history.com/rohitg00/ai-engineering-from-scratch\">\n  <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=rank&theme=dark\" /><source media=\"(prefers-color-scheme: light)\" srcset=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=rank\" /><img alt=\"Star History Rank\" src=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=rank\" /></picture> <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=trending&theme=dark\" /><source media=\"(prefers-color-scheme: light)\" srcset=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=trending\" /><img alt=\"GitHub Trending Repository of the Day\" src=\"https://api.star-history.com/badge?repo=rohitg00/ai-engineering-from-scratch&type=trending\" /></picture>\n </a>\n</p>\n\nImplement model internals, retrieval pipelines, and agent runtimes. Test them, inspect failures, and keep the code and evaluation results.\n\n**[Start learning](https://aiengineeringfromscratch.com/lesson?path=phases/00-setup-and-tooling/01-dev-environment)** · **[Choose a path](#learning-routes)** · **[Try a lab](#interactive-lab)** · **[Build a project](#project-challenges)** · **[Browse the curriculum](#contents)**\n\nFree, open source, MIT. Learn on the website, with a coding agent, or by running local code.\n\n> 542 lessons. 20 phases. Python, TypeScript, Rust, Julia.\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-542-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"542 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n<details>\n<summary>Read in your language</summary>\n\n<p align=\"center\">\n  <a href=\"README.md\">🇬🇧 English</a> ·\n  <a href=\"i18n/zh/README.md\">🇨🇳 简体中文</a> ·\n  <a href=\"i18n/zh-TW/README.md\">🇹🇼 繁體中文（台灣）</a> ·\n  <a href=\"i18n/ja/README.md\">🇯🇵 日本語</a> ·\n  <a href=\"i18n/ko/README.md\">🇰🇷 한국어</a> ·\n  <a href=\"i18n/pt/README.md\">🇵🇹 Português</a> ·\n  <a href=\"i18n/pt-BR/README.md\">🇧🇷 Português (Brasil)</a> ·\n  <a href=\"i18n/es/README.md\">🇪🇸 Español</a> ·\n  <a href=\"i18n/de/README.md\">🇩🇪 Deutsch</a> ·\n  <a href=\"i18n/fr/README.md\">🇫🇷 Français</a> ·\n  <a href=\"i18n/it/README.md\">🇮🇹 Italiano</a> ·\n  <a href=\"i18n/nl/README.md\">🇳🇱 Nederlands</a> ·\n  <a href=\"i18n/pl/README.md\">🇵🇱 Polski</a> ·\n  <a href=\"i18n/cs/README.md\">🇨🇿 Čeština</a> ·\n  <a href=\"i18n/ro/README.md\">🇷🇴 Română</a> ·\n  <a href=\"i18n/hu/README.md\">🇭🇺 Magyar</a> ·\n  <a href=\"i18n/el/README.md\">🇬🇷 Ελληνικά</a> ·\n  <a href=\"i18n/sv/README.md\">🇸🇪 Svenska</a> ·\n  <a href=\"i18n/da/README.md\">🇩🇰 Dansk</a> ·\n  <a href=\"i18n/no/README.md\">🇳🇴 Norsk</a> ·\n  <a href=\"i18n/fi/README.md\">🇫🇮 Suomi</a> ·\n  <a href=\"i18n/ru/README.md\">🇷🇺 Русский</a> ·\n  <a href=\"i18n/uk/README.md\">🇺🇦 Українська</a> ·\n  <a href=\"i18n/tr/README.md\">🇹🇷 Türkçe</a> ·\n  <a href=\"i18n/he/README.md\">🇮🇱 עברית</a> ·\n  <a href=\"i18n/ar/README.md\">🇸🇦 العربية</a> ·\n  <a href=\"i18n/fa/README.md\">🇮🇷 فارسی</a> ·\n  <a href=\"i18n/hi/README.md\">🇮🇳 हिन्दी</a> ·\n  <a href=\"i18n/bn/README.md\">🇧🇩 বাংলা</a> ·\n  <a href=\"i18n/ur/README.md\">🇵🇰 اردو</a> ·\n  <a href=\"i18n/th/README.md\">🇹🇭 ไทย</a> ·\n  <a href=\"i18n/vi/README.md\">🇻🇳 Tiếng Việt</a> ·\n  <a href=\"i18n/id/README.md\">🇮🇩 Bahasa Indonesia</a> ·\n  <a href=\"i18n/tl/README.md\">🇵🇭 Tagalog</a>\n</p>\n\n</details>\n\n### Sponsors\n\n<p align=\"center\">\n  <a href=\"https://serpapi.com/ai-engineering-from-scratch\"><picture><source media=\"(min-width: 768px)\" srcset=\"assets/sponsors/serpapi-banner-compact.png\" width=\"48%\"><img src=\"assets/sponsors/serpapi-banner-compact.png\" alt=\"SerpApi. Web Search API for your AI apps. Available in Markdown and JSON for any integration.\" width=\"440\"></picture></a>\n</p>\n\n<p align=\"center\">\n  <sub><span>Your support keeps every lesson free and open source.</span> <a href=\"#supporters\">See all supporters</a> · <a href=\"SPONSORS.md\">Become a sponsor</a></sub>\n</p>\n\n<a id=\"see-what-you-will-build-and-keep\"></a>\n<a id=\"learning-routes\"></a>\n\n## Learning paths\n\n| Route | Starting lesson |\n|---|---|\n| Model foundations | [Setup and tooling](https://aiengineeringfromscratch.com/lesson?path=phases/00-setup-and-tooling/01-dev-environment) |\n| LLM systems | [Prompt engineering](https://aiengineeringfromscratch.com/lesson?path=phases/11-llm-engineering/01-prompt-engineering) |\n| Agents and delivery | [The agent loop](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/01-the-agent-loop) |\n\n[Compare career paths](https://aiengineeringfromscratch.com/learning-paths.html) · [Prerequisites and study time](#study-guide)\n\n<a id=\"interactive-lab\"></a>\n\n### Gradient descent\n\nTwenty starting points follow gradient descent on a quadratic loss. The graph shows their positions and mean loss after each update.\n\n<p align=\"center\">\n  <a href=\"https://aiengineeringfromscratch.com/lesson?path=phases/01-math-foundations/08-optimization#loss-landscape-visualization\">\n    <picture>\n      <source media=\"(max-width: 600px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)\" srcset=\"assets/readme/101-gradient-mobile-dark.png\">\n      <source media=\"(max-width: 600px) and (prefers-reduced-motion: reduce)\" srcset=\"assets/readme/101-gradient-mobile-light.png\">\n      <source media=\"(prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)\" srcset=\"assets/readme/101-gradient-dark.png\">\n      <source media=\"(prefers-reduced-motion: reduce)\" srcset=\"assets/readme/101-gradient-light.png\">\n      <source media=\"(max-width: 600px) and (prefers-color-scheme: dark)\" srcset=\"assets/readme/101-gradient-mobile-dark.gif\">\n      <source media=\"(max-width: 600px)\" srcset=\"assets/readme/101-gradient-mobile-light.gif\">\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/readme/101-gradient-dark.gif\">\n      <img src=\"assets/readme/101-gradient-light.gif\" alt=\"Gradient descent moves scattered starting points toward the loss minimum. The mean loss decreases with each update.\" width=\"840\">\n    </picture>\n  </a>\n</p>\n\n[Adjust the learning rate in the lesson](https://aiengineeringfromscratch.com/lesson?path=phases/01-math-foundations/08-optimization#loss-landscape-visualization) · [Compare GD, momentum, and Adam in code](phases/01-math-foundations/08-optimization/code/optimizers.py)\n\n<a id=\"project-challenges\"></a>\n\n### Projects\n\nThree projects with staged starters, reference implementations, and local graders. Run commands from the repository root after [setup](#local-setup). Starters fail until you implement the stages.\n\n<details>\n<summary><strong>01 · Retrieval Evaluation Lab</strong> · Python · Ranking metrics and regression checks</summary>\n\nA candidate improves mean NDCG while one query ranks its most relevant evidence lower. Build a query-by-query comparison that reports the regression and can fail a release check.\n\nUse Python 3.10+. Review [RAG](phases/11-llm-engineering/06-rag/docs/en.md) and [model evaluation](phases/02-ml-fundamentals/09-model-evaluation/docs/en.md). Implement ranking validation, precision and recall, rank-sensitive metrics, then system comparison.\n\n```bash\npython3 scripts/project_test.py retrieval-evaluation-lab \\\n  --init learning-artifacts/retrieval-evaluation-lab\npython3 scripts/project_test.py retrieval-evaluation-lab \\\n  --stage 1 --path learning-artifacts/retrieval-evaluation-lab --strict\npython3 scripts/project_test.py retrieval-evaluation-lab \\\n  --all --path learning-artifacts/retrieval-evaluation-lab --strict\n```\n\n**Keep:** a reproducible comparison with per-query deltas and the judgments used to score them. Metrics describe those judgments; they do not establish answer correctness.\n\n[Start the project](https://aiengineeringfromscratch.com/project.html?id=retrieval-evaluation-lab) · [Inspect the reference](projects/retrieval-evaluation-lab/solution/) · [Run on your own inputs](projects/retrieval-evaluation-lab/README.md#run-with-your-own-inputs)\n\n</details>\n\n<details>\n<summary><strong>02 · Agent Trace Debugger</strong> · TypeScript · Trace parsing and timing</summary>\n\nA supplied trace still takes 100 ms, but total token usage rises by 200 and one span starts failing. Separate overlapping child work from parent execution time, then produce a report that exposes the change.\n\nUse Node.js 22.18+ and Python 3 for the grader. Implement JSONL parsing, parent validation, interval arithmetic, then an inspectable timeline.\n\n```bash\npython3 scripts/project_test.py agent-trace-debugger \\\n  --init learning-artifacts/agent-trace-debugger\npython3 scripts/project_test.py agent-trace-debugger \\\n  --stage 1 --path learning-artifacts/agent-trace-debugger --strict\npython3 scripts/project_test.py agent-trace-debugger \\\n  --all --path learning-artifacts/agent-trace-debugger --strict\n```\n\n**Keep:** the input trace, an HTML timeline, and a JSON regression report. Preserve exclusive per-span token counts so parent and child usage are not counted twice.\n\n[Start the project](https://aiengineeringfromscratch.com/project.html?id=agent-trace-debugger) · [Inspect the reference](projects/agent-trace-debugger/solution/) · [Explore timing interactively](https://aiengineeringfromscratch.com/project.html?id=agent-trace-debugger&stage=03-timing)\n\n</details>\n\n<details>\n<summary><strong>03 · Tool Call Firewall</strong> · Rust · Role checks and approval receipts</summary>\n\nA write changes after review, or an approval is replayed. Validate the call envelope, check the caller's role and path, then consume an approval bound to the exact request and content.\n\nUse Rust and Python 3.10+. Review [tool schema design](phases/13-tools-and-protocols/05-tool-schema-design/docs/en.md) and [security boundaries](phases/17-infrastructure-and-production/25-security-secrets-audit/docs/en.md). The caller application supplies identity; the model proposes an operation.\n\n```bash\npython3 scripts/project_test.py tool-call-firewall \\\n  --init learning-artifacts/tool-call-firewall\npython3 scripts/project_test.py tool-call-firewall \\\n  --stage 1 --path learning-artifacts/tool-call-firewall --strict\npython3 scripts/project_test.py tool-call-firewall \\\n  --all --path learning-artifacts/tool-call-firewall --strict\n```\n\n**Keep:** an audit receipt showing the requested operation and the policy decision. Approvals are single-use within one invocation; this project does not provide persistent authorization or an operating-system sandbox.\n\n[Start the project](https://aiengineeringfromscratch.com/project.html?id=tool-call-firewall) · [Inspect the reference](projects/tool-call-firewall/solution/) · [Explore approval boundaries](https://aiengineeringfromscratch.com/project.html?id=tool-call-firewall&stage=03-consume-a-request-bound-approval-once)\n\n</details>\n\n[Browse all projects](https://aiengineeringfromscratch.com/projects.html) · [Career practice guide](learning-paths/CAREER-PRACTICE.md)\n\n## Choose how to learn\n\n### On the website\n\nOpen any completed lesson on [aiengineeringfromscratch.com](http",
+    "manifest_file": "requirements.txt",
+    "manifest_content": "numpy>=1.24\nmatplotlib>=3.7\njupyter>=1.0\ntorch>=2.0\ntorchvision>=0.15\ntorchaudio>=2.0\ntransformers>=4.30\ndatasets>=2.14\ntokenizers>=0.13\naccelerate>=0.20\nscikit-learn>=1.3\npandas>=2.0\npillow>=10.0\nlibrosa>=0.10\nsoundfile>=0.12\ntiktoken>=0.5\nanthropic>=0.25\nopenai>=1.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "runtime",
+      "llm",
+      "eval"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "requirements.txt"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "AI 工程学习",
+      "项目实践",
+      "开发教程"
+    ],
+    "brief_zh": {
+      "summary": "一套从零学习、构建并交付 AI 工程项目的开源实践资料。",
+      "capabilities": "AI 工程学习、项目实践、开发教程、交付参考",
+      "verified_at": "2026-09-27",
+      "evidence_sources": [
+        "https://github.com/rohitg00/ai-engineering-from-scratch"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  }
+]
