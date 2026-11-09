@@ -701,11 +701,20 @@
     },
     "strategic_score": 90,
     "capability_tags": [
-      "长期记忆",
-      "RAG 检索",
-      "技能扩展"
+      "Agent 编排",
+      "AI 软件工程",
+      "工作流自动化"
     ],
-    "summary_source": "original_description"
+    "summary_source": "project_brief",
+    "brief_zh": {
+      "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
+      "capabilities": "Agent 编排、AI 软件工程、工作流自动化、代码审查、CI 集成、自托管",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/superplanehq/superplane"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；未在真实代码库验证任务筛选准确率、PR 质量或部署成本。"
+    }
   },
   {
     "owner": "sxyazi",

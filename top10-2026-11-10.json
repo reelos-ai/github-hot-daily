@@ -1,0 +1,782 @@
+[
+  {
+    "owner": "vercel-labs",
+    "name": "agent-browser",
+    "full_name": "vercel-labs/agent-browser",
+    "url": "https://github.com/vercel-labs/agent-browser",
+    "description": "Browser automation CLI for AI agents",
+    "language": "Rust",
+    "total_stars": 48402,
+    "forks": 3297,
+    "stars_this_period": 914,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 542,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-09T19:30:52Z",
+      "homepage": "https://agent-browser.dev",
+      "default_branch": "main",
+      "forks": 3297,
+      "watchers": 109,
+      "archived": false,
+      "size_kb": 31475
+    },
+    "readme_content": "# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n<p>\n  <a href=\"https://vercel.com/labs#labs-products\"><img alt=\"Vercel Labs Product\" src=\"https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm version: agent-browser\" src=\"https://img.shields.io/npm/v/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://github.com/vercel-labs/agent-browser/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/github/license/vercel-labs/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm downloads per month: agent-browser\" src=\"https://img.shields.io/npm/dm/agent-browser.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads\" height=\"28\"></a>\n  <a href=\"https://skills.sh/vercel-labs/agent-browser\"><img alt=\"skills.sh\" src=\"https://skills.sh/b/vercel-labs/agent-browser?style=for-the-badge\" height=\"28\"></a>\n</p>\n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/selectors).\n- A click fails, instead of reporting success, when the target is hidden, disabled, outside the viewport, or covered by another element such as a consent banner. Dismiss the covering element, take a new snapshot, and retry.\n\nThe full walkthrough is in the [quick start](https://agent-browser.dev/quick-start).\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](https://agent-browser.dev/engines/obscura) engine with `--engine`, drive Mobile Safari in the [iOS Simulator](https://agent-browser.dev/ios), or use a cloud browser provider such as [Browserbase](https://agent-browser.dev/providers/browserbase), [Browserless](https://agent-browser.dev/providers/browserless), [Browser Use](https://agent-browser.dev/providers/browser-use), [Kernel](https://agent-browser.dev/providers/kernel), or [AgentCore](https://agent-browser.dev/providers/agentcore).\n\n## For AI agents\n\nThe CLI ships skills that match its version:\n\n```bash\nagent-browser skills get core                 # the core loop, refs, waiting, and common workflows\nagent-browser skills get core --ref commands  # one reference, such as the full command list\nagent-browser skills get core --full          # adds the full command reference and templates\nagent-browser skills list                     # specialized skills: electron, slack, dogfood, and more\n```\n\nInstall the discovery skill into an agent harness from [skills.sh](https://skills.sh/vercel-labs/agent-browser):\n\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\nThe installed skill is a thin stub that tells the agent to load `agent-browser skills get core`, so its instructions always match the installed CLI. Or add this to your `AGENTS.md`:\n\n```markdown\nUse `agent-browser` for browser automation. Before the first use, run\n`agent-browser skills get core` and follow it.\n```\n\nFor MCP clients, `agent-browser mcp` starts an MCP server over stdio. See [MCP server](https://agent-browser.dev/commands#mcp-server).\n\n## Commands\n\nRun `agent-browser --help` for the full list, or `agent-browser <command> --help` for one command.\n\n| Group | Commands | Docs |\n|---|---|---|\n| Navigate and read | `open`, `back`, `forward`, `reload`, `read`, `snapshot`, `get`, `is` | [Core](https://agent-browser.dev/commands#core), [Snapshots](https://agent-browser.dev/snapshots) |\n| Interact | `click`, `dblclick`, `fill`, `type`, `press`, `keyboard`, `hover`, `focus`, `select`, `check`, `uncheck`, `scroll`, `drag`, `upload`, `mouse`, `find` | [Core](https://agent-browser.dev/commands#core), [Find elements](https://agent-browser.dev/commands#find-elements) |\n| Wait | `wait` | [Wait](https://agent-browser.dev/commands#wait) |\n| Capture | `screenshot`, `pdf`, `record`, `download`, `diff` | [Recording](https://agent-browser.dev/recording), [Diffing](https://agent-browser.dev/diffing), [Files](https://agent-browser.dev/files) |\n| Page and network state | `cookies`, `storage`, `network`, `set`, `clipboard`, `eval`, `pushstate` | [Network](https://agent-browser.dev/network), [Settings](https://agent-browser.dev/commands#settings) |\n| Tabs, frames, and dialogs | `tab`, `frame`, `dialog` | [Tabs and frames](https://agent-browser.dev/commands#tabs-frames) |\n| Debug and performance | `console`, `errors`, `highlight`, `inspect`, `trace`, `profiler`, `vitals`, `react`, `a11y` | [Debugging](https://agent-browser.dev/debugging), [Profiler](https://agent-browser.dev/profiler), [React](https://agent-browser.dev/react) |\n| Sessions and auth | `session`, `state`, `auth`, `profiles`, `confirm`, `deny` | [Sessions](https://agent-browser.dev/sessions), [Security](https://agent-browser.dev/security) |\n| Agents and integrations | `skills`, `mcp`, `webmcp`, `flow`, `chat`, `batch`, `plugin` | [Skills](https://agent-browser.dev/skills), [WebMCP](https://agent-browser.dev/webmcp), [Plugins](https://agent-browser.dev/plugins) |\n| Observe | `stream`, `dashboard` | [Streaming](https://agent-browser.dev/streaming), [Dashboard](https://agent-browser.dev/dashboard) |\n| Setup | `install`, `upgrade`, `doctor`, `connect`, `close` | [Installation](https://agent-browser.dev/installation) |\n\nFlags, environment variables, and `agent-browser.json` are documented in [Configuration](https://agent-browser.dev/configuration).\n\n## Platforms\n\nNative binaries ship for macOS (ARM64, x64), Linux (ARM64, x64, glibc and musl), and Windows (x64). The npm package picks the right binary for the host.\n\n## Development\n\nBuilding from source requires Node.js 24 or later, pnpm 11 or later, and Rust:\n\n```bash\npnpm install\npnpm build:source               # builds the dashboard and the native CLI\npnpm link --global\nagent-browser install\n```\n\nRun the Rust checks from `cli/`:\n\n```bash\ncargo fmt -- --check\ncargo clippy\ncargo test\ncargo test e2e -- --ignored --test-threads=1   # launches real headless Chrome\n```\n\n[AGENTS.md](AGENTS.md) lists the files to update with each change, the docs checks, and the release process.\n\n## Documentation\n\n- [agent-browser.dev](https://agent-browser.dev): introduction, guides, and reference\n- [Commands](https://agent-browser.dev/commands) and [Configuration](https://agent-browser.dev/configuration)\n- [Security](https://agent-browser.dev/security): the auth vault, domain allowlists, action policies, and content boundaries\n- [Next.js and Vercel](https://agent-browser.dev/next) and [eve](https://agent-browser.dev/eve): running agent-browser in Vercel Sandbox and eve agents\n- [Changelog](CHANGELOG.md)\n\n## License\n\nApache-2.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "浏览器自动化",
+      "终端 CLI",
+      "Memory 组件"
+    ],
+    "brief_zh": {
+      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
+      "capabilities": "浏览器自动化、Agent 工具、终端 CLI",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/vercel-labs/agent-browser"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；未在目标网站验证兼容性、权限边界或自动化成功率。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "jub0t",
+    "name": "Concat",
+    "full_name": "jub0t/Concat",
+    "url": "https://github.com/jub0t/Concat",
+    "description": "Beta: The truly free, open-source, local-first, cross-platform video editor. Scriptable through a JSON-RPC API & MCP.",
+    "language": "Rust",
+    "total_stars": 16151,
+    "forks": 2005,
+    "stars_this_period": 510,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "ffmpeg",
+        "free-video-editor",
+        "model-context-protocol",
+        "non-linear-editor",
+        "offline-first",
+        "open-source-video-editor",
+        "self-hosted",
+        "video-editing",
+        "video-editing-automation",
+        "video-editing-software",
+        "video-editing-tools",
+        "video-editor",
+        "voice-cloning",
+        "youtube-automation",
+        "youtube-shorts"
+      ],
+      "license": "AGPL-3.0",
+      "open_issues": 256,
+      "created_at": "2026-08-25T18:34:47Z",
+      "pushed_at": "2026-11-09T21:54:47Z",
+      "homepage": "https://concat.standalones.org",
+      "default_branch": "main",
+      "forks": 2005,
+      "watchers": 99,
+      "archived": false,
+      "size_kb": 78183
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/concat-mark-dark.png\" alt=\"Concat\" width=\"100\" />\n</p>\n\n<h1 align=\"center\">Concat</h1>\n<h3 align=\"center\">The free, open-source, cross-platform video editor.</h3>\n\n<div align=\"center\">\n\n<img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/editor.png\" alt=\"Concat editor\" width=\"100%\" />\n\n<p align=\"center\">\n  <a href=\"https://github.com/jub0t/Concat/releases\"><img src=\"https://img.shields.io/github/downloads/jub0t/concat/total?style=flat&logo=github&logoColor=F8F8F8&label=Downloads&labelColor=212123&color=0568FD\" alt=\"Total Downloads\" /></a>\n  <a href=\"https://github.com/jub0t/Concat/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/jub0t/Concat/ci.yml?style=flat&logo=githubactions&logoColor=F8F8F8&label=Build&labelColor=000000\" alt=\"Build Status\" /></a>\n  <a href=\"https://github.com/jub0t/Concat/releases\"><img src=\"https://img.shields.io/badge/Version-0.2.10-0568FD?style=flat&logo=semver&logoColor=F8F8F8&labelColor=212123\" alt=\"Concat Version 0.2.10\" /></a>\n  <a href=\"https://discord.gg/DVuPfpXfqP\"><img src=\"https://img.shields.io/badge/Discord-Join%20the%20server-5865F2?style=flat&logo=discord&logoColor=F8F8F8&labelColor=000000\" alt=\"Join Concat Discord\" /></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-AGPL%20v3-0568FD?style=flat&logo=gnu&logoColor=F8F8F8&labelColor=212123\" alt=\"License: AGPL-3.0-or-later\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/jub0t/concat\"><img src=\"https://api.star-history.com/badge?repo=jub0t/concat&type=rank\" alt=\"Star History Rank\" height=\"62\" /></a>\n  <a href=\"https://trendshift.io/repositories/191379?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-191379\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/191379/daily?language=Rust\" alt=\"jub0t%2FConcat | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://concat.standalones.org/#download\"><img src=\"assets/download_button.svg\" alt=\"Download Concat\" width=\"251\" /></a>\n</p>\n\n**🇬🇧 English** · [🇩🇪 Deutsch](docs/README.de.md) · [🇪🇸 Español](docs/README.es.md) · [🇫🇷 Français](docs/README.fr.md) · [🇮🇹 Italiano](docs/README.it.md) · [🇳🇱 Nederlands](docs/README.nl.md) · [🇵🇱 Polski](docs/README.pl.md) · [🇧🇷 Português (Brasil)](docs/README.pt-BR.md) · [🇷🇺 Русский](docs/README.ru.md) · [🇺🇦 Українська](docs/README.uk.md) · [🇹🇷 Türkçe](docs/README.tr.md) · [🇦🇿 Azərbaycanca](docs/README.az.md) · [🇭🇷 Hrvatski](docs/README.hr.md) · [🇮🇩 Bahasa Indonesia](docs/README.id.md) · [🇻🇳 Tiếng Việt](docs/README.vi.md) · [🇹🇭 ไทย](docs/README.th.md) · [🇯🇵 日本語](docs/README.ja.md) · [🇰🇷 한국어](docs/README.ko.md) · [🇨🇳 简体中文](docs/README.zh-Hans.md) · [🇹🇼 繁體中文](docs/README.zh-TW.md) · [🇸🇦 العربية](docs/README.ar.md) · [🇮🇱 עברית](docs/README.he.md) · [🇮🇷 فارسی](docs/README.fa.md) · [🇮🇳 हिन्दी](docs/README.hi.md) · [🇵🇰 اردو](docs/README.ur.md) · [🇧🇩 বাংলা](docs/README.bn.md)\n\n## Paid Sponsors\n\n<table width=\"100%\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://proxyon.io/?ref=concat\"><img src=\"https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/proxyon_sponsor_logo.png\" alt=\"Proxyon\" width=\"80\" /></a><br />\n      <a href=\"https://proxyon.io/?ref=concat\"><b>Proxyon</b></a><br />\n      <sub>Pay-as-you-go proxies for developers<br />Use code <code>JUB0T</code> for 20% off</sub>\n    </td>\n      <td align=\"center\">\n      <a href=\"https://www.patreon.com/cw/jub0t\"><b>Support Concat</b></a><br />\n      <sub>Concat needs your donations to continue development,<br/>we have come too far to back down now 😢</sub>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n\n## About\n\nConcat is a free, open-source video editor for macOS, Windows, Linux and Android. It covers what most edits need: auto-captions, text-to-speech, background removal, keyframe animation, effects and titles, multi-track cutting, 4K export. With none of the catches: no watermark, no account, no subscription, no upload.\n\nEverything runs locally on a native Rust engine with a GPU compositor. Install it, drop in footage, cut. The AI models for captions, voices and cutout download once from Settings and work offline after that. Your footage never leaves your disk.\n\n**Good for:** TikTok, Reels and Shorts, YouTube videos, tutorials and screen recordings, podcast clips, memes.\n\n**Also for machines:** a built-in MCP server for AI agents (`concat --mcp`, [set up](docs/MCP.md)) and a JSON-RPC API for scripts, so they can cut video with it too.\n\n## Highlights\n\n- 🚫 **No watermarks. No account. No paywall.** Ever.\n- 🔒 **100% local.** Nothing uploads. Works offline.\n- 💬 **Auto-captions.** Local Whisper. Pick a model size, get styled captions on the timeline.\n- 🗣️ **Text-to-speech + voice cloning.** A free local voice on the desktop, or any voice from a few seconds of a recording. Phones are getting their own system voice.\n- 🧍 **Background removal.** People, objects, or paint the mask yourself.\n- 🎞️ **Keyframes.** Position, scale, rotation, opacity, volume, effect parameters. Curve editor built in.\n- ✨ **100 effects, filters and transitions.** GPU-rendered, live in the preview.\n- ✂️ **Cut fast.** Split, trim, ripple, merge, freeze frame, speed. Magnetic timeline if you want it.\n- 🎚️ **Multi-track, multi-timeline.** Overlays and picture-in-picture: stack video, stills and titles on as many tracks as you like. Several cuts in one project. Blend modes (screen, add, multiply…), crop, flips.\n- 📝 **Titles.** Fonts, stroke, shadow, background plate. Presets to start from.\n- 🎙️ **One-switch voice cleanup.** Denoise, enhance voice, level the loudness. Plus chipmunk, robot, telephone and friends.\n- 📤 **Export.** H.264, HEVC, AV1. Up to 4K 60, 10-bit colour.\n- 🦀 **Native Rust engine.** GPU compositor, proxies, hardware decode. 4K scrubs smoothly.\n- 🤖 **Scriptable.** An MCP server built in, so Claude and other AI agents can edit with it ([one line to set up](docs/MCP.md)), and a JSON-RPC API for scripts. A build from source adds gRPC and a command-line tool.\n- 🖥️ **macOS, Windows, Linux, Android.** 26 languages. Same app, same project files.\n\n## Download\n\nTwo ways in:\n\n1. **[The website](https://concat.standalones.org/#download)** hands you the right build for your machine. Start here.\n2. **[GitHub Releases](https://github.com/jub0t/Concat/releases)** has every build for every platform, with installers, packages and checksums. For when you want to pick.\n\nConcat is in **beta**: it works, and it still has edges. [Say so](https://github.com/jub0t/Concat/issues) when you find one.\n\n**Platforms**\n\n- ✅ **Windows** · x86_64 (ARM builds are paused, see [#326](https://github.com/jub0t/Concat/issues/326)). A setup and an `.msi`. If SmartScreen stops an unsigned build: **More info** › **Run anyway**\n- ✅ **macOS** · Intel and Apple silicon. If macOS refuses to open an unsigned build: `xattr -dr com.apple.quarantine /Applications/Concat.app`\n- ✅ **Linux** · x86_64 and ARM. `.deb`, `.rpm`, `.AppImage` and an Arch package. Also a Flatpak on **[Flatpark](https://flatpark.org/apps/app.concat.editor/)**, a community Flatpak remote that wraps the x86_64 `.deb` of each release and updates with it\n- ✅ **Android** · phones and tablets\n- ✅ **iOS / iPadOS** · iPhone and iPad, sideloaded\n\n✅ Supported · 🚧 Work in progress · 🧪 To be tested\n\n**System requirements** and the optional model sizes are on [the website](https://concat.standalones.org/guides/system-requirements).\n\n**[Code signing policy](CODE_SIGNING.md)**: why the Windows builds are not signed yet, and what Concat sends over the network (nothing you did not ask for).\n\n## Build from source\n\nYou need Rust 1.93 or newer (see `rust-version` in `src/Cargo.toml`), the FFmpeg 7+ development libraries, cmake and a C++ compiler.\n\n- **macOS:** `brew install ffmpeg`\n- **Windows:** from [FFmpeg's Windows downloads](https://ffmpeg.org/download.html#build-windows), take BtbN's `win64-gpl-shared` build (the one CI uses), unpack it and point `FFMPEG_DIR` at it\n- **Linux:** use your distro's FFmpeg if it is version 7 or newer, otherwise use a BtbN `shared` build with `FFMPEG_DIR` like on Windows\n\nThen:\n\n```sh\ncd src\ncargo run -p concat          # the editor window\n```\n\nOther useful commands:\n\n```sh\ncargo build --profile app -p concat   # the shipping binary (fat LTO, stripped)\ncargo test                            # run the test suite\ncargo fmt --check && cargo clippy --all-targets -- -D warnings   # what CI checks\n```\n\nIf you change text the interface shows, run `python3 scripts/locales.py` from the repo root so the string inventory stays in sync. Full details live in [CONTRIBUTING.md](CONTRIBUTING.md).\n\n## How to Contribute\n\n> [!IMPORTANT]\n> The best way to contribute is to grab a build from the [Releases](https://github.com/jub0t/Concat/releases) page and use it: find where it breaks, and say where it could be better.\n>\n> Ready to write code? [CONTRIBUTING.md](./CONTRIBUTING.md) covers setup, the layout of the tree, the checks to run, and how contributions are licensed. Driving Concat from a script, a service or an agent? [The developer docs](https://concat.standalones.org/docs) cover the Concat API and its transports: JSON-RPC and gRPC; [docs/MCP.md](docs/MCP.md) connects an AI agent over MCP. [This Discussion](https://github.com/jub0t/Concat/discussions/3) is where the project was announced.\n> \n> Contributors can claim a `@Contributor` role in the Discord server: just ask.\n\n## Star History\n\n<a href=\"https://www.star-history.com/?repos=jub0t%2Fconcat&type=date&releases=&legend=bottom-right\">\n <img alt=\"Star History Chart\" src=\"https://api.star-history.com/chart?repos=jub0t/concat&type=date&legend=bottom-right\" />\n</a>\n\n## Contributors\n\n<a href=\"https://github.com/jub0t/Concat/graphs/contributors\">\n  <img alt=\"Contributors\" src=\"https://contrib.rocks/image?repo=jub0t/concat\">\n</a>\n\n## Licence\n\nConcat is free software under [AGPL-3.0-or-later](LICENSE). A commercial licence is available for closed-source use; see [LICENSING.md](LICENSING.md).\n\n## DMCA\n\nIf you believe something in this repository, its releases, or a package or model it distributes infringes your copyright, email [jub0trd@gmail.com](mailto:jub0trd@gmail.com) with a description of the work you own, a link to where the infringing material appears here, your contact details, a statement that you believe in good faith the use is not authorised by you, your agent, or the law, and a statement, under penalty of perjury, that the notice is accurate and that you are the owner or authorised to act for the owner, signed with your physical or electronic signature; valid notices are acted on promptly, and anyone whose material is removed may send a counter-notice to the same address.\n",
+    "strategic_keywords": [
+      "mcp",
+      "workflow",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 10,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "本地优先",
+      "跨平台视频剪辑",
+      "开源 CapCut 替代"
+    ],
+    "brief_zh": {
+      "summary": "一个免费、开源、local-first 的跨平台视频剪辑应用，定位为 CapCut 的替代方案。",
+      "audience": "希望在本机完成跨平台视频剪辑、避免依赖闭源云端编辑器的创作者和开发者",
+      "capabilities": "本地优先、跨平台视频剪辑、开源 CapCut 替代",
+      "risk": "功能完整度、编解码兼容性、性能和导出稳定性需按实际素材与设备单独验证。",
+      "verified_at": "2026-10-30",
+      "evidence_sources": [
+        "https://github.com/jub0t/Concat"
+      ],
+      "evidence_note": "依据本次抓取的 README 与仓库 description；未导入真实项目或进行剪辑测试。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "superplanehq",
+    "name": "superplane",
+    "full_name": "superplanehq/superplane",
+    "url": "https://github.com/superplanehq/superplane",
+    "description": "Open source factory for one-shot engineering",
+    "language": "Go",
+    "total_stars": 9433,
+    "forks": 702,
+    "stars_this_period": 250,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-orchestration",
+        "agentic-workflows",
+        "ai-agents",
+        "ai-coding",
+        "ai-software-engineering",
+        "developer-tools",
+        "go",
+        "react",
+        "self-hosted",
+        "software-factory",
+        "workflow-automation"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 218,
+      "created_at": "2025-05-07T17:48:39Z",
+      "pushed_at": "2026-11-09T21:23:34Z",
+      "homepage": "https://superplane.com",
+      "default_branch": "main",
+      "forks": 702,
+      "watchers": 12,
+      "archived": false,
+      "size_kb": 562565
+    },
+    "readme_content": "<p align=\"center\">\n  <a href=\"https://superplane.com/\">\n    <img src=\"./docs/images/background_image.png\" alt=\"SuperPlane factory board with Backlog, Implement, Verify, and Done columns\" width=\"100%\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://superplanehq.semaphoreci.com/projects/superplane\"><img src=\"https://superplanehq.semaphoreci.com/badges/superplane/branches/main.svg?style=shields\" alt=\"Build\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-F4D35E?style=flat-square&amp;labelColor=171714\" alt=\"Apache 2.0\"></a>\n  <a href=\"https://discord.superplane.com\"><img src=\"https://img.shields.io/discord/1409914582239023200?label=Discord&amp;style=flat-square&amp;labelColor=171714&amp;color=F4D35E\" alt=\"Discord\"></a>\n  <a href=\"https://mcpservers.org/servers/superplanehq/superplane\"><img src=\"https://mcpservers.org/badge.svg\" alt=\"Listed on mcpservers.org\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://app.superplane.com/\">Try SuperPlane</a> ·\n  <a href=\"https://superplane.com/\">Website</a> ·\n  <a href=\"https://docs.superplane.com/\">Docs</a> ·\n  <a href=\"https://docs.superplane.com/self-hosting/overview/\">Self-host</a> ·\n  <a href=\"https://discord.superplane.com/\">Discord</a>\n</p>\n\n## About\n\n**Open source factory for one-shot engineering.**\n\nSuperPlane turns high-confidence backlog issues into verified, review-ready\npull requests so engineers can focus on work that needs judgment.\n\nSuperPlane lets AI agents fully automate routine development work. It\ncoordinates coding agents, source control, CI, review, approvals and feedback\nin one visible system so engineers do not have to project-manage every step.\n\nThe factory continuously evaluates which backlog issues agents can handle with\nhigh confidence. It applies the same workflow-level guardrails to every run,\nchecks the result and sends failures back to the agent with actionable context.\nAmbiguous work and decisions that need human judgment stay with your team.\n\nSuperPlane is built on an Apache 2.0 open source engine. Choose your models,\nrun in the cloud or on-prem and build the factory around your stack and cost\nconstraints.\n\n## How it works\n\n### Turn backlog issues into work agents can deliver\n\n<p align=\"center\">\n  <img src=\"./docs/images/backlog-refinement-framed.png\" alt=\"Task refinement showing a plan and readiness assessment\" width=\"100%\">\n</p>\n\nReliable automation starts with a clear task. SuperPlane analyzes the issue,\nhelps refine the plan, and identifies decisions that need your input before\nimplementation begins.\n\n### Bring verified changes to human review\n\n<p align=\"center\">\n  <img src=\"./docs/images/pull-request-verification-framed.png\" alt=\"Pull request verification showing check fixes and merge confidence\" width=\"100%\">\n</p>\n\nSuperPlane checks the agent's work and sends failures back for correction.\nAn agent review assesses merge confidence and highlights remaining concerns,\nso your team can make the final decision with evidence.\n\nThe plan and the pull request review are two parts of that workflow. SuperPlane\ncan also wait for an event from your tools, call an agent, or ask a person for\napproval.\n\n## Getting started\n\n### SuperPlane Cloud\n\n1. [Sign up](https://app.superplane.com/) and create a workspace.\n2. Connect a GitHub repository.\n3. Choose a small bug, a test fix, or a documentation update for the first run.\n\nSuperPlane imports the issues and assesses which tasks are suitable for an agent.\n\n- Follow the [quickstart](https://docs.superplane.com/get-started/quickstart/) for setup.\n- Read the [product overview](https://docs.superplane.com/get-started/overview/) to learn how SuperPlane coordinates agents and verification.\n\n### Self-host\n\nInstall SuperPlane on your own infrastructure.\n\n- Use Docker Compose on one Linux VM.\n- Use Kubernetes on AWS, Azure, or Google Cloud.\n\nSee the [self-hosting guide](https://docs.superplane.com/self-hosting/overview/).\n\n## Contributing\n\nWe welcome focused pull requests, bug reports and product ideas.\n\n1. Read the [contributing guide](./CONTRIBUTING.md).\n2. Review the [issue tracking process](./docs/contributing/issue-tracking.md).\n3. Find an [open issue](https://github.com/superplanehq/superplane/issues).\n4. Join the [Discord community](https://discord.superplane.com) to discuss an\n   approach with maintainers.\n\nContributor setup is Docker-based. Start with the repository instructions in\n[`AGENTS.md`](./AGENTS.md) and the development section of\n[`CONTRIBUTING.md`](./CONTRIBUTING.md).\n\n## Community and license\n\n- [Discord](https://discord.superplane.com) for discussions and support\n- [Blog](https://superplane.com/blog/) for engineering notes and releases\n- [Community events](https://luma.com/superplane) for maintainer sessions\n- [X](https://x.com/superplanehq) for product updates\n\nSuperPlane is available under the [Apache License 2.0](./LICENSE).\n",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/superplanehq/superplane\n\ngo 1.27.3\n\nrequire (\n\tcloud.google.com/go/compute/metadata v0.9.0\n\tcloud.google.com/go/storage v1.67.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azcore v1.14.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azidentity v1.7.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6 v6.1.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6 v6.1.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/storage/azblob v1.4.1\n\tgithub.com/aws/aws-sdk-go-v2 v1.41.5\n\tgithub.com/aws/aws-sdk-go-v2/config v1.31.5\n\tgithub.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.5\n\tgithub.com/aws/aws-sdk-go-v2/service/ec2 v1.255.0\n\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.97.3\n\tgithub.com/aws/smithy-go v1.24.2\n\tgithub.com/bmatcuk/doublestar/v4 v4.6.1\n\tgithub.com/bradleyfalzon/ghinstallation/v2 v2.18.0\n\tgithub.com/casbin/casbin/v2 v2.134.0\n\tgithub.com/casbin/gorm-adapter/v3 v3.37.0\n\tgithub.com/coreos/go-oidc/v3 v3.19.0\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/expr-lang/expr v1.17.7\n\tgithub.com/getsentry/sentry-go v0.27.0\n\tgithub.com/ghodss/yaml v1.0.0\n\tgithub.com/go-viper/mapstructure/v2 v2.4.0\n\tgithub.com/golang-jwt/jwt/v4 v4.5.2\n\tgithub.com/golang-jwt/jwt/v5 v5.3.1\n\tgithub.com/golang/protobuf v1.5.4\n\tgithub.com/google/go-github/v84 v84.0.0\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/gorilla/mux v1.8.1\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.1\n\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0\n\tgithub.com/jackc/pgx/v5 v5.10.0\n\tgithub.com/lib/pq v1.10.2\n\tgithub.com/markbates/goth v1.81.0\n\tgithub.com/mattn/go-isatty v0.0.17\n\tgithub.com/mitchellh/go-homedir v1.1.0\n\tgithub.com/mitchellh/mapstructure v1.4.3\n\tgithub.com/mxschmitt/playwright-go v0.6201.1\n\tgithub.com/nulab/autog v0.11.0\n\tgithub.com/posthog/posthog-go v1.35.1\n\tgithub.com/rabbitmq/amqp091-go v1.15.0\n\tgithub.com/renderedtext/go-tackle v0.0.0-20251117195301-3a303949d759\n\tgithub.com/resend/resend-go/v3 v3.0.0\n\tgithub.com/robfig/cron/v3 v3.0.1\n\tgithub.com/sirupsen/logrus v1.10.2\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgithub.com/spf13/viper v1.21.0\n\tgithub.com/stretchr/testify v1.12.1\n\tgo.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux v0.70.0\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.70.0\n\tgo.opentelemetry.io/otel v1.45.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.45.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.45.0\n\tgo.opentelemetry.io/otel/metric v1.45.0\n\tgo.opentelemetry.io/otel/sdk v1.45.0\n\tgo.opentelemetry.io/otel/sdk/metric v1.45.0\n\tgo.opentelemetry.io/otel/trace v1.45.0\n\tgolang.org/x/crypto v0.58.1-0.20261009181718-2f1f834330b2\n\tgolang.org/x/oauth2 v0.36.0\n\tgolang.org/x/sync v0.24.0\n\tgoogle.golang.org/api v0.287.1\n\tgoogle.golang.org/genproto/googleapis/api v0.0.0-20260803160001-6ac0973c030d\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d\n\tgoogle.golang.org/grpc v1.83.2\n\tgoogle.golang.org/protobuf v1.36.11\n\tgopkg.in/dnaeon/go-vcr.v2 v2.3.0\n\tgopkg.in/yaml.v3 v3.0.1\n\tgorm.io/datatypes v1.2.5\n\tgorm.io/driver/mysql v1.5.7\n\tgorm.io/driver/postgres v1.5.11\n\tgorm.io/gorm v1.26.0\n)\n\nrequire (\n\tcel.dev/expr v0.25.2 // indirect\n\tcloud.google.com/go v0.123.0 // indirect\n\tcloud.google.com/go/auth v0.20.0 // indirect\n\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n\tcloud.google.com/go/iam v1.11.0 // indirect\n\tcloud.google.com/go/monitoring v1.29.0 // indirect\n\tfilippo.io/edwards25519 v1.1.1 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect\n\tgithub.com/AzureAD/microsoft-authentication-library-for-go v1.2.2 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.33.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.57.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.57.0 // indirect\n\tgithub.com/andybalholm/brotli v1.2.7 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.8 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/credentials v1.18.9 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/configsources v1.4.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/ini v1.8.3 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/v4a v1.4.22 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.7 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/checksum v1.9.13 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.19.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sso v1.29.0 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/ssooidc v1.34.1 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sts v1.38.1 // indirect\n\tgithub.com/casb",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "workspace",
+      "eval",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "Agent 编排",
+      "AI 软件工程",
+      "工作流自动化"
+    ],
+    "brief_zh": {
+      "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
+      "capabilities": "Agent 编排、AI 软件工程、工作流自动化、代码审查、CI 集成、自托管",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/superplanehq/superplane"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；未在真实代码库验证任务筛选准确率、PR 质量或部署成本。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "anthropics",
+    "name": "skills",
+    "full_name": "anthropics/skills",
+    "url": "https://github.com/anthropics/skills",
+    "description": "Public repository for Agent Skills",
+    "language": "Python",
+    "total_stars": 190835,
+    "forks": 22435,
+    "stars_this_period": 1052,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 1505,
+      "created_at": "2025-09-22T15:53:31Z",
+      "pushed_at": "2026-11-06T22:32:32Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 22435,
+      "watchers": 1168,
+      "archived": false,
+      "size_kb": 5502
+    },
+    "readme_content": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[![skills.sh](https://skills.sh/b/anthropics/skills)](https://skills.sh/anthropics/skills)\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)\n- [Equipping agents for the real world with Agent Skills](https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creation & editing skills that power [Claude's document capabilities](https://www.anthropic.com/news/create-files) under the hood in the [`skills/docx`](./skills/docx), [`skills/pdf`](./skills/pdf), [`skills/pptx`](./skills/pptx), and [`skills/xlsx`](./skills/xlsx) subfolders. These are also open source (Apache 2.0), and we wanted to share them with developers as a reference for more complex skills that are actively used in a production AI application.\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks.\n\n# Skill Sets\n- [./skills](./skills): Skill examples for Creative & Design, Development & Technical, Enterprise & Communication, and Document Skills\n- [./spec](./spec): The Agent Skills specification\n- [./template](./template): Skill template\n\n# Try in Claude Code, Claude.ai, and the API\n\n## Claude Code\nYou can register this repository as a Claude Code Plugin marketplace by running the following command in Claude Code:\n```\n/plugin marketplace add anthropics/skills\n```\n\nThen, to install a specific set of skills:\n1. Select `Browse and install plugins`\n2. Select `anthropic-agent-skills`\n3. Select `document-skills` or `example-skills`\n4. Select `Install now`\n\nAlternatively, directly install either Plugin via:\n```\n/plugin install document-skills@anthropic-agent-skills\n/plugin install example-skills@anthropic-agent-skills\n```\n\nAfter installing the plugin, you can use the skill by just mentioning it. For instance, if you install the `document-skills` plugin from the marketplace, you can ask Claude Code to do something like: \"Use the PDF skill to extract the form fields from `path/to/some-file.pdf`\"\n\n## Claude.ai\n\nThese example skills are all already available to paid plans in Claude.ai. \n\nTo use any skill from this repository or upload custom skills, follow the instructions in [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude#h_a4222fa77b).\n\n## Claude API\n\nYou can use Anthropic's pre-built skills, and upload custom skills, via the Claude API. See the [Skills API Quickstart](https://docs.claude.com/en/api/skills-guide#creating-a-skill) for more.\n\n# Creating a Basic Skill\n\nSkills are simple to create - just a folder with a `SKILL.md` file containing YAML frontmatter and instructions. You can use the **template-skill** in this repository as a starting point:\n\n```markdown\n---\nname: my-skill-name\ndescription: A clear description of what this skill does and when to use it\n---\n\n# My Skill Name\n\n[Add your instructions here that Claude will follow when this skill is active]\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n## Guidelines\n- Guideline 1\n- Guideline 2\n```\n\nThe frontmatter requires only two fields:\n- `name` - A unique identifier for your skill (lowercase, hyphens for spaces)\n- `description` - A complete description of what the skill does and when to use it\n\nThe markdown content below contains the instructions, examples, and guidelines that Claude will follow. For more details, see [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills).\n\n# Partner Skills\n\nSkills are a great way to teach Claude how to get better at using specific pieces of software. As we see awesome example skills from partners, we may highlight some of them here:\n\n- **Notion** - [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 技能包",
+      "技能模板",
+      "任务流程封装"
+    ],
+    "brief_zh": {
+      "summary": "Anthropic 公开的 Agent Skills 示例与规范仓库：每个技能以包含 SKILL.md、脚本和资源的独立目录封装，用于让 Claude 在专门任务中按可复用流程工作。",
+      "audience": "希望为 Claude 或兼容 Agent 设计、学习和复用任务技能包的开发者与平台团队",
+      "capabilities": "Agent Skills、技能模板、任务流程封装、文档与开发技能示例",
+      "risk": "仓库明确说明示例用于演示和教育；具体技能的行为及其在不同环境中的可靠性仍需单独测试。",
+      "verified_at": "2026-11-08",
+      "evidence_sources": [
+        "https://github.com/anthropics/skills"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与 agent-skills topic；未进行功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "Anil-matcha",
+    "name": "Open-Generative-AI",
+    "full_name": "Anil-matcha/Open-Generative-AI",
+    "url": "https://github.com/Anil-matcha/Open-Generative-AI",
+    "description": "Uncensored Open-source alternative to AI video platforms — Free AI image & video generation studio with 600+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
+    "language": "JavaScript",
+    "total_stars": 33643,
+    "forks": 6386,
+    "stars_this_period": 309,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai-art-generator",
+        "ai-image-generation",
+        "ai-video-generation",
+        "fal-ai-alternative",
+        "generative-ai",
+        "image-to-video",
+        "invideo-alternative",
+        "kling-ai",
+        "lipsync",
+        "litellm-alternative",
+        "midjourney-alternative",
+        "muapi",
+        "open-source",
+        "openrouter-alternative",
+        "seedance2",
+        "sora-alternative",
+        "text-to-image",
+        "text-to-video",
+        "uncensored",
+        "wan-video"
+      ],
+      "license": "MIT",
+      "open_issues": 50,
+      "created_at": "2023-05-09T14:12:37Z",
+      "pushed_at": "2026-11-09T13:59:52Z",
+      "homepage": "https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=about&utm_campaign=open-generative-ai",
+      "default_branch": "main",
+      "forks": 6386,
+      "watchers": 265,
+      "archived": false,
+      "size_kb": 116090
+    },
+    "readme_content": "# Open Generative AI — Unrestricted Open-Source Alternative to AI Video Platforms\n\n[![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMSAxNHYtNGgtMnYtMmg0djZoLTJ6bTAtOFY2aDJ2MmgtMnoiLz48L3N2Zz4=)](https://muapi.ai?utm_source=github&utm_medium=badge&utm_campaign=open-generative-ai)\n\n\n> **The free, open-source alternative to AI Video Platforms.** Generate AI images and videos using 600+ state-of-the-art models across 14 studios — no content filters, no closed ecosystem, no subscription fees.\n\n**Community:** Join [Discord](https://discord.com/invite/zpnuBRXhKg) for discussions and support\n\n\n<p align=\"center\"><a href=\"https://youtu.be/DksS8GiXMcg\"><img src=\"https://i.ytimg.com/vi/DksS8GiXMcg/maxresdefault.jpg\" width=\"720\"></a></p>\n<p align=\"center\"><a href=\"https://youtu.be/DksS8GiXMcg\"><b>▶ Watch: Cheapest Seedance 2.5 & 2.0 API: Real Faces, No Restrictions </b></a></p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Anil-matcha/awesome-generative-ai-apps\">\n    <img src=\"https://img.shields.io/badge/Part%20of-Awesome%20Generative%20AI%20Apps-FFD700?style=for-the-badge&logo=github&logoColor=black\" alt=\"Awesome Generative AI Apps\">\n  </a>\n</p>\n\n> 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**\n\n> 🤝 **New: [Open Duet](https://github.com/Anil-matcha/open-duet)** — open-source, self-hosted AI coworkers (named agents) with instructions, memory, routines, their own isolated computer, and your approval before they act. An alternative to Claude Duet, OpenAI Dots, and Manus Cue. [Star it on GitHub →](https://github.com/Anil-matcha/open-duet)\n\n## 💰 Turn This Into Your Own Product — White Label & Resell\n\nWant to launch this as **your own branded AI studio** and charge your own customers for it? [MuAPI White Label](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai) lets you spin up a fully white-labeled version of this app — your logo, your colors, your custom domain, your own pricing — with zero infra to manage. You keep the markup on every generation; MuAPI handles the models, the queue, and the billing plumbing underneath.\n\n- **Your branding** — logo, color theme, and a custom domain (e.g. `studio.yourbrand.com`)\n- **Your pricing** — set your own credit/subscription prices for end users, keep the margin\n- **No infra** — no servers, workers, or model hosting to run yourself\n- **All studios included** — Image, Video, Audio, Lip Sync, Cinema, Workflows, and more, depending on plan\n\nPlans start at $49/mo. [Get started with White Label →](https://muapi.ai/white-label?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\n### What similar AI studios charge their users\n\nConsumer AI image/video platforms almost all run on paid monthly subscriptions — this is the same playbook you'd run under your own brand:\n\n| Platform | Typical subscription range |\n|---|---|\n| Midjourney | ~$10–$120/mo (Basic → Mega) |\n| Runway | ~$12–$76/mo (Standard → Unlimited), custom Enterprise |\n| Kling AI | ~$10–$92/mo across Standard → Premier tiers |\n| Luma Dream Machine | ~$10–$100+/mo |\n| Pika | ~$8–$58/mo |\n\n*(Figures are approximate, general-market ranges and change over time — check each platform's current pricing page before quoting them.)* With MuAPI White Label, you set these numbers yourself for your own end users — the subscription revenue is yours.\n\n---\n\n## API examples and model references\n\n- [OpenAI API examples](https://github.com/Anil-matcha/OpenAI-API) — GPT Image, Sora, and GPT endpoints through Muapi.\n- [Google Gemini Media API examples](https://github.com/Anil-matcha/Google-Gemini-Media-API) — Nano Banana, Imagen, Veo, Gemini Omni, and speech endpoints.\n- [MiniMax Media API examples](https://github.com/Anil-matcha/MiniMax-Media-API) — Hailuo, H3 Max, speech, and music workflows.\n- [Kling Video API examples](https://github.com/Anil-matcha/Kling-Video-API) — Kling text-to-video, image-to-video, and motion control.\n- [Qwen Image API examples](https://github.com/Anil-matcha/Qwen-Image-API) — Qwen image generation, editing, and LoRA workflows through Muapi.\n\n## Related Projects\n\nThis is a curated set of high-value hubs, popular distribution tools, and model-specific integrations rather than a directory of every related repository.\n\n- [awesome-vibecoded-saas](https://github.com/Anil-matcha/awesome-vibecoded-saas) — broader catalog of open-source SaaS alternatives featuring this studio.\n- [Muapi open-source alternatives](https://muapi.ai/open-source/alternative/midjourney) — compare this studio with the Midjourney workflow and its honest scope.\n- [awesome-generative-ai-apps](https://github.com/Anil-matcha/awesome-generative-ai-apps) — catalog of open-source generative-AI applications.\n- [awesome-ai-video-models](https://github.com/Anil-matcha/awesome-ai-video-models) — compare video models by API, price, and capability.\n- [awesome-ai-image-models](https://github.com/Anil-matcha/awesome-ai-image-models) — compare image models by API, price, and quality.\n- [AI-Youtube-Shorts-Generator](https://github.com/SamurAIGPT/AI-Youtube-Shorts-Generator) — Open-source Opus Clip alternative application.\n- [open-duet](https://github.com/Anil-matcha/open-duet) — Open-source, self-hosted AI coworkers with memory, routines, isolated computers, and approval-gated actions.\n- [Open-AI-Design-Agent](https://github.com/Anil-matcha/Open-AI-Design-Agent) — Ppen-source autonomous AI design agent.\n- [muapi-skills](https://github.com/SamurAIGPT/muapi-skills) — Agent-ready skills for driving generative-media workflows.\n- [Seedance-2.5-API](https://github.com/SamurAIGPT/Seedance-2.5-API) — Python SDK for Seedance 2.5 video generation.\n\n## 🌐 Try it Online — No Install Required\n\n**Hosted version:** [https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai](https://muapi.ai/open-generative-ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai)\n\nUse all studios (Image, Video, Audio, AI Clipping, Vibe Motion, Lip Sync, Cinema, Marketing, Workflows, Agents, Design Agent, Apps, MCP & CLI) directly in your browser — no Node.js, no setup. Sign up for a free account to start generating. The hosted version is always up to date with the latest models.\n\n**Follow** the [creator](https://x.com/matchaman11) for updates\n\n---\n\n## ⬇️ Download Desktop App\n\nOne-click installers — no Node.js or terminal required.\n\n| Platform | Download |\n|---|---|\n| macOS Apple Silicon (M1/M2/M3/M4) | [Open Generative AI-2.0.0-arm64.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0-arm64.dmg) |\n| macOS Intel (x64) | [Open Generative AI-2.0.0.dmg](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.dmg) |\n| Windows (x64) | [Open Generative AI Setup 2.0.0.exe](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI.Setup.2.0.0.exe) |\n| Linux (Ubuntu x64) | [`.AppImage`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/Open.Generative.AI-2.0.0.AppImage) / [`.deb`](https://github.com/Anil-matcha/Open-Generative-AI/releases/download/v2.0.0/open-generative-ai_2.0.0_amd64.deb), or build locally with `npm run electron:build:linux`. |\n\nAll releases: [github.com/Anil-matcha/Open-Generative-AI/releases](https://github.com/Anil-matcha/Open-Generative-AI/releases)\n\n### macOS Installation Guide\n\nBecause the app is not notarized by Apple, macOS Gatekeeper will block it on first launch. Follow these steps:\n\n**Step 1** — Mount the DMG and drag the app to `/Applications`\n\n**Step 2** — Open Terminal and run:\n```bash\nxattr -cr \"/Applications/Open Generative AI.app\"\n```\n\n**Step 3** — Right-click the app in `/Applications` → click **Open** → click **Open** again on the dialog\n\n> You only need to do this once. After that, the app opens normally.\n\n**Alternative (no Terminal):**\n1. Try to open the app — macOS will block it\n2. Go to **System Settings → Privacy & Security**\n3. Scroll down to find _\"Open Generative AI was blocked\"_\n4. Click **Open Anyway** → **Open**\n\n### Windows Installation — SmartScreen warning fix\n\nWindows SmartScreen may show a warning because the installer is not code-signed:\n\n1. Click **More info** on the SmartScreen dialog\n2. Click **Run anyway**\n\nThe app will install silently to `%LocalAppData%` with a Start Menu shortcut.\n\n### Ubuntu / Linux Installation\n\nLinux artifacts are available when building with Electron Builder:\n\n```bash\n# Build Linux installers (AppImage + .deb)\nnpm run electron:build:linux\n```\n\nGenerated files are written to the `release/` folder:\n- **AppImage** — portable, run directly after making executable:\n  ```bash\n  chmod +x \"release/Open Generative AI-*.AppImage\"\n  ./release/Open\\ Generative\\ AI-*.AppImage\n  ```\n- **.deb** — install on Debian/Ubuntu:\n  ```bash\n  sudo apt install ./release/open-generative-ai_*_amd64.deb\n  ```\n\nIf AppImage fails to start on older systems, install `libfuse2`:\n\n```bash\nsudo apt install libfuse2\n```\n\n#### Ubuntu 24.04+ / AppArmor sandbox restriction\n\nUbuntu 24.04 and later enable a kernel security policy (`apparmor_restrict_unprivileged_userns`) that blocks Chromium's user-namespace sandbox. If the app fails to start silently or crashes immediately, you have two options:\n\n**Option A — Recommended: install the `.deb` instead.**\nThe `.deb` package ships an AppArmor profile that grants the required permission automatically on install with no system-wide changes.\n\n**Option B — Temporary system fix (AppImage users):**\n```bash\nsudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0\n```\nThis lasts until next reboot. To make it permanent:\n```bash\necho 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-userns.conf\n```\n\n---\n\nOpen Generative AI is a free, open-source AI image, video, cinema, and lip sync studio that brings creative workflows to everyone. No content filters, no prompt rejections, no guardrails — just full creative freedom. Powered by [Muapi.ai](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=open-generative-ai), it supports text-to-image, image-to-image, text-to-video, image-to-video, and audio-driven lip sync generation across models like Flux, Nano Banana, Midjourney, Kling, Sora, Veo, Seedream, Infinite Talk, LTX Lipsync, Wan 2.2, and more — all from a sleek, modern interface you can self-host and customize.\n\n**Why Open Generative AI instead of other AI Video Platforms?**\n- **No filters** — no content filters, no nanny guardrails, no prompt rejections\n- **Free & open-source** — no subscription, no vendor lock-in\n- **Self-hosted** — your data stays on your machine, full creative control\n- **200+ models** — text-to-image, image-to-image, text-to-video, image-to-video, lip sync\n- **Multi-image input** — feed up to 14 reference images into compatible models\n- **Lip Sync Studio** — animate portraits or sync lips to any audio with 9 dedicated models\n- **Extensible** — add your own models, modify the UI, build on top of it\n\nFor a deep dive into the technical architecture and the philosophy behind the \"Infinite Budget\" cinema workflow, see our [comprehensive guide and roadmap](https://medium.com/@anilmatcha/).\n\n## ⚡ Local Model Inference (Desktop App Only)\n\nThe desktop app supports **two independent local engines**. Pick whichever fits the machine you actually run on:\n\n| Engine | What it is | Best for |\n|---|---|---|\n| **sd.cpp** (bundled) | C++ engine from [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp), runs on the same machine as the app. Metal GPU on Apple Silicon, CUDA/Vulkan/ROCm on Linux/Windows. | Image-only models. Works on Mac ",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"open-generative-ai\",\n  \"description\": \"Open-source alternative to HF AI — AI image, video, cinema and lip sync studio\",\n  \"homepage\": \"https://github.com/Anil-matcha/Open-Generative-AI\",\n  \"private\": true,\n  \"version\": \"2.0.0\",\n  \"license\": \"MIT\",\n  \"workspaces\": [\n    \"packages/studio\",\n    \"packages/Vibe-Workflow/packages/workflow-builder\",\n    \"packages/Open-Poe-AI/packages/agents\",\n    \"packages/Open-AI-Design-Agent/packages/design-agent\"\n  ],\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\",\n    \"build:studio\": \"npm run build -w studio\",\n    \"build:workflow\": \"npm run build -w workflow-builder\",\n    \"build:agent\": \"npm run build -w ai-agent\",\n    \"build:design\": \"npm run build -w design-agent\",\n    \"build:packages\": \"npm run build:workflow && npm run build:agent && npm run build:design && npm run build:studio\",\n    \"setup\": \"git submodule update --init --recursive && npm install && npm run build:packages\",\n    \"vite:dev\": \"vite\",\n    \"vite:build\": \"vite build\",\n    \"electron:dev\": \"npm run vite:build && electron .\",\n    \"electron:build\": \"vite build && electron-builder --mac\",\n    \"electron:build:win\": \"vite build && electron-builder --win\",\n    \"electron:build:linux\": \"vite build && electron-builder --linux\",\n    \"electron:build:linux:dir\": \"vite build && electron-builder --linux dir\",\n    \"electron:build:linux:arm64:dir\": \"vite build && electron-builder --linux dir --arm64\",\n    \"stage:local-ai\": \"node scripts/stage-local-ai-binary.js\",\n    \"package:linux:deb\": \"node scripts/package-linux-deb.js\",\n    \"package:linux:deb:arm64\": \"node scripts/package-linux-deb.js --arch arm64\",\n    \"package:linux:deb:x64\": \"node scripts/package-linux-deb.js --arch x64\",\n    \"electron:build:all\": \"vite build && electron-builder --mac --win --linux\"\n  },\n  \"build\": {\n    \"appId\": \"ai.generative.open\",\n    \"productName\": \"Open Generative AI\",\n    \"copyright\": \"Copyright © 2025\",\n    \"directories\": {\n      \"output\": \"release\"\n    },\n    \"afterPack\": \"./afterPack.js\",\n    \"files\": [\n      \"dist/**/*\",\n      \"electron/**/*\"\n    ],\n    \"extraResources\": [\n      {\n        \"from\": \"build/local-ai\",\n        \"to\": \"local-ai\",\n        \"filter\": [\n          \"**/*\"\n        ]\n      }\n    ],\n    \"mac\": {\n      \"category\": \"public.app-category.graphics-design\",\n      \"icon\": \"public/banner.png\",\n      \"gatekeeperAssess\": false,\n      \"target\": [\n        {\n          \"target\": \"dmg\",\n          \"arch\": [\n            \"x64\",\n            \"arm64\"\n          ]\n        }\n      ]\n    },\n    \"win\": {\n      \"icon\": \"public/banner.png\",\n      \"signAndEditExecutable\": false,\n      \"target\": [\n        {\n          \"target\": \"nsis\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    },\n    \"nsis\": {\n      \"oneClick\": false,\n      \"allowToChangeInstallationDirectory\": true,\n      \"include\": \"build/installer.nsh\"\n    },\n    \"linux\": {\n      \"icon\": \"public/banner.png\",\n      \"category\": \"Utility\",\n      \"maintainer\": \"Open Generative AI Team\",\n      \"extraFiles\": [\n        {\n          \"from\": \"build/linux/apparmor.profile\",\n          \"to\": \"resources/apparmor.profile\"\n        }\n      ],\n      \"target\": [\n        {\n          \"target\": \"AppImage\",\n          \"arch\": [\n            \"x64\"\n          ]\n        },\n        {\n          \"target\": \"deb\",\n          \"arch\": [\n            \"x64\"\n          ]\n        }\n      ]\n    }\n  },\n  \"dependencies\": {\n    \"ai-agent\": \"file:./packages/Open-Poe-AI/packages/agents\",\n    \"axios\": \"^1.7.0\",\n    \"next\": \"^15.0.0\",\n    \"react\": \"^19.0.0\",\n    \"react-dom\": \"^19.0.0\",\n    \"react-hot-toast\": \"^2.4.1\",\n    \"studio\": \"*\",\n    \"workflow-builder\": \"file:./packages/Vibe-Workflow/packages/workflow-builder\",\n    \"xtend\": \"^4.0.2\"\n  },\n  \"devDependencies\": {\n    \"@eslint/eslintrc\": \"^3\",\n    \"@tailwindcss/vite\": \"^4.1.18\",\n    \"autoprefixer\": \"^10.4.24\",\n    \"electron\": \"^33.4.11\",\n    \"electron-builder\": \"^25.1.8\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"^15.0.0\",\n    \"postcss\": \"^8.5.6\",\n    \"tailwindcss\": \"^3.4.0\",\n    \"vite\": \"^5.4.0\"\n  },\n  \"main\": \"electron/main.js\"\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "workspace",
+      "llm",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "图像生成",
+      "视频生成",
+      "自托管"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
+      "capabilities": "图像生成、视频生成、自托管",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/Anil-matcha/Open-Generative-AI"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description、topics 与 README；模型可用性、内容安全和部署成本未独立验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "garrytan",
+    "name": "gbrain",
+    "full_name": "garrytan/gbrain",
+    "url": "https://github.com/garrytan/gbrain",
+    "description": "Garry's Opinionated OpenClaw/Hermes Agent Brain",
+    "language": "TypeScript",
+    "total_stars": 32095,
+    "forks": 4761,
+    "stars_this_period": 215,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 782,
+      "created_at": "2026-04-05T14:40:56Z",
+      "pushed_at": "2026-11-09T22:00:53Z",
+      "homepage": "",
+      "default_branch": "master",
+      "forks": 4761,
+      "watchers": 135,
+      "archived": false,
+      "size_kb": 458467
+    },
+    "readme_content": "<h1><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/images/brand/gbrain-wordmark-light.svg\"><img src=\"docs/images/brand/gbrain-wordmark.svg\" alt=\"GBrain\" height=\"52\"></picture></h1>\n\n**Give the agent you already use a memory you control.** GBrain stores explicit facts with their sources, supports corrections and withdrawal, and makes the same memory available across your agents. Start with keyless memory and keyword retrieval; add semantic search, synthesis, and background enrichment when you need them.\n\nGBrain is MIT-licensed and free to self-host; gbrain.io is optional paid hosting.\n\n> [!TIP]\n> **Need hosted? First time running an agent?** Try **[gbrain.io](https://gbrain.io/?ref=readme)**, hosted GBrain, for the easiest experience: one brain for you and your team, connected to ChatGPT, Claude and Cursor, with nothing to install or keep online. Stuck? Email support@gbrain.io and a person will set it up with you, free.\n\n**Keep skills beside knowledge.** New local brains include memory skills in their\ncontent root. Agents can join an authorized catalog; only approved editors can\npublish. Managed coding-agent installs add an owned native router; restart and\nreal-use verification are separate steps. Staged migration preserves sharing\nchoices and personal edits. See [shared brain skills](docs/guides/shared-brain-skills.md).\n\n## Choose your setup\n\n1. **Add GBrain to my existing agent — recommended.** Keep your agent's identity and save memory inside its environment. No new personal-agent identity or private repository is required. Start with the guide for **[Grok Bot](docs/guides/grok-bot.md)**, **[Muse](docs/guides/muse.md)**, or **[Codex / Claude Code](docs/tutorials/connect-coding-agent.md)**. [Other harnesses](#connect-gbrain-to-your-ai-client-mcp).\n2. **Use the brain on my own computer from everywhere.** One command publishes it over MCP on your Tailscale tailnet and keeps it running: `gbrain mcp expose` (add `--funnel` for cloud agents such as Grok Bot, Muse and ChatGPT). Follow **[use your brain from anywhere over MCP](docs/guides/remote-mcp.md)**. **Say to your agent:** *\"use my brain over mcp\"* — *\"put my brain on tailscale\"*.\n3. **Connect my existing hosted brain.** Follow **[hosted harness access](docs/guides/hosted-harness-access.md)** to choose native OAuth or a private machine connection. For dashboard login, clients, and permissions, use **[MCP administration](docs/mcp/ADMIN.md)** with the server's separate owner credential. Delegation is an explicit choice.\n\nGrok **Bot** and Grok **Build** are different products. Muse's personal agent and **Muse Code** are different products too. Muse already has native editable memory; GBrain adds an explicit, portable record with provenance and shared access. See each guide's dated evidence and remaining verification steps.\n\nI'm Garry Tan, President and CEO of Y Combinator. I built GBrain to run my own AI agents. It's the production brain behind my OpenClaw and Hermes deployments: **155,795 pages, 24,589 people, 5,340 companies**, 66 cron jobs running autonomously. My agent ingests meetings, emails, tweets, voice calls, and original ideas while I sleep. It enriches every person and company it encounters. It fixes its own citations and consolidates memory overnight. I wake up smarter than when I went to bed — and so will you.\n\n**It works as a company brain too.** Authenticated remote clients are constrained by source and operation grants plus visibility filters. Local files and shared database credentials are a different trust boundary: sources alone do not isolate those callers. The authorization tests exercise specific access paths, not a universal no-leak guarantee. Read the [sharing boundaries](docs/architecture/brains-and-sources.md#what-confines-remote-callers-and-what-does-not) and [company-brain tutorial](docs/tutorials/company-brain.md) before setting up shared access.\n\nAlongside keyword and semantic retrieval, GBrain offers two optional ways to use your stored knowledge:\n\n- **A synthesis layer that gives you the actual answer.** Synthesized, well-cited prose across people, companies, deals, and ideas. Not \"here are 10 chunks that mention your query\"; an actual answer with citations and an explicit note on what the brain doesn't know yet. The gap analysis is the part that changes how you use the brain.\n- **A typed knowledge graph.** Trusted local page writes extract supported references without LLM calls when auto-linking is enabled. Remote `put_page` edges arrive later, via sweeps, maintenance or `add_link`. Ask \"who works at acme-example?\": walks are breadth-first, milliseconds on dense clusters ([how](docs/architecture/RETRIEVAL.md#breadth-first-graph-walks)). On BrainBench relationship questions, relationship retrieval lifts production **R@5 from 0.6626 to 0.7241** ([benchmark](docs/architecture/RETRIEVAL.md#the-benchmark)); 0.9791 is the `graph-oracle-parse` upper bound, not a product score.\n\nThe point of building a 150K-page brain is to use it as a strategic moat. To never lose context. To query what's in your own head without re-reading it. The brain layer is what makes the moat usable. The 24/7 dream cycle is what keeps it sharp. Both run on your hardware, your DB, your keys.\n\nIt's easier to ship a daemon that runs 24/7 to ingest, enrich, and consolidate than it is to keep an agent in chat working hard. GBrain is that daemon, generalized. Install in 30 minutes. Your agent does the work. As my personal agent gets smarter, so does yours.\n\n> **Start keyless.** Your harness subscription and any separately configured model API usage are different costs. The optional personal-agent bootstrap takes about 15 minutes; always-on enrichment needs its own compute and API configuration.\n\nDurable preferences and facts can be shared across agents; transient task and\nharness configuration state stay local. Configured cloud embedding, reranking,\nextraction, and synthesis providers can receive text, and the harness model sees\nrecalled memory even in keyless mode. Markdown export is not a full database\nbackup. Read [memory boundaries](docs/guides/memory-boundaries.md).\n\n> **LLMs:** fetch [`llms.txt`](llms.txt) for the documentation map, or [`llms-full.txt`](llms-full.txt) for the same map with core docs inlined in one fetch. **Agents:** start with [`AGENTS.md`](AGENTS.md) (or [`CLAUDE.md`](CLAUDE.md) if you're Claude Code).\n\n## What this looks like\n\nSay you have a meeting with Alice tomorrow. You want to walk in remembering what she works on, when you last talked, and what's still open between you. Here's what you'd type, and what you'd get back.\n\n**You ask:**\n\n> \"What do I need to know before my meeting with Alice tomorrow?\"\n\n**Most personal-knowledge tools give you back a list of pages.** Something like:\n\n```\n1. people/alice — Alice runs engineering at Acme...\n2. meetings/2026-03-15-alice-q1 — Q1 product review with Alice...\n3. meetings/2026-01-08-acme-kickoff — Kickoff meeting with Acme team...\n4. customers/acme — Acme is a series-B fintech we work with...\n5. notes/2026-04-22 — Quick chat with Alice about pricing...\n```\n\nFive pages you now have to open and read yourself to actually prepare. The tool found the right material, but it didn't do the work.\n\n**GBrain gives you back the answer, with sources:**\n\n```\nAlice runs engineering at Acme (a series-B fintech). You last spoke\non April 22 in a quick pricing chat. Three things are still open\nfrom that conversation:\n\n1. She owes you the security review for the new tier\n   (deadline was May 1; no update since).\n2. You committed to pricing for a 500-seat tier\n   (you sent it April 25; no response yet).\n3. She mentioned they're hiring a CISO; you said you'd intro\n   someone from your network.\n\nHeads up: nothing's been added to the brain about Alice or Acme\nsince April 22, six weeks ago. She may have replied through email\nor Slack DM, channels the brain doesn't see. Worth asking her to\ncatch up before assuming any of this is still current.\n```\n\nEvery claim has a source page behind it. The \"heads up\" at the end tells you what the brain doesn't know yet, so you can ask Alice about it directly instead of being surprised. The brain just did your meeting prep.\n\nThis is the difference between a search engine and a brain. Search finds the pages. The brain reads them for you and writes the answer.\n\n## Install\n\n> [!TIP]\n> **Fastest: hosted GBrain at [gbrain.io](https://gbrain.io/cli?ref=readme), for any harness.** One command launches a GBrain hosted on gbrain.io; Claude Code, Codex, ChatGPT, Cursor and every other AI you use connect to it, with nothing to keep online.\n>\n> ```bash\n> curl -sSL https://gbrainio.terminalwire.sh | bash\n> gbrainio terminal connect      # in a new terminal\n> gbrainio workspace new         # pick a plan in the browser\n> curl -fsSL https://bun.sh/install | bash   # skip if Bun 1.4.4+ is installed\n> export PATH=\"$HOME/.bun/bin:$PATH\"\n> bun install -g github:garrytan/gbrain#stable   # the gbrain CLI only; no local brain\n> # Claude Code (an existing gbrain entry is kept):\n> (claude mcp get gbrain >/dev/null 2>&1 || claude mcp add --transport http --scope user gbrain https://gbrain.io/mcp) && gbrain setup claude-code --instructions-only\n> # Codex (an existing gbrain entry is kept):\n> (codex mcp get gbrain >/dev/null 2>&1 || codex mcp add gbrain --url https://gbrain.io/mcp) && gbrain setup codex --instructions-only\n> ```\n>\n> `gbrain setup <harness> --instructions-only` tells the agent the brain is there; agents seldom call an MCP server nobody told them about. It writes the [brain-first block](docs/guides/setup.md#brain-first-instructions) into `~/.claude/CLAUDE.md` or Codex's `AGENTS.md` (a non-empty `AGENTS.override.md` instead when Codex has one) with a per-turn rule hook, and leaves the MCP entry alone; the same command with `--no-instructions` added takes them out.\n>\n> The installer is a shell script for macOS and Linux; read it before you run it.\n\n### Here's how to self-host it\n\nGBrain is MIT-licensed and free to self-host. It needs **Bun 1.4.4 or newer**; existing worker installs read the [authorization and queue upgrade guide](docs/guides/authorization-upgrade.md) before restarting on this version.\n\n> [!WARNING]\n> **GBrain is NOT distributed on npm.** The npm `gbrain` package is unrelated and\n> can shadow the real binary, so never run `npm install -g gbrain` or\n> `bun add -g gbrain`. Install only via `bun install -g github:garrytan/gbrain#stable`\n> (the soaked stable channel; `#latest-stable` is the alpha line with every release)\n> or `git clone --branch stable` + `bun install && bun link`. Installed by mistake? `gbrain doctor` gives the fix.\n> Schema not migrated ([#218](https://github.com/garrytan/gbrain/issues/218))? Run\n> `gbrain apply-migrations --yes --no-autopilot-install`; if it exits 1, run `gbrain doctor --json`, not another `--yes` (`wedged`: relay its fix).\n\n```bash\nbun install -g github:garrytan/gbrain#stable\ngbrain setup claude-code              # or: gbrain setup codex\ngbrain init --pglite --no-embedding   # any other harness, or no agent\n```\n\n`gbrain setup` shows what it will write first (`--dry-run` previews, `--remove` undoes), creates a keyless brain only if none exists, wires MCP, hooks and a brain-first block in the agent's instruction file (`--no-instructions` skips it), and smoke-tests them ([setup guide](docs/guides/setup.md)). For any other coding agent, paste:\n\n```text\nAdd GBrain memory to this existing agent. Read and follow:\nhttps://raw.githubusercontent.com/garrytan/gbrain/master/INSTALL_FOR_AGENTS.md\nKeep my current identity and instructions, start keyless, and show me the\nsearch-mode choice. Verify a remember/recall round trip with real GBrain calls.\n```\n\nPostgres, thin clients, API keys and upgrades: [docs/INSTALL.md](docs/INSTALL.md). Agents: [INSTALL_FOR_AGENTS.md](INSTALL_FOR_AGENTS.md). Memory-only walkthrough: [give your coding agent a memory](docs/tutorials/connect-coding-agent.md).\n\n### CLI standalone (n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"gbrain\",\n  \"description\": \"Postgres-native personal knowledge brain with hybrid RAG search\",\n  \"type\": \"module\",\n  \"imports\": {\n    \"#postgres\": {\n      \"types\": \"./vendor/postgres/types/index.d.ts\",\n      \"require\": \"./vendor/postgres/cjs/src/index.js\",\n      \"default\": \"./vendor/postgres/src/index.js\"\n    }\n  },\n  \"main\": \"src/core/index.ts\",\n  \"bin\": {\n    \"gbrain\": \"src/cli.ts\"\n  },\n  \"exports\": {\n    \".\": \"./src/core/index.ts\",\n    \"./engine\": \"./src/core/engine.ts\",\n    \"./types\": \"./src/core/types.ts\",\n    \"./operations\": \"./src/core/operations.ts\",\n    \"./minions\": \"./src/core/minions/index.ts\",\n    \"./engine-factory\": \"./src/core/engine-factory.ts\",\n    \"./engine-open\": \"./src/core/engine-open.ts\",\n    \"./pglite-engine\": \"./src/core/pglite-engine.ts\",\n    \"./link-extraction\": \"./src/core/link-extraction.ts\",\n    \"./import-file\": \"./src/core/import-file.ts\",\n    \"./transcription\": \"./src/core/transcription.ts\",\n    \"./embedding\": \"./src/core/embedding.ts\",\n    \"./config\": \"./src/core/config.ts\",\n    \"./markdown\": \"./src/core/markdown.ts\",\n    \"./backoff\": \"./src/core/backoff.ts\",\n    \"./search/hybrid\": \"./src/core/search/hybrid.ts\",\n    \"./search/expansion\": \"./src/core/search/expansion.ts\",\n    \"./search/evidence-delivery\": \"./src/core/search/evidence-delivery.ts\",\n    \"./eval/longmemeval/reader\": \"./src/eval/longmemeval/reader.ts\",\n    \"./think\": \"./src/core/think/index.ts\",\n    \"./ai/gateway\": \"./src/core/ai/gateway.ts\",\n    \"./ai/invocation-guard\": \"./src/core/ai/invocation-guard.ts\",\n    \"./core/model-pricing\": \"./src/core/model-pricing.ts\",\n    \"./extract\": \"./src/commands/extract.ts\",\n    \"./ingestion\": \"./src/core/ingestion/index.ts\",\n    \"./ingestion/test-harness\": \"./src/core/ingestion/test-harness.ts\",\n    \"./core/guardrails\": \"./src/core/guardrails.ts\",\n    \"./core/skillopt\": \"./src/core/skillopt/index.ts\",\n    \"./pglite-lock\": \"./src/core/pglite-lock.ts\",\n    \"./version\": \"./src/version.ts\"\n  },\n  \"scripts\": {\n    \"dev\": \"bun run src/cli.ts\",\n    \"build\": \"bun build --compile --no-compile-autoload-bunfig --outfile bin/gbrain src/cli.ts\",\n    \"build:all\": \"bun build --compile --no-compile-autoload-bunfig --target=bun-darwin-arm64 --outfile bin/gbrain-darwin-arm64 src/cli.ts && bun build --compile --no-compile-autoload-bunfig --target=bun-linux-x64 --outfile bin/gbrain-linux-x64 src/cli.ts\",\n    \"build:admin\": \"cd admin && bun run build && cd .. && bun run scripts/build-admin-embedded.ts\",\n    \"build:admin-embedded\": \"bun run scripts/build-admin-embedded.ts\",\n    \"build:schema\": \"bun run scripts/build-schema.ts\",\n    \"build:schema-migrations\": \"bun run scripts/build-schema-migrations.ts\",\n    \"new:migration\": \"bun run scripts/build-schema-migrations.ts --new\",\n    \"build:llms\": \"bun run scripts/build-llms.ts\",\n    \"wave-security-scan\": \"bash scripts/wave-security-scan.sh\",\n    \"audit:contributors\": \"bun scripts/contributor-audit.ts\",\n    \"build:flag-registry\": \"bun run scripts/generate-flag-registry.ts\",\n    \"build:operation-manifest\": \"bun run scripts/build-operation-manifest.ts\",\n    \"weights:mine\": \"bun run scripts/mine-shard-weights.ts\",\n    \"build:pglite-snapshot\": \"bun run scripts/build-pglite-snapshot.ts\",\n    \"bench:efficiency\": \"bash scripts/bench/efficiency/run-all.sh\",\n    \"bench:parity\": \"bash scripts/bench/contract-parity.sh\",\n    \"test\": \"bash scripts/run-unit-parallel.sh\",\n    \"test:admin\": \"playwright test --config admin/playwright.config.ts\",\n    \"eval:autocut\": \"bun test test/search/autocut-eval.test.ts\",\n    \"test:full\": \"bun run verify && bash scripts/run-unit-parallel.sh && bun run test:slow && (if [ -n \\\"$DATABASE_URL\\\" ]; then bash scripts/run-e2e.sh; else echo '[test:full] skipped E2E (no DATABASE_URL); run docker-compose -f docker-compose.ci.yml up + bun run test:e2e to include' 1>&2; fi)\",\n    \"verify\": \"bash scripts/run-verify-parallel.sh\",\n    \"check:source-config-leak\": \"bash scripts/check-source-config-leak.sh\",\n    \"check:no-pii-agent-voice\": \"bash scripts/check-no-pii-in-agent-voice.sh\",\n    \"check:synthetic-corpus-privacy\": \"bash scripts/check-synthetic-corpus-privacy.sh\",\n    \"check:system-of-record\": \"bash scripts/check-system-of-record.sh\",\n    \"check:admin-scope-drift\": \"bash scripts/check-admin-scope-drift.sh\",\n    \"check:cli-exec\": \"bash scripts/check-cli-executable.sh\",\n    \"check:engine-dynamic-import\": \"bash scripts/check-engine-dynamic-import.sh\",\n    \"check:file-url-pathname\": \"bash scripts/check-file-url-pathname.sh\",\n    \"check:grok-pin\": \"bash scripts/check-grok-pin.sh\",\n    \"check:opencode-pin\": \"bash scripts/check-opencode-pin.sh\",\n    \"check:pin-doc-privacy\": \"bash scripts/check-pin-doc-privacy.sh\",\n    \"check:gateway-routed\": \"bash scripts/check-gateway-routed-no-direct-anthropic.sh\",\n    \"check:worker-pool-atomicity\": \"bash scripts/check-worker-pool-atomicity.sh\",\n    \"check:doc-history\": \"bash scripts/check-key-files-current-state.sh\",\n    \"check:resolver\": \"bun src/cli.ts check-resolvable --strict --skills-dir skills/\",\n  ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "rag",
+      "skill",
+      "eval",
+      "embedding"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "长期记忆",
+      "Agent 技能包",
+      "MCP 集成"
+    ],
+    "brief_zh": {
+      "summary": "一个可自托管的 Agent 记忆系统，记录带来源的显式事实，支持更正与撤回，并通过关键词或语义检索向多个 Agent 共享记忆。",
+      "capabilities": "长期记忆、Agent Skills、MCP 集成、语义检索、知识图谱、自托管",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/garrytan/gbrain"
+      ],
+      "evidence_note": "依据本次抓取的 README 和仓库 metadata；README 中的部署规模为项目自述，未独立验证数据隔离、检索质量或权限边界。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "meta",
+    "name": "astryx",
+    "full_name": "meta/astryx",
+    "url": "https://github.com/meta/astryx",
+    "description": "An open source design system that's fully customizable and agent ready",
+    "language": "TypeScript",
+    "total_stars": 19757,
+    "forks": 1504,
+    "stars_this_period": 3324,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 684,
+      "created_at": "2026-01-09T16:20:32Z",
+      "pushed_at": "2026-11-09T21:50:54Z",
+      "homepage": "http://astryx.atmeta.com",
+      "default_branch": "main",
+      "forks": 1504,
+      "watchers": 88,
+      "archived": false,
+      "size_kb": 1263758
+    },
+    "readme_content": "<!-- SYNC CONTRACT: Architecture changes require documentation updates. -->\n\n<div align=\"center\">\n\n<img src=\"https://lookaside.facebook.com/assets/astryx/Astryx-Banner.png\" alt=\"Astryx\" width=\"100%\" />\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now: <br/> by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[![npm version](https://img.shields.io/npm/v/@astryxdesign/core?label=npm&color=cb3837&logo=npm)](https://www.npmjs.com/package/@astryxdesign/core)\n[![license MIT](https://img.shields.io/npm/l/@astryxdesign/core?color=blue)](LICENSE)\n[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/meta/astryx/wiki/Contributing)\n\n[![Docs](https://img.shields.io/badge/Docs-astryx.atmeta.com-6741d9?logo=readthedocs&logoColor=white)](https://astryx.atmeta.com)\n[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785?logo=storybook&logoColor=white)](https://astryx.atmeta.com/storybook/)\n[![Sandbox](https://img.shields.io/badge/Sandbox-playground-A9792B)](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributing](https://github.com/meta/astryx/wiki/Contributing)** · **[Discord](https://discord.com/invite/XnsUcFykEP)**\n\n</div>\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Components are built to be composed at any level, not locked behind a closed top-level API. The building blocks you'd reach for are exported directly, and when you need to go deeper, swizzle ejects a component's full source into your project to own.\n- **No styling lock-in.** Astryx authors its styles with StyleX, but that's invisible to consumers. Override with `className` using Tailwind, CSS modules, or plain CSS — whatever your project already uses.\n- **Customize without wrapping.** A theme is a set of CSS custom property overrides, so a designer can make Astryx unmistakably theirs without forking or wrapping component source.\n- **Built for people and agents.** The API, docs, and CLI are designed together so a person and an AI assistant build the same way, from the same reference.\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both is recommended), and `astryx docs global` explains how global mode works.\n\nThe simplest setup is a few CSS imports plus a theme provider — no build plugin, no PostCSS or Babel config. See the **[@astryxdesign/core README](packages/core/README.md#quick-start)** for the full guide (Next.js, Tailwind, Vite, and CDN).\n\nFor reliable CLI access, add a script to your `package.json`:\n\n```json\n\"scripts\": {\n  \"astryx\": \"node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs\"\n}\n```\n\nThen use it as `npm run astryx -- component --list`. This avoids path errors when AI assistants or new developers invoke the CLI directly.\n\n## Packages\n\n| Package                                    | Description                                                                                          | README                             |\n| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |\n| [`@astryxdesign/core`](packages/core)      | Components, theme system, and utilities                                                              | [README](packages/core/README.md)  |\n| [`@astryxdesign/cli`](packages/cli)        | CLI tooling: component docs, templates, scaffolding, themes, and codemods                            | [README](packages/cli/README.md)   |\n| [`@astryxdesign/build`](packages/build)    | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md) |\n| [`@astryxdesign/theme-*`](packages/themes) | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)          |\n\n> `@astryxdesign/lab` (experimental components) is used internally for Storybook and the sandbox and is not published to npm. `@astryxdesign/vega` (Vega/Vega-Lite chart wrapper) and `@astryxdesign/charts` (chart components) are published to npm only under the `@canary` dist-tag — there is no stable release yet.\n\n## Principles\n\nThese are the promises Astryx makes to the people building on it.\n\n- **Guidance over enforcement.** Components give you capability rather than guardrails that fight you. Design opinions live in docs and examples — if you pass a value, the component renders it.\n- **Strong, documented conventions.** Every component follows the same naming, prop, and composition rules, and every one is thoroughly documented — so once you've learned a few, the rest feel familiar, and both people and AI can predict how an unfamiliar component behaves.\n- **One system for humans and AI.** The API, conventions, docs, and CLI are designed together so people and AI assistants build the same way. Every change that made Astryx easier for AI made it easier for people too.\n- **Earned by measurement.** We test conventions rather than assert them, hold the results loosely, and revisit them when a new situation proves them wrong.\n\n## Architecture\n\n### Foundations\n\nThe building blocks for visually cohesive and accessible interfaces: typography, color, layout, and accessibility.\n\n### Components\n\nA library of 150+ reusable UI building blocks with full TypeScript support.\n\n### Patterns\n\nBattle-tested design solutions for common interactions and workflows: table pages, detail page layouts, form wizards, navigation patterns, data entry flows.\n\n## Project Structure\n\n| Directory   | Purpose                                                     |\n| ----------- | ----------------------------------------------------------- |\n| `apps/`     | Example apps, the docsite, and Storybook                    |\n| `packages/` | Published packages: core, cli, build, themes                |\n| `internal/` | Internal tooling: test utilities, eslint plugin, vibe tests |\n\n## Contributing\n\nWe welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.\n\nQuestions, or want a hand with a PR? Come find us in\n**[Discord](https://discord.com/invite/XnsUcFykEP)**.\n\nOur conventions and review rubrics live in the\n[Contributing wiki](https://github.com/meta/astryx/wiki/Contributing) —\nincluding [API Conventions](https://github.com/meta/astryx/wiki/API-Conventions),\n[Design Conventions](https://github.com/meta/astryx/wiki/Design-Conventions),\nthe [Component Lifecycle](https://github.com/meta/astryx/wiki/Component-Lifecycle),\nthe [Contributing Templates](https://github.com/meta/astryx/wiki/Contributing-Templates),\nand the [Blog Review Rubric](https://github.com/meta/astryx/wiki/Blog-Review-Rubric#three-required-scored-criteria). Read the relevant rubric before opening a PR.\n\nQuick start for contributors: this repo uses **Node 22+ on an active LTS line**\nand **pnpm 11**. Install pnpm directly, or enable\n[Corepack](https://nodejs.org/api/corepack.html) once so the pinned pnpm version\ninstalls automatically:\n\n```bash\ncorepack enable\npnpm install\n```\n\nIf `corepack` is missing, install pnpm directly or install Corepack manually;\nsee the troubleshooting notes in\n[CONTRIBUTING.md](CONTRIBUTING.md#troubleshooting).\n\nThe Theme Showcase DOM tests use the root `ui` project for shared DOM and\nStyleX test setup. Run `pnpm exec vitest run --project ui apps/docsite/src/__tests__/theme-showcase/`\nfrom the repository root.\n\n## License\n\nMIT\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pnpm -F @astryxdesign/theme-butter build && pnpm -F @astryxdesign/theme-probe build && pnpm bundle:cli-themes && pnpm bundle:cli-official-packages && pnpm -F @astryxdesign/cli sync:api-types\",\n    \"api:report\": \"node scripts/api-report/cli.mjs\",\n    \"bundle:cli-themes\": \"node scripts/generate-cli-themes.mjs\",\n    \"bundle:cli-official-packages\": \"node scripts/generate-cli-official-packages.mjs\",\n    \"generate:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs\",\n    \"check:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs --check\",\n    \"generate:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs\",\n    \"check:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs --check\",\n    \"generate:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs\",\n    \"check:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs --check\",\n    \"generate:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs\",\n    \"check:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs --check\",\n    \"generate:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs\",\n    \"check:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs --check\",\n    \"generate:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs\",\n    \"check:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs --check\",\n    \"dev\": \"pnpm -F @astryxdesign/storybook dev\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:coverage\": \"vitest --coverage\",\n    \"test:ui\": \"vitest run --project ui\",\n    \"test:ui:isolated\": \"vitest run --project perf --no-file-parallelism\",\n    \"test:node\": \"vitest run --project node\",\n    \"test:build\": \"vitest run packages/build/src/packed-consumer.test.mjs --project node --maxWorkers=1 && pnpm -F @astryxdesign/build build && node .github/scripts/theme-layer-cascade.js && ASTRYX_STYLEX_BROWSER=1 vitest run scripts/stylex-module-resolution.browser.test.mjs --project node --maxWorkers=1 && ASTRYX_TURBOPACK_E2E=1 vitest run packages/build/src/next.turbopack.test.mjs --project node --maxWorkers=1\",\n    \"test:theme-family\": \"pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/sandbox generate:theme-family && node .github/scripts/theme-family-cascade.js\",\n    \"test:a11y-contract\": \"playwright test --config playwright.config.ts --project chromium\",\n    \"test:a11y-contract:pr\": \"node .github/scripts/a11y-pr-contracts.mjs\",\n    \"test:docsite-browser\": \"playwright test --config apps/docsite/playwright.config.ts\",\n    \"test:interaction\": \"playwright test --config playwright.interaction.config.ts\",\n    \"storyboards\": \"playwright test --config playwright.interaction.config.ts --grep @storyboard\",\n    \"typecheck\": \"pnpm -r --no-bail --workspace-concurrency=1 --if-present --filter \\\"!@astryxdesign/docsite\\\" --filter \\\"!@astryxdesign/sandbox\\\" run typecheck\",\n    \"check:package-boundaries\": \"node scripts/check-package-boundaries.js\",\n    \"check:repo\": \"pnpm check:visual-owner && pnpm check:published-manifests && pnpm check:sync && pnpm check:neutral-palette-refs && pnpm check:stone-palette-refs && pnpm check:gothic-palette-refs && pnpm check:matcha-palette-refs && pnpm check:butter-palette-refs && pnpm check:y2k-palette-refs && pnpm check:data-tokens && pnpm check:token-docs && pnpm check:motion-roles && pnpm check:knowledge && pnpm check:package-boundaries && pnpm check:changesets && pnpm check:demo-media && pnpm check:executable-bits && pnpm check:cli-structure && pnpm check:use-client && pnpm check:portable-scripts && pnpm check:i18n-runtime && pnpm check:i18n-catalog && pnpm check:cldr-weekdays && pnpm check:cldr-month-capitals && pnpm check:fixtures && pnpm check:setup-contract\",\n    \"check:visual-owner\": \"node scripts/check-visual-workflow-owner.mjs\",\n    \"check:fixtures\": \"node internal/vibe-tests/scripts/fixture-suite.mjs verify\",\n    \"generate:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs\",\n    \"check:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs --check\",\n    \"generate:cldr-month-capitals\": \"node scripts/generate-cldr-month-capitals.mjs\",\n    \"check:cldr-month-capitals\": \"node scripts/generate-cldr-month-capitals.mjs --check\",\n    \"check:changesets\": \"node scripts/check-changesets.mjs\",\n    \"check:portable-scripts\": \"node scripts/check-portable-scripts.mjs\",\n    \"check",
+    "strategic_keywords": [
+      "agent",
+      "agents"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 16,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 8,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "设计系统",
+      "React 组件",
+      "StyleX 样式"
+    ],
+    "brief_zh": {
+      "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
+      "audience": "希望在 React 项目中统一界面基础组件、设计令牌与 Agent 辅助开发流程的产品和工程团队",
+      "capabilities": "设计系统、React 组件、StyleX 样式、界面令牌、Agent 协作开发",
+      "risk": "项目仍处于 Beta；README 的 Agent-ready 定位不代表已验证所有 Agent 集成场景，升级兼容性和组件覆盖范围需在采用前单独评估。",
+      "verified_at": "2026-11-09",
+      "evidence_sources": [
+        "https://github.com/meta/astryx"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与技术栈说明；未在生产 React 项目或 Agent 工作流中运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "OpenCut-app",
+    "name": "OpenCut",
+    "full_name": "OpenCut-app/OpenCut",
+    "url": "https://github.com/OpenCut-app/OpenCut",
+    "description": "The open-source CapCut alternative",
+    "language": "TypeScript",
+    "total_stars": 97929,
+    "forks": 9771,
+    "stars_this_period": 201,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "open_issues": 386,
+      "created_at": "2025-06-22T08:02:17Z",
+      "pushed_at": "2026-09-24T09:24:44Z",
+      "homepage": "https://opencut.app",
+      "default_branch": "main",
+      "forks": 9771,
+      "watchers": 460,
+      "archived": false,
+      "size_kb": 28243
+    },
+    "readme_content": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n**Linux, macOS, WSL:**\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\n**Windows (PowerShell):**\n\n```powershell\nirm https://moonrepo.dev/install/proto.ps1 | iex\n```\n\nIf shims fail to run, allow local scripts for your user:\n\n```powershell\nSet-ExecutionPolicy -Scope CurrentUser RemoteSigned\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "automation"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "视频编辑",
+      "开源创作工具",
+      "桌面工作流"
+    ],
+    "brief_zh": {
+      "summary": "一款开源视频编辑器，目标是提供类似 CapCut 的剪辑体验，并为可扩展的视频工作流保留开放基础。",
+      "capabilities": "视频编辑、开源创作工具、桌面工作流、内容生产"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "opensandbox-group",
+    "name": "OpenSandbox",
+    "full_name": "opensandbox-group/OpenSandbox",
+    "url": "https://github.com/opensandbox-group/OpenSandbox",
+    "description": "Secure, Fast, and Extensible Sandbox runtime for AI agents.",
+    "language": "Python",
+    "total_stars": 16887,
+    "forks": 1590,
+    "stars_this_period": 159,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "aaif",
+        "ai",
+        "ai-agent",
+        "ai-infra",
+        "kubernetes",
+        "sandbox"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 161,
+      "created_at": "2025-12-17T08:41:09Z",
+      "pushed_at": "2026-11-09T10:14:41Z",
+      "homepage": "https://open-sandbox.ai",
+      "default_branch": "main",
+      "forks": 1590,
+      "watchers": 61,
+      "archived": false,
+      "size_kb": 118748
+    },
+    "readme_content": "<div align=\"center\">\n  <img src=\"docs/public/images/logo.svg\" alt=\"OpenSandbox logo\" width=\"150\" />\n\n  <h1>OpenSandbox</h1>\n\n  <p align=\"center\">\n    <a href=\"https://aaif.io/projects/opensandbox\"><strong>An Agentic AI Foundation (AAIF) Project</strong></a>\n  </p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/opensandbox-group/OpenSandbox\"><img src=\"https://img.shields.io/github/stars/opensandbox-group/OpenSandbox?style=flat-square&logo=github&logoColor=white&label=Stars&color=181717\" alt=\"Stars\" /></a>\n  <a href=\"https://www.bestpractices.dev/projects/12588\"><img src=\"https://img.shields.io/badge/OpenSSF-Best-4C566A?style=flat-square\" alt=\"OpenSSF Best Practices\" /></a>\n  <a href=\"https://discord.gg/g7FuPs8YeD\"><img src=\"https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white\" alt=\"Discord\" /></a>\n  <a href=\"https://qr.dingtalk.com/action/joingroup?code=v1,k1,A4Bgl5q1I1eNU/r33D18YFNrMY108aFF38V+r19RJOM=&_dt_no_comment=1&origin=11\"><img src=\"https://img.shields.io/badge/DingTalk-Join-0089FF?style=flat-square\" alt=\"DingTalk\" /></a>\n  <a href=\"https://github.com/opensandbox-group/OpenSandbox/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/opensandbox-group/OpenSandbox/real-e2e.yml?branch=main&label=TEST&style=flat-square&logo=github&logoColor=white\" alt=\"E2E Status\" /></a>\n  <a href=\"https://github.com/opensandbox-group/OpenSandbox/actions\"><img src=\"https://img.shields.io/github/actions/workflow/status/opensandbox-group/OpenSandbox/kubernetes-nightly-build.yml?branch=main&label=K8S&style=flat-square&logo=kubernetes&logoColor=white\" alt=\"Kubernetes nightly build status\" /></a>\n</p>\n\n  <p align=\"center\">\n    <a href=\"https://trendshift.io/repositories/21828\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/21828\" alt=\"opensandbox-group%2FOpenSandbox | Trendshift\" style=\"width: 320px; height: 70px;\" width=\"320\" height=\"70\" /></a>\n  </p>\n\n  <hr />\n</div>\n\n**Run AI agents in sandboxes on your own infrastructure.**\n\nOpenSandbox gives AI applications isolated environments to execute code, run commands, manage files, and operate browsers or desktops. Start locally with Docker and deploy on Kubernetes through a unified sandbox API.\n\n[Quick Start](#getting-started) · [Examples](#examples) · [Documentation](#documentation) · [Fast Sandbox](docs/architecture/fast-sandbox/index.md)\n\n## Features\n\n| Feature | What it enables | Learn more |\n|---------|-----------------|------------|\n| **Fast Sandbox runtime** | Fast, high-density sandboxes on Kubernetes. Firecracker creation: **64 ms P50 (serial)** / **125.4 ms P99 (10 concurrent)**. Firecracker sandboxes support pause/resume with memory and disk state preserved. | [Integration](docs/architecture/fast-sandbox/index.md) · [Performance](docs/architecture/fast-sandbox/performance.md) · [Pause/resume](docs/architecture/fast-sandbox/checkpoints.md) |\n| **Agent working environments** | Execute commands, manage files, and run code with built-in APIs. Integration examples show how to run coding agents, browsers, and desktops inside sandboxes. | [Examples](docs/examples/index.md) |\n| **Network access control** | Route inbound traffic through a unified ingress gateway and control outbound access with per-sandbox egress policies. | [Ingress](docs/architecture/network/ingress.md) · [Egress](docs/architecture/network/egress.md) |\n| **Credential Vault** | Let agents call external services without exposing real credentials to sandbox workloads. | [Credential Vault](docs/guides/credential-vault.md) |\n| **Local to cluster** | Start with Docker and deploy on Kubernetes through a unified lifecycle API. Resource pools and batch creation support agent evaluation and RL training workloads. | [Kubernetes runtime](docs/architecture/control-plane/operator.md) |\n| **SDKs, CLI, and MCP** | Integrate with Python, Java/Kotlin, TypeScript/JavaScript, C#/.NET, or Go SDKs. Use `osb` from the terminal or connect agents through MCP. | [SDKs](#sdks) · [CLI](#cli) · [MCP](#mcp) |\n| **Extensible sandbox protocol** | Build custom runtime integrations against defined sandbox lifecycle and execution APIs. | [API specs](specs/README.md) |\n\n## Getting Started\n\nRequirements:\n\n- Docker (required for local execution)\n- Python 3.10+ (required for examples and local runtime)\n\n### Install and Configure the Sandbox Server\n\n```bash\nuvx opensandbox-server init-config ~/.sandbox.toml --example docker\n\nuvx opensandbox-server\n\n# Show help\n# uvx opensandbox-server -h\n```\n\n### Create a Sandbox and Execute Commands/Scripts\n\nInstall the Sandbox SDK\n\n```bash\nuv pip install opensandbox\n```\n\nCreate a sandbox from an `alpine` image and execute commands and scripts.\n\n```python\nimport asyncio\n\nfrom opensandbox import Sandbox\nfrom opensandbox.models import WriteEntry\n\nasync def main() -> None:\n    # 1. Create a sandbox from the alpine image\n    sandbox = await Sandbox.create(\"alpine\")\n\n    try:\n        # 2. Execute a shell command\n        execution = await sandbox.commands.run(\"echo 'Hello OpenSandbox!'\")\n        print(execution.logs.stdout[0].text)\n\n        # 3. Write a script file\n        await sandbox.files.write_files([\n            WriteEntry(\n                path=\"/tmp/hello.sh\",\n                data=\"echo \\\"Hello $1\\\"\\necho '2 + 2 =' $((2 + 2))\",\n                mode=755,\n            )\n        ])\n\n        # 4. Read the file back\n        content = await sandbox.files.read_file(\"/tmp/hello.sh\")\n        print(f\"Content: {content}\")\n\n        # 5. Execute the script\n        execution = await sandbox.commands.run(\"sh /tmp/hello.sh OpenSandbox\")\n        for log in execution.logs.stdout:\n            print(log.text)\n\n    finally:\n        # 6. Cleanup the sandbox\n        await sandbox.destroy()\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\n## Examples\n\nExplore examples by what you want your agent to do. Runnable source code lives in [`examples/`](examples/).\n\n| Use case | What you can build | Examples |\n|----------|--------------------|----------|\n| **Coding agents** | Run coding agents in isolated environments to edit files, execute commands, and complete development tasks. | [Claude Code](docs/examples/claude-code.md) · [Codex CLI](docs/examples/codex-cli.md) · [DeerFlow](docs/examples/deer-flow.md) |\n| **Code execution and data analysis** | Execute model-generated code and work with results through the Code Interpreter SDK. | [Code Interpreter](docs/examples/code-interpreter.md) |\n| **Browser and desktop automation** | Automate web interactions and testing, or give agents access to a desktop environment. | [Playwright](docs/examples/playwright.md) · [Chrome](docs/examples/chrome.md) · [Desktop](docs/examples/desktop.md) |\n| **Agent evaluation** | Run evaluations with a separate sandbox for each trial. | [Harbor Evaluation](docs/examples/harbor-evaluation.md) |\n\nSee the [full example catalog](docs/examples/index.md) for more coding agents, framework integrations, remote development environments, Kubernetes deployment, and storage patterns.\n\n## SDKs\n\nPick your language:\n\n<details>\n<summary><b>Python</b></summary>\n\n```bash\npip install opensandbox\n```\n\n</details>\n\n<details>\n<summary><b>Java/Kotlin (Gradle Kotlin DSL)</b></summary>\n\n```kotlin\ndependencies {\n    implementation(\"com.alibaba.opensandbox:sandbox:{latest_version}\")\n}\n```\n\n</details>\n\n<details>\n<summary><b>Java/Kotlin (Maven)</b></summary>\n\n```xml\n<dependency>\n    <groupId>com.alibaba.opensandbox</groupId>\n    <artifactId>sandbox</artifactId>\n    <version>{latest_version}</version>\n</dependency>\n```\n\n</details>\n\n<details>\n<summary><b>JavaScript/TypeScript</b></summary>\n\n```bash\nnpm install @alibaba-group/opensandbox\n```\n\n</details>\n\n<details>\n<summary><b>C#/.NET</b></summary>\n\n```bash\ndotnet add package Alibaba.OpenSandbox\n```\n\n</details>\n\n<details>\n<summary><b>Go</b></summary>\n\n```bash\ngo get github.com/alibaba/OpenSandbox/sdks/sandbox/go\n```\n\n</details>\n\n## CLI\n\nOpenSandbox also provides `osb`, a terminal CLI for the common sandbox workflow: create sandboxes, run commands, move files, inspect diagnostics, and manage runtime egress policy.\n\nInstall:\n\n```bash\npip install opensandbox-cli\n# or\nuv tool install opensandbox-cli\n```\n\nQuick start:\n\n```bash\nosb config init\nosb config set connection.domain localhost:8080\nosb config set connection.protocol http\nosb config set connection.api_key <your-api-key>\nosb sandbox create --image python:3.12 --timeout 30m -o json\nosb command run <sandbox-id> -o raw -- python -c \"print(1 + 1)\"\n```\n\nSee the [CLI README](cli/README.md) for the full command reference.\n\n## MCP\n\nThe OpenSandbox MCP server exposes sandbox creation, command execution, and text file operations to MCP-capable clients such as Claude Code and Cursor.\n\nInstall and run:\n\n```bash\npip install opensandbox-mcp\nopensandbox-mcp --domain localhost:8080 --protocol http\n```\n\nMinimal stdio config:\n\n```json\n{\n  \"mcpServers\": {\n    \"opensandbox\": {\n      \"command\": \"opensandbox-mcp\",\n      \"args\": [\"--domain\", \"localhost:8080\", \"--protocol\", \"http\"]\n    }\n  }\n}\n```\n\nSee the [MCP README](sdks/mcp/sandbox/python/README.md) for client-specific setup.\n\n## Official Container Images\n\nOpenSandbox release images are published under the same component name in three official registries:\n\n- Docker Hub: `docker.io/opensandbox/<component>`\n- GitHub Container Registry: `ghcr.io/opensandbox-group/opensandbox/<component>`\n- Alibaba Cloud Container Registry: `sandbox-registry.cn-zhangjiakou.cr.aliyuncs.com/opensandbox/<component>`\n\nPin production images by digest and check the [release verification guide](docs/community/release-verification.md) for signing coverage before deployment. Legacy per-component releases support Cosign signatures and provenance attestations; current umbrella releases have a [tracked signing and provenance gap](https://github.com/opensandbox-group/OpenSandbox/issues/2463) and must not be assumed to provide the same verification evidence.\n\n## Documentation\n\n- [Website](https://open-sandbox.ai) — Project homepage and documentation site\n- [Architecture](docs/architecture/index.md) — System design and component responsibilities\n- [Deployment Guide](docs/deployment/index.md) — Kubernetes installation and operations\n- [Server Configuration](docs/getting-started/configuration.md) — Runtime and server settings\n- [SDK Reference](docs/sdks/index.md) — Language guides and capability coverage\n- [CLI Guide](cli/README.md) — Installation and command reference\n- [MCP Integration](sdks/mcp/sandbox/python/README.md) — Setup for MCP-capable clients\n- [API Reference](docs/api/index.md) — Sandbox lifecycle and execution contracts\n- [Credential Vault](docs/guides/credential-vault.md) — Outbound credential injection\n- [Release Verification](docs/community/release-verification.md) — Image signing and artifact verification\n- [Enhancement Proposals](oseps/README.md) — Design proposals and technical direction\n- [Roadmap](ROADMAP.md) — Project priorities and planning\n\n## Contact and Discussion\n\n- Issues: Submit bugs, feature requests, or design discussions through GitHub Issues\n- Discord: Join the [OpenSandbox Discord community](https://discord.gg/g7FuPs8YeD)\n- DingTalk: Join the [OpenSandbox technical discussion group](https://qr.dingtalk.com/action/joingroup?code=v1,k1,A4Bgl5q1I1eNU/r33D18YFNrMY108aFF38V+r19RJOM=&_dt_no_comment=1&origin=11)\n\n## About\n\nOpenSandbox is a project of the [Agentic AI Foundation (AAIF)](https://aaif.io/projects/opensandbox).\n\nCode is licensed under the [Apache 2.0 License](LICENSE). See the [contribution guide](CONTRIBUTING.md#license) for documentation licensing and contribution terms.\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "runtime",
+      "eval",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "Agent 沙箱",
+      "代码执行",
+      "浏览器自动化"
+    ],
+    "brief_zh": {
+      "summary": "面向 AI Agent 的开源沙箱运行时，可在自有基础设施上提供隔离的代码执行、文件管理、浏览器和桌面环境，并支持 Docker 与 Kubernetes 部署。",
+      "capabilities": "Agent 沙箱、代码执行、浏览器自动化、Kubernetes、凭据隔离、MCP 集成",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/opensandbox-group/OpenSandbox"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；性能指标来自 README 自述，未独立复现隔离性、性能或凭据保护能力。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "longbridge",
+    "name": "gpui-kit",
+    "full_name": "longbridge/gpui-kit",
+    "url": "https://github.com/longbridge/gpui-kit",
+    "description": "Rust GUI components for building fantastic cross-platform desktop application by using GPUI.",
+    "language": "Rust",
+    "total_stars": 20104,
+    "forks": 1232,
+    "stars_this_period": 153,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [
+        "desktop-application",
+        "gpui",
+        "rust",
+        "uikit"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 153,
+      "created_at": "2024-06-13T13:45:39Z",
+      "pushed_at": "2026-11-09T16:33:56Z",
+      "homepage": "http://gpui-kit.com",
+      "default_branch": "main",
+      "forks": 1232,
+      "watchers": 52,
+      "archived": false,
+      "size_kb": 40699
+    },
+    "readme_content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/longbridge/gpui-kit/main/website/public/logo.svg\" width=\"112\" alt=\"GPUI Kit logo\" />\n  <br>\n  <strong>GPUI Kit</strong>\n</p>\n\n[English](./README.md) | [简体中文](./README.zh-CN.md)\n\n[![Build Status](https://github.com/longbridge/gpui-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/longbridge/gpui-kit/actions/workflows/ci.yml) [![Docs](https://docs.rs/gpui-kit/badge.svg)](https://docs.rs/gpui-kit/) [![Crates.io](https://img.shields.io/crates/v/gpui-kit.svg)](https://crates.io/crates/gpui-kit)\n\nBuild fantastic, high-performance desktop apps with Rust and GPUI.\n\nGPUI Kit is a comprehensive Rust desktop application framework. It combines a\nproduction-ready UI system with application-grade data, layout, and editing\ncapabilities, all built on a reusable foundation of behavior, state, and\ninfrastructure. GPUI Kit ships 75+ documented components and primitives,\nWebAssembly support, AccessKit accessibility, UI integration testing, and an\noptional JavaScript extension runtime.\n\nDocumentation: <https://gpui-kit.com>\n\n```text\ngpui-kit             The one crate applications depend on\n├── gpui-base        Unstyled behavior, state, and infrastructure\n└── gpui-component   GPUI Component: the complete styled UI system\n```\n\n`gpui-kit` pins the matching GPUI release and re-exports GPUI, base, component,\nand assets, so a Rust application lists a single dependency. JavaScript extension\nhosts add `gpui-shell` separately; its default `components` feature supplies the styled catalog.\n\nSee the [executable application recipe and AI-assisted development acceptance checks](examples/ai_recipes/README.md) for a tested starting point and verification commands.\n\n## Features\n\n- **75+ Components and Primitives**: Forms, navigation, overlays, data display, editing, feedback, and layout, with polished interactions and productive defaults.\n- **Production Ready**: Used to build Longbridge Pro from day one and continuously refined in a publicly shipped commercial desktop application.\n- **WebAssembly**: Run applications and the same component showcases on the web with `wasm32-unknown-unknown`.\n- **Accessibility**: AccessKit roles, names, states, relationships, and actions are built into the interaction layer and covered by tests.\n- **UI Integration Testing**: Render real components in headless windows, drive pointer and keyboard input, and assert state, focus, layout, and accessibility.\n- **Native Feel**: Modern controls inspired by macOS and Windows, backed by semantic themes and multiple sizes.\n- **120 FPS**: GPU-accelerated interfaces that remain smooth under load.\n- **Data Tables**: Virtual scrolling, fixed and resizable columns, sorting, and cell selection across hundreds of thousands of rows.\n- **Virtual Lists**: Render only the visible range, including lists whose items have different sizes.\n- **Code Editor**: Stable performance at 200K lines with Tree-sitter highlighting and LSP diagnostics, completion, and hover.\n- **Dock Layout**: Resizable panels, draggable tabs, nested splits, and edge docks — all serializable.\n- **Rich Content**: Native Markdown and HTML rendering, syntax highlighting, and built-in charts.\n- **Design Freedom**: Use the complete visual system or build your own on the behavior and infrastructure in `gpui-base`.\n- **JavaScript Extensions**: `gpui-shell` lets a shipped Rust host load panels and business logic as scripts, with every capability granted explicitly.\n- **Cross Platform**: Ship one Rust codebase to macOS, Windows, and Linux.\n\n## Framework Architecture\n\n### Three layers. One ecosystem.\n\nUse `gpui-component` to keep the application coherent with one complete visual\nand interaction system. Use `gpui-base` when your product needs to create and\nown that system itself. Use `gpui-shell` when the application should be\nextensible in JavaScript after it ships.\n\n| **`gpui-component`**             | **`gpui-base`**                               | **`gpui-shell`**                           |\n| -------------------------------- | --------------------------------------------- | ------------------------------------------ |\n| Complete, styled components      | Unstyled behavior and infrastructure          | JavaScript runtime hosted by Rust          |\n| Productive defaults with theming | Full control over structure and visual design | Capabilities granted one at a time         |\n| Best for building applications   | Best for building design systems              | Best for plugins and scripted applications |\n\n```text\n                             APPLICATION\n                                  │\n              ┌───────────────────┼───────────────────┐\n              │                   │                   │\n              ▼                   ▼                   ▼\n    ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐\n    │  gpui-component  │ │ Your Design      │ │    gpui-shell    │\n    │    Styled UI     │ │ System           │ │  JS extensions   │\n    └────────┬─────────┘ └────────┬─────────┘ └────────┬─────────┘\n             │                    │                    │\n             └────────────────────┼────────────────────┘\n                                  ▼\n                        ┌──────────────────┐\n                        │    gpui-base     │\n                        │ Behavior · State │\n                        │ Infrastructure   │\n                        └────────┬─────────┘\n                                 ▼\n                               GPUI\n```\n\n> **Behavior belongs to the foundation. Presentation belongs to the application.**\n\nUse **`gpui-component`** when you want polished controls ready to ship. Build on\n**`gpui-base`** when your application should own its component source, layout,\nstyling, and motion while reusing difficult interaction behavior. Add\n**`gpui-shell`** when contributors should extend the product without a fork or\na release.\n\nThe layering follows the same separation that makes the\n[shadcn](https://ui.shadcn.com) ecosystem flexible:\n\n| GPUI Kit ecosystem                   | Web ecosystem                   |\n| ------------------------------------ | ------------------------------- |\n| GPUI                                 | HTML + Tailwind CSS             |\n| [`gpui-base`](crates/base/README.md) | [Base UI](https://base-ui.com)  |\n| `gpui-component`                     | shadcn's styled component layer |\n\n[Explore the architecture →](docs/ARCHITECTURE.md)\n\n## Showcase\n\nGPUI Kit has powered [Longbridge Pro](https://longbridge.com/desktop)\nfrom day one. The framework is extracted from the demands of a publicly shipped\ncommercial desktop application rather than designed in isolation.\n\n> **GPUI provides the rendering foundation. Longbridge provides the production foundation.**\n\n<img width=\"1763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1ecb9c3-2dd3-431e-bd97-5a819c30e551\" />\n\n## Usage\n\n```toml\n[dependencies]\ngpui-kit = \"0.7\"\n```\n\n`gpui-kit` always brings in GPUI and `gpui-base`; `gpui-component` and the\ndefault icon set are on by default. Turn default\nfeatures off to keep only the layers you use. The `gpui-component` features (`inspector`, `decimal`,\n`tree-sitter`, and each `tree-sitter-<language>`) are available under the same\nnames.\n\n### GPUI Fast\n\nEnable the optional `gpui-fast` feature to select [GPUI Fast](https://github.com/longbridge/gpui-fast)\nfor the core, native platforms, WebAssembly, and every enabled Kit layer:\n\n```toml\n[dependencies]\ngpui-kit = { version = \"0.7\", features = [\"gpui-fast\"] }\n```\n\nKeep the same imports, initialization, and test macros; no application `[patch]`\nor crate alias is needed. The default backend remains the pinned upstream GPUI\nsnapshot. Cargo features are additive, so upstream packages still compile when\nFast is selected. See [Getting Started](https://gpui-kit.com/docs/getting-started)\nfor feature combinations and comparison commands.\n\n### Basic Example\n\n```rs\nuse gpui_kit::component::button::*;\nuse gpui_kit::component::*;\nuse gpui_kit::*;\n\npub struct HelloWorld;\nimpl Render for HelloWorld {\n    fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {\n        div()\n            .v_flex()\n            .gap_2()\n            .size_full()\n            .items_center()\n            .justify_center()\n            .child(\"Hello, World!\")\n            .child(\n                Button::new(\"ok\")\n                    .primary()\n                    .label(\"Let's Go!\")\n                    .on_click(|_, _, _| println!(\"Clicked!\")),\n            )\n    }\n}\n\nfn main() {\n    gpui_kit::application().run(move |cx| {\n        // This must be called before using any GPUI Component features.\n        gpui_kit::init(cx);\n\n        gpui_kit::open_window(WindowOptions::default(), cx, |_, cx| {\n            cx.new(|_| HelloWorld)\n        })\n        .expect(\"Failed to open window\");\n    });\n}\n```\n\n`gpui_kit::open_window` is the application window entry point and always mounts a Base `Root`. Component initialization registers styled window facilities; Cargo features do not select a different root type.\n\n### Icons\n\nThe default `assets` feature bundles the [Lucide](https://lucide.dev) icon set\nas `gpui-kit-assets`; pass it to the application with\n`gpui_kit::application().with_assets(gpui_kit::assets::Assets)`. To ship your\nown icons instead, leave that feature out and name the SVG files as defined in\n[IconName](https://github.com/longbridge/gpui-kit/blob/main/crates/component/src/icon.rs#L86).\n\n## Skills for AI Coding Agents\n\nInstall the GPUI Kit skills for your AI coding agent (Cursor, Claude Code, Gemini CLI, Codex, etc.):\n\n```bash\nnpx skills add longbridge/gpui-kit\n```\n\n| Skill                    | Description                                                                                                                         |\n| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |\n| `gpui-kit`               | Setup, component catalog, usage patterns, GPUI mechanics (elements, entities, async, focus, actions, tests), and the Coding Guides. |\n| `gpui-kit-design-guides` | The Design Guides: layout, spacing, hierarchy, interaction states, overlays, and interface copy.                                    |\n\n## Development\n\n### Desktop Gallery (Story)\n\nThe `story` crate is a gallery application that showcases all available components. Run it with:\n\n```bash\ncargo run\n```\n\n### Examples\n\nSome larger examples reuse the `story` gallery components and run as standalone packages:\n\n```bash\n# Dock layout system (panels, split views, tabs)\ncargo run -p example-dock\n\n# Markdown rendering\ncargo run -p example-markdown\n\n# HTML rendering\ncargo run -p example-html\n```\n\nThe `examples` directory also contains standalone examples, each focused on a single feature. Each example is a separate crate, run them with `cargo run -p <name>`:\n\n```bash\n# Code editor with LSP support and syntax highlighting\ncargo run -p example-editor\n\n# Basic hello world\ncargo run -p hello_world\n\n# System monitor (real-time charts with CPU/memory data)\ncargo run -p system_monitor\n\n# Window title customization\ncargo run -p window_title\n```\n\nCheck out [CONTRIBUTING.md](CONTRIBUTING.md) for more details.\n\n## Compare to others\n\nSee the [comparison with Iced, egui and Qt 6](https://gpui-kit.com/docs/comparison) on the site.\n\n## Related project: Native Shell\n\n[Native Shell](https://nsh.dev) ([source](https://github.com/longbridge/native-shell)) is a sibling project that lets AI generate UI and renders it natively on iOS, Android, Linux (GTK) and macOS (AppKit). Its GPUI desktop backend is in development and will be built on GPUI Kit.\n\n## License\n\nSoftware source and documentation code examples: [Apache-2.0](LICENSE-APACHE).\n\nDocumentation prose and original illustrations in the Docs, Base, Component, and Shell sections (including Chinese translations) for which GPUI Kit holds licensing rights are also o",
+    "manifest_file": "Cargo.toml",
+    "manifest_content": "[workspace]\ndefault-members = [\"crates/story\"]\nmembers = [\n    \"crates/kit\",\n    \"crates/base\",\n    \"crates/base/examples/wasm\",\n    \"crates/base/examples/native\",\n    \"crates/component-macros\",\n    \"crates/story\",\n    \"crates/story-web\",\n    \"crates/component\",\n    \"crates/assets\",\n    \"crates/fps\",\n    \"crates/webview\",\n    \"examples/app_assets\",\n    \"examples/fps_monitor\",\n    \"examples/hello_world\",\n    \"examples/input\",\n    \"examples/editor\",\n    \"examples/syntect\",\n    \"examples/tig\",\n    \"examples/brush\",\n    \"examples/dock\",\n    \"examples/html\",\n    \"examples/large-text\",\n    \"examples/markdown\",\n    \"examples/stream-markdown\",\n    \"examples/window_title\",\n    \"examples/dialog_overlay\",\n    \"examples/webview\",\n    \"examples/system_monitor\",\n    \"examples/focus_trap\",\n    \"examples/tooltip_top_edge\",\n    \"examples/link_tooltip\",\n    \"examples/sidebar\",\n    \"examples/text_max_lines\",\n    \"examples/text_selection\",\n    \"examples/touch_selection\",\n    \"examples/table_in_scrollable\",\n    \"examples/markdown_table\",\n    \"examples/ai_recipes\",\n    \"examples/speech\",\n    \"crates/shell\",\n]\nresolver = \"2\"\n\n[workspace.package]\npublish = false\nedition = \"2024\"\n\n[workspace.dependencies]\ngpui-kit = { path = \"crates/kit\", version = \"0.9.1\" }\ngpui-component = { path = \"crates/component\", version = \"0.9.1\" }\ngpui-base = { path = \"crates/base\", version = \"0.9.1\" }\ngpui-component-macros = { path = \"crates/component-macros\", version = \"0.9.1\" }\ngpui-kit-assets = { path = \"crates/assets\", version = \"0.9.1\" }\ngpui-fps = { path = \"crates/fps\", version = \"0.9.1\" }\ngpui-shell = { path = \"crates/shell\", version = \"0.9.1\" }\ngpui-webview = { path = \"crates/webview\", version = \"0.9.1\" }\nstory = { path = \"crates/story\" }\n\n# GPUI comes from the `gpui-pre-*` snapshots of Zed's crates, and any snapshot\n# may change GPUI's API. These requirements are what the published gpui-kit\n# crates carry to crates.io, so they pin the exact snapshot the release was\n# built against: a caret requirement let the weekly release move applications\n# onto a newer snapshot that gpui-component did not compile with (#3156). Bump\n# every snapshot crate together with its Cargo.lock entry; `script/check-gpui-pin.ts`\n# fails CI when a pin is not exact.\ngpui = { package = \"gpui-pre\", version = \"=0.3.12\" }\ngpui_platform = { package = \"gpui-pre-platform\", version = \"=0.3.12\", features = [\"font-kit\", \"x11\", \"wayland\", \"runtime_shaders\"] }\ngpui_web = { package = \"gpui-pre-web\", version = \"=0.3.12\" }\n# Fast is optional; existing crates select it through their gpui-fast feature.\n# Explicit package fields make Cargo use these dependency keys as Rust crate names;\n# the packages declare the same library names as the pre backend.\ngpui-fast = { package = \"gpui-fast\", version = \"0.1.14\", features = [\"windows-manifest-provided-by-host\"] }\ngpui-fast-platform = { package = \"gpui-fast-platform\", version = \"0.1.14\", features = [\"font-kit\", \"x11\", \"wayland\", \"runtime_shaders\"] }\ngpui-fast-web = { package = \"gpui-fast-web\", version = \"0.1.14\" }\ngpui_macros = { package = \"gpui-pre-macros\", version = \"=0.3.12\" }\nreqwest_client = { package = \"gpui-pre-reqwest-client\", version = \"=0.3.12\" }\nsum-tree = { package = \"gpui-pre-sum-tree\", version = \"=0.3.12\" }\nreqwest = { package = \"gpui-pre-reqwest\", version = \"=0.12.15\", default-features = false, features = [\n    \"charset\",\n    \"http2\",\n    \"macos-system-configuration\",\n    \"multipart\",\n    \"rustls-tls-native-roots\",\n    \"socks\",\n    \"stream\",\n] }\n\nanyhow = \"1\"\ninstant = { version = \"0.1\", features = [\"wasm-bindgen\"] }\nlog = \"0.4\"\nlsp-types = { version = \"0.97.0\", features = [\"proposed\"] }\nnotify = \"8.2.0\"\nraw-window-handle = \"0.6.2\"\nropey = { version = \"=2.0.0-beta.1\", features = [\n    \"metric_chars\",\n    \"metric_lines_lf\",\n    \"metric_utf16\",\n] }\nrust-i18n = \"4.2.0\"\nschemars = \"1\"\nsemver = \"1\"\nserde = { version = \"1.0.219\", features = [\"derive\"] }\nserde_json = \"1\"\nserde_repr = \"0.1\"\nsmallvec = \"1\"\nsmol = \"2\"\nsyntect = { version = \"5.3.0\", default-features = false, features = [\n    \"parsing\",\n    \"default-syntaxes\",\n    \"regex-fancy\",\n] }\ntwo-face = { version = \"0.4.5\", default-features = false, features = [\"syntect-fancy\"] }\ntracing = \"0.1.41\"\nwasm-bindgen = \"0.2.113\"\n# Use errno stub for WASM\nerrno = { version = \"0.3.14\", default-features = false }\n\n[workspace.dependencies.windows]\nfeatures = [\"Wdk\", \"Wdk_System\", \"Wdk_System_SystemServices\"]\nversion = \"0.58.0\"\n\n[workspace.lints.clippy]\nalmost_complete_range = \"allow\"\narc_with_non_send_sync = \"allow\"\nborrowed_box = \"allow\"\ndbg_macro = \"deny\"\nlet_underscore_future = \"allow\"\nmanual_is_multiple_of = \"allow\"\nmap_entry = \"allow\"\nmodule_inception = \"allow\"\nnon_canonical_partial_ord_impl = \"allow\"\nreversed_empty_ranges = \"allow\"\nsingle_range_in_vec_init = \"allow\"\nstyle = { level = \"allow\", priority = -1 }\ntodo = \"deny\"\ntype_complexity = \"allow\"\n# Temporarily allow this until we can migrate to the new APIs.\n# https://github.com/longbridge/gpui-kit/pull/2149\nuseless_conversion = \"allow\"\n\n# Ke",
+    "strategic_keywords": [
+      "rag",
+      "runtime",
+      "workspace",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "Cargo.toml"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "Rust 桌面 UI",
+      "GPUI 组件",
+      "无障碍"
+    ],
+    "brief_zh": {
+      "summary": "一个基于 Rust 与 GPUI 的跨平台桌面应用框架，提供组件、布局、编辑、无障碍、集成测试和可选 JavaScript 扩展运行时。",
+      "capabilities": "Rust 桌面 UI、GPUI 组件、无障碍、界面测试、跨平台开发、JavaScript 扩展",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/longbridge/gpui-kit"
+      ],
+      "evidence_note": "依据本次抓取的 README 和仓库 topics；组件数量与性能表述为项目自述，未独立验证跨平台兼容性或生产表现。"
+    },
+    "summary_source": "project_brief"
+  }
+]

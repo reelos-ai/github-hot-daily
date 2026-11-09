@@ -1376,5 +1376,33 @@
     "verified_at": "2026-11-09",
     "evidence_sources": ["https://github.com/meta/astryx"],
     "evidence_note": "依据本次抓取的 README、仓库 description 与技术栈说明；未在生产 React 项目或 Agent 工作流中运行验证。"
+  },
+  "superplanehq/superplane": {
+    "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
+    "capabilities": "Agent 编排、AI 软件工程、工作流自动化、代码审查、CI 集成、自托管",
+    "verified_at": "2026-11-10",
+    "evidence_sources": ["https://github.com/superplanehq/superplane"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；未在真实代码库验证任务筛选准确率、PR 质量或部署成本。"
+  },
+  "garrytan/gbrain": {
+    "summary": "一个可自托管的 Agent 记忆系统，记录带来源的显式事实，支持更正与撤回，并通过关键词或语义检索向多个 Agent 共享记忆。",
+    "capabilities": "长期记忆、Agent Skills、MCP 集成、语义检索、知识图谱、自托管",
+    "verified_at": "2026-11-10",
+    "evidence_sources": ["https://github.com/garrytan/gbrain"],
+    "evidence_note": "依据本次抓取的 README 和仓库 metadata；README 中的部署规模为项目自述，未独立验证数据隔离、检索质量或权限边界。"
+  },
+  "opensandbox-group/OpenSandbox": {
+    "summary": "面向 AI Agent 的开源沙箱运行时，可在自有基础设施上提供隔离的代码执行、文件管理、浏览器和桌面环境，并支持 Docker 与 Kubernetes 部署。",
+    "capabilities": "Agent 沙箱、代码执行、浏览器自动化、Kubernetes、凭据隔离、MCP 集成",
+    "verified_at": "2026-11-10",
+    "evidence_sources": ["https://github.com/opensandbox-group/OpenSandbox"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；性能指标来自 README 自述，未独立复现隔离性、性能或凭据保护能力。"
+  },
+  "longbridge/gpui-kit": {
+    "summary": "一个基于 Rust 与 GPUI 的跨平台桌面应用框架，提供组件、布局、编辑、无障碍、集成测试和可选 JavaScript 扩展运行时。",
+    "capabilities": "Rust 桌面 UI、GPUI 组件、无障碍、界面测试、跨平台开发、JavaScript 扩展",
+    "verified_at": "2026-11-10",
+    "evidence_sources": ["https://github.com/longbridge/gpui-kit"],
+    "evidence_note": "依据本次抓取的 README 和仓库 topics；组件数量与性能表述为项目自述，未独立验证跨平台兼容性或生产表现。"
   }
 }
