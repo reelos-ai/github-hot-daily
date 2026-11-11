@@ -1404,5 +1404,26 @@
     "verified_at": "2026-11-10",
     "evidence_sources": ["https://github.com/longbridge/gpui-kit"],
     "evidence_note": "依据本次抓取的 README 和仓库 topics；组件数量与性能表述为项目自述，未独立验证跨平台兼容性或生产表现。"
+  },
+  "homeassistant-ai/ha-mcp": {
+    "summary": "一个将 Home Assistant 接入 Claude、ChatGPT 等 AI 助手的 MCP 服务器；README 展示其用于配置与自动化家庭设备，并声明提供 87 个工具。",
+    "capabilities": "Home Assistant 集成、MCP 集成、智能家居自动化、设备配置",
+    "verified_at": "2026-11-11",
+    "evidence_sources": ["https://github.com/homeassistant-ai/ha-mcp"],
+    "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；87 个工具为 README 自述，未在真实 Home Assistant 实例中运行验证。"
+  },
+  "tokio-rs/topcoat": {
+    "summary": "一个 Rust 全栈 Web 框架：README 说明其在服务端渲染组件，并将带类型检查的表达式转换为浏览器端 JavaScript，以减少单独 API 层、Wasm 包与客户端构建步骤。",
+    "capabilities": "Rust 全栈、服务端渲染、客户端响应式、Web 框架",
+    "verified_at": "2026-11-11",
+    "evidence_sources": ["https://github.com/tokio-rs/topcoat"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；未运行示例，也未独立验证编译、运行时性能或跨浏览器兼容性。"
+  },
+  "agent-substrate/substrate": {
+    "summary": "面向 Kubernetes 的零信任 Agent 沙箱运行时；README 将其定位为隔离计算、身份、网络和存储的基础设施，并说明兼容 microVM 与 gVisor 等沙箱技术。",
+    "capabilities": "Agent 沙箱、零信任运行时、Kubernetes、身份与网络隔离、MCP 部署",
+    "verified_at": "2026-11-11",
+    "evidence_sources": ["https://github.com/agent-substrate/substrate"],
+    "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；README 中的规模、密度和延迟为项目自述，未独立复现。"
   }
 }

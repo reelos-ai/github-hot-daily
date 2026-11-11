@@ -634,18 +634,18 @@
     },
     "strategic_score": 93,
     "capability_tags": [
-      "沙箱隔离",
-      "状态恢复",
-      "运行调度"
+      "Agent 沙箱",
+      "零信任运行时",
+      "Kubernetes"
     ],
     "brief_zh": {
-      "summary": "在 Kubernetes 上调度有状态 Agent 沙箱，提供隔离执行、暂停恢复和请求路由。",
-      "capabilities": "沙箱隔离、状态恢复、运行调度",
-      "verified_at": "2026-09-24",
+      "summary": "面向 Kubernetes 的零信任 Agent 沙箱运行时；README 将其定位为隔离计算、身份、网络和存储的基础设施，并说明兼容 microVM 与 gVisor 等沙箱技术。",
+      "capabilities": "Agent 沙箱、零信任运行时、Kubernetes、身份与网络隔离、MCP 部署",
+      "verified_at": "2026-11-11",
       "evidence_sources": [
         "https://github.com/agent-substrate/substrate"
       ],
-      "evidence_note": "依据本次抓取的 README 与仓库 description；未进行功能运行验证。"
+      "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；README 中的规模、密度和延迟为项目自述，未独立复现。"
     },
     "summary_source": "project_brief"
   },
