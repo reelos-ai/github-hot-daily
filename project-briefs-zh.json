@@ -1425,5 +1425,40 @@
     "verified_at": "2026-11-11",
     "evidence_sources": ["https://github.com/agent-substrate/substrate"],
     "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；README 中的规模、密度和延迟为项目自述，未独立复现。"
+  },
+  "ZhuLinsen/daily_stock_analysis": {
+    "summary": "一个由 LLM 驱动的多市场股票分析项目，整合行情、新闻、决策看板和自动推送，用于定时生成研究信息。",
+    "capabilities": "LLM 分析、市场数据、新闻聚合、决策看板、自动推送",
+    "verified_at": "2026-11-13",
+    "evidence_sources": ["https://github.com/ZhuLinsen/daily_stock_analysis"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与 topics；分析结果不构成投资建议，数据质量、策略逻辑与自动化可靠性未独立验证。"
+  },
+  "GoogleChrome/modern-web-guidance-src": {
+    "summary": "Chrome 团队维护的 Web 开发最佳实践源码仓库，目标是让编码 Agent 获取和使用最新的 Web 工程指导。",
+    "capabilities": "Web 最佳实践、编码 Agent 指导、工程规范",
+    "verified_at": "2026-11-13",
+    "evidence_sources": ["https://github.com/GoogleChrome/modern-web-guidance-src"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；指导内容的覆盖范围和对具体 Agent 的实际效果未独立验证。"
+  },
+  "openai/codex-security": {
+    "summary": "OpenAI 提供的 Codex Security CLI 与 TypeScript SDK，用于发现、核验并修复代码中的安全漏洞，也可嵌入自动化安全工作流。",
+    "capabilities": "漏洞扫描、安全核验、自动修复、CLI、TypeScript SDK",
+    "verified_at": "2026-11-13",
+    "evidence_sources": ["https://github.com/openai/codex-security"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与 topics；扫描覆盖率、误报率和修复结果未在目标代码库中独立验证。"
+  },
+  "we-promise/sure": {
+    "summary": "一个面向个人的开源财务应用，仓库将其定位为由社区共同构建的个人财务工具。",
+    "capabilities": "个人财务、开源应用、社区协作",
+    "verified_at": "2026-11-13",
+    "evidence_sources": ["https://github.com/we-promise/sure"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；具体账务功能、数据连接范围和隐私保护边界未补充推断。"
+  },
+  "Alishahryar1/free-claude-code": {
+    "summary": "一个从终端、应用、IDE、手机和浏览器会话接入多种 AI 编程工具与模型的项目，README 声明支持多 harness 和语音能力。",
+    "capabilities": "AI 编程工具接入、多模型路由、终端与浏览器会话、语音支持",
+    "verified_at": "2026-11-13",
+    "evidence_sources": ["https://github.com/Alishahryar1/free-claude-code"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；免费额度、服务条款兼容性、会话安全和实际稳定性均需在采用前独立确认。"
   }
 }

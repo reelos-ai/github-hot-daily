@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T06:01+08:00",
+  "generated_at": "2026-11-13T06:10+08:00",
   "methodology": {
     "name": "ReelOS Open Source Signal Index",
     "version": 2,
@@ -17,8 +17,8 @@
   },
   "source": {
     "first_snapshot": "2026-06-25",
-    "last_snapshot": "2026-11-12",
-    "snapshot_count": 112,
+    "last_snapshot": "2026-11-13",
+    "snapshot_count": 113,
     "repository_count": 251,
     "languages": [
       "C",
@@ -79,9 +79,9 @@
         "strategic": 19.2,
         "heat": 14.4,
         "best_rank": 10.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 95.4,
+      "rank_score": 95.3,
       "rank": 1
     },
     {
@@ -114,9 +114,9 @@
         "strategic": 19.1,
         "heat": 13.3,
         "best_rank": 10.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 78.2,
+      "rank_score": 78.0,
       "rank": 2
     },
     {
@@ -149,9 +149,9 @@
         "strategic": 19.6,
         "heat": 14.3,
         "best_rank": 10.0,
-        "recency": 3.8
+        "recency": 3.7
       },
-      "rank_score": 78.2,
+      "rank_score": 78.0,
       "rank": 3
     },
     {
@@ -184,9 +184,9 @@
         "strategic": 19.0,
         "heat": 14.1,
         "best_rank": 10.0,
-        "recency": 3.3
+        "recency": 3.2
       },
-      "rank_score": 75.9,
+      "rank_score": 75.8,
       "rank": 4
     },
     {
@@ -219,9 +219,9 @@
         "strategic": 19.6,
         "heat": 14.9,
         "best_rank": 10.0,
-        "recency": 2.7
+        "recency": 2.5
       },
-      "rank_score": 74.4,
+      "rank_score": 74.3,
       "rank": 5
     },
     {
@@ -254,9 +254,9 @@
         "strategic": 18.7,
         "heat": 15.0,
         "best_rank": 10.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 73.5,
+      "rank_score": 73.3,
       "rank": 6
     },
     {
@@ -289,9 +289,9 @@
         "strategic": 18.8,
         "heat": 11.8,
         "best_rank": 10.0,
-        "recency": 4.7
+        "recency": 4.5
       },
-      "rank_score": 72.4,
+      "rank_score": 72.3,
       "rank": 7
     },
     {
@@ -324,9 +324,9 @@
         "strategic": 18.5,
         "heat": 10.0,
         "best_rank": 10.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 72.2,
+      "rank_score": 72.1,
       "rank": 8
     },
     {
@@ -365,21 +365,56 @@
       "rank": 9
     },
     {
+      "full_name": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
+      "summary_source": "project_brief",
+      "original_description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "language": "Go",
+      "latest_stars": 49839,
+      "observed_star_change": 36115,
+      "peak_period_growth": 21460,
+      "growth_signal": 36115,
+      "appearances": 12,
+      "best_rank": 1,
+      "first_seen": "2026-07-26",
+      "last_seen": "2026-11-12",
+      "strategic_score": 95.7,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "增量代码审查",
+        "全仓扫描",
+        "行级评论",
+        "安全规则"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 6.5,
+        "growth": 16.2,
+        "strategic": 19.1,
+        "heat": 14.1,
+        "best_rank": 10.0,
+        "recency": 4.8
+      },
+      "rank_score": 70.8,
+      "rank": 10
+    },
+    {
       "full_name": "Tencent/WeKnora",
       "url": "https://github.com/Tencent/WeKnora",
       "summary": "把文档转换成可检索知识库，通过 RAG 问答、推理 Agent 与自动维护的 Wiki 组织和使用知识。",
       "summary_source": "project_brief",
       "original_description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
       "language": "Go",
-      "latest_stars": 37202,
-      "observed_star_change": 19896,
+      "latest_stars": 37185,
+      "observed_star_change": 19879,
       "peak_period_growth": 10658,
-      "growth_signal": 19896,
-      "appearances": 18,
+      "growth_signal": 19879,
+      "appearances": 17,
       "best_rank": 2,
       "first_seen": "2026-06-25",
-      "last_seen": "2026-11-12",
-      "strategic_score": 93.5,
+      "last_seen": "2026-11-11",
+      "strategic_score": 93.6,
       "relationship_label": "Memory 组件",
       "capabilities": [
         "知识库检索",
@@ -389,15 +424,15 @@
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 9.8,
+        "continuity": 9.3,
         "growth": 15.3,
         "strategic": 18.7,
         "heat": 13.1,
         "best_rank": 9.0,
-        "recency": 5.0
+        "recency": 4.7
       },
-      "rank_score": 70.9,
-      "rank": 10
+      "rank_score": 70.0,
+      "rank": 11
     },
     {
       "full_name": "pbakaus/impeccable",
@@ -429,10 +464,10 @@
         "strategic": 19.0,
         "heat": 14.3,
         "best_rank": 10.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 70.1,
-      "rank": 11
+      "rank_score": 69.9,
+      "rank": 12
     },
     {
       "full_name": "rohitg00/ai-engineering-from-scratch",
@@ -467,41 +502,6 @@
         "recency": 0
       },
       "rank_score": 68.3,
-      "rank": 12
-    },
-    {
-      "full_name": "alibaba/open-code-review",
-      "url": "https://github.com/alibaba/open-code-review",
-      "summary": "阿里开源的 AI 代码审查 CLI，结合固定审查流程和 LLM Agent，对 Git 变更生成精确到代码行的审查意见。",
-      "summary_source": "project_brief",
-      "original_description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
-      "language": "Go",
-      "latest_stars": 48823,
-      "observed_star_change": 35099,
-      "peak_period_growth": 21460,
-      "growth_signal": 35099,
-      "appearances": 11,
-      "best_rank": 1,
-      "first_seen": "2026-07-26",
-      "last_seen": "2026-10-29",
-      "strategic_score": 96.1,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "增量代码审查",
-        "全仓扫描",
-        "行级评论",
-        "安全规则"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 6.0,
-        "growth": 16.1,
-        "strategic": 19.2,
-        "heat": 14.1,
-        "best_rank": 10.0,
-        "recency": 2.7
-      },
-      "rank_score": 68.1,
       "rank": 13
     },
     {
@@ -534,9 +534,9 @@
         "strategic": 18.9,
         "heat": 12.4,
         "best_rank": 8.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 67.4,
+      "rank_score": 67.3,
       "rank": 14
     },
     {
@@ -569,9 +569,9 @@
         "strategic": 19.2,
         "heat": 12.8,
         "best_rank": 9.0,
-        "recency": 3.2
+        "recency": 3.0
       },
-      "rank_score": 66.9,
+      "rank_score": 66.8,
       "rank": 15
     },
     {
@@ -604,9 +604,9 @@
         "strategic": 19.3,
         "heat": 14.1,
         "best_rank": 10.0,
-        "recency": 3.0
+        "recency": 2.8
       },
-      "rank_score": 66.2,
+      "rank_score": 66.0,
       "rank": 16
     },
     {
@@ -639,9 +639,9 @@
         "strategic": 18.8,
         "heat": 11.6,
         "best_rank": 9.0,
-        "recency": 2.2
+        "recency": 2.0
       },
-      "rank_score": 65.9,
+      "rank_score": 65.7,
       "rank": 17
     },
     {
@@ -674,9 +674,9 @@
         "strategic": 18.8,
         "heat": 12.8,
         "best_rank": 9.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 65.6,
+      "rank_score": 65.5,
       "rank": 18
     },
     {
@@ -709,9 +709,9 @@
         "strategic": 19.2,
         "heat": 12.2,
         "best_rank": 10.0,
-        "recency": 3.3
+        "recency": 3.2
       },
-      "rank_score": 65.1,
+      "rank_score": 64.9,
       "rank": 19
     },
     {
@@ -779,9 +779,9 @@
         "strategic": 19.2,
         "heat": 11.8,
         "best_rank": 9.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 64.3,
+      "rank_score": 64.2,
       "rank": 21
     },
     {
@@ -814,9 +814,9 @@
         "strategic": 19.4,
         "heat": 13.5,
         "best_rank": 10.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 64.2,
+      "rank_score": 64.1,
       "rank": 22
     },
     {
@@ -849,9 +849,9 @@
         "strategic": 19.3,
         "heat": 12.9,
         "best_rank": 10.0,
-        "recency": 3.2
+        "recency": 3.0
       },
-      "rank_score": 63.8,
+      "rank_score": 63.6,
       "rank": 23
     },
     {
@@ -890,41 +890,6 @@
       "rank": 24
     },
     {
-      "full_name": "jub0t/Concat",
-      "url": "https://github.com/jub0t/Concat",
-      "summary": "一个免费、开源、local-first 的跨平台视频剪辑应用，定位为 CapCut 的替代方案。",
-      "summary_source": "project_brief",
-      "original_description": "Beta: The truly free, open-source, local-first, cross-platform video editor. Scriptable through a JSON-RPC API & MCP.",
-      "language": "Rust",
-      "latest_stars": 16151,
-      "observed_star_change": 4625,
-      "peak_period_growth": 9217,
-      "growth_signal": 9217,
-      "appearances": 5,
-      "best_rank": 2,
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-11-10",
-      "strategic_score": 95.4,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "本地优先",
-        "跨平台视频剪辑",
-        "开源 CapCut 替代",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 14.1,
-        "strategic": 19.1,
-        "heat": 12.9,
-        "best_rank": 9.0,
-        "recency": 4.7
-      },
-      "rank_score": 62.4,
-      "rank": 25
-    },
-    {
       "full_name": "earendil-works/pi",
       "url": "https://github.com/earendil-works/pi",
       "summary": "一个构建 AI Agent 的开发工具包，提供统一模型接口、Agent 循环、终端 UI 和编码 Agent CLI。",
@@ -955,6 +920,41 @@
         "heat": 11.9,
         "best_rank": 10.0,
         "recency": 0
+      },
+      "rank_score": 62.3,
+      "rank": 25
+    },
+    {
+      "full_name": "jub0t/Concat",
+      "url": "https://github.com/jub0t/Concat",
+      "summary": "一个免费、开源、local-first 的跨平台视频剪辑应用，定位为 CapCut 的替代方案。",
+      "summary_source": "project_brief",
+      "original_description": "Beta: The truly free, open-source, local-first, cross-platform video editor. Scriptable through a JSON-RPC API & MCP.",
+      "language": "Rust",
+      "latest_stars": 16151,
+      "observed_star_change": 4625,
+      "peak_period_growth": 9217,
+      "growth_signal": 9217,
+      "appearances": 5,
+      "best_rank": 2,
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-11-10",
+      "strategic_score": 95.4,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "本地优先",
+        "跨平台视频剪辑",
+        "开源 CapCut 替代",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.7,
+        "growth": 14.1,
+        "strategic": 19.1,
+        "heat": 12.9,
+        "best_rank": 9.0,
+        "recency": 4.5
       },
       "rank_score": 62.3,
       "rank": 26
@@ -989,9 +989,9 @@
         "strategic": 19.0,
         "heat": 13.3,
         "best_rank": 7.0,
-        "recency": 3.5
+        "recency": 3.3
       },
-      "rank_score": 62.2,
+      "rank_score": 62.0,
       "rank": 27
     },
     {
@@ -1030,41 +1030,6 @@
       "rank": 28
     },
     {
-      "full_name": "tester-army/e2e",
-      "url": "https://github.com/tester-army/e2e",
-      "summary": "一个面向 Web 与移动端的端到端测试框架：可用自然语言让 Agent 操作应用，再用定位器和断言验证结果；已验证的 Agent 操作可在后续运行中重放以减少模型调用。",
-      "summary_source": "project_brief",
-      "original_description": "Next generation e2e testing framework for web and mobile apps.",
-      "language": "TypeScript",
-      "latest_stars": 13320,
-      "observed_star_change": 8685,
-      "peak_period_growth": 6564,
-      "growth_signal": 8685,
-      "appearances": 6,
-      "best_rank": 2,
-      "first_seen": "2026-10-06",
-      "last_seen": "2026-11-06",
-      "strategic_score": 95.2,
-      "relationship_label": "Workspace 组件",
-      "capabilities": [
-        "自然语言测试",
-        "Agent 操作重放",
-        "Web 测试",
-        "移动端测试"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 3.3,
-        "growth": 14.0,
-        "strategic": 19.0,
-        "heat": 12.4,
-        "best_rank": 9.0,
-        "recency": 4.0
-      },
-      "rank_score": 61.7,
-      "rank": 29
-    },
-    {
       "full_name": "lexmount/moli",
       "url": "https://github.com/lexmount/moli",
       "summary": "一个用 Rust 构建、面向 AI Agent 的无头浏览器，项目说明强调轻量、速度和兼容性。",
@@ -1094,10 +1059,10 @@
         "strategic": 19.2,
         "heat": 14.0,
         "best_rank": 8.0,
-        "recency": 3.7
+        "recency": 3.5
       },
-      "rank_score": 61.7,
-      "rank": 30
+      "rank_score": 61.6,
+      "rank": 29
     },
     {
       "full_name": "HKUDS/Vibe-Trading",
@@ -1132,6 +1097,41 @@
         "recency": 0
       },
       "rank_score": 61.5,
+      "rank": 30
+    },
+    {
+      "full_name": "tester-army/e2e",
+      "url": "https://github.com/tester-army/e2e",
+      "summary": "一个面向 Web 与移动端的端到端测试框架：可用自然语言让 Agent 操作应用，再用定位器和断言验证结果；已验证的 Agent 操作可在后续运行中重放以减少模型调用。",
+      "summary_source": "project_brief",
+      "original_description": "Next generation e2e testing framework for web and mobile apps.",
+      "language": "TypeScript",
+      "latest_stars": 13320,
+      "observed_star_change": 8685,
+      "peak_period_growth": 6564,
+      "growth_signal": 8685,
+      "appearances": 6,
+      "best_rank": 2,
+      "first_seen": "2026-10-06",
+      "last_seen": "2026-11-06",
+      "strategic_score": 95.2,
+      "relationship_label": "Workspace 组件",
+      "capabilities": [
+        "自然语言测试",
+        "Agent 操作重放",
+        "Web 测试",
+        "移动端测试"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.3,
+        "growth": 14.0,
+        "strategic": 19.0,
+        "heat": 12.4,
+        "best_rank": 9.0,
+        "recency": 3.8
+      },
+      "rank_score": 61.5,
       "rank": 31
     },
     {
@@ -1164,45 +1164,10 @@
         "strategic": 18.7,
         "heat": 9.1,
         "best_rank": 10.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 61.4,
+      "rank_score": 61.2,
       "rank": 32
-    },
-    {
-      "full_name": "volcengine/OpenViking",
-      "url": "https://github.com/volcengine/OpenViking",
-      "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
-      "summary_source": "project_brief",
-      "original_description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
-      "language": "Python",
-      "latest_stars": 41145,
-      "observed_star_change": 13570,
-      "peak_period_growth": 3447,
-      "growth_signal": 13570,
-      "appearances": 5,
-      "best_rank": 1,
-      "first_seen": "2026-07-28",
-      "last_seen": "2026-10-30",
-      "strategic_score": 96.4,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "上下文数据库",
-        "知识 RAG",
-        "插件化技能"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 14.7,
-        "strategic": 19.3,
-        "heat": 11.5,
-        "best_rank": 10.0,
-        "recency": 2.8
-      },
-      "rank_score": 61.0,
-      "rank": 33
     },
     {
       "full_name": "farion1231/cc-switch",
@@ -1237,7 +1202,7 @@
         "recency": 0
       },
       "rank_score": 60.9,
-      "rank": 34
+      "rank": 33
     },
     {
       "full_name": "DietrichGebert/ponytail",
@@ -1270,6 +1235,41 @@
         "heat": 11.2,
         "best_rank": 5.0,
         "recency": 0
+      },
+      "rank_score": 60.8,
+      "rank": 34
+    },
+    {
+      "full_name": "volcengine/OpenViking",
+      "url": "https://github.com/volcengine/OpenViking",
+      "summary": "一个面向 AI Agent 的自演化上下文数据库，把长期记忆、知识 RAG 和技能体系放进同一套底层存储。",
+      "summary_source": "project_brief",
+      "original_description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+      "language": "Python",
+      "latest_stars": 41145,
+      "observed_star_change": 13570,
+      "peak_period_growth": 3447,
+      "growth_signal": 13570,
+      "appearances": 5,
+      "best_rank": 1,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-10-30",
+      "strategic_score": 96.4,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "长期记忆",
+        "上下文数据库",
+        "知识 RAG",
+        "插件化技能"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.7,
+        "growth": 14.7,
+        "strategic": 19.3,
+        "heat": 11.5,
+        "best_rank": 10.0,
+        "recency": 2.7
       },
       "rank_score": 60.8,
       "rank": 35
@@ -1409,45 +1409,10 @@
         "strategic": 18.3,
         "heat": 9.9,
         "best_rank": 8.0,
-        "recency": 5.0
-      },
-      "rank_score": 60.0,
-      "rank": 39
-    },
-    {
-      "full_name": "AstrBotDevs/AstrBot",
-      "url": "https://github.com/AstrBotDevs/AstrBot",
-      "summary": "一个开源的一体化 Agent 聊天机器人平台，把多种即时通信渠道、LLM、插件与 MCP 能力接入同一开发和运营框架。",
-      "summary_source": "project_brief",
-      "original_description": "AI Agent Assistant & development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨",
-      "language": "Python",
-      "latest_stars": 45505,
-      "observed_star_change": 8068,
-      "peak_period_growth": 2137,
-      "growth_signal": 8068,
-      "appearances": 4,
-      "best_rank": 1,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-11-02",
-      "strategic_score": 98.0,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "多平台聊天接入",
-        "LLM 集成",
-        "插件生态",
-        "MCP 集成"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.2,
-        "growth": 13.9,
-        "strategic": 19.6,
-        "heat": 10.8,
-        "best_rank": 10.0,
-        "recency": 3.3
+        "recency": 4.8
       },
       "rank_score": 59.8,
-      "rank": 40
+      "rank": 39
     },
     {
       "full_name": "dream-num/univer",
@@ -1482,7 +1447,7 @@
         "recency": 0
       },
       "rank_score": 59.7,
-      "rank": 41
+      "rank": 40
     },
     {
       "full_name": "usestrix/strix",
@@ -1517,7 +1482,112 @@
         "recency": 0
       },
       "rank_score": 59.7,
+      "rank": 41
+    },
+    {
+      "full_name": "AstrBotDevs/AstrBot",
+      "url": "https://github.com/AstrBotDevs/AstrBot",
+      "summary": "一个开源的一体化 Agent 聊天机器人平台，把多种即时通信渠道、LLM、插件与 MCP 能力接入同一开发和运营框架。",
+      "summary_source": "project_brief",
+      "original_description": "AI Agent Assistant & development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨",
+      "language": "Python",
+      "latest_stars": 45505,
+      "observed_star_change": 8068,
+      "peak_period_growth": 2137,
+      "growth_signal": 8068,
+      "appearances": 4,
+      "best_rank": 1,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-11-02",
+      "strategic_score": 98.0,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "多平台聊天接入",
+        "LLM 集成",
+        "插件生态",
+        "MCP 集成"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.2,
+        "growth": 13.9,
+        "strategic": 19.6,
+        "heat": 10.8,
+        "best_rank": 10.0,
+        "recency": 3.2
+      },
+      "rank_score": 59.6,
       "rank": 42
+    },
+    {
+      "full_name": "NVIDIA/SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
+      "summary_source": "project_brief",
+      "original_description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
+      "language": "Python",
+      "latest_stars": 25681,
+      "observed_star_change": 15020,
+      "peak_period_growth": 932,
+      "growth_signal": 15020,
+      "appearances": 6,
+      "best_rank": 3,
+      "first_seen": "2026-06-26",
+      "last_seen": "2026-11-13",
+      "strategic_score": 93.8,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "技能扫描",
+        "提示注入检测",
+        "供应链检查",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.3,
+        "growth": 14.8,
+        "strategic": 18.8,
+        "heat": 9.7,
+        "best_rank": 8.0,
+        "recency": 5.0
+      },
+      "rank_score": 59.5,
+      "rank": 43
+    },
+    {
+      "full_name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
+      "summary_source": "project_brief",
+      "original_description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "latest_stars": 50303,
+      "observed_star_change": 4001,
+      "peak_period_growth": 914,
+      "growth_signal": 4001,
+      "appearances": 6,
+      "best_rank": 1,
+      "first_seen": "2026-11-07",
+      "last_seen": "2026-11-13",
+      "strategic_score": 94.3,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "浏览器自动化",
+        "Agent 工具",
+        "终端 CLI",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.3,
+        "growth": 12.8,
+        "strategic": 18.9,
+        "heat": 9.6,
+        "best_rank": 10.0,
+        "recency": 5.0
+      },
+      "rank_score": 59.5,
+      "rank": 44
     },
     {
       "full_name": "anthropics/claude-plugins-official",
@@ -1549,45 +1619,10 @@
         "strategic": 18.9,
         "heat": 12.2,
         "best_rank": 8.0,
-        "recency": 1.7
+        "recency": 1.5
       },
-      "rank_score": 59.3,
-      "rank": 43
-    },
-    {
-      "full_name": "vercel-labs/agent-browser",
-      "url": "https://github.com/vercel-labs/agent-browser",
-      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
-      "summary_source": "project_brief",
-      "original_description": "Browser automation CLI for AI agents",
-      "language": "Rust",
-      "latest_stars": 49805,
-      "observed_star_change": 3503,
-      "peak_period_growth": 914,
-      "growth_signal": 3503,
-      "appearances": 5,
-      "best_rank": 1,
-      "first_seen": "2026-11-07",
-      "last_seen": "2026-11-12",
-      "strategic_score": 94.4,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "浏览器自动化",
-        "Agent 工具",
-        "终端 CLI",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 12.6,
-        "strategic": 18.9,
-        "heat": 9.6,
-        "best_rank": 10.0,
-        "recency": 5.0
-      },
-      "rank_score": 58.8,
-      "rank": 44
+      "rank_score": 59.1,
+      "rank": 45
     },
     {
       "full_name": "Egonex-AI/Understand-Anything",
@@ -1622,7 +1657,7 @@
         "recency": 0
       },
       "rank_score": 58.8,
-      "rank": 45
+      "rank": 46
     },
     {
       "full_name": "ogulcancelik/herdr",
@@ -1657,7 +1692,7 @@
         "recency": 0
       },
       "rank_score": 58.7,
-      "rank": 46
+      "rank": 47
     },
     {
       "full_name": "colbymchenry/codegraph",
@@ -1689,7 +1724,42 @@
         "recency": 0
       },
       "rank_score": 58.6,
-      "rank": 47
+      "rank": 48
+    },
+    {
+      "full_name": "coreyhaines31/marketingskills",
+      "url": "https://github.com/coreyhaines31/marketingskills",
+      "summary": "为编码 Agent 提供营销技能库，覆盖转化优化、文案、搜索优化、分析和增长工作流。",
+      "summary_source": "project_brief",
+      "original_description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+      "language": "JavaScript",
+      "latest_stars": 59954,
+      "observed_star_change": 12486,
+      "peak_period_growth": 666,
+      "growth_signal": 12486,
+      "appearances": 7,
+      "best_rank": 4,
+      "first_seen": "2026-09-07",
+      "last_seen": "2026-11-13",
+      "strategic_score": 94.0,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "营销技能",
+        "转化优化",
+        "搜索优化",
+        "Skill 来源"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.8,
+        "growth": 14.5,
+        "strategic": 18.8,
+        "heat": 9.2,
+        "best_rank": 7.0,
+        "recency": 5.0
+      },
+      "rank_score": 58.3,
+      "rank": 49
     },
     {
       "full_name": "topoteretes/cognee",
@@ -1724,7 +1794,7 @@
         "recency": 0
       },
       "rank_score": 58.3,
-      "rank": 48
+      "rank": 50
     },
     {
       "full_name": "unslothai/unsloth",
@@ -1759,7 +1829,7 @@
         "recency": 0
       },
       "rank_score": 58.2,
-      "rank": 49
+      "rank": 51
     },
     {
       "full_name": "block/buzz",
@@ -1794,7 +1864,7 @@
         "recency": 0
       },
       "rank_score": 57.6,
-      "rank": 50
+      "rank": 52
     },
     {
       "full_name": "browser-use/browser-use",
@@ -1803,10 +1873,10 @@
       "summary_source": "project_brief",
       "original_description": "Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
       "language": "Python",
-      "latest_stars": 120734,
-      "observed_star_change": 7798,
+      "latest_stars": 120733,
+      "observed_star_change": 7797,
       "peak_period_growth": 819,
-      "growth_signal": 7798,
+      "growth_signal": 7797,
       "appearances": 4,
       "best_rank": 3,
       "first_seen": "2026-09-08",
@@ -1826,10 +1896,10 @@
         "strategic": 18.8,
         "heat": 9.5,
         "best_rank": 8.0,
-        "recency": 5.0
+        "recency": 4.8
       },
-      "rank_score": 57.3,
-      "rank": 51
+      "rank_score": 57.1,
+      "rank": 53
     },
     {
       "full_name": "makecindy/cindy",
@@ -1861,10 +1931,10 @@
         "strategic": 19.2,
         "heat": 12.0,
         "best_rank": 8.0,
-        "recency": 3.3
+        "recency": 3.2
       },
-      "rank_score": 57.3,
-      "rank": 52
+      "rank_score": 57.1,
+      "rank": 54
     },
     {
       "full_name": "NVIDIA/auto-ontology",
@@ -1896,10 +1966,10 @@
         "strategic": 18.8,
         "heat": 11.2,
         "best_rank": 9.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 57.1,
-      "rank": 53
+      "rank_score": 56.9,
+      "rank": 55
     },
     {
       "full_name": "cloudflare/security-audit-skill",
@@ -1931,45 +2001,10 @@
         "strategic": 18.4,
         "heat": 11.2,
         "best_rank": 4.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 56.9,
-      "rank": 54
-    },
-    {
-      "full_name": "AgriciDaniel/claude-seo",
-      "url": "https://github.com/AgriciDaniel/claude-seo",
-      "summary": "面向 Claude Code 的开源 SEO 审计技能包：用多个专长 Agent 检查技术 SEO、内容质量、结构化数据、AI 搜索可见性、本地与电商 SEO，并输出按优先级排列的行动建议。",
-      "summary_source": "project_brief",
-      "original_description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
-      "language": "Python",
-      "latest_stars": 25496,
-      "observed_star_change": 2805,
-      "peak_period_growth": 4814,
-      "growth_signal": 4814,
-      "appearances": 4,
-      "best_rank": 4,
-      "first_seen": "2026-10-28",
-      "last_seen": "2026-11-02",
-      "strategic_score": 96.2,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "SEO 审计",
-        "Claude Code 技能",
-        "并行 Agent",
-        "结构化数据检查"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.2,
-        "growth": 13.1,
-        "strategic": 19.2,
-        "heat": 12.0,
-        "best_rank": 7.0,
-        "recency": 3.3
-      },
-      "rank_score": 56.8,
-      "rank": 55
+      "rank_score": 56.7,
+      "rank": 56
     },
     {
       "full_name": "PostHog/posthog",
@@ -2004,77 +2039,7 @@
         "recency": 0
       },
       "rank_score": 56.6,
-      "rank": 56
-    },
-    {
-      "full_name": "xerj-org/xerj",
-      "url": "https://github.com/xerj-org/xerj",
-      "summary": "Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
-      "summary_source": "original_description",
-      "original_description": "Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
-      "language": "Rust",
-      "latest_stars": 15553,
-      "observed_star_change": 9994,
-      "peak_period_growth": 8080,
-      "growth_signal": 9994,
-      "appearances": 5,
-      "best_rank": 5,
-      "first_seen": "2026-10-16",
-      "last_seen": "2026-10-26",
-      "strategic_score": 93.8,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "MCP 集成",
-        "RAG 检索",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 14.2,
-        "strategic": 18.8,
-        "heat": 12.7,
-        "best_rank": 6.0,
-        "recency": 2.2
-      },
-      "rank_score": 56.6,
       "rank": 57
-    },
-    {
-      "full_name": "lobehub/lobehub",
-      "url": "https://github.com/lobehub/lobehub",
-      "summary": "一个 AI Agent 运营平台，用于集中创建、调度和监控持续运行的 Agent 团队。",
-      "summary_source": "project_brief",
-      "original_description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
-      "language": "TypeScript",
-      "latest_stars": 84422,
-      "observed_star_change": 4303,
-      "peak_period_growth": 836,
-      "growth_signal": 4303,
-      "appearances": 5,
-      "best_rank": 3,
-      "first_seen": "2026-07-16",
-      "last_seen": "2026-11-09",
-      "strategic_score": 94.8,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "MCP 集成",
-        "技能扩展",
-        "大模型应用",
-        "Skill 来源"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 12.9,
-        "strategic": 19.0,
-        "heat": 9.5,
-        "best_rank": 8.0,
-        "recency": 4.5
-      },
-      "rank_score": 56.6,
-      "rank": 58
     },
     {
       "full_name": "esengine/DeepSeek-Reasonix",
@@ -2109,41 +2074,76 @@
         "recency": 0
       },
       "rank_score": 56.6,
-      "rank": 59
+      "rank": 58
     },
     {
-      "full_name": "firecrawl/firecrawl",
-      "url": "https://github.com/firecrawl/firecrawl",
-      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
+      "full_name": "AgriciDaniel/claude-seo",
+      "url": "https://github.com/AgriciDaniel/claude-seo",
+      "summary": "面向 Claude Code 的开源 SEO 审计技能包：用多个专长 Agent 检查技术 SEO、内容质量、结构化数据、AI 搜索可见性、本地与电商 SEO，并输出按优先级排列的行动建议。",
       "summary_source": "project_brief",
-      "original_description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
-      "language": "TypeScript",
-      "latest_stars": 194660,
-      "observed_star_change": 53195,
-      "peak_period_growth": 1020,
-      "growth_signal": 53195,
-      "appearances": 7,
-      "best_rank": 5,
-      "first_seen": "2026-06-30",
-      "last_seen": "2026-10-24",
-      "strategic_score": 91.3,
-      "relationship_label": "Memory 组件",
+      "original_description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
+      "language": "Python",
+      "latest_stars": 25496,
+      "observed_star_change": 2805,
+      "peak_period_growth": 4814,
+      "growth_signal": 4814,
+      "appearances": 4,
+      "best_rank": 4,
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-11-02",
+      "strategic_score": 96.2,
+      "relationship_label": "Skill 来源",
       "capabilities": [
-        "网页搜索",
-        "批量抓取",
-        "交互式采集",
-        "HTML 转 Markdown"
+        "SEO 审计",
+        "Claude Code 技能",
+        "并行 Agent",
+        "结构化数据检查"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 3.8,
-        "growth": 16.8,
-        "strategic": 18.3,
-        "heat": 9.8,
-        "best_rank": 6.0,
-        "recency": 1.8
+        "continuity": 2.2,
+        "growth": 13.1,
+        "strategic": 19.2,
+        "heat": 12.0,
+        "best_rank": 7.0,
+        "recency": 3.2
       },
-      "rank_score": 56.5,
+      "rank_score": 56.6,
+      "rank": 59
+    },
+    {
+      "full_name": "xerj-org/xerj",
+      "url": "https://github.com/xerj-org/xerj",
+      "summary": "Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
+      "summary_source": "original_description",
+      "original_description": "Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
+      "language": "Rust",
+      "latest_stars": 15553,
+      "observed_star_change": 9994,
+      "peak_period_growth": 8080,
+      "growth_signal": 9994,
+      "appearances": 5,
+      "best_rank": 5,
+      "first_seen": "2026-10-16",
+      "last_seen": "2026-10-26",
+      "strategic_score": 93.8,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "长期记忆",
+        "MCP 集成",
+        "RAG 检索",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.7,
+        "growth": 14.2,
+        "strategic": 18.8,
+        "heat": 12.7,
+        "best_rank": 6.0,
+        "recency": 2.0
+      },
+      "rank_score": 56.4,
       "rank": 60
     },
     {
@@ -2182,6 +2182,76 @@
       "rank": 61
     },
     {
+      "full_name": "lobehub/lobehub",
+      "url": "https://github.com/lobehub/lobehub",
+      "summary": "一个 AI Agent 运营平台，用于集中创建、调度和监控持续运行的 Agent 团队。",
+      "summary_source": "project_brief",
+      "original_description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
+      "language": "TypeScript",
+      "latest_stars": 84422,
+      "observed_star_change": 4303,
+      "peak_period_growth": 836,
+      "growth_signal": 4303,
+      "appearances": 5,
+      "best_rank": 3,
+      "first_seen": "2026-07-16",
+      "last_seen": "2026-11-09",
+      "strategic_score": 94.8,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "MCP 集成",
+        "技能扩展",
+        "大模型应用",
+        "Skill 来源"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.7,
+        "growth": 12.9,
+        "strategic": 19.0,
+        "heat": 9.5,
+        "best_rank": 8.0,
+        "recency": 4.3
+      },
+      "rank_score": 56.4,
+      "rank": 62
+    },
+    {
+      "full_name": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
+      "summary_source": "project_brief",
+      "original_description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+      "language": "TypeScript",
+      "latest_stars": 194660,
+      "observed_star_change": 53195,
+      "peak_period_growth": 1020,
+      "growth_signal": 53195,
+      "appearances": 7,
+      "best_rank": 5,
+      "first_seen": "2026-06-30",
+      "last_seen": "2026-10-24",
+      "strategic_score": 91.3,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "网页搜索",
+        "批量抓取",
+        "交互式采集",
+        "HTML 转 Markdown"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.8,
+        "growth": 16.8,
+        "strategic": 18.3,
+        "heat": 9.8,
+        "best_rank": 6.0,
+        "recency": 1.7
+      },
+      "rank_score": 56.3,
+      "rank": 63
+    },
+    {
       "full_name": "hydra-db/hydradb",
       "url": "https://github.com/hydra-db/hydradb",
       "summary": "把图数据存入对象存储，通过查询节点和独立索引器提供分布式图数据库服务。",
@@ -2214,7 +2284,7 @@
         "recency": 0
       },
       "rank_score": 56.3,
-      "rank": 62
+      "rank": 64
     },
     {
       "full_name": "facebook/astryx",
@@ -2249,7 +2319,7 @@
         "recency": 0
       },
       "rank_score": 56.2,
-      "rank": 63
+      "rank": 65
     },
     {
       "full_name": "QuantumNous/new-api",
@@ -2281,45 +2351,45 @@
         "strategic": 18.8,
         "heat": 8.9,
         "best_rank": 9.0,
-        "recency": 3.8
+        "recency": 3.7
       },
-      "rank_score": 56.0,
-      "rank": 64
+      "rank_score": 55.8,
+      "rank": 66
     },
     {
-      "full_name": "pingdotgg/t3code",
-      "url": "https://github.com/pingdotgg/t3code",
-      "summary": "一个用于控制本机编码 Agent 的开源控制界面：README 标注提供移动端、Web 与 Electron 桌面端，可连接已在本机配置的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity。",
-      "summary_source": "project_brief",
-      "original_description": "",
+      "full_name": "QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code",
+      "summary": "An open-source AI coding agent that lives in your terminal.",
+      "summary_source": "original_description",
+      "original_description": "An open-source AI coding agent that lives in your terminal.",
       "language": "TypeScript",
-      "latest_stars": 32662,
-      "observed_star_change": 6525,
-      "peak_period_growth": 2367,
-      "growth_signal": 6525,
-      "appearances": 6,
-      "best_rank": 5,
-      "first_seen": "2026-10-08",
-      "last_seen": "2026-10-31",
-      "strategic_score": 95.2,
-      "relationship_label": "Workspace 组件",
+      "latest_stars": 29758,
+      "observed_star_change": 2878,
+      "peak_period_growth": 389,
+      "growth_signal": 2878,
+      "appearances": 2,
+      "best_rank": 1,
+      "first_seen": "2026-08-09",
+      "last_seen": "2026-11-13",
+      "strategic_score": 95.0,
+      "relationship_label": "Memory 组件",
       "capabilities": [
-        "Agent 控制界面",
-        "移动端远程访问",
-        "Web 与桌面端",
-        "多个编码 Agent 连接"
+        "长期记忆",
+        "MCP 集成",
+        "技能扩展",
+        "Memory 组件"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 3.3,
-        "growth": 13.5,
+        "continuity": 1.1,
+        "growth": 12.3,
         "strategic": 19.0,
-        "heat": 11.0,
-        "best_rank": 6.0,
-        "recency": 3.0
+        "heat": 8.4,
+        "best_rank": 10.0,
+        "recency": 5.0
       },
       "rank_score": 55.8,
-      "rank": 65
+      "rank": 67
     },
     {
       "full_name": "cactus-compute/needle",
@@ -2354,7 +2424,77 @@
         "recency": 0
       },
       "rank_score": 55.7,
-      "rank": 66
+      "rank": 68
+    },
+    {
+      "full_name": "pingdotgg/t3code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "summary": "一个用于控制本机编码 Agent 的开源控制界面：README 标注提供移动端、Web 与 Electron 桌面端，可连接已在本机配置的 Claude Code、Codex、Cursor、Grok Build、OpenCode 和 Antigravity。",
+      "summary_source": "project_brief",
+      "original_description": "",
+      "language": "TypeScript",
+      "latest_stars": 32662,
+      "observed_star_change": 6525,
+      "peak_period_growth": 2367,
+      "growth_signal": 6525,
+      "appearances": 6,
+      "best_rank": 5,
+      "first_seen": "2026-10-08",
+      "last_seen": "2026-10-31",
+      "strategic_score": 95.2,
+      "relationship_label": "Workspace 组件",
+      "capabilities": [
+        "Agent 控制界面",
+        "移动端远程访问",
+        "Web 与桌面端",
+        "多个编码 Agent 连接"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 3.3,
+        "growth": 13.5,
+        "strategic": 19.0,
+        "heat": 11.0,
+        "best_rank": 6.0,
+        "recency": 2.8
+      },
+      "rank_score": 55.7,
+      "rank": 69
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "summary": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "summary_source": "original_description",
+      "original_description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "language": "TypeScript",
+      "latest_stars": 210323,
+      "observed_star_change": 13480,
+      "peak_period_growth": 220,
+      "growth_signal": 13480,
+      "appearances": 4,
+      "best_rank": 4,
+      "first_seen": "2026-07-17",
+      "last_seen": "2026-11-13",
+      "strategic_score": 93.5,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "MCP 集成",
+        "RAG 检索",
+        "工作流",
+        "Skill 来源"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.2,
+        "growth": 14.7,
+        "strategic": 18.7,
+        "heat": 7.6,
+        "best_rank": 7.0,
+        "recency": 5.0
+      },
+      "rank_score": 55.2,
+      "rank": 70
     },
     {
       "full_name": "browser-use/video-use",
@@ -2389,7 +2529,7 @@
         "recency": 0
       },
       "rank_score": 55.1,
-      "rank": 67
+      "rank": 71
     },
     {
       "full_name": "ChromeDevTools/chrome-devtools-mcp",
@@ -2424,7 +2564,7 @@
         "recency": 0
       },
       "rank_score": 55.1,
-      "rank": 68
+      "rank": 72
     },
     {
       "full_name": "google/ax",
@@ -2456,10 +2596,10 @@
         "strategic": 18.9,
         "heat": 10.9,
         "best_rank": 8.0,
-        "recency": 0.8
+        "recency": 0.7
       },
-      "rank_score": 54.9,
-      "rank": 69
+      "rank_score": 54.8,
+      "rank": 73
     },
     {
       "full_name": "thesysdev/openui",
@@ -2491,45 +2631,45 @@
         "strategic": 19.1,
         "heat": 10.8,
         "best_rank": 8.0,
-        "recency": 2.2
+        "recency": 2.0
       },
-      "rank_score": 54.8,
-      "rank": 70
+      "rank_score": 54.6,
+      "rank": 74
     },
     {
-      "full_name": "remotion-dev/remotion",
-      "url": "https://github.com/remotion-dev/remotion",
-      "summary": "一个用 React 代码生成和批量渲染视频的开源框架，覆盖 Agent 驱动创作、交互编辑和自动化出片。",
+      "full_name": "every-app/open-seo",
+      "url": "https://github.com/every-app/open-seo",
+      "summary": "一个开源 SEO 工具，定位为 Semrush 和 Ahrefs 的替代方案，并提供可连接 AI Agent 的技能与 MCP 能力。",
       "summary_source": "project_brief",
-      "original_description": "🎥 Make videos programmatically with React",
+      "original_description": "Open source alternative to Semrush and Ahrefs",
       "language": "TypeScript",
-      "latest_stars": 69736,
-      "observed_star_change": 14913,
-      "peak_period_growth": 8288,
-      "growth_signal": 14913,
-      "appearances": 4,
-      "best_rank": 8,
-      "first_seen": "2026-07-29",
-      "last_seen": "2026-11-02",
-      "strategic_score": 93.2,
-      "relationship_label": "Runtime 参考",
+      "latest_stars": 27489,
+      "observed_star_change": 12893,
+      "peak_period_growth": 517,
+      "growth_signal": 12893,
+      "appearances": 3,
+      "best_rank": 5,
+      "first_seen": "2026-08-29",
+      "last_seen": "2026-11-13",
+      "strategic_score": 93.0,
+      "relationship_label": "Skill 来源",
       "capabilities": [
-        "代码生成视频",
-        "批量渲染",
-        "React 视频模板",
-        "交互编辑"
+        "SEO 研究",
+        "关键词与站点分析",
+        "MCP 接入",
+        "AI Skills"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 2.2,
-        "growth": 14.8,
+        "continuity": 1.6,
+        "growth": 14.6,
         "strategic": 18.6,
-        "heat": 12.7,
-        "best_rank": 3.0,
-        "recency": 3.3
+        "heat": 8.8,
+        "best_rank": 6.0,
+        "recency": 5.0
       },
-      "rank_score": 54.7,
-      "rank": 71
+      "rank_score": 54.6,
+      "rank": 75
     },
     {
       "full_name": "PrimeIntellect-ai/prime-agent",
@@ -2564,7 +2704,112 @@
         "recency": 0
       },
       "rank_score": 54.6,
-      "rank": 72
+      "rank": 76
+    },
+    {
+      "full_name": "remotion-dev/remotion",
+      "url": "https://github.com/remotion-dev/remotion",
+      "summary": "一个用 React 代码生成和批量渲染视频的开源框架，覆盖 Agent 驱动创作、交互编辑和自动化出片。",
+      "summary_source": "project_brief",
+      "original_description": "🎥 Make videos programmatically with React",
+      "language": "TypeScript",
+      "latest_stars": 69736,
+      "observed_star_change": 14913,
+      "peak_period_growth": 8288,
+      "growth_signal": 14913,
+      "appearances": 4,
+      "best_rank": 8,
+      "first_seen": "2026-07-29",
+      "last_seen": "2026-11-02",
+      "strategic_score": 93.2,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "代码生成视频",
+        "批量渲染",
+        "React 视频模板",
+        "交互编辑"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.2,
+        "growth": 14.8,
+        "strategic": 18.6,
+        "heat": 12.7,
+        "best_rank": 3.0,
+        "recency": 3.2
+      },
+      "rank_score": 54.5,
+      "rank": 77
+    },
+    {
+      "full_name": "superplanehq/superplane",
+      "url": "https://github.com/superplanehq/superplane",
+      "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
+      "summary_source": "project_brief",
+      "original_description": "Open source factory for one-shot engineering",
+      "language": "Go",
+      "latest_stars": 10030,
+      "observed_star_change": 4697,
+      "peak_period_growth": 250,
+      "growth_signal": 4697,
+      "appearances": 4,
+      "best_rank": 3,
+      "first_seen": "2026-08-16",
+      "last_seen": "2026-11-13",
+      "strategic_score": 92.2,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Agent 编排",
+        "AI 软件工程",
+        "工作流自动化",
+        "代码审查"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.2,
+        "growth": 13.0,
+        "strategic": 18.4,
+        "heat": 7.8,
+        "best_rank": 8.0,
+        "recency": 5.0
+      },
+      "rank_score": 54.5,
+      "rank": 78
+    },
+    {
+      "full_name": "CopilotKit/OpenBot",
+      "url": "https://github.com/CopilotKit/OpenBot",
+      "summary": "一个开源 AI 同事运行环境：每个 Agent 拥有独立的浏览器、文件系统和电脑操作空间，并可在团队中协作完成任务。",
+      "summary_source": "project_brief",
+      "original_description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+      "language": "TypeScript",
+      "latest_stars": 11526,
+      "observed_star_change": 3464,
+      "peak_period_growth": 707,
+      "growth_signal": 3464,
+      "appearances": 3,
+      "best_rank": 4,
+      "first_seen": "2026-10-30",
+      "last_seen": "2026-11-13",
+      "strategic_score": 95.0,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "AI 同事",
+        "独立浏览器",
+        "文件系统",
+        "电脑操作"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.6,
+        "growth": 12.6,
+        "strategic": 19.0,
+        "heat": 9.3,
+        "best_rank": 7.0,
+        "recency": 5.0
+      },
+      "rank_score": 54.5,
+      "rank": 79
     },
     {
       "full_name": "alibaba/page-agent",
@@ -2599,7 +2844,7 @@
         "recency": 0
       },
       "rank_score": 54.4,
-      "rank": 73
+      "rank": 80
     },
     {
       "full_name": "mvschwarz/openrig",
@@ -2634,7 +2879,42 @@
         "recency": 0
       },
       "rank_score": 54.4,
-      "rank": 74
+      "rank": 81
+    },
+    {
+      "full_name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
+      "summary_source": "project_brief",
+      "original_description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "latest_stars": 26418,
+      "observed_star_change": 6661,
+      "peak_period_growth": 3324,
+      "growth_signal": 6661,
+      "appearances": 4,
+      "best_rank": 7,
+      "first_seen": "2026-11-10",
+      "last_seen": "2026-11-13",
+      "strategic_score": 91.0,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "设计系统",
+        "React 组件",
+        "StyleX 样式",
+        "界面令牌"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.2,
+        "growth": 13.6,
+        "strategic": 18.2,
+        "heat": 11.4,
+        "best_rank": 4.0,
+        "recency": 5.0
+      },
+      "rank_score": 54.4,
+      "rank": 82
     },
     {
       "full_name": "herdrdev/herdr",
@@ -2666,45 +2946,10 @@
         "strategic": 18.9,
         "heat": 10.7,
         "best_rank": 6.0,
-        "recency": 4.5
+        "recency": 4.3
       },
-      "rank_score": 54.4,
-      "rank": 75
-    },
-    {
-      "full_name": "NVIDIA/SkillSpector",
-      "url": "https://github.com/NVIDIA/SkillSpector",
-      "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
-      "summary_source": "project_brief",
-      "original_description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
-      "language": "Python",
-      "latest_stars": 22720,
-      "observed_star_change": 12059,
-      "peak_period_growth": 932,
-      "growth_signal": 12059,
-      "appearances": 5,
-      "best_rank": 5,
-      "first_seen": "2026-06-26",
-      "last_seen": "2026-10-28",
-      "strategic_score": 93.8,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "技能扫描",
-        "提示注入检测",
-        "供应链检查",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 14.5,
-        "strategic": 18.8,
-        "heat": 9.7,
-        "best_rank": 6.0,
-        "recency": 2.5
-      },
-      "rank_score": 54.1,
-      "rank": 76
+      "rank_score": 54.2,
+      "rank": 83
     },
     {
       "full_name": "different-ai/openwork",
@@ -2739,7 +2984,7 @@
         "recency": 0
       },
       "rank_score": 54.0,
-      "rank": 77
+      "rank": 84
     },
     {
       "full_name": "google-research/timesfm",
@@ -2774,7 +3019,7 @@
         "recency": 0
       },
       "rank_score": 53.9,
-      "rank": 78
+      "rank": 85
     },
     {
       "full_name": "cathrynlavery/diagram-design",
@@ -2809,7 +3054,42 @@
         "recency": 0
       },
       "rank_score": 53.8,
-      "rank": 79
+      "rank": 86
+    },
+    {
+      "full_name": "homeassistant-ai/ha-mcp",
+      "url": "https://github.com/homeassistant-ai/ha-mcp",
+      "summary": "一个将 Home Assistant 接入 Claude、ChatGPT 等 AI 助手的 MCP 服务器；README 展示其用于配置与自动化家庭设备，并声明提供 87 个工具。",
+      "summary_source": "project_brief",
+      "original_description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+      "language": "Python",
+      "latest_stars": 7680,
+      "observed_star_change": 669,
+      "peak_period_growth": 691,
+      "growth_signal": 691,
+      "appearances": 3,
+      "best_rank": 2,
+      "first_seen": "2026-11-11",
+      "last_seen": "2026-11-13",
+      "strategic_score": 92.7,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Home Assistant 集成",
+        "MCP 集成",
+        "智能家居自动化",
+        "设备配置"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.6,
+        "growth": 10.1,
+        "strategic": 18.5,
+        "heat": 9.2,
+        "best_rank": 9.0,
+        "recency": 5.0
+      },
+      "rank_score": 53.5,
+      "rank": 87
     },
     {
       "full_name": "Graphify-Labs/graphify",
@@ -2841,80 +3121,10 @@
         "strategic": 18.6,
         "heat": 10.2,
         "best_rank": 6.0,
-        "recency": 1.8
+        "recency": 1.7
       },
-      "rank_score": 53.7,
-      "rank": 80
-    },
-    {
-      "full_name": "meta/astryx",
-      "url": "https://github.com/meta/astryx",
-      "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
-      "summary_source": "project_brief",
-      "original_description": "An open source design system that's fully customizable and agent ready",
-      "language": "TypeScript",
-      "latest_stars": 24801,
-      "observed_star_change": 5044,
-      "peak_period_growth": 3324,
-      "growth_signal": 5044,
-      "appearances": 3,
-      "best_rank": 7,
-      "first_seen": "2026-11-10",
-      "last_seen": "2026-11-12",
-      "strategic_score": 91.0,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "设计系统",
-        "React 组件",
-        "StyleX 样式",
-        "界面令牌"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 13.1,
-        "strategic": 18.2,
-        "heat": 11.4,
-        "best_rank": 4.0,
-        "recency": 5.0
-      },
-      "rank_score": 53.4,
-      "rank": 81
-    },
-    {
-      "full_name": "superplanehq/superplane",
-      "url": "https://github.com/superplanehq/superplane",
-      "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
-      "summary_source": "project_brief",
-      "original_description": "Open source factory for one-shot engineering",
-      "language": "Go",
-      "latest_stars": 9433,
-      "observed_star_change": 4100,
-      "peak_period_growth": 250,
-      "growth_signal": 4100,
-      "appearances": 3,
-      "best_rank": 3,
-      "first_seen": "2026-08-16",
-      "last_seen": "2026-11-10",
-      "strategic_score": 92.3,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Agent 编排",
-        "AI 软件工程",
-        "工作流自动化",
-        "代码审查"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 12.8,
-        "strategic": 18.5,
-        "heat": 7.8,
-        "best_rank": 8.0,
-        "recency": 4.7
-      },
-      "rank_score": 53.4,
-      "rank": 82
+      "rank_score": 53.5,
+      "rank": 88
     },
     {
       "full_name": "livekit/agents",
@@ -2949,7 +3159,7 @@
         "recency": 0
       },
       "rank_score": 53.3,
-      "rank": 83
+      "rank": 89
     },
     {
       "full_name": "ruvnet/RuView",
@@ -2984,7 +3194,7 @@
         "recency": 0
       },
       "rank_score": 53.3,
-      "rank": 84
+      "rank": 90
     },
     {
       "full_name": "JuliusBrussee/caveman",
@@ -3019,42 +3229,7 @@
         "recency": 0
       },
       "rank_score": 52.9,
-      "rank": 85
-    },
-    {
-      "full_name": "Nasiko-Labs/nasiko",
-      "url": "https://github.com/Nasiko-Labs/nasiko",
-      "summary": "一个面向 AI Agent 的开放运行时。",
-      "summary_source": "project_brief",
-      "original_description": "The Open Runtime for AI Agents",
-      "language": "Rust",
-      "latest_stars": 11535,
-      "observed_star_change": 3917,
-      "peak_period_growth": 1038,
-      "growth_signal": 3917,
-      "appearances": 4,
-      "best_rank": 5,
-      "first_seen": "2026-09-23",
-      "last_seen": "2026-11-03",
-      "strategic_score": 93.2,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "Agent 运行时",
-        "MCP 网关",
-        "多 Agent",
-        "Runtime 参考"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.2,
-        "growth": 12.8,
-        "strategic": 18.6,
-        "heat": 9.8,
-        "best_rank": 6.0,
-        "recency": 3.5
-      },
-      "rank_score": 52.9,
-      "rank": 86
+      "rank": 91
     },
     {
       "full_name": "tirth8205/code-review-graph",
@@ -3089,7 +3264,7 @@
         "recency": 0
       },
       "rank_score": 52.8,
-      "rank": 87
+      "rank": 92
     },
     {
       "full_name": "lightningpixel/modly",
@@ -3124,42 +3299,42 @@
         "recency": 0
       },
       "rank_score": 52.8,
-      "rank": 88
+      "rank": 93
     },
     {
-      "full_name": "homeassistant-ai/ha-mcp",
-      "url": "https://github.com/homeassistant-ai/ha-mcp",
-      "summary": "一个将 Home Assistant 接入 Claude、ChatGPT 等 AI 助手的 MCP 服务器；README 展示其用于配置与自动化家庭设备，并声明提供 87 个工具。",
+      "full_name": "Nasiko-Labs/nasiko",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "summary": "一个面向 AI Agent 的开放运行时。",
       "summary_source": "project_brief",
-      "original_description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
-      "language": "Python",
-      "latest_stars": 7280,
-      "observed_star_change": 269,
-      "peak_period_growth": 640,
-      "growth_signal": 640,
-      "appearances": 2,
-      "best_rank": 2,
-      "first_seen": "2026-11-11",
-      "last_seen": "2026-11-12",
-      "strategic_score": 93.0,
-      "relationship_label": "Memory 组件",
+      "original_description": "The Open Runtime for AI Agents",
+      "language": "Rust",
+      "latest_stars": 11535,
+      "observed_star_change": 3917,
+      "peak_period_growth": 1038,
+      "growth_signal": 3917,
+      "appearances": 4,
+      "best_rank": 5,
+      "first_seen": "2026-09-23",
+      "last_seen": "2026-11-03",
+      "strategic_score": 93.2,
+      "relationship_label": "Runtime 参考",
       "capabilities": [
-        "Home Assistant 集成",
-        "MCP 集成",
-        "智能家居自动化",
-        "设备配置"
+        "Agent 运行时",
+        "MCP 网关",
+        "多 Agent",
+        "Runtime 参考"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 10.0,
+        "continuity": 2.2,
+        "growth": 12.8,
         "strategic": 18.6,
-        "heat": 9.1,
-        "best_rank": 9.0,
-        "recency": 5.0
+        "heat": 9.8,
+        "best_rank": 6.0,
+        "recency": 3.3
       },
-      "rank_score": 52.8,
-      "rank": 89
+      "rank_score": 52.7,
+      "rank": 94
     },
     {
       "full_name": "Robbyant/lingbot-map",
@@ -3194,7 +3369,7 @@
         "recency": 0
       },
       "rank_score": 52.5,
-      "rank": 90
+      "rank": 95
     },
     {
       "full_name": "googleworkspace/cli",
@@ -3226,7 +3401,7 @@
         "recency": 0
       },
       "rank_score": 52.5,
-      "rank": 91
+      "rank": 96
     },
     {
       "full_name": "unclecode/crawl4ai",
@@ -3261,7 +3436,7 @@
         "recency": 0
       },
       "rank_score": 52.5,
-      "rank": 92
+      "rank": 97
     },
     {
       "full_name": "TencentCloud/TencentDB-Agent-Memory",
@@ -3296,7 +3471,7 @@
         "recency": 0
       },
       "rank_score": 52.4,
-      "rank": 93
+      "rank": 98
     },
     {
       "full_name": "DuarteSantos8/openGym",
@@ -3331,7 +3506,7 @@
         "recency": 0
       },
       "rank_score": 52.0,
-      "rank": 94
+      "rank": 99
     },
     {
       "full_name": "huangruiteng/loopx",
@@ -3366,7 +3541,7 @@
         "recency": 0
       },
       "rank_score": 51.9,
-      "rank": 95
+      "rank": 100
     },
     {
       "full_name": "malisper/pgrust",
@@ -3401,42 +3576,7 @@
         "recency": 0
       },
       "rank_score": 51.9,
-      "rank": 96
-    },
-    {
-      "full_name": "Anil-matcha/Open-Generative-AI",
-      "url": "https://github.com/Anil-matcha/Open-Generative-AI",
-      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
-      "summary_source": "project_brief",
-      "original_description": "Uncensored Open-source alternative to AI video platforms — Free AI image & video generation studio with 600+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
-      "language": "JavaScript",
-      "latest_stars": 34126,
-      "observed_star_change": 1570,
-      "peak_period_growth": 381,
-      "growth_signal": 1570,
-      "appearances": 5,
-      "best_rank": 5,
-      "first_seen": "2026-11-06",
-      "last_seen": "2026-11-12",
-      "strategic_score": 91.8,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "图像生成",
-        "视频生成",
-        "自托管",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 11.3,
-        "strategic": 18.4,
-        "heat": 8.4,
-        "best_rank": 6.0,
-        "recency": 5.0
-      },
-      "rank_score": 51.8,
-      "rank": 97
+      "rank": 101
     },
     {
       "full_name": "wonderwhy-er/DesktopCommanderMCP",
@@ -3471,42 +3611,42 @@
         "recency": 0
       },
       "rank_score": 51.8,
-      "rank": 98
+      "rank": 102
     },
     {
-      "full_name": "coreyhaines31/marketingskills",
-      "url": "https://github.com/coreyhaines31/marketingskills",
-      "summary": "为编码 Agent 提供营销技能库，覆盖转化优化、文案、搜索优化、分析和增长工作流。",
+      "full_name": "Anil-matcha/Open-Generative-AI",
+      "url": "https://github.com/Anil-matcha/Open-Generative-AI",
+      "summary": "一个可自托管的开源图像与视频生成工作室，仓库说明其聚合多种生成模型，并明确标注为无内容过滤的替代方案。",
       "summary_source": "project_brief",
-      "original_description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+      "original_description": "Uncensored Open-source alternative to AI video platforms — Free AI image & video generation studio with 600+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
       "language": "JavaScript",
-      "latest_stars": 53360,
-      "observed_star_change": 5892,
-      "peak_period_growth": 666,
-      "growth_signal": 5892,
-      "appearances": 6,
-      "best_rank": 4,
-      "first_seen": "2026-09-07",
-      "last_seen": "2026-10-06",
-      "strategic_score": 94.5,
+      "latest_stars": 34126,
+      "observed_star_change": 1570,
+      "peak_period_growth": 381,
+      "growth_signal": 1570,
+      "appearances": 5,
+      "best_rank": 5,
+      "first_seen": "2026-11-06",
+      "last_seen": "2026-11-12",
+      "strategic_score": 91.8,
       "relationship_label": "Memory 组件",
       "capabilities": [
-        "营销技能",
-        "转化优化",
-        "搜索优化",
+        "图像生成",
+        "视频生成",
+        "自托管",
         "Memory 组件"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 3.3,
-        "growth": 13.4,
-        "strategic": 18.9,
-        "heat": 9.2,
-        "best_rank": 7.0,
-        "recency": 0
+        "continuity": 2.7,
+        "growth": 11.3,
+        "strategic": 18.4,
+        "heat": 8.4,
+        "best_rank": 6.0,
+        "recency": 4.8
       },
       "rank_score": 51.7,
-      "rank": 99
+      "rank": 103
     },
     {
       "full_name": "chaitanyagiri/munder-difflin",
@@ -3541,77 +3681,7 @@
         "recency": 0
       },
       "rank_score": 51.7,
-      "rank": 100
-    },
-    {
-      "full_name": "Orkas-AI/Orkas",
-      "url": "https://github.com/Orkas-AI/Orkas",
-      "summary": "一个 local-first 桌面 AI 团队应用：Commander 将目标拆成待办，并协调内置专家 Agent 与 Claude Code、Codex 等工具。",
-      "summary_source": "project_brief",
-      "original_description": "Orkas is an open-source (MIT), local-first AI team for your desktop: a Commander turns your goal into to-dos and coordinates 16 built-in specialist agents plus Claude Code, Codex, OpenCode, OpenClaw and Hermes, with projects, scheduled automations and connectors. Free app for macOS & Windows; built-in models or your own keys.",
-      "language": "JavaScript",
-      "latest_stars": 9110,
-      "observed_star_change": 4205,
-      "peak_period_growth": 2088,
-      "growth_signal": 4205,
-      "appearances": 3,
-      "best_rank": 8,
-      "first_seen": "2026-10-31",
-      "last_seen": "2026-11-09",
-      "strategic_score": 94.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "本地优先",
-        "多 Agent 协作",
-        "自动化连接器",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 12.9,
-        "strategic": 18.8,
-        "heat": 10.8,
-        "best_rank": 3.0,
-        "recency": 4.5
-      },
-      "rank_score": 51.6,
-      "rank": 101
-    },
-    {
-      "full_name": "gitroomhq/postiz-app",
-      "url": "https://github.com/gitroomhq/postiz-app",
-      "summary": "📨 The ultimate agentic social media scheduling tool 🤖",
-      "summary_source": "original_description",
-      "original_description": "📨 The ultimate agentic social media scheduling tool 🤖",
-      "language": "TypeScript",
-      "latest_stars": 39949,
-      "observed_star_change": 6758,
-      "peak_period_growth": 1007,
-      "growth_signal": 6758,
-      "appearances": 5,
-      "best_rank": 7,
-      "first_seen": "2026-07-13",
-      "last_seen": "2026-10-29",
-      "strategic_score": 93.2,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "工作区",
-        "Next.js 应用",
-        "开源社媒排程",
-        "Skill 来源"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.7,
-        "growth": 13.6,
-        "strategic": 18.6,
-        "heat": 9.8,
-        "best_rank": 4.0,
-        "recency": 2.7
-      },
-      "rank_score": 51.4,
-      "rank": 102
+      "rank": 104
     },
     {
       "full_name": "mvanhorn/last30days-skill",
@@ -3646,7 +3716,77 @@
         "recency": 0
       },
       "rank_score": 51.4,
-      "rank": 103
+      "rank": 105
+    },
+    {
+      "full_name": "Orkas-AI/Orkas",
+      "url": "https://github.com/Orkas-AI/Orkas",
+      "summary": "一个 local-first 桌面 AI 团队应用：Commander 将目标拆成待办，并协调内置专家 Agent 与 Claude Code、Codex 等工具。",
+      "summary_source": "project_brief",
+      "original_description": "Orkas is an open-source (MIT), local-first AI team for your desktop: a Commander turns your goal into to-dos and coordinates 16 built-in specialist agents plus Claude Code, Codex, OpenCode, OpenClaw and Hermes, with projects, scheduled automations and connectors. Free app for macOS & Windows; built-in models or your own keys.",
+      "language": "JavaScript",
+      "latest_stars": 9110,
+      "observed_star_change": 4205,
+      "peak_period_growth": 2088,
+      "growth_signal": 4205,
+      "appearances": 3,
+      "best_rank": 8,
+      "first_seen": "2026-10-31",
+      "last_seen": "2026-11-09",
+      "strategic_score": 94.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "本地优先",
+        "多 Agent 协作",
+        "自动化连接器",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.6,
+        "growth": 12.9,
+        "strategic": 18.8,
+        "heat": 10.8,
+        "best_rank": 3.0,
+        "recency": 4.3
+      },
+      "rank_score": 51.4,
+      "rank": 106
+    },
+    {
+      "full_name": "gitroomhq/postiz-app",
+      "url": "https://github.com/gitroomhq/postiz-app",
+      "summary": "📨 The ultimate agentic social media scheduling tool 🤖",
+      "summary_source": "original_description",
+      "original_description": "📨 The ultimate agentic social media scheduling tool 🤖",
+      "language": "TypeScript",
+      "latest_stars": 39949,
+      "observed_star_change": 6758,
+      "peak_period_growth": 1007,
+      "growth_signal": 6758,
+      "appearances": 5,
+      "best_rank": 7,
+      "first_seen": "2026-07-13",
+      "last_seen": "2026-10-29",
+      "strategic_score": 93.2,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "工作区",
+        "Next.js 应用",
+        "开源社媒排程",
+        "Skill 来源"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.7,
+        "growth": 13.6,
+        "strategic": 18.6,
+        "heat": 9.8,
+        "best_rank": 4.0,
+        "recency": 2.5
+      },
+      "rank_score": 51.2,
+      "rank": 107
     },
     {
       "full_name": "cheaper-inference/OmniRoute",
@@ -3678,10 +3818,10 @@
         "strategic": 18.9,
         "heat": 8.4,
         "best_rank": 7.0,
-        "recency": 4.3
+        "recency": 4.2
       },
-      "rank_score": 51.0,
-      "rank": 104
+      "rank_score": 50.8,
+      "rank": 108
     },
     {
       "full_name": "rust-lang/rust",
@@ -3713,45 +3853,10 @@
         "strategic": 18.3,
         "heat": 8.7,
         "best_rank": 3.0,
-        "recency": 4.3
-      },
-      "rank_score": 50.7,
-      "rank": 105
-    },
-    {
-      "full_name": "genspark-ai/genoffice",
-      "url": "https://github.com/genspark-ai/genoffice",
-      "summary": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so Claude Code, Codex and Cursor can create and edit real .docx/.xlsx/.pptx files locally. Bring your own key. macOS, Windows & Linux.",
-      "summary_source": "original_description",
-      "original_description": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so Claude Code, Codex and Cursor can create and edit real .docx/.xlsx/.pptx files locally. Bring your own key. macOS, Windows & Linux.",
-      "language": "TypeScript",
-      "latest_stars": 10651,
-      "observed_star_change": 2365,
-      "peak_period_growth": 4219,
-      "growth_signal": 4219,
-      "appearances": 2,
-      "best_rank": 7,
-      "first_seen": "2026-09-01",
-      "last_seen": "2026-10-24",
-      "strategic_score": 95.0,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "MCP 集成",
-        "技能扩展",
-        "工作区",
-        "Skill 来源"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 12.9,
-        "strategic": 19.0,
-        "heat": 11.8,
-        "best_rank": 4.0,
-        "recency": 1.8
+        "recency": 4.2
       },
       "rank_score": 50.6,
-      "rank": 106
+      "rank": 109
     },
     {
       "full_name": "Gitlawb/openclaude",
@@ -3786,7 +3891,7 @@
         "recency": 0
       },
       "rank_score": 50.5,
-      "rank": 107
+      "rank": 110
     },
     {
       "full_name": "vastsa/PI-Desktop",
@@ -3821,42 +3926,42 @@
         "recency": 0
       },
       "rank_score": 50.4,
-      "rank": 108
+      "rank": 111
     },
     {
-      "full_name": "FlashML-org/FreeToken",
-      "url": "https://github.com/FlashML-org/FreeToken",
-      "summary": "面向桌面端的本地模型服务项目，仓库说明定位为高效运行大型模型的推理方案。",
-      "summary_source": "project_brief",
-      "original_description": "FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.",
-      "language": "Python",
-      "latest_stars": 16487,
-      "observed_star_change": 496,
-      "peak_period_growth": 689,
-      "growth_signal": 689,
+      "full_name": "genspark-ai/genoffice",
+      "url": "https://github.com/genspark-ai/genoffice",
+      "summary": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so Claude Code, Codex and Cursor can create and edit real .docx/.xlsx/.pptx files locally. Bring your own key. macOS, Windows & Linux.",
+      "summary_source": "original_description",
+      "original_description": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so Claude Code, Codex and Cursor can create and edit real .docx/.xlsx/.pptx files locally. Bring your own key. macOS, Windows & Linux.",
+      "language": "TypeScript",
+      "latest_stars": 10651,
+      "observed_star_change": 2365,
+      "peak_period_growth": 4219,
+      "growth_signal": 4219,
       "appearances": 2,
-      "best_rank": 4,
-      "first_seen": "2026-11-03",
-      "last_seen": "2026-11-04",
-      "strategic_score": 96.5,
-      "relationship_label": "Memory 组件",
+      "best_rank": 7,
+      "first_seen": "2026-09-01",
+      "last_seen": "2026-10-24",
+      "strategic_score": 95.0,
+      "relationship_label": "Skill 来源",
       "capabilities": [
-        "本地模型服务",
-        "模型推理",
-        "桌面部署",
-        "Memory 组件"
+        "MCP 集成",
+        "技能扩展",
+        "工作区",
+        "Skill 来源"
       ],
       "data_confidence": "high",
       "score_breakdown": {
         "continuity": 1.1,
-        "growth": 10.1,
-        "strategic": 19.3,
-        "heat": 9.2,
-        "best_rank": 7.0,
-        "recency": 3.7
+        "growth": 12.9,
+        "strategic": 19.0,
+        "heat": 11.8,
+        "best_rank": 4.0,
+        "recency": 1.7
       },
       "rank_score": 50.4,
-      "rank": 109
+      "rank": 112
     },
     {
       "full_name": "openclaw/openclaw",
@@ -3891,42 +3996,42 @@
         "recency": 0
       },
       "rank_score": 50.3,
-      "rank": 110
+      "rank": 113
     },
     {
-      "full_name": "microsoft/vscode",
-      "url": "https://github.com/microsoft/vscode",
-      "summary": "微软维护的开源代码编辑器，提供桌面端开发环境和可扩展的编辑、调试与语言支持能力。",
+      "full_name": "FlashML-org/FreeToken",
+      "url": "https://github.com/FlashML-org/FreeToken",
+      "summary": "面向桌面端的本地模型服务项目，仓库说明定位为高效运行大型模型的推理方案。",
       "summary_source": "project_brief",
-      "original_description": "Visual Studio Code",
-      "language": "TypeScript",
-      "latest_stars": 195140,
-      "observed_star_change": 159,
-      "peak_period_growth": 432,
-      "growth_signal": 432,
+      "original_description": "FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.",
+      "language": "Python",
+      "latest_stars": 16487,
+      "observed_star_change": 496,
+      "peak_period_growth": 689,
+      "growth_signal": 689,
       "appearances": 2,
-      "best_rank": 3,
-      "first_seen": "2026-11-07",
-      "last_seen": "2026-11-08",
-      "strategic_score": 94.5,
-      "relationship_label": "Runtime 参考",
+      "best_rank": 4,
+      "first_seen": "2026-11-03",
+      "last_seen": "2026-11-04",
+      "strategic_score": 96.5,
+      "relationship_label": "Memory 组件",
       "capabilities": [
-        "代码编辑",
-        "调试工具",
-        "扩展生态",
-        "Runtime 参考"
+        "本地模型服务",
+        "模型推理",
+        "桌面部署",
+        "Memory 组件"
       ],
       "data_confidence": "high",
       "score_breakdown": {
         "continuity": 1.1,
-        "growth": 9.4,
-        "strategic": 18.9,
-        "heat": 8.6,
-        "best_rank": 8.0,
-        "recency": 4.3
+        "growth": 10.1,
+        "strategic": 19.3,
+        "heat": 9.2,
+        "best_rank": 7.0,
+        "recency": 3.5
       },
-      "rank_score": 50.3,
-      "rank": 111
+      "rank_score": 50.2,
+      "rank": 114
     },
     {
       "full_name": "oblien/openship",
@@ -3961,7 +4066,42 @@
         "recency": 0
       },
       "rank_score": 50.1,
-      "rank": 112
+      "rank": 115
+    },
+    {
+      "full_name": "microsoft/vscode",
+      "url": "https://github.com/microsoft/vscode",
+      "summary": "微软维护的开源代码编辑器，提供桌面端开发环境和可扩展的编辑、调试与语言支持能力。",
+      "summary_source": "project_brief",
+      "original_description": "Visual Studio Code",
+      "language": "TypeScript",
+      "latest_stars": 195140,
+      "observed_star_change": 159,
+      "peak_period_growth": 432,
+      "growth_signal": 432,
+      "appearances": 2,
+      "best_rank": 3,
+      "first_seen": "2026-11-07",
+      "last_seen": "2026-11-08",
+      "strategic_score": 94.5,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "代码编辑",
+        "调试工具",
+        "扩展生态",
+        "Runtime 参考"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 9.4,
+        "strategic": 18.9,
+        "heat": 8.6,
+        "best_rank": 8.0,
+        "recency": 4.2
+      },
+      "rank_score": 50.1,
+      "rank": 116
     },
     {
       "full_name": "vxcontrol/pentagi",
@@ -3996,7 +4136,7 @@
         "recency": 0
       },
       "rank_score": 50.0,
-      "rank": 113
+      "rank": 117
     },
     {
       "full_name": "HKUDS/DeepTutor",
@@ -4031,7 +4171,7 @@
         "recency": 0
       },
       "rank_score": 50.0,
-      "rank": 114
+      "rank": 118
     },
     {
       "full_name": "AlexsJones/llmfit",
@@ -4066,42 +4206,7 @@
         "recency": 0
       },
       "rank_score": 49.8,
-      "rank": 115
-    },
-    {
-      "full_name": "CopilotKit/OpenBot",
-      "url": "https://github.com/CopilotKit/OpenBot",
-      "summary": "一个开源 AI 同事运行环境：每个 Agent 拥有独立的浏览器、文件系统和电脑操作空间，并可在团队中协作完成任务。",
-      "summary_source": "project_brief",
-      "original_description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
-      "language": "TypeScript",
-      "latest_stars": 8726,
-      "observed_star_change": 664,
-      "peak_period_growth": 707,
-      "growth_signal": 707,
-      "appearances": 2,
-      "best_rank": 4,
-      "first_seen": "2026-10-30",
-      "last_seen": "2026-10-31",
-      "strategic_score": 96.5,
-      "relationship_label": "Skill 来源",
-      "capabilities": [
-        "AI 同事",
-        "独立浏览器",
-        "文件系统",
-        "电脑操作"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 10.1,
-        "strategic": 19.3,
-        "heat": 9.3,
-        "best_rank": 7.0,
-        "recency": 3.0
-      },
-      "rank_score": 49.8,
-      "rank": 116
+      "rank": 119
     },
     {
       "full_name": "garrytan/gstack",
@@ -4133,45 +4238,10 @@
         "strategic": 18.7,
         "heat": 9.1,
         "best_rank": 7.0,
-        "recency": 4.0
+        "recency": 3.8
       },
-      "rank_score": 49.8,
-      "rank": 117
-    },
-    {
-      "full_name": "tokio-rs/topcoat",
-      "url": "https://github.com/tokio-rs/topcoat",
-      "summary": "一个 Rust 全栈 Web 框架：README 说明其在服务端渲染组件，并将带类型检查的表达式转换为浏览器端 JavaScript，以减少单独 API 层、Wasm 包与客户端构建步骤。",
-      "summary_source": "project_brief",
-      "original_description": "A batteries-included framework for building web apps",
-      "language": "Rust",
-      "latest_stars": 7093,
-      "observed_star_change": 38,
-      "peak_period_growth": 471,
-      "growth_signal": 471,
-      "appearances": 2,
-      "best_rank": 4,
-      "first_seen": "2026-11-11",
-      "last_seen": "2026-11-12",
-      "strategic_score": 92.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Rust 全栈",
-        "服务端渲染",
-        "客户端响应式",
-        "Web 框架"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 9.5,
-        "strategic": 18.4,
-        "heat": 8.7,
-        "best_rank": 7.0,
-        "recency": 5.0
-      },
-      "rank_score": 49.7,
-      "rank": 118
+      "rank_score": 49.6,
+      "rank": 120
     },
     {
       "full_name": "obra/superpowers",
@@ -4206,42 +4276,7 @@
         "recency": 0
       },
       "rank_score": 49.5,
-      "rank": 119
-    },
-    {
-      "full_name": "garrytan/gbrain",
-      "url": "https://github.com/garrytan/gbrain",
-      "summary": "一个可自托管的 Agent 记忆系统，记录带来源的显式事实，支持更正与撤回，并通过关键词或语义检索向多个 Agent 共享记忆。",
-      "summary_source": "project_brief",
-      "original_description": "Garry's Opinionated OpenClaw/Hermes Agent Brain",
-      "language": "TypeScript",
-      "latest_stars": 32692,
-      "observed_star_change": 597,
-      "peak_period_growth": 462,
-      "growth_signal": 597,
-      "appearances": 3,
-      "best_rank": 5,
-      "first_seen": "2026-11-10",
-      "last_seen": "2026-11-12",
-      "strategic_score": 91.7,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "Agent 技能包",
-        "MCP 集成",
-        "语义检索"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 9.9,
-        "strategic": 18.3,
-        "heat": 8.7,
-        "best_rank": 6.0,
-        "recency": 5.0
-      },
-      "rank_score": 49.5,
-      "rank": 120
+      "rank": 121
     },
     {
       "full_name": "corsairdev/corsair",
@@ -4276,7 +4311,42 @@
         "recency": 0
       },
       "rank_score": 49.5,
-      "rank": 121
+      "rank": 122
+    },
+    {
+      "full_name": "tokio-rs/topcoat",
+      "url": "https://github.com/tokio-rs/topcoat",
+      "summary": "一个 Rust 全栈 Web 框架：README 说明其在服务端渲染组件，并将带类型检查的表达式转换为浏览器端 JavaScript，以减少单独 API 层、Wasm 包与客户端构建步骤。",
+      "summary_source": "project_brief",
+      "original_description": "A batteries-included framework for building web apps",
+      "language": "Rust",
+      "latest_stars": 7093,
+      "observed_star_change": 38,
+      "peak_period_growth": 471,
+      "growth_signal": 471,
+      "appearances": 2,
+      "best_rank": 4,
+      "first_seen": "2026-11-11",
+      "last_seen": "2026-11-12",
+      "strategic_score": 92.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Rust 全栈",
+        "服务端渲染",
+        "客户端响应式",
+        "Web 框架"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 9.5,
+        "strategic": 18.4,
+        "heat": 8.7,
+        "best_rank": 7.0,
+        "recency": 4.8
+      },
+      "rank_score": 49.5,
+      "rank": 123
     },
     {
       "full_name": "superdesigndev/treg",
@@ -4311,7 +4381,42 @@
         "recency": 0
       },
       "rank_score": 49.4,
-      "rank": 122
+      "rank": 124
+    },
+    {
+      "full_name": "garrytan/gbrain",
+      "url": "https://github.com/garrytan/gbrain",
+      "summary": "一个可自托管的 Agent 记忆系统，记录带来源的显式事实，支持更正与撤回，并通过关键词或语义检索向多个 Agent 共享记忆。",
+      "summary_source": "project_brief",
+      "original_description": "Garry's Opinionated OpenClaw/Hermes Agent Brain",
+      "language": "TypeScript",
+      "latest_stars": 32693,
+      "observed_star_change": 598,
+      "peak_period_growth": 462,
+      "growth_signal": 598,
+      "appearances": 3,
+      "best_rank": 5,
+      "first_seen": "2026-11-10",
+      "last_seen": "2026-11-12",
+      "strategic_score": 91.7,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "长期记忆",
+        "Agent 技能包",
+        "MCP 集成",
+        "语义检索"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.6,
+        "growth": 9.9,
+        "strategic": 18.3,
+        "heat": 8.7,
+        "best_rank": 6.0,
+        "recency": 4.8
+      },
+      "rank_score": 49.3,
+      "rank": 125
     },
     {
       "full_name": "agent-substrate/substrate",
@@ -4343,10 +4448,10 @@
         "strategic": 18.3,
         "heat": 8.9,
         "best_rank": 3.0,
-        "recency": 5.0
+        "recency": 4.8
       },
-      "rank_score": 49.3,
-      "rank": 123
+      "rank_score": 49.1,
+      "rank": 126
     },
     {
       "full_name": "TencentCloud/CubeSandbox",
@@ -4381,7 +4486,7 @@
         "recency": 0
       },
       "rank_score": 49.1,
-      "rank": 124
+      "rank": 127
     },
     {
       "full_name": "codecrafters-io/build-your-own-x",
@@ -4416,7 +4521,7 @@
         "recency": 0
       },
       "rank_score": 49.0,
-      "rank": 125
+      "rank": 128
     },
     {
       "full_name": "cloudflare/computer",
@@ -4451,7 +4556,7 @@
         "recency": 0
       },
       "rank_score": 48.9,
-      "rank": 126
+      "rank": 129
     },
     {
       "full_name": "BuilderIO/agent-native",
@@ -4486,7 +4591,7 @@
         "recency": 0
       },
       "rank_score": 48.5,
-      "rank": 127
+      "rank": 130
     },
     {
       "full_name": "melgarafael/DeskcommCRM",
@@ -4521,7 +4626,7 @@
         "recency": 0
       },
       "rank_score": 48.5,
-      "rank": 128
+      "rank": 131
     },
     {
       "full_name": "AgriciDaniel/claude-obsidian",
@@ -4556,42 +4661,7 @@
         "recency": 0
       },
       "rank_score": 48.4,
-      "rank": 129
-    },
-    {
-      "full_name": "github/spec-kit",
-      "url": "https://github.com/github/spec-kit",
-      "summary": "💫 Toolkit to help you get started with SDD or any other process!",
-      "summary_source": "original_description",
-      "original_description": "💫 Toolkit to help you get started with SDD or any other process!",
-      "language": "Python",
-      "latest_stars": 147830,
-      "observed_star_change": 600,
-      "peak_period_growth": 810,
-      "growth_signal": 810,
-      "appearances": 2,
-      "best_rank": 6,
-      "first_seen": "2026-11-05",
-      "last_seen": "2026-11-06",
-      "strategic_score": 92.5,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "MCP 集成",
-        "工作流",
-        "AI 编程助手",
-        "Runtime 参考"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 10.3,
-        "strategic": 18.5,
-        "heat": 9.5,
-        "best_rank": 5.0,
-        "recency": 4.0
-      },
-      "rank_score": 48.4,
-      "rank": 130
+      "rank": 132
     },
     {
       "full_name": "openinterpreter/openinterpreter",
@@ -4626,7 +4696,7 @@
         "recency": 0
       },
       "rank_score": 48.2,
-      "rank": 131
+      "rank": 133
     },
     {
       "full_name": "Shubhamsaboo/awesome-llm-apps",
@@ -4661,7 +4731,7 @@
         "recency": 0
       },
       "rank_score": 48.2,
-      "rank": 132
+      "rank": 134
     },
     {
       "full_name": "TencentCloud/Octop",
@@ -4696,7 +4766,42 @@
         "recency": 0
       },
       "rank_score": 48.2,
-      "rank": 133
+      "rank": 135
+    },
+    {
+      "full_name": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "summary": "💫 Toolkit to help you get started with SDD or any other process!",
+      "summary_source": "original_description",
+      "original_description": "💫 Toolkit to help you get started with SDD or any other process!",
+      "language": "Python",
+      "latest_stars": 147830,
+      "observed_star_change": 600,
+      "peak_period_growth": 810,
+      "growth_signal": 810,
+      "appearances": 2,
+      "best_rank": 6,
+      "first_seen": "2026-11-05",
+      "last_seen": "2026-11-06",
+      "strategic_score": 92.5,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "MCP 集成",
+        "工作流",
+        "AI 编程助手",
+        "Runtime 参考"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 10.3,
+        "strategic": 18.5,
+        "heat": 9.5,
+        "best_rank": 5.0,
+        "recency": 3.8
+      },
+      "rank_score": 48.2,
+      "rank": 136
     },
     {
       "full_name": "kenn-io/agentsview",
@@ -4731,42 +4836,7 @@
         "recency": 0
       },
       "rank_score": 48.1,
-      "rank": 134
-    },
-    {
-      "full_name": "react/react",
-      "url": "https://github.com/react/react",
-      "summary": "用可组合组件构建交互界面的 JavaScript 库，根据状态变化更新页面，并支持服务端渲染和原生应用开发。",
-      "summary_source": "project_brief",
-      "original_description": "The library for web and native user interfaces.",
-      "language": "JavaScript",
-      "latest_stars": 252219,
-      "observed_star_change": 2171,
-      "peak_period_growth": 403,
-      "growth_signal": 2171,
-      "appearances": 2,
-      "best_rank": 7,
-      "first_seen": "2026-09-12",
-      "last_seen": "2026-11-07",
-      "strategic_score": 92.5,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "组件开发",
-        "声明式界面",
-        "服务端渲染",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 11.8,
-        "strategic": 18.5,
-        "heat": 8.5,
-        "best_rank": 4.0,
-        "recency": 4.2
-      },
-      "rank_score": 48.1,
-      "rank": 135
+      "rank": 137
     },
     {
       "full_name": "VectifyAI/PageIndex",
@@ -4801,7 +4871,7 @@
         "recency": 0
       },
       "rank_score": 48.1,
-      "rank": 136
+      "rank": 138
     },
     {
       "full_name": "FalkorDB/FalkorDB",
@@ -4836,7 +4906,7 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 137
+      "rank": 139
     },
     {
       "full_name": "langflow-ai/langflow",
@@ -4871,7 +4941,7 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 138
+      "rank": 140
     },
     {
       "full_name": "refactoringhq/tolaria",
@@ -4906,7 +4976,42 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 139
+      "rank": 141
+    },
+    {
+      "full_name": "react/react",
+      "url": "https://github.com/react/react",
+      "summary": "用可组合组件构建交互界面的 JavaScript 库，根据状态变化更新页面，并支持服务端渲染和原生应用开发。",
+      "summary_source": "project_brief",
+      "original_description": "The library for web and native user interfaces.",
+      "language": "JavaScript",
+      "latest_stars": 252219,
+      "observed_star_change": 2171,
+      "peak_period_growth": 403,
+      "growth_signal": 2171,
+      "appearances": 2,
+      "best_rank": 7,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-11-07",
+      "strategic_score": 92.5,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "组件开发",
+        "声明式界面",
+        "服务端渲染",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 11.8,
+        "strategic": 18.5,
+        "heat": 8.5,
+        "best_rank": 4.0,
+        "recency": 4.0
+      },
+      "rank_score": 47.9,
+      "rank": 142
     },
     {
       "full_name": "multica-ai/multica",
@@ -4941,7 +5046,7 @@
         "recency": 0
       },
       "rank_score": 47.8,
-      "rank": 140
+      "rank": 143
     },
     {
       "full_name": "vllm-project/vllm",
@@ -4973,10 +5078,10 @@
         "strategic": 18.6,
         "heat": 10.2,
         "best_rank": 2.0,
-        "recency": 1.7
+        "recency": 1.5
       },
-      "rank_score": 47.8,
-      "rank": 141
+      "rank_score": 47.7,
+      "rank": 144
     },
     {
       "full_name": "safishamsi/graphify",
@@ -5011,7 +5116,7 @@
         "recency": 0
       },
       "rank_score": 47.6,
-      "rank": 142
+      "rank": 145
     },
     {
       "full_name": "magnitudedev/magnitude",
@@ -5046,7 +5151,7 @@
         "recency": 0
       },
       "rank_score": 47.6,
-      "rank": 143
+      "rank": 146
     },
     {
       "full_name": "ToolJet/ToolJet",
@@ -5081,42 +5186,7 @@
         "recency": 0
       },
       "rank_score": 47.6,
-      "rank": 144
-    },
-    {
-      "full_name": "MemPalace/mempalace",
-      "url": "https://github.com/MemPalace/mempalace",
-      "summary": "The best-benchmarked open-source AI memory system. And it's free.",
-      "summary_source": "original_description",
-      "original_description": "The best-benchmarked open-source AI memory system. And it's free.",
-      "language": "Python",
-      "latest_stars": 60158,
-      "observed_star_change": 3514,
-      "peak_period_growth": 357,
-      "growth_signal": 3514,
-      "appearances": 2,
-      "best_rank": 7,
-      "first_seen": "2026-06-28",
-      "last_seen": "2026-10-31",
-      "strategic_score": 93.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "MCP 集成",
-        "RAG 检索",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 12.6,
-        "strategic": 18.6,
-        "heat": 8.3,
-        "best_rank": 4.0,
-        "recency": 3.0
-      },
-      "rank_score": 47.6,
-      "rank": 145
+      "rank": 147
     },
     {
       "full_name": "MoonshotAI/kimi-code",
@@ -5151,7 +5221,7 @@
         "recency": 0
       },
       "rank_score": 47.6,
-      "rank": 146
+      "rank": 148
     },
     {
       "full_name": "CoreBunch/Instatic",
@@ -5186,7 +5256,7 @@
         "recency": 0
       },
       "rank_score": 47.5,
-      "rank": 147
+      "rank": 149
     },
     {
       "full_name": "holaboss-ai/holaOS",
@@ -5221,7 +5291,42 @@
         "recency": 0
       },
       "rank_score": 47.5,
-      "rank": 148
+      "rank": 150
+    },
+    {
+      "full_name": "MemPalace/mempalace",
+      "url": "https://github.com/MemPalace/mempalace",
+      "summary": "The best-benchmarked open-source AI memory system. And it's free.",
+      "summary_source": "original_description",
+      "original_description": "The best-benchmarked open-source AI memory system. And it's free.",
+      "language": "Python",
+      "latest_stars": 60158,
+      "observed_star_change": 3514,
+      "peak_period_growth": 357,
+      "growth_signal": 3514,
+      "appearances": 2,
+      "best_rank": 7,
+      "first_seen": "2026-06-28",
+      "last_seen": "2026-10-31",
+      "strategic_score": 93.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "长期记忆",
+        "MCP 集成",
+        "RAG 检索",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 12.6,
+        "strategic": 18.6,
+        "heat": 8.3,
+        "best_rank": 4.0,
+        "recency": 2.8
+      },
+      "rank_score": 47.4,
+      "rank": 151
     },
     {
       "full_name": "karakeep-app/karakeep",
@@ -5256,7 +5361,7 @@
         "recency": 0
       },
       "rank_score": 47.3,
-      "rank": 149
+      "rank": 152
     },
     {
       "full_name": "oven-sh/bun",
@@ -5291,7 +5396,7 @@
         "recency": 0
       },
       "rank_score": 47.3,
-      "rank": 150
+      "rank": 153
     },
     {
       "full_name": "pascalorg/editor",
@@ -5326,7 +5431,7 @@
         "recency": 0
       },
       "rank_score": 47.2,
-      "rank": 151
+      "rank": 154
     },
     {
       "full_name": "rtk-ai/rtk",
@@ -5361,7 +5466,7 @@
         "recency": 0
       },
       "rank_score": 47.0,
-      "rank": 152
+      "rank": 155
     },
     {
       "full_name": "RyanCodrai/turbovec",
@@ -5396,7 +5501,7 @@
         "recency": 0
       },
       "rank_score": 46.9,
-      "rank": 153
+      "rank": 156
     },
     {
       "full_name": "nashsu/llm_wiki",
@@ -5431,7 +5536,7 @@
         "recency": 0
       },
       "rank_score": 46.9,
-      "rank": 154
+      "rank": 157
     },
     {
       "full_name": "pacifio/atlas",
@@ -5466,42 +5571,7 @@
         "recency": 0
       },
       "rank_score": 46.7,
-      "rank": 155
-    },
-    {
-      "full_name": "macro-inc/macro",
-      "url": "https://github.com/macro-inc/macro",
-      "summary": "一个面向团队的统一工作区，把邮件、聊天、文档、任务、通话、CRM 和 Agent 放进同一套共享 AI 记忆层。",
-      "summary_source": "project_brief",
-      "original_description": "Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM — @-linked together with shared AI memory.",
-      "language": "Rust",
-      "latest_stars": 5641,
-      "observed_star_change": 4579,
-      "peak_period_growth": 462,
-      "growth_signal": 4579,
-      "appearances": 3,
-      "best_rank": 9,
-      "first_seen": "2026-08-11",
-      "last_seen": "2026-10-30",
-      "strategic_score": 92.3,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "统一工作区",
-        "共享 AI 记忆",
-        "邮件与聊天整合",
-        "任务协同"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 13.0,
-        "strategic": 18.5,
-        "heat": 8.7,
-        "best_rank": 2.0,
-        "recency": 2.8
-      },
-      "rank_score": 46.6,
-      "rank": 156
+      "rank": 158
     },
     {
       "full_name": "cloudflare/cloudflare-os",
@@ -5536,7 +5606,7 @@
         "recency": 0
       },
       "rank_score": 46.6,
-      "rank": 157
+      "rank": 159
     },
     {
       "full_name": "alirezarezvani/claude-skills",
@@ -5571,7 +5641,7 @@
         "recency": 0
       },
       "rank_score": 46.6,
-      "rank": 158
+      "rank": 160
     },
     {
       "full_name": "semantica-agi/semantica",
@@ -5606,7 +5676,42 @@
         "recency": 0
       },
       "rank_score": 46.5,
-      "rank": 159
+      "rank": 161
+    },
+    {
+      "full_name": "macro-inc/macro",
+      "url": "https://github.com/macro-inc/macro",
+      "summary": "一个面向团队的统一工作区，把邮件、聊天、文档、任务、通话、CRM 和 Agent 放进同一套共享 AI 记忆层。",
+      "summary_source": "project_brief",
+      "original_description": "Macro is a unified workspace for teams: email, chat, docs, tasks, agents, calls, and CRM — @-linked together with shared AI memory.",
+      "language": "Rust",
+      "latest_stars": 5641,
+      "observed_star_change": 4579,
+      "peak_period_growth": 462,
+      "growth_signal": 4579,
+      "appearances": 3,
+      "best_rank": 9,
+      "first_seen": "2026-08-11",
+      "last_seen": "2026-10-30",
+      "strategic_score": 92.3,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "统一工作区",
+        "共享 AI 记忆",
+        "邮件与聊天整合",
+        "任务协同"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.6,
+        "growth": 13.0,
+        "strategic": 18.5,
+        "heat": 8.7,
+        "best_rank": 2.0,
+        "recency": 2.7
+      },
+      "rank_score": 46.4,
+      "rank": 162
     },
     {
       "full_name": "opendatalab/MinerU",
@@ -5641,7 +5746,7 @@
         "recency": 0
       },
       "rank_score": 46.4,
-      "rank": 160
+      "rank": 163
     },
     {
       "full_name": "lightpanda-io/browser",
@@ -5673,45 +5778,10 @@
         "strategic": 19.2,
         "heat": 8.9,
         "best_rank": 5.0,
-        "recency": 3.0
-      },
-      "rank_score": 46.4,
-      "rank": 161
-    },
-    {
-      "full_name": "opensandbox-group/OpenSandbox",
-      "url": "https://github.com/opensandbox-group/OpenSandbox",
-      "summary": "面向 AI Agent 的开源沙箱运行时，可在自有基础设施上提供隔离的代码执行、文件管理、浏览器和桌面环境，并支持 Docker 与 Kubernetes 部署。",
-      "summary_source": "project_brief",
-      "original_description": "Secure, Fast, and Extensible Sandbox runtime for AI agents.",
-      "language": "Go",
-      "latest_stars": 17187,
-      "observed_star_change": 300,
-      "peak_period_growth": 323,
-      "growth_signal": 323,
-      "appearances": 2,
-      "best_rank": 6,
-      "first_seen": "2026-11-10",
-      "last_seen": "2026-11-11",
-      "strategic_score": 91.5,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Agent 沙箱",
-        "代码执行",
-        "浏览器自动化",
-        "Kubernetes"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 8.9,
-        "strategic": 18.3,
-        "heat": 8.2,
-        "best_rank": 5.0,
-        "recency": 4.8
+        "recency": 2.8
       },
       "rank_score": 46.3,
-      "rank": 162
+      "rank": 164
     },
     {
       "full_name": "strands-agents/harness-sdk",
@@ -5746,111 +5816,41 @@
         "recency": 0
       },
       "rank_score": 46.1,
-      "rank": 163
-    },
-    {
-      "full_name": "longbridge/gpui-kit",
-      "url": "https://github.com/longbridge/gpui-kit",
-      "summary": "一个基于 Rust 与 GPUI 的跨平台桌面应用框架，提供组件、布局、编辑、无障碍、集成测试和可选 JavaScript 扩展运行时。",
-      "summary_source": "project_brief",
-      "original_description": "Rust GUI components for building fantastic cross-platform desktop application by using GPUI.",
-      "language": "Rust",
-      "latest_stars": 20104,
-      "observed_star_change": 715,
-      "peak_period_growth": 262,
-      "growth_signal": 715,
-      "appearances": 2,
-      "best_rank": 7,
-      "first_seen": "2026-11-06",
-      "last_seen": "2026-11-10",
-      "strategic_score": 91.5,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Rust 桌面 UI",
-        "GPUI 组件",
-        "无障碍",
-        "界面测试"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 10.1,
-        "strategic": 18.3,
-        "heat": 7.9,
-        "best_rank": 4.0,
-        "recency": 4.7
-      },
-      "rank_score": 46.1,
-      "rank": 164
-    },
-    {
-      "full_name": "max-sixty/worktrunk",
-      "url": "https://github.com/max-sixty/worktrunk",
-      "summary": "一个用于管理 Git worktree 的命令行工具，面向并行运行 AI Agent 的开发工作流。",
-      "summary_source": "project_brief",
-      "original_description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
-      "language": "Rust",
-      "latest_stars": 10984,
-      "observed_star_change": 547,
-      "peak_period_growth": 524,
-      "growth_signal": 547,
-      "appearances": 2,
-      "best_rank": 7,
-      "first_seen": "2026-11-04",
-      "last_seen": "2026-11-05",
-      "strategic_score": 93.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Git worktree 管理",
-        "并行 Agent 工作流",
-        "开发者工具",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 9.7,
-        "strategic": 18.6,
-        "heat": 8.8,
-        "best_rank": 4.0,
-        "recency": 3.8
-      },
-      "rank_score": 46.1,
       "rank": 165
     },
     {
-      "full_name": "n8n-io/n8n",
-      "url": "https://github.com/n8n-io/n8n",
-      "summary": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "summary_source": "original_description",
-      "original_description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "language": "TypeScript",
-      "latest_stars": 201781,
-      "observed_star_change": 4938,
-      "peak_period_growth": 202,
-      "growth_signal": 4938,
-      "appearances": 3,
+      "full_name": "opensandbox-group/OpenSandbox",
+      "url": "https://github.com/opensandbox-group/OpenSandbox",
+      "summary": "面向 AI Agent 的开源沙箱运行时，可在自有基础设施上提供隔离的代码执行、文件管理、浏览器和桌面环境，并支持 Docker 与 Kubernetes 部署。",
+      "summary_source": "project_brief",
+      "original_description": "Secure, Fast, and Extensible Sandbox runtime for AI agents.",
+      "language": "Go",
+      "latest_stars": 17187,
+      "observed_star_change": 300,
+      "peak_period_growth": 323,
+      "growth_signal": 323,
+      "appearances": 2,
       "best_rank": 6,
-      "first_seen": "2026-07-17",
-      "last_seen": "2026-08-22",
-      "strategic_score": 93.7,
-      "relationship_label": "Skill 来源",
+      "first_seen": "2026-11-10",
+      "last_seen": "2026-11-11",
+      "strategic_score": 91.5,
+      "relationship_label": "Memory 组件",
       "capabilities": [
-        "MCP 集成",
-        "RAG 检索",
-        "工作流",
-        "Skill 来源"
+        "Agent 沙箱",
+        "代码执行",
+        "浏览器自动化",
+        "Kubernetes"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 1.6,
-        "growth": 13.1,
-        "strategic": 18.7,
-        "heat": 7.5,
+        "continuity": 1.1,
+        "growth": 8.9,
+        "strategic": 18.3,
+        "heat": 8.2,
         "best_rank": 5.0,
-        "recency": 0
+        "recency": 4.7
       },
-      "rank_score": 46.0,
+      "rank_score": 46.1,
       "rank": 166
     },
     {
@@ -5889,39 +5889,74 @@
       "rank": 167
     },
     {
-      "full_name": "google-gemini/gemini-cli",
-      "url": "https://github.com/google-gemini/gemini-cli",
-      "summary": "Google 开源的终端 AI Agent，可在命令行中调用 Gemini 处理代码理解、生成、调试、运维自动化，并通过 MCP 扩展工具能力。",
+      "full_name": "longbridge/gpui-kit",
+      "url": "https://github.com/longbridge/gpui-kit",
+      "summary": "一个基于 Rust 与 GPUI 的跨平台桌面应用框架，提供组件、布局、编辑、无障碍、集成测试和可选 JavaScript 扩展运行时。",
       "summary_source": "project_brief",
-      "original_description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
-      "language": "TypeScript",
-      "latest_stars": 108380,
-      "observed_star_change": 0,
-      "peak_period_growth": 1078,
-      "growth_signal": 1078,
-      "appearances": 1,
-      "best_rank": 8,
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
-      "strategic_score": 97.0,
-      "relationship_label": "Runtime 参考",
+      "original_description": "Rust GUI components for building fantastic cross-platform desktop application by using GPUI.",
+      "language": "Rust",
+      "latest_stars": 20104,
+      "observed_star_change": 715,
+      "peak_period_growth": 262,
+      "growth_signal": 715,
+      "appearances": 2,
+      "best_rank": 7,
+      "first_seen": "2026-11-06",
+      "last_seen": "2026-11-10",
+      "strategic_score": 91.5,
+      "relationship_label": "Memory 组件",
       "capabilities": [
-        "终端 AI Agent",
-        "代码理解与生成",
-        "MCP 工具扩展",
-        "脚本自动化"
+        "Rust 桌面 UI",
+        "GPUI 组件",
+        "无障碍",
+        "界面测试"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 10.8,
-        "strategic": 19.4,
-        "heat": 9.9,
-        "best_rank": 3.0,
-        "recency": 2.2
+        "continuity": 1.1,
+        "growth": 10.1,
+        "strategic": 18.3,
+        "heat": 7.9,
+        "best_rank": 4.0,
+        "recency": 4.5
       },
-      "rank_score": 45.7,
+      "rank_score": 45.9,
       "rank": 168
+    },
+    {
+      "full_name": "max-sixty/worktrunk",
+      "url": "https://github.com/max-sixty/worktrunk",
+      "summary": "一个用于管理 Git worktree 的命令行工具，面向并行运行 AI Agent 的开发工作流。",
+      "summary_source": "project_brief",
+      "original_description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
+      "language": "Rust",
+      "latest_stars": 10984,
+      "observed_star_change": 547,
+      "peak_period_growth": 524,
+      "growth_signal": 547,
+      "appearances": 2,
+      "best_rank": 7,
+      "first_seen": "2026-11-04",
+      "last_seen": "2026-11-05",
+      "strategic_score": 93.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Git worktree 管理",
+        "并行 Agent 工作流",
+        "开发者工具",
+        "Memory 组件"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 9.7,
+        "strategic": 18.6,
+        "heat": 8.8,
+        "best_rank": 4.0,
+        "recency": 3.7
+      },
+      "rank_score": 45.9,
+      "rank": 169
     },
     {
       "full_name": "huggingface/speech-to-speech",
@@ -5956,42 +5991,42 @@
         "recency": 0
       },
       "rank_score": 45.6,
-      "rank": 169
+      "rank": 170
     },
     {
-      "full_name": "JetBrains/thinkrail",
-      "url": "https://github.com/JetBrains/thinkrail",
-      "summary": "一个围绕 pi 的轻量级 AI 编程 IDE，可按开发者工作方式调整自身配置，用于通过自然语言协助编写代码。",
+      "full_name": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "summary": "Google 开源的终端 AI Agent，可在命令行中调用 Gemini 处理代码理解、生成、调试、运维自动化，并通过 MCP 扩展工具能力。",
       "summary_source": "project_brief",
-      "original_description": "Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need",
+      "original_description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
       "language": "TypeScript",
-      "latest_stars": 6528,
-      "observed_star_change": 578,
-      "peak_period_growth": 1116,
-      "growth_signal": 1116,
-      "appearances": 2,
-      "best_rank": 9,
-      "first_seen": "2026-10-30",
-      "last_seen": "2026-10-31",
-      "strategic_score": 93.0,
-      "relationship_label": "Skill 来源",
+      "latest_stars": 108380,
+      "observed_star_change": 0,
+      "peak_period_growth": 1078,
+      "growth_signal": 1078,
+      "appearances": 1,
+      "best_rank": 8,
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-10-26",
+      "strategic_score": 97.0,
+      "relationship_label": "Runtime 参考",
       "capabilities": [
-        "AI 编程 IDE",
-        "pi 集成",
-        "工作流定制",
-        "自然语言编程"
+        "终端 AI Agent",
+        "代码理解与生成",
+        "MCP 工具扩展",
+        "脚本自动化"
       ],
       "data_confidence": "high",
       "score_breakdown": {
-        "continuity": 1.1,
+        "continuity": 0.5,
         "growth": 10.8,
-        "strategic": 18.6,
+        "strategic": 19.4,
         "heat": 9.9,
-        "best_rank": 2.0,
-        "recency": 3.0
+        "best_rank": 3.0,
+        "recency": 2.0
       },
-      "rank_score": 45.4,
-      "rank": 170
+      "rank_score": 45.6,
+      "rank": 171
     },
     {
       "full_name": "vitali87/code-graph-rag",
@@ -6026,7 +6061,7 @@
         "recency": 0
       },
       "rank_score": 45.4,
-      "rank": 171
+      "rank": 172
     },
     {
       "full_name": "google/skills",
@@ -6061,7 +6096,7 @@
         "recency": 0
       },
       "rank_score": 45.3,
-      "rank": 172
+      "rank": 173
     },
     {
       "full_name": "1jehuang/jcode",
@@ -6096,7 +6131,7 @@
         "recency": 0
       },
       "rank_score": 45.3,
-      "rank": 173
+      "rank": 174
     },
     {
       "full_name": "multimodal-art-projection/YuE",
@@ -6131,7 +6166,42 @@
         "recency": 0
       },
       "rank_score": 45.2,
-      "rank": 174
+      "rank": 175
+    },
+    {
+      "full_name": "JetBrains/thinkrail",
+      "url": "https://github.com/JetBrains/thinkrail",
+      "summary": "一个围绕 pi 的轻量级 AI 编程 IDE，可按开发者工作方式调整自身配置，用于通过自然语言协助编写代码。",
+      "summary_source": "project_brief",
+      "original_description": "Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need",
+      "language": "TypeScript",
+      "latest_stars": 6528,
+      "observed_star_change": 578,
+      "peak_period_growth": 1116,
+      "growth_signal": 1116,
+      "appearances": 2,
+      "best_rank": 9,
+      "first_seen": "2026-10-30",
+      "last_seen": "2026-10-31",
+      "strategic_score": 93.0,
+      "relationship_label": "Skill 来源",
+      "capabilities": [
+        "AI 编程 IDE",
+        "pi 集成",
+        "工作流定制",
+        "自然语言编程"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 10.8,
+        "strategic": 18.6,
+        "heat": 9.9,
+        "best_rank": 2.0,
+        "recency": 2.8
+      },
+      "rank_score": 45.2,
+      "rank": 176
     },
     {
       "full_name": "logto-io/logto",
@@ -6166,7 +6236,7 @@
         "recency": 0
       },
       "rank_score": 45.1,
-      "rank": 175
+      "rank": 177
     },
     {
       "full_name": "Thysrael/Horizon",
@@ -6198,10 +6268,10 @@
         "strategic": 18.2,
         "heat": 8.9,
         "best_rank": 3.0,
-        "recency": 4.0
+        "recency": 3.8
       },
-      "rank_score": 44.3,
-      "rank": 176
+      "rank_score": 44.2,
+      "rank": 178
     },
     {
       "full_name": "mobile-next/mobile-mcp",
@@ -6236,7 +6306,7 @@
         "recency": 0
       },
       "rank_score": 43.5,
-      "rank": 177
+      "rank": 179
     },
     {
       "full_name": "modem-dev/hunk",
@@ -6271,42 +6341,7 @@
         "recency": 0
       },
       "rank_score": 43.2,
-      "rank": 178
-    },
-    {
-      "full_name": "every-app/open-seo",
-      "url": "https://github.com/every-app/open-seo",
-      "summary": "一个开源 SEO 工具，定位为 Semrush 和 Ahrefs 的替代方案，并提供可连接 AI Agent 的技能与 MCP 能力。",
-      "summary_source": "project_brief",
-      "original_description": "Open source alternative to Semrush and Ahrefs",
-      "language": "TypeScript",
-      "latest_stars": 15097,
-      "observed_star_change": 501,
-      "peak_period_growth": 517,
-      "growth_signal": 517,
-      "appearances": 2,
-      "best_rank": 6,
-      "first_seen": "2026-08-29",
-      "last_seen": "2026-08-31",
-      "strategic_score": 93.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "SEO 研究",
-        "关键词与站点分析",
-        "MCP 接入",
-        "AI Skills"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 9.6,
-        "strategic": 18.6,
-        "heat": 8.8,
-        "best_rank": 5.0,
-        "recency": 0
-      },
-      "rank_score": 43.1,
-      "rank": 179
+      "rank": 180
     },
     {
       "full_name": "andrewyng/aisuite",
@@ -6341,7 +6376,7 @@
         "recency": 0
       },
       "rank_score": 43.0,
-      "rank": 180
+      "rank": 181
     },
     {
       "full_name": "denoland/celld",
@@ -6376,7 +6411,7 @@
         "recency": 0
       },
       "rank_score": 43.0,
-      "rank": 181
+      "rank": 182
     },
     {
       "full_name": "mukul975/Anthropic-Cybersecurity-Skills",
@@ -6411,7 +6446,7 @@
         "recency": 0
       },
       "rank_score": 43.0,
-      "rank": 182
+      "rank": 183
     },
     {
       "full_name": "alsk1992/CloddsBot",
@@ -6446,7 +6481,7 @@
         "recency": 0
       },
       "rank_score": 42.7,
-      "rank": 183
+      "rank": 184
     },
     {
       "full_name": "agentskills/agentskills",
@@ -6481,7 +6516,7 @@
         "recency": 0
       },
       "rank_score": 42.4,
-      "rank": 184
+      "rank": 185
     },
     {
       "full_name": "agentscope-ai/QwenPaw",
@@ -6516,7 +6551,7 @@
         "recency": 0
       },
       "rank_score": 42.4,
-      "rank": 185
+      "rank": 186
     },
     {
       "full_name": "warpdotdev/warp",
@@ -6551,7 +6586,7 @@
         "recency": 0
       },
       "rank_score": 42.3,
-      "rank": 186
+      "rank": 187
     },
     {
       "full_name": "tech-leads-club/agent-skills",
@@ -6586,7 +6621,7 @@
         "recency": 0
       },
       "rank_score": 42.3,
-      "rank": 187
+      "rank": 188
     },
     {
       "full_name": "davila7/claude-code-templates",
@@ -6621,7 +6656,7 @@
         "recency": 0
       },
       "rank_score": 41.9,
-      "rank": 188
+      "rank": 189
     },
     {
       "full_name": "screenpipe/screenpipe",
@@ -6656,7 +6691,7 @@
         "recency": 0
       },
       "rank_score": 41.8,
-      "rank": 189
+      "rank": 190
     },
     {
       "full_name": "Tracer-Cloud/opensre",
@@ -6691,7 +6726,7 @@
         "recency": 0
       },
       "rank_score": 41.7,
-      "rank": 190
+      "rank": 191
     },
     {
       "full_name": "zerx-lab/FluxDown",
@@ -6726,7 +6761,7 @@
         "recency": 0
       },
       "rank_score": 41.5,
-      "rank": 191
+      "rank": 192
     },
     {
       "full_name": "docker/docker-agent",
@@ -6761,7 +6796,7 @@
         "recency": 0
       },
       "rank_score": 41.0,
-      "rank": 192
+      "rank": 193
     },
     {
       "full_name": "SigNoz/signoz",
@@ -6796,7 +6831,7 @@
         "recency": 0
       },
       "rank_score": 41.0,
-      "rank": 193
+      "rank": 194
     },
     {
       "full_name": "vudovn/ag-kit",
@@ -6831,7 +6866,7 @@
         "recency": 0
       },
       "rank_score": 41.0,
-      "rank": 194
+      "rank": 195
     },
     {
       "full_name": "NVIDIA/Model-Optimizer",
@@ -6866,7 +6901,7 @@
         "recency": 0
       },
       "rank_score": 40.9,
-      "rank": 195
+      "rank": 196
     },
     {
       "full_name": "ever-co/ever-gauzy",
@@ -6901,7 +6936,7 @@
         "recency": 0
       },
       "rank_score": 40.8,
-      "rank": 196
+      "rank": 197
     },
     {
       "full_name": "Tencent/teamai-cli",
@@ -6936,7 +6971,7 @@
         "recency": 0
       },
       "rank_score": 40.8,
-      "rank": 197
+      "rank": 198
     },
     {
       "full_name": "HKUDS/nanobot",
@@ -6971,7 +7006,7 @@
         "recency": 0
       },
       "rank_score": 40.8,
-      "rank": 198
+      "rank": 199
     },
     {
       "full_name": "hesreallyhim/awesome-claude-code",
@@ -7006,7 +7041,7 @@
         "recency": 0
       },
       "rank_score": 40.8,
-      "rank": 199
+      "rank": 200
     },
     {
       "full_name": "southleft/figma-console-mcp",
@@ -7038,10 +7073,10 @@
         "strategic": 18.0,
         "heat": 7.8,
         "best_rank": 2.0,
-        "recency": 4.0
+        "recency": 3.8
       },
-      "rank_score": 40.8,
-      "rank": 200
+      "rank_score": 40.6,
+      "rank": 201
     },
     {
       "full_name": "alibaba/zvec",
@@ -7076,7 +7111,7 @@
         "recency": 0
       },
       "rank_score": 40.5,
-      "rank": 201
+      "rank": 202
     },
     {
       "full_name": "FoundationAgents/OpenManus",
@@ -7111,7 +7146,7 @@
         "recency": 0
       },
       "rank_score": 40.5,
-      "rank": 202
+      "rank": 203
     },
     {
       "full_name": "Panniantong/Agent-Reach",
@@ -7146,41 +7181,6 @@
         "recency": 0
       },
       "rank_score": 40.4,
-      "rank": 203
-    },
-    {
-      "full_name": "keploy/keploy",
-      "url": "https://github.com/keploy/keploy",
-      "summary": "一个用于 API、集成与端到端测试的开源平台，仓库说明主张创建安全、隔离的生产环境沙箱。",
-      "summary_source": "project_brief",
-      "original_description": "Open-source platform for creating safe, isolated production sandboxes for API, integration, and E2E testing.",
-      "language": "Go",
-      "latest_stars": 19277,
-      "observed_star_change": 0,
-      "peak_period_growth": 204,
-      "growth_signal": 204,
-      "appearances": 1,
-      "best_rank": 9,
-      "first_seen": "2026-11-04",
-      "last_seen": "2026-11-04",
-      "strategic_score": 92.0,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "测试自动化",
-        "隔离沙箱",
-        "API 测试",
-        "Runtime 参考"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 8.2,
-        "strategic": 18.4,
-        "heat": 7.5,
-        "best_rank": 2.0,
-        "recency": 3.7
-      },
-      "rank_score": 40.3,
       "rank": 204
     },
     {
@@ -7219,6 +7219,41 @@
       "rank": 205
     },
     {
+      "full_name": "keploy/keploy",
+      "url": "https://github.com/keploy/keploy",
+      "summary": "一个用于 API、集成与端到端测试的开源平台，仓库说明主张创建安全、隔离的生产环境沙箱。",
+      "summary_source": "project_brief",
+      "original_description": "Open-source platform for creating safe, isolated production sandboxes for API, integration, and E2E testing.",
+      "language": "Go",
+      "latest_stars": 19277,
+      "observed_star_change": 0,
+      "peak_period_growth": 204,
+      "growth_signal": 204,
+      "appearances": 1,
+      "best_rank": 9,
+      "first_seen": "2026-11-04",
+      "last_seen": "2026-11-04",
+      "strategic_score": 92.0,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "测试自动化",
+        "隔离沙箱",
+        "API 测试",
+        "Runtime 参考"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 0.5,
+        "growth": 8.2,
+        "strategic": 18.4,
+        "heat": 7.5,
+        "best_rank": 2.0,
+        "recency": 3.5
+      },
+      "rank_score": 40.2,
+      "rank": 206
+    },
+    {
       "full_name": "zhaoxuya520/reverse-skill",
       "url": "https://github.com/zhaoxuya520/reverse-skill",
       "summary": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
@@ -7251,7 +7286,7 @@
         "recency": 0
       },
       "rank_score": 40.1,
-      "rank": 206
+      "rank": 207
     },
     {
       "full_name": "earthtojake/text-to-cad",
@@ -7286,7 +7321,7 @@
         "recency": 0
       },
       "rank_score": 40.1,
-      "rank": 207
+      "rank": 208
     },
     {
       "full_name": "KnockOutEZ/wigolo",
@@ -7321,7 +7356,7 @@
         "recency": 0
       },
       "rank_score": 40.0,
-      "rank": 208
+      "rank": 209
     },
     {
       "full_name": "microsoft/agent-governance-toolkit",
@@ -7356,7 +7391,7 @@
         "recency": 0
       },
       "rank_score": 39.5,
-      "rank": 209
+      "rank": 210
     },
     {
       "full_name": "google-labs-code/stitch-skills",
@@ -7391,7 +7426,7 @@
         "recency": 0
       },
       "rank_score": 39.1,
-      "rank": 210
+      "rank": 211
     },
     {
       "full_name": "superradcompany/microsandbox",
@@ -7426,7 +7461,7 @@
         "recency": 0
       },
       "rank_score": 38.8,
-      "rank": 211
+      "rank": 212
     },
     {
       "full_name": "apache/maka",
@@ -7461,7 +7496,7 @@
         "recency": 0
       },
       "rank_score": 38.7,
-      "rank": 212
+      "rank": 213
     },
     {
       "full_name": "agalwood/Motrix",
@@ -7496,7 +7531,7 @@
         "recency": 0
       },
       "rank_score": 38.7,
-      "rank": 213
+      "rank": 214
     },
     {
       "full_name": "ColeMurray/background-agents",
@@ -7531,7 +7566,7 @@
         "recency": 0
       },
       "rank_score": 38.6,
-      "rank": 214
+      "rank": 215
     },
     {
       "full_name": "supermemoryai/supermemory",
@@ -7566,7 +7601,7 @@
         "recency": 0
       },
       "rank_score": 38.5,
-      "rank": 215
+      "rank": 216
     },
     {
       "full_name": "trycua/cua",
@@ -7601,41 +7636,6 @@
         "recency": 0
       },
       "rank_score": 38.4,
-      "rank": 216
-    },
-    {
-      "full_name": "QwenLM/qwen-code",
-      "url": "https://github.com/QwenLM/qwen-code",
-      "summary": "An open-source AI coding agent that lives in your terminal.",
-      "summary_source": "original_description",
-      "original_description": "An open-source AI coding agent that lives in your terminal.",
-      "language": "TypeScript",
-      "latest_stars": 26880,
-      "observed_star_change": 0,
-      "peak_period_growth": 389,
-      "growth_signal": 389,
-      "appearances": 1,
-      "best_rank": 10,
-      "first_seen": "2026-08-09",
-      "last_seen": "2026-08-09",
-      "strategic_score": 95.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "MCP 集成",
-        "技能扩展",
-        "Memory 组件"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 9.2,
-        "strategic": 19.0,
-        "heat": 8.4,
-        "best_rank": 1.0,
-        "recency": 0
-      },
-      "rank_score": 38.2,
       "rank": 217
     },
     {
@@ -7744,76 +7744,6 @@
       "rank": 220
     },
     {
-      "full_name": "cursor/plugins",
-      "url": "https://github.com/cursor/plugins",
-      "summary": "Cursor plugin specification and official plugins",
-      "summary_source": "original_description",
-      "original_description": "Cursor plugin specification and official plugins",
-      "language": "TypeScript",
-      "latest_stars": 12269,
-      "observed_star_change": 0,
-      "peak_period_growth": 384,
-      "growth_signal": 384,
-      "appearances": 1,
-      "best_rank": 10,
-      "first_seen": "2026-10-18",
-      "last_seen": "2026-10-18",
-      "strategic_score": 90.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "长期记忆",
-        "技能扩展",
-        "工作流",
-        "Memory 组件"
-      ],
-      "data_confidence": "medium",
-      "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 9.2,
-        "strategic": 18.0,
-        "heat": 8.4,
-        "best_rank": 1.0,
-        "recency": 0.8
-      },
-      "rank_score": 38.0,
-      "rank": 221
-    },
-    {
-      "full_name": "t8y2/dbx",
-      "url": "https://github.com/t8y2/dbx",
-      "summary": "一个面向 100 多种数据库的轻量跨平台管理客户端，提供桌面端、Docker、CLI，以及内置 AI 助手和 MCP Server。",
-      "summary_source": "project_brief",
-      "original_description": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
-      "language": "Rust",
-      "latest_stars": 26671,
-      "observed_star_change": 14,
-      "peak_period_growth": 348,
-      "growth_signal": 348,
-      "appearances": 2,
-      "best_rank": 10,
-      "first_seen": "2026-10-14",
-      "last_seen": "2026-10-15",
-      "strategic_score": 91.0,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "多数据库连接",
-        "桌面客户端",
-        "Docker 部署",
-        "CLI"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 1.1,
-        "growth": 9.0,
-        "strategic": 18.2,
-        "heat": 8.3,
-        "best_rank": 1.0,
-        "recency": 0.3
-      },
-      "rank_score": 37.9,
-      "rank": 222
-    },
-    {
       "full_name": "hugohe3/ppt-master",
       "url": "https://github.com/hugohe3/ppt-master",
       "summary": "一个由 Agent 工作流驱动的本地 PowerPoint 生成工具：可从文档或主题创建可继续编辑的原生 PPTX，并覆盖模板复用、图表表格、动画和讲稿旁白等输出。",
@@ -7846,6 +7776,76 @@
         "recency": 0
       },
       "rank_score": 37.8,
+      "rank": 221
+    },
+    {
+      "full_name": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "summary": "Cursor plugin specification and official plugins",
+      "summary_source": "original_description",
+      "original_description": "Cursor plugin specification and official plugins",
+      "language": "TypeScript",
+      "latest_stars": 12269,
+      "observed_star_change": 0,
+      "peak_period_growth": 384,
+      "growth_signal": 384,
+      "appearances": 1,
+      "best_rank": 10,
+      "first_seen": "2026-10-18",
+      "last_seen": "2026-10-18",
+      "strategic_score": 90.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "长期记忆",
+        "技能扩展",
+        "工作流",
+        "Memory 组件"
+      ],
+      "data_confidence": "medium",
+      "score_breakdown": {
+        "continuity": 0.5,
+        "growth": 9.2,
+        "strategic": 18.0,
+        "heat": 8.4,
+        "best_rank": 1.0,
+        "recency": 0.7
+      },
+      "rank_score": 37.8,
+      "rank": 222
+    },
+    {
+      "full_name": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "summary": "一个面向 100 多种数据库的轻量跨平台管理客户端，提供桌面端、Docker、CLI，以及内置 AI 助手和 MCP Server。",
+      "summary_source": "project_brief",
+      "original_description": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
+      "language": "Rust",
+      "latest_stars": 26671,
+      "observed_star_change": 14,
+      "peak_period_growth": 348,
+      "growth_signal": 348,
+      "appearances": 2,
+      "best_rank": 10,
+      "first_seen": "2026-10-14",
+      "last_seen": "2026-10-15",
+      "strategic_score": 91.0,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "多数据库连接",
+        "桌面客户端",
+        "Docker 部署",
+        "CLI"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.1,
+        "growth": 9.0,
+        "strategic": 18.2,
+        "heat": 8.3,
+        "best_rank": 1.0,
+        "recency": 0.2
+      },
+      "rank_score": 37.7,
       "rank": 223
     },
     {
@@ -7878,9 +7878,9 @@
         "strategic": 18.2,
         "heat": 7.7,
         "best_rank": 2.0,
-        "recency": 0.8
+        "recency": 0.7
       },
-      "rank_score": 37.6,
+      "rank_score": 37.5,
       "rank": 224
     },
     {
@@ -7989,41 +7989,6 @@
       "rank": 227
     },
     {
-      "full_name": "Gaurav-Gosain/tuios",
-      "url": "https://github.com/Gaurav-Gosain/tuios",
-      "summary": "一个用 Go 构建的终端窗口管理器与复用器，提供分屏、工作区、可跨重启保留的会话，以及让终端内编码 Agent 上报状态和互相传递消息的 Inbox。",
-      "summary_source": "project_brief",
-      "original_description": "A terminal window manager that knows what your agents are doing. Tiling panes, workspaces, sessions that survive restarts, and one Inbox for every coding agent. Official only at tuios.dev and this repo. tuios has no X/Twitter account.",
-      "language": "Go",
-      "latest_stars": 5793,
-      "observed_star_change": 0,
-      "peak_period_growth": 121,
-      "growth_signal": 121,
-      "appearances": 1,
-      "best_rank": 9,
-      "first_seen": "2026-10-25",
-      "last_seen": "2026-10-25",
-      "strategic_score": 92.0,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "终端分屏",
-        "工作区",
-        "会话持久化",
-        "跨机器会话"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 7.4,
-        "strategic": 18.4,
-        "heat": 6.8,
-        "best_rank": 2.0,
-        "recency": 2.0
-      },
-      "rank_score": 37.1,
-      "rank": 228
-    },
-    {
       "full_name": "commaai/openpilot",
       "url": "https://github.com/commaai/openpilot",
       "summary": "openpilot is an operating system for robotics. Currently, it upgrades the driver assistance system on 300+ supported cars.",
@@ -8054,6 +8019,41 @@
         "heat": 7.9,
         "best_rank": 2.0,
         "recency": 0
+      },
+      "rank_score": 37.0,
+      "rank": 228
+    },
+    {
+      "full_name": "Gaurav-Gosain/tuios",
+      "url": "https://github.com/Gaurav-Gosain/tuios",
+      "summary": "一个用 Go 构建的终端窗口管理器与复用器，提供分屏、工作区、可跨重启保留的会话，以及让终端内编码 Agent 上报状态和互相传递消息的 Inbox。",
+      "summary_source": "project_brief",
+      "original_description": "A terminal window manager that knows what your agents are doing. Tiling panes, workspaces, sessions that survive restarts, and one Inbox for every coding agent. Official only at tuios.dev and this repo. tuios has no X/Twitter account.",
+      "language": "Go",
+      "latest_stars": 5793,
+      "observed_star_change": 0,
+      "peak_period_growth": 121,
+      "growth_signal": 121,
+      "appearances": 1,
+      "best_rank": 9,
+      "first_seen": "2026-10-25",
+      "last_seen": "2026-10-25",
+      "strategic_score": 92.0,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "终端分屏",
+        "工作区",
+        "会话持久化",
+        "跨机器会话"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 0.5,
+        "growth": 7.4,
+        "strategic": 18.4,
+        "heat": 6.8,
+        "best_rank": 2.0,
+        "recency": 1.8
       },
       "rank_score": 37.0,
       "rank": 229
@@ -8164,41 +8164,6 @@
       "rank": 232
     },
     {
-      "full_name": "hieunc229/mailflare",
-      "url": "https://github.com/hieunc229/mailflare",
-      "summary": "一个面向专业人士和团队的邮件项目；当前公开 description 仅提供该定位，具体功能仍需查阅原文确认。",
-      "summary_source": "project_brief",
-      "original_description": "Email for professionals and teams",
-      "language": "TypeScript",
-      "latest_stars": 5576,
-      "observed_star_change": 0,
-      "peak_period_growth": 75,
-      "growth_signal": 75,
-      "appearances": 1,
-      "best_rank": 10,
-      "first_seen": "2026-11-04",
-      "last_seen": "2026-11-04",
-      "strategic_score": 91.0,
-      "relationship_label": "Runtime 参考",
-      "capabilities": [
-        "团队邮件",
-        "Cloudflare Workers 应用",
-        "Web 应用",
-        "Runtime 参考"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 0.5,
-        "growth": 6.7,
-        "strategic": 18.2,
-        "heat": 6.1,
-        "best_rank": 1.0,
-        "recency": 3.7
-      },
-      "rank_score": 36.2,
-      "rank": 233
-    },
-    {
       "full_name": "Gentleman-Programming/engram",
       "url": "https://github.com/Gentleman-Programming/engram",
       "summary": "Persistent memory system for AI coding agents. Agent-agnostic Go binary with SQLite + FTS5, MCP server, HTTP API, CLI, and TUI.",
@@ -8231,7 +8196,7 @@
         "recency": 0
       },
       "rank_score": 36.0,
-      "rank": 234
+      "rank": 233
     },
     {
       "full_name": "omnigent-ai/omnigent",
@@ -8264,6 +8229,41 @@
         "heat": 7.2,
         "best_rank": 3.0,
         "recency": 0
+      },
+      "rank_score": 36.0,
+      "rank": 234
+    },
+    {
+      "full_name": "hieunc229/mailflare",
+      "url": "https://github.com/hieunc229/mailflare",
+      "summary": "一个面向专业人士和团队的邮件项目；当前公开 description 仅提供该定位，具体功能仍需查阅原文确认。",
+      "summary_source": "project_brief",
+      "original_description": "Email for professionals and teams",
+      "language": "TypeScript",
+      "latest_stars": 5576,
+      "observed_star_change": 0,
+      "peak_period_growth": 75,
+      "growth_signal": 75,
+      "appearances": 1,
+      "best_rank": 10,
+      "first_seen": "2026-11-04",
+      "last_seen": "2026-11-04",
+      "strategic_score": 91.0,
+      "relationship_label": "Runtime 参考",
+      "capabilities": [
+        "团队邮件",
+        "Cloudflare Workers 应用",
+        "Web 应用",
+        "Runtime 参考"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 0.5,
+        "growth": 6.7,
+        "strategic": 18.2,
+        "heat": 6.1,
+        "best_rank": 1.0,
+        "recency": 3.5
       },
       "rank_score": 36.0,
       "rank": 235
@@ -8543,9 +8543,9 @@
         "strategic": 18.2,
         "heat": 6.3,
         "best_rank": 1.0,
-        "recency": 1.8
+        "recency": 1.7
       },
-      "rank_score": 34.7,
+      "rank_score": 34.5,
       "rank": 243
     },
     {

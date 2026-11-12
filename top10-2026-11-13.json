@@ -1,0 +1,823 @@
+[
+  {
+    "owner": "QwenLM",
+    "name": "qwen-code",
+    "full_name": "QwenLM/qwen-code",
+    "url": "https://github.com/QwenLM/qwen-code",
+    "description": "An open-source AI coding agent that lives in your terminal.",
+    "language": "TypeScript",
+    "total_stars": 29758,
+    "forks": 3391,
+    "stars_this_period": 151,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "agentic",
+        "ai",
+        "ai-agent",
+        "ai-coding",
+        "cli",
+        "coding-agent",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "qwen",
+        "terminal",
+        "typescript"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 2225,
+      "created_at": "2025-06-26T01:37:46Z",
+      "pushed_at": "2026-11-12T21:41:52Z",
+      "homepage": "https://qwenlm.github.io/qwen-code-docs/en/users/overview",
+      "default_branch": "main",
+      "forks": 3391,
+      "watchers": 146,
+      "archived": false,
+      "size_kb": 1495096
+    },
+    "readme_content": "<div align=\"center\">\n\n[![npm version](https://img.shields.io/npm/v/@qwen-code/qwen-code.svg)](https://www.npmjs.com/package/@qwen-code/qwen-code)\n[![License](https://img.shields.io/github/license/QwenLM/qwen-code.svg)](./LICENSE)\n[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen.svg)](https://nodejs.org/)\n[![Downloads](https://img.shields.io/npm/dm/@qwen-code/qwen-code.svg)](https://www.npmjs.com/package/@qwen-code/qwen-code)\n\n<a href=\"https://trendshift.io/repositories/15287\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/15287\" alt=\"QwenLM%2Fqwen-code | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n**The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.**\n\n<a href=\"https://qwenlm.github.io/qwen-code-docs/zh/users/overview\">中文</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/de/users/overview\">Deutsch</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/fr/users/overview\">français</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/ja/users/overview\">日本語</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/ru/users/overview\">Русский</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/pt-BR/users/overview\">Português (Brasil)</a> |\n<a href=\"https://qwenlm.github.io/qwen-code-docs/ko/users/overview\">한국어</a>\n\n</div>\n\n![Qwen Code in the terminal, desktop app, browser, editor, and chat, with VS Code, Zed, JetBrains, Telegram, DingTalk, WeChat, and Feishu integrations](https://img.alicdn.com/imgextra/i1/O1CN01DXWdF8BDUdD3XPhl_!!6000000001721-2-tps-1743-902.png)\n\n| **Qwen Code 1.0 Preview**                                                                                                                                                                                                                                                                                                                                                              |\n| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Qwen Code 1.0 Preview brings together the agent harness capabilities of [Qoder](https://qoder.com/) and Qwen Code in an open-source release.<br><br>[Try Qwen Code 1.0 Preview](https://github.com/QwenLM/qwen-code/tree/v1.0.0-preview) · [Documentation](https://qwenlm.github.io/qwen-code-docs/1.x/) · [中文文档](https://qwenlm.github.io/qwen-code-docs/1.x/zh/users/overview/). |\n\n## Why Qwen Code?\n\n- **Agentic out of the box** — Auto-Memory, Auto-Skills, SubAgents, Agent Teams, and MCP. Dynamic workflows, zero setup.\n- **Open-source, inside and out** — The framework and the Qwen models are open-source. They evolve together. No vendor lock-in.\n- **Multi-protocol** — Supports OpenAI, Anthropic, Gemini, and Qwen APIs. Any third-party provider or local model (Ollama / vLLM). Switch at runtime.\n- **Beyond the terminal** — IDE plugins, Desktop app, Web UI, SDKs, and chat integrations (Telegram / DingTalk / WeChat / Feishu).\n\n> [!TIP]\n> Qwen Code is actively iterating on itself — using its own agent and models to file issues, submit PRs, review code, and run tests. Powered by the community, driven by AI.\n\n## Installation\n\nLooking for **Qwen Code 1.0 Preview**? [Get started here](https://github.com/QwenLM/qwen-code/tree/v1.0.0-preview). The instructions below are for the main version.\n\n**Linux / macOS:**\n\n```bash\ncurl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash\n```\n\n**Windows:**\n\n```powershell\nirm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex\n```\n\n> Restart your terminal after installation to ensure environment variables take effect.\n\n<details>\n<summary>NPM / Homebrew</summary>\n\n**NPM** (requires [Node.js 22+](https://nodejs.org/)):\n\n```bash\nnpm install -g @qwen-code/qwen-code@latest\n```\n\n**Homebrew** (macOS / Linux):\n\n```bash\nbrew install qwen-code\n```\n\n</details>\n\n## Quick Start\n\nOpen a terminal in your project and start Qwen Code:\n\n```bash\ncd /path/to/your-project\nqwen\n```\n\nInside the session, run `/auth` and choose [**Qwen Account with Subscription**](https://chat.qwen.ai/?memberPlan=qwen_code&entry=qwen_code&paywallScene=cli) to sign in with your **Plus or Pro subscription**, or configure a provider with an API key. Then try:\n\n```text\nExplain this repository and show me where to start.\n```\n\nSee the [Authentication Guide](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/) and [Settings Reference](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/settings/) for detailed setup.\n\n<details>\n<summary>See the terminal interface</summary>\n\n![Qwen Code terminal interface](https://img.alicdn.com/imgextra/i2/O1CN01K0nwj41RM1Il8kB0t_!!6000000002096-2-tps-1544-1060.png)\n\n</details>\n\n## How to Use Qwen Code\n\nChoose the interface that fits your workflow:\n\n| Interface    | Get started                                                                                                                                                                                                                                                                                                                                                                                               |\n| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Terminal** | Run `qwen` in your project — see [Quick Start](#quick-start).                                                                                                                                                                                                                                                                                                                                             |\n| **Desktop**  | [Download Qwen Code Desktop](https://github.com/QwenLM/qwen-code/releases/tag/desktop-latest) for macOS, Windows, and Linux.                                                                                                                                                                                                                                                                              |\n| **Web**      | Run `qwen serve --open` to open the [Web UI](https://qwenlm.github.io/qwen-code-docs/en/users/qwen-serve/) in your browser. _(experimental)_                                                                                                                                                                                                                                                              |\n| **Editor**   | Set up [VS Code](https://qwenlm.github.io/qwen-code-docs/en/users/integration-vscode/), [Zed](https://qwenlm.github.io/qwen-code-docs/en/users/integration-zed/), or [JetBrains](https://qwenlm.github.io/qwen-code-docs/en/users/integration-jetbrains/).                                                                                                                                                |\n| **Chat**     | Connect [Telegram](https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/telegram/), [DingTalk](https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/dingtalk/), [WeChat](https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/weixin/), or [Feishu](https://qwenlm.github.io/qwen-code-docs/en/users/features/channels/feishu/), then run `qwen channel start`. |\n\nFor automation and custom integrations:\n\n- **Headless** — Run `qwen -p \"...\"` in scripts, CI/CD, or batch jobs.\n- **SDKs** — Build with [TypeScript](./packages/sdk-typescript/README.md), [Python](./packages/sdk-python/README.md), or [Java](./packages/sdk-java/qwencode/README.md).\n- **Daemon** — Run `qwen serve` to connect clients over HTTP + SSE (ACP). _(experimental)_ [Daemon guide](https://qwenlm.github.io/qwen-code-docs/en/users/qwen-serve/).\n- **Computer Use** — Set up [native MCP tools](./packages/cua-driver/README.md#agent-integration) or [Node REPL + SDK](./packages/node-repl/README.md#usage) in Qwen Code, Claude Code, or Codex.\n\n<details>\n<summary>SDK example (Python)</summary>\n\n```python\nimport asyncio\n\nfrom qwen_code_sdk import is_sdk_result_message, query\n\n\nasync def main() -> None:\n    result = query(\n        \"Summarize the repository layout.\",\n        {\n            \"cwd\": \"/path/to/project\",\n            \"path_to_qwen_executable\": \"qwen\",\n        },\n    )\n\n    async for message in result:\n        if is_sdk_result_message(message):\n            print(message[\"result\"])\n\n\nasyncio.run(main())\n```\n\n</details>\n\n## Daemon Mode\n\nRun Qwen Code as a long-lived service when you want browser, editor, SDK, and automation clients to share agent sessions without each starting a separate process. The daemon provides the built-in Web Shell and an HTTP + SSE API, supports multiple workspaces, and lets clients reconnect to active sessions.\n\nStart it in the foreground and open the Web Shell:\n\n```bash\nqwen serve --open\n```\n\nThe default address is `http://127.0.0.1:4170`. To run and manage it in the background instead:\n\n```bash\nqwen daemon start\nqwen daemon status\nqwen daemon logs -f\nqwen daemon stop\n```\n\nBy default, the daemon listens on loopback without bearer authentication; any local process that can reach it can use the full API, including code execution. On shared or untrusted hosts, set `QWEN_SERVER_TOKEN` and use `--require-auth`. See the [Daemon guide](./docs/users/qwen-serve.md) for workspaces, authentication, remote access, and the API.\n\n## Capabilities\n\nIf you know Claude Code, you already know Qwen Code — and then some. We've put significant effort into [bringing Qwen Code to feature parity with Claude Code](https://github.com/wenshao/codeagents/blob/main/docs/comparison/qwen-code-improvement-report.md), improving both breadth and reliability across the board.\n\n| Feature                                                            | Qwen Code | Claude Code |\n| ------------------------------------------------------------------ | :-------: | :---------: |\n| SubAgents, Agent Teams, Dynamic Workflows                          |     ✓     |      ✓      |\n| Auto-Memory, Auto-Skills, Hooks                                    |     ✓     |      ✓      |\n| Built-in Skills (/review, /batch, /loop, /bugfix…)                 |     ✓     |      ✓      |\n| MCP, Plan Mode, LSP Integration                                    |     ✓     |      ✓      |\n| Auto Mode, Sandbox, Git Worktrees                                  |     ✓     |      ✓      |\n| Computer Use (desktop automation)                                  |     ✓     |      ✓      |\n| IDE Plugins (VS Code / JetBrains / Zed)                            |     ✓     |      ✓      |\n| SDK                                                                |     ✓     |      ✓      |\n| Headless Mode, Session Management                                  |     ✓     |      ✓      |\n| Open-source — model and framework                                  |     ✓     |      —      |\n| Multi-protocol (OpenAI / Anthropic / Gemini / Qwen + any provider) |     ✓     |      —      |\n| Agent Arena (multi-model head-to-head on same task)                |     ✓     |      —      |\n| Daemon Mode — `qwen serve` (multi-client shared agent)             |     ✓     |      —      |\n| IM Channels (Telegram / DingTalk / WeChat",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"@qwen-code/qwen-code\",\n  \"private\": true,\n  \"version\": \"0.27.2\",\n  \"packageManager\": \"pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"type\": \"module\",\n  \"workspaces\": [\n    \"packages/*\",\n    \"packages/cua-driver/typescript\",\n    \"packages/channels/base\",\n    \"packages/channels/telegram\",\n    \"packages/channels/weixin\",\n    \"packages/channels/dingtalk\",\n    \"packages/channels/wecom\",\n    \"packages/channels/feishu\",\n    \"packages/channels/qqbot\",\n    \"packages/channels/github\",\n    \"packages/channels/dws\",\n    \"packages/channels/email\",\n    \"packages/channels/gitlab\",\n    \"packages/channels/plugin-example\",\n    \"integrations/external-context\",\n    \"integrations/external-context-mem0\",\n    \"integrations/test-failure-explorer\",\n    \"integrations/generated-ui\",\n    \"!packages/desktop\",\n    \"!packages/live-host\",\n    \"!packages/mobile-shell\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/QwenLM/qwen-code.git\"\n  },\n  \"config\": {\n    \"sandboxImageUri\": \"ghcr.io/qwenlm/qwen-code:0.27.2\"\n  },\n  \"scripts\": {\n    \"start\": \"node scripts/start.js\",\n    \"dev\": \"node scripts/dev.js\",\n    \"dev:daemon\": \"node scripts/daemon-dev.js\",\n    \"dev:managed-agent-web\": \"npm --workspace packages/web-shell run dev -- --port 5174\",\n    \"dev:managed-agent\": \"node scripts/managed-agent-dev.js\",\n    \"debug\": \"cross-env DEBUG=1 node --inspect-brk scripts/start.js\",\n    \"generate\": \"node scripts/generate-git-commit-info.js\",\n    \"generate:settings-schema\": \"node --import tsx/esm scripts/generate-settings-schema.ts\",\n    \"generate:model-catalog\": \"node --import tsx/esm scripts/generate-model-catalog.ts\",\n    \"build\": \"cross-env NODE_OPTIONS=\\\"--max-old-space-size=6144\\\" node scripts/build.js\",\n    \"build-and-start\": \"npm run build && npm run start\",\n    \"build:vscode\": \"node scripts/build_vscode_companion.js\",\n    \"build:all\": \"npm run build && npm run build:sandbox && npm run build:vscode\",\n    \"build:packages\": \"corepack pnpm -r run build\",\n    \"build:sandbox\": \"node scripts/build_sandbox.js\",\n    \"bundle\": \"npm run generate && node esbuild.config.js && node scripts/copy_bundle_assets.js\",\n    \"test\": \"cross-env NODE_OPTIONS=\\\"--max-old-space-size=3072\\\" npm run test --workspaces --if-present\",\n    \"test:ci:workspaces\": \"cross-env NODE_OPTIONS=\\\"--max-old-space-size=3072\\\" npm run test:ci --workspaces --if-present --\",\n    \"test:ci\": \"npm run test:ci:workspaces && npm run test:scripts\",\n    \"test:release\": \"npm run test:release:workspaces && npm run test:scripts\",\n    \"test:release:workspaces\": \"cross-env NODE_OPTIONS=\\\"--max-old-space-size=3072\\\" npm run test:ci --workspaces --if-present -- --coverage.enabled=false\",\n    \"test:standalone:runtimes\": \"node scripts/test-standalone-runtimes.mjs\",\n    \"test:standalone:runtimes:ci\": \"node scripts/test-standalone-runtimes.mjs --ci\",\n    \"test:scripts\": \"npm run test:standalone:runtimes:ci && npm run test:scripts:unit --\",\n    \"test:scripts:unit\": \"vitest run --config ./scripts/tests/vitest.config.ts\",\n    \"test:e2e\": \"cross-env VERBOSE=true KEEP_OUTPUT=true npm run test:integration:sandbox:none\",\n    \"test:e2e:managed-agent-server\": \"tsx scripts/run-managed-agent-server-e2e.ts\",\n    \"test:e2e:managed-session-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --session-failover\",\n    \"test:e2e:managed-inflight-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --inflight-failover\",\n    \"test:e2e:managed-continuation-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover\",\n    \"test:e2e:managed-big-output\": \"tsx scripts/run-managed-agent-server-e2e.ts --big-output\",\n    \"test:e2e:managed-harness-restart-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --session-failover --harness-only\",\n    \"test:e2e:managed-harness-restart-inflight-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --inflight-failover --harness-only\",\n    \"test:e2e:managed-harness-restart-continuation-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --harness-only\",\n    \"test:e2e:managed-continuation-frozen-owner-failover\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --freeze\",\n    \"test:e2e:managed-harness-restart-approval-allow\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --harness-only --g3-verify allow\",\n    \"test:e2e:managed-harness-restart-approval-deny\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --harness-only --g3-verify deny\",\n    \"test:e2e:managed-harness-restart-approval-cancel\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --harness-only --g3-verify cancel\",\n    \"test:e2e:managed-harness-restart-approval-expiry\": \"tsx scripts/run-managed-agent-server-e2e.ts --continuation-failover --harness-only --g3-verify expiry\",\n    \"test:e2e:managed-harness-restart",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "runtime",
+      "skill",
+      "workspace",
+      "llm",
+      "workflow",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 18,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "长期记忆",
+      "MCP 集成",
+      "技能扩展"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "vercel-labs",
+    "name": "agent-browser",
+    "full_name": "vercel-labs/agent-browser",
+    "url": "https://github.com/vercel-labs/agent-browser",
+    "description": "Browser automation CLI for AI agents",
+    "language": "Rust",
+    "total_stars": 50303,
+    "forks": 3502,
+    "stars_this_period": 596,
+    "source_slice": "rust",
+    "source_slices": [
+      "rust"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "Apache-2.0",
+      "open_issues": 569,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-12T21:48:50Z",
+      "homepage": "https://agent-browser.dev",
+      "default_branch": "main",
+      "forks": 3502,
+      "watchers": 112,
+      "archived": false,
+      "size_kb": 32117
+    },
+    "readme_content": "# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n<p>\n  <a href=\"https://vercel.com/labs#labs-products\"><img alt=\"Vercel Labs Product\" src=\"https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm version: agent-browser\" src=\"https://img.shields.io/npm/v/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://github.com/vercel-labs/agent-browser/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/github/license/vercel-labs/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm downloads per month: agent-browser\" src=\"https://img.shields.io/npm/dm/agent-browser.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads\" height=\"28\"></a>\n  <a href=\"https://skills.sh/vercel-labs/agent-browser\"><img alt=\"skills.sh\" src=\"https://skills.sh/b/vercel-labs/agent-browser?style=for-the-badge\" height=\"28\"></a>\n</p>\n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/selectors).\n- A click fails, instead of reporting success, when the target is hidden, disabled, outside the viewport, or covered by another element such as a consent banner. Dismiss the covering element, take a new snapshot, and retry.\n\nThe full walkthrough is in the [quick start](https://agent-browser.dev/quick-start).\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](https://agent-browser.dev/engines/obscura) engine with `--engine`, drive Mobile Safari in the [iOS Simulator](https://agent-browser.dev/ios), or use a cloud browser provider such as [Browserbase](https://agent-browser.dev/providers/browserbase), [Browserless](https://agent-browser.dev/providers/browserless), [Browser Use](https://agent-browser.dev/providers/browser-use), [Kernel](https://agent-browser.dev/providers/kernel), or [AgentCore](https://agent-browser.dev/providers/agentcore).\n\n## For AI agents\n\nThe CLI ships skills that match its version:\n\n```bash\nagent-browser skills get core                 # the core loop, refs, waiting, and common workflows\nagent-browser skills get core --ref commands  # one reference, such as the full command list\nagent-browser skills get core --full          # adds the full command reference and templates\nagent-browser skills list                     # specialized skills: electron, slack, dogfood, and more\n```\n\nInstall the discovery skill into an agent harness from [skills.sh](https://skills.sh/vercel-labs/agent-browser):\n\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\nThe installed skill is a thin stub that tells the agent to load `agent-browser skills get core`, so its instructions always match the installed CLI. Or add this to your `AGENTS.md`:\n\n```markdown\nUse `agent-browser` for browser automation. Before the first use, run\n`agent-browser skills get core` and follow it.\n```\n\nFor MCP clients, `agent-browser mcp` starts an MCP server over stdio. See [MCP server](https://agent-browser.dev/commands#mcp-server).\n\n## Commands\n\nRun `agent-browser --help` for the full list, or `agent-browser <command> --help` for one command.\n\n| Group | Commands | Docs |\n|---|---|---|\n| Navigate and read | `open`, `back`, `forward`, `reload`, `read`, `snapshot`, `get`, `is` | [Core](https://agent-browser.dev/commands#core), [Snapshots](https://agent-browser.dev/snapshots) |\n| Interact | `click`, `dblclick`, `fill`, `type`, `press`, `keyboard`, `hover`, `focus`, `select`, `check`, `uncheck`, `scroll`, `drag`, `upload`, `mouse`, `find` | [Core](https://agent-browser.dev/commands#core), [Find elements](https://agent-browser.dev/commands#find-elements) |\n| Wait | `wait` | [Wait](https://agent-browser.dev/commands#wait) |\n| Capture | `screenshot`, `pdf`, `record`, `download`, `diff` | [Recording](https://agent-browser.dev/recording), [Diffing](https://agent-browser.dev/diffing), [Files](https://agent-browser.dev/files) |\n| Page and network state | `cookies`, `storage`, `network`, `set`, `clipboard`, `eval`, `pushstate` | [Network](https://agent-browser.dev/network), [Settings](https://agent-browser.dev/commands#settings) |\n| Tabs, frames, and dialogs | `tab`, `frame`, `dialog` | [Tabs and frames](https://agent-browser.dev/commands#tabs-frames) |\n| Debug and performance | `console`, `errors`, `highlight`, `inspect`, `trace`, `profiler`, `vitals`, `react`, `a11y` | [Debugging](https://agent-browser.dev/debugging), [Profiler](https://agent-browser.dev/profiler), [React](https://agent-browser.dev/react) |\n| Sessions and auth | `session`, `state`, `auth`, `profiles`, `confirm`, `deny` | [Sessions](https://agent-browser.dev/sessions), [Security](https://agent-browser.dev/security) |\n| Agents and integrations | `skills`, `mcp`, `webmcp`, `flow`, `chat`, `batch`, `plugin` | [Skills](https://agent-browser.dev/skills), [WebMCP](https://agent-browser.dev/webmcp), [Plugins](https://agent-browser.dev/plugins) |\n| Observe | `stream`, `dashboard` | [Streaming](https://agent-browser.dev/streaming), [Dashboard](https://agent-browser.dev/dashboard) |\n| Setup | `install`, `upgrade`, `doctor`, `connect`, `close` | [Installation](https://agent-browser.dev/installation) |\n\nFlags, environment variables, and `agent-browser.json` are documented in [Configuration](https://agent-browser.dev/configuration).\n\n## Platforms\n\nNative binaries ship for macOS (ARM64, x64), Linux (ARM64, x64, glibc and musl), and Windows (x64). The npm package picks the right binary for the host.\n\n## Development\n\nBuilding from source requires Node.js 24 or later, pnpm 11 or later, and Rust:\n\n```bash\npnpm install\npnpm build:source               # builds the dashboard and the native CLI\npnpm link --global\nagent-browser install\n```\n\nRun the Rust checks from `cli/`:\n\n```bash\ncargo fmt -- --check\ncargo clippy\ncargo test\ncargo test e2e -- --ignored --test-threads=1   # launches real headless Chrome\n```\n\n[AGENTS.md](AGENTS.md) lists the files to update with each change, the docs checks, and the release process.\n\n## Documentation\n\n- [agent-browser.dev](https://agent-browser.dev): introduction, guides, and reference\n- [Commands](https://agent-browser.dev/commands) and [Configuration](https://agent-browser.dev/configuration)\n- [Security](https://agent-browser.dev/security): the auth vault, domain allowlists, action policies, and content boundaries\n- [Next.js and Vercel](https://agent-browser.dev/next) and [eve](https://agent-browser.dev/eve): running agent-browser in Vercel Sandbox and eve agents\n- [Changelog](CHANGELOG.md)\n\n## License\n\nApache-2.0\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "浏览器自动化",
+      "终端 CLI",
+      "Memory 组件"
+    ],
+    "brief_zh": {
+      "summary": "Vercel Labs 的浏览器自动化 CLI，供 AI Agent 从终端读取页面无障碍树并执行页面操作。",
+      "capabilities": "浏览器自动化、Agent 工具、终端 CLI",
+      "verified_at": "2026-11-07",
+      "evidence_sources": [
+        "https://github.com/vercel-labs/agent-browser"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；未在目标网站验证兼容性、权限边界或自动化成功率。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "NVIDIA",
+    "name": "SkillSpector",
+    "full_name": "NVIDIA/SkillSpector",
+    "url": "https://github.com/NVIDIA/SkillSpector",
+    "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
+    "language": "Python",
+    "total_stars": 25681,
+    "forks": 2267,
+    "stars_this_period": 302,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-security",
+        "agent-skills",
+        "agentic-ai",
+        "ai-security",
+        "claude-code",
+        "mcp",
+        "prompt-injection",
+        "security-scanner",
+        "security-tools",
+        "security-workflow",
+        "supply-chain-security"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 152,
+      "created_at": "2026-03-21T00:28:43Z",
+      "pushed_at": "2026-11-12T22:00:55Z",
+      "homepage": "https://docs.nvidia.com/skills/scanning-agent-skills",
+      "default_branch": "main",
+      "forks": 2267,
+      "watchers": 91,
+      "archived": false,
+      "size_kb": 16322
+    },
+    "readme_content": "# SkillSpector\n\n**Security scanner for AI agent skills.** Detect vulnerabilities, malicious patterns, and security risks before installing agent skills.\n\n[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)\n[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)\n\n## Overview\n\nAI agent skills (used by Claude Code, Codex CLI, Gemini CLI, etc.) execute with implicit trust and minimal vetting. In the 31,132-skill analyzed subset of the research dataset, **26.1% of skills contain vulnerabilities** and **5.2% show likely malicious intent**.\n\nSkillSpector helps you answer: **\"Is this skill safe to install?\"**\n\nSkillSpector is part of the [NVIDIA Verified Skills pipeline](https://docs.nvidia.com/skills/), which scans, evaluates, and signs agent skills before publication. Skills that pass are published to the [NVIDIA skills catalog](https://github.com/NVIDIA/skills).\n\n## Documentation\n\n- **[Scan agent skills before installation](https://docs.nvidia.com/skills/scanning-agent-skills)** — Hosted guide: when to scan, how to read a report, and how to gate installs.\n- **[Development guide](docs/DEVELOPMENT.md)** — Architecture, package layout, and how to extend the analyzer pipeline.\n- **[Security policy](SECURITY.md)** — Report suspected vulnerabilities privately to NVIDIA PSIRT.\n- **[Analysis resource bounds](docs/ANALYSIS_RESOURCE_BOUNDS.md)** — Fail-closed bundle, parser, nested-artifact, ledger, and finding ceilings.\n- **[Pi extension](docs/PI_EXTENSION.md)** — Install SkillSpector as a Pi tool for scanning skills from inside agent sessions.\n- **[OpenCode extension](docs/OPENCODE_EXTENSION.md)** — Install SkillSpector as an OpenCode tool and `/skillspector` command for scanning skills from inside agent sessions.\n\n## Features\n\n- **Multi-format input**: Scan Git repos, URLs, zip files, directories, or single files\n- **71 vulnerability patterns** across 17 categories: prompt injection, data exfiltration, privilege escalation, supply chain, excessive agency, output handling, system prompt leakage, memory poisoning, tool misuse, rogue agent, anti-refusal, trigger abuse, dangerous code (AST), taint tracking, YARA signatures, MCP least privilege, and MCP tool poisoning\n- **Two-stage analysis**: Fast static analysis + optional LLM semantic evaluation\n- **Live vulnerability lookups**: SC4 queries [OSV.dev](https://osv.dev) for real-time CVE data with automatic offline fallback\n- **Multiple output formats**: Terminal, JSON, Markdown, and SARIF reports\n- **Risk scoring**: 0-100 score with severity labels and clear recommendations\n- **Baseline / false-positive suppression**: Accept known findings via a glob-rule or fingerprint baseline so re-scans surface only *new* issues ([docs](docs/SUPPRESSION.md))\n\n## Quick Start\n\n### Installation\n\n> **Open-source software notice:** This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.\n\nCreate and activate a virtual environment first (all `make` targets assume the venv is active). Use **uv** or **pip**; the Makefile uses `uv` if available, otherwise `pip`.\n\n**Quick install with uv (CLI-only):**\n\n```bash\nuv tool install git+https://github.com/NVIDIA/skillspector.git\n# Update later: uv tool update skillspector\n```\n\nIf you plan to run `skillspector mcp`, install the MCP extra at install time:\n\n```bash\nuv tool install 'skillspector[mcp] @ git+https://github.com/NVIDIA/skillspector.git'\n```\n\n**From source:**\n\n```bash\n# Clone the repository\ngit clone https://github.com/NVIDIA/skillspector.git\ncd skillspector\n\n# Create and activate virtual environment\nuv venv .venv && source .venv/bin/activate\n# or: python3 -m venv .venv && source .venv/bin/activate\n\n# Install for production use\nmake install\n```\n\nTo contribute, follow the [Development setup](#setup) for a supported Python\ninterpreter and development dependencies.\n\n### Docker (no Python required)\n\nRun SkillSpector without installing Python by building it locally from the included [Dockerfile](Dockerfile). The image is based on the Docker Official Python `3.12-slim-bookworm` image.\n\n**Build the image:**\n\n```bash\nmake docker-build\n# or: docker build -t skillspector .\n```\n\n**Scan a local directory** by mounting your current directory into `/scan`, the container's working directory:\n\n```bash\ndocker run --rm -v \"$PWD:/scan\" skillspector scan ./my-skill/ --no-llm\n```\n\n**Scan with LLM analysis** by passing credentials with a local `.env` file:\n\n```bash\ncat > .env <<'EOF'\nSKILLSPECTOR_PROVIDER=anthropic\nANTHROPIC_API_KEY=sk-ant-...\nEOF\n```\n\n```bash\ndocker run --rm \\\n  -v \"$PWD:/scan\" \\\n  --env-file .env \\\n  skillspector scan ./my-skill/\n```\n\nOr pass credentials directly from your shell environment:\n\n```bash\ndocker run --rm \\\n  -v \"$PWD:/scan\" \\\n  -e SKILLSPECTOR_PROVIDER=anthropic \\\n  -e ANTHROPIC_API_KEY=\"$ANTHROPIC_API_KEY\" \\\n  skillspector scan ./my-skill/\n```\n\n**Write a report to the host filesystem** by writing to the mounted directory:\n\n```bash\ndocker run --rm --user \"$(id -u):$(id -g)\" \\\n  -v \"$PWD:/scan\" \\\n  skillspector scan ./my-skill/ --no-llm --format json --output report.json\n```\n\n**Optional alias** for repeated static scans:\n\n```bash\nalias skillspector-docker='docker run --rm -v \"$PWD:/scan\" skillspector'\nskillspector-docker scan ./my-skill/ --no-llm\n```\n\n### Basic Usage\n\n```bash\n# Scan a local skill directory\nskillspector scan ./my-skill/\n\n# Scan a single SKILL.md file\nskillspector scan ./SKILL.md\n\n# Scan a Git repository\nskillspector scan https://github.com/user/my-skill\n\n# Scan a zip file\nskillspector scan ./my-skill.zip\n```\n\n#### Size limits\n\nSkillSpector enforces two independent caps on remote and archive inputs to bound the impact of oversized downloads and zip bombs:\n\n- **Per-ingest cap**: `INGEST_MAX_BYTES` (100 MiB) — applied to streamed URL downloads, total uncompressed size of zip archives, and post-clone disk usage of Git repos.\n- **Zip member cap**: `INGEST_MAX_ZIP_MEMBERS` (10,000) — caps the number of entries in a single zip.\n\nNote that the per-file 1 MB analysis cap (`MAX_FILE_BYTES`) is a separate, downstream limit: it bounds what individual analyzers will read out of an already-ingested directory. The ingest caps above bound how much content can land on disk in the first place. A breach of either ingest cap fails closed with an `IngestLimitExceededError`.\n\n### Output Formats\n\n```bash\n# Terminal output (default) - pretty formatted\nskillspector scan ./my-skill/\n\n# JSON output - machine readable\nskillspector scan ./my-skill/ --format json --output report.json\n\n# Markdown output - for documentation\nskillspector scan ./my-skill/ --format markdown --output report.md\n\n# SARIF output - for CI/CD integration and IDE tooling\nskillspector scan ./my-skill/ --format sarif --output report.sarif\n```\n\n### Recursive Collection Scanning\n\n`--recursive` scans immediate subdirectories containing `SKILL.md` as independent\nskills, with a default aggregate limit of **32 skills**. To raise or lower it:\n\n```bash\nskillspector scan ./my-skills/ --recursive --max-skills 100 --no-llm --format json\n```\n\n`--max-skills` requires a local recursive collection and a positive integer; `0`\ndoes not mean unlimited. Discovery, byte, finding-record, time and report-size\nbudgets still apply, so increasing the count does not guarantee complete coverage.\nWhen the count limit is reached, the CLI names the limit and suggests adjusting it\nor scanning sub-skills separately. Omitted skills remain visible in the aggregate\nreport and coverage stays incomplete. Use `--fail-on-incomplete` in CI to fail on\nincomplete coverage; the default exit policy is unchanged.\n\n### Batch Scanning\n\nScan entire directories of skills in parallel from `contrib/batch_scan/`:\n\n```bash\npython -m contrib.batch_scan.batch_scan ./my-skills/ --no-llm\npython -m contrib.batch_scan.batch_scan ./my-skills/ --workers 20 -f json -o report.json\npython -m contrib.batch_scan.batch_scan ./tests/fixtures/ -f terminal --workers 20\n```\n\nSupports multilingual detection (zh/ja/ko) and terminal/JSON/Markdown output.\n\nFor LLM scans with higher concurrency, configure multiple API keys following\n[`.env.example`](contrib/batch_scan/.env.example) — the pool improves throughput\nand resilience, provided the keys don't share an account-level rate limit.\n\nSee the [contrib guide](contrib/batch_scan/docs/) for details.\n\n> **Note on LLM support:** The default configuration targets DeepSeek as the\n> cheapest public option. DeepSeek-Chat is\n> [expected to sunset](https://api-docs.deepseek.com/), and the contributor\n> does not have hardware to test against local models. The batch scanner was\n> originally tested with OpenAI-compatible endpoints — DeepSeek's lack of\n> structured-output support required manual JSON-parsing patches. If you can\n> contribute a more universal backend (Ollama, vLLM, or a different provider),\n> PRs are very welcome.\n\n### Comparing MCP Registry snapshots\n\nA named scan fetches only that server's published versions from the official\nregistry, then selects entries marked as latest. If none are marked as latest,\nall matching versions are assessed. The server name remains the report source:\n\n```bash\nskillspector scan 'ac.inference.sh/mcp' --mcp-registry --format json --output current.json\n```\n\nUse `https://registry.modelcontextprotocol.io/v0/servers` as the input to scan\nthe full catalog. Local registry captures are also supported.\n\nStart with raw registry payload captures (`registry-before.json` and\n`registry-after.json`). Save a scan report as `previous.json`, then compare a\nlater scan against that generated local report:\n\n```bash\nskillspector scan registry-before.json --mcp-registry --format json --output previous.json\nskillspector scan registry-after.json --mcp-registry --format json \\\n  --mcp-registry-compare previous.json --output compared.json\n```\n\nThe optional `comparison` object lists added and removed server identities,\nchanged normalized fields with their previous and current values, and an\n`unchanged_count`. Identity is the server name and version, so a new version\nappears as an addition and the old version as a removal if it is absent from the\nnew scan. Acquisition source and scan timestamp are excluded from comparison.\n`unmodeled_changes` lists same-identity records whose raw-record hash changed\nwhile normalized fields match; these are not counted as unchanged. This can\nindicate a change to fields outside the snapshot model, or array reordering in\nthe raw record. Package and remote ordering alone is not a normalized field change.\nEntries in `changed` may also contain changes outside the snapshot model; inspect\nthe raw record to see those changes.\nCompare reports with the same selection scope: a server absent from the current\ninput is reported as removed, which does not prove it was removed from a registry.\n\nThe comparison file must be a local report produced by this registry mode with\nvalid normalized snapshots. Malformed, oversized or duplicate server identities\nare rejected. This option requires `--mcp-registry` and is separate from the\nfinding-suppression `--baseline`: it never suppresses findings or changes risk\nscores, and it does not fetch or execute listed server endpoints.\n\nRegistry mode rejects skill-only controls such as `--use-shipped-baseline`,\n`--transitive`, `--transitive-depth`, `--transitive-allow-prefix`, and\n`--transitive-deny-prefix` with exit code 2, including an explicitly supplied\ndefault depth (`--transitive-depth 1`). Omit these options for registry scans.\n\n### Suppressing False Positives (baseline)\n\nSuppress known/accepted findings so the risk score reflects only un-triaged\nissues and re-scans surface only *new* findings. See the\n[suppression guide](docs/SUPPRESSION.md) for the full reference.\n\n```bash\n# Accept all current findings into a baseline (run once), then commit it.\nskillspector baseline ./my-skill/ -",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[project]\nname = \"skillspector\"\nversion = \"2.12.0\"\ndescription = \"SkillSpector: Security scanner for AI agent skills (Claude Code, Cursor, and similar). Scans skills for vulnerabilities, malicious patterns, and security risks before installation. Supports Git repos, URLs, zips, and local directories; runs static pattern checks and optional LLM semantic analysis; outputs terminal, JSON, and Markdown reports with risk scoring.\"\nreadme = \"README.md\"\nlicense = \"Apache-2.0\"\nrequires-python = \">=3.12,<3.16\"\nkeywords = [\n    \"security\",\n    \"ai-agents\",\n    \"vulnerability-scanner\",\n    \"claude-code\",\n    \"skills\",\n]\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Environment :: Console\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: Apache Software License\",\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Programming Language :: Python :: 3.14\",\n    \"Programming Language :: Python :: 3.15\",\n    \"Topic :: Security\",\n    \"Topic :: Software Development :: Quality Assurance\",\n]\ndependencies = [\n    # Typer <0.24 uses click>=8.0.0; 0.24+ requires click>=8.2.1 which conflicts with semgrep (click 8.1.x)\n    \"typer>=0.23.0,<0.24\",\n    \"rich>=14.3.0\",\n    \"httpx>=0.28.0\",\n    \"pywhatwgurl==0.1.1\",\n    \"regex==2026.5.9\",\n    \"tree-sitter==0.25.2\",\n    \"tree-sitter-javascript==0.25.0\",\n    \"packaging>=24.0\",\n    \"pyyaml>=6.0.1\",\n    \"pydantic>=2.12.0\",\n    \"openai>=2.25.0\",\n    \"langgraph>=1.0.10\",\n    \"langchain-anthropic>=1.4.5\",\n    \"langchain-aws>=0.2.0\",\n    \"langchain-core>=1.2.17\",\n    \"langchain-openai>=1.1.10\",\n    \"boto3>=1.34.0\",\n    \"langsmith>=0.7.30\",\n    \"yara-python>=4.5.0\",\n    \"google-auth[requests]>=2.53.0\",\n]\n\n[project.optional-dependencies]\nmcp = [\n    \"mcp>=1.29.0,<2.0.0\",\n]\nlanggraph-dev = [\n    \"langgraph-cli[inmem]>=0.4.14\",\n]\ndev = [\n    \"skillspector[mcp]\",\n    \"skillspector[langgraph-dev]\",\n    \"pytest>=9.0.0\",\n    \"pytest-asyncio>=1.3.0\",\n    \"pytest-cov>=7.0.0\",\n    \"ruff>=0.15.0\",\n    \"mypy>=1.19.0\",\n    \"build>=1.4.0\",\n    \"hatchling>=1.31.0\",\n    \"twine>=6.2.0\",\n    \"poetry>=2.3.0\",\n]\n\n[project.scripts]\nskillspector = \"skillspector.cli_entry:app\"\n\n[tool.uv]\n# Enable `uv tool install git+https://github.com/NVIDIA/skillspector.git`\n# for a simpler single-command installation without cloning.\n\n[project.urls]\nHomepage = \"https://github.com/NVIDIA/skillspector\"\nDocumentation = \"https://github.com/NVIDIA/skillspector#readme\"\nIssues = \"https://github.com/NVIDIA/skillspector/issues\"\n\n[tool.hatch.build]\nexclude = [\".claude/\", \".cursor/\", \".agents/\"]\n\n[tool.hatch.build.targets.sdist]\ncore-metadata-version = \"2.4\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/skillspector\"]\ncore-metadata-version = \"2.4\"\n\n[tool.ruff]\nline-length = 100\ntarget-version = \"py312\"\n\n[tool.ruff.lint]\nselect = [\"E\", \"F\", \"W\", \"I\", \"N\", \"UP\", \"B\", \"C4\"]\nignore = [\"E501\"]\n\n[tool.mypy]\npython_version = \"3.12\"\nwarn_return_any = true\nwarn_unused_ignores = true\ndisallow_untyped_defs = true\n\n[tool.coverage.run]\nbranch = true\nrelative_files = true\nsource = [\"src/skillspector\"]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\nasyncio_mode = \"auto\"\nmarkers = [\n    \"integration: end-to-end tests that invoke the full graph (may call LLMs)\",\n    \"provider: live OpenAI/Anthropic/NVIDIA Build provider endpoint tests\",\n]\naddopts = \"-m 'not integration and not provider'\"\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "mcp",
+      "skill",
+      "llm",
+      "eval",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 17,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 94
+    },
+    "strategic_score": 94,
+    "capability_tags": [
+      "技能扫描",
+      "提示注入检测",
+      "供应链检查"
+    ],
+    "brief_zh": {
+      "summary": "在安装 Agent 技能前扫描漏洞、恶意模式、提示注入、数据外传和供应链风险。",
+      "capabilities": "技能扫描、提示注入检测、供应链检查",
+      "verified_at": "2026-09-06",
+      "evidence_sources": [
+        "https://github.com/NVIDIA/SkillSpector"
+      ],
+      "evidence_note": "依据本次抓取的仓库 description 与 README；功能声明未做运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "n8n-io",
+    "name": "n8n",
+    "full_name": "n8n-io/n8n",
+    "url": "https://github.com/n8n-io/n8n",
+    "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+    "language": "TypeScript",
+    "total_stars": 210323,
+    "forks": 61490,
+    "stars_this_period": 220,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "apis",
+        "automation",
+        "cli",
+        "data-flow",
+        "development",
+        "integration-framework",
+        "integrations",
+        "ipaas",
+        "low-code",
+        "low-code-platform",
+        "mcp",
+        "mcp-client",
+        "mcp-server",
+        "n8n",
+        "no-code",
+        "self-hosted",
+        "typescript",
+        "workflow",
+        "workflow-automation"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 1226,
+      "created_at": "2019-06-22T09:24:21Z",
+      "pushed_at": "2026-11-12T21:37:10Z",
+      "homepage": "https://n8n.io",
+      "default_branch": "master",
+      "forks": 61490,
+      "watchers": 1230,
+      "archived": false,
+      "size_kb": 815495
+    },
+    "readme_content": "![Banner image](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/readme-banner.jpg)\n\n# n8n – The Platform for AI Agents and Workflow Automation\n\nFair-code platform to build and deploy AI agents and workflows. Combine a visual canvas with custom code, run it self-hosted or in the [cloud](https://app.n8n.cloud/login), and connect to 1500+ integrations. AI automation you can trust with real work, from prototype to production.\n\n![n8n.io - Screenshot](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-screenshot-readme.png)\n\n## Key Capabilities\n\n- **AI-Native Automation Platform**: Build and operationalize AI workflows and multi-step agents using your own data, models, and tools\n- **Model Flexibility, No Lock-In**: Connect to OpenAI, Anthropic, Google, or open-source models and switch providers without changing your architecture\n- **From Prototype to Production**: Design multi-step AI workflows with logic, tool use, human approvals, and full observability\n- **Code When You Need It**: Combine visual building with JavaScript, Python, and npm packages for advanced AI workflows\n- **Enterprise-Ready AI**: Self-host or deploy securely with role-based access, audit trails, and support for sensitive data\n- **Leverage What Already Exists**: 1500+ integrations and 9,000+ workflow [templates](https://n8n.io/workflows) to connect AI with your existing systems\n\n## Quick Start\n\nTry n8n instantly with our install script (requires [Docker](https://www.docker.com/)):\n\n```sh\ncurl -fsSL https://get.n8n.io | sh\n```\n\nOr deploy manually with [Docker](https://docs.n8n.io/hosting/installation/docker/):\n\n```\ndocker volume create n8n_data\ndocker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n\n```\n\nAccess the editor at http://localhost:5678\n\n## Resources\n\n- 📚 [Documentation](https://docs.n8n.io)\n- 🔧 [1500+ Integrations](https://n8n.io/integrations)\n- 💡 [Example Workflows](https://n8n.io/workflows)\n- 🤖 [AI & LangChain Guide](https://docs.n8n.io/advanced-ai/)\n- 👥 [Community Forum](https://community.n8n.io)\n- 📖 [Community Tutorials](https://community.n8n.io/c/tutorials/28)\n\n## Support\n\nNeed help? Our community forum is the place to get support and connect with other users:\n[community.n8n.io](https://community.n8n.io)\n\n## License\n\nn8n is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [n8n Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).\n\n- **Source Available**: Always visible source code\n- **Self-Hostable**: Deploy anywhere\n- **Extensible**: Add your own nodes and functionality\n\n[Enterprise Licenses](mailto:license@n8n.io) available for additional features and support.\n\nAdditional information about the license model can be found in the [docs](https://docs.n8n.io/n8n-community-license/).\n\n## Contributing\n\nFound a bug 🐛 or have a feature idea ✨? Check our [Contributing Guide](https://github.com/n8n-io/n8n/blob/master/CONTRIBUTING.md) for a setup guide & best practices.\n\n## Join the Team\n\nWant to shape the future of automation? Check out our [job posts](https://n8n.io/careers) and join our team!\n\n## What does n8n mean?\n\n**Short answer:** It means \"nodemation\" and is pronounced as n-eight-n.\n\n**Long answer:** \"I get that question quite often (more often than I expected) so I decided it is probably best to answer it here. While looking for a good name for the project with a free domain I realized very quickly that all the good ones I could think of were already taken. So, in the end, I chose nodemation. 'node-' in the sense that it uses a Node-View and that it uses Node.js and '-mation' for 'automation' which is what the project is supposed to help with. However, I did not like how long the name was and I could not imagine writing something that long every time in the CLI. That is when I then ended up on 'n8n'.\" - **Jan Oberhauser, Founder and CEO, n8n.io**\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"n8n-monorepo\",\n  \"version\": \"2.48.0\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=24.0.0\",\n    \"pnpm\": \">=12.4.2\"\n  },\n  \"packageManager\": \"pnpm@12.4.2\",\n  \"scripts\": {\n    \"prepare\": \"node scripts/prepare.mjs\",\n    \"preinstall\": \"node scripts/block-npm-install.js\",\n    \"build\": \"turbo run build\",\n    \"build:unchecked\": \"turbo run build:unchecked\",\n    \"build:n8n\": \"node scripts/build-n8n.mjs\",\n    \"build:deploy\": \"node scripts/build-n8n.mjs\",\n    \"build:docker\": \"node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs\",\n    \"build:docker:coverage\": \"BUILD_WITH_COVERAGE=true node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs\",\n    \"build:docker:scan\": \"node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs && node scripts/scan-n8n-image.mjs\",\n    \"build:docker:smoke\": \"node scripts/smoke-n8n-image.mjs\",\n    \"build:docker:clean\": \"TURBO_FORCE=true node scripts/build-n8n.mjs && DOCKER_BUILD_NO_CACHE=true DOCKER_BUILD_BASE_IMAGE=true node scripts/dockerize-n8n.mjs\",\n    \"build:docker:test\": \"node scripts/build-n8n.mjs && node scripts/dockerize-n8n.mjs && turbo run test:container:standard --filter=n8n-playwright\",\n    \"typecheck\": \"turbo typecheck\",\n    \"dev\": \"node scripts/dev-command-removed-notice.mjs\",\n    \"dev:up\": \"node scripts/dev-up.mjs\",\n    \"dev:be\": \"turbo run dev --env-mode=loose --log-prefix=none --filter=n8n\",\n    \"dev:ai\": \"turbo run dev --concurrency=150 --env-mode=loose --filter=@n8n/n8n-nodes-langchain --filter=n8n --filter=n8n-core\",\n    \"dev:fe\": \"run-p start dev:fe:editor\",\n    \"dev:fe:editor\": \"turbo run dev --env-mode=loose --filter=n8n-editor-ui\",\n    \"dev:design-system\": \"turbo run dev --env-mode=loose --log-prefix=none --filter=@n8n/design-system\",\n    \"dev:e2e\": \"pnpm --filter=n8n-playwright dev --ui\",\n    \"dev-metrics:opt-in\": \"node scripts/dev-metrics/setup.mjs --enable\",\n    \"dev-metrics:status\": \"node scripts/dev-metrics/setup.mjs --status\",\n    \"dev-metrics:reset\": \"node scripts/dev-metrics/setup.mjs --reset\",\n    \"clean\": \"turbo run clean\",\n    \"session\": \"node scripts/cloud-session.mjs\",\n    \"preview\": \"node scripts/codespace-preview/preview.mjs\",\n    \"preview:serve\": \"node scripts/codespace-preview/preview-serve.mjs\",\n    \"session:opencode\": \"node scripts/cloud-session.mjs --opencode\",\n    \"session:shell\": \"node scripts/cloud-session.mjs --shell\",\n    \"reset\": \"node scripts/ensure-zx.mjs && zx scripts/reset.mjs\",\n    \"format\": \"turbo run format && node scripts/format.mjs\",\n    \"grind\": \"node scripts/grind.mjs\",\n    \"inspect:activity\": \"node scripts/instance-seeding/inspectActivity.mjs\",\n    \"telemetry:sink\": \"node scripts/telemetry/sink.mjs\",\n    \"dev:be:telemetry\": \"cross-env N8N_DIAGNOSTICS_ENABLED=true N8N_DIAGNOSTICS_CONFIG_BACKEND=\\\"local;http://127.0.0.1:9999\\\" N8N_DIAGNOSTICS_CONFIG_FRONTEND=\\\"local;http://127.0.0.1:9999\\\" N8N_DIAGNOSTICS_POSTHOG_API_HOST=http://127.0.0.1:9999 N8N_DIAGNOSTICS_POSTHOG_API_KEY=local dotenvx run -f .env.local -f .env --ignore=MISSING_ENV_FILE -- pnpm dev:be\",\n    \"seed:account\": \"node scripts/instance-seeding/seedInstance.mjs\",\n    \"seed:history\": \"node scripts/instance-seeding/seedHistory.mjs\",\n    \"seed:preference\": \"cross-env PROFILE=preference pnpm seed:account && pnpm seed:history\",\n    \"seed:account:check\": \"node scripts/instance-seeding/checkPreferenceProfile.mjs\",\n    \"seed:test\": \"node --test scripts/instance-seeding/*.test.mjs\",\n    \"nathan\": \"node scripts/nathan.mjs\",\n    \"agent:setup\": \"node scripts/agent-setup.mjs\",\n    \"agent:lint\": \"node scripts/agent-check.mjs lint\",\n    \"agent:typecheck\": \"node scripts/agent-check.mjs typecheck\",\n    \"agent:test\": \"node scripts/agent-check.mjs test\",\n    \"agent:playwright\": \"node scripts/agent-check.mjs playwright\",\n    \"agent:harness\": \"node scripts/agent-harness.mjs\",\n    \"profile:vitest\": \"node scripts/vitest-profile.mjs\",\n    \"profile:ci-tests\": \"node scripts/ci-test-phase-profile.mjs\",\n    \"test:inventory\": \"node scripts/test-inventory.mjs\",\n    \"format:check\": \"turbo run format:check\",\n    \"jscpd\": \"jscpd\",\n    \"lint\": \"turbo run lint\",\n    \"lint:styles\": \"turbo run lint:styles\",\n    \"lint:styles:fix\": \"turbo run lint:styles:fix\",\n    \"lint:affected\": \"turbo run lint --affected\",\n    \"lint:fix\": \"turbo run lint:fix\",\n    \"lint:ci\": \"turbo run lint lint:styles --concurrency=2 && pnpm boundaries:check && pnpm check:workspace-private-deps\",\n    \"boundaries\": \"turbo boundaries\",\n    \"boundaries:check\": \"node scripts/check-boundaries.mjs\",\n    \"boundaries:baseline\": \"node scripts/check-boundaries.mjs --write\",\n    \"sync:skill-links\": \"node scripts/sync-agent-skill-links.mjs\",\n    \"check:skill-links\": \"node scripts/sync-agent-skill-links.mjs --check\",\n    \"check:workspace-private-deps\": \"node scripts/check-workspace-private-deps.mjs\",\n    \"check:dependencies\": \"node .github/scripts/check-inflight.mjs\",\n    \"check:cubic-config\": \"pnpm install-workflow-scripts && node .github/scripts/quality/check-cubic-config.mjs\",\n    \"optimize-svg\": \"find ./packages ",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "MCP 集成",
+      "RAG 检索",
+      "工作流"
+    ],
+    "summary_source": "original_description"
+  },
+  {
+    "owner": "every-app",
+    "name": "open-seo",
+    "full_name": "every-app/open-seo",
+    "url": "https://github.com/every-app/open-seo",
+    "description": "Open source alternative to Semrush and Ahrefs",
+    "language": "TypeScript",
+    "total_stars": 27489,
+    "forks": 3851,
+    "stars_this_period": 156,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "backlink-analysis",
+        "google-search-console-mcp",
+        "keyword-research",
+        "mcp",
+        "seo",
+        "seo-agent",
+        "seo-audit",
+        "seo-automation",
+        "seo-skills",
+        "seo-tools",
+        "site-audit"
+      ],
+      "license": "MIT",
+      "open_issues": 119,
+      "created_at": "2026-02-27T18:57:41Z",
+      "pushed_at": "2026-11-11T18:19:37Z",
+      "homepage": "https://openseo.so",
+      "default_branch": "main",
+      "forks": 3851,
+      "watchers": 84,
+      "archived": false,
+      "size_kb": 38891
+    },
+    "readme_content": "# OpenSEO\n\n> Open source alternative to Semrush and Ahrefs\n\nOpenSEO is an SEO tool for _the people_. If tools like Semrush or Ahrefs are too expensive or bloated, OpenSEO is a pay-as-you-go alternative that you actually control.\n\n> All-in-one SEO tool for you and your AI agent.\n\nConnect with any agent like Claude Code, OpenClaw or Hermes. We have pre-built skills, but you can build your own to tailor OpenSEO to your needs.\n\n<img width=\"100%\" alt=\"openseo-keyword-research\" src=\"https://github.com/user-attachments/assets/8ebdc439-3e72-41ab-8bde-8cda771ef2e8\" />\n\n## Hosted Version\n\nTry OpenSEO for free on our website. If you want to support the project, a hosted subscription is $10/month.\n\n[openseo.so](https://openseo.so)\n\n### EveryApp\n\nHost OpenSEO and other open source apps on our platform EveryApp.\n\n[Self-host on EveryApp and give it a star →](https://github.com/every-app/every-app)\n\n## Why use OpenSEO?\n\n- Best in class MCP and AI Skills.\n- Modern, simple UI.\n  - Focused workflows instead of a bloated, complex SEO suite.\n- No subscriptions.\n  - Bring your own DataForSEO API key and pay only for what you use.\n- Fork and vibe code your own custom tool.\n\n## Main SEO Workflows\n\n- Keyword research\n- Rank tracking\n- Competitor Insights\n- Backlinks\n- Site Audits\n- AI Visibility\n\n## OpenSEO MCP & Agent Skills\n\nOpenSEO exposes an MCP server so AI agents like Claude Code, OpenClaw, and Hermes can use your SEO data directly. Agent Skills are reusable workflows that guide your agent through SEO tasks using the MCP.\n\n- [Set up ChatGPT web or desktop](https://openseo.so/docs/chatgpt) (works on Free and paid ChatGPT plans)\n- [Set up Codex](https://openseo.so/docs/codex-plugin)\n- [Set up OpenSEO MCP](https://openseo.so/docs/mcp)\n- [Set up OpenSEO Agent Skills](https://openseo.so/docs/skills/setup)\n\n## Self-Hosting\n\nOpenSEO supports two self-hosting paths. Both use email and password accounts: the first visitor creates the admin account, teammates join from invitation links, and MCP clients (Claude, ChatGPT, Codex, Cursor) sign in with the same accounts.\n\n- **Docker** - On your own server or computer, with a prebuilt image that is ready in seconds. Works with Compose-based platforms such as Coolify, Portainer and Dokploy. See [`docs/SELF_HOSTING_DOCKER.md`](./docs/SELF_HOSTING_DOCKER.md).\n  - Running the older single-container image? It keeps getting updates; [move to the new setup](./docs/SELF_HOSTING_DOCKER.md#move-from-the-old-docker-image) when you are ready, data included.\n- **Cloudflare** - No server to run: one deploy command puts OpenSEO on your own Cloudflare account (works on the free plan). See [`docs/SELF_HOSTING_CLOUDFLARE.md`](./docs/SELF_HOSTING_CLOUDFLARE.md).\n\nFor security-conscious setups, two advanced options replace the accounts with your own network controls:\n\n- **Cloudflare Access** in front of the Cloudflare deploy, so Cloudflare checks every request before it reaches OpenSEO. See [`docs/SELF_HOSTING_CLOUDFLARE.md`](./docs/SELF_HOSTING_CLOUDFLARE.md).\n- **No sign-in on Docker**, behind Tailscale, a private network or your own authenticating proxy. See [Without sign-in](./docs/SELF_HOSTING_DOCKER.md#without-sign-in-advanced).\n\nEither way, you need a DataForSEO API key to get SEO data. See [`docs/DATAFORSEO_API_KEY.md`](./docs/DATAFORSEO_API_KEY.md).\n\n## Costs\n\nOpenSEO needs a [DataForSEO](https://dataforseo.com/?aff=255379) API key so that you can get SEO data. You pay them directly when self hosting.\n\nSee [openseo.so/pricing](https://openseo.so/pricing)\n\nWhen you self host, your costs will be slightly lower than the estimates on our website. The way the hosted service makes money is by charging 28% extra for every request we make to DataForSEO.\n\n## Local Development\n\nSee [`docs/LOCAL_DEVELOPMENT.md`](./docs/LOCAL_DEVELOPMENT.md).\n\n## Contributing\n\nCreating clear issues is the best way to contribute.\n\nRead more here: [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md)\n\nWe have this skill: `/simple-issue-description` which helps.\n\n```sh\nnpx skills add every-app/open-seo --skill simple-issue-description\n```\n\n## Community\n\nJoin Discord to chat: [Discord](https://discord.gg/c9uGs3cFXr)\n\nFollow along for updates:\n\n- Follow on X: https://x.com/bensenescu\n- Sign up for the mailing list on our website: [openseo.so](https://openseo.so)\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"open-seo\",\n  \"private\": true,\n  \"sideEffects\": [\n    \"./src/standalone-server.ts\"\n  ],\n  \"version\": \"0.1.27\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@10.30.1\",\n  \"scripts\": {\n    \"predev\": \"pnpm build:report-widgets\",\n    \"dev\": \"vite dev\",\n    \"predev:agents\": \"pnpm build:report-widgets\",\n    \"dev:agents\": \"mkdir -p .logs && portless run vite dev 2>&1 | tee .logs/dev-server.log\",\n    \"dev:everyapp\": \"everyapp dev\",\n    \"dev:agents:force\": \"mkdir -p .logs && portless --force run vite dev 2>&1 | tee .logs/dev-server.log\",\n    \"build\": \"pnpm build:report-widgets && vite build && tsc --noEmit\",\n    \"build:standalone\": \"pnpm build:report-widgets && vite build --mode standalone && node scripts/celld/package.mjs\",\n    \"build:report-widgets\": \"tsc --noEmit -p tsconfig.report-widgets.json && vite build -c vite.report-widgets.config.ts\",\n    \"lint\": \"oxlint . --type-aware\",\n    \"lint:fix\": \"oxlint . --type-aware --fix\",\n    \"preview\": \"npm run build && vite preview --port 3001\",\n    \"deploy\": \"npm run db:migrate:prod && npm run build && wrangler deploy -c dist/open_seo_audit/wrangler.json && wrangler deploy\",\n    \"deploy:selfhost\": \"node scripts/selfhost-deploy-preflight.mjs && pnpm build:report-widgets && vite build --mode selfhost && tsc --noEmit && pnpm alchemy deploy deploy/alchemy/alchemy.run.ts --env-file .env.selfhost --stage selfhost\",\n    \"deploy:prod\": \"gh workflow run deploy-production.yml --repo bensenescu/open-seo --ref main\",\n    \"deploy:web\": \"gh workflow run deploy-website.yml --repo bensenescu/open-seo --ref main\",\n    \"deploy:preview\": \"pnpm build:report-widgets && vite build --mode preview && pnpm alchemy deploy deploy/alchemy/alchemy.run.ts --env-file .env.preview\",\n    \"preview:access\": \"pnpm alchemy deploy deploy/alchemy/alchemy.preview-access.run.ts --env-file .env.preview --stage preview-access --adopt\",\n    \"alchemy\": \"NODE_OPTIONS=\\\"$NODE_OPTIONS --experimental-strip-types\\\" alchemy\",\n    \"destroy:preview\": \"pnpm alchemy destroy deploy/alchemy/alchemy.run.ts --env-file .env.preview\",\n    \"cf-typegen\": \"wrangler types src/worker-configuration.d.ts --config wrangler.jsonc --config wrangler.audit.jsonc\",\n    \"types:check\": \"tsc --noEmit\",\n    \"format:check\": \"prettier --check .\",\n    \"format:write\": \"prettier . --write\",\n    \"auth:generate\": \"npm run auth:generate:d1 && npm run auth:generate:pg\",\n    \"auth:generate:d1\": \"pnpm dlx auth@latest generate --config ./scripts/cli-auth.ts --adapter drizzle --dialect sqlite --output ./src/db/better-auth-schema.ts && prettier --write ./src/db/better-auth-schema.ts\",\n    \"auth:generate:pg\": \"pnpm dlx auth@latest generate --config ./scripts/cli-auth.ts --adapter drizzle --dialect pg --output ./src/db/pg/better-auth-schema.ts && prettier --write ./src/db/pg/better-auth-schema.ts\",\n    \"db:generate\": \"npm run db:generate:d1 && npm run db:generate:pg\",\n    \"db:generate:d1\": \"drizzle-kit generate --config drizzle/sqlite.config.ts\",\n    \"db:generate:pg\": \"drizzle-kit generate --config drizzle/pg.config.ts\",\n    \"db:migrate:local\": \"wrangler d1 migrations apply DB --local\",\n    \"db:migrate:prod\": \"wrangler d1 migrations apply DB --remote\",\n    \"db:migrate:pg\": \"drizzle-kit migrate --config drizzle/pg.config.ts\",\n    \"knip\": \"knip\",\n    \"release:notes\": \"node scripts/release-notes.mjs\",\n    \"release:publish\": \"node scripts/publish-release.mjs\",\n    \"sync-plugin-skills\": \"node scripts/sync-plugin-skills.mjs\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:ci\": \"vitest run --reporter=dot\",\n    \"test:standalone:gateway\": \"node --test scripts/celld/runtime/crawl-gateway.test.mjs\",\n    \"test:standalone:runtime\": \"sh scripts/celld/conformance/conformance.sh\",\n    \"test:e2e\": \"playwright test -c tests/playwright.config.ts\",\n    \"test:e2e:free-tools\": \"playwright test -c tests/playwright.free-tools.config.ts\",\n    \"test:e2e:mcp-isolation\": \"playwright test -c tests/playwright.mcp-isolation.config.ts\",\n    \"test:e2e:domain\": \"playwright test -c tests/playwright.config.ts tests/domain-overview-filters.spec.ts\",\n    \"test:e2e:domain:perf\": \"playwright test -c tests/playwright.config.ts tests/domain-overview-filters.perf.spec.ts\",\n    \"test:e2e:keywords\": \"playwright test -c tests/playwright.config.ts tests/keyword-research-navigation.spec.ts\",\n    \"billing:backlinks\": \"tsx scripts/backlinks-cost-profile.ts\",\n    \"billing:brand-lookup\": \"tsx scripts/brand-lookup-cost-profile.ts\",\n    \"billing:usage\": \"tsx scripts/dataforseo-account-usage.ts\",\n    \"cleanup:default-projects:d1\": \"tsx scripts/d1-default-project-cleanup.ts\",\n    \"repair:rank-locations\": \"tsx scripts/repair-rank-tracking-locations.ts\",\n    \"seed:rank-tracking\": \"tsx scripts/seed-rank-tracking.ts\",\n    \"seed:projects\": \"tsx scripts/seed-projects.ts\",\n    \"standalone:admin\": \"docker compose -f deploy/standalone/compose.yaml exec -T runtime node /opt/standalone/admin.mjs\",\n    \"selfhost:admin\": \"node --env-file=.env.selfhost scripts/celld/runtime/admin.mjs\",\n    \"ci:check\": \"pret",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 93
+    },
+    "strategic_score": 93,
+    "capability_tags": [
+      "SEO 研究",
+      "关键词与站点分析",
+      "MCP 接入"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 SEO 工具，定位为 Semrush 和 Ahrefs 的替代方案，并提供可连接 AI Agent 的技能与 MCP 能力。",
+      "audience": "希望用更低成本完成 SEO 研究、并把搜索优化工作接入 AI Agent 工作流的独立开发者和小团队",
+      "capabilities": "SEO 研究、关键词与站点分析、MCP 接入、AI Skills、TypeScript 应用",
+      "risk": "替代成熟 SEO 平台需要持续验证数据完整性、结果准确率和可维护性，Agent 集成也依赖连接能力的稳定性"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "homeassistant-ai",
+    "name": "ha-mcp",
+    "full_name": "homeassistant-ai/ha-mcp",
+    "url": "https://github.com/homeassistant-ai/ha-mcp",
+    "description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+    "language": "Python",
+    "total_stars": 7680,
+    "forks": 466,
+    "stars_this_period": 691,
+    "source_slice": "python",
+    "source_slices": [
+      "python"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "claude",
+        "hacs",
+        "home-assistant",
+        "home-automation",
+        "llm",
+        "mcp",
+        "model-context-protocol"
+      ],
+      "license": "MIT",
+      "open_issues": 17,
+      "created_at": "2025-09-14T13:23:45Z",
+      "pushed_at": "2026-11-12T22:00:23Z",
+      "homepage": "https://homeassistant-ai.github.io/ha-mcp/",
+      "default_branch": "master",
+      "forks": 466,
+      "watchers": 24,
+      "archived": false,
+      "size_kb": 60334
+    },
+    "readme_content": "> **Breaking change (v7.3.0):** `ha_config_set_yaml` has been moved to [beta](docs/beta.md).\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/homeassistant-ai/ha-mcp/master/docs/img/ha-mcp-logo.png\" alt=\"Home Assistant MCP Server Logo\" width=\"300\"/>\n\n  # HA-MCP — Manage Home Assistant with AI\n\n  <!-- mcp-name: io.github.homeassistant-ai/ha-mcp -->\n\n  <p align=\"center\">\n    <img src=\"https://img.shields.io/badge/tools-87-blue\" alt=\"87 Tools\">\n    <a href=\"https://github.com/homeassistant-ai/ha-mcp/releases\"><img src=\"https://img.shields.io/github/v/release/homeassistant-ai/ha-mcp\" alt=\"Release\"></a>\n    <a href=\"https://github.com/homeassistant-ai/ha-mcp/actions/workflows/e2e-tests.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/homeassistant-ai/ha-mcp/e2e-tests.yml?branch=master&label=E2E%20Tests\" alt=\"E2E Tests\"></a>\n    <a href=\"LICENSE\"><img src=\"https://img.shields.io/github/license/homeassistant-ai/ha-mcp.svg\" alt=\"License\"></a>\n    <br>\n    <a href=\"https://github.com/homeassistant-ai/ha-mcp/commits/master\"><img src=\"https://img.shields.io/github/commit-activity/m/homeassistant-ai/ha-mcp.svg\" alt=\"Activity\"></a>\n    <a href=\"https://github.com/jlowin/fastmcp\"><img src=\"https://img.shields.io/badge/Built%20with-FastMCP-purple\" alt=\"Built with FastMCP\"></a>\n    <img src=\"https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Fhomeassistant-ai%2Fha-mcp%2Fmaster%2Fpyproject.toml\" alt=\"Python Version\">\n    <a href=\"https://github.com/sponsors/julienld\"><img src=\"https://img.shields.io/badge/GitHub_Sponsors-☕-blueviolet\" alt=\"GitHub Sponsors\"></a>\n    <a href=\"https://homeassistant-ai.github.io/ha-mcp/\"><img src=\"https://img.shields.io/badge/Website-docs-teal\" alt=\"Website\"></a>\n  </p>\n\n  <p align=\"center\">\n    <em>Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.</em>\n  </p>\n</div>\n\n---\n\n![Demo with Claude Desktop](https://raw.githubusercontent.com/homeassistant-ai/ha-mcp/master/docs/img/demo.webp)\n\n---\n\n## 🚀 Get Started\n\nThe recommended way to run ha-mcp is the **HA-MCP integration**. It installs into Home Assistant through HACS (the built-in Marketplace on Home Assistant 2026.11+), runs the full server **in-process**, and works on **every** Home Assistant installation type — Home Assistant OS, Supervised, Container, and Core — with full feature parity. It is the easiest setup in every case: setup asks for an administrator access token and how clients may connect.\n\n**Add it to Home Assistant via HACS or, on Home Assistant 2026.11+, the Marketplace (the preferred install):**\n\n[![Add HA-MCP to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=homeassistant-ai&repository=ha-mcp&category=integration)\n\n**Quick start:**\n\n> The setup below is for version 9.0.0 (October 28, 2026) and later; earlier versions show a shorter setup form without the administrator account step.\n\n1. Install the **HA-MCP integration** (requires **Home Assistant 2026.8.0 or newer**; see [compatibility details](docs/in-process-server.md#requirements)). On **Home Assistant 2026.8–2026.10**, open HACS, search for **HA-MCP**, then **Download**.\n   On **Home Assistant 2026.11 or newer**, open **Settings → Marketplace**, accept its first-run warning, and search for **HA-MCP**, then **Install**. HA-MCP is in the default catalog, so installing it and receiving its updates do not require connecting GitHub or adding a custom repository. The badge above also opens its catalog page.\n   Already installed from the earlier `homeassistant-ai/ha-mcp-integration` repository? It keeps receiving the same releases. On the Marketplace, keep GitHub connected for its background checks on that custom repository.\n   Older installed releases may still appear as **HA-MCP Custom Component**; searching for **HA-MCP** matches both names.\n2. **Restart Home Assistant.**\n3. Decide which administrator account the server acts as. Either create a long-lived access token on your own account (your profile → **Security** → **Long-lived access tokens** → **Create token**; it works from anywhere if it leaks, and the server's changes show under your name), or, safer, create an account just for HA-MCP under **Settings → People → Add person** with **Allow login**, **Local access only** and **Administrator** on. Never use your own login for the second option.\n4. Go to **Settings → Devices & Services → Add Integration**, search for **HA-MCP** and choose **HA-MCP Server**. Paste your token, or enter the user name and password of the account you made for HA-MCP (HA-MCP creates its token), pick how clients may connect — **Remote access through Home Assistant** (start with **Secret URL**, the simplest; **Home Assistant sign-in** adds a login) and/or **Network access: Local network** — then click **Submit**. Both start disabled, so a client on another device needs one of them.\n5. Copy the connect URL from the entry's **Configure** screen (**Settings → Devices & Services → “HA-MCP — Manage Home Assistant with AI” → HA-MCP Server → Configure**). A notification confirms the server started and points you there.\n6. Paste that URL into your AI client — done.\n\n**Connect URL.** The Configure screen gives you a Home Assistant webhook URL for remote clients — `https://<your-ha-domain>/api/webhook/<webhook-id>` through Nabu Casa or any reverse proxy already pointed at Home Assistant (locally, `http://<ha-host>:8123/api/webhook/<webhook-id>`). For clients on the same network, the server is also reachable directly at `http://<ha-ip>:9584/private_<random>`.\n\n- **Replaces other install methods:** the in-process server is a complete, standalone ha-mcp install — it takes the place of the app (add-on), Docker, and uvx/PyPI (stdio) methods. Run only one; do not run the in-process server alongside another install.\n- **Local only?** Leave remote access disabled at setup (or turn off **Remote access via webhook** in the entry options) — no webhook is registered at all, while the direct port and sidebar panel keep working.\n- **Settings panel:** while the server runs, an admin-only **HA-MCP** panel appears in the Home Assistant sidebar for managing tools, feature flags, backups, and themes.\n- **Optional authentication:** set **Authentication mode** to `ha_auth` to require a Home Assistant account sign-in instead of using the secret URL as the credential.\n- **Manual install (no HACS or Marketplace):** copy `custom_components/ha_mcp_tools/` from this repository into your Home Assistant `config/custom_components/` directory, then restart and add the integration as above.\n\nThe component's second entry type, the **File & YAML services entry** (**HA-MCP File & YAML Tools**), is only needed if you enable ha-mcp's opt-in file and YAML editing tools (feature flags, off by default) — skip it otherwise; you can add it later at any time. It works with any server type (in-process, app, Docker, or stdio).\n\n[Full in-process server documentation →](docs/in-process-server.md) · [Setup Wizard for client-specific config →](https://homeassistant-ai.github.io/ha-mcp/setup/)\n\n### 🏠 Home Assistant app (add-on)\n\nPrefer to run ha-mcp as a Home Assistant **app (add-on)**? On **Home Assistant OS** and **Supervised** installs it is a close second — no access token to manage, and it works with Claude Desktop, Claude.ai, ChatGPT, and any other MCP client on your local network or configured for remote access.\n\n1. Add the repository to your Home Assistant instance:\n\n   [![Add Repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fhomeassistant-ai%2Fha-mcp)\n\n   If that opens the App store without an add-repository dialog (a [known Home Assistant issue](https://github.com/home-assistant/my.home-assistant.io/issues/698)), add it manually: **Settings → Apps → Install app → ⋮ → Repositories**, then paste `https://github.com/homeassistant-ai/ha-mcp`.\n\n2. Install **\"Home Assistant MCP Server\"** from **Settings → Apps → Install app** and click **Start**. *(Home Assistant 2026.2 renamed \"Add-ons\" to \"Apps\"; on older versions this is the Add-on store.)*\n3. Open the **Logs** tab to find your unique MCP URL.\n4. Connect your AI client to that URL — **no token or credential setup needed**.\n\n[Full app documentation →](homeassistant-addon/DOCS.md)\n\n> ⚠️ **Configure exactly one install method per client.** The custom component, the app, Docker/PyPI, and local stdio are independent ways to run the same server — pick one and point your AI client at that single URL. Keeping two entries for the same server in one client (for example a local `uvx --python 3.14 ha-mcp@latest` entry with `HOMEASSISTANT_URL` / `HOMEASSISTANT_TOKEN` alongside an app or component URL) is a known cause of connection hangs.\n\n### Other install methods\n\nThese run the server outside Home Assistant — useful for **Container** / **Core** installs (which can't run apps) or a separate host. The [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) generates the exact client-specific config for each.\n\n- **Docker (HTTP server):** run `ghcr.io/homeassistant-ai/ha-mcp` in HTTP mode, pointed at your Home Assistant URL and a long-lived token (an administrator's is recommended; non-admin tokens work with limitations), and connect your client to its secret URL. See the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) for the full command and per-client config.\n- **PyPI / uvx (HTTP server):** run the published `ha-mcp` package with `uvx --python 3.14 ha-mcp@latest` (or pip) as a streamable-HTTP server the same way. Details in the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/).\n- **Local stdio (not recommended):** runs ha-mcp on your own machine over stdio. The one-command installers in the **Demo server** section below use this path; the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) covers connecting it to your own Home Assistant.\n- **OIDC authentication:** gate remote access behind an external identity provider (Authentik, Keycloak, Auth0, etc.) instead of a secret URL — all authenticated users share the server's Home Assistant credentials. See [OIDC Mode](docs/oidc.md).\n\n  > ⚠️ **stdio has known transport issues.** The stdio transport has connection problems that streamable HTTP does not ([#1713](https://github.com/homeassistant-ai/ha-mcp/issues/1713)). It is recommended only for demo/testing tinkering — for a real setup, use the custom component or an HTTP method above.\n\n<details>\n<summary><b>🌐 Remote access (Nabu Casa / Webhook Proxy app / OpenAI Tunnel)</b></summary>\n\n> **Using the HA-MCP custom component?** You do not need the **Webhook Proxy** — the component has its own built-in webhook for remote access (see the **Get Started** quick start at the top). The proxy is for the **app** (it can also front another external server via its `mcp_server_url` option). The **OpenAI Tunnel** below is different: it applies to **any** install method when Home Assistant isn't publicly reachable at all (no Nabu Casa or reverse proxy).\n\nAlready have **Nabu Casa** or another reverse proxy pointing at your Home Assistant? The Webhook Proxy app routes MCP traffic through your existing setup — no separate tunnel or port forwarding needed.\n\n1. Install the **MCP Server app** (see above) and the **Webhook Proxy** app from the same store\n2. Start the webhook proxy and **restart Home Assistant** when prompted\n3. Copy the webhook URL from the app logs:\n   ```\n   MCP Server URL (remote): https://xxxxx.ui.nabu.casa/api/webhook/mcp_xxxxxxxx\n   ```\n4. Configure your AI client with that URL\n\nFor other remote access methods (Cloudflare Tunnel, custom reverse proxy), see the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/).\n\n**ChatGPT / Codex behind a firewall (OpenAI Tunnel).**",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"uv_build>=0.12.17,<0.14\"]\nbuild-backend = \"uv_build\"\n\n[project]\nname = \"ha-mcp\"\nversion = \"9.2.0\"\ndescription = \"Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.\"\nreadme = \"README.md\"\n# Upper bound widened to <3.15 so the package installs on Home Assistant's\n# interpreter when run in-process by the ha_mcp_tools component (HA\n# core-2026.7 ships Python 3.14).\nrequires-python = \">=3.14,<3.15\"\nlicense = \"MIT\"\nlicense-files = [\"LICENSE\"]\nauthors = [\n    {name = \"Julien\", email = \"github@qc-h.net\"}\n]\nkeywords = [\"mcp\", \"home-assistant\", \"ai\", \"automation\", \"smart-home\"]\nclassifiers = [\n    \"Development Status :: 5 - Production/Stable\",\n    \"Intended Audience :: Developers\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.14\",\n    \"Topic :: Home Automation\",\n    \"Topic :: Software Development :: Libraries :: Python Modules\",\n]\n\ndependencies = [\n    # fastmcp/mcp/mcp-types are vendored (scripts/vendor_fastmcp.py) so HA\n    # Core's own mcp 1.x pin can't conflict. Below: their runtime requirements.\n    \"anyio>=4.10\",\n    \"authlib>=1.6.11\",\n    \"certifi>=2026.10.19\",\n    \"cyclopts>=4.0.0\",\n    \"exceptiongroup>=1.2.2\",\n    \"griffelib>=2.0.0\",\n    \"httpx2>=2.10.0\",\n    \"joserfc>=1.5.0\",\n    \"jsonref>=1.1.0\",\n    \"jsonschema>=4.20.0\",\n    \"jsonschema-path>=0.3.4\",\n    \"openapi-pydantic>=0.6.0\",\n    \"opentelemetry-api>=1.28.0\",\n    \"platformdirs>=4.0.0\",\n    \"psutil>=7.0.0\",\n    \"py-key-value-aio[filetree,keyring,memory]>=0.4.4,<0.5.0\",\n    \"pydantic-settings>=2.0.0\",\n    \"pyjwt[crypto]>=2.10.1\",\n    \"pyperclip>=1.9.0\",\n    \"python-multipart>=0.0.26\",\n    \"pywin32>=311; sys_platform == 'win32'\",\n    \"pyyaml>=6.0,<7.0\",\n    \"rich>=13.9.4\",\n    \"sse-starlette>=3.0.0\",\n    \"starlette>=1.0.1\",\n    \"typing-extensions>=4.13.0\",\n    \"typing-inspection>=0.4.1\",\n    \"uncalled-for>=0.4.0\",\n    \"uvicorn>=0.35; sys_platform != 'emscripten'\",\n    \"watchfiles>=1.0.0\",\n    # Shared with the embedded HA process: admit Core's versions, including\n    # compatible updates, instead of requiring it to keep our exact pin.\n    # uv.lock selects standalone versions; HA's own constraints select\n    # the embedded versions. Check both the HACS minimum and current Core\n    # before raising these floors; standalone lock updates can move independently.\n    \"httpx[socks]>=0.28.1,<0.29\",\n    \"pydantic[email]>=2.13.4,<3\",\n    \"python-dotenv>=1.2.4,<2\",\n    \"truststore>=0.10.4,<0.11\",\n    # websockets is deliberately ABSENT from this list: ha-mcp ships its own\n    # private copy (src/ha_mcp/_vendor/websockets, pinned in the vendor\n    # requirements.txt and synced by scripts/vendor_websockets.py) and never\n    # imports the shared site-packages copy. Inside Home Assistant that\n    # shared copy is unowned — ~20 integration libraries drag it in with\n    # conflicting version demands and any of their installs can replace or\n    # tear it in place (#2135/#2146); a declared dependency here would make\n    # ha-mcp PIN that contested copy, which is what forced the in-place\n    # replacements. Home Assistant's environment carries a shared copy anyway\n    # (Core and other integrations install it), so what keeps us off it is the\n    # vendored import path, not the absence of this line — and the embedded no-stomp e2e guard is\n    # what proves no install of ours ever replaces the shared copy.\n    # Range (not a hard pin) so the resolver can satisfy Home Assistant's own\n    # cryptography constraint when ha-mcp is installed into the HA venv for\n    # in-process embedding (HA 2026.6 pins cryptography==48.0.0, 2026.7 pins\n    # 48.0.1 — the floor must admit every supported core's pin; live-found on\n    # the embedded e2e lane against the HA 2026.6.4 image).\n    # Only the vendored fastmcp and mcp trees import cryptography; our own code does not.\n    \"cryptography>=48.0.0,<51\",\n    \"pydantic-monty==0.0.18\",\n    \"tzdata>=2024.1\",\n    \"packaging>=24.0\",\n]\n\n[project.urls]\n\"Homepage\" = \"https://github.com/homeassistant-ai/ha-mcp\"\n\"Bug Tracker\" = \"https://github.com/homeassistant-ai/ha-mcp/issues\"\n\"Repository\" = \"https://github.com/homeassistant-ai/ha-mcp\"\n\n[project.scripts]\nha-mcp = \"ha_mcp.__main__:main\"\nha-mcp-smoke-test = \"ha_mcp.smoke_test:main\"\nha-mcp-web = \"ha_mcp.__main__:main_web\"\nha-mcp-oauth = \"ha_mcp.__main__:main_oauth\"\nha-mcp-oidc = \"ha_mcp.__main__:main_oidc\"\n\n[tool.uv.build-backend]\n# Explicit because publish-dev.yml renames the project to ha-mcp-dev, which\n# would otherwise make the module name ha_mcp_dev.\nmodule-name = \"ha_mcp\"\n# Every file under src/ha_mcp ships unless excluded here. Of the skills\n# submodule only skills/ and LICENSE ship; its evals, scripts, docs, git and\n# CI files are not read at runtime, and neither is the settings UI's agent\n# guide.\nsource-exclude = [\n    \"src/ha_mcp/resources/skills-vendor/.*\",\n    \"src/ha_mcp/resources/skills-vendor/*.md\",\n    \"src/ha_mcp/resources/skills-vendor/evals\",\n    \"src/ha_mcp/resources/skills-vendor/sc",
+    "strategic_keywords": [
+      "mcp",
+      "llm",
+      "workflow",
+      "automation",
+      "protocol"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 4,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Home Assistant 集成",
+      "MCP 集成",
+      "智能家居自动化"
+    ],
+    "brief_zh": {
+      "summary": "一个将 Home Assistant 接入 Claude、ChatGPT 等 AI 助手的 MCP 服务器；README 展示其用于配置与自动化家庭设备，并声明提供 87 个工具。",
+      "capabilities": "Home Assistant 集成、MCP 集成、智能家居自动化、设备配置",
+      "verified_at": "2026-11-11",
+      "evidence_sources": [
+        "https://github.com/homeassistant-ai/ha-mcp"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；87 个工具为 README 自述，未在真实 Home Assistant 实例中运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "CopilotKit",
+    "name": "OpenBot",
+    "full_name": "CopilotKit/OpenBot",
+    "url": "https://github.com/CopilotKit/OpenBot",
+    "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+    "language": "TypeScript",
+    "total_stars": 11526,
+    "forks": 1428,
+    "stars_this_period": 291,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [
+        "ag-ui",
+        "agent-governance",
+        "ai-agents",
+        "browser-automation",
+        "copilotkit",
+        "generative-ui",
+        "mcp"
+      ],
+      "license": "MIT",
+      "open_issues": 84,
+      "created_at": "2026-08-17T00:44:59Z",
+      "pushed_at": "2026-11-12T21:59:13Z",
+      "homepage": "open.bot",
+      "default_branch": "main",
+      "forks": 1428,
+      "watchers": 43,
+      "archived": false,
+      "size_kb": 48929
+    },
+    "readme_content": "<div align=\"center\">\n\n<img src=\"app/src/assets/openbot-logo.png\" alt=\"\" width=\"72\">\n\n# OpenBot\n\n### AI coworkers. Ready for the enterprise.\n\nA modular, self-hostable workspace for AI coworkers.<br>\nChoose your models. Bring your agents. Own your infrastructure.\n\n[open.bot](https://open.bot) · [Docs](docs/README.md) · [Deploy on Kubernetes](#deploy-on-kubernetes) · [Run from source](#run-from-source)\n\n[![GitHub Trending: #3 Repository Of The Day](https://trendshift.io/api/badge/repositories/175080)](https://trendshift.io/repositories/175080)\n[![Trendshift: #3 Repository Of The Day](https://trendshift.io/api/badge/trendshift/repositories/175080/daily)](https://trendshift.io/repositories/175080)\n\n<br>\n\n[![Download for Mac (Apple silicon)](https://img.shields.io/github/v/release/CopilotKit/OpenBot?style=for-the-badge&labelColor=3A3466&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTExIDNoMnYxMC4ybDMuNi0zLjZMMTggMTFsLTYgNi02LTYgMS40LTEuNCAzLjYgMy42ek01IDE5aDE0djJINXoiLz48L3N2Zz4%3D&label=Download%20for%20Mac%20%28Apple%20silicon%29&color=6E6AE0)](https://downloads.copilotkit.ai/latest/OpenBot-mac-arm64.dmg)\n[![Download for Mac (Intel)](https://img.shields.io/github/v/release/CopilotKit/OpenBot?style=for-the-badge&labelColor=3A3466&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTExIDNoMnYxMC4ybDMuNi0zLjZMMTggMTFsLTYgNi02LTYgMS40LTEuNCAzLjYgMy42ek01IDE5aDE0djJINXoiLz48L3N2Zz4%3D&label=Download%20for%20Mac%20%28Intel%29&color=4A7CC8)](https://downloads.copilotkit.ai/latest/OpenBot-mac-x64.dmg)\n[![Download for Windows](https://img.shields.io/github/v/release/CopilotKit/OpenBot?style=for-the-badge&labelColor=3A3466&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTExIDNoMnYxMC4ybDMuNi0zLjZMMTggMTFsLTYgNi02LTYgMS40LTEuNCAzLjYgMy42ek01IDE5aDE0djJINXoiLz48L3N2Zz4%3D&label=Download%20for%20Windows&color=9A5CC6)](https://downloads.copilotkit.ai/latest/OpenBot-windows-x64-setup.exe)\n\n<sub>Notarized .dmg for Apple silicon and Intel Macs · signed installer for Windows x64 · no terminal or developer tools needed · [Release notes](https://github.com/CopilotKit/OpenBot/releases/latest)</sub>\n\n<br>\n\n[![OpenBot for Business: get early access](https://img.shields.io/badge/OpenBot_for_Business-Get_early_access_%E2%86%92-D14B9C?style=for-the-badge&labelColor=3A3466)](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=business&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access)\n\n<sub>From [CopilotKit](https://www.copilotkit.ai), creators of [AG-UI](https://github.com/ag-ui-protocol/ag-ui).</sub>\n\n</div>\n\nhttps://github.com/user-attachments/assets/c60f07da-8b6d-46eb-a573-17fc1e65a644\n\n<p align=\"center\"><sub>Watch a Bot use its browser and tools, answer with interactive results, and wait for your approval before it sends. Take over when it needs you, and connect the agents you already run.</sub></p>\n\n## Getting started\n\n### On your laptop\n\nThe easiest way to get started is with the fully self-contained app that runs on your laptop, combining the OpenBot frontend and Docker-based backend in one application.\n\n[Mac / Apple silicon](https://downloads.copilotkit.ai/latest/OpenBot-mac-arm64.dmg) · [Mac / Intel](https://downloads.copilotkit.ai/latest/OpenBot-mac-x64.dmg) · [Windows](https://downloads.copilotkit.ai/latest/OpenBot-windows-x64-setup.exe)\n\n[Run from source](#run-from-source)\n\n### For your team\n\n**OpenBot for Business** brings your agents into one workspace with company sign-in, tool permissions, approvals, and audit. Deploy on your infrastructure or work with our engineers on hosting and customization.\n\n[**Get early access to OpenBot for Business →**](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=business&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access) · [**Talk to an engineer**](https://open.bot/business) · [**Kubernetes setup**](#deploy-on-kubernetes)\n\n<a id=\"early-access-platforms\"></a>\n\n### Web, mobile, and chat\n\n[Web](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=web&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access) · [iOS](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=ios&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access) · [Android](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=android&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access) · [Slack](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=slack&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access) · [Teams](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=teams&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access)\n\n## Your workspace. Your stack.\n\n<div align=\"center\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/openbot-stack-dark.svg\">\n  <img src=\"docs/assets/openbot-stack-light.svg\" alt=\"OpenBot's modular stack: an enterprise workspace over built-in or AG-UI agents, your models, MCP tools, configurable infrastructure, and deployment on your laptop or Kubernetes.\" width=\"90%\">\n</picture>\n</div>\n\n- **Choose your models.** Use OpenAI, Claude, Gemini, or open models through an OpenAI-compatible endpoint, hosted by a provider or on your own infrastructure. Keep your provider relationships and change models as your needs change.\n- **Bring your agents.** Run built-in Bots in the OpenBot server, or connect your existing agents through AG-UI from any agent execution platform. Agents built with different stacks can work in the same workspace.\n- **Make it yours.** Use the MIT-licensed template as-is, white-label it, or customize it deeply. AG-UI connects agents, MCP connects tools, and the frontends and backend can evolve independently.\n- **Govern work across your team.** Company sign-in, roles, tool permissions, approvals, and audit apply across the workspace. Your agents use OpenBot's tools and computers under the same policies.\n- **Get help deploying it.** CopilotKit's engineers can work with your team to deploy OpenBot, connect your systems, and automate parts of specific jobs.\n\n[Connect your agent](#bring-your-own-agent) · [Configure models and tools](docs/configuration.md) · [Explore OpenBot for Business](https://open.bot/business)\n\n## Built on CopilotKit and AG-UI\n\nOpenBot is built on [CopilotKit](https://www.copilotkit.ai), which is [used in production by a majority of Fortune 500 companies](https://www.copilotkit.ai/blog/series-a).\n\n**Your agent stack.** [AG-UI](https://docs.ag-ui.com/introduction#supported-integrations) has first-class integrations across the major agent frameworks and harnesses, including Anthropic's Claude Agent SDK, Microsoft Agent Framework and Agent Harness, Google ADK, AWS Strands, Oracle Agent Spec, LangChain, Mastra, Pydantic AI, Agno, and CrewAI. Many ship first-party support; [Amazon Bedrock AgentCore supports AG-UI directly](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-agui.html).\n\n**Your execution platform.** Keep your agents on Amazon Bedrock AgentCore, Claude Managed Agents, [Google's Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform), LangChain's Managed Deep Agents, [Microsoft Foundry Agent Service](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents), or your own infrastructure. Connect them to OpenBot through an AG-UI endpoint, using an adapter where needed. Your choice of agent platform stays independent of your workspace.\n\n## Architecture\n\nOpenBot has three parts. On your laptop, setup runs the backend and Intelligence for you. For a team, the Helm chart deploys both on Kubernetes in your own infrastructure.\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/architecture-overview-dark.svg\">\n  <img src=\"docs/assets/architecture-overview-light.svg\" alt=\"Mac, Windows, web, iOS, Android, Slack, and Teams connect to the OpenBot backend. Built-in Bots in the server and your agents on any execution platform share an AG-UI lane. Computer execution uses Kubernetes by default or a compatible sandbox provider; tools use MCP and adapters. CopilotKit Intelligence runs alongside OpenBot on your infrastructure.\" width=\"100%\">\n</picture>\n\n| Part | What it does |\n| --- | --- |\n| **OpenBot frontends** | Mac, Windows, web, iOS, Android, Slack, and Teams connect people to the same workspace. Conversations, interactive results, computer view, and approvals adapt to each surface. [Choose a frontend](#getting-started). |\n| **OpenBot backend** | Runs the workspace API and built-in Bots, connects external agents and tools, manages Bot computers, and enforces identity, permissions, action policies, and audit. Deploys on Kubernetes with PostgreSQL and persistent storage. |\n| **CopilotKit Intelligence** | Durable conversations, memory, Automatic Learning, and enterprise governance services. Separately licensed; runs on Kubernetes alongside OpenBot. |\n\nOpenBot enforces sign-in, tool permissions, action policies, and audit at its API, alongside Intelligence's platform services. Built-in Bots run in the OpenBot server; your own agents can run alongside OpenBot or on any agent execution platform. Both use AG-UI and can share the same workspace.\n\nComputer execution is pluggable: use the default Kubernetes setup or connect a compatible external computer provider.\n\n[Architecture details](docs/architecture.md) · [Services and ports](#services-and-ports) · [Kubernetes deployment](charts/openbot/README.md)\n\n## Open source, local operation, and licensing\n\n**The OpenBot application template is open source under the [MIT license](LICENSE).** You can fork, modify, and white-label it. It uses **CopilotKit Intelligence**, which is separately licensed and can run entirely on your own machine or infrastructure.\n\n| Where you run it | CopilotKit Intelligence license |\n| --- | --- |\n| **Your laptop, for personal use and experimentation** | Requires a free local Intelligence license. Desktop setup handles this for you. |\n| **Kubernetes evaluation** | Requires a free Intelligence trial license. [Request a trial](https://dashboard.operations.copilotkit.ai/early-access/openbot?platform=business&ref=github&utm_source=github&utm_medium=readme&utm_campaign=openbot-early-access). |\n| **Kubernetes / production** | Requires a production Intelligence license beyond evaluation. OpenBot for Business includes Intelligence for use with OpenBot. [Plans and pricing](https://open.bot/pricing). |\n\n**Fully local is an option.** Run OpenBot, Intelligence, and a compatible model locally. A cloud model or connected online app still sends requests to that service. Initial downloads, account sign-in, and local license renewal need internet access.\n\n---\n\n## Deploy on Kubernetes\n\nDeploy OpenBot and CopilotKit Intelligence together on **AWS EKS, Azure AKS, Google GKE, or your own Kubernetes cluster**. The chart installs Intelligence by default; no separate hosted project is required.\n\nFor a first evaluation, you need a cluster with **amd64 nodes**, a **default StorageClass**, `kubectl`, Helm, a **trial or production license**, and a model key. The commands below use an OpenAI key. For Anthropic, a model router, cluster sizing, or an existing Intelligence deployment, use the [full Helm guide](charts/openbot/README.md).\n\n> **Setting up with an AI assistant?** Give it this README and [the Helm guide](charts/openbot/README.md). The guide covers cloud-specific values, storage, secrets, sign-in, networking, upgrades, and troubleshooting. Use the ev",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"openbot\",\n  \"version\": \"1.0.1\",\n  \"license\": \"MIT\",\n  \"private\": true,\n  \"packageManager\": \"bun@1.4.3\",\n  \"workspaces\": [\n    \"app\",\n    \"server\",\n    \"worker\",\n    \"shared\",\n    \"toolkit\",\n    \"extension\"\n  ],\n  \"scripts\": {\n    \"build\": \"bun run generate:app-config && bun run --filter '*' build\",\n    \"dev\": \"bun run generate:app-config && bun run --filter app --filter server --parallel dev\",\n    \"generate:app-config\": \"bun --env-file=.env scripts/generate-app-config.ts\",\n    \"format\": \"bunx biome format --write .\",\n    \"format:check\": \"bunx biome format .\",\n    \"lint\": \"bunx biome lint --error-on-warnings .\",\n    \"test\": \"bun test\",\n    \"typecheck\": \"bun run --filter '*' typecheck && bun run typecheck:e2e\",\n    \"typecheck:e2e\": \"tsc --noEmit -p e2e/tsconfig.json\",\n    \"typecheck:tests\": \"bun scripts/typecheck-tests.ts\",\n    \"test:ci\": \"bun scripts/test-ci.ts\",\n    \"test:server:sharded\": \"bun scripts/test-server-sharded.ts\",\n    \"test:mutations\": \"bun scripts/mutation-register.ts\",\n    \"pretest\": \"bun run generate:app-config\",\n    \"test:smoke\": \"OPENBOT_SMOKE=1 bun test tests/smoke\",\n    \"test:e2e\": \"playwright test -c e2e/playwright.config.ts\",\n    \"test:e2e:record\": \"E2E_RECORD=1 playwright test -c e2e/playwright.config.ts\",\n    \"test:live-screen\": \"OPENBOT_LIVE_SCREEN=1 bun test agent-computer/tests/live-screen.test.ts agent-computer/tests/browser-close-announcement.test.ts agent-computer/tests/reset-run.test.ts\",\n    \"test:live-screen-pacing\": \"OPENBOT_LIVE_SCREEN=1 bun test agent-computer/tests/live-screen-pacing.test.ts\",\n    \"test:live-composio\": \"bun -e \\\"if (!process.env.COMPOSIO_API_KEY?.trim()) { console.error('COMPOSIO_API_KEY is empty or unset, so every case in this suite would skip and this command would still exit 0. Run it as COMPOSIO_API_KEY=... bun run test:live-composio.'); process.exit(1) }\\\" && OPENBOT_LIVE_COMPOSIO=1 bun test server/tests/composio-live.test.ts\",\n    \"test:live-arcade\": \"bun -e \\\"if (!process.env.ARCADE_API_KEY?.trim()) { console.error('ARCADE_API_KEY is empty or unset, so every case in this suite would skip and this command would still exit 0. Run it as ARCADE_API_KEY=... bun run test:live-arcade.'); process.exit(1) }\\\" && OPENBOT_LIVE_ARCADE=1 bun test server/tests/arcade-live.test.ts\",\n    \"diagram\": \"bun scripts/architecture-diagram.ts\",\n    \"setup:composio\": \"bun scripts/setup-composio.ts\",\n    \"composio:smoke\": \"bun scripts/composio-smoke.ts\",\n    \"mock:knowledge\": \"bun scripts/mock-knowledge-mcp.ts\"\n  },\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"2.5.10\",\n    \"@copilotkit/aimock\": \"1.48.0\",\n    \"@playwright/test\": \"1.62.1\",\n    \"@types/bun\": \"^1.3.3\",\n    \"roughjs\": \"^4.6.6\",\n    \"typescript\": \"^5.9.3\",\n    \"yaml\": \"^2.9.0\"\n  },\n  \"dependencies\": {\n    \"playwright-core\": \"1.62.1\"\n  },\n  \"overrides\": {\n    \"lodash-es\": \"4.18.0\"\n  }\n}\n",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "workspace",
+      "automation",
+      "developer tool",
+      "protocol"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 19,
+      "relevance": 20,
+      "novelty": 11,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "AI 同事",
+      "独立浏览器",
+      "文件系统"
+    ],
+    "brief_zh": {
+      "summary": "一个开源 AI 同事运行环境：每个 Agent 拥有独立的浏览器、文件系统和电脑操作空间，并可在团队中协作完成任务。",
+      "audience": "希望为多 Agent 工作流提供隔离执行环境、浏览器和文件操作能力的开发者与团队",
+      "capabilities": "AI 同事、独立浏览器、文件系统、电脑操作、多 Agent 协作",
+      "risk": "浏览器、文件和电脑操作属于高权限能力；实际隔离边界、凭据处理、审计与生产稳定性需在目标部署中验证。",
+      "verified_at": "2026-10-30",
+      "evidence_sources": [
+        "https://github.com/CopilotKit/OpenBot"
+      ],
+      "evidence_note": "依据本次抓取的 README、topics 与仓库 description；未运行或授予真实电脑权限。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "superplanehq",
+    "name": "superplane",
+    "full_name": "superplanehq/superplane",
+    "url": "https://github.com/superplanehq/superplane",
+    "description": "Open source factory for one-shot engineering",
+    "language": "Go",
+    "total_stars": 10030,
+    "forks": 707,
+    "stars_this_period": 100,
+    "source_slice": "go",
+    "source_slices": [
+      "go"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-orchestration",
+        "agentic-workflows",
+        "ai-agents",
+        "ai-coding",
+        "ai-software-engineering",
+        "developer-tools",
+        "go",
+        "react",
+        "self-hosted",
+        "software-factory",
+        "workflow-automation"
+      ],
+      "license": "NOASSERTION",
+      "open_issues": 238,
+      "created_at": "2025-05-07T17:48:39Z",
+      "pushed_at": "2026-11-12T22:04:43Z",
+      "homepage": "https://superplane.com",
+      "default_branch": "main",
+      "forks": 707,
+      "watchers": 12,
+      "archived": false,
+      "size_kb": 564320
+    },
+    "readme_content": "<p align=\"center\">\n  <a href=\"https://superplane.com/\">\n    <img src=\"./docs/images/background_image.png\" alt=\"SuperPlane factory board with Backlog, Implement, Verify, and Done columns\" width=\"100%\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://superplanehq.semaphoreci.com/projects/superplane\"><img src=\"https://superplanehq.semaphoreci.com/badges/superplane/branches/main.svg?style=shields\" alt=\"Build\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-F4D35E?style=flat-square&amp;labelColor=171714\" alt=\"Apache 2.0\"></a>\n  <a href=\"https://discord.superplane.com\"><img src=\"https://img.shields.io/discord/1409914582239023200?label=Discord&amp;style=flat-square&amp;labelColor=171714&amp;color=F4D35E\" alt=\"Discord\"></a>\n  <a href=\"https://mcpservers.org/servers/superplanehq/superplane\"><img src=\"https://mcpservers.org/badge.svg\" alt=\"Listed on mcpservers.org\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://app.superplane.com/\">Try SuperPlane</a> ·\n  <a href=\"https://superplane.com/\">Website</a> ·\n  <a href=\"https://docs.superplane.com/\">Docs</a> ·\n  <a href=\"https://docs.superplane.com/self-hosting/overview/\">Self-host</a> ·\n  <a href=\"https://discord.superplane.com/\">Discord</a>\n</p>\n\n## About\n\n**Open source factory for one-shot engineering.**\n\nSuperPlane turns high-confidence backlog issues into verified, review-ready\npull requests so engineers can focus on work that needs judgment.\n\nSuperPlane lets AI agents fully automate routine development work. It\ncoordinates coding agents, source control, CI, review, approvals and feedback\nin one visible system so engineers do not have to project-manage every step.\n\nThe factory continuously evaluates which backlog issues agents can handle with\nhigh confidence. It applies the same workflow-level guardrails to every run,\nchecks the result and sends failures back to the agent with actionable context.\nAmbiguous work and decisions that need human judgment stay with your team.\n\nSuperPlane is built on an Apache 2.0 open source engine. Choose your models,\nrun in the cloud or on-prem and build the factory around your stack and cost\nconstraints.\n\n## How it works\n\n### Turn backlog issues into work agents can deliver\n\n<p align=\"center\">\n  <img src=\"./docs/images/backlog-refinement-framed.png\" alt=\"Task refinement showing a plan and readiness assessment\" width=\"100%\">\n</p>\n\nReliable automation starts with a clear task. SuperPlane analyzes the issue,\nhelps refine the plan, and identifies decisions that need your input before\nimplementation begins.\n\n### Bring verified changes to human review\n\n<p align=\"center\">\n  <img src=\"./docs/images/pull-request-verification-framed.png\" alt=\"Pull request verification showing check fixes and merge confidence\" width=\"100%\">\n</p>\n\nSuperPlane checks the agent's work and sends failures back for correction.\nAn agent review assesses merge confidence and highlights remaining concerns,\nso your team can make the final decision with evidence.\n\nThe plan and the pull request review are two parts of that workflow. SuperPlane\ncan also wait for an event from your tools, call an agent, or ask a person for\napproval.\n\n## Getting started\n\n### SuperPlane Cloud\n\n1. [Sign up](https://app.superplane.com/) and create a workspace.\n2. Connect a GitHub repository.\n3. Choose a small bug, a test fix, or a documentation update for the first run.\n\nSuperPlane imports the issues and assesses which tasks are suitable for an agent.\n\n- Follow the [quickstart](https://docs.superplane.com/get-started/quickstart/) for setup.\n- Read the [product overview](https://docs.superplane.com/get-started/overview/) to learn how SuperPlane coordinates agents and verification.\n\n### Self-host\n\nInstall SuperPlane on your own infrastructure.\n\n- Use Docker Compose on one Linux VM.\n- Use Kubernetes on AWS, Azure, or Google Cloud.\n\nSee the [self-hosting guide](https://docs.superplane.com/self-hosting/overview/).\n\n## Contributing\n\nWe welcome focused pull requests, bug reports and product ideas.\n\n1. Read the [contributing guide](./CONTRIBUTING.md).\n2. Review the [issue tracking process](./docs/contributing/issue-tracking.md).\n3. Find an [open issue](https://github.com/superplanehq/superplane/issues).\n4. Join the [Discord community](https://discord.superplane.com) to discuss an\n   approach with maintainers.\n\nContributor setup is Docker-based. Start with the repository instructions in\n[`AGENTS.md`](./AGENTS.md) and the development section of\n[`CONTRIBUTING.md`](./CONTRIBUTING.md).\n\n## Community and license\n\n- [Discord](https://discord.superplane.com) for discussions and support\n- [Blog](https://superplane.com/blog/) for engineering notes and releases\n- [Community events](https://luma.com/superplane) for maintainer sessions\n- [X](https://x.com/superplanehq) for product updates\n\nSuperPlane is available under the [Apache License 2.0](./LICENSE).\n",
+    "manifest_file": "go.mod",
+    "manifest_content": "module github.com/superplanehq/superplane\n\ngo 1.27.3\n\nrequire (\n\tcloud.google.com/go/compute/metadata v0.9.0\n\tcloud.google.com/go/storage v1.67.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azcore v1.14.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azidentity v1.7.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6 v6.1.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6 v6.1.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/storage/azblob v1.4.1\n\tgithub.com/aws/aws-sdk-go-v2 v1.41.5\n\tgithub.com/aws/aws-sdk-go-v2/config v1.31.5\n\tgithub.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.5\n\tgithub.com/aws/aws-sdk-go-v2/service/ec2 v1.255.0\n\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.97.3\n\tgithub.com/aws/smithy-go v1.24.2\n\tgithub.com/bmatcuk/doublestar/v4 v4.6.1\n\tgithub.com/bradleyfalzon/ghinstallation/v2 v2.18.0\n\tgithub.com/casbin/casbin/v2 v2.134.0\n\tgithub.com/casbin/gorm-adapter/v3 v3.37.0\n\tgithub.com/coreos/go-oidc/v3 v3.19.0\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/expr-lang/expr v1.17.7\n\tgithub.com/getsentry/sentry-go v0.27.0\n\tgithub.com/ghodss/yaml v1.0.0\n\tgithub.com/go-viper/mapstructure/v2 v2.4.0\n\tgithub.com/golang-jwt/jwt/v4 v4.5.2\n\tgithub.com/golang-jwt/jwt/v5 v5.3.1\n\tgithub.com/golang/protobuf v1.5.4\n\tgithub.com/google/go-github/v84 v84.0.0\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/gorilla/mux v1.8.1\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.1\n\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0\n\tgithub.com/jackc/pgx/v5 v5.10.0\n\tgithub.com/lib/pq v1.10.2\n\tgithub.com/markbates/goth v1.81.0\n\tgithub.com/mattn/go-isatty v0.0.17\n\tgithub.com/mitchellh/go-homedir v1.1.0\n\tgithub.com/mitchellh/mapstructure v1.4.3\n\tgithub.com/mxschmitt/playwright-go v0.6201.1\n\tgithub.com/nulab/autog v0.11.0\n\tgithub.com/posthog/posthog-go v1.35.1\n\tgithub.com/rabbitmq/amqp091-go v1.15.0\n\tgithub.com/renderedtext/go-tackle v0.0.0-20251117195301-3a303949d759\n\tgithub.com/resend/resend-go/v3 v3.0.0\n\tgithub.com/robfig/cron/v3 v3.0.1\n\tgithub.com/sirupsen/logrus v1.10.2\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgithub.com/spf13/viper v1.21.0\n\tgithub.com/stretchr/testify v1.12.1\n\tgo.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux v0.70.0\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.70.0\n\tgo.opentelemetry.io/otel v1.45.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.45.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.45.0\n\tgo.opentelemetry.io/otel/metric v1.45.0\n\tgo.opentelemetry.io/otel/sdk v1.45.0\n\tgo.opentelemetry.io/otel/sdk/metric v1.45.0\n\tgo.opentelemetry.io/otel/trace v1.45.0\n\tgolang.org/x/crypto v0.58.1-0.20261009181718-2f1f834330b2\n\tgolang.org/x/oauth2 v0.36.0\n\tgolang.org/x/sync v0.24.0\n\tgoogle.golang.org/api v0.287.1\n\tgoogle.golang.org/genproto/googleapis/api v0.0.0-20260803160001-6ac0973c030d\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d\n\tgoogle.golang.org/grpc v1.83.2\n\tgoogle.golang.org/protobuf v1.36.11\n\tgopkg.in/dnaeon/go-vcr.v2 v2.3.0\n\tgopkg.in/yaml.v3 v3.0.1\n\tgorm.io/datatypes v1.2.5\n\tgorm.io/driver/mysql v1.5.7\n\tgorm.io/driver/postgres v1.5.11\n\tgorm.io/gorm v1.26.0\n)\n\nrequire (\n\tcel.dev/expr v0.25.2 // indirect\n\tcloud.google.com/go v0.123.0 // indirect\n\tcloud.google.com/go/auth v0.20.0 // indirect\n\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n\tcloud.google.com/go/iam v1.11.0 // indirect\n\tcloud.google.com/go/monitoring v1.29.0 // indirect\n\tfilippo.io/edwards25519 v1.1.1 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect\n\tgithub.com/AzureAD/microsoft-authentication-library-for-go v1.2.2 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.33.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.57.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.57.0 // indirect\n\tgithub.com/andybalholm/brotli v1.2.7 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.8 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/credentials v1.18.9 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/configsources v1.4.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/ini v1.8.3 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/v4a v1.4.22 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.7 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/checksum v1.9.13 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.19.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sso v1.29.0 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/ssooidc v1.34.1 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sts v1.38.1 // indirect\n\tgithub.com/casb",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "rag",
+      "workspace",
+      "eval",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "go.mod"
+    ],
+    "score_breakdown": {
+      "heat": 15,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 编排",
+      "AI 软件工程",
+      "工作流自动化"
+    ],
+    "brief_zh": {
+      "summary": "一个开源的 AI 软件工程工作流系统：从高置信度 backlog issue 出发，协调编码 Agent、代码托管、CI、审查与人工审批，产出待审核的 pull request。",
+      "capabilities": "Agent 编排、AI 软件工程、工作流自动化、代码审查、CI 集成、自托管",
+      "verified_at": "2026-11-10",
+      "evidence_sources": [
+        "https://github.com/superplanehq/superplane"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 和 topics；未在真实代码库验证任务筛选准确率、PR 质量或部署成本。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "meta",
+    "name": "astryx",
+    "full_name": "meta/astryx",
+    "url": "https://github.com/meta/astryx",
+    "description": "An open source design system that's fully customizable and agent ready",
+    "language": "TypeScript",
+    "total_stars": 26418,
+    "forks": 2047,
+    "stars_this_period": 1789,
+    "source_slice": "all",
+    "source_slices": [
+      "all",
+      "typescript"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "MIT",
+      "open_issues": 624,
+      "created_at": "2026-01-09T16:20:32Z",
+      "pushed_at": "2026-11-12T21:59:56Z",
+      "homepage": "http://astryx.atmeta.com",
+      "default_branch": "main",
+      "forks": 2047,
+      "watchers": 97,
+      "archived": false,
+      "size_kb": 1349995
+    },
+    "readme_content": "<!-- SYNC CONTRACT: Architecture changes require documentation updates. -->\n\n<div align=\"center\">\n\n<img src=\"https://lookaside.facebook.com/assets/astryx/Astryx-Banner.png\" alt=\"Astryx\" width=\"100%\" />\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now: <br/> by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[![npm version](https://img.shields.io/npm/v/@astryxdesign/core?label=npm&color=cb3837&logo=npm)](https://www.npmjs.com/package/@astryxdesign/core)\n[![license MIT](https://img.shields.io/npm/l/@astryxdesign/core?color=blue)](LICENSE)\n[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/meta/astryx/wiki/Contributing)\n\n[![Docs](https://img.shields.io/badge/Docs-astryx.atmeta.com-6741d9?logo=readthedocs&logoColor=white)](https://astryx.atmeta.com)\n[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785?logo=storybook&logoColor=white)](https://astryx.atmeta.com/storybook/)\n[![Sandbox](https://img.shields.io/badge/Sandbox-playground-A9792B)](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributing](https://github.com/meta/astryx/wiki/Contributing)** · **[Discord](https://discord.com/invite/XnsUcFykEP)**\n\n</div>\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Components are built to be composed at any level, not locked behind a closed top-level API. The building blocks you'd reach for are exported directly, and when you need to go deeper, swizzle ejects a component's full source into your project to own.\n- **No styling lock-in.** Astryx authors its styles with StyleX, but that's invisible to consumers. Override with `className` using Tailwind, CSS modules, or plain CSS — whatever your project already uses.\n- **Customize without wrapping.** A theme is a set of CSS custom property overrides, so a designer can make Astryx unmistakably theirs without forking or wrapping component source.\n- **Built for people and agents.** The API, docs, and CLI are designed together so a person and an AI assistant build the same way, from the same reference.\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both is recommended), and `astryx docs global` explains how global mode works.\n\nThe simplest setup is a few CSS imports plus a theme provider — no build plugin, no PostCSS or Babel config. See the **[@astryxdesign/core README](packages/core/README.md#quick-start)** for the full guide (Next.js, Tailwind, Vite, and CDN).\n\nFor reliable CLI access, add a script to your `package.json`:\n\n```json\n\"scripts\": {\n  \"astryx\": \"node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs\"\n}\n```\n\nThen use it as `npm run astryx -- component --list`. This avoids path errors when AI assistants or new developers invoke the CLI directly.\n\n## Packages\n\n| Package                                    | Description                                                                                          | README                             |\n| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |\n| [`@astryxdesign/core`](packages/core)      | Components, theme system, and utilities                                                              | [README](packages/core/README.md)  |\n| [`@astryxdesign/cli`](packages/cli)        | CLI tooling: component docs, templates, scaffolding, themes, and codemods                            | [README](packages/cli/README.md)   |\n| [`@astryxdesign/build`](packages/build)    | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md) |\n| [`@astryxdesign/theme-*`](packages/themes) | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)          |\n\n> `@astryxdesign/lab` (experimental components) is used internally for Storybook and the sandbox and is not published to npm. `@astryxdesign/vega` (Vega/Vega-Lite chart wrapper) and `@astryxdesign/charts` (chart components) are published to npm only under the `@canary` dist-tag — there is no stable release yet.\n\n## Principles\n\nThese are the promises Astryx makes to the people building on it.\n\n- **Guidance over enforcement.** Components give you capability rather than guardrails that fight you. Design opinions live in docs and examples — if you pass a value, the component renders it.\n- **Strong, documented conventions.** Every component follows the same naming, prop, and composition rules, and every one is thoroughly documented — so once you've learned a few, the rest feel familiar, and both people and AI can predict how an unfamiliar component behaves.\n- **One system for humans and AI.** The API, conventions, docs, and CLI are designed together so people and AI assistants build the same way. Every change that made Astryx easier for AI made it easier for people too.\n- **Earned by measurement.** We test conventions rather than assert them, hold the results loosely, and revisit them when a new situation proves them wrong.\n\n## Architecture\n\n### Foundations\n\nThe building blocks for visually cohesive and accessible interfaces: typography, color, layout, and accessibility.\n\n### Components\n\nA library of 150+ reusable UI building blocks with full TypeScript support.\n\n### Patterns\n\nBattle-tested design solutions for common interactions and workflows: table pages, detail page layouts, form wizards, navigation patterns, data entry flows.\n\n## Project Structure\n\n| Directory   | Purpose                                                     |\n| ----------- | ----------------------------------------------------------- |\n| `apps/`     | Example apps, the docsite, and Storybook                    |\n| `packages/` | Published packages: core, cli, build, themes                |\n| `internal/` | Internal tooling: test utilities, eslint plugin, vibe tests |\n\n## Contributing\n\nWe welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.\n\nQuestions, or want a hand with a PR? Come find us in\n**[Discord](https://discord.com/invite/XnsUcFykEP)**.\n\nOur conventions and review rubrics live in the\n[Contributing wiki](https://github.com/meta/astryx/wiki/Contributing) —\nincluding [API Conventions](https://github.com/meta/astryx/wiki/API-Conventions),\n[Design Conventions](https://github.com/meta/astryx/wiki/Design-Conventions),\nthe [Component Lifecycle](https://github.com/meta/astryx/wiki/Component-Lifecycle),\nthe [Contributing Templates](https://github.com/meta/astryx/wiki/Contributing-Templates),\nand the [Blog Review Rubric](https://github.com/meta/astryx/wiki/Blog-Review-Rubric#three-required-scored-criteria). Read the relevant rubric before opening a PR.\n\nQuick start for contributors: this repo uses **Node 22+ on an active LTS line**\nand **pnpm 11**. Install pnpm directly, or enable\n[Corepack](https://nodejs.org/api/corepack.html) once so the pinned pnpm version\ninstalls automatically:\n\n```bash\ncorepack enable\npnpm install\n```\n\nIf `corepack` is missing, install pnpm directly or install Corepack manually;\nsee the troubleshooting notes in\n[CONTRIBUTING.md](CONTRIBUTING.md#troubleshooting).\n\nThe Theme Showcase DOM tests use the root `ui` project for shared DOM and\nStyleX test setup. Run `pnpm exec vitest run --project ui apps/docsite/src/__tests__/theme-showcase/`\nfrom the repository root.\n\n## License\n\nMIT\n",
+    "manifest_file": "package.json",
+    "manifest_content": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/native build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pnpm -F @astryxdesign/theme-butter build && pnpm -F @astryxdesign/theme-probe build && pnpm bundle:cli-themes && pnpm bundle:cli-official-packages && pnpm -F @astryxdesign/cli sync:api-types\",\n    \"bundle:cli-themes\": \"node scripts/generate-cli-themes.mjs\",\n    \"bundle:cli-official-packages\": \"node scripts/generate-cli-official-packages.mjs\",\n    \"generate:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs\",\n    \"check:neutral-palette-refs\": \"node scripts/generate-neutral-palette-refs.mjs --check\",\n    \"generate:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs\",\n    \"check:stone-palette-refs\": \"node scripts/generate-stone-palette-refs.mjs --check\",\n    \"generate:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs\",\n    \"check:gothic-palette-refs\": \"node scripts/generate-gothic-palette-refs.mjs --check\",\n    \"generate:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs\",\n    \"check:matcha-palette-refs\": \"node scripts/generate-matcha-palette-refs.mjs --check\",\n    \"generate:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs\",\n    \"check:butter-palette-refs\": \"node scripts/generate-butter-palette-refs.mjs --check\",\n    \"generate:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs\",\n    \"check:y2k-palette-refs\": \"node scripts/generate-y2k-palette-refs.mjs --check\",\n    \"dev\": \"pnpm -F @astryxdesign/storybook dev\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:coverage\": \"vitest --coverage\",\n    \"test:ui\": \"vitest run --project ui\",\n    \"test:ui:isolated\": \"vitest run --project perf --no-file-parallelism\",\n    \"test:node\": \"vitest run --project node\",\n    \"test:build\": \"vitest run packages/build/src/packed-consumer.test.mjs --project node --maxWorkers=1 && pnpm -F @astryxdesign/build build && node .github/scripts/theme-layer-cascade.js && ASTRYX_STYLEX_BROWSER=1 vitest run scripts/stylex-module-resolution.browser.test.mjs --project node --maxWorkers=1 && ASTRYX_TURBOPACK_E2E=1 vitest run packages/build/src/next.turbopack.test.mjs --project node --maxWorkers=1\",\n    \"test:theme-family\": \"pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/sandbox generate:theme-family && node .github/scripts/theme-family-cascade.js\",\n    \"test:a11y-contract\": \"playwright test --config playwright.config.ts --project chromium\",\n    \"test:a11y-contract:pr\": \"node .github/scripts/a11y-pr-contracts.mjs\",\n    \"test:docsite-browser\": \"playwright test --config apps/docsite/playwright.config.ts\",\n    \"test:interaction\": \"playwright test --config playwright.interaction.config.ts\",\n    \"storyboards\": \"playwright test --config playwright.interaction.config.ts --grep @storyboard\",\n    \"typecheck\": \"pnpm -r --no-bail --workspace-concurrency=1 --if-present --filter \\\"!@astryxdesign/docsite\\\" --filter \\\"!@astryxdesign/sandbox\\\" run typecheck\",\n    \"check:package-boundaries\": \"node scripts/check-package-boundaries.js\",\n    \"check:component-import-boundaries\": \"node scripts/check-component-import-boundaries.mjs\",\n    \"check:repo\": \"pnpm check:visual-owner && pnpm check:published-manifests && pnpm check:sync && pnpm check:neutral-palette-refs && pnpm check:stone-palette-refs && pnpm check:gothic-palette-refs && pnpm check:matcha-palette-refs && pnpm check:butter-palette-refs && pnpm check:y2k-palette-refs && pnpm check:data-tokens && pnpm check:token-docs && pnpm check:motion-roles && pnpm check:knowledge && pnpm check:package-boundaries && pnpm check:changesets && pnpm check:demo-media && pnpm check:executable-bits && pnpm check:cli-structure && pnpm check:use-client && pnpm check:portable-scripts && pnpm check:i18n-runtime && pnpm check:i18n-catalog && pnpm check:cldr-weekdays && pnpm check:cldr-month-capitals && pnpm check:fixtures && pnpm check:setup-contract && pnpm check:agent-plugin-skill\",\n    \"check:visual-owner\": \"node scripts/check-visual-workflow-owner.mjs\",\n    \"check:fixtures\": \"node internal/vibe-tests/scripts/fixture-suite.mjs verify\",\n    \"generate:agent-plugin-skill\": \"node scripts/generate-agent-plugin-skill.mjs\",\n    \"check:agent-plugin-skill\": \"node scripts/generate-agent-plugin-skill.mjs --check\",\n    \"generate:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs\",\n    \"check:cldr-weekdays\": \"node scripts/generate-cldr-weekdays.mjs --check\",\n    \"generate:cldr-month-capitals\":",
+    "strategic_keywords": [
+      "agent",
+      "agents"
+    ],
+    "relationship_label": "Runtime 参考",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "package.json"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 16,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 8,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "设计系统",
+      "React 组件",
+      "StyleX 样式"
+    ],
+    "brief_zh": {
+      "summary": "Meta 开源的可定制设计系统，基于 React 19+ 与 StyleX 构建，并在 README 中说明其面向人与 Agent 协作的界面开发流程。",
+      "audience": "希望在 React 项目中统一界面基础组件、设计令牌与 Agent 辅助开发流程的产品和工程团队",
+      "capabilities": "设计系统、React 组件、StyleX 样式、界面令牌、Agent 协作开发",
+      "risk": "项目仍处于 Beta；README 的 Agent-ready 定位不代表已验证所有 Agent 集成场景，升级兼容性和组件覆盖范围需在采用前单独评估。",
+      "verified_at": "2026-11-09",
+      "evidence_sources": [
+        "https://github.com/meta/astryx"
+      ],
+      "evidence_note": "依据本次抓取的 README、仓库 description 与技术栈说明；未在生产 React 项目或 Agent 工作流中运行验证。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "coreyhaines31",
+    "name": "marketingskills",
+    "full_name": "coreyhaines31/marketingskills",
+    "url": "https://github.com/coreyhaines31/marketingskills",
+    "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+    "language": "JavaScript",
+    "total_stars": 59954,
+    "forks": 8760,
+    "stars_this_period": 212,
+    "source_slice": "javascript",
+    "source_slices": [
+      "javascript"
+    ],
+    "metadata": {
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "ai-seo",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "content-marketing",
+        "conversion-rate-optimization",
+        "copywriting",
+        "cursor",
+        "email-marketing",
+        "generative-engine-optimization",
+        "growth-marketing",
+        "marketing",
+        "marketing-automation",
+        "saas-marketing",
+        "seo",
+        "skill-md"
+      ],
+      "license": "MIT",
+      "open_issues": 78,
+      "created_at": "2026-01-15T19:45:23Z",
+      "pushed_at": "2026-11-11T17:49:23Z",
+      "homepage": "https://marketing-skills.com",
+      "default_branch": "main",
+      "forks": 8760,
+      "watchers": 400,
+      "archived": false,
+      "size_kb": 6728
+    },
+    "readme_content": "# Marketing Skills for AI Agents\n\nA collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want AI coding agents to help with conversion optimization, copywriting, SEO, analytics, and growth engineering. Works with Claude Code, OpenAI Codex, Cursor, Windsurf, and any agent that supports the [Agent Skills spec](https://agentskills.io).\n\nBuilt by [Corey Haines](https://corey.co?ref=marketingskills). Need hands-on help? Check out [Conversion Factory](https://conversionfactory.co?ref=marketingskills) — Corey's agency for conversion optimization, landing pages, and growth strategy. Want to learn more about marketing? Subscribe to [Swipe Files](https://swipefiles.com?ref=marketingskills). Want to get dangerously good at using AI for marketing? Check out [AI Marketing Training](https://conversionfactory.co/offers/ai-marketing-training?ref=marketingskills). Want an autonomous AI agent that uses these skills to be your CMO? Try [Magister](https://magistermarketing.com?ref=marketingskills).\n\nNew to the terminal and coding agents? Check out the companion guide [Coding for Marketers](https://codingformarketers.com?ref=marketingskills).\n\nWant your agent to read your marketing accounts? Follow the [guided tool connection workflow](tools/SETUP.md) for scoped credentials and a first read-only result.\n\n**Contributions welcome!** Found a way to improve a skill or have a new one to add? [Open a PR](#contributing).\n\nRun into a problem or have a question? [Open an issue](https://github.com/coreyhaines31/marketingskills/issues) — we're happy to help.\n\n## Partners\n\nThe library is free and MIT-licensed. [Verified Partners](tools/REGISTRY.md#verified-partners) fund the work — vetted, disclosed tool integrations, listed alongside the neutral options and never influencing what the core skills recommend. The full rules and boundaries are in [tools/PARTNERS.md](tools/PARTNERS.md). [Become a partner →](https://marketing-skills.com/sponsorship)\n\n<!-- PARTNERS:START -->\n> ◆ **[Converly](https://converly.io)** — *Conversion tracking / attribution.* Server-side conversion tracking that fires when someone submits a form, books a meeting, or starts a chat — passing click IDs and identifiers for Enhanced Conversions (Google) and stronger match quality (Meta), across about 100 tools. CLI + MCP so your agent sets it up in minutes. → [Integration guide](tools/integrations/converly.md)\n\n> ◆ **[Ploy](https://ploy.ai)** — *AI website & growth platform.* AI marketing platform built around a hosted website builder — an in-app agent that builds and publishes pages, PloyDB for pages at scale, routing to add pages to an existing site, built-in analytics and visitor identification, and a CLI for coding agents. → [Integration guide](tools/integrations/ploy.md)\n\n> ◆ **[AIsa](https://aisa.one)** — *SEO, search & social data.* One AIsa key, pay as you go, instead of a subscription to every data platform. Agents get SEO, search, social, and market data from Similarweb, Semrush, Ahrefs, DataForSEO, Tavily, Reddit, X, and more through REST or MCP, and pay only for the calls they make. → [Integration guide](tools/integrations/aisa.md)\n\n> ◆ **[Omnia](https://www.useomnia.com)** — *AI search visibility (AEO).* Omnia tracks how AI engines answer your customers' questions every day: visibility, citations, Share of Voice and sentiment for your brand and competitors. Connect the Omnia MCP to Claude and these skills run on real AI answers data instead of guesses. Or let your Omnia Agent turn it into prioritized work that you review and approve. → [Integration guide](tools/integrations/omnia.md)\n\n> ◆ **[Livestorm](https://livestorm.co)** — *Webinars & virtual events.* Browser-based platform for webinars, virtual events, and online meetings, with registration pages, live engagement, recordings, and analytics. A REST API, webhooks, and an official MCP server let agents create events, manage registrants, and pull attendance data. → [Integration guide](tools/integrations/livestorm.md)\n<!-- PARTNERS:END -->\n\n<!-- The Partners block above is generated from partners.json — run `node scripts/sync-partners.mjs` after editing it. -->\n\n## What are Skills?\n\nSkills are markdown files that give AI agents specialized knowledge and workflows for specific tasks. When you add these to your project, your agent can recognize when you're working on a marketing task and apply the right frameworks and best practices.\n\n## How Skills Work Together\n\nSkills reference each other and build on shared context. The `product-marketing` skill is the foundation — every other skill checks it first to understand your product, audience, and positioning before doing anything.\n\n```\n                            ┌──────────────────────────────────────┐\n                            │          product-marketing           │\n                            │    (read by all other skills first)  │\n                            └──────────────────┬───────────────────┘\n                                               │\n    ┌──────────────┬─────────────┬─────────────┼─────────────┬──────────────┬──────────────┐\n    ▼              ▼             ▼             ▼             ▼              ▼              ▼\n┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ ┌──────────┐ ┌─────────────┐ ┌───────────┐\n│  SEO &   │ │   CRO    │ │Content & │ │  Paid &    │ │ Growth & │ │  Sales &    │ │ Strategy  │\n│ Content  │ │          │ │   Copy   │ │Measurement │ │Retention │ │    GTM      │ │           │\n├──────────┤ ├──────────┤ ├──────────┤ ├────────────┤ ├──────────┤ ├─────────────┤ ├───────────┤\n│seo-audit │ │cro       │ │copywritin│ │ads         │ │referrals │ │revops       │ │mktg-ideas │\n│ai-seo    │ │signup    │ │copy-edit │ │ad-creative │ │free-tools│ │sales-enable │ │mktg-psych │\n│site-arch │ │onboarding│ │cold-email│ │ab-testing  │ │churn-    │ │launch       │ │customer-  │\n│programm  │ │popups    │ │emails    │ │analytics   │ │ prevent  │ │pricing      │ │ research  │\n│schema    │ │paywalls  │ │social    │ │            │ │community │ │competitors  │ │reverse-   │\n│content   │ │          │ │video     │ │            │ │lead-magnt│ │comp-profile │ │ eng-mktg  │\n│aso       │ │          │ │image     │ │            │ │co-mktg   │ │directory    │ │           │\n│link-build│ │          │ │sms       │ │            │ │          │ │prospecting  │ │           │\n└────┬─────┘ └────┬─────┘ └────┬─────┘ └─────┬──────┘ └────┬─────┘ └──────┬──────┘ └─────┬─────┘\n     │            │            │              │             │              │              │\n     └────────────┴─────┬──────┴──────────────┴─────────────┴──────────────┴──────────────┘\n                        │\n         Skills cross-reference each other:\n           copywriting ↔ cro ↔ ab-testing\n           revops ↔ sales-enablement ↔ cold-email\n           seo-audit ↔ schema ↔ ai-seo\n           customer-research → copywriting, cro, competitors\n```\n\nSee each skill's **Related Skills** section for the full dependency map.\n\n## Available Skills\n\n<!-- SKILLS:START -->\n| Skill | Description |\n|-------|-------------|\n| [ab-testing](skills/ab-testing/) | When the user wants to plan, run, or read A/B tests, or asks a judgement call on one: is the result real, can we stop,... |\n| [ad-creative](skills/ad-creative/) | When the user wants to write or judge ad creative, or asks which ad, hook, or angle to run or kill: headlines, primary... |\n| [ads](skills/ads/) | When the user wants to plan, run, or fix paid ads on Google, Meta, and LinkedIn, or asks a judgement call on them: are... |\n| [ai-seo](skills/ai-seo/) | When the user wants to get cited and recommended in AI answers (ChatGPT, Perplexity, AI Overviews), or asks why AI... |\n| [analytics](skills/analytics/) | When the user wants to set up or audit analytics, or asks whether a metric or number is calculated right, what to... |\n| [aso](skills/aso/) | When the user wants to audit or optimize an App Store or Google Play listing, or asks which title, keywords, or... |\n| [attribution](skills/attribution/) | When the user wants to work out which marketing drives revenue, or asks whether a channel is really working, which... |\n| [churn-prevention](skills/churn-prevention/) | When the user wants to reduce churn, or asks why customers cancel, whether to offer a discount or pause: cancellation... |\n| [co-marketing](skills/co-marketing/) | When the user wants co-marketing partners or joint campaigns, or asks whether a partner fits, a size mismatch matters,... |\n| [cold-email](skills/cold-email/) | When the user wants to write or run B2B cold outbound, or asks whether an opener, reason to reach out, or email works... |\n| [community-marketing](skills/community-marketing/) | When the user wants to build or grow an online community, or asks whether a community is worth it, where to host it, or... |\n| [competitor-profiling](skills/competitor-profiling/) | When the user wants to research competitors into dated profiles, or asks what a rival charges, claims, or is doing, or... |\n| [competitors](skills/competitors/) | When the user wants to create or audit comparison and alternative pages ('X vs Y', 'X alternative', 'best X... |\n| [content-strategy](skills/content-strategy/) | When the user wants to plan content, or asks which topic or piece to prioritize, what to write about, or why posts... |\n| [conversion-tracking](skills/conversion-tracking/) | When the user wants to set up, audit, or fix conversion tracking to Google Ads, Meta, GA4, LinkedIn, and TikTok, or... |\n| [copy-editing](skills/copy-editing/) | When the user wants to edit, tighten, proofread, or refresh existing copy, or asks whether to keep, cut, or change a... |\n| [copywriting](skills/copywriting/) | When the user wants to write or rewrite page copy (homepage, landing, pricing, feature), or asks which headline,... |\n| [cro](skills/cro/) | When the user wants more conversions from a page or form, or asks why a page isn't converting, what to change first, or... |\n| [customer-research](skills/customer-research/) | When the user wants to run or synthesize customer research, or asks what customer quotes, reviews, or feedback really... |\n| [directory-submissions](skills/directory-submissions/) | When the user wants to list a product in startup, SaaS, AI, MCP, and review directories, or asks which directories are... |\n| [emails](skills/emails/) | When the user wants to create or improve automated email sequences, or asks what to send, when, or whether an email or... |\n| [events](skills/events/) | When the user wants to plan, run, sponsor, or speak at events, or asks whether an event or booth is worth the money:... |\n| [free-tools](skills/free-tools/) | When the user wants to plan or build a free tool as marketing, or asks whether a tool idea is worth building or which... |\n| [image](skills/image/) | When the user wants to create, generate, edit, or optimize marketing images, or asks which approach to take (generate,... |\n| [influencer-marketing](skills/influencer-marketing/) | When the user wants creator, influencer, or ambassador partnerships, or asks which creators fit, what to pay, which... |\n| [launch](skills/launch/) | When the user wants to plan a product or feature launch, or asks whether it's ready, when to announce, or how to get... |\n| [lead-magnets](skills/lead-magnets/) | When the user wants to plan or improve a lead magnet, or asks what to give away for emails or how much to ask in return... |\n| [link-building](skills/link-building/) | When the user wants backlinks and mentions that lift rankings and AI citations, or asks how to get sites to link or... |\n| [marketing-council](skills/marketing-council/) | When the user wants several expert takes on a marketing decision, or asks what a famous marketer would say about it: a... |\n| [marketing-ideas](skills/marketing-ideas/) | When the user wants marketing ideas or growth tactics for a software product, or asks what to try to get attention or... |\n| [marketing-loops](skil",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "mcp",
+      "skill",
+      "workflow",
+      "automation"
+    ],
+    "relationship_label": "Skill 来源",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 16,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 91
+    },
+    "strategic_score": 91,
+    "capability_tags": [
+      "营销技能",
+      "转化优化",
+      "搜索优化"
+    ],
+    "brief_zh": {
+      "summary": "为编码 Agent 提供营销技能库，覆盖转化优化、文案、搜索优化、分析和增长工作流。",
+      "capabilities": "营销技能、转化优化、搜索优化",
+      "verified_at": "2026-09-07",
+      "evidence_sources": [
+        "https://github.com/coreyhaines31/marketingskills"
+      ],
+      "evidence_note": "依据本日抓取的 README 与 description；未做功能运行验证。"
+    },
+    "summary_source": "project_brief"
+  }
+]
