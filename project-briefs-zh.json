@@ -1460,5 +1460,40 @@
     "verified_at": "2026-11-13",
     "evidence_sources": ["https://github.com/Alishahryar1/free-claude-code"],
     "evidence_note": "依据本次抓取的 README 与仓库 description；免费额度、服务条款兼容性、会话安全和实际稳定性均需在采用前独立确认。"
+  },
+  "QwenLM/qwen-code": {
+    "summary": "Qwen 开源的 AI 编程 Agent，可在终端、编辑器、桌面、浏览器和聊天入口协助完成编码任务。",
+    "capabilities": "AI 编程 Agent、终端工具、编辑器集成、MCP 集成",
+    "verified_at": "2026-11-15",
+    "evidence_sources": ["https://github.com/QwenLM/qwen-code"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与 topics；不同入口的功能一致性、模型表现和生产可用性未独立验证。"
+  },
+  "tradermonty/claude-trading-skills": {
+    "summary": "为个人投资者设计的 Claude Skills 工作流工具包，覆盖市场复盘、技术图表、经济日历、筛选器、交易计划和复盘记录。",
+    "capabilities": "Claude Skills、市场分析、技术图表、交易计划、复盘流程",
+    "verified_at": "2026-11-15",
+    "evidence_sources": ["https://github.com/tradermonty/claude-trading-skills"],
+    "evidence_note": "依据本次抓取的 README 与仓库 description；项目明确不构成投资建议，数据质量、策略表现和自动化结果未独立验证。"
+  },
+  "ModernRelay/omnigraph": {
+    "summary": "面向长程 Agent 共享世界模型的对象存储原生图数据库，README 标注支持向量、BM25 与图检索，以及 Git 式分支工作流。",
+    "capabilities": "图数据库、知识图谱、向量与 BM25 检索、对象存储、MCP",
+    "verified_at": "2026-11-15",
+    "evidence_sources": ["https://github.com/ModernRelay/omnigraph"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与 topics；性能、检索质量和多 Agent 共享效果未独立验证。"
+  },
+  "andrewyng/openworker": {
+    "summary": "一个面向日常任务的 AI 桌面应用，同时提供 Harness SDK 以构建 Agent 桌面和 Web 应用，并支持权限审批与本地模型选择。",
+    "capabilities": "AI 桌面应用、Agent Harness SDK、权限审批、本地模型、沙箱执行",
+    "verified_at": "2026-11-15",
+    "evidence_sources": ["https://github.com/andrewyng/openworker"],
+    "evidence_note": "依据本次抓取的 README；集成范围、沙箱边界和实际任务完成效果未独立验证。"
+  },
+  "backnotprop/plannotator": {
+    "summary": "用于批注 Agent 计划、规格、文档与交互式产物的工作区，也支持审查代码差异和 PR，并将反馈一键发送给 Agent。",
+    "capabilities": "Agent 协作、计划批注、代码审查、PR 审查、反馈工作流",
+    "verified_at": "2026-11-15",
+    "evidence_sources": ["https://github.com/backnotprop/plannotator"],
+    "evidence_note": "依据本次抓取的 README、仓库 description 与 topics；对不同 Agent 工具的兼容性和团队协作效果未独立验证。"
   }
 }
