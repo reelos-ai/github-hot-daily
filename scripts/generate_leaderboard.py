@@ -53,6 +53,7 @@ KEYWORD_LABELS = {
     "bun": "Bun 运行时",
     "browser": "浏览器 Agent",
     "claude-code": "Claude Code 生态",
+    "claude-code-skills": "Claude Code 技能",
     "cli": "CLI",
     "coding": "编码 Agent",
     "code-editor": "代码编辑器",
