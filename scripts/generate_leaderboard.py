@@ -70,6 +70,7 @@ KEYWORD_LABELS = {
     "eval": "评测",
     "infra": "AI Infra",
     "inference": "模型推理",
+    "kubernetes": "Kubernetes 编排",
     "llm": "大模型应用",
     "mcp": "MCP 集成",
     "memory": "长期记忆",
