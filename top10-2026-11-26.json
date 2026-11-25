@@ -11,7 +11,8 @@
     "stars_this_period": 950,
     "source_slice": "python",
     "source_slices": [
-      "python"
+      "python",
+      "all"
     ],
     "metadata": {
       "topics": [
@@ -176,6 +177,96 @@
     "summary_source": "project_brief"
   },
   {
+    "owner": "Tracer-Cloud",
+    "name": "opensre",
+    "full_name": "Tracer-Cloud/opensre",
+    "url": "https://github.com/Tracer-Cloud/opensre",
+    "description": "The open-source agent for CI/CD reliability.",
+    "language": "Python",
+    "total_stars": 15491,
+    "forks": 2028,
+    "stars_this_period": 343,
+    "source_slice": "python",
+    "source_slices": [
+      "python",
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "alerting",
+        "ci-cd",
+        "cli",
+        "datadog",
+        "devops",
+        "gitlab-ci",
+        "grafana",
+        "incident-management",
+        "llm",
+        "observability",
+        "ollama",
+        "remediation",
+        "root-cause-analysis",
+        "site-reliability-engineering",
+        "slack"
+      ],
+      "license": "Apache-2.0",
+      "open_issues": 40,
+      "created_at": "2026-01-13T00:04:47Z",
+      "pushed_at": "2026-11-25T18:22:45Z",
+      "homepage": "https://opensre.com",
+      "default_branch": "main",
+      "forks": 2028,
+      "watchers": 66,
+      "archived": false,
+      "size_kb": 199948
+    },
+    "readme_content": "<div align=\"center\">\n\n<p align=\"center\">\n  <img src=\"docs/logo/opensre-logo-white.svg\" alt=\"OpenSRE\" width=\"360\" />\n</p>\n\n<h1>OpenSRE: The open-source agent for CI/CD reliability</h1>\n\n<p>Your CI tells you it broke, but not why or how to fix it. OpenSRE is a CLI agent that reads the failed run, traces the cause and pushes a fix for you to review. Self-hosted, with your own models.</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Tracer-Cloud/opensre/actions/workflows/ci.yml?branch=main\"><img src=\"https://img.shields.io/github/actions/workflow/status/Tracer-Cloud/opensre/ci.yml?branch=main&style=for-the-badge\" alt=\"CI status\"></a>\n<a href=\"https://github.com/Tracer-Cloud/opensre/releases\"><img src=\"https://img.shields.io/badge/status-public%20alpha-orange?style=for-the-badge\" alt=\"Project status: public alpha\"></a>\n  <a href=\"https://github.com/Tracer-Cloud/opensre/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge\" alt=\"Apache 2.0 License\"></a>\n  <a href=\"https://discord.gg/7NTpevXf7w\"><img src=\"https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n    <a href=\"https://greptile.com\"><img src=\"https://img.shields.io/badge/Sponsored%20by-Greptile-27E99F?style=for-the-badge&labelColor=3D3B4F&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMzY3IiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDM2NyA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BCjxwYXRoIGQ9Ik0yNDAuMjY5IDQ5LjgxNTRMMTY2LjgwNCAxMTUuOTYzTDExNS45NjYgMTU5LjQ0TDE4MS4zMzUgMjIwLjU4NUwyNDkuNzg0IDE2Mi4wNDhMMTk2Ljc4IDExMi40N0wyNTMuMDY4IDYxLjc4ODFMMzYyLjYwNSAxNjQuMjQ2TDE3OC43MzkgMzIxLjQ4OUwzLjE0NTAyIDE1Ny4yNDJMMTg3LjAxMSAwTDI0MC4yNjkgNDkuODE1NFoiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3Qgd2lkdGg9IjIzNi40NTMiIGhlaWdodD0iODMuNDU2NiIgdHJhbnNmb3JtPSJtYXRyaXgoMC43NTQ3MSAtMC42NTYwNTkgMCAxIDE4OC4wMTcgMzM2LjU0NCkiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3Qgd2lkdGg9IjIzNi40NTMiIGhlaWdodD0iODMuNDU2NiIgdHJhbnNmb3JtPSJtYXRyaXgoMC43MzEzNTQgMC42ODE5OTggMCAxIDAgMTc0Ljk2MikiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc%2BCg%3D%3D\" alt=\"Sponsored by Greptile\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/25889\" target=\"_blank\">\n    <img\n      src=\"https://trendshift.io/api/badge/repositories/25889\"\n      alt=\"Tracer-Cloud%2Fopensre | Trendshift\"\n      style=\"height: 30px; width: auto;\"\n      height=\"30\"\n    />\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>\n    <a href=\"https://www.opensre.com/docs/getting-started/quickstart\">Quickstart</a> ·\n    <a href=\"https://www.opensre.com/docs\">Docs</a> ·\n    <a href=\"https://opensre.com/docs/guides/faq\">FAQ</a> ·\n    <a href=\"https://trust.tracer.cloud/\">Security</a>\n  </strong>\n</p>\n\n</div>\n\n---\n\n> 🚧 Public Alpha: Core workflows are usable for early exploration, though not yet fully stable. The project is in active development, and APIs and integrations may evolve.\n\n---\n\n## Before you begin\n\nMake sure you have:\n\n- A terminal open in a code project\n- A Git repository (recommended for the full workflow demonstration)\n\n## Step 1: Install and start opensre\n\nmacOS or Linux:\n\n```bash\ncurl -fsSL https://install.opensre.com | bash -s -- -gh\n```\n\nWindows (PowerShell):\n\n```powershell\n& ([scriptblock]::Create((irm https://install.opensre.com/install.ps1))) -gh\n```\n\nThen start OpenSRE:\n\n```bash\nopensre\n```\n\n![OpenSRE CLI welcome screen with the sign-in prompt](docs/images/opensre-welcome.png)\n\nWindows details: [Windows](docs/install/windows-local.mdx).\n\nThe installer fetches the latest build from `main` without requiring sudo. If `opensre` is not found, follow the PATH instructions printed by the installer or open a new terminal.\n\nFor supported platforms and troubleshooting, see [Install locally](https://www.opensre.com/docs/install/install-local).\n\n---\n\n## Table of Contents\n\n- [Before you begin](#before-you-begin)\n- [Install and start opensre](#step-1-install-and-start-opensre)\n- [Why OpenSRE?](#why-opensre)\n- [Quick Start](#quick-start)\n- [Deployment](#deployment)\n- [How OpenSRE Works](#how-opensre-works)\n- [Integrations](#integrations)\n- [Security](#security)\n- [Telemetry](#telemetry)\n- [License](#license)\n- [Citations](#citations)\n\n---\n\n## Why OpenSRE?\n\nAI writes more of the code every month. Someone still has to fix the build.\n\nWhen CI goes red, it tells you _that_ something failed, not _why_ or how to fix it. Under deadline pressure, teams hit re-run and move on, flaky checks pile up, `main` stays red, and the real investigation waits for whichever senior engineer has time. OpenSRE is an open-source CI/CD reliability agent that does that investigation for you, built to run on your own infrastructure with your own models:\n\n- **Recover from red builds faster:** it investigates the moment a run fails, reading logs, testing hypotheses and pushing a fix for you to review\n- **Fix the cause, not just the rerun:** it separates CI-caused failures from code-caused ones, so you fix the right thing\n- **Know what CI is costing you:** failure rate, developer hours lost to unreliable CI, and how long `main` stays red\n- **Senior-level context for everyone:** every engineer gets the same depth of analysis\n\nSWE-bench<sup>1</sup> showed that agents improve fastest with realistic tasks and clear feedback. Pipeline failures are slower, noisier and harder to reproduce than local code tasks, so we hold OpenSRE to the same standard by:\n\n- running real-world end-to-end tests across cloud-backed scenarios [(tests/e2e)](tests/e2e)\n- keeping semantic test-catalog naming so e2e vs unit and local vs cloud boundaries stay obvious [(tests/README.md)](tests/README.md)\n\nStart with the **[CI/CD overview](docs/cicd/overview.mdx)**: analyze a repository's CI reliability, fix failing checks on a PR, or set up an agent that keeps CI green.\n\n**Not just CI/CD.** The same agent investigates production incidents across your stack. Connect the [integrations](#integrations) you run, such as EKS, EC2, CloudWatch, Kubernetes, Grafana (Loki, Mimir/PromQL, Tempo), Alertmanager, Datadog, Slack, and GitHub. Then describe the incident in the interactive shell or route alerts to it. OpenSRE picks the tools that fit, from logs and metrics to pod state and deploy history.\n\n<sup>1</sup> https://arxiv.org/abs/2310.06770\n\n---\n\n## Quick Start\n\nContributors: start at [`main.py`](main.py) for the process entrypoint map.\n\nRun `opensre` to sign in and get started. The first launch activates the hosted model.\n\n```bash\nopensre\n```\n\nWebapp contributors can run `opensre setup --dev` to authenticate through `http://localhost:3000`.\n\n**Interactive shell** — with no subcommand, `opensre` validates your account and starts a REPL (TTY required). You can exit and stay signed out, but the shell only opens for an active account. Describe incidents in plain language, watch the agent work, and use slash commands for session control (`/help`, `/status`, `/cost`, `/sessions`, `/resume`, `/compact`, `/new`, `/exit`) and integrations (`/integrations list`, `/integrations verify`). Ctrl+C cancels an in-flight turn without losing session state. See **[interactive shell commands](https://www.opensre.com/docs/getting-started/interactive-shell-commands)** for the full reference.\n\n**Headless CLI** — run one agent turn non-interactively from a terminal, script, or CI job:\n\n```bash\nopensre ask \"why is checkout-api slow?\"\n```\n\nSee **[Headless CLI](https://www.opensre.com/docs/guides/headless-cli)** for stdin prompts, JSON output, and tool approvals.\n\n**From Python** — drive the agent in-process from your own code (source checkout required):\n\n```python\nfrom surfaces.embedded import start_embedded_session\n\nsession = start_embedded_session()\nresult = session.chat(\"why is checkout-api slow?\")\n# ``answered`` is true for any reply text, including a failed model call.\n# That failure sets accounting_status to \"not_run\" and stop_reason to \"error\".\nif result.action_result.accounting_status == \"completed\" and not result.cancelled:\n    print(result.primary_response_text)\n```\n\nSee **[Python API](https://www.opensre.com/docs/guides/python-api)** for sessions, conversations, and custom output sinks.\n\n**For your team's daily loop:** embed OpenSRE in the Python services and automations your teammates already use.\nStart with the in-repo [Python API guide](docs/guides/python-api.mdx), then use it every day to make incident response repeatable.\n\nOther useful commands:\n\n```bash\nopensre integrations setup\nopensre update\nopensre uninstall   # remove opensre and all local data\n```\n\n---\n\n## Deployment\n\nAn OpenSRE Cloud managed gateway, an AWS EC2 path, and a general self-hosted option:\n\n- **OpenSRE Cloud managed gateway:** an organization admin provisions it in the web app; signed-in shell users can check, start, or stop it without handling infrastructure credentials locally.\n- **Gateway (AMI + systemd):** `make build-gateway-image` then `make deploy-gateway` — Telegram gateway only, no Docker; the gateway is installed into a server image that new servers start from.\n- **Self-hosted container (Railway / ECS / Vercel):** deploy the repo `Dockerfile`, select `MODE`, and set `LLM_PROVIDER` plus its API key. Use `DATABASE_URL` only when the gateway needs shared Postgres-backed state, such as Slack Events API replicas.\n\n**[Full deployment steps and prerequisites → DEPLOYMENT.md](DEPLOYMENT.md)**\n\n---\n\n## How OpenSRE Works\n\n<img\n  src=\"https://github.com/user-attachments/assets/936ab1f2-9bda-438d-9897-e8e9cd98e335\"\n  width=\"1064\"\n  height=\"568\"\n  alt=\"opensre-how-it-works-github\"\n/>\n\nWhen a CI run fails, an alert arrives, or you ask a question, OpenSRE automatically:\n\n1. **Fetches** the relevant context: failing checks and CI logs, recent commits and deploys, and correlated logs, metrics and traces\n2. **Masks** sensitive identifiers (optional) before external LLM calls\n3. **Reasons** across your connected systems to test hypotheses in a tool-calling loop, separating CI-caused failures from code-caused ones\n4. **Answers** with an evidence-linked response in the conversation\n5. **Fixes** the cause and pushes it to the PR branch for you to review, or suggests next steps and, optionally, executes remediation actions\n6. **Posts** a summary directly to Slack, PagerDuty, or Telegram — no context switching needed\n\nFor the current code-level agent architecture after removing the old graph and chain\nframework layers, see [AGENTS.md](AGENTS.md).\n\n---\n\n## Integrations\n\nOpenSRE connects to 60+ tools and services across the modern cloud stack, from LLM providers and observability platforms to infrastructure, databases, and incident management.\n\n| Category                | Integrations                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Roadmap                                                                                                                                                                                                                                                            |\n| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------",
+    "manifest_file": "pyproject.toml",
+    "manifest_content": "[build-system]\nrequires = [\"setuptools>=84.1.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"opensre\"\nversion = \"0.1\"\ndescription = \"Open-source SRE agent for automated incident investigation and root cause analysis. Automatically analyzes alerts from Slack, Grafana, Datadog, and other tooling.\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\nlicense = { text = \"Apache-2.0\" }\nauthors = [\n  { name = \"OpenSRE\", email = \"support@opensre.com\" },\n]\nkeywords = [\"sre\", \"devops\", \"incident\", \"rca\", \"llm\", \"ai\", \"agent\", \"observability\"]\ndependencies = [\n    # Core AI/Agent\n    \"anthropic>=0.77.1\",\n    \"mcp>=1.28.1\",\n    \"openai>=2.0.0\",\n    \"litellm>=1.106.2,<1.110.0\",\n    # Data validation\n    \"pydantic>=2.12.5,<3\",\n    \"pydantic-settings>=2.12.0,<3\",\n    \"kubernetes>=28.1.0,<37.0.0\",\n    # HTTP and async\n    \"httpx[socks]>=0.27.0\",\n    \"aiohttp>=3.9.0\",\n    \"fastapi>=0.135.3\",\n    \"uvicorn[standard]>=0.30.0\",\n    # Authentication\n    \"PyJWT>=2.13.0\",\n    # 50.0.0 is the first version patched for CVE-2026-69247 (GHSA-g6cj-pr64-35w5,\n    # PKCS#7 Bleichenbacher oracle). cryptography >=49 ships no x86-64 macOS wheel,\n    # so the frozen darwin-x64 release binary builds it from source against\n    # OpenSSL >= 3.2 (SSL_get0_group_name). release.yml pins Homebrew openssl@3\n    # and re-copies those dylibs into the PyInstaller onedir bundle.\n    \"cryptography>=50.0.0,<51\",\n    # AWS\n    \"boto3>=1.42.88\",\n    # Slack (Socket Mode gateway + Web API)\n    \"slack-sdk>=3.31.0\",\n    # Discord (Gateway WebSocket chat transport)\n    \"discord.py>=2.4.0,<3\",\n    # Utilities\n    \"python-dotenv>=1.2.2\",\n    \"click>=8.1.0\",\n    \"rich>=15.0.0\",\n    \"questionary>=2.1.1\",\n    \"prompt_toolkit>=3.0.0\",\n    \"PyYAML>=6.0\",\n    \"tzdata>=2026.1\",\n    # OpenTelemetry\n    \"opentelemetry-api>=1.41.0\",\n    \"opentelemetry-sdk>=1.20.0\",\n    \"opentelemetry-exporter-otlp-proto-http>=1.41.0\",\n    \"opentelemetry-instrumentation>=0.40b0\",\n    \"opentelemetry-instrumentation-botocore>=0.40b0\",\n    \"opentelemetry-instrumentation-requests>=0.40b0\",\n    # Tracer\n    \"tracer_decorator\",\n    # Google APIs\n    \"google-api-python-client>=2.194.0,<3.0.0\",\n    \"google-auth>=2.0.0,<3.0.0\",\n    # MongoDB\n    \"pymongo>=4.6.0,<6.0.0\",\n    # Redis\n    \"redis>=5.0.0,<9.0.0\",\n    # Signature verfication for discord\n    \"PyNaCl>=1.5.0\",\n    # MariaDB\n    \"pymysql>=1.1.0,<2.0.0\",\n    # ClickHouse (used by first-class SigNoz + ClickHouse integrations)\n    \"clickhouse-connect>=0.15.1,<2.0.0\",\n    \"urllib3>=2.0,<3\",\n    # 3.x rejects options init_sentry passes (send_default_pii), crashing startup.\n    \"sentry-sdk>=2.59.0,<3\",\n    # File locking for atomic store operations\n    \"filelock>=3.29.0\",\n    \"psutil>=5.9\",\n    # Regular expressions with a deadline: search_files runs model-written\n    # patterns, and the standard library's engine cannot be stopped mid-match.\n    \"regex>=2024.11.6\",\n    # Scheduler for cron-driven deliveries\n    \"APScheduler>=3.10.0,<4.0.0\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/Tracer-Cloud/opensre\"\nRepository = \"https://github.com/Tracer-Cloud/opensre\"\nIssues = \"https://github.com/Tracer-Cloud/opensre/issues\"\nChangelog = \"https://github.com/Tracer-Cloud/opensre/releases\"\n\n[project.scripts]\nopensre = \"surfaces.entrypoint:main\"\n\n[project.optional-dependencies]\ndev = [\n    \"pre-commit>=4.0.0\",\n    \"pytest>=8.0.0\",\n    \"pytest-asyncio>=1.3.0\",\n    \"pytest-cov>=7.1.0\",\n    \"pytest-timeout>=2.3.0\",\n    \"pytest-xdist>=3.5.0\",\n    \"ruff>=0.4.0\",\n    \"mypy>=1.10.0\",\n    \"import-linter>=2.0\",\n    \"vulture>=2.14\",\n    \"types-requests\",\n    \"types-psycopg2\",\n    \"types-PyMySQL\",\n    \"types-PyYAML\",\n    \"types-psutil\",\n    \"boto3-stubs[essential]\",\n    \"huggingface_hub>=0.26.0\",\n    \"datasets>=3.0.0\",\n]\nrelease-dist = [\n    \"build>=1.2.0\",\n    \"twine>=6.0.0\",\n]\nrelease-binary = [\n    \"pyinstaller>=6.3.0\",\n]\n# Backward-compatible aggregate extra.\nrelease = [\n    \"build>=1.2.0\",\n    \"twine>=6.0.0\",\n    \"pyinstaller>=6.3.0\",\n]\nopensre-hub = [\n    \"huggingface_hub>=0.26.0\",\n    \"datasets>=3.0.0\",\n]\nkafka = [\n    \"confluent-kafka>=2.14.0\",\n]\n# Backward-compatible no-op extra; ClickHouse is now a core dependency.\nclickhouse = [\n    \"clickhouse-connect>=0.15.1\",\n]\npostgresql = [\n    \"psycopg2-binary>=2.9.0,<3.0.0\",\n]\nazure_sql = [\n    \"pyodbc>=5.1.0,<6.0.0\",\n]\n\n[tool.setuptools.packages.find]\ninclude = [\n  \"config*\",\n  \"core*\",\n  \"gateway*\",\n  \"infrastructure*\",\n  \"integrations*\",\n  \"surfaces*\",\n  \"tests*\",\n  \"tools*\",\n]\n\n[tool.setuptools.package-data]\n\"core.agent_harness.prompts\" = [\n  \"opensre_system_prompt.md\",\n  \"loop_templates/*.md\",\n  \"skills/**/*.md\",\n  \"skills/**/scripts/*.py\",\n]\n\"integrations\" = [\"**/SKILL.md\"]\n\"tools\" = [\"**/SKILL.md\"]\n\n# With pytest-xdist (-n auto), each worker writes a fragment; put them under\n# .pytest_cache/ (already gitignored) instead of .coverage.<hostname>.* at repo root.\n[tool.coverage.run]\ndata_file = \".pytest_cache/.coverage\"\n\n[tool.vulture]\npaths = [\n  \"config\",\n  \"core\",\n  \"gateway\",\n  \"infrastruc",
+    "strategic_keywords": [
+      "agent",
+      "mcp",
+      "llm",
+      "workflow"
+    ],
+    "relationship_label": "Workspace 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme",
+      "pyproject.toml"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 14,
+      "adoption": 10,
+      "relation": 10,
+      "risk_signal": 6,
+      "total": 95
+    },
+    "strategic_score": 95,
+    "capability_tags": [
+      "智能运维助手",
+      "运维工具连接",
+      "工作流定义"
+    ],
+    "brief_zh": {
+      "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
+      "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
+      "capabilities": "智能运维助手、运维工具连接、工作流定义、训练评测、告警处置、可观测性集成",
+      "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
+      "verified_at": "2026-10-09",
+      "evidence_sources": [
+        "https://github.com/Tracer-Cloud/opensre"
+      ],
+      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未连接任何生产运维系统。"
+    },
+    "summary_source": "project_brief"
+  },
+  {
     "owner": "firecrawl",
     "name": "firecrawl",
     "full_name": "firecrawl/firecrawl",
@@ -187,7 +278,8 @@
     "stars_this_period": 1131,
     "source_slice": "typescript",
     "source_slices": [
-      "typescript"
+      "typescript",
+      "all"
     ],
     "metadata": {
       "topics": [
@@ -257,95 +349,6 @@
       "audience": "需要为 RAG、研究 Agent 或自动化流程稳定抓取网页数据的团队",
       "capabilities": "网页搜索、批量抓取、交互式采集、HTML 转 Markdown、Agent 数据入口",
       "risk": "AGPL 许可和网页抓取的合规边界需要提前评估，真实成本也取决于目标站点复杂度"
-    },
-    "summary_source": "project_brief"
-  },
-  {
-    "owner": "Tracer-Cloud",
-    "name": "opensre",
-    "full_name": "Tracer-Cloud/opensre",
-    "url": "https://github.com/Tracer-Cloud/opensre",
-    "description": "The open-source agent for CI/CD reliability.",
-    "language": "Python",
-    "total_stars": 15491,
-    "forks": 2028,
-    "stars_this_period": 343,
-    "source_slice": "python",
-    "source_slices": [
-      "python"
-    ],
-    "metadata": {
-      "topics": [
-        "alerting",
-        "ci-cd",
-        "cli",
-        "datadog",
-        "devops",
-        "gitlab-ci",
-        "grafana",
-        "incident-management",
-        "llm",
-        "observability",
-        "ollama",
-        "remediation",
-        "root-cause-analysis",
-        "site-reliability-engineering",
-        "slack"
-      ],
-      "license": "Apache-2.0",
-      "open_issues": 40,
-      "created_at": "2026-01-13T00:04:47Z",
-      "pushed_at": "2026-11-25T18:22:45Z",
-      "homepage": "https://opensre.com",
-      "default_branch": "main",
-      "forks": 2028,
-      "watchers": 66,
-      "archived": false,
-      "size_kb": 199948
-    },
-    "readme_content": "<div align=\"center\">\n\n<p align=\"center\">\n  <img src=\"docs/logo/opensre-logo-white.svg\" alt=\"OpenSRE\" width=\"360\" />\n</p>\n\n<h1>OpenSRE: The open-source agent for CI/CD reliability</h1>\n\n<p>Your CI tells you it broke, but not why or how to fix it. OpenSRE is a CLI agent that reads the failed run, traces the cause and pushes a fix for you to review. Self-hosted, with your own models.</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Tracer-Cloud/opensre/actions/workflows/ci.yml?branch=main\"><img src=\"https://img.shields.io/github/actions/workflow/status/Tracer-Cloud/opensre/ci.yml?branch=main&style=for-the-badge\" alt=\"CI status\"></a>\n<a href=\"https://github.com/Tracer-Cloud/opensre/releases\"><img src=\"https://img.shields.io/badge/status-public%20alpha-orange?style=for-the-badge\" alt=\"Project status: public alpha\"></a>\n  <a href=\"https://github.com/Tracer-Cloud/opensre/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge\" alt=\"Apache 2.0 License\"></a>\n  <a href=\"https://discord.gg/7NTpevXf7w\"><img src=\"https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n    <a href=\"https://greptile.com\"><img src=\"https://img.shields.io/badge/Sponsored%20by-Greptile-27E99F?style=for-the-badge&labelColor=3D3B4F&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMzY3IiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDM2NyA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BCjxwYXRoIGQ9Ik0yNDAuMjY5IDQ5LjgxNTRMMTY2LjgwNCAxMTUuOTYzTDExNS45NjYgMTU5LjQ0TDE4MS4zMzUgMjIwLjU4NUwyNDkuNzg0IDE2Mi4wNDhMMTk2Ljc4IDExMi40N0wyNTMuMDY4IDYxLjc4ODFMMzYyLjYwNSAxNjQuMjQ2TDE3OC43MzkgMzIxLjQ4OUwzLjE0NTAyIDE1Ny4yNDJMMTg3LjAxMSAwTDI0MC4yNjkgNDkuODE1NFoiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3Qgd2lkdGg9IjIzNi40NTMiIGhlaWdodD0iODMuNDU2NiIgdHJhbnNmb3JtPSJtYXRyaXgoMC43NTQ3MSAtMC42NTYwNTkgMCAxIDE4OC4wMTcgMzM2LjU0NCkiIGZpbGw9IiNGRkZGRkYiLz4KPHJlY3Qgd2lkdGg9IjIzNi40NTMiIGhlaWdodD0iODMuNDU2NiIgdHJhbnNmb3JtPSJtYXRyaXgoMC43MzEzNTQgMC42ODE5OTggMCAxIDAgMTc0Ljk2MikiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc%2BCg%3D%3D\" alt=\"Sponsored by Greptile\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/25889\" target=\"_blank\">\n    <img\n      src=\"https://trendshift.io/api/badge/repositories/25889\"\n      alt=\"Tracer-Cloud%2Fopensre | Trendshift\"\n      style=\"height: 30px; width: auto;\"\n      height=\"30\"\n    />\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>\n    <a href=\"https://www.opensre.com/docs/getting-started/quickstart\">Quickstart</a> ·\n    <a href=\"https://www.opensre.com/docs\">Docs</a> ·\n    <a href=\"https://opensre.com/docs/guides/faq\">FAQ</a> ·\n    <a href=\"https://trust.tracer.cloud/\">Security</a>\n  </strong>\n</p>\n\n</div>\n\n---\n\n> 🚧 Public Alpha: Core workflows are usable for early exploration, though not yet fully stable. The project is in active development, and APIs and integrations may evolve.\n\n---\n\n## Before you begin\n\nMake sure you have:\n\n- A terminal open in a code project\n- A Git repository (recommended for the full workflow demonstration)\n\n## Step 1: Install and start opensre\n\nmacOS or Linux:\n\n```bash\ncurl -fsSL https://install.opensre.com | bash -s -- -gh\n```\n\nWindows (PowerShell):\n\n```powershell\n& ([scriptblock]::Create((irm https://install.opensre.com/install.ps1))) -gh\n```\n\nThen start OpenSRE:\n\n```bash\nopensre\n```\n\n![OpenSRE CLI welcome screen with the sign-in prompt](docs/images/opensre-welcome.png)\n\nWindows details: [Windows](docs/install/windows-local.mdx).\n\nThe installer fetches the latest build from `main` without requiring sudo. If `opensre` is not found, follow the PATH instructions printed by the installer or open a new terminal.\n\nFor supported platforms and troubleshooting, see [Install locally](https://www.opensre.com/docs/install/install-local).\n\n---\n\n## Table of Contents\n\n- [Before you begin](#before-you-begin)\n- [Install and start opensre](#step-1-install-and-start-opensre)\n- [Why OpenSRE?](#why-opensre)\n- [Quick Start](#quick-start)\n- [Deployment](#deployment)\n- [How OpenSRE Works](#how-opensre-works)\n- [Integrations](#integrations)\n- [Security](#security)\n- [Telemetry](#telemetry)\n- [License](#license)\n- [Citations](#citations)\n\n---\n\n## Why OpenSRE?\n\nAI writes more of the code every month. Someone still has to fix the build.\n\nWhen CI goes red, it tells you _that_ something failed, not _why_ or how to fix it. Under deadline pressure, teams hit re-run and move on, flaky checks pile up, `main` stays red, and the real investigation waits for whichever senior engineer has time. OpenSRE is an open-source CI/CD reliability agent that does that investigation for you, built to run on your own infrastructure with your own models:\n\n- **Recover from red builds faster:** it investigates the moment a run fails, reading logs, testing hypotheses and pushing a fix for you to review\n- **Fix the cause, not just the rerun:** it separates CI-caused failures from code-caused ones, so you fix the right thing\n- **Know what CI is costing you:** failure rate, developer hours lost to unreliable CI, and how long `main` stays red\n- **Senior-level context for everyone:** every engineer gets the same depth of analysis\n\nSWE-bench<sup>1</sup> showed that agents improve fastest with realistic tasks and clear feedback. Pipeline failures are slower, noisier and harder to reproduce than local code tasks, so we hold OpenSRE to the same standard by:\n\n- running real-world end-to-end tests across cloud-backed scenarios [(tests/e2e)](tests/e2e)\n- keeping semantic test-catalog naming so e2e vs unit and local vs cloud boundaries stay obvious [(tests/README.md)](tests/README.md)\n\nStart with the **[CI/CD overview](docs/cicd/overview.mdx)**: analyze a repository's CI reliability, fix failing checks on a PR, or set up an agent that keeps CI green.\n\n**Not just CI/CD.** The same agent investigates production incidents across your stack. Connect the [integrations](#integrations) you run, such as EKS, EC2, CloudWatch, Kubernetes, Grafana (Loki, Mimir/PromQL, Tempo), Alertmanager, Datadog, Slack, and GitHub. Then describe the incident in the interactive shell or route alerts to it. OpenSRE picks the tools that fit, from logs and metrics to pod state and deploy history.\n\n<sup>1</sup> https://arxiv.org/abs/2310.06770\n\n---\n\n## Quick Start\n\nContributors: start at [`main.py`](main.py) for the process entrypoint map.\n\nRun `opensre` to sign in and get started. The first launch activates the hosted model.\n\n```bash\nopensre\n```\n\nWebapp contributors can run `opensre setup --dev` to authenticate through `http://localhost:3000`.\n\n**Interactive shell** — with no subcommand, `opensre` validates your account and starts a REPL (TTY required). You can exit and stay signed out, but the shell only opens for an active account. Describe incidents in plain language, watch the agent work, and use slash commands for session control (`/help`, `/status`, `/cost`, `/sessions`, `/resume`, `/compact`, `/new`, `/exit`) and integrations (`/integrations list`, `/integrations verify`). Ctrl+C cancels an in-flight turn without losing session state. See **[interactive shell commands](https://www.opensre.com/docs/getting-started/interactive-shell-commands)** for the full reference.\n\n**Headless CLI** — run one agent turn non-interactively from a terminal, script, or CI job:\n\n```bash\nopensre ask \"why is checkout-api slow?\"\n```\n\nSee **[Headless CLI](https://www.opensre.com/docs/guides/headless-cli)** for stdin prompts, JSON output, and tool approvals.\n\n**From Python** — drive the agent in-process from your own code (source checkout required):\n\n```python\nfrom surfaces.embedded import start_embedded_session\n\nsession = start_embedded_session()\nresult = session.chat(\"why is checkout-api slow?\")\n# ``answered`` is true for any reply text, including a failed model call.\n# That failure sets accounting_status to \"not_run\" and stop_reason to \"error\".\nif result.action_result.accounting_status == \"completed\" and not result.cancelled:\n    print(result.primary_response_text)\n```\n\nSee **[Python API](https://www.opensre.com/docs/guides/python-api)** for sessions, conversations, and custom output sinks.\n\n**For your team's daily loop:** embed OpenSRE in the Python services and automations your teammates already use.\nStart with the in-repo [Python API guide](docs/guides/python-api.mdx), then use it every day to make incident response repeatable.\n\nOther useful commands:\n\n```bash\nopensre integrations setup\nopensre update\nopensre uninstall   # remove opensre and all local data\n```\n\n---\n\n## Deployment\n\nAn OpenSRE Cloud managed gateway, an AWS EC2 path, and a general self-hosted option:\n\n- **OpenSRE Cloud managed gateway:** an organization admin provisions it in the web app; signed-in shell users can check, start, or stop it without handling infrastructure credentials locally.\n- **Gateway (AMI + systemd):** `make build-gateway-image` then `make deploy-gateway` — Telegram gateway only, no Docker; the gateway is installed into a server image that new servers start from.\n- **Self-hosted container (Railway / ECS / Vercel):** deploy the repo `Dockerfile`, select `MODE`, and set `LLM_PROVIDER` plus its API key. Use `DATABASE_URL` only when the gateway needs shared Postgres-backed state, such as Slack Events API replicas.\n\n**[Full deployment steps and prerequisites → DEPLOYMENT.md](DEPLOYMENT.md)**\n\n---\n\n## How OpenSRE Works\n\n<img\n  src=\"https://github.com/user-attachments/assets/936ab1f2-9bda-438d-9897-e8e9cd98e335\"\n  width=\"1064\"\n  height=\"568\"\n  alt=\"opensre-how-it-works-github\"\n/>\n\nWhen a CI run fails, an alert arrives, or you ask a question, OpenSRE automatically:\n\n1. **Fetches** the relevant context: failing checks and CI logs, recent commits and deploys, and correlated logs, metrics and traces\n2. **Masks** sensitive identifiers (optional) before external LLM calls\n3. **Reasons** across your connected systems to test hypotheses in a tool-calling loop, separating CI-caused failures from code-caused ones\n4. **Answers** with an evidence-linked response in the conversation\n5. **Fixes** the cause and pushes it to the PR branch for you to review, or suggests next steps and, optionally, executes remediation actions\n6. **Posts** a summary directly to Slack, PagerDuty, or Telegram — no context switching needed\n\nFor the current code-level agent architecture after removing the old graph and chain\nframework layers, see [AGENTS.md](AGENTS.md).\n\n---\n\n## Integrations\n\nOpenSRE connects to 60+ tools and services across the modern cloud stack, from LLM providers and observability platforms to infrastructure, databases, and incident management.\n\n| Category                | Integrations                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Roadmap                                                                                                                                                                                                                                                            |\n| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------",
-    "manifest_file": "pyproject.toml",
-    "manifest_content": "[build-system]\nrequires = [\"setuptools>=84.1.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"opensre\"\nversion = \"0.1\"\ndescription = \"Open-source SRE agent for automated incident investigation and root cause analysis. Automatically analyzes alerts from Slack, Grafana, Datadog, and other tooling.\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\nlicense = { text = \"Apache-2.0\" }\nauthors = [\n  { name = \"OpenSRE\", email = \"support@opensre.com\" },\n]\nkeywords = [\"sre\", \"devops\", \"incident\", \"rca\", \"llm\", \"ai\", \"agent\", \"observability\"]\ndependencies = [\n    # Core AI/Agent\n    \"anthropic>=0.77.1\",\n    \"mcp>=1.28.1\",\n    \"openai>=2.0.0\",\n    \"litellm>=1.106.2,<1.110.0\",\n    # Data validation\n    \"pydantic>=2.12.5,<3\",\n    \"pydantic-settings>=2.12.0,<3\",\n    \"kubernetes>=28.1.0,<37.0.0\",\n    # HTTP and async\n    \"httpx[socks]>=0.27.0\",\n    \"aiohttp>=3.9.0\",\n    \"fastapi>=0.135.3\",\n    \"uvicorn[standard]>=0.30.0\",\n    # Authentication\n    \"PyJWT>=2.13.0\",\n    # 50.0.0 is the first version patched for CVE-2026-69247 (GHSA-g6cj-pr64-35w5,\n    # PKCS#7 Bleichenbacher oracle). cryptography >=49 ships no x86-64 macOS wheel,\n    # so the frozen darwin-x64 release binary builds it from source against\n    # OpenSSL >= 3.2 (SSL_get0_group_name). release.yml pins Homebrew openssl@3\n    # and re-copies those dylibs into the PyInstaller onedir bundle.\n    \"cryptography>=50.0.0,<51\",\n    # AWS\n    \"boto3>=1.42.88\",\n    # Slack (Socket Mode gateway + Web API)\n    \"slack-sdk>=3.31.0\",\n    # Discord (Gateway WebSocket chat transport)\n    \"discord.py>=2.4.0,<3\",\n    # Utilities\n    \"python-dotenv>=1.2.2\",\n    \"click>=8.1.0\",\n    \"rich>=15.0.0\",\n    \"questionary>=2.1.1\",\n    \"prompt_toolkit>=3.0.0\",\n    \"PyYAML>=6.0\",\n    \"tzdata>=2026.1\",\n    # OpenTelemetry\n    \"opentelemetry-api>=1.41.0\",\n    \"opentelemetry-sdk>=1.20.0\",\n    \"opentelemetry-exporter-otlp-proto-http>=1.41.0\",\n    \"opentelemetry-instrumentation>=0.40b0\",\n    \"opentelemetry-instrumentation-botocore>=0.40b0\",\n    \"opentelemetry-instrumentation-requests>=0.40b0\",\n    # Tracer\n    \"tracer_decorator\",\n    # Google APIs\n    \"google-api-python-client>=2.194.0,<3.0.0\",\n    \"google-auth>=2.0.0,<3.0.0\",\n    # MongoDB\n    \"pymongo>=4.6.0,<6.0.0\",\n    # Redis\n    \"redis>=5.0.0,<9.0.0\",\n    # Signature verfication for discord\n    \"PyNaCl>=1.5.0\",\n    # MariaDB\n    \"pymysql>=1.1.0,<2.0.0\",\n    # ClickHouse (used by first-class SigNoz + ClickHouse integrations)\n    \"clickhouse-connect>=0.15.1,<2.0.0\",\n    \"urllib3>=2.0,<3\",\n    # 3.x rejects options init_sentry passes (send_default_pii), crashing startup.\n    \"sentry-sdk>=2.59.0,<3\",\n    # File locking for atomic store operations\n    \"filelock>=3.29.0\",\n    \"psutil>=5.9\",\n    # Regular expressions with a deadline: search_files runs model-written\n    # patterns, and the standard library's engine cannot be stopped mid-match.\n    \"regex>=2024.11.6\",\n    # Scheduler for cron-driven deliveries\n    \"APScheduler>=3.10.0,<4.0.0\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/Tracer-Cloud/opensre\"\nRepository = \"https://github.com/Tracer-Cloud/opensre\"\nIssues = \"https://github.com/Tracer-Cloud/opensre/issues\"\nChangelog = \"https://github.com/Tracer-Cloud/opensre/releases\"\n\n[project.scripts]\nopensre = \"surfaces.entrypoint:main\"\n\n[project.optional-dependencies]\ndev = [\n    \"pre-commit>=4.0.0\",\n    \"pytest>=8.0.0\",\n    \"pytest-asyncio>=1.3.0\",\n    \"pytest-cov>=7.1.0\",\n    \"pytest-timeout>=2.3.0\",\n    \"pytest-xdist>=3.5.0\",\n    \"ruff>=0.4.0\",\n    \"mypy>=1.10.0\",\n    \"import-linter>=2.0\",\n    \"vulture>=2.14\",\n    \"types-requests\",\n    \"types-psycopg2\",\n    \"types-PyMySQL\",\n    \"types-PyYAML\",\n    \"types-psutil\",\n    \"boto3-stubs[essential]\",\n    \"huggingface_hub>=0.26.0\",\n    \"datasets>=3.0.0\",\n]\nrelease-dist = [\n    \"build>=1.2.0\",\n    \"twine>=6.0.0\",\n]\nrelease-binary = [\n    \"pyinstaller>=6.3.0\",\n]\n# Backward-compatible aggregate extra.\nrelease = [\n    \"build>=1.2.0\",\n    \"twine>=6.0.0\",\n    \"pyinstaller>=6.3.0\",\n]\nopensre-hub = [\n    \"huggingface_hub>=0.26.0\",\n    \"datasets>=3.0.0\",\n]\nkafka = [\n    \"confluent-kafka>=2.14.0\",\n]\n# Backward-compatible no-op extra; ClickHouse is now a core dependency.\nclickhouse = [\n    \"clickhouse-connect>=0.15.1\",\n]\npostgresql = [\n    \"psycopg2-binary>=2.9.0,<3.0.0\",\n]\nazure_sql = [\n    \"pyodbc>=5.1.0,<6.0.0\",\n]\n\n[tool.setuptools.packages.find]\ninclude = [\n  \"config*\",\n  \"core*\",\n  \"gateway*\",\n  \"infrastructure*\",\n  \"integrations*\",\n  \"surfaces*\",\n  \"tests*\",\n  \"tools*\",\n]\n\n[tool.setuptools.package-data]\n\"core.agent_harness.prompts\" = [\n  \"opensre_system_prompt.md\",\n  \"loop_templates/*.md\",\n  \"skills/**/*.md\",\n  \"skills/**/scripts/*.py\",\n]\n\"integrations\" = [\"**/SKILL.md\"]\n\"tools\" = [\"**/SKILL.md\"]\n\n# With pytest-xdist (-n auto), each worker writes a fragment; put them under\n# .pytest_cache/ (already gitignored) instead of .coverage.<hostname>.* at repo root.\n[tool.coverage.run]\ndata_file = \".pytest_cache/.coverage\"\n\n[tool.vulture]\npaths = [\n  \"config\",\n  \"core\",\n  \"gateway\",\n  \"infrastruc",
-    "strategic_keywords": [
-      "agent",
-      "mcp",
-      "llm",
-      "workflow"
-    ],
-    "relationship_label": "Workspace 组件",
-    "data_confidence": "high",
-    "evidence_sources": [
-      "github_trending",
-      "github_repo_api",
-      "readme",
-      "pyproject.toml"
-    ],
-    "score_breakdown": {
-      "heat": 18,
-      "relevance": 20,
-      "novelty": 15,
-      "productize": 14,
-      "adoption": 10,
-      "relation": 10,
-      "risk_signal": 6,
-      "total": 93
-    },
-    "strategic_score": 93,
-    "capability_tags": [
-      "智能运维助手",
-      "运维工具连接",
-      "工作流定义"
-    ],
-    "brief_zh": {
-      "summary": "一个用于自建 AI SRE Agent 的开源框架：README 表明它可连接既有运维工具、定义工作流，并提供训练与评测环境来处理生产环境问题。",
-      "audience": "准备在自有基础设施中实验告警、排障、根因分析与修复自动化的 SRE 和平台团队",
-      "capabilities": "智能运维助手、运维工具连接、工作流定义、训练评测、告警处置、可观测性集成",
-      "risk": "项目自述仍为 public alpha；生产运维自动化涉及访问控制、变更审批、错误修复和敏感遥测数据，须设置人工确认与隔离边界。",
-      "verified_at": "2026-10-09",
-      "evidence_sources": [
-        "https://github.com/Tracer-Cloud/opensre"
-      ],
-      "evidence_note": "依据本日抓取的 README、topics 与仓库 description；未连接任何生产运维系统。"
     },
     "summary_source": "project_brief"
   },
@@ -438,7 +441,8 @@
     "stars_this_period": 1644,
     "source_slice": "python",
     "source_slices": [
-      "python"
+      "python",
+      "all"
     ],
     "metadata": {
       "topics": [
@@ -525,7 +529,8 @@
     "stars_this_period": 950,
     "source_slice": "python",
     "source_slices": [
-      "python"
+      "python",
+      "all"
     ],
     "metadata": {
       "topics": [
@@ -602,6 +607,152 @@
       "audience": "需要快速了解人物、产品或议题近期动态的研究者和内容团队",
       "capabilities": "近期研究、跨平台检索、信号排序、证据综合、Agent Skill",
       "risk": "结果质量依赖第三方平台访问、互动指标和自带凭据，不能把热度排序直接当成事实可信度"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "obra",
+    "name": "superpowers",
+    "full_name": "obra/superpowers",
+    "url": "https://github.com/obra/superpowers",
+    "description": "An agentic skills framework & software development methodology that works.",
+    "language": "Shell",
+    "total_stars": 326548,
+    "forks": 28975,
+    "stars_this_period": 902,
+    "source_slice": "all",
+    "source_slices": [
+      "all"
+    ],
+    "metadata": {
+      "topics": [
+        "ai",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc",
+        "skills",
+        "subagent-driven-development",
+        "superpowers"
+      ],
+      "license": "MIT",
+      "open_issues": 372,
+      "created_at": "2025-10-09T19:45:18Z",
+      "pushed_at": "2026-11-24T23:59:04Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 28975,
+      "watchers": 1179,
+      "archived": false,
+      "size_kb": 8225
+    },
+    "readme_content": "# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n## Table of Contents\n\n- [How it works](#how-it-works)\n- [Commercial Services](#commercial-services)\n- [Getting Started](#installation)\n  - [Claude Code](#claude-code)\n  - [Antigravity](#antigravity)\n  - [Codex App](#codex-app)\n  - [Codex CLI](#codex-cli)\n  - [Cursor](#cursor)\n  - [Devin CLI](#devin-cli)\n  - [Factory Droid](#factory-droid)\n  - [Gemini CLI](#gemini-cli)\n  - [GitHub Copilot CLI](#github-copilot-cli)\n  - [Grok Build CLI](#grok-build-cli)\n  - [Kimi Code](#kimi-code)\n  - [OpenCode](#opencode)\n  - [Pi](#pi)\n  - [Qwen Code](#qwen-code)\n  - [Hermes Agent](#hermes-agent)\n  - [Muse](#muse)\n- [The Basic Workflow](#the-basic-workflow)\n- [When Something Goes Wrong](#when-something-goes-wrong)\n- [Community](#community)\n- [What's Inside](#whats-inside)\n- [Philosophy](#philosophy)\n- [Contributing](#contributing)\n- [Updating](#updating)\n- [License](#license)\n- [Visual companion telemetry](#visual-companion-telemetry)\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. \n\nNext up, once you say \"go\", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for your agent to work autonomously for a couple hours at a time without deviating from the plan you put together.\n\nThere's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n#### Superpowers Marketplace\n\nThe Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.\n\n- Register the marketplace:\n\n  ```bash\n  /plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin from this marketplace:\n\n  ```bash\n  /plugin install superpowers@superpowers-marketplace\n  ```\n\n### Antigravity\n\nInstall Superpowers as a plugin from this repository:\n\n```bash\nagy plugin install https://github.com/obra/superpowers\n```\n\nAntigravity lists each installed skill's description, and the description of\nthe `using-superpowers` skill prompts the model to load that skill at the start\nof a conversation. Reinstall with the same command to update.\n\n### Codex App\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- In the Codex app, click on Plugins in the sidebar.\n- You should see `Superpowers` in the Coding section.\n- Click the `+` next to Superpowers and follow the prompts.\n\n### Codex CLI\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- Open the plugin search interface:\n\n  ```bash\n  /plugins\n  ```\n\n- Search for Superpowers:\n\n  ```bash\n  superpowers\n  ```\n\n- Select `Install Plugin`.\n\n### Cursor\n\n- In Cursor Agent chat, install from marketplace:\n\n  ```text\n  /add-plugin superpowers\n  ```\n\n- Or search for \"superpowers\" in the plugin marketplace.\n\n### Devin CLI\n\n- Install the plugin from this repository:\n\n  ```bash\n  devin plugins install obra/superpowers\n  ```\n\n- Update to the latest version with:\n\n  ```bash\n  devin plugins update superpowers\n  ```\n\n### Factory Droid\n\n- Register the marketplace:\n\n  ```bash\n  droid plugin marketplace add https://github.com/obra/superpowers\n  ```\n\n- Install the plugin:\n\n  ```bash\n  droid plugin install superpowers@superpowers\n  ```\n\n### Gemini CLI\n\n- Install the extension:\n\n  ```bash\n  gemini extensions install https://github.com/obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  gemini extensions update superpowers\n  ```\n\n### GitHub Copilot CLI\n\n- Register the marketplace:\n\n  ```bash\n  copilot plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin:\n\n  ```bash\n  copilot plugin install superpowers@superpowers-marketplace\n  ```\n\n### Grok Build CLI\n\nSuperpowers is available via the [official Grok plugin marketplace](https://github.com/xai-org/plugin-marketplace).\n\n- Install the plugin from xAI's official marketplace:\n\n  ```bash\n  grok plugin install superpowers@xai-official --trust\n  ```\n\n- Or open the marketplace in the TUI, search for Superpowers, and install it:\n\n  ```text\n  /marketplace\n  ```\n\n### Kimi Code\n\nSuperpowers is available in Kimi Code's plugin marketplace.\n\n- Open Kimi Code's plugin manager:\n\n  ```text\n  /plugins\n  ```\n\n- Go to `Marketplace` > `Superpowers` and install it.\n\n- Or install directly from this repository:\n\n  ```text\n  /plugins install https://github.com/obra/superpowers\n  ```\n\n- Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)\n\n### OpenCode\n\nOpenCode uses its own plugin install; install Superpowers separately even if you\nalready use it in another harness.\n\n- Tell OpenCode:\n\n  ```\n  Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md\n  ```\n\n- Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)\n\n### Pi\n\nInstall Superpowers as a Pi package from this repository:\n\n```bash\npi install git:github.com/obra/superpowers\n```\n\nFor local development, run Pi with this checkout loaded as a temporary package:\n\n```bash\npi -e /path/to/superpowers\n```\n\nThe Pi package loads the Superpowers skills and a small extension that injects the `using-superpowers` bootstrap at session startup and again after compaction. Pi has native skills, so no compatibility `Skill` tool is required. Subagent and task-list tools remain optional Pi companion packages.\n\n### Qwen Code\n\nQwen Code installs plugins from Claude Code marketplaces directly.\n\n- Install the plugin from this repository, and pick `superpowers` when prompted:\n\n  ```bash\n  qwen extensions install obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  qwen extensions update superpowers\n  ```\n\n### Hermes Agent\n\nInstall Superpowers as a Hermes plugin from this repository:\n\n```bash\nhermes plugins install obra/superpowers --enable\n```\n\nRestart any active Hermes sessions after installing. Note: Hermes has no\npost-compaction hook, so a very long session that compacts over its first\nturn loses the bootstrap — start a fresh session if skills stop triggering.\n\n### Muse\n\nSuperpowers is available as a native Muse plugin — same repo, same skills, all harnesses. The `using-superpowers` bootstrap is injected via the native `SessionStart` hook alongside Claude Code, Codex, Cursor, Gemini, Pi, and the rest — no per-session opt-in.\n\n- Install from a local checkout:\n\n  ```bash\n  muse plugins install ./\n  muse plugins approve superpowers\n  ```\n\n  Or clone and install:\n\n  ```bash\n  git clone https://github.com/obra/superpowers.git\n  muse plugins install ./superpowers\n  muse plugins approve superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  muse plugins update superpowers\n  ```\n\nRestart any active Muse sessions after installing so the `SessionStart` hook takes effect — skills are active immediately, hooks require approval on first install. To verify, start a fresh session and send `Let's make a react todo list` — a working install auto-triggers `brainstorming` before any code is written. Version is tracked in `.version-bump.json` so `scripts/bump-version.sh` keeps it in sync.\n\n## The Basic Workflow\n\n1. **brainstorming** - Activates before building anything. Draws out what you actually want, and why, through questions that get you describing it, then plays its understanding back for correction. Small changes get agreed in chat; projects get a written design document a builder could plan from.\n\n2. **using-git-worktrees** - Activates after design approval. Creates isolated workspace on new branch, runs project setup, verifies clean test baseline.\n\n3. **writing-plans** - Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.\n\n4. **subagent-driven-development** or **executing-plans** - Activates with plan. Either dispatches a fresh subagent per task with a review after each (most thorough), or implements every task inline in the current session with one fresh review of the whole branch at the end (cheapest).\n\n5. **test-driven-development** - Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit. Deletes code written before tests.\n\n6. **requesting-code-review** - Activates between tasks. Reviews against plan, reports issues by severity. Critical issues block progress.\n\n7. **finishing-a-development-branch** - Activates when tasks complete. Verifies tests, presents options (merge/PR/keep/discard), cleans up worktree.\n\n**The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.\n\n## When Something Goes Wrong\n\nSometimes a session misbehaves: a skill fires when it shouldn't, stays silent when it should, or the agent ignores its plan, repeats work, or burns more tokens than you'd expect. Ask your coding agent to \"figure out what went wrong with superpowers in this session\" and it will invoke the **diagnosing-superpowers** skill. To examine an earlier session, name it: \"figure out what went wrong with superpowers in session `<id>`\".\n\nThe skill reads the session transcript, reports what happened with line-level evidence, and, if you want, packages a scrubbed bundle for a bug report.\n\n## Community\n\nSuperpowers is built by [Jesse Vincent](https://blog.fsck.com) and the rest of the folks at [Prime Radiant](https://primeradiant.com).\n\n- **Discord**: [Join us](https://discord.gg/35wsABTejz) for community support, questions, and sharing what you're building with Superpowers\n- **Issues**: https://github.com/obra/superpowers/issues\n- **Release announcements**: [Sign up](https://primeradiant.com/superpowers/) to get notified about new versions\n\n## What's Inside\n\n### Skills Library\n\n**Testing**\n- **test-driven-development** - RED-GREEN-REFACTOR cycle (includes testing anti-patterns reference)\n\n**Debugging**\n- **systematic-debugging** - 4-phase root cause process (includes root-cause-tracing, defense-in-depth, condition-based-waiting techniques)\n- **verification-before-completion** - Ensure it's actually fixed\n- **diagnosing-superpowers** - Work out what went wrong in a session, with evidence; export a scrubbed bundle or file an issue\n\n**Collaboration** \n- **brainstorming** - Drawing out intent before building\n- **writing-plans** - Detailed implementation plans\n- **executing-plans** - Inline plan execution: one context, one final review\n- **dispatching-parallel-agents** - Concurrent subagent workflows\n- **requesting-code-review** - Pre-review ch",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "skill",
+      "workflow"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "high",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Agent 技能包",
+      "规格澄清",
+      "计划驱动开发"
+    ],
+    "brief_zh": {
+      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+      "audience": "希望让编码 Agent 更稳定地遵循规格、计划和 TDD 流程的开发者与团队",
+      "capabilities": "Agent Skills、规格澄清、计划驱动开发、子 Agent 协作、TDD 方法论",
+      "risk": "方法论成分高于底层技术壁垒，实际收益取决于团队是否愿意按它的流程工作"
+    },
+    "summary_source": "project_brief"
+  },
+  {
+    "owner": "cursor",
+    "name": "plugins",
+    "full_name": "cursor/plugins",
+    "url": "https://github.com/cursor/plugins",
+    "description": "Cursor plugin specification and official plugins",
+    "language": "TypeScript",
+    "total_stars": 19510,
+    "forks": 2106,
+    "stars_this_period": 408,
+    "source_slice": "typescript",
+    "source_slices": [
+      "typescript",
+      "all"
+    ],
+    "metadata": {
+      "topics": [],
+      "license": "NOASSERTION",
+      "open_issues": 701,
+      "created_at": "2026-01-23T01:57:42Z",
+      "pushed_at": "2026-11-24T23:17:05Z",
+      "homepage": "",
+      "default_branch": "main",
+      "forks": 2106,
+      "watchers": 82,
+      "archived": false,
+      "size_kb": 19313
+    },
+    "readme_content": "# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local automation, and verification. |\n| `thermos` | [Thermos](thermos/) | Cursor | Developer Tools | Thermo-nuclear branch review: deep security/correctness audits, harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional merge-ready PR flows. |\n| `create-plugin` | [Create Plugin](create-plugin/) | Cursor | Developer Tools | Scaffold and validate new agent plugins. |\n| `ralph-loop` | [Ralph Loop](ralph-loop/) | Cursor | Developer Tools | Iterative self-referential AI loops using the Ralph Wiggum technique. |\n| `agent-compatibility` | [Agent Compatibility](agent-compatibility/) | Cursor | Developer Tools | CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality. |\n| `cli-for-agent` | [CLI for Agents](cli-for-agent/) | Eric Zakariasson | Developer Tools | Patterns for designing CLIs that coding agents can run reliably: flags, help with examples, pipelines, errors, idempotency, dry-run. |\n| `pr-review-canvas` | [PR Review Canvas](pr-review-canvas/) | Cursor | Developer Tools | Render PR diffs as review canvases grouped by importance. |\n| `docs-canvas` | [Docs Canvas](docs-canvas/) | Cursor | Developer Tools | Render documentation as a navigable canvas. |\n| `cursor-sdk` | [Cursor SDK](cursor-sdk/) | Cursor | Developer Tools | Build apps, scripts, and automations with the TypeScript SDK. |\n| `origin-apps` | [Origin Apps](origin-apps/) | Cursor | Developer Tools | Skills for building on the Cursor Origin API. Fetch the live spec first, then follow the Origin rules for credentials, scopes, webhooks, paging, and errors. Includes a skill that plans the port of an existing GitHub App. |\n| `orchestrate` | [Orchestrate](orchestrate/) | Cursor | Developer Tools | Fan large tasks out across parallel cloud agents with planners, workers, verifiers, and structured handoffs. |\n| `pstack` | [pstack](pstack/) | Lauren Tan | Developer Tools | if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. |\n| `dyl-stack` | [dyl-stack](dyl-stack/) | Dylan Gattey | Developer Tools | Dylan's agent style on top of pstack: root causes over symptom patches, The Algorithm before design, terse verified delivery, a PR review that fits in a paste, and Figma-to-UI with a visual judge. |\n| `advisor` | [Advisor](advisor/) | Cursor | Developer Tools | Consult a stronger model before major decisions, when stuck, and before declaring done. |\n| `grok-voice` | [Grok Voice](grok-voice/) | Eric Zakariasson | Developer Tools | Add Grok voice to an app: realtime speech-to-speech, speech-to-text dictation, text-to-speech read-aloud, and a log-driven fix loop for voice sessions. |\n| `gmail` | [Gmail](third_party/gmail/) | Cursor | Productivity | Search, read, draft, and manage email. |\n| `google-drive` | [Google Drive](third_party/google-drive/) | Cursor | Productivity | Search, read, create, and share files. |\n| `google-calendar` | [Google Calendar](third_party/google-calendar/) | Cursor | Productivity | Search events and schedule meetings. |\n| `google-docs` | [Google Docs](third_party/google-docs/) | Cursor | Productivity | Read, create, and edit documents. |\n| `google-sheets` | [Google Sheets](third_party/google-sheets/) | Cursor | Productivity | Read, write, and append spreadsheet data. |\n| `google-slides` | [Google Slides](third_party/google-slides/) | Cursor | Productivity | Create, edit, and render presentations. |\n| `google-ads` | [Google Ads](third_party/google-ads/) | Cursor | Integrations | Report on campaigns, research keywords, and make previewed changes. |\n| `google-analytics` | [Google Analytics](third_party/google-analytics/) | Cursor | Integrations | Run GA4 reports and manage property configuration. |\n| `google-search-console` | [Google Search Console](third_party/google-search-console/) | Cursor | Integrations | Query search performance, inspect URLs, and manage sitemaps. |\n| `gong` | [Gong](third_party/gong/) | Cursor | Integrations | Pull account summaries, deal insights, and call briefs. |\n| `salesforce` | [Salesforce](third_party/salesforce/) | Cursor | Integrations | Query, create, and update records in your org. |\n| `salesforce-headless-360` | [Salesforce (Headless 360, Beta)](third_party/salesforce-headless-360/) | Cursor | Integrations | Manage records, users, and org setup across Salesforce. |\n| `playwright` | [Playwright](third_party/playwright/) | Cursor | Integrations | Navigate, click, screenshot, and test in a real browser. |\n| `github` | [GitHub](third_party/github/) | Cursor | Integrations | Manage repos, issues, pull requests, and Actions. |\n| `ashby` | [Ashby](third_party/ashby/) | Cursor | Integrations | Search candidates, prep interviews, and manage pipeline tasks. |\n| `hubspot` | [HubSpot](third_party/hubspot/) | Cursor | Integrations | Search and update contacts, companies, deals, and tickets. |\n| `intercom` | [Intercom](third_party/intercom/) | Cursor | Integrations | Search conversations, contacts, and Help Center articles. |\n| `zoom` | [Zoom](third_party/zoom/) | Cursor | Integrations | Search meetings, pull transcripts, and work with Zoom Docs. |\n| `x` | [X](third_party/x/) | Cursor | Integrations | Search posts, read timelines, pull trends, explore Spaces and communities, manage lists and bookmarks, access X Chat, schedule X calls, and manage livestreams. |\n| `clay` | [Clay](third_party/clay/) | Cursor | Integrations | Enrich people and companies, run AI research agents. |\n| `circleback` | [Circleback](third_party/circleback/) | Cursor | Integrations | Search meetings, transcripts, action items, and emails. |\n| `docusign` | [Docusign](third_party/docusign/) | Cursor | Integrations | Manage envelopes, templates, workflows, and agreements. |\n| `navan` | [Navan](third_party/navan/) | Cursor | Integrations | Query expenses, travel bookings, policies, and cards. |\n| `profound` | [Profound](third_party/profound/) | Cursor | Integrations | Track AI visibility, sentiment, and citations. |\n| `juicebox` | [Juicebox](third_party/juicebox/) | Cursor | Integrations | Query recruiting analytics, shortlists, and sourcing agents. |\n| `outreach` | [Outreach](third_party/outreach/) | Cursor | Integrations | Search sequences, prospects, and Kaia meetings. |\n| `amplemarket` | [Amplemarket](third_party/amplemarket/) | Cursor | Integrations | Search people and companies, enrich leads, run sequences. |\n| `klaviyo` | [Klaviyo](third_party/klaviyo/) | Cursor | Integrations | Manage profiles, segments, campaigns, and flows. |\n| `customer-io` | [Customer.io](third_party/customer-io/) | Cursor | Integrations | Build campaigns, manage segments, and query people. |\n| `mailerlite` | [MailerLite](third_party/mailerlite/) | Cursor | Integrations | Manage subscribers, groups, campaigns, and automations. |\n| `brevo` | [Brevo](third_party/brevo/) | Cursor | Integrations | Manage contacts, email and SMS campaigns, and CRM deals. |\n| `typeform` | [Typeform](third_party/typeform/) | Cursor | Integrations | Build forms, analyze responses, and manage contacts. |\n| `jotform` | [Jotform](third_party/jotform/) | Cursor | Integrations | Create and edit forms, then read submissions. |\n| `semrush` | [Semrush](third_party/semrush/) | Cursor | Integrations | Research keywords, backlinks, traffic, and competitors. |\n| `ahrefs` | [Ahrefs](third_party/ahrefs/) | Cursor | Integrations | Research keywords, backlinks, rankings, and site health. |\n| `godaddy` | [GoDaddy](third_party/godaddy/) | Cursor | Integrations | Brainstorm domain names and check availability. |\n| `upwork` | [Upwork](third_party/upwork/) | Cursor | Integrations | Search talent, post jobs, and manage contracts. |\n| `workable` | [Workable](third_party/workable/) | Cursor | Integrations | Search candidates, move pipelines, and manage HR records. |\n| `brex` | [Brex](third_party/brex/) | Cursor | Integrations | Query expenses, receipts, bills, cards, and travel. |\n| `todoist` | [Todoist](third_party/todoist/) | Cursor | Integrations | Create, find, and complete tasks and projects. |\n| `calendly` | [Calendly](third_party/calendly/) | Cursor | Integrations | Check availability and book, cancel, or reschedule. |\n| `smartsheet` | [Smartsheet](third_party/smartsheet/) | Cursor | Integrations | Query and update sheets, rows, and workspaces. |\n| `wrike` | [Wrike](third_party/wrike/) | Cursor | Integrations | Search projects, create tasks, and post comments. |\n| `coda` | [Coda](third_party/coda/) | Cursor | Integrations | Search docs, read pages, and update tables. |\n| `guru` | [Guru](third_party/guru/) | Cursor | Integrations | Search company knowledge and draft verified answers. |\n| `fireflies` | [Fireflies](third_party/fireflies/) | Cursor | Integrations | Search meeting transcripts, summaries, and action items. |\n| `otter` | [Otter.ai](third_party/otter/) | Cursor | Integrations | Search meeting history and pull full transcripts. |\n| `fathom` | [Fathom](third_party/fathom/) | Cursor | Integrations | Search meetings and pull transcripts and summaries. |\n| `craft` | [Craft](third_party/craft/) | Cursor | Integrations | Search, create, and update documents and daily notes. |\n| `mem` | [Mem](third_party/mem/) | Cursor | Integrations | Capture, search, and organize notes and collections. |\n| `readwise` | [Readwise](third_party/readwise/) | Cursor | Integrations | Search highlights and Reader documents, save articles. |\n| `similarweb` | [Similarweb](third_party/similarweb/) | Cursor | Integrations | Analyze website traffic, audiences, and competitors. |\n| `xero` | [Xero](third_party/xero/) | Cursor | Integrations | Read and write invoices, contacts, reports, and payroll. |\n| `x-ads` | [X Ads](third_party/x-ads/) | Cursor | Integrations | Manage ad campaigns, create ads, track conversions, and pull performance stats. |\n| `meta-ads` | [Meta Ads](third_party/meta-ads/) | Cursor | Integrations | Manage campaigns, ads, audiences, and catalogs, and pull performance insights. |\n| `attio` | [Attio](third_party/attio/) | Cursor | Integrations | Search and update CRM records, lists, notes, and tasks. |\n| `hunter` | [Hunter](third_party/hunter/) | Cursor | Integrations | Find and verify emails, discover companies, and save leads. |\n| `stable` | [Stable](third_party/stable/) | Cursor | Integrations | Find mail, read scanned documents, and call Stable API endpoints. |\n| `gamma` | [Gamma](third_party/gamma/) | Cursor | Integrations | Generate presentations, documents, and webpages. |\n| `teams` | [Teams](third_party/teams/) | Cursor | Productivity | Search, read, and send Microsoft Teams chats and channel messages. |\n| `sharepoint` | [SharePoint](third_party/sharepoint/) | Cursor | Productivity | Search and read Microsoft SharePoint sites, document libraries, files, and lists. |\n| `power-bi` | [Power BI](third_party/power-bi/) | Cursor | Integrations | Browse Microsoft Power BI workspaces and render report pages. |\n| `finance` | [Finance](third_party/finance/) | Cursor | Integrations | Securely connect your accounts so Grok can help with questions about your spending, subsc",
+    "strategic_keywords": [
+      "agent",
+      "agents",
+      "memory",
+      "skill",
+      "workflow",
+      "automation",
+      "developer tool"
+    ],
+    "relationship_label": "Memory 组件",
+    "data_confidence": "medium",
+    "evidence_sources": [
+      "github_trending",
+      "github_repo_api",
+      "readme"
+    ],
+    "score_breakdown": {
+      "heat": 20,
+      "relevance": 20,
+      "novelty": 15,
+      "productize": 11,
+      "adoption": 8,
+      "relation": 10,
+      "risk_signal": 8,
+      "total": 92
+    },
+    "strategic_score": 92,
+    "capability_tags": [
+      "Cursor 插件规范",
+      "Agent 记忆",
+      "开发工作流"
+    ],
+    "brief_zh": {
+      "summary": "Cursor 官方插件规范与插件集合；各插件以独立目录和 manifest 组织，覆盖开发工作流、Agent 记忆、代码审查、SDK 与常用 SaaS 集成。",
+      "capabilities": "Cursor 插件规范、Agent 记忆、开发工作流、代码审查、SDK 与 SaaS 集成",
+      "verified_at": "2026-11-23",
+      "evidence_sources": [
+        "https://github.com/cursor/plugins"
+      ],
+      "evidence_note": "依据本次抓取的 README；具体插件的功能、权限和发布状态需要按各自 manifest 与文档确认。"
     },
     "summary_source": "project_brief"
   },
@@ -687,155 +838,6 @@
         "https://github.com/agentscope-ai/agentscope"
       ],
       "evidence_note": "依据本次抓取的仓库 README、description、topics 和 GitHub metadata；实际部署规模、运行成本及第三方模型兼容性未独立验证。"
-    },
-    "summary_source": "project_brief"
-  },
-  {
-    "owner": "agent-substrate",
-    "name": "substrate",
-    "full_name": "agent-substrate/substrate",
-    "url": "https://github.com/agent-substrate/substrate",
-    "description": "Agent Substrate: the core system",
-    "language": "Go",
-    "total_stars": 8351,
-    "forks": 924,
-    "stars_this_period": 64,
-    "source_slice": "go",
-    "source_slices": [
-      "go"
-    ],
-    "metadata": {
-      "topics": [
-        "agents",
-        "cncf",
-        "sandboxing"
-      ],
-      "license": "Apache-2.0",
-      "open_issues": 1003,
-      "created_at": "2026-05-13T19:02:38Z",
-      "pushed_at": "2026-11-25T21:14:04Z",
-      "homepage": "https://ate.dev/",
-      "default_branch": "main",
-      "forks": 924,
-      "watchers": 38,
-      "archived": false,
-      "size_kb": 57281
-    },
-    "readme_content": "<div align=\"center\">\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"logo/ate-logo-with-border.svg\">\n  <img src=\"logo/ate-logo.svg\" alt=\"Agent Substrate logo: a green octopus with agent puppets\" width=\"260\">\n</picture>\n\n# Agent Substrate\n\n**Zero-trust sandboxing for millions of agents on Kubernetes.**\n\n[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)\n[![Release](https://img.shields.io/github/v/release/agent-substrate/substrate)](https://github.com/agent-substrate/substrate/releases)\n[![CI](https://github.com/agent-substrate/substrate/actions/workflows/pr-workflow.yaml/badge.svg?branch=main)](https://github.com/agent-substrate/substrate/actions/workflows/pr-workflow.yaml?query=branch%3Amain)\n[![govulncheck](https://github.com/agent-substrate/substrate/actions/workflows/govulncheck.yaml/badge.svg)](https://github.com/agent-substrate/substrate/actions/workflows/govulncheck.yaml)\n[![GitHub stars](https://img.shields.io/github/stars/agent-substrate/substrate?style=flat)](https://github.com/agent-substrate/substrate/stargazers)\n\n[Quickstart](#quickstart-development) · [Security](docs/security/security.md) · [Architecture](docs/concepts/architecture.md) · [Contributing](CONTRIBUTING.md)\n\n<a href=\"https://ate.dev\">\n  <img src=\"docs/assets/readme-hero.svg\" alt=\"Agents are idle most of the time. Agent Substrate suspends idle agents and resumes them on request onto a small pool of warm worker pods.\" width=\"900\">\n</a>\n\n</div>\n\n## What is Agent Substrate?\n\nAgent Substrate is a security-hardened, zero-trust runtime for sandboxed agents, engineered to safely run millions of agents and tools with 10x higher density than standard containers. Purpose-built for the era of autonomous agents, Substrate delivers fast resume operations in less than 500ms, with more than 500 activations per second. Agents get isolated compute, identity, networking, and storage. Sensitive credentials are kept out of reach from untrusted code. It supports multiple sandbox technologies, including microVMs and gVisor, while enabling a consistent lifecycle and management of all sandboxes.\n\nAt its core, Agent Substrate maps a larger set of “actors” (stateful workloads such as agents) onto a smaller pool of ready “workers”. Because agents spend most of their lives waiting on models, tools, or humans, Substrate snapshots idle actors out of memory and restores them when a request arrives.\n\nSubstrate is a low-opinion runtime, not an agent SDK. The workloads it runs do not have to be AI agents, though autonomous, untrusted, mostly-idle agents are the target for its isolation and scheduling model. It runs on standard Kubernetes: Pods, autoscaling, NetworkPolicies. It adds agent-specific scheduling, snapshotting, identity, and network mediation. This allows agentic, inference, training, and reinforcement learning workloads to share one infrastructure plane.\n\n## Security Model\n\nSubstrate treats every actor as untrusted and mutually hostile, so tenants can share physical nodes without sharing a security boundary. Every control operates within the cold-start and resume budget. See the [Security Guide](docs/security/security.md) for the full list of security principles and threat model.\n\n* **Always sandboxed, VM-grade boundaries:** Every actor runs inside a dedicated [gVisor](https://gvisor.dev/) (`runsc`) or [Cloud Hypervisor](https://www.cloudhypervisor.org/) microVM sandbox with segregated compute, network, and storage. Plain Linux containers are not supported.\n* **Per-agent cryptographic identity:** Every active actor receives a short-lived [SPIFFE](https://spiffe.io/) X.509 certificate by default, and the egress gateway can mint per-actor JWTs on demand when an egress policy calls for one. Both carry the actor identity and atespace (the Substrate namespace grouping), and are designed to federate with external identity systems.\n* **Zero credentials in the sandbox:** Actors never hold actor identity JWTs/certs, API keys, or cloud tokens. The built-in egress gateway ([`atenet-egress`](docs/guides/egress-credential-injection.md)) injects credentials into approved outbound requests outside the sandbox, so a prompt-injected or compromised agent has nothing to exfiltrate.\n* **Default-deny networking:** Actors start with a private network stack, no inbound path except through the ingress router (`atenet-router`), no lateral actor-to-actor or control-plane access, and outbound traffic [restricted by the egress gateway](docs/guides/egress-traffic.md).\n* **Pluggable policy at the edge:** The egress gateway acts as an external Policy Enforcement Point (PEP) that is fully replaceable, allowing you to attach your own authorization, DLP, prompt-injection scanning, or cloud IAM policy engine without placing policy code inside the untrusted sandbox.\n\n## Performance & Multiplexing\n\n[![Agent Substrate Demo](https://img.youtube.com/vi/ZEzkCFJkzjY/hq1.jpg)](https://www.youtube.com/watch?v=ZEzkCFJkzjY)\n\n*Watch the Agent Substrate cluster multiplex ~250 stateful actors across just 8 physical pods.*\n\nThis demo highlights the core developer experience and \"Agentic Infrastructure\" capabilities of Substrate:\n\n1. **Actor Teleport:** Suspend and resume actors onto any available worker in the pool, when needed.\n2. **Full-State Persistence:** Working memory (RAM) and filesystem state are captured in snapshots and restored intact across hibernation cycles, without losing in-flight sessions or tool state.\n3. **10x–30x Oversubscription:** Multiplex a large registry of stateful actors onto a small pool of warm worker pods, paying for compute only while an agent is actively thinking or executing a tool.\n\nTo reproduce this demo in your own cluster, see the **[Counter Demo](demos/counter/README.md)**. For more walkthroughs, visit the **[agent-substrate YouTube channel](https://www.youtube.com/channel/UCN9PPqlTtVxlcpbQ-NWpfZQ)**.\n\n## Star History\n\n<a href=\"https://www.star-history.com/?repos=agent-substrate%2Fsubstrate&type=date&legend=top-left\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/svg?repos=agent-substrate/substrate&type=date&theme=dark&legend=top-left\">\n    <img alt=\"Star history chart for agent-substrate/substrate\" src=\"https://api.star-history.com/svg?repos=agent-substrate/substrate&type=date&legend=top-left\">\n  </picture>\n</a>\n\n## Framework Agnostic & Compatibility\n\nAgent Substrate is **framework and agent harness agnostic**. Because it runs standard OCI container images inside gVisor or microVM sandboxes and enforces security outside the workload, it hosts agents built on any stack without SDK changes:\n\n* **Agent Development Kit (ADK):** Preserves session state across invocations as actor state.\n* **LangChain:** Drop-in execution environment for LangChain agents and tool calls.\n* **Claude Code, Codex, and Antigravity:** High-density, stateful coding environments that keep system and filesystem state across sessions while isolating untrusted code execution.\n* **Model Context Protocol (MCP):** Deploy sandboxed MCP servers as Substrate Actors with per-actor identity and egress controls.\n\n## Ecosystem & Examples\n\n*   **[Agent Executor](https://github.com/google/ax):** A distributed agent runtime that demonstrates building a secure, hyper-scalable agent harness on Agent Substrate (see the [announcement blog](https://cloud.google.com/blog/products/ai-machine-learning/agent-executor-googles-distributed-agent-runtime) and [integration guide](https://github.com/google/ax#2-deploy-the-control-plane)).\n*   **[kagent](https://github.com/kagent-dev/kagent):** A CNCF Sandbox project and Kubernetes-native framework for building, deploying, and managing AI agents that uses Agent Substrate to run sandboxed, stateful agent workloads (see the [announcement blog](https://kagent.dev/blog/the-future-of-kagent)).\n\n## Status and compatibility\n\nAgent Substrate has reached 1.0. We are committed to compatibility and stability of the public API, CLI, and configuration formats. We will continue to add new features, but we will not break existing APIs or configuration formats without a major version bump. See \"Compatibility and schema evolution\" in [CONTRIBUTING.md](CONTRIBUTING.md) for more details.\n\n### Supported Kubernetes Releases\n\nCurrently we aim to support the [latest stable release](https://kubernetes.io/releases/) of Kubernetes, and the previous minor release.\n\n## Community\n\nFor announcements, technical discussions, and community support, please join\nthe **[ate-dev](https://groups.google.com/g/ate-dev)** Google Group.\n\nWe host a weekly community meeting every Thursday from 10:00am - 11:00am PST.\n- Video call link: https://meet.google.com/uhq-cxvn-dhy\n- Or dial: (US) +1 253-289-6971 PIN: 787 664 574 59#\n- More phone numbers: https://tel.meet/uhq-cxvn-dhy?pin=9044088223662\n- [Meeting notes](https://docs.google.com/document/d/1obSIvfcafLNniLYTQCcT2eCgxHqa2AQ3Ga7YTsju49s) for the weekly sync meeting\n- [Recordings and transcripts](https://drive.google.com/corp/drive/u/0/folders/1rX1S6vPxPrR8dA1lEBuBEXkGKjHtG-mL) of all community meetings\n\nWe also have channels in the CNCF slack; [request an invite here](https://slack.cncf.io/)\nif you don't have access.\n\n- [#substrate-users](https://cloud-native.slack.com/archives/C0B6RCAJULW) to discuss using substrate.\n- [#substrate-dev](https://cloud-native.slack.com/archives/C0B6M3E2J3D) to discuss developing substrate.\n\n## Developing\n\nPlease see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to\nthe project.  We welcome contributions of all kinds, but the project is VERY\nyoung.  Our immediate focus is on building out the core system and demos, so we\nmay not be able to review or merge contributions that don't align with those\ngoals in the near term.\n\n## Quickstart (Development)\n\nTo quickly set up the complete environment:\n\n1. Make sure you have [Go](https://go.dev/doc/install), [`kubectl`](https://kubernetes.io/docs/tasks/tools/), and [`docker`](https://www.docker.com/) installed and configured on your dev machine. We will automatically manage other dependencies via Go, including [`kind`](https://kind.sigs.k8s.io/).\n   A Linux host that will run more than about a thousand sandboxes also needs a larger kernel neighbor table (`net.ipv4.neigh.default.gc_thresh1/2/3` = 4096/16384/32768); `hack/create-kind-cluster.sh` warns when the host is at the default of 1024.\n\n2. Run the following steps:\n```shell\n# create cluster and local registry\nhack/create-kind-cluster.sh\n\n# make ate-setup target the kind cluster; set this in every shell that runs\n# ate-setup, including for the demo walkthroughs\nexport ATE_INSTALL_KIND=true\n\n# install Substrate\ngo run ./cmd/ate-setup deploy ate-system --credential-provider='{\"name\":\"k8s.io\"}' \\\n  --ingress-allowed-spiffe-ids=spiffe://cluster.local/ns/ate-system/sa/atenet-client\n\n# install counter demo\ngo run ./cmd/ate-setup deploy demo counter\n\n# install kubectl-ate\ngo install ./cmd/kubectl-ate\n\n# create a counter actor in the demo's atespace (--template names the\n# actor template, resolved in the actor's atespace)\nkubectl ate create actor my-counter-1 -a ate-demo-counter --template counter\n\n# serve a local proxy on port 8000 that sends requests to the actor through the\n# network router\nkubectl ate proxy actor my-counter-1 -a ate-demo-counter\n```\n\n> [!IMPORTANT]\n> `{\"name\":\"k8s.io\"}` deploys the bundled credential provider with an empty,\n> default-deny namespace policy. Before an actor can have a credential\n> injected, grant its atespace the namespaces whose Secrets it may read; see\n> [Enable it](docs/guides/egress-credential-injection.md#enable-it).\n\n3. In a **separate terminal**, send an HTTP request to increment the counter:\n```shell\ncurl -X POST -i http://localhost:8000/\n```\n\n### Custom Setup and Deployment\n\nYou can deploy or cleanup specific Agent Substrate components using\nthe installation script. See `go run ./cmd/ate-setup` for all options.\n```bash\n# Re-",
-    "manifest_file": "go.mod",
-    "manifest_content": "module go.ate.dev/substrate\n\ngo 1.27.0\n\ntoolchain go1.27.4\n\nrequire (\n\tcloud.google.com/go/compute/metadata v0.9.0\n\tcloud.google.com/go/storage v1.62.1\n\tgithub.com/Masterminds/squirrel v1.5.4\n\tgithub.com/aws/aws-sdk-go-v2 v1.41.7\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.17\n\tgithub.com/aws/aws-sdk-go-v2/credentials v1.19.16\n\tgithub.com/aws/aws-sdk-go-v2/feature/s3/manager v1.22.10\n\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.101.0\n\tgithub.com/aws/smithy-go v1.25.1\n\tgithub.com/container-storage-interface/spec v1.12.0\n\tgithub.com/containerd/ttrpc v1.2.8\n\tgithub.com/distribution/reference v0.6.0\n\tgithub.com/envoyproxy/go-control-plane v0.14.0\n\tgithub.com/envoyproxy/go-control-plane/envoy v1.39.1-0.20260819172001-e6e3fd93e4be\n\tgithub.com/fsnotify/fsnotify v1.9.0\n\tgithub.com/go-logr/logr v1.4.4\n\tgithub.com/google/go-cmp v0.7.0\n\tgithub.com/google/go-containerregistry v0.21.7\n\tgithub.com/google/nftables v0.3.0\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/googleapis/gax-go/v2 v2.21.0\n\tgithub.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674\n\tgithub.com/jackc/pgx/v5 v5.10.0\n\tgithub.com/klauspost/compress v1.20.4\n\tgithub.com/moby/sys/user v0.4.1\n\tgithub.com/myzhan/boomer v1.6.1-0.20250711115830-8a2c7ce4c7b1\n\tgithub.com/opencontainers/runtime-spec v1.3.0\n\tgithub.com/openfga/api/proto v0.0.0-20260319214821-f153694bfc20\n\tgithub.com/openfga/language/pkg/go v0.3.2-0.20260730144454-83fedf8a4e70\n\tgithub.com/openfga/openfga v1.20.0\n\tgithub.com/pressly/goose/v3 v3.27.3\n\tgithub.com/prometheus/client_golang v1.25.0\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgithub.com/spiffe/go-spiffe/v2 v2.8.1\n\tgithub.com/testcontainers/testcontainers-go v0.44.0\n\tgithub.com/testcontainers/testcontainers-go/modules/postgres v0.44.0\n\tgithub.com/vishvananda/netlink v1.3.1\n\tgithub.com/vishvananda/netns v0.0.5\n\tgo.opentelemetry.io/contrib/bridges/prometheus v0.68.0\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.70.0\n\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.72.0\n\tgo.opentelemetry.io/otel v1.47.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc v0.21.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.43.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.45.0\n\tgo.opentelemetry.io/otel/exporters/prometheus v0.65.0\n\tgo.opentelemetry.io/otel/log v1.47.0\n\tgo.opentelemetry.io/otel/metric v1.47.0\n\tgo.opentelemetry.io/otel/sdk v1.47.0\n\tgo.opentelemetry.io/otel/sdk/log v1.47.0\n\tgo.opentelemetry.io/otel/sdk/metric v1.47.0\n\tgo.opentelemetry.io/otel/trace v1.47.0\n\tgo.opentelemetry.io/proto/otlp v1.11.0\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/oauth2 v0.37.0\n\tgolang.org/x/sync v0.24.0\n\tgolang.org/x/sys v0.49.0\n\tgolang.org/x/time v0.16.0\n\tgoogle.golang.org/api v0.274.0\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260928230214-8a89bd6388cc\n\tgoogle.golang.org/grpc v1.85.0\n\tgoogle.golang.org/protobuf v1.36.12\n\tgopkg.in/yaml.v3 v3.0.1\n\tk8s.io/api v0.38.0-beta.0\n\tk8s.io/apiextensions-api v0.38.0-beta.0\n\tk8s.io/apimachinery v0.38.0-beta.0\n\tk8s.io/client-go v0.38.0-beta.0\n\tk8s.io/kubelet v0.38.0-beta.0\n\tk8s.io/metrics v0.38.0-beta.0\n\tk8s.io/utils v0.0.0-20260626114624-be93311217bd\n\t// TODO(#3821): move to a tagged release once one supports Kubernetes 1.38.\n\tsigs.k8s.io/controller-runtime v0.25.1-0.20261119155835-be0153ca8953\n\tsigs.k8s.io/kustomize/api v0.21.1\n\tsigs.k8s.io/kustomize/kyaml v0.21.1\n\tsigs.k8s.io/yaml v1.6.0\n)\n\nrequire (\n\tcel.dev/expr v0.25.3 // indirect\n\tcloud.google.com/go v0.123.0 // indirect\n\tcloud.google.com/go/auth v0.19.0 // indirect\n\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n\tcloud.google.com/go/iam v1.9.0 // indirect\n\tcloud.google.com/go/monitoring v1.24.3 // indirect\n\tdario.cat/mergo v1.0.2 // indirect\n\tgithub.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.35.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.55.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.55.0 // indirect\n\tgithub.com/IBM/pgxpoolprometheus v1.1.3 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.2 // indirect\n\tgithub.com/Yiling-J/theine-go v0.6.2 // indirect\n\tgithub.com/antlr4-go/antlr/v4 v4.13.1 // indirect\n\tgithub.com/asaskevich/EventBus v0.0.0-20200907212545-49d423059eef // indirect\n\tgithub.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.10 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/configsources v1.4.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.23 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/v4a v1.4.24 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.9 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/checksum v1.9.15 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/pr",
-    "strategic_keywords": [
-      "agent",
-      "agents",
-      "memory",
-      "rag",
-      "runtime",
-      "workflow",
-      "inference"
-    ],
-    "relationship_label": "Memory 组件",
-    "data_confidence": "high",
-    "evidence_sources": [
-      "github_trending",
-      "github_repo_api",
-      "readme",
-      "go.mod"
-    ],
-    "score_breakdown": {
-      "heat": 14,
-      "relevance": 20,
-      "novelty": 15,
-      "productize": 14,
-      "adoption": 10,
-      "relation": 10,
-      "risk_signal": 8,
-      "total": 91
-    },
-    "strategic_score": 91,
-    "capability_tags": [
-      "Agent 沙箱",
-      "零信任运行时",
-      "Kubernetes 编排"
-    ],
-    "brief_zh": {
-      "summary": "面向 Kubernetes 的零信任 Agent 沙箱运行时；README 将其定位为隔离计算、身份、网络和存储的基础设施，并说明兼容 microVM 与 gVisor 等沙箱技术。",
-      "capabilities": "Agent 沙箱、零信任运行时、Kubernetes、身份与网络隔离、MCP 部署",
-      "verified_at": "2026-11-11",
-      "evidence_sources": [
-        "https://github.com/agent-substrate/substrate"
-      ],
-      "evidence_note": "依据本次抓取的 README、仓库 description、topics 与 metadata；README 中的规模、密度和延迟为项目自述，未独立复现。"
-    },
-    "summary_source": "project_brief"
-  },
-  {
-    "owner": "cursor",
-    "name": "plugins",
-    "full_name": "cursor/plugins",
-    "url": "https://github.com/cursor/plugins",
-    "description": "Cursor plugin specification and official plugins",
-    "language": "TypeScript",
-    "total_stars": 19510,
-    "forks": 2106,
-    "stars_this_period": 408,
-    "source_slice": "typescript",
-    "source_slices": [
-      "typescript"
-    ],
-    "metadata": {
-      "topics": [],
-      "license": "NOASSERTION",
-      "open_issues": 701,
-      "created_at": "2026-01-23T01:57:42Z",
-      "pushed_at": "2026-11-24T23:17:05Z",
-      "homepage": "",
-      "default_branch": "main",
-      "forks": 2106,
-      "watchers": 82,
-      "archived": false,
-      "size_kb": 19313
-    },
-    "readme_content": "# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local automation, and verification. |\n| `thermos` | [Thermos](thermos/) | Cursor | Developer Tools | Thermo-nuclear branch review: deep security/correctness audits, harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional merge-ready PR flows. |\n| `create-plugin` | [Create Plugin](create-plugin/) | Cursor | Developer Tools | Scaffold and validate new agent plugins. |\n| `ralph-loop` | [Ralph Loop](ralph-loop/) | Cursor | Developer Tools | Iterative self-referential AI loops using the Ralph Wiggum technique. |\n| `agent-compatibility` | [Agent Compatibility](agent-compatibility/) | Cursor | Developer Tools | CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality. |\n| `cli-for-agent` | [CLI for Agents](cli-for-agent/) | Eric Zakariasson | Developer Tools | Patterns for designing CLIs that coding agents can run reliably: flags, help with examples, pipelines, errors, idempotency, dry-run. |\n| `pr-review-canvas` | [PR Review Canvas](pr-review-canvas/) | Cursor | Developer Tools | Render PR diffs as review canvases grouped by importance. |\n| `docs-canvas` | [Docs Canvas](docs-canvas/) | Cursor | Developer Tools | Render documentation as a navigable canvas. |\n| `cursor-sdk` | [Cursor SDK](cursor-sdk/) | Cursor | Developer Tools | Build apps, scripts, and automations with the TypeScript SDK. |\n| `origin-apps` | [Origin Apps](origin-apps/) | Cursor | Developer Tools | Skills for building on the Cursor Origin API. Fetch the live spec first, then follow the Origin rules for credentials, scopes, webhooks, paging, and errors. Includes a skill that plans the port of an existing GitHub App. |\n| `orchestrate` | [Orchestrate](orchestrate/) | Cursor | Developer Tools | Fan large tasks out across parallel cloud agents with planners, workers, verifiers, and structured handoffs. |\n| `pstack` | [pstack](pstack/) | Lauren Tan | Developer Tools | if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. |\n| `dyl-stack` | [dyl-stack](dyl-stack/) | Dylan Gattey | Developer Tools | Dylan's agent style on top of pstack: root causes over symptom patches, The Algorithm before design, terse verified delivery, a PR review that fits in a paste, and Figma-to-UI with a visual judge. |\n| `advisor` | [Advisor](advisor/) | Cursor | Developer Tools | Consult a stronger model before major decisions, when stuck, and before declaring done. |\n| `grok-voice` | [Grok Voice](grok-voice/) | Eric Zakariasson | Developer Tools | Add Grok voice to an app: realtime speech-to-speech, speech-to-text dictation, text-to-speech read-aloud, and a log-driven fix loop for voice sessions. |\n| `gmail` | [Gmail](third_party/gmail/) | Cursor | Productivity | Search, read, draft, and manage email. |\n| `google-drive` | [Google Drive](third_party/google-drive/) | Cursor | Productivity | Search, read, create, and share files. |\n| `google-calendar` | [Google Calendar](third_party/google-calendar/) | Cursor | Productivity | Search events and schedule meetings. |\n| `google-docs` | [Google Docs](third_party/google-docs/) | Cursor | Productivity | Read, create, and edit documents. |\n| `google-sheets` | [Google Sheets](third_party/google-sheets/) | Cursor | Productivity | Read, write, and append spreadsheet data. |\n| `google-slides` | [Google Slides](third_party/google-slides/) | Cursor | Productivity | Create, edit, and render presentations. |\n| `google-ads` | [Google Ads](third_party/google-ads/) | Cursor | Integrations | Report on campaigns, research keywords, and make previewed changes. |\n| `google-analytics` | [Google Analytics](third_party/google-analytics/) | Cursor | Integrations | Run GA4 reports and manage property configuration. |\n| `google-search-console` | [Google Search Console](third_party/google-search-console/) | Cursor | Integrations | Query search performance, inspect URLs, and manage sitemaps. |\n| `gong` | [Gong](third_party/gong/) | Cursor | Integrations | Pull account summaries, deal insights, and call briefs. |\n| `salesforce` | [Salesforce](third_party/salesforce/) | Cursor | Integrations | Query, create, and update records in your org. |\n| `salesforce-headless-360` | [Salesforce (Headless 360, Beta)](third_party/salesforce-headless-360/) | Cursor | Integrations | Manage records, users, and org setup across Salesforce. |\n| `playwright` | [Playwright](third_party/playwright/) | Cursor | Integrations | Navigate, click, screenshot, and test in a real browser. |\n| `github` | [GitHub](third_party/github/) | Cursor | Integrations | Manage repos, issues, pull requests, and Actions. |\n| `ashby` | [Ashby](third_party/ashby/) | Cursor | Integrations | Search candidates, prep interviews, and manage pipeline tasks. |\n| `hubspot` | [HubSpot](third_party/hubspot/) | Cursor | Integrations | Search and update contacts, companies, deals, and tickets. |\n| `intercom` | [Intercom](third_party/intercom/) | Cursor | Integrations | Search conversations, contacts, and Help Center articles. |\n| `zoom` | [Zoom](third_party/zoom/) | Cursor | Integrations | Search meetings, pull transcripts, and work with Zoom Docs. |\n| `x` | [X](third_party/x/) | Cursor | Integrations | Search posts, read timelines, pull trends, explore Spaces and communities, manage lists and bookmarks, access X Chat, schedule X calls, and manage livestreams. |\n| `clay` | [Clay](third_party/clay/) | Cursor | Integrations | Enrich people and companies, run AI research agents. |\n| `circleback` | [Circleback](third_party/circleback/) | Cursor | Integrations | Search meetings, transcripts, action items, and emails. |\n| `docusign` | [Docusign](third_party/docusign/) | Cursor | Integrations | Manage envelopes, templates, workflows, and agreements. |\n| `navan` | [Navan](third_party/navan/) | Cursor | Integrations | Query expenses, travel bookings, policies, and cards. |\n| `profound` | [Profound](third_party/profound/) | Cursor | Integrations | Track AI visibility, sentiment, and citations. |\n| `juicebox` | [Juicebox](third_party/juicebox/) | Cursor | Integrations | Query recruiting analytics, shortlists, and sourcing agents. |\n| `outreach` | [Outreach](third_party/outreach/) | Cursor | Integrations | Search sequences, prospects, and Kaia meetings. |\n| `amplemarket` | [Amplemarket](third_party/amplemarket/) | Cursor | Integrations | Search people and companies, enrich leads, run sequences. |\n| `klaviyo` | [Klaviyo](third_party/klaviyo/) | Cursor | Integrations | Manage profiles, segments, campaigns, and flows. |\n| `customer-io` | [Customer.io](third_party/customer-io/) | Cursor | Integrations | Build campaigns, manage segments, and query people. |\n| `mailerlite` | [MailerLite](third_party/mailerlite/) | Cursor | Integrations | Manage subscribers, groups, campaigns, and automations. |\n| `brevo` | [Brevo](third_party/brevo/) | Cursor | Integrations | Manage contacts, email and SMS campaigns, and CRM deals. |\n| `typeform` | [Typeform](third_party/typeform/) | Cursor | Integrations | Build forms, analyze responses, and manage contacts. |\n| `jotform` | [Jotform](third_party/jotform/) | Cursor | Integrations | Create and edit forms, then read submissions. |\n| `semrush` | [Semrush](third_party/semrush/) | Cursor | Integrations | Research keywords, backlinks, traffic, and competitors. |\n| `ahrefs` | [Ahrefs](third_party/ahrefs/) | Cursor | Integrations | Research keywords, backlinks, rankings, and site health. |\n| `godaddy` | [GoDaddy](third_party/godaddy/) | Cursor | Integrations | Brainstorm domain names and check availability. |\n| `upwork` | [Upwork](third_party/upwork/) | Cursor | Integrations | Search talent, post jobs, and manage contracts. |\n| `workable` | [Workable](third_party/workable/) | Cursor | Integrations | Search candidates, move pipelines, and manage HR records. |\n| `brex` | [Brex](third_party/brex/) | Cursor | Integrations | Query expenses, receipts, bills, cards, and travel. |\n| `todoist` | [Todoist](third_party/todoist/) | Cursor | Integrations | Create, find, and complete tasks and projects. |\n| `calendly` | [Calendly](third_party/calendly/) | Cursor | Integrations | Check availability and book, cancel, or reschedule. |\n| `smartsheet` | [Smartsheet](third_party/smartsheet/) | Cursor | Integrations | Query and update sheets, rows, and workspaces. |\n| `wrike` | [Wrike](third_party/wrike/) | Cursor | Integrations | Search projects, create tasks, and post comments. |\n| `coda` | [Coda](third_party/coda/) | Cursor | Integrations | Search docs, read pages, and update tables. |\n| `guru` | [Guru](third_party/guru/) | Cursor | Integrations | Search company knowledge and draft verified answers. |\n| `fireflies` | [Fireflies](third_party/fireflies/) | Cursor | Integrations | Search meeting transcripts, summaries, and action items. |\n| `otter` | [Otter.ai](third_party/otter/) | Cursor | Integrations | Search meeting history and pull full transcripts. |\n| `fathom` | [Fathom](third_party/fathom/) | Cursor | Integrations | Search meetings and pull transcripts and summaries. |\n| `craft` | [Craft](third_party/craft/) | Cursor | Integrations | Search, create, and update documents and daily notes. |\n| `mem` | [Mem](third_party/mem/) | Cursor | Integrations | Capture, search, and organize notes and collections. |\n| `readwise` | [Readwise](third_party/readwise/) | Cursor | Integrations | Search highlights and Reader documents, save articles. |\n| `similarweb` | [Similarweb](third_party/similarweb/) | Cursor | Integrations | Analyze website traffic, audiences, and competitors. |\n| `xero` | [Xero](third_party/xero/) | Cursor | Integrations | Read and write invoices, contacts, reports, and payroll. |\n| `x-ads` | [X Ads](third_party/x-ads/) | Cursor | Integrations | Manage ad campaigns, create ads, track conversions, and pull performance stats. |\n| `meta-ads` | [Meta Ads](third_party/meta-ads/) | Cursor | Integrations | Manage campaigns, ads, audiences, and catalogs, and pull performance insights. |\n| `attio` | [Attio](third_party/attio/) | Cursor | Integrations | Search and update CRM records, lists, notes, and tasks. |\n| `hunter` | [Hunter](third_party/hunter/) | Cursor | Integrations | Find and verify emails, discover companies, and save leads. |\n| `stable` | [Stable](third_party/stable/) | Cursor | Integrations | Find mail, read scanned documents, and call Stable API endpoints. |\n| `gamma` | [Gamma](third_party/gamma/) | Cursor | Integrations | Generate presentations, documents, and webpages. |\n| `teams` | [Teams](third_party/teams/) | Cursor | Productivity | Search, read, and send Microsoft Teams chats and channel messages. |\n| `sharepoint` | [SharePoint](third_party/sharepoint/) | Cursor | Productivity | Search and read Microsoft SharePoint sites, document libraries, files, and lists. |\n| `power-bi` | [Power BI](third_party/power-bi/) | Cursor | Integrations | Browse Microsoft Power BI workspaces and render report pages. |\n| `finance` | [Finance](third_party/finance/) | Cursor | Integrations | Securely connect your accounts so Grok can help with questions about your spending, subsc",
-    "strategic_keywords": [
-      "agent",
-      "agents",
-      "memory",
-      "skill",
-      "workflow",
-      "automation",
-      "developer tool"
-    ],
-    "relationship_label": "Memory 组件",
-    "data_confidence": "medium",
-    "evidence_sources": [
-      "github_trending",
-      "github_repo_api",
-      "readme"
-    ],
-    "score_breakdown": {
-      "heat": 18,
-      "relevance": 20,
-      "novelty": 15,
-      "productize": 11,
-      "adoption": 8,
-      "relation": 10,
-      "risk_signal": 8,
-      "total": 90
-    },
-    "strategic_score": 90,
-    "capability_tags": [
-      "Cursor 插件规范",
-      "Agent 记忆",
-      "开发工作流"
-    ],
-    "brief_zh": {
-      "summary": "Cursor 官方插件规范与插件集合；各插件以独立目录和 manifest 组织，覆盖开发工作流、Agent 记忆、代码审查、SDK 与常用 SaaS 集成。",
-      "capabilities": "Cursor 插件规范、Agent 记忆、开发工作流、代码审查、SDK 与 SaaS 集成",
-      "verified_at": "2026-11-23",
-      "evidence_sources": [
-        "https://github.com/cursor/plugins"
-      ],
-      "evidence_note": "依据本次抓取的 README；具体插件的功能、权限和发布状态需要按各自 manifest 与文档确认。"
     },
     "summary_source": "project_brief"
   }

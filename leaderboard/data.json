@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T06:01+08:00",
+  "generated_at": "2026-11-26T06:09+08:00",
   "methodology": {
     "name": "ReelOS Open Source Signal Index",
     "version": 2,
@@ -610,41 +610,6 @@
       "rank": 16
     },
     {
-      "full_name": "firecrawl/firecrawl",
-      "url": "https://github.com/firecrawl/firecrawl",
-      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
-      "summary_source": "project_brief",
-      "original_description": "Knowledge infrastructure to make your agents smarter. Search, scrape and access 550+ data providers through one API.",
-      "language": "TypeScript",
-      "latest_stars": 209948,
-      "observed_star_change": 68483,
-      "peak_period_growth": 1131,
-      "growth_signal": 68483,
-      "appearances": 11,
-      "best_rank": 3,
-      "first_seen": "2026-06-30",
-      "last_seen": "2026-11-26",
-      "strategic_score": 91.9,
-      "relationship_label": "Workspace 组件",
-      "capabilities": [
-        "网页搜索",
-        "批量抓取",
-        "交互式采集",
-        "HTML 转 Markdown"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 5.5,
-        "growth": 17.2,
-        "strategic": 18.4,
-        "heat": 9.9,
-        "best_rank": 8.0,
-        "recency": 5.0
-      },
-      "rank_score": 64.0,
-      "rank": 17
-    },
-    {
       "full_name": "mksglu/context-mode",
       "url": "https://github.com/mksglu/context-mode",
       "summary": "通过沙箱处理工具输出，并用 SQLite 保存会话事件和检索相关上下文，帮助编码 Agent 延续任务。",
@@ -677,7 +642,7 @@
         "recency": 0.8
       },
       "rank_score": 63.9,
-      "rank": 18
+      "rank": 17
     },
     {
       "full_name": "NousResearch/hermes-agent",
@@ -712,7 +677,7 @@
         "recency": 0
       },
       "rank_score": 63.5,
-      "rank": 19
+      "rank": 18
     },
     {
       "full_name": "vectorize-io/hindsight",
@@ -747,6 +712,41 @@
         "recency": 0.7
       },
       "rank_score": 63.5,
+      "rank": 19
+    },
+    {
+      "full_name": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "summary": "一个把搜索、网页抓取和页面交互封装成统一 API 的数据基础设施，方便 Agent 在大规模 Web 上取数。",
+      "summary_source": "project_brief",
+      "original_description": "Knowledge infrastructure to make your agents smarter. Search, scrape and access 550+ data providers through one API.",
+      "language": "TypeScript",
+      "latest_stars": 209948,
+      "observed_star_change": 68483,
+      "peak_period_growth": 1131,
+      "growth_signal": 68483,
+      "appearances": 11,
+      "best_rank": 4,
+      "first_seen": "2026-06-30",
+      "last_seen": "2026-11-26",
+      "strategic_score": 91.9,
+      "relationship_label": "Workspace 组件",
+      "capabilities": [
+        "网页搜索",
+        "批量抓取",
+        "交互式采集",
+        "HTML 转 Markdown"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 5.5,
+        "growth": 17.2,
+        "strategic": 18.4,
+        "heat": 9.9,
+        "best_rank": 7.0,
+        "recency": 5.0
+      },
+      "rank_score": 63.0,
       "rank": 20
     },
     {
@@ -1450,6 +1450,41 @@
       "rank": 40
     },
     {
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
+      "summary_source": "project_brief",
+      "original_description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "latest_stars": 326548,
+      "observed_star_change": 74146,
+      "peak_period_growth": 1006,
+      "growth_signal": 74146,
+      "appearances": 8,
+      "best_rank": 6,
+      "first_seen": "2026-07-12",
+      "last_seen": "2026-11-26",
+      "strategic_score": 91.4,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Agent 技能包",
+        "规格澄清",
+        "计划驱动开发",
+        "子 Agent 协作"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 4.0,
+        "growth": 17.3,
+        "strategic": 18.3,
+        "heat": 9.8,
+        "best_rank": 5.0,
+        "recency": 5.0
+      },
+      "rank_score": 59.3,
+      "rank": 41
+    },
+    {
       "full_name": "lexmount/moli",
       "url": "https://github.com/lexmount/moli",
       "summary": "一个用 Rust 构建、面向 AI Agent 的无头浏览器，项目说明强调轻量、速度和兼容性。",
@@ -1482,7 +1517,7 @@
         "recency": 1.3
       },
       "rank_score": 59.3,
-      "rank": 41
+      "rank": 42
     },
     {
       "full_name": "tester-army/e2e",
@@ -1517,7 +1552,7 @@
         "recency": 1.7
       },
       "rank_score": 59.1,
-      "rank": 42
+      "rank": 43
     },
     {
       "full_name": "infiniflow/ragflow",
@@ -1552,7 +1587,7 @@
         "recency": 2.2
       },
       "rank_score": 58.7,
-      "rank": 43
+      "rank": 44
     },
     {
       "full_name": "Egonex-AI/Understand-Anything",
@@ -1587,41 +1622,6 @@
         "recency": 0
       },
       "rank_score": 58.7,
-      "rank": 44
-    },
-    {
-      "full_name": "obra/superpowers",
-      "url": "https://github.com/obra/superpowers",
-      "summary": "一套面向编码 Agent 的软件开发方法论与 Skills 集，强调先澄清需求、再做计划、再用子 Agent 推进实现。",
-      "summary_source": "project_brief",
-      "original_description": "An agentic skills framework & software development methodology that works.",
-      "language": "Shell",
-      "latest_stars": 325727,
-      "observed_star_change": 73325,
-      "peak_period_growth": 1006,
-      "growth_signal": 73325,
-      "appearances": 7,
-      "best_rank": 6,
-      "first_seen": "2026-07-12",
-      "last_seen": "2026-11-25",
-      "strategic_score": 91.3,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Agent 技能包",
-        "规格澄清",
-        "计划驱动开发",
-        "子 Agent 协作"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 3.5,
-        "growth": 17.3,
-        "strategic": 18.3,
-        "heat": 9.8,
-        "best_rank": 5.0,
-        "recency": 4.8
-      },
-      "rank_score": 58.6,
       "rank": 45
     },
     {
@@ -2021,7 +2021,7 @@
       "best_rank": 3,
       "first_seen": "2026-08-02",
       "last_seen": "2026-11-26",
-      "strategic_score": 93.3,
+      "strategic_score": 93.7,
       "relationship_label": "Workspace 组件",
       "capabilities": [
         "智能运维助手",
@@ -2038,7 +2038,7 @@
         "best_rank": 8.0,
         "recency": 5.0
       },
-      "rank_score": 56.8,
+      "rank_score": 56.9,
       "rank": 57
     },
     {
@@ -3803,7 +3803,7 @@
       "best_rank": 8,
       "first_seen": "2026-10-18",
       "last_seen": "2026-11-26",
-      "strategic_score": 91.2,
+      "strategic_score": 91.6,
       "relationship_label": "Memory 组件",
       "capabilities": [
         "Cursor 插件规范",
@@ -3815,12 +3815,12 @@
       "score_breakdown": {
         "continuity": 2.5,
         "growth": 13.7,
-        "strategic": 18.2,
+        "strategic": 18.3,
         "heat": 8.5,
         "best_rank": 3.0,
         "recency": 5.0
       },
-      "rank_score": 50.9,
+      "rank_score": 51.0,
       "rank": 108
     },
     {
@@ -3894,41 +3894,6 @@
       "rank": 110
     },
     {
-      "full_name": "agent-substrate/substrate",
-      "url": "https://github.com/agent-substrate/substrate",
-      "summary": "面向 Kubernetes 的零信任 Agent 沙箱运行时；README 将其定位为隔离计算、身份、网络和存储的基础设施，并说明兼容 microVM 与 gVisor 等沙箱技术。",
-      "summary_source": "project_brief",
-      "original_description": "Agent Substrate: the core system",
-      "language": "Go",
-      "latest_stars": 8351,
-      "observed_star_change": 4900,
-      "peak_period_growth": 560,
-      "growth_signal": 4900,
-      "appearances": 4,
-      "best_rank": 8,
-      "first_seen": "2026-09-24",
-      "last_seen": "2026-11-26",
-      "strategic_score": 91.5,
-      "relationship_label": "Memory 组件",
-      "capabilities": [
-        "Agent 沙箱",
-        "零信任运行时",
-        "Kubernetes 编排",
-        "身份与网络隔离"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.0,
-        "growth": 13.1,
-        "strategic": 18.3,
-        "heat": 8.9,
-        "best_rank": 3.0,
-        "recency": 5.0
-      },
-      "rank_score": 50.3,
-      "rank": 111
-    },
-    {
       "full_name": "vastsa/PI-Desktop",
       "url": "https://github.com/vastsa/PI-Desktop",
       "summary": "本地优先的 AI 编码桌面工作区，可连接自选模型、管理项目与长任务会话，并通过插件扩展工具。",
@@ -3961,7 +3926,7 @@
         "recency": 0
       },
       "rank_score": 50.2,
-      "rank": 112
+      "rank": 111
     },
     {
       "full_name": "openclaw/openclaw",
@@ -3996,7 +3961,7 @@
         "recency": 0
       },
       "rank_score": 50.0,
-      "rank": 113
+      "rank": 112
     },
     {
       "full_name": "oblien/openship",
@@ -4031,7 +3996,7 @@
         "recency": 0
       },
       "rank_score": 50.0,
-      "rank": 114
+      "rank": 113
     },
     {
       "full_name": "vxcontrol/pentagi",
@@ -4066,7 +4031,7 @@
         "recency": 0
       },
       "rank_score": 49.8,
-      "rank": 115
+      "rank": 114
     },
     {
       "full_name": "HKUDS/DeepTutor",
@@ -4101,7 +4066,7 @@
         "recency": 0
       },
       "rank_score": 49.8,
-      "rank": 116
+      "rank": 115
     },
     {
       "full_name": "AlexsJones/llmfit",
@@ -4136,7 +4101,7 @@
         "recency": 0
       },
       "rank_score": 49.6,
-      "rank": 117
+      "rank": 116
     },
     {
       "full_name": "hieunc229/mailflare",
@@ -4171,7 +4136,7 @@
         "recency": 5.0
       },
       "rank_score": 49.5,
-      "rank": 118
+      "rank": 117
     },
     {
       "full_name": "corsairdev/corsair",
@@ -4206,7 +4171,7 @@
         "recency": 0
       },
       "rank_score": 49.4,
-      "rank": 119
+      "rank": 118
     },
     {
       "full_name": "Anil-matcha/Open-Generative-AI",
@@ -4241,7 +4206,7 @@
         "recency": 2.7
       },
       "rank_score": 49.3,
-      "rank": 120
+      "rank": 119
     },
     {
       "full_name": "superdesigndev/treg",
@@ -4276,7 +4241,7 @@
         "recency": 0
       },
       "rank_score": 49.1,
-      "rank": 121
+      "rank": 120
     },
     {
       "full_name": "Orkas-AI/Orkas",
@@ -4311,42 +4276,7 @@
         "recency": 2.2
       },
       "rank_score": 49.1,
-      "rank": 122
-    },
-    {
-      "full_name": "agentscope-ai/agentscope",
-      "url": "https://github.com/agentscope-ai/agentscope",
-      "summary": "一个用于构建、运行并可观察多 Agent 应用的开源框架；仓库 topics 覆盖 MCP、多 Agent、多模态、实时与语音 Agent，并提供中英文文档入口。",
-      "summary_source": "project_brief",
-      "original_description": "Build and run agents you can see, understand and trust.",
-      "language": "Python",
-      "latest_stars": 36711,
-      "observed_star_change": 8970,
-      "peak_period_growth": 106,
-      "growth_signal": 8970,
-      "appearances": 4,
-      "best_rank": 8,
-      "first_seen": "2026-07-11",
-      "last_seen": "2026-11-26",
-      "strategic_score": 91.2,
-      "relationship_label": "开发者工具",
-      "capabilities": [
-        "多 Agent",
-        "MCP 集成",
-        "多模态",
-        "实时 Agent"
-      ],
-      "data_confidence": "high",
-      "score_breakdown": {
-        "continuity": 2.0,
-        "growth": 14.0,
-        "strategic": 18.2,
-        "heat": 6.6,
-        "best_rank": 3.0,
-        "recency": 5.0
-      },
-      "rank_score": 48.9,
-      "rank": 123
+      "rank": 121
     },
     {
       "full_name": "TencentCloud/CubeSandbox",
@@ -4381,7 +4311,7 @@
         "recency": 0
       },
       "rank_score": 48.9,
-      "rank": 124
+      "rank": 122
     },
     {
       "full_name": "gitroomhq/postiz-app",
@@ -4416,7 +4346,7 @@
         "recency": 0.3
       },
       "rank_score": 48.8,
-      "rank": 125
+      "rank": 123
     },
     {
       "full_name": "cloudflare/computer",
@@ -4451,7 +4381,7 @@
         "recency": 0
       },
       "rank_score": 48.8,
-      "rank": 126
+      "rank": 124
     },
     {
       "full_name": "codecrafters-io/build-your-own-x",
@@ -4486,7 +4416,7 @@
         "recency": 0
       },
       "rank_score": 48.8,
-      "rank": 127
+      "rank": 125
     },
     {
       "full_name": "genspark-ai/genoffice",
@@ -4521,7 +4451,7 @@
         "recency": 0
       },
       "rank_score": 48.7,
-      "rank": 128
+      "rank": 126
     },
     {
       "full_name": "cheaper-inference/OmniRoute",
@@ -4556,7 +4486,7 @@
         "recency": 2.0
       },
       "rank_score": 48.6,
-      "rank": 129
+      "rank": 127
     },
     {
       "full_name": "BuilderIO/agent-native",
@@ -4591,7 +4521,7 @@
         "recency": 0
       },
       "rank_score": 48.4,
-      "rank": 130
+      "rank": 128
     },
     {
       "full_name": "melgarafael/DeskcommCRM",
@@ -4626,7 +4556,7 @@
         "recency": 0
       },
       "rank_score": 48.4,
-      "rank": 131
+      "rank": 129
     },
     {
       "full_name": "rust-lang/rust",
@@ -4661,7 +4591,7 @@
         "recency": 2.0
       },
       "rank_score": 48.2,
-      "rank": 132
+      "rank": 130
     },
     {
       "full_name": "AgriciDaniel/claude-obsidian",
@@ -4696,7 +4626,7 @@
         "recency": 0
       },
       "rank_score": 48.2,
-      "rank": 133
+      "rank": 131
     },
     {
       "full_name": "Shubhamsaboo/awesome-llm-apps",
@@ -4731,7 +4661,7 @@
         "recency": 0
       },
       "rank_score": 48.1,
-      "rank": 134
+      "rank": 132
     },
     {
       "full_name": "TencentCloud/Octop",
@@ -4766,7 +4696,7 @@
         "recency": 0
       },
       "rank_score": 48.1,
-      "rank": 135
+      "rank": 133
     },
     {
       "full_name": "openinterpreter/openinterpreter",
@@ -4801,7 +4731,7 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 136
+      "rank": 134
     },
     {
       "full_name": "kenn-io/agentsview",
@@ -4836,7 +4766,7 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 137
+      "rank": 135
     },
     {
       "full_name": "VectifyAI/PageIndex",
@@ -4871,7 +4801,7 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 138
+      "rank": 136
     },
     {
       "full_name": "refactoringhq/tolaria",
@@ -4906,7 +4836,42 @@
         "recency": 0
       },
       "rank_score": 48.0,
-      "rank": 139
+      "rank": 137
+    },
+    {
+      "full_name": "agentscope-ai/agentscope",
+      "url": "https://github.com/agentscope-ai/agentscope",
+      "summary": "一个用于构建、运行并可观察多 Agent 应用的开源框架；仓库 topics 覆盖 MCP、多 Agent、多模态、实时与语音 Agent，并提供中英文文档入口。",
+      "summary_source": "project_brief",
+      "original_description": "Build and run agents you can see, understand and trust.",
+      "language": "Python",
+      "latest_stars": 36711,
+      "observed_star_change": 8970,
+      "peak_period_growth": 106,
+      "growth_signal": 8970,
+      "appearances": 4,
+      "best_rank": 9,
+      "first_seen": "2026-07-11",
+      "last_seen": "2026-11-26",
+      "strategic_score": 91.2,
+      "relationship_label": "开发者工具",
+      "capabilities": [
+        "多 Agent",
+        "MCP 集成",
+        "多模态",
+        "实时 Agent"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 2.0,
+        "growth": 14.0,
+        "strategic": 18.2,
+        "heat": 6.6,
+        "best_rank": 2.0,
+        "recency": 5.0
+      },
+      "rank_score": 47.9,
+      "rank": 138
     },
     {
       "full_name": "langflow-ai/langflow",
@@ -4941,7 +4906,7 @@
         "recency": 0
       },
       "rank_score": 47.9,
-      "rank": 140
+      "rank": 139
     },
     {
       "full_name": "FlashML-org/FreeToken",
@@ -4976,7 +4941,7 @@
         "recency": 1.3
       },
       "rank_score": 47.9,
-      "rank": 141
+      "rank": 140
     },
     {
       "full_name": "tradermonty/claude-trading-skills",
@@ -5011,7 +4976,7 @@
         "recency": 3.2
       },
       "rank_score": 47.9,
-      "rank": 142
+      "rank": 141
     },
     {
       "full_name": "FalkorDB/FalkorDB",
@@ -5046,7 +5011,7 @@
         "recency": 0
       },
       "rank_score": 47.8,
-      "rank": 143
+      "rank": 142
     },
     {
       "full_name": "microsoft/vscode",
@@ -5081,7 +5046,7 @@
         "recency": 2.0
       },
       "rank_score": 47.8,
-      "rank": 144
+      "rank": 143
     },
     {
       "full_name": "multica-ai/multica",
@@ -5116,7 +5081,7 @@
         "recency": 0
       },
       "rank_score": 47.6,
-      "rank": 145
+      "rank": 144
     },
     {
       "full_name": "safishamsi/graphify",
@@ -5151,7 +5116,7 @@
         "recency": 0
       },
       "rank_score": 47.5,
-      "rank": 146
+      "rank": 145
     },
     {
       "full_name": "ToolJet/ToolJet",
@@ -5186,7 +5151,7 @@
         "recency": 0
       },
       "rank_score": 47.5,
-      "rank": 147
+      "rank": 146
     },
     {
       "full_name": "MoonshotAI/kimi-code",
@@ -5221,7 +5186,7 @@
         "recency": 0
       },
       "rank_score": 47.5,
-      "rank": 148
+      "rank": 147
     },
     {
       "full_name": "CoreBunch/Instatic",
@@ -5256,7 +5221,7 @@
         "recency": 0
       },
       "rank_score": 47.4,
-      "rank": 149
+      "rank": 148
     },
     {
       "full_name": "magnitudedev/magnitude",
@@ -5291,7 +5256,7 @@
         "recency": 0
       },
       "rank_score": 47.4,
-      "rank": 150
+      "rank": 149
     },
     {
       "full_name": "holaboss-ai/holaOS",
@@ -5326,7 +5291,7 @@
         "recency": 0
       },
       "rank_score": 47.4,
-      "rank": 151
+      "rank": 150
     },
     {
       "full_name": "garrytan/gstack",
@@ -5361,7 +5326,7 @@
         "recency": 1.7
       },
       "rank_score": 47.3,
-      "rank": 152
+      "rank": 151
     },
     {
       "full_name": "karakeep-app/karakeep",
@@ -5396,7 +5361,7 @@
         "recency": 0
       },
       "rank_score": 47.2,
-      "rank": 153
+      "rank": 152
     },
     {
       "full_name": "oven-sh/bun",
@@ -5431,7 +5396,7 @@
         "recency": 0
       },
       "rank_score": 47.2,
-      "rank": 154
+      "rank": 153
     },
     {
       "full_name": "tokio-rs/topcoat",
@@ -5466,7 +5431,7 @@
         "recency": 2.7
       },
       "rank_score": 47.2,
-      "rank": 155
+      "rank": 154
     },
     {
       "full_name": "pascalorg/editor",
@@ -5501,7 +5466,7 @@
         "recency": 0
       },
       "rank_score": 47.0,
-      "rank": 156
+      "rank": 155
     },
     {
       "full_name": "garrytan/gbrain",
@@ -5536,7 +5501,7 @@
         "recency": 2.7
       },
       "rank_score": 47.0,
-      "rank": 157
+      "rank": 156
     },
     {
       "full_name": "rtk-ai/rtk",
@@ -5571,7 +5536,7 @@
         "recency": 0
       },
       "rank_score": 46.8,
-      "rank": 158
+      "rank": 157
     },
     {
       "full_name": "RyanCodrai/turbovec",
@@ -5604,6 +5569,41 @@
         "heat": 10.3,
         "best_rank": 4.0,
         "recency": 0
+      },
+      "rank_score": 46.8,
+      "rank": 158
+    },
+    {
+      "full_name": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "summary": "面向 Kubernetes 的零信任 Agent 沙箱运行时；README 将其定位为隔离计算、身份、网络和存储的基础设施，并说明兼容 microVM 与 gVisor 等沙箱技术。",
+      "summary_source": "project_brief",
+      "original_description": "Agent Substrate: the core system",
+      "language": "Go",
+      "latest_stars": 6456,
+      "observed_star_change": 3005,
+      "peak_period_growth": 560,
+      "growth_signal": 3005,
+      "appearances": 3,
+      "best_rank": 8,
+      "first_seen": "2026-09-24",
+      "last_seen": "2026-11-12",
+      "strategic_score": 91.7,
+      "relationship_label": "Memory 组件",
+      "capabilities": [
+        "Agent 沙箱",
+        "零信任运行时",
+        "Kubernetes 编排",
+        "身份与网络隔离"
+      ],
+      "data_confidence": "high",
+      "score_breakdown": {
+        "continuity": 1.5,
+        "growth": 12.3,
+        "strategic": 18.3,
+        "heat": 8.9,
+        "best_rank": 3.0,
+        "recency": 2.7
       },
       "rank_score": 46.8,
       "rank": 159
