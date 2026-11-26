@@ -44,6 +44,7 @@ KEYWORD_LABELS = {
     "ai-agent": "AI Agent 工具",
     "ai-agents": "多 Agent",
     "ai-tutor": "AI 导师",
+    "ai-video-editor": "AI 视频编辑",
     "advanced-driver-assistance-systems": "高级辅助驾驶",
     "anthropic": "Anthropic 生态",
     "automation": "自动化",

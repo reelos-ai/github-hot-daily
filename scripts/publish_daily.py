@@ -46,6 +46,7 @@ CAPABILITY_TRANSLATIONS = {
     "ai-agent": "AI Agent 工具",
     "ai-agents": "多 Agent",
     "ai-tutor": "AI 导师",
+    "ai-video-editor": "AI 视频编辑",
     "ai-tools": "AI 工具链",
     "advanced-driver-assistance-systems": "高级辅助驾驶",
     "anthropic": "Anthropic 生态",
